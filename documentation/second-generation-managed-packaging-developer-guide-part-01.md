@@ -1,13 +1,13 @@
-# Second-Generation Managed Packaging Developer Guide
+# Second generation managed packaging developer guide
 
 > Source: https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/pkg2_dev.pdf
-> Fetched: 2026-03-16T10:24:01Z
+> Fetched: 2026-06-02T08:15:32Z
 Second-Generation Managed
 Packaging Developer Guide
 
-Version 66.0, Spring ’26
+Version 67.0, Summer ’26
 
-Last updated: March 13, 2026
+Last updated: May 26, 2026
 
 © Copyright 2000–2026 Salesforce, Inc. All rights reserved. Salesforce is a registered trademark of Salesforce, Inc., as are other
 names and marks. Other marks appearing herein may be trademarks of their respective owners.
@@ -327,127 +327,128 @@ Behavior of Specific Metadata in Second-Generation Managed Packages **. . . . . 
 
 Package Agentforce Metadata Components **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 316**
 Develop and Package Agent Templates Using Scratch Orgs **. . . . . . . . . . . . . . . . . . . . 316**
-Package Data Cloud Metadata Components **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 320**
-Protected Components in Managed Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 321**
-Set Up a Platform Cache Partition with Provider Free Capacity **. . . . . . . . . . . . . . . . . . 322**
-Metadata Access in Apex Code **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 322**
-Permission Sets and Profile Settings in Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . 323**
-Protecting Your Intellectual Property **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 328**
-Call Salesforce URLs Within a Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 328**
+MCP for Agentforce Metadata in Managed Packages **. . . . . . . . . . . . . . . . . . . . . . . . 320**
+Package Data Cloud Metadata Components **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 324**
+Protected Components in Managed Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . 325**
+Set Up a Platform Cache Partition with Provider Free Capacity **. . . . . . . . . . . . . . . . . . 326**
+Metadata Access in Apex Code **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 327**
+Permission Sets and Profile Settings in Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . 327**
+Protecting Your Intellectual Property **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 332**
+Call Salesforce URLs Within a Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 333**
 Namespace-Based Visibility for Apex Classes in Second-Generation Managed
-Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 330**
-Work with Services Outside of Salesforce **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 331**
-Package Connected Apps in Second-Generation Managed Packaging **. . . . . . . . . . . 332**
-Test and Respond to the New Order Save Behavior **. . . . . . . . . . . . . . . . . . . . . . . . . 332**
-Develop Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 334**
+Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 334**
+Work with Services Outside of Salesforce **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 335**
+Package Connected Apps in Second-Generation Managed Packaging **. . . . . . . . . . . 336**
+Test and Respond to the New Order Save Behavior **. . . . . . . . . . . . . . . . . . . . . . . . . 337**
+Develop Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 339**
 
-Create a Second-Generation Managed Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . 335**
-View Package Details for a Second-Generation Managed Package **. . . . . . . . . . . . . . 335**
+Create a Second-Generation Managed Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . 339**
 
 **Contents**
 
-Create Versions of a Second-Generation Managed Package **. . . . . . . . . . . . . . . . . . 336**
-Guidance for Package Version Numbering **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 338**
-View Details about a Second-Generation Managed Package Version **. . . . . . . . . . . . . 340**
-Project Configuration File for a Second-Generation Managed Package **. . . . . . . . . . . . 342**
-Get Ready to Promote and Release a Second-Generation Managed Package Version **. . 346**
+View Package Details for a Second-Generation Managed Package **. . . . . . . . . . . . . . 340**
+Create Versions of a Second-Generation Managed Package **. . . . . . . . . . . . . . . . . . 340**
+Guidance for Package Version Numbering **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 343**
+View Details about a Second-Generation Managed Package Version **. . . . . . . . . . . . . 344**
+Project Configuration File for a Second-Generation Managed Package **. . . . . . . . . . . . 346**
+Get Ready to Promote and Release a Second-Generation Managed Package Version **. . 350**
 Specify a Package Ancestor in the Project File for a Second-Generation Managed
-Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 346**
-Install and Uninstall Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . . . . 348**
+Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 351**
+Install and Uninstall Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . . . . 353**
 
-Use the CLI to Install a Second-Generation Managed Package **. . . . . . . . . . . . . . . . . . 349**
-Use a URL to Install a Second-Generation Managed Package **. . . . . . . . . . . . . . . . . . 350**
-Install Notifications for Unauthorized Managed Packages **. . . . . . . . . . . . . . . . . . . . . 351**
-Upgrade a Second-Generation Managed Package Version **. . . . . . . . . . . . . . . . . . . . 352**
-Resolve Apex Test Failures **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 352**
-Run Apex on Package Install/Upgrade **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 352**
+Use the CLI to Install a Second-Generation Managed Package **. . . . . . . . . . . . . . . . . . 354**
+Use a URL to Install a Second-Generation Managed Package **. . . . . . . . . . . . . . . . . . 355**
+Install Notifications for Unauthorized Managed Packages **. . . . . . . . . . . . . . . . . . . . . 356**
+Upgrade a Second-Generation Managed Package Version **. . . . . . . . . . . . . . . . . . . . 356**
+Resolve Apex Test Failures **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 357**
+Run Apex on Package Install/Upgrade **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 357**
 Customize Second-Generation Managed Package Installs and Uninstalls Using Scripts
-**. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 356**
+**. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 361**
 Sample Script for Installing Second-Generation Managed Packages with
-Dependencies **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 357**
-Uninstall a Second-Generation Managed Package **. . . . . . . . . . . . . . . . . . . . . . . . . 359**
-Prepare to Distribute Your Second-Generation Managed Package **. . . . . . . . . . . . . . . . . . . 360**
+Dependencies **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 362**
+Uninstall a Second-Generation Managed Package **. . . . . . . . . . . . . . . . . . . . . . . . . 364**
+Prepare to Distribute Your Second-Generation Managed Package **. . . . . . . . . . . . . . . . . . . 365**
 
-Code Coverage for Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . 360**
-Package Installation Key for Second-Generation Managed Packages **. . . . . . . . . . . . . 361**
-Release a Second-Generation Managed Package **. . . . . . . . . . . . . . . . . . . . . . . . . . 362**
+Code Coverage for Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . 365**
+Package Installation Key for Second-Generation Managed Packages **. . . . . . . . . . . . . 366**
+Release a Second-Generation Managed Package **. . . . . . . . . . . . . . . . . . . . . . . . . . 366**
 Share Release Notes and Post-Install Instructions for Second-Generation Managed
-Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 362**
-Publishing Your App on AppExchange **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 363**
-Recommend a Specific Package Version to Your Subscribers **. . . . . . . . . . . . . . . . . . . 364**
-Push a Package Upgrade for Second-Generation Managed Packages **. . . . . . . . . . . . . . . . 364**
+Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 367**
+Publishing Your App on AppExchange **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 368**
+Recommend a Specific Package Version to Your Subscribers **. . . . . . . . . . . . . . . . . . . 368**
+Push a Package Upgrade for Second-Generation Managed Packages **. . . . . . . . . . . . . . . . 369**
 
-Schedule a Push Upgrade Using CLI **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 365**
+Schedule a Push Upgrade Using CLI **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 370**
 Schedule a Push Upgrade Using SOAP API for First- and Second-Generation Managed
-Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 369**
-Enable a Package Subscriber to Restrict Push Upgrades **. . . . . . . . . . . . . . . . . . . . . . 369**
+Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 373**
+Enable a Package Subscriber to Restrict Push Upgrades **. . . . . . . . . . . . . . . . . . . . . . 374**
 Assign Access to New and Changed Features in First- and Second-Generation Managed
-Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 370**
+Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 375**
 Sample Post Install Script for a Push Upgrade for First- and Second-Generation Managed
-Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 371**
-Push Upgrade Best Practices **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 372**
-Advanced Features for Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . . 373**
+Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 376**
+Push Upgrade Best Practices **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 377**
+Advanced Features for Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . . 378**
 
-Package Ancestors for Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . 375**
-Patch Versions for Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . . 379**
-Create Dependencies Between Second-Generation Managed Packages **. . . . . . . . . . . 380**
-Considerations for Promoting Packages with Dependencies **. . . . . . . . . . . . . . . . . . . 384**
+Package Ancestors for Second-Generation Managed Packages **. . . . . . . . . . . . . . . . 380**
+Patch Versions for Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . . 384**
+Create Dependencies Between Second-Generation Managed Packages **. . . . . . . . . . . 385**
+Considerations for Promoting Packages with Dependencies **. . . . . . . . . . . . . . . . . . . 389**
+
+**Contents**
+
 Advanced Project Configuration Parameters for Second-Generation Managed
-Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 385**
-
-**Contents**
-
-Second-Generation Managed Packaging Keywords **. . . . . . . . . . . . . . . . . . . . . . . . . 389**
+Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 390**
+Second-Generation Managed Packaging Keywords **. . . . . . . . . . . . . . . . . . . . . . . . . 394**
 Target a Specific Release for Your Second-Generation Managed Packages During
-Salesforce Release Transitions **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 390**
-Use Branches in Second-Generation Managed Packaging **. . . . . . . . . . . . . . . . . . . . 391**
+Salesforce Release Transitions **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 395**
+Use Branches in Second-Generation Managed Packaging **. . . . . . . . . . . . . . . . . . . . 396**
 Specify Unpackaged Metadata or Apex Access for Package Version Creation Tests for
-Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 392**
-Package IDs and Aliases for Second-Generation Managed Packages **. . . . . . . . . . . . . 393**
-Avoid Namespace Collisions in Second-Generation Managed Packages **. . . . . . . . . . . 394**
-Remove Metadata Components from Second-Generation Managed Packages **. . . . . . 396**
-Delete a Second-Generation Managed Package or Package Version **. . . . . . . . . . . . . 400**
-Frequently Used Packaging Operations for Second-Generation Managed Packages **. . . 401**
-Transfer a Second-Generation Managed Package to a Different Dev Hub **. . . . . . . . . . . 401**
-Contact Salesforce Partner Support to Enable Specific Packaging Features **. . . . . . . . . . 406**
-Best Practices for Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . . . . . . 407**
-Manage Licenses for Managed Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 407**
+Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 397**
+Package IDs and Aliases for Second-Generation Managed Packages **. . . . . . . . . . . . . 398**
+Avoid Namespace Collisions in Second-Generation Managed Packages **. . . . . . . . . . . 399**
+Remove Metadata Components from Second-Generation Managed Packages **. . . . . . . 401**
+Delete a Second-Generation Managed Package or Package Version **. . . . . . . . . . . . . 405**
+Frequently Used Packaging Operations for Second-Generation Managed Packages **. . . 406**
+Transfer a Second-Generation Managed Package to a Different Dev Hub **. . . . . . . . . . 406**
+Contact Salesforce Partner Support to Enable Specific Packaging Features **. . . . . . . . . . . 411**
+Best Practices for Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . . . . . . 412**
+Manage Licenses for Managed Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 412**
 
-Get Started with the License Management App **. . . . . . . . . . . . . . . . . . . . . . . . . . . . 408**
-Lead and License Records in the License Management App **. . . . . . . . . . . . . . . . . . . . 412**
-Modify a License Record **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 412**
-Refresh Licenses for a Managed Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 413**
-Extending the License Management App **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 413**
-Move the License Management App to Another Salesforce Org **. . . . . . . . . . . . . . . . . 416**
-Troubleshoot the License Management App **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 417**
-Best Practices for the License Management App **. . . . . . . . . . . . . . . . . . . . . . . . . . . . 418**
-Troubleshoot Subscriber Issues **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 418**
-Manage Features in Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . . . . 421**
+Get Started with the License Management App **. . . . . . . . . . . . . . . . . . . . . . . . . . . . 413**
+Lead and License Records in the License Management App **. . . . . . . . . . . . . . . . . . . . 417**
+Modify a License Record **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 417**
+Refresh Licenses for a Managed Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 418**
+Extending the License Management App **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 418**
+Move the License Management App to Another Salesforce Org **. . . . . . . . . . . . . . . . . 421**
+Troubleshoot the License Management App **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 422**
+Best Practices for the License Management App **. . . . . . . . . . . . . . . . . . . . . . . . . . . 423**
+Troubleshoot Subscriber Issues **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 423**
+Manage Features in Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . . . . 426**
 
-Feature Parameter Metadata Types and Custom Objects **. . . . . . . . . . . . . . . . . . . . . 422**
-Set Up Feature Parameters **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 423**
-Use LMO-to-Subscriber Feature Parameters to Enable and Disable Features **. . . . . . . . 425**
-Track Preferences and Activation Metrics with Subscriber-to-LMO Feature Parameters **. . 426**
-Hide Custom Objects and Custom Permissions in Your Subscribers’ Orgs **. . . . . . . . . . 426**
-Best Practices for Feature Management **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 427**
-Considerations for Feature Management **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 427**
-Get Started with AppExchange App Analytics **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 428**
+Feature Parameter Metadata Types and Custom Objects **. . . . . . . . . . . . . . . . . . . . . 427**
+Set Up Feature Parameters **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 428**
+Use LMO-to-Subscriber Feature Parameters to Enable and Disable Features **. . . . . . . . 430**
+Track Preferences and Activation Metrics with Subscriber-to-LMO Feature Parameters **. . 431**
+Hide Custom Objects and Custom Permissions in Your Subscribers’ Orgs **. . . . . . . . . . . 431**
+Best Practices for Feature Management **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 432**
+Considerations for Feature Management **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 432**
+Get Started with AppExchange App Analytics **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 433**
 
-App Analytics Use Cases **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 429**
-Enable App Analytics on Your Second-Generation Managed Package **. . . . . . . . . . . . 432**
+App Analytics Use Cases **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 434**
+Enable App Analytics on Your Second-Generation Managed Package **. . . . . . . . . . . . . 437**
 Download Package Usage Logs, Package Usage Summaries, and Subscriber
-Snapshots **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 432**
-Considerations for Custom Interactions **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 433**
-AppExchange App Analytics Best Practices **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 438**
-Package Usage Summaries **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 455**
-Package Usage Logs **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 457**
-Subscriber Snapshots **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 482**
-Test Custom Integrations **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 484**
-AppExchange App Analytics Developer Cookbook **. . . . . . . . . . . . . . . . . . . . . . . . . . 485**
+Snapshots **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 437**
+Considerations for Custom Interactions **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 438**
+AppExchange App Analytics Best Practices **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 443**
+Package Usage Summaries **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 460**
+Package Usage Logs **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 462**
+Subscriber Snapshots **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 487**
 
 **Contents**
 
-Gaps Between First-Generation and Second-Generation Managed Packaging **. . . . . . . . . . 505**
+Test Custom Integrations **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 489**
+AppExchange App Analytics Developer Cookbook **. . . . . . . . . . . . . . . . . . . . . . . . . . 490**
+Gaps Between First-Generation and Second-Generation Managed Packaging **. . . . . . . . . . . 510**
 
 # CHAPTER 1 Second-Generation Managed Packages
 
@@ -501,7 +502,7 @@ multiple customers, unlocked packaging is the preferred tool. You can use unlock
 
 Managed Packages
 
-[Unlocked Packages for more information.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_pkg_intro.htm)
+[Unlocked Packages for more information.](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_pkg_intro.htm)
 
 **•** Components
 Available in
@@ -694,7 +695,7 @@ and enabled.
 
 You use these tools for managed 2GP package development.
 
-**•** [Salesforce CLI, a rich set of commands to execute different packaging operations like package creation and package install](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
+**•** [Salesforce CLI, a rich set of commands to execute different packaging operations like package creation and package install](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
 
 **•** A source control system of your choosing
 
@@ -843,8 +844,8 @@ objects.
 
 **e.** After filling out the remaining information, click **Save** .
 
-**2.** [Create a permission set that provides your developer users with access to the required Dev Hub objects. For details, see Create and](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_setup_permission_set.htm)
-[Assign a Permission Set for Developer Users or Assign Second-Generation Managed Packaging User Permissions.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_setup_permission_set.htm)
+**2.** [Create a permission set that provides your developer users with access to the required Dev Hub objects. For details, see Create and](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_setup_permission_set.htm)
+[Assign a Permission Set for Developer Users or Assign Second-Generation Managed Packaging User Permissions.](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_setup_permission_set.htm)
 
 ### Assign Second-Generation Managed Packaging User Permissions
 
@@ -880,7 +881,7 @@ Did you?
 
 **•** [Enable Dev Hub and Second-Generation Managed Packaging in your Partner Business Org (PBO)](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_pkg_enable_devhub.htm)
 
-**•** [Install Salesforce CLI](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
+**•** [Install Salesforce CLI](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
 
 **•** [Create and Register Your Namespace for Second-Generation Managed Packages](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_create_namespace.htm)
 
@@ -966,7 +967,7 @@ SEE ALSO:
 
 [Scratch Org Allocations for Partners](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/isv_partner_scratch_org_allocations.htm)
 
-_[Salesforce DX Developer Guide:](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs.htm)_ Scratch Orgs
+_[Salesforce DX Developer Guide:](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs.htm)_ Scratch Orgs
 
 ### Link a Namespace to a Dev Hub Org
 
@@ -1064,7 +1065,7 @@ To create a namespace:
 
 To register a namespace:
 
-**1.** [To link the namespace that you created with your Dev Hub, use Namespace Registry. See Link a Namespace to a Dev Hub Org for](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_reg_namespace.htm)
+**1.** [To link the namespace that you created with your Dev Hub, use Namespace Registry. See Link a Namespace to a Dev Hub Org for](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_reg_namespace.htm)
 details.
 
 **2.** In the `sfdx-project.json` file, specify your namespace using the namespace attribute. When you create a new 2GP package,
@@ -1250,7 +1251,7 @@ To create a namespaced scratch org, use your Dev Hub org to create the scratch o
 
 **•** Specify the namespace in your `sfdx-project.json` file.
 
-**•** [Create a scratch org definition file and include any features, settings, or limits that your org needs.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_def_file.htm)
+**•** [Create a scratch org definition file and include any features, settings, or limits that your org needs.](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_def_file.htm)
 
 When you create a scratch org both the namespace and ancestry information listed in `sfdx-project.json` file are pulled into
 the scratch org. The ancestry information, specified as `ancestorId` or `ancestorVersion` in your `sfdx-project.json`
@@ -1299,11 +1300,11 @@ Cloud for Scratch Orgs is only available to scratch orgs associated with the Dev
 
 SEE ALSO:
 
-_[Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_create.htm)_ : Create Scratch Orgs
+_[Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_create.htm)_ : Create Scratch Orgs
 
-_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_create_scratch_unified)_ : org create scratch
+_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_create_scratch_unified)_ : org create scratch
 
-_Salesforce DX Developer Guide_ [: Select the Salesforce Release for a Scratch Org](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_version_selection.htm)
+_Salesforce DX Developer Guide_ [: Select the Salesforce Release for a Scratch Org](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_version_selection.htm)
 
 ### Scratch Org Definition Files vs Org Shape in Package Development
 
@@ -1323,7 +1324,7 @@ scratch orgs includes a flag called `--definition-file` .
 ```
 
 In this example, `project-scratch-def.json` is the scratch org definition file. To learn more about what can be specified in
-[this definition file, see Build Your Own Scratch Org Definition File in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_def_file.htm) _Salesforce DX Developer Guide_ .
+[this definition file, see Build Your Own Scratch Org Definition File in the](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_def_file.htm) _Salesforce DX Developer Guide_ .
 
 Similarly the CLI `--definition-file` flag can be used when creating a new package version.
 
@@ -1344,7 +1345,7 @@ When to Use Org Shape
 
 If you're developing managed packages to distribute on AppExchange, we expect that you know what features and settings your
 packages depends on, and expect you to specify these requirements in a scratch org definition file. But there are scenarios like unlocked
-[packages, or if you're moving from 1GP to 2GP package development, where using Org Shape for Scratch Orgs can be useful.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_shape_intro.htm)
+[packages, or if you're moving from 1GP to 2GP package development, where using Org Shape for Scratch Orgs can be useful.](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_shape_intro.htm)
 
 During org shape creation, we capture the features, settings, edition, licenses, and limits of the specified source org. By using org shape
 you don’t have to manually list these items in the scratch org definition file.
@@ -1364,7 +1365,7 @@ Later when you create a package version, specify the org ID for the source org i
 
 ```
 
-[For more detailed instructions on enabling and creating org shape, review Create a Scratch Org Based on an Org Shape in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_shape_intro.htm) _Salesforce_
+[For more detailed instructions on enabling and creating org shape, review Create a Scratch Org Based on an Org Shape in the](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_shape_intro.htm) _Salesforce_
 _DX Developer Guide._
 
 If you’re moving from managed 1GP package development to 2GP package development, creating an org shape of your 1GP packaging
@@ -1375,11 +1376,11 @@ SEE ALSO:
 
 How Scratch Orgs Fit in the Package Development Workflow
 
-_Salesforce DX Developer Guide_ [: Build Your Own Scratch Org Definition File](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_def_file.htm)
+_Salesforce DX Developer Guide_ [: Build Your Own Scratch Org Definition File](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_def_file.htm)
 
-_Salesforce DX Developer Guide_ [: Create a Scratch Org Based on an Org Shape](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_shape_intro.htm)
+_Salesforce DX Developer Guide_ [: Create a Scratch Org Based on an Org Shape](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_shape_intro.htm)
 
-_Salesforce DX Developer Guide_ [: Create a Scratch Org Based on an Org Shape](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_shape_intro.htm)
+_Salesforce DX Developer Guide_ [: Create a Scratch Org Based on an Org Shape](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_shape_intro.htm)
 
 ### When to Use Scratch Org Snapshots in Package Development
 
@@ -1395,7 +1396,7 @@ packages extends the overall package creation time.
 If the dependent packages that your base package requires are stable, you can reduce the end-to-end package version creation time
 by creating a scratch org snapshot, and using that scratch org snapshot during package version creation.
 
-[A scratch org snapshot captures the state of a scratch org’s configuration so that you can use the snapshot to create scratch org replicas.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_snapshots_intro.htm)
+[A scratch org snapshot captures the state of a scratch org’s configuration so that you can use the snapshot to create scratch org replicas.](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_snapshots_intro.htm)
 A snapshot is a point-in-time copy of a scratch org that includes installed packages, features, limits, licenses, metadata, and data. If you
 install your dependent packages in the scratch org before you create the snapshot, and you specify the snapshot when you create a
 new package version, the package build process bypasses these steps. Meaning, we don't install the dependent packages into the build
@@ -1409,14 +1410,14 @@ Keep in mind, the intention of scratch org snapshots in the package development 
 development. When you are ready to promote and release a package, you must create a new package version that doesn’t rely on a
 scratch org snapshot. Package versions created using scratch org snapshots can’t be promoted to the released state.
 
-[Note: You can promote an unlocked package based on a snapshot. Only managed packages based on snapshots can’t be](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_pkg_intro.htm)
+[Note: You can promote an unlocked package based on a snapshot. Only managed packages based on snapshots can’t be](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_pkg_intro.htm)
 promoted to the released state.
 
 SEE ALSO:
 
 ### Create a Package Version Based on a Scratch Org Snapshot
 
-_[Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_snapshots_intro.htm)_ : Scratch Org Snapshots
+_[Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_snapshots_intro.htm)_ : Scratch Org Snapshots
 
 ### Create a Package Version Based on a Scratch Org Snapshot
 
@@ -1514,7 +1515,7 @@ SEE ALSO:
 
 When to Use Scratch Org Snapshots in Package Development
 
-_[Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_create.htm)_ : Create Org Shapes
+_[Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_create.htm)_ : Create Org Shapes
 
 ### Get Access to Scratch Orgs That Have Agentforce
 
@@ -1522,22 +1523,22 @@ Agentforce is a set of tools to create and customize AI agents that are deeply a
 Agentforce brings together humans with agents to transform the way work gets done. Start your journey with Agentforce by testing it
 in a scratch org.
 
-[If you don’t already have a Partner Business Org (PBO), join the Salesforce Partner Community and request a PBO.](https://developer.salesforce.com/docs/atlas.en-us.260.0.packagingGuide.meta/packagingGuide/appexchange_partner_join.htm)
+[If you don’t already have a Partner Business Org (PBO), join the Salesforce Partner Community and request a PBO.](https://developer.salesforce.com/docs/atlas.en-us.262.0.packagingGuide.meta/packagingGuide/appexchange_partner_join.htm)
 
 If you’re new to creating scratch orgs, follow these steps to complete the one-time Dev Hub setup in your PBO. The Dev Hub is a feature
 within an org that lets you create and manage scratch orgs, second-generation managed packages (2GP), and namespaces.
 
 **•** [Enable the Dev Hub and 2GP](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_pkg_enable_devhub.htm)
 
-**•** [Create a Developer Edition org using Environment Hub](https://developer.salesforce.com/docs/atlas.en-us.260.0.packagingGuide.meta/packagingGuide/environment_hub_manage_create_org.htm)
+**•** [Create a Developer Edition org using Environment Hub](https://developer.salesforce.com/docs/atlas.en-us.262.0.packagingGuide.meta/packagingGuide/environment_hub_manage_create_org.htm)
 
 **•** [Create a namespace in the Developer Edition org](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_create_namespace.htm)
 
-**•** [Link that namespace from your PBO. Linking the namespace lets you create 2GP packages that use that namespace.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_reg_namespace.htm)
+**•** [Link that namespace from your PBO. Linking the namespace lets you create 2GP packages that use that namespace.](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_reg_namespace.htm)
 
-**•** [Authorize the Dev Hub org.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_web_flow.htm)
+**•** [Authorize the Dev Hub org.](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_web_flow.htm)
 
-**•** [Create a Salesforce DX Project.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_create_new.htm)
+**•** [Create a Salesforce DX Project.](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_create_new.htm)
 
 To create a scratch org with Agentforce and Prompt Builder enabled, use this sample `project-scratch-def.json` file (or
 simply add the feature and setting shown in this sample to your existing scratch org definition file).
@@ -3185,7 +3186,7 @@ Actionable Segmentation
 **Documentation**
 _Salesforce Help:_ [Create Custom Key Performance Indicators](https://help.salesforce.com/s/articleView?id=ind.create_custom_kpis.htm&type=5&language=en_US)
 
-_Salesforce Help:_ [ActnblListKeyPrfmIndDef](https://developer.salesforce.com/docs/atlas.en-us.260.0.industries_reference.meta/industries_reference/sforce_api_objects_actnbllistkeyprfminddef.htm)
+_Salesforce Help:_ [ActnblListKeyPrfmIndDef](https://developer.salesforce.com/docs/atlas.en-us.262.0.industries_reference.meta/industries_reference/sforce_api_objects_actnbllistkeyprfminddef.htm)
 
 ### Activation Platform
 
@@ -3293,7 +3294,7 @@ Data Cloud enabled orgs can access this package.
 An admin from the subscriber org enables the activation platform to start using this platform in Activation creations.
 
 **Documentation**
-_Metadata API Developer Guide:_ [ActivationPlatform](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_activationplatform.htm)
+_Metadata API Developer Guide:_ [ActivationPlatform](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_activationplatform.htm)
 
 
 ### Second-Generation Managed Packages AffinityScoreDefinition AffinityScoreDefinition
@@ -3353,7 +3354,7 @@ Metadata Name: AffinityScoreDefinition
 
 **Documentation**
 
-**•** _Fundraising Metadata API Types_ [: AffinityScoreDefinitions](https://developer.salesforce.com/docs/atlas.en-us.260.0.nonprofit_cloud.meta/nonprofit_cloud/fundraising_affinityscoredefinition_metadata_api.htm)
+**•** _Fundraising Metadata API Types_ [: AffinityScoreDefinitions](https://developer.salesforce.com/docs/atlas.en-us.262.0.nonprofit_cloud.meta/nonprofit_cloud/fundraising_affinityscoredefinition_metadata_api.htm)
 
 
 ### Second-Generation Managed Packages Agent Action
@@ -3447,7 +3448,7 @@ Neither Package Developer or Subscriber Can Edit
 More Information
 
 **Feature Name**
-[Metadata Name: GenAiFunction](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_genaifunction.htm)
+[Metadata Name: GenAiFunction](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_genaifunction.htm)
 
 Component Type in 1GP Package Manager UI: Generative AI Function Definition
 
@@ -3465,7 +3466,7 @@ _Salesforce Help:_ [Agentforce Agents](https://help.salesforce.com/s/articleView
 
 _Salesforce Help:_ [Agentforce Actions](https://help.salesforce.com/s/articleView?id=ai.copilot_actions.htm&language=en_US)
 
-_Metadata API Developer Guide:_ [GenAiFunction](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_genaifunction.htm)
+_Metadata API Developer Guide:_ [GenAiFunction](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_genaifunction.htm)
 
 ### Agent Topic
 
@@ -3525,7 +3526,7 @@ Neither Package Developer or Subscriber Can Edit
 More Information
 
 **Feature Name**
-[Metadata Name: GenAiPlugin](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_genaiplugin.htm)
+[Metadata Name: GenAiPlugin](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_genaiplugin.htm)
 
 Component Type in 1GP Package Manager UI: Generative AI Plugin Definition
 
@@ -3597,7 +3598,7 @@ RecommendationBuilder). Packaging automatically analyzes the relationships and i
 MLRecommendationDefinitions, and MLDataDefinitions necessary to fully define the Einstein configuration.
 
 **Documentation**
-_Metadata API Developer Guide:_ [AIApplication](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_aiapplication.htm)
+_Metadata API Developer Guide:_ [AIApplication](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_aiapplication.htm)
 
 _Salesforce Help:_ [Einstein Prediction Builder](https://help.salesforce.com/s/articleView?id=sales.custom_ai_prediction_builder_lm.htm&type=5&language=en_US)
 
@@ -3661,7 +3662,7 @@ analyzes the relationships and includes the associated MLApplicationConfig, MLPr
 and MLDataDefinitions necessary to fully define the Einstein configuration.
 
 **Documentation**
-_Metadata API Developer Guide:_ [AIApplicationConfig](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_aiapplicationconfig.htm)
+_Metadata API Developer Guide:_ [AIApplicationConfig](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_aiapplicationconfig.htm)
 
 _Salesforce Help:_ [Einstein Prediction Builder](https://help.salesforce.com/s/articleView?id=sales.custom_ai_prediction_builder_lm.htm&type=5&language=en_US)
 
@@ -3723,7 +3724,7 @@ This data includes machine learning models and feature extractors required to ge
 This feature is available with the CRM Plus license and the use case-related product’s CRM license.
 
 **Documentation**
-_Industries Common Resources Developer Guide_ [: AI Accelerator](https://developer.salesforce.com/docs/atlas.en-us.260.0.industries_reference.meta/industries_reference/ai_accelerator.htm)
+_Industries Common Resources Developer Guide_ [: AI Accelerator](https://developer.salesforce.com/docs/atlas.en-us.262.0.industries_reference.meta/industries_reference/ai_accelerator.htm)
 
 
 ### Second-Generation Managed Packages Analytics
@@ -3767,7 +3768,7 @@ Removing components from managed 1GP or 2GP packages requires approval from Sale
 
 More Information
 
-[To include analytics components in a managed 2GP package, include EinsteinAnalyticsPlus in your scratch org definition file.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_def_file_config_values.htm#so_einsteinanalyticsplus)
+[To include analytics components in a managed 2GP package, include EinsteinAnalyticsPlus in your scratch org definition file.](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_def_file_config_values.htm#so_einsteinanalyticsplus)
 
 [To enable analytics in a 1GP packaging org, see Basic CRM Analytics Platform Setup in Salesforce Help.](https://help.salesforce.com/s/articleView?id=analytics.bi_help_setup_basic.htm&type=5&language=en_US)
 
@@ -3976,8 +3977,8 @@ classes and public Visualforce components. After removing the references, upgrad
 version before you delete the page or global component.
 
 **Usage Limits**
-[The maximum number of class and trigger code units in a deployment of Apex is 7500. For more information, see Execution Governors](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_gov_limits.htm)
-[and Limits in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_gov_limits.htm) _Apex Developer Guide_ .
+[The maximum number of class and trigger code units in a deployment of Apex is 7500. For more information, see Execution Governors](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/apex_gov_limits.htm)
+[and Limits in the](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/apex_gov_limits.htm) _Apex Developer Guide_ .
 
 **Documentation**
 _Second-Generation Managed Packaging Developer Guide:_ [Namespace-Based Visibility for Apex Classes in Second-Generation Managed](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_namespace_visibility.htm)
@@ -4035,7 +4036,7 @@ Component Type in 1GP Package Manager UI: Apex Sharing Reason
 Apex sharing reasons can be added directly to a package, but are only available for custom objects.
 
 **Documentation**
-_Metadata API Developer Guide_ [: SharingReason](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_apexsharingreason.htm)
+_Metadata API Developer Guide_ [: SharingReason](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_apexsharingreason.htm)
 
 ### Apex Trigger
 
@@ -4093,7 +4094,7 @@ Metadata Name: ApexTrigger
 Component Type in 1GP Package Manager UI: Apex Trigger
 
 **Documentation**
-_Apex Developer Guide:_ [Triggers](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_triggers.htm)
+_Apex Developer Guide:_ [Triggers](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/apex_triggers.htm)
 
 ### App Framework Template Bundle
 
@@ -4203,7 +4204,7 @@ More Information
 Metadata Name: ApplicationSubtypeDefinition
 
 **Documentation**
-_Industries Common Resources Developer Guide:_ **[AssessmentSubtypeDefinition](https://developer.salesforce.com/docs/atlas.en-us.260.0.industries_reference.meta/industries_reference/tooling_api_objects_applicationsubtypedefinition.htm)**
+_Industries Common Resources Developer Guide:_ **[AssessmentSubtypeDefinition](https://developer.salesforce.com/docs/atlas.en-us.262.0.industries_reference.meta/industries_reference/tooling_api_objects_applicationsubtypedefinition.htm)**
 
 
 ### Second-Generation Managed Packages AssessmentConfiguration AssessmentConfiguration
@@ -4347,7 +4348,7 @@ More Information
 Metadata Name: AssessmentQuestionSet
 
 **Documentation**
-_Industries Common Resources Developer Guide:_ **[AssessmentQuestionSet](https://developer.salesforce.com/docs/atlas.en-us.260.0.industries_reference.meta/industries_reference/meta_assessmentquestionset.htm)**
+_Industries Common Resources Developer Guide:_ **[AssessmentQuestionSet](https://developer.salesforce.com/docs/atlas.en-us.262.0.industries_reference.meta/industries_reference/meta_assessmentquestionset.htm)**
 
 ### Aura Component
 
@@ -4412,7 +4413,7 @@ Component Type in 1GP Package Manager UI: Aura Component Bundle
 
 **Documentation**
 
-[Lightning Aura Components Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.lightning.meta/lightning/)
+[Lightning Aura Components Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.262.0.lightning.meta/lightning/)
 
 ### Batch Calc Job Definition
 
@@ -4681,7 +4682,7 @@ Component Type in 1GP Package Manager UI: Bot Template
 
 [Salesforce Help: Package an Einstein Bot Template](https://help.salesforce.com/s/articleView?id=service.bots_service_create_package_template.htm&type=5&language=en_US)
 
-[Metadata API Developer Guide: BotTemplate](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_bottemplate.htm)
+[Metadata API Developer Guide: BotTemplate](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_bottemplate.htm)
 
 
 ### Second-Generation Managed Packages Branding Set Branding Set
@@ -4971,7 +4972,7 @@ This feature is available with the Feedback Management - Growth license.
 This feature can be used in conjunction with Surveys and Survey Invitation Rules Flow types, and their corresponding dependencies.
 
 **Documentation**
-_Metadata API Developer Guide_ [: BusinessProcessGroup](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_businessprocessgroup.htm)
+_Metadata API Developer Guide_ [: BusinessProcessGroup](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_businessprocessgroup.htm)
 
 _Salesforce Help_ [: Track Satisfaction Across a Customer's Lifecycle](https://help.salesforce.com/s/articleView?id=xcloud.task_customer_lifecycle_maps.htm&type=5&language=en_US)
 
@@ -5100,7 +5101,7 @@ CareBenefitVerifySettings can contain ApexClass as well as NamedCredentials.
 ### Second-Generation Managed Packages Care Limit Type
 
 **Documentation**
-_Health Cloud Developer Guide_ [: CareBenefitVerifySettings](https://developer.salesforce.com/docs/atlas.en-us.260.0.health_cloud_object_reference.meta/health_cloud_object_reference/tooling_api_objects_carebenefitverifysettings.htm)
+_Health Cloud Developer Guide_ [: CareBenefitVerifySettings](https://developer.salesforce.com/docs/atlas.en-us.262.0.health_cloud_object_reference.meta/health_cloud_object_reference/tooling_api_objects_carebenefitverifysettings.htm)
 
 ### Care Limit Type
 
@@ -5154,7 +5155,7 @@ Provide the characteristics of limits on benefit provision in Health Cloud.
 Industries Health Cloud Add On or an org with a Health Cloud Financial Data Platform license
 
 **Documentation**
-_Health Cloud Developer Guide_ [: CareLimitType](https://developer.salesforce.com/docs/atlas.en-us.260.0.health_cloud_object_reference.meta/health_cloud_object_reference/tooling_api_objects_carelimittype.htm)
+_Health Cloud Developer Guide_ [: CareLimitType](https://developer.salesforce.com/docs/atlas.en-us.262.0.health_cloud_object_reference.meta/health_cloud_object_reference/tooling_api_objects_carelimittype.htm)
 
 
 ### Second-Generation Managed Packages Care Request Configuration Care Request Configuration
@@ -5221,7 +5222,7 @@ Otherwise, the package must include the record type.
 ### Second-Generation Managed Packages Care System Field Mapping
 
 **Documentation**
-_Health Cloud Developer Guide_ [: CareRequestConfiguration](https://developer.salesforce.com/docs/atlas.en-us.260.0.health_cloud_object_reference.meta/health_cloud_object_reference/tooling_api_objects_carerequestconfiguration.htm)
+_Health Cloud Developer Guide_ [: CareRequestConfiguration](https://developer.salesforce.com/docs/atlas.en-us.262.0.health_cloud_object_reference.meta/health_cloud_object_reference/tooling_api_objects_carerequestconfiguration.htm)
 
 ### Care System Field Mapping
 
@@ -5283,7 +5284,7 @@ Industries Health Cloud
 ### Second-Generation Managed Packages Channel Layout
 
 **Documentation**
-_Health Cloud Developer Guide_ [: CareSystemFieldMapping](https://developer.salesforce.com/docs/atlas.en-us.260.0.health_cloud_object_reference.meta/health_cloud_object_reference/sforce_api_objects_caresystemfieldmapping.htm)
+_Health Cloud Developer Guide_ [: CareSystemFieldMapping](https://developer.salesforce.com/docs/atlas.en-us.262.0.health_cloud_object_reference.meta/health_cloud_object_reference/sforce_api_objects_caresystemfieldmapping.htm)
 
 ### Channel Layout
 
@@ -5338,7 +5339,7 @@ Enable Knowledge in Salesforce Classic orgs.
 
 **Documentation**
 
-[Salesforce Knowledge Developer Guide: ChannelLayout](https://developer.salesforce.com/docs/atlas.en-us.260.0.knowledge_dev.meta/knowledge_dev/meta_articletype_channellayout.htm)
+[Salesforce Knowledge Developer Guide: ChannelLayout](https://developer.salesforce.com/docs/atlas.en-us.262.0.knowledge_dev.meta/knowledge_dev/meta_articletype_channellayout.htm)
 
 
 ### Second-Generation Managed Packages Chatter Extension Chatter Extension
@@ -5392,9 +5393,9 @@ More Information
 Metadata Name: ChatterExtension
 
 **Documentation**
-_Metadata API Developer Guide:_ [ChatterExtension](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_chatterextensions.htm)
+_Metadata API Developer Guide:_ [ChatterExtension](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_chatterextensions.htm)
 
-_Object Reference for the Salesforce Platform:_ [ChatterExtension](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_chatterextension.htm)
+_Object Reference for the Salesforce Platform:_ [ChatterExtension](https://developer.salesforce.com/docs/atlas.en-us.262.0.object_reference.meta/object_reference/sforce_api_objects_chatterextension.htm)
 
 ### Claim Financial Settings
 
@@ -5675,7 +5676,7 @@ Metadata Name: CompactLayout
 Component Type in 1GP Package Manager UI: Compact Layout
 
 **Documentation**
-_Metadata API Developer Guide:_ [CompactLayout](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_compactlayout.htm)
+_Metadata API Developer Guide:_ [CompactLayout](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_compactlayout.htm)
 
 ### Conditional Formatting Ruleset
 
@@ -5728,7 +5729,7 @@ You can only assign a conditional formatting ruleset to a field on a Dynamic For
 **Documentation**
 _Salesforce Help:_ [Conditional Field Formatting in Lightning App Builder](https://help.salesforce.com/s/articleView?id=platform.conditional_formatting_overview.htm&type=5&language=en_US)
 
-_Metadata API Developer Guide:_ [UiFormatSpecificationSet](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_uiformatspecificationset.htm)
+_Metadata API Developer Guide:_ [UiFormatSpecificationSet](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_uiformatspecificationset.htm)
 
 ### Connected App
 
@@ -5865,7 +5866,7 @@ After you upload a new version of the package with an updated connected app, the
 
 SEE ALSO:
 
-[Package Connected Apps in Second-Generation Managed Packaging](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_dev2gp_connected_app.htm)
+[Package Connected Apps in Second-Generation Managed Packaging](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_dev2gp_connected_app.htm)
 
 ### Context Definition
 
@@ -5914,7 +5915,7 @@ Metadata Name: ContextDefinition
 Component Type in 1GP Package Manager UI: Context Definition
 
 **Documentation**
-_Industries Common Resources Developer Guide:_ [Context Definition](https://developer.salesforce.com/docs/atlas.en-us.260.0.industries_reference.meta/industries_reference/meta_contextdefinition.htm)
+_Industries Common Resources Developer Guide:_ [Context Definition](https://developer.salesforce.com/docs/atlas.en-us.262.0.industries_reference.meta/industries_reference/meta_contextdefinition.htm)
 
 _Salesforce Help:_ [Context Service](https://help.salesforce.com/s/articleView?id=ind.context_service_context_definitions.htm&type=5&language=en_US)
 
@@ -5966,7 +5967,7 @@ Allows admin users to modify Contract Type properties.
 CLM Admin Permission Set (CLM User PSL).
 
 **Documentation**
-_Salesforce Contracts Developer Guide:_ [ContractType](https://developer.salesforce.com/docs/atlas.en-us.260.0.clm_developer_guide.meta/clm_developer_guide/meta_contracttype.htm)
+_Salesforce Contracts Developer Guide:_ [ContractType](https://developer.salesforce.com/docs/atlas.en-us.262.0.clm_developer_guide.meta/clm_developer_guide/meta_contracttype.htm)
 
 ### Conversation Channel Definition
 
@@ -6100,9 +6101,9 @@ Include information about a Service Cloud Voice implementation.
 Enable Service Cloud Voice in your org.
 
 **Documentation**
-_Service Cloud Voice for Partner Telephony Developer Guide:_ [ConversationVendorInfo](https://developer.salesforce.com/docs/atlas.en-us.260.0.voice_pt_developer_guide.meta/voice_pt_developer_guide/sforce_api_objects_conversationvendorinfo.htm)
+_Service Cloud Voice for Partner Telephony Developer Guide:_ [ConversationVendorInfo](https://developer.salesforce.com/docs/atlas.en-us.262.0.voice_pt_developer_guide.meta/voice_pt_developer_guide/sforce_api_objects_conversationvendorinfo.htm)
 
-_Object Reference for the Salesforce Platform:_ [ConversationVendorInfo](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_conversationvendorinfo.htm)
+_Object Reference for the Salesforce Platform:_ [ConversationVendorInfo](https://developer.salesforce.com/docs/atlas.en-us.262.0.object_reference.meta/object_reference/sforce_api_objects_conversationvendorinfo.htm)
 
 ### CORS Allowlist
 
@@ -6263,7 +6264,7 @@ a Lightning Page, or a Visualforce page.
 **Documentation**
 _Salesforce Help:_ [Manage CSP Trusted Sites](https://help.salesforce.com/s/articleView?id=xcloud.security_trusted_urls_manage.htm&type=5&language=en_US)
 
-_Metadata API Developer Guide_ [: CspTrustedSites](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_csptrustedsite.htm)
+_Metadata API Developer Guide_ [: CspTrustedSites](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_csptrustedsite.htm)
 
 ### Custom Application
 
@@ -6322,7 +6323,7 @@ More Information
 Metadata Name: CustomApplication
 
 **Documentation**
-_Metadata API Developer Guide:_ [CustomApplication](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_customapplication.htm)
+_Metadata API Developer Guide:_ [CustomApplication](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_customapplication.htm)
 
 ### Custom Button or Link
 
@@ -6463,7 +6464,7 @@ Metadata Name: CustomApplicationComponent
 Component Type in 1GP Package Manager UI: Custom Console Component
 
 **Documentation**
-_Metadata API Developer Guide:_ [CustomApplicationComponent](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_customapplicationcomponent.htm)
+_Metadata API Developer Guide:_ [CustomApplicationComponent](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_customapplicationcomponent.htm)
 
 _Salesforce Help:_ [Create Console Components in Salesforce Classic](https://help.salesforce.com/s/articleView?id=service.console2_components_create_overview.htm&type=5&language=en_US)
 
@@ -6665,7 +6666,7 @@ More Information
 Metadata Name: CustomHelpMenuSection
 
 **Documentation**
-_Metadata API Developer Guide:_ [CustomHelpMenuSection](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_customhelpmenusection.htm)
+_Metadata API Developer Guide:_ [CustomHelpMenuSection](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_customhelpmenusection.htm)
 
 ### Custom Index
 
@@ -6702,7 +6703,7 @@ Component Type in 1GP Package Manager UI: Custom Index
 Subscribers can remove the custom index using Metadata API only.
 
 **Documentation**
-_Best Practices for Deployments with Large Data Volumes:_ [Indexes](https://developer.salesforce.com/docs/atlas.en-us.260.0.salesforce_large_data_volumes_bp.meta/salesforce_large_data_volumes_bp/ldv_deployments_infrastructure_indexes.htm)
+_Best Practices for Deployments with Large Data Volumes:_ [Indexes](https://developer.salesforce.com/docs/atlas.en-us.262.0.salesforce_large_data_volumes_bp.meta/salesforce_large_data_volumes_bp/ldv_deployments_infrastructure_indexes.htm)
 
 ### Custom Label
 
@@ -6766,7 +6767,7 @@ Subscribers can override the default translation for a custom label.
 _Developer Guide_ .
 
 **Documentation**
-_Metadata API Developer Guide:_ [CustomLabels](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_customlabels.htm)
+_Metadata API Developer Guide:_ [CustomLabels](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_customlabels.htm)
 
 ### Custom Metadata Type Records
 
@@ -7020,7 +7021,7 @@ release org. Doing so can result in an error when you install the package and wh
 [Permissions in Your Subscribers’ Orgs in the](https://developer.salesforce.com/docs/atlas.en-us.pkg1_dev.meta/pkg1_dev/fma_hide_custom_objects_permissions.htm) _First-Generation Managed Packaging Developer Guide_ .
 
 **Documentation**
-_Metadata API Developer Guide:_ [CustomObject](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/customobject.htm)
+_Metadata API Developer Guide:_ [CustomObject](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/customobject.htm)
 
 ### Custom Object Translation
 
@@ -7077,7 +7078,7 @@ When you create a second-generation managed package, you must add Custom Object 
 already added the Translation component.
 
 **Documentation**
-_Metadata API Developer Guide:_ [CustomObjectTranslation](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_customobjecttranslation.htm)
+_Metadata API Developer Guide:_ [CustomObjectTranslation](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_customobjecttranslation.htm)
 
 ### Custom Permission
 
@@ -7145,7 +7146,7 @@ in the destination org.
 [Permissions in Your Subscribers’ Orgs in the](https://developer.salesforce.com/docs/atlas.en-us.pkg1_dev.meta/pkg1_dev/fma_hide_custom_objects_permissions.htm) _First-Generation Managed Packaging Developer Guide_ .
 
 **Documentation**
-_Metadata API Developer Guide:_ [CustomPermission](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_custompermission.htm)
+_Metadata API Developer Guide:_ [CustomPermission](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_custompermission.htm)
 
 ### Custom Tab
 
@@ -7224,7 +7225,7 @@ installed. A custom tab style doesn’t conflict with an existing custom tab in 
 then select **Rename Tabs and Labels** .
 
 **Documentation**
-_Metadata API Developer Guide:_ [CustomTab](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_tab.htm)
+_Metadata API Developer Guide:_ [CustomTab](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_tab.htm)
 
 
 ### Second-Generation Managed Packages Dashboard Dashboard
@@ -7287,7 +7288,7 @@ in the same version.
 ### Second-Generation Managed Packages DataCalcInsightTemplate
 
 **Documentation**
-_Metadata API Developer Guide:_ [Dashboard](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_dashboard.htm)
+_Metadata API Developer Guide:_ [Dashboard](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_dashboard.htm)
 
 ### DataCalcInsightTemplate
 
@@ -7756,7 +7757,7 @@ Represents the top-level data kit container definition. Content objects can be a
 After you install a package that contains a data kit, you must manually deploy features from the installed data kit.
 
 **Documentation**
-_Metadata API Developer Guide:_ [DataPackageKitDefinition](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_datapackagekitdefinition.htm)
+_Metadata API Developer Guide:_ [DataPackageKitDefinition](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_datapackagekitdefinition.htm)
 
 _Data Cloud Developer Guide:_ [Packages and Data Kits](https://developer.salesforce.com/docs/platform/data-cloud-dev/guide/packages-data-kits.html)
 
@@ -7827,7 +7828,7 @@ Represents an object in a data kit.
 After you install a package that contains a data kit, you must manually deploy features from the installed data kit.
 
 **Documentation**
-_Metadata API Developer Guide:_ [DataPackageKitObject](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_datapackagekitobject.htm)
+_Metadata API Developer Guide:_ [DataPackageKitObject](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_datapackagekitobject.htm)
 
 _Data Cloud Developer Guide:_ [Packages and Data Kits](https://developer.salesforce.com/docs/platform/data-cloud-dev/guide/packages-data-kits.html)
 
@@ -7963,7 +7964,7 @@ data stream to a data kit and package that data kit. You can’t directly add th
 After you install a package that contains a data kit, you must manually deploy features from the installed data kit.
 
 **Documentation**
-_Metadata API Developer Guide:_ [DataSourceBundleDefinition](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_datasourcebundledefinition.htm)
+_Metadata API Developer Guide:_ [DataSourceBundleDefinition](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_datasourcebundledefinition.htm)
 
 _Data Cloud Developer Guide:_ [Packages and Data Kits](https://developer.salesforce.com/docs/platform/data-cloud-dev/guide/packages-data-kits.html)
 
@@ -8102,7 +8103,7 @@ stream and any associated mappings to a data kit and package that data kit. You 
 After you install a package that contains a data kit, you must manually deploy features from the installed data kit.
 
 **Documentation**
-_Metadata API Developer Guide:_ [DataSrcDataModelFieldMap](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_datasrcdatamodelfieldmap.htm)
+_Metadata API Developer Guide:_ [DataSrcDataModelFieldMap](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_datasrcdatamodelfieldmap.htm)
 
 _Data Cloud Developer Guide:_ [Packages and Data Kits](https://developer.salesforce.com/docs/platform/data-cloud-dev/guide/packages-data-kits.html)
 
@@ -8196,7 +8197,7 @@ Create the DataStream via ui-api or using the Data Cloud App.
 ### Second-Generation Managed Packages Data Stream Template
 
 **Documentation**
-_Metadata API Developer Guide:_ [DataStreamDefinition](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_datastreamdefinition.htm)
+_Metadata API Developer Guide:_ [DataStreamDefinition](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_datastreamdefinition.htm)
 
 ### Data Stream Template
 
@@ -8274,7 +8275,7 @@ to a data kit and package that data kit. You can’t directly add this component
 After you install a package that contains a data kit, you must manually deploy features from the installed data kit.
 
 **Documentation**
-_Metadata API Developer Guide:_ [DataStreamTemplate](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_datastreamtemplate.htm)
+_Metadata API Developer Guide:_ [DataStreamTemplate](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_datastreamtemplate.htm)
 
 _Data Cloud Developer Guide:_ [Packages and Data Kits](https://developer.salesforce.com/docs/platform/data-cloud-dev/guide/packages-data-kits.html)
 
@@ -8341,7 +8342,7 @@ from Apex.
 There’s a maximum of 50 DataWeave scripts per org.
 
 **Documentation**
-_Apex Developer Guide:_ [DataWeave in Apex.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/DataWeaveInApex.htm)
+_Apex Developer Guide:_ [DataWeave in Apex.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/DataWeaveInApex.htm)
 
 ### Decision Matrix Definition
 
@@ -8475,7 +8476,7 @@ the migration.
 A DecisionMatrixDefinitionVersion is a child of DecisionMatrixDefinition, and can’t exist without the parent DecisionMatrixDefinition.
 
 **Documentation**
-_Industries Common Resources Developer Guide:_ [Decision Matrix Definition](https://developer.salesforce.com/docs/atlas.en-us.260.0.industries_reference.meta/industries_reference/meta_decisionmatrixdefinition.htm)
+_Industries Common Resources Developer Guide:_ [Decision Matrix Definition](https://developer.salesforce.com/docs/atlas.en-us.262.0.industries_reference.meta/industries_reference/meta_decisionmatrixdefinition.htm)
 
 _Salesforce Help:_ [Decision Matrices](https://help.salesforce.com/s/articleView?id=ind.decision_matrices.htm&type=5&language=en_US)
 
@@ -8723,7 +8724,7 @@ _Salesforce Help:_ [Salesforce CMS](https://help.salesforce.com/s/articleView?id
 
 _Salesforce Help:_ [Marketing Cloud](https://help.salesforce.com/s/articleView?id=products.mktg_main.htm&type=5&language=en_US)
 
-_Metadata API Developer Guide:_ [DigitalExperienceBundle](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_digitalexperiencebundle.htm)
+_Metadata API Developer Guide:_ [DigitalExperienceBundle](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_digitalexperiencebundle.htm)
 
 
 ### Second-Generation Managed Packages Decision Table Decision Table
@@ -8850,7 +8851,7 @@ Enable these org settings:
 
 **•** _Salesforce Help:_ [Generate Disclosures Using Disclosure and Compliance Hub](https://help.salesforce.com/articleView?id=ind.netzero_manager_generate_disclosures_using_disclosure_compliance_hub.htm&type=5&language=en_US)
 
-**•** _Metadata API Developer Guide:_ [DisclosureDefinition](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_disclosuredefinition.htm)
+**•** _Metadata API Developer Guide:_ [DisclosureDefinition](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_disclosuredefinition.htm)
 
 ### Disclosure Definition Version
 
@@ -8930,7 +8931,7 @@ Enable these org settings:
 
 **•** _Salesforce Help:_ [Generate Disclosures Using Disclosure and Compliance Hub](https://help.salesforce.com/articleView?id=ind.netzero_manager_generate_disclosures_using_disclosure_compliance_hub.htm&type=5&language=en_US)
 
-**•** _Metadata API Developer Guide:_ [DisclosureDefinitionVersion](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_disclosuredefinitionversion.htm)
+**•** _Metadata API Developer Guide:_ [DisclosureDefinitionVersion](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_disclosuredefinitionversion.htm)
 
 ### Disclosure Type
 
@@ -8998,7 +8999,7 @@ Enable these org settings:
 
 **•** _Salesforce Help:_ [Generate Disclosures Using Disclosure and Compliance Hub](https://help.salesforce.com/articleView?id=ind.netzero_manager_generate_disclosures_using_disclosure_compliance_hub.htm&type=5&language=en_US)
 
-**•** _Metadata API Developer Guide:_ [DisclosureType](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_disclosuretype.htm)
+**•** _Metadata API Developer Guide:_ [DisclosureType](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_disclosuretype.htm)
 
 ### Discovery AI Model
 
@@ -9051,7 +9052,7 @@ More Information
 Metadata Name: DiscoveryAIModel
 
 **Documentation**
-_Metadata API Developer Guide:_ [DiscoveryAIModel](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_discoveryaimodel.htm)
+_Metadata API Developer Guide:_ [DiscoveryAIModel](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_discoveryaimodel.htm)
 
 ### Discovery Goal
 
@@ -9104,7 +9105,7 @@ More Information
 Metadata Name: DiscoveryGoal
 
 **Documentation**
-_Metadata API Developer Guide:_ [DiscoveryGoal](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_discoverygoal.htm)
+_Metadata API Developer Guide:_ [DiscoveryGoal](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_discoverygoal.htm)
 
 ### Discovery Story
 
@@ -9158,7 +9159,7 @@ Metadata Name: DiscoveryStory
 
 ### **Documentation**
 
-_Metadata API Developer Guide:_ [DiscoveryStory](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_discoverystory.htm)
+_Metadata API Developer Guide:_ [DiscoveryStory](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_discoverystory.htm)
 
 ### Document
 
@@ -9248,7 +9249,7 @@ Allows admin users to modify document generation properties.
 DocGen Designer (Permission Set License)
 
 **Documentation**
-_Metadata API Developer Guide:_ [DocumentGenerationSetting](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_documentgenerationsetting.htm)
+_Metadata API Developer Guide:_ [DocumentGenerationSetting](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_documentgenerationsetting.htm)
 
 ### Eclair GeoData
 
@@ -9300,7 +9301,7 @@ More Information
 Metadata Name: EclairGeoData
 
 **Documentation**
-_Metadata API Developer Guide:_ [EclairGeoData](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_eclairgeodata.htm)
+_Metadata API Developer Guide:_ [EclairGeoData](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_eclairgeodata.htm)
 
 ### Email Template (Classic)
 
@@ -9452,7 +9453,7 @@ More Information
 Metadata Name: EmbeddedServiceConfig
 
 **Documentation**
-_Metadata API Developer Guide:_ [EmbeddedServiceConfig](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_embeddedserviceconfig.htm)
+_Metadata API Developer Guide:_ [EmbeddedServiceConfig](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_embeddedserviceconfig.htm)
 
 _Salesforce Help:_ [Embedded Chat](https://help.salesforce.com/s/articleView?id=service.snapins_chat_overview.htm&type=5&language=en_US)
 
@@ -9499,7 +9500,7 @@ More Information
 Metadata Name: EmbeddedServiceMenuSettings
 
 **Documentation**
-_Metadata API Developer Guide:_ [EmbeddedServiceMenuSettings](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_embeddedservicemenusettings.htm)
+_Metadata API Developer Guide:_ [EmbeddedServiceMenuSettings](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_embeddedservicemenusettings.htm)
 
 _Salesforce Help:_ [Channel Menu Setup](https://help.salesforce.com/s/articleView?id=service.embedded_chat_channel_menu.htm&type=5&language=en_US)
 
@@ -9576,7 +9577,7 @@ references a source object and optional related objects.
 
 **•** _Salesforce Help_ [: Sales Programs and Partner Tracks with Enablement](https://help.salesforce.com/s/articleView?id=sales.enablement.htm&type=5&language=en_US)
 
-**•** _Metadata API Developer Guide_ [: EnablementMeasureDefinition](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_enablementmeasuredefinition.htm)
+**•** _Metadata API Developer Guide_ [: EnablementMeasureDefinition](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_enablementmeasuredefinition.htm)
 
 **•** _Sales Programs and Partner Tracks with Enablement Developer Guide_ [: Create a Managed Package for Enablement Programs,](https://developer.salesforce.com/docs/sales/enablement/guide/enablement-package.html)
 [Measures, and Content](https://developer.salesforce.com/docs/sales/enablement/guide/enablement-package.html)
@@ -9660,7 +9661,7 @@ Subcategory components.
 
 **•** _Salesforce Help_ [: Sales Programs and Partner Tracks with Enablement](https://help.salesforce.com/s/articleView?id=sales.enablement.htm&type=5&language=en_US)
 
-**•** _Metadata API Developer Guide_ [: EnablementMeasureDefinition](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_enablementmeasuredefinition.htm)
+**•** _Metadata API Developer Guide_ [: EnablementMeasureDefinition](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_enablementmeasuredefinition.htm)
 
 **•** _Sales Programs and Partner Tracks with Enablement Developer Guide_ [: Create a Managed Package for Enablement Programs,](https://developer.salesforce.com/docs/sales/enablement/guide/enablement-package.html)
 [Measures, and Content](https://developer.salesforce.com/docs/sales/enablement/guide/enablement-package.html)
@@ -9739,13 +9740,13 @@ Definition component.
 
 **•** _Salesforce Help_ [: Sales Programs and Partner Tracks with Enablement](https://help.salesforce.com/s/articleView?id=sales.enablement.htm&type=5&language=en_US)
 
-**•** _Metadata API Developer Guide_ [: EnblProgramTaskSubCategory](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_enblprogramtasksubcategory.htm)
+**•** _Metadata API Developer Guide_ [: EnblProgramTaskSubCategory](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_enblprogramtasksubcategory.htm)
 
-**•** _Metadata API Developer Guide_ [: LearningItemType](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_learningitemtype.htm)
+**•** _Metadata API Developer Guide_ [: LearningItemType](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_learningitemtype.htm)
 
-**•** _Object Reference for the Salesforce Platform_ [: EnblProgramTaskDefinition](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_enblprogramtaskdefinition.htm)
+**•** _Object Reference for the Salesforce Platform_ [: EnblProgramTaskDefinition](https://developer.salesforce.com/docs/atlas.en-us.262.0.object_reference.meta/object_reference/sforce_api_objects_enblprogramtaskdefinition.htm)
 
-**•** _Object Reference for the Salesforce Platform_ [: LearningItem](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_learningitem.htm)
+**•** _Object Reference for the Salesforce Platform_ [: LearningItem](https://developer.salesforce.com/docs/atlas.en-us.262.0.object_reference.meta/object_reference/sforce_api_objects_learningitem.htm)
 
 **•** _Sales Programs and Partner Tracks with Enablement Developer Guide_ [: Create a Managed Package for Enablement Programs,](https://developer.salesforce.com/docs/sales/enablement/guide/enablement-package.html)
 [Measures, and Content](https://developer.salesforce.com/docs/sales/enablement/guide/enablement-package.html)
@@ -9795,7 +9796,7 @@ More Information
 Metadata Name: EntitlementTemplate
 
 **Documentation**
-_Metadata API Developer Guide:_ [EntitlementTemplate](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_entitlementtemplate.htm)
+_Metadata API Developer Guide:_ [EntitlementTemplate](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_entitlementtemplate.htm)
 
 _Salesforce Help:_ [Set Up an Entitlement Template](https://help.salesforce.com/s/articleView?id=service.entitlements_setting_up_templates.htm&type=5&language=en_US)
 
@@ -9920,7 +9921,7 @@ Allows users to get the electronic signatures and notifications on their documen
 DocGen Designer (Permission Set License)
 
 **Documentation**
-_Metadata API Developer Guide:_ [ESignatureEnvelopeConfig](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_esignatureenvelopeconfig.htm)
+_Metadata API Developer Guide:_ [ESignatureEnvelopeConfig](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_esignatureenvelopeconfig.htm)
 
 ### Event Relay
 
@@ -9976,7 +9977,7 @@ Component Type in 1GP Package Manager UI: Event Relay
 ### Second-Generation Managed Packages Explainability Action Definition
 
 **Documentation**
-_Metadata API Developer Guide:_ [EventRelayConfig](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_eventrelayconfig.htm)
+_Metadata API Developer Guide:_ [EventRelayConfig](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_eventrelayconfig.htm)
 
 ### Explainability Action Definition
 
@@ -10140,7 +10141,7 @@ More Information
 Metadata Name: ExplainabilityMsgTemplate
 
 **Documentation**
-_Industries Common Resources Developer Guide:_ [ExplainabilityMsgTemplate](https://developer.salesforce.com/docs/atlas.en-us.260.0.industries_reference.meta/industries_reference/meta_explainabilitymsgtemplate.htm)
+_Industries Common Resources Developer Guide:_ [ExplainabilityMsgTemplate](https://developer.salesforce.com/docs/atlas.en-us.262.0.industries_reference.meta/industries_reference/meta_explainabilitymsgtemplate.htm)
 
 _Salesforce Help:_ [Create Explainability Message Templates](https://help.salesforce.com/s/articleView?id=ind.create_explainability_message_templates.htm&type=5&language=en_US)
 
@@ -10201,7 +10202,7 @@ To use this component, any expression set version dependencies such as decision 
 subexpressions must be present in the target org.
 
 **Documentation**
-_Industries Common Resources Developer Guide:_ [Expression Set Definition](https://developer.salesforce.com/docs/atlas.en-us.260.0.industries_reference.meta/industries_reference/meta_expressionsetdefinition.htm)
+_Industries Common Resources Developer Guide:_ [Expression Set Definition](https://developer.salesforce.com/docs/atlas.en-us.262.0.industries_reference.meta/industries_reference/meta_expressionsetdefinition.htm)
 
 _Salesforce Help:_ [Expression Set Migration Considerations](https://help.salesforce.com/s/articleView?id=sf.expression_set_migration_considerations.htm&type=5&language=en_US)
 
@@ -10270,7 +10271,7 @@ To use this component, any expression set version dependencies such as decision 
 subexpressions must be present in the target org.
 
 **Documentation**
-_Industries Common Resources Developer Guide:_ [Expression Set Definition Version](https://developer.salesforce.com/docs/atlas.en-us.260.0.industries_reference.meta/industries_reference/meta_expressionsetdefinition.htm)
+_Industries Common Resources Developer Guide:_ [Expression Set Definition Version](https://developer.salesforce.com/docs/atlas.en-us.262.0.industries_reference.meta/industries_reference/meta_expressionsetdefinition.htm)
 
 _Salesforce Help:_ [Expression Set Migration Considerations](https://help.salesforce.com/s/articleView?id=sf.expression_set_migration_considerations.htm&type=5&language=en_US)
 
@@ -10327,7 +10328,7 @@ that are created for underlying source object fields. Field aliases are grouped 
 ### Second-Generation Managed Packages Expression Set Message Token
 
 **Documentation**
-_Industries Common Resources Developer Guide:_ [ExpressionSetObjectAlias](https://developer.salesforce.com/docs/atlas.en-us.260.0.industries_reference.meta/industries_reference/meta_expressionsetobjectalias.htm)
+_Industries Common Resources Developer Guide:_ [ExpressionSetObjectAlias](https://developer.salesforce.com/docs/atlas.en-us.262.0.industries_reference.meta/industries_reference/meta_expressionsetobjectalias.htm)
 
 _Salesforce Help:_ [Object Variables in Expression Sets](https://help.salesforce.com/s/articleView?id=ind.object_variables_in_expression_sets.htm&type=5&language=en_US)
 
@@ -10503,7 +10504,7 @@ _Salesforce Help:_ [Named Credentials](https://help.salesforce.com/s/articleView
 
 _Named Credentials Developer Guide:_ [Named Credentials Packaging Guide](https://developer.salesforce.com/docs/platform/named-credentials/guide/nc-packaging-dev-guide.html)
 
-_Metadata API Developer Guide:_ [ExternalAuthIdentityProvider](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_externalauthidentityprovider.htm)
+_Metadata API Developer Guide:_ [ExternalAuthIdentityProvider](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_externalauthidentityprovider.htm)
 
 ### External Client App Canvas Settings
 
@@ -10563,9 +10564,9 @@ called policies. ExtlClntAppCanvasSettings contains all of the packageable confi
 **Documentation**
 _Salesforce Help:_ [External Client Apps](https://help.salesforce.com/s/articleView?id=xcloud.external_client_apps.htm&type=5&language=en_US)
 
-_Metadata API Developer Guide:_ [ExtlClntAppCanvasSettings](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_extlclntappcanvassettings.htm)
+_Metadata API Developer Guide:_ [ExtlClntAppCanvasSettings](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_extlclntappcanvassettings.htm)
 
-_Canvas Developer Guide:_ [Introducing Canvas](https://developer.salesforce.com/docs/atlas.en-us.260.0.platform_connect.meta/platform_connect/canvas_framework_intro.htm)
+_Canvas Developer Guide:_ [Introducing Canvas](https://developer.salesforce.com/docs/atlas.en-us.262.0.platform_connect.meta/platform_connect/canvas_framework_intro.htm)
 
 
 ### Second-Generation Managed Packages External Client App Header External Client App Header
@@ -10680,7 +10681,7 @@ ExtlClntAppNotificationSettings contains all of the packageable configurations f
 **Documentation**
 _Salesforce Help:_ [External Client Apps](https://help.salesforce.com/s/articleView?id=xcloud.external_client_apps.htm&type=5&language=en_US)
 
-[ExtlClntAppNotificationSettings](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_extlclntappnotificationsettings.htm)
+[ExtlClntAppNotificationSettings](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_extlclntappnotificationsettings.htm)
 
 
 ### Second-Generation Managed Packages External Client App OAuth Settings External Client App OAuth Settings
@@ -10815,7 +10816,7 @@ ExtlClntAppSamlConfigurablePolicies, which is not packaged but is generated with
 **Documentation**
 _Salesforce Help:_ [External Client Apps](https://help.salesforce.com/s/articleView?id=xcloud.external_client_apps.htm&type=5&language=en_US)
 
-[ExtlClntAppPushSettings](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_extlclntapppushsettings.htm)
+[ExtlClntAppPushSettings](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_extlclntapppushsettings.htm)
 
 ### External Credential
 
@@ -10946,7 +10947,7 @@ _Salesforce Help:_ [Named Credentials](https://help.salesforce.com/s/articleView
 
 _Named Credentials Developer Guide:_ [Named Credentials Packaging Guide](https://developer.salesforce.com/docs/platform/named-credentials/guide/nc-packaging-dev-guide.html)
 
-_Metadata API Developer Guide:_ [ExternalCredential](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_externalcredential.htm)
+_Metadata API Developer Guide:_ [ExternalCredential](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_externalcredential.htm)
 
 ### External Data Connector
 
@@ -11088,7 +11089,7 @@ reauthenticate by selecting `Start Authentication Flow on Save` on the external 
 org has a valid certificate with the same name.
 
 **Documentation**
-_Metadata API Developer Guide:_ [ExternalDataSource](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_externaldatasource.htm)
+_Metadata API Developer Guide:_ [ExternalDataSource](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_externaldatasource.htm)
 
 ### External Data Transport Field Template
 
@@ -11510,7 +11511,7 @@ process.
 _Salesforce Help:_ [External Services System Limits](https://help.salesforce.com/s/articleView?id=platform.external_services_schema_def_limits.htm&type=5&language=en_US)
 
 **Documentation**
-_Metadata API Developer Guide:_ [ExternalServiceRegistration](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_externalserviceregistration.htm)
+_Metadata API Developer Guide:_ [ExternalServiceRegistration](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_externalserviceregistration.htm)
 
 _Salesforce Help:_ [External Services](https://help.salesforce.com/s/articleView?id=platform.external_services.htm&type=5&language=en_US)
 
@@ -11583,13 +11584,13 @@ a beta managed package version.
 A package can include up to 200 feature parameters.
 
 **Documentation**
-_Metadata API Developer Guide:_ [FeatureParameterBoolean](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_featureparameterboolean.htm)
+_Metadata API Developer Guide:_ [FeatureParameterBoolean](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_featureparameterboolean.htm)
 
-[Create Feature Parameters for Your Second-Generation Managed Package](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_dev2gp_fma_create_feature_parameters.htm)
+[Create Feature Parameters for Your Second-Generation Managed Package](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_dev2gp_fma_create_feature_parameters.htm)
 
 [Create Feature Parameters in Your First-Generation Packaging Org](https://developer.salesforce.com/docs/atlas.en-us.pkg1_dev.meta/pkg1_dev/fma_create_feature_parameters.htm)
 
-_Apex Reference Guide:_ [FeatureManagement Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_FeatureManagement.htm)
+_Apex Reference Guide:_ [FeatureManagement Class](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_class_System_FeatureManagement.htm)
 
 ### Feature Parameter Date
 
@@ -11660,16 +11661,16 @@ a beta managed package version.
 A package can include up to 200 feature parameters.
 
 **Documentation**
-_Metadata API Developer Guide:_ [FeatureParameterDate](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_featureparameterdate.htm)
+_Metadata API Developer Guide:_ [FeatureParameterDate](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_featureparameterdate.htm)
 
-[Create Feature Parameters for Your Second-Generation Managed Package](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_dev2gp_fma_create_feature_parameters.htm)
+[Create Feature Parameters for Your Second-Generation Managed Package](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_dev2gp_fma_create_feature_parameters.htm)
 
 
 ### Second-Generation Managed Packages Feature Parameter Integer
 
 [Create Feature Parameters in Your First-Generation Packaging Org](https://developer.salesforce.com/docs/atlas.en-us.pkg1_dev.meta/pkg1_dev/fma_create_feature_parameters.htm)
 
-_Apex Reference Guide:_ [FeatureManagement Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_FeatureManagement.htm)
+_Apex Reference Guide:_ [FeatureManagement Class](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_class_System_FeatureManagement.htm)
 
 ### Feature Parameter Integer
 
@@ -11740,13 +11741,13 @@ a beta managed package version.
 A package can include up to 200 feature parameters.
 
 **Documentation**
-_Metadata API Developer Guide:_ [FeatureParameterInteger](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_featureparameterinteger.htm)
+_Metadata API Developer Guide:_ [FeatureParameterInteger](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_featureparameterinteger.htm)
 
-[Create Feature Parameters for Your Second-Generation Managed Package](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_dev2gp_fma_create_feature_parameters.htm)
+[Create Feature Parameters for Your Second-Generation Managed Package](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_dev2gp_fma_create_feature_parameters.htm)
 
 [Create Feature Parameters in Your First-Generation Packaging Org](https://developer.salesforce.com/docs/atlas.en-us.pkg1_dev.meta/pkg1_dev/fma_create_feature_parameters.htm)
 
-_Apex Reference Guide:_ [FeatureManagement Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_FeatureManagement.htm)
+_Apex Reference Guide:_ [FeatureManagement Class](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_class_System_FeatureManagement.htm)
 
 ### FieldMappingConfig
 
@@ -12015,7 +12016,7 @@ set.
 When a field set is installed, a subscriber can add or remove any field.
 
 **Documentation**
-_Metadata API Developer Guide:_ [FieldSet](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_fieldset.htm)
+_Metadata API Developer Guide:_ [FieldSet](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_fieldset.htm)
 
 ### Field Source Target Relationship
 
@@ -12086,7 +12087,7 @@ Component Type in 1GP Package Manager UI: Field Source Target Relationship
 Data Cloud must be provisioned.
 
 **Documentation**
-_Metadata API Developer Guide:_ [FieldSrcTrgtRelationship](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_fieldsrctrgtrelationship.htm)
+_Metadata API Developer Guide:_ [FieldSrcTrgtRelationship](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_fieldsrctrgtrelationship.htm)
 
 ### Flow
 
@@ -12179,7026 +12180,3 @@ the entire flow, including all versions.
 ### Second-Generation Managed Packages Flow Category
 
 **•** An active flow in a package is active after it’s installed. The previous active version of the flow in the destination org is deactivated
-in favor of the newly installed version. Any in-progress flows based on the now-deactivated version continue to run without
-interruption but reflect the previous version of the flow. The same behavior is true even if the destination org deactivated the
-flow. Future active versions of the flow that are packaged activate the flow during package upgrade.
-
-**•** Upgrading a managed package in your org installs a new flow version only if there’s a newer flow version from the developer.
-After several upgrades, you can end up with multiple flow versions.
-
-**•** A package version can contain only one flow version per flow. If you install a managed package version that contains a flow,
-only the active flow version is deployed. If the flow has no active version, the latest version is deployed.
-
-**•** If you install a flow from an unmanaged package that has the same name but a different version number as a flow in your org,
-the newly installed flow becomes the latest version of the existing flow. However, if the packaged flow has the same name and
-version number as a flow already in your org, the package install fails. You can’t overwrite a flow.
-
-**•** A flow can be modified if it’s deployed in a managed package or between a package developer org and a subscriber org where
-either org has a namespace and the other doesn’t have a namespace.
-
-**•** Flow Builder can’t open a flow that is installed from a managed package, unless the flow is a template or overridable.
-
-**•** You can’t create a package that contains flows invoked by both managed and unmanaged package pages. As a workaround,
-create two packages, one for each type of component. For example, suppose that you want to package a customizable flow
-invoked by a managed package page. Create one unmanaged package with the flow that users can customize. Then create
-another managed package with the Visualforce page referencing the flow (including namespace) from the first package.
-
-**•** When you translate a flow from a managed package, the flow’s Master Definition Name doesn’t appear on the Translate page
-or the Override page. To update the translation for the Master Definition Name, edit the flow label and then update the translation
-from the Translate page.
-
-**•** If any of the following elements are used in a flow, packageable components that they reference aren’t included in the package
-automatically. To deploy the package successfully, manually add those referenced components to the package.
-
-**–** Post to Chatter
-
-**–** Send Email
-
-**–** Submit for Approval
-
-**•** If a flow references a Lightning component that depends on a CSP Trusted Site, the trusted site isn’t included in the package or
-change set automatically.
-
-**Usage Limits**
-_Salesforce Help:_ [General Flow Limits](https://help.salesforce.com/s/articleView?id=platform.flow_considerations_limit.htm&type=5&language=en_US)
-
-**Relationship to Other Components**
-The associated Flow Definition component is required for managed 1GP packages.
-
-**Documentation**
-_Metadata API Developer Guide_ [: Flow](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_visual_workflow.htm)
-
-_Salesforce Help:_ [Packaging Considerations for Flows](https://help.salesforce.com/s/articleView?id=platform.flow_considerations_packaging.htm&type=5&language=en_US)
-
-_Salesforce Help:_ [Considerations for Deploying Flows with Packages](https://help.salesforce.com/s/articleView?id=platform.flow_considerations_packaging.htm&type=5&language=en_US)
-
-_Salesforce DX Developer Guide:_ [Hard-Deleted Components in Unlocked Packages](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_hard_deleted_components.htm)
-
-### Flow Category
-
-Represents a list of flows that are grouped by category.
-
-
-### Second-Generation Managed Packages Flow Definition
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** label
-
-**•** description
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-Metadata Name: FlowCategory
-
-**Use Case**
-To reuse flow-based automated processes, group the flows into a flow category, and then add one or more flow categories to a
-Lightning Bolt Solution.
-
-**License Requirements**
-Customize Application user permission
-
-View Setup and Configuration user permission
-
-**Relationship to Other Components**
-You can use FlowCategory only as part of a Lightning Bolt Solution.
-
-**Documentation**
-_Salesforce Help:_ [Add Flows to a Lightning Bolt Solution](https://help.salesforce.com/s/articleView?id=experience.community_builder_export_flow_category.htm&type=5&language=en_US)
-
-_Salesforce Help:_ [Package and Distribute a Lightning Bolt Solution](https://help.salesforce.com/s/articleView?id=experience.community_builder_export_package.htm&type=5&language=en_US)
-
-### Flow Definition
-
-Represents the flow definition’s description and active flow version number.
-
-
-### Second-Generation Managed Packages Flow Test
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: First-Generation Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection Yes
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** None
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Active Version Number
-
-**•** Description
-
-**•** Master Label
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-Metadata Name: Flow Definition
-
-Component Type in 1GP Package Manager UI: Flow Definition
-
-**Use Case**
-Include this component when you use managed 1GP to package flows.
-
-**Considerations When Packaging**
-
-[Considerations for Deploying Flows with Packages](https://help.salesforce.com/s/articleView?id=platform.flow_considerations_packaging.htm&type=5&language=en_US)
-
-**Relationship to Other Components**
-The associated Flow component is required for managed 1GP packages.
-
-**Documentation**
-_Metadata API Developer Guide:_ [Flow Definition](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_flowdefinition.htm)
-
-_Salesforce Help:_ [Flow Builder](https://help.salesforce.com/s/articleView?id=platform.flow.htm&type=5&language=en_US)
-
-### Flow Test
-
-Represents the metadata associated with a flow test. Before you activate a record-triggered flow, you can test it to verify its expected
-results and identify flow run-time failures.
-
-
-### Second-Generation Managed Packages Folder
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation\
-
-Only Package Developer Can Edit
-
-**•** All properties
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** API Name
-
-More Information
-
-**Feature Name**
-Metadata Name: FlowTest
-
-Component Type in 1GP Package Manager UI: FlowTest
-
-**Use Case**
-Include this component when you use managed 1GP to package flow tests.
-
-**Usage Limits**
-_Salesforce Help_ [: Considerations for Testing Flows](https://help.salesforce.com/s/articleView?id=platform.flow_considerations_feature_testing.htm&type=5&language=en_US)
-
-**Relationship to Other Components**
-The associated Flow component is required for managed 1GP packages.
-
-**Documentation**
-_Metadata API Developer Guide_ [: Flow Test](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_flowtest.htm)
-
-_Salesforce Help:_ [Testing Your Flow](https://help.salesforce.com/s/articleView?id=platform.flow_concepts_testing.htm&type=5&language=en_US)
-
-### Folder
-
-Represents a folder.
-
-
-Second-Generation Managed Packages Folder
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade No
-
-Subscriber Can Delete Component From Org Yes
-
-Package Developer Can Remove Component From Package Yes. Supported in 1GP packages only.
-
-Component Has IP Protection No
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** None
-
-Both Package Developer and Subscriber Can Edit
-
-**•** All attributes except Folder Unique Name
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Folder Unique Name
-
-More Information
-
-**•** Five different folder metadata types can be packaged:
-
-**–** DashboardFolder
-
-**–** DocumentFolder
-
-**–** EmailFolder (available for Salesforce Classic email templates only)
-
-**–** EmailTemplateFolder
-
-**–** ReportFolder
-
-**•** Components that Salesforce stores in folders, such as documents, can’t be added to packages when stored in personal and unfiled
-folders. Put documents, reports, and other components that Salesforce stores in folders in one of your publicly accessible folders.
-
-**•** Components such as documents, email templates, reports, or dashboards are stored in new folders in the installer’s org using the
-publisher’s folder names. Give these folders names that indicate they’re part of the package.
-
-**•** If a new report, dashboard, document, or email template is installed during an upgrade, and the folder containing the component
-was deleted by the subscriber, the folder is re-created. Any components in the folder that were previously deleted aren’t restored.
-
-**•** The name of a component contained in a folder must be unique across all folders of the same component type, excluding personal
-folders. Components contained in a personal folder must be unique within the personal folder only.
-
-
-### Second-Generation Managed Packages Fuel Type
-
-**Documentation**
-_Metadata API Developer Guide:_ [Folder](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_folder.htm)
-
-### Fuel Type
-
-Represents a custom fuel type in an org.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** All attributes
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-Metadata Name: FuelType
-
-Component Type in 1GP Package Manager UI: Fuel Type
-
-**License Requirements**
-
-**•** Net Zero Cloud Growth license or Net Zero Cloud Starter license
-
-**•** Net Zero Cloud Manager permissions set
-
-**Post Install Steps**
-Enable these org settings:
-
-**•** Net Zero Cloud
-
-**•** Manage Carbon Accounting
-
-
-### Second-Generation Managed Packages Fuel Type Sustainability Unit of Measure
-
-**Documentation**
-
-**•** _Salesforce Help:_ [Create a Custom Fuel Type](https://help.salesforce.com/s/articleView?language=en_US&id=sf.netzero_admin_create_custom_fuel_type.htm)
-
-### Fuel Type Sustainability Unit of Measure
-
-Represents a mapping between the custom fuel types and their corresponding unit of measure (UOM) values defined by a customer in
-an org.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** All attributes
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-Metadata Name: FuelTypeSustnUom
-
-Component Type in 1GP Package Manager UI: Fuel Type Sustainability Unit of Measure
-
-**License Requirements**
-
-**•** Net Zero Cloud Growth license or Net Zero Cloud Starter license
-
-**•** Net Zero Cloud Manager permissions set
-
-**Post Install Steps**
-Enable these org settings:
-
-**•** Net Zero Cloud
-
-**•** Manage Carbon Accounting
-
-
-### Second-Generation Managed Packages Fundraising Config
-
-**Documentation**
-
-**•** _Salesforce Help:_ [Associate a Custom Fuel Type with a Unit of Measure](https://help.salesforce.com/s/articleView?id=ind.netzero_admin_associate_custom_fuel_type_with_unitofmeasure.htm&type=5&language=en_US)
-
-### Fundraising Config
-
-Represents a collection of settings to configure the fundraising product.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes. Supported in both 1GP and 2GP packages.
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** LapsedUnpaidTrxnCount
-
-**•** HouseholdSoftCreditRole
-
-**•** IsHshldSoftCrAutoCrea
-
-**•** InstallmentExtDayCount
-
-**•** DonorMatchingMethod
-
-**•** FailedTransactionCount
-
-**•** ShouldCreateRcrSchdTrxn
-
-**•** ShouldClosePaidRcrCmt
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-
-### Second-Generation Managed Packages Gateway Provider Payment Method Type
-
-More Information
-
-**Feature Name**
-Metadata Name: FundraisingConfig
-
-**License Requirements**
-Fundraising Access (Permission Set License)
-
-**Documentation**
-_Metadata API Developer Guide:_ [FundraisingConfig](https://developer.salesforce.com/docs/atlas.en-us.260.0.nonprofit_cloud.meta/nonprofit_cloud/npc_fundraising_api_objects_fundraisingconfig.htm)
-
-### Gateway Provider Payment Method Type
-
-Represents an entity that allows integrators and payment providers to choose an active payment to receive an order's payment data
-rather than allowing the Salesforce Order Management platform to select a default payment method.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** None
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** All fields
-
-More Information
-
-**Feature Name**
-Metadata Name: GatewayProviderPaymentMethodType
-
-**License Requirements**
-Salesforce Order Management, B2B Commerce, or B2C Commerce (for B2B2C Commerce) licenses are required. These licenses enable
-the Payment Platform org permission required to use payments objects.
-
-
-### Second-Generation Managed Packages Gen Ai Planner Bundle
-
-**Documentation**
-_Salesforce Help:_ [Processing Payments with Payment Gateways](https://help.salesforce.com/s/articleView?id=sales.blng_payment_gateways.htm&type=5&language=en_US)
-
-### Gen Ai Planner Bundle
-
-Represents a planner for an agent or agent template. It’s a container for all the topics and actions used to interact with a large language
-model (LLM).
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Capabilities
-
-**•** Description
-
-**•** MasterLabel
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-[Metadata Name: GenAiPlannerBundle](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_genaiplannerbundle.htm)
-
-Component Type in 2GP Package Manager UI: Generative AI Planner Bundle
-
-
-### Second-Generation Managed Packages Generative AI Prompt Template
-
-**Use Case**
-Represents a planner for an agent or agent template. It’s a container for all the topics and actions used to interact with a large
-language model (LLM).
-
-**Documentation**
-_Salesforce Help:_ [Agentforce Agents](https://help.salesforce.com/s/articleView?id=ai.copilot_intro.htm&type=5&language=en_US)
-
-_Salesforce Help:_ [The Building Blocks of Agents](https://help.salesforce.com/s/articleView?id=ai.copilot_building_blocks.htm&language=en_US)
-
-### Generative AI Prompt Template
-
-Represents a generative AI prompt template, for use in Agentforce.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Template Active Version
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Template Description
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Prompt Template Name
-
-**•** Prompt Template Version
-
-More Information
-
-**Feature Name**
-Metadata Name: GenAIPromptTemplate
-
-
-### Second-Generation Managed Packages Global Picklist
-
-Component Type in 1GP Package Manager UI: Generative AI Prompt Template
-
-**Use Case**
-To package prompt templates created from Prompt Builder for Generative AI use cases.
-
-**Considerations When Packaging**
-[See Considerations for Packaging Prompt Templates.](https://help.salesforce.com/s/articleView?id=ai.prompt_builder_considerations_packaging.htm&language=en_US)
-
-**License Requirements**
-Generative AI SKUs are needed to provision Prompt Builder in the org.
-
-**Documentation**
-_Metadata API Developer Guide:_ [GenAiPromptTemplate](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_genaiprompttemplate.htm)
-
-### Global Picklist
-
-Represents the metadata for a global picklist value set, which is the set of shared values that custom picklist fields can use. A global value
-set isn’t a field itself. In contrast, the custom picklist fields that are based on a global picklist are of type ValueSet.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org Yes
-
-Package Developer Can Remove Component From Package Yes. Supported in 1GP packages only.
-
-Component Has IP Protection No
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-More Information
-
-**Feature Name**
-Metadata Name: Global Value Set
-
-Component Type in 1GP Package Manager UI: Global Value Set
-
-**Considerations When Packaging**
-When explicitly referencing a picklist value in code, keep in mind that picklist values for a custom field can be renamed, added,
-edited, or deleted by subscribers.
-
-Picklist field values can be added or deleted in the developer’s org. Changes to standard picklists can’t be packaged and deployed
-to subscriber orgs, and picklist values deleted by the developer are still available in the subscriber’s org. If there are differences
-between the package and the target org, or if there are dependencies on new values from features such as PathAssistant, the deploy
-fails. To change values in subscriber orgs, you must manually add or modify the values in the target subscriber org.
-
-Updating picklist values in unlocked packages isn’t supported. Manually add or modify the values in the target subscriber org.
-
-
-### Second-Generation Managed Packages Home Page Component
-
-Package upgrades retain dependent picklist values that are saved in a managed custom field.
-
-Global value sets can be added to developer and subscriber orgs. Global value sets have these behaviors during a package upgrade.
-
-**•** Label and API names for field values don’t change in subscriber orgs.
-
-**•** New field values aren’t added to the subscriber orgs.
-
-**•** Active and inactive value settings in subscriber orgs don’t change.
-
-**•** Default values in subscriber orgs don’t change.
-
-**•** Global value set label names change if the package upgrade includes a global value set label change.
-
-**Documentation**
-_Salesforce Help:_ [Create a Global Picklist Value Set](https://help.salesforce.com/s/articleView?id=platform.fields_creating_global_picklists.htm&type=5&language=en_US)
-
-_Salesforce Help:_ [Make Your Custom Picklist Field Values Global](https://help.salesforce.com/s/articleView?id=platform.fields_promote_picklists.htm&type=5&language=en_US)
-
-### Home Page Component
-
-Represents the metadata associated with a home page component. You can customize the Home tab in Salesforce Classic to include
-components such as sidebar links, a company logo, a dashboard snapshot, or custom components that you create. Use to create, update,
-or delete home page component definitions.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade No
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Body
-
-**•** Component Position
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Name
-
-
-### Second-Generation Managed Packages Home Page Layout
-
-**•** Type
-
-More Information
-
-**Feature Name**
-Metadata Name: HomePageComponent
-
-Component Type in 1GP Package Manager UI: Home Page Component
-
-**Relationship to Other Components**
-
-When you package a custom home page layout, all the custom home page components included on the page layout are automatically
-added. Standard components such as Messages & Alerts aren’t included in the package and don’t overwrite the installer’s Messages
-& Alerts. To include a message in your custom home page layout, create an HTML Area type custom Home tab component containing
-your message. From Setup, in the Quick Find box, enter _`Home Page Components`_, then select **Home Page Components** .
-Then add the message to your custom home page layout.
-
-**Documentation**
-_Metadata API Developer Guide:_ [HomePageComponent](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_homepagecomponent.htm)
-
-### Home Page Layout
-
-Represents the metadata associated with a home page layout. You can customize home page layouts and assign the layouts to users
-based on their user profile.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade No
-
-Subscriber Can Delete Component From Org Yes
-
-Package Developer Can Remove Component From Package Yes. Supported in 1GP packages only.
-
-Component Has IP Protection No
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** None
-
-Both Package Developer and Subscriber Can Edit
-
-**•** All attributes except Layout Name
-
-
-### Second-Generation Managed Packages Identity Verification Proc Def
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Layout Name
-
-More Information
-
-**Feature Name**
-Metadata Name: HomePageLayout
-
-Component Type in 1GP Package Manager UI: Home Page Layout
-
-**Considerations When Packaging**
-
-After they’re installed, your custom home page layouts are listed with all the subscriber’s home page layouts. Distinguish them by
-including the name of your app in the page layout name.
-
-**Documentation**
-_Metadata API Developer Guide:_ [HomePageLayout](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_homepagelayouts.htm)
-
-### Identity Verification Proc Def
-
-Represents the definition of the identity verification process.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** MasterLabel
-
-**•** SearchLayoutType
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Name
-
-
-### Second-Generation Managed Packages Inbound Network Connection
-
-More Information
-
-**Feature Name**
-Metadata Name: IdentityVerificationProcDef
-
-Component Type in 1GP Package Manager UI: Identity Verification Process Definition
-
-**Use Case**
-Links the configuration for Identity Verification to a flow.
-
-**License Requirements**
-Industries Health Cloud, Industries Sales Excellence, and Industries Service Excellence licenses.
-
-Actionable Segmentation Engagement, Industries Sales Excellence, Industry Service Excellence or Health Cloud Platform Permission
-set license is required to use this metadata type.
-
-**Relationship to Other Components**
-An Identity Verification Process Field record looks up to an Identity Verification Process Details record, which in turn looks up to an
-Identity Verification Process Definition record.
-
-**Documentation**
-_Health Cloud Developer Guide_ [: IdentityVerificationProcDef](https://developer.salesforce.com/docs/atlas.en-us.260.0.health_cloud_object_reference.meta/health_cloud_object_reference/meta_identityverificationprocdef.htm)
-
-### Inbound Network Connection
-
-Represents a private connection between a third-party data service and a Salesforce org. The connection is inbound because the callouts
-are coming into Salesforce.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection No
-
-You can only delete connections that are in an unprovisioned state.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Note: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain terms
-to avoid any effect on customer implementations.
-
-Only Package Developer Can Edit
-
-
-### Second-Generation Managed Packages IndustriesEinsteinFeatureSettings
-
-**•** AWS VPC Endpoint ID
-
-**•** Connection Type
-
-**•** Developer Name
-
-**•** Description
-
-**•** Link ID
-
-**•** Master Label
-
-**•** Region
-
-**•** Source IP Ranges
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Status
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-Metadata Name: InboundNetworkConnection
-
-Component Type in 1GP Package Manager UI: Inbound Network Connection
-
-**Considerations When Packaging**
-
-**•** Packaged connections are installed as unprovisioned. Alert subscribers about how to provision connections after package installation.
-
-**•** If a developer changes the Region of a packaged connection that is subscriber-provisioned, the upgrade fails for the subscriber. Alert
-subscribers about tearing down the connection before updating the Region field. As a best practice, avoid changing the Region of
-a packaged connection unless necessary.
-
-**License Requirements**
-This feature is available with the Private Connect license.
-
-**Documentation**
-_Salesforce Help:_ [Secure Cross-Cloud Integrations with Private Connect](https://help.salesforce.com/s/articleView?id=xcloud.private_connect_overview.htm&type=5&language=en_US)
-
-_Salesforce Help:_ [Establish an Inbound Connection with AWS](https://help.salesforce.com/s/articleView?id=xcloud.private_connect_inbound_aws.htm&type=5&language=en_US)
-
-### IndustriesEinsteinFeatureSettings
-
-Represents the settings for enabling the Industries Einstein feature.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org Yes
-
-
-### Second-Generation Managed Packages IntegrationProviderDef
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** All
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-Metadata Name: IndustriesEinsteinFeatureSettings
-
-**Documentation**
-_Salesforce Help:_ [Intelligent Document Reader](https://help.salesforce.com/s/articleView?id=ind.intelligent_document_reader.htm&type=5&language=en_US)
-
-_Salesforce Help:_ [Intelligent Form Reader](https://help.salesforce.com/s/articleView?id=ind.form_reader.htm&type=5&language=en_US)
-
-### IntegrationProviderDef
-
-Represents an integration definition associated with a service process. Stores data for the Industries: Send Apex Async Request and
-Industries: Send External Async Request invocable actions.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: First-Generation Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** All other fields
-
-Both Package Developer and Subscriber Can Edit
-
-
-### Second-Generation Managed Packages Invocable Action Extension
-
-**•** StringValue
-
-**•** IntegerValue
-
-**•** DateTimeValue
-
-**•** DateValue
-
-**•** PercentageValue
-
-**•** DoubleValue
-
-**•** IsTrueOrFalseValue
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** FullName
-
-More Information
-
-**IntegrationProviderDef**
-Metadata Name: IntegrationProviderDef
-
-Component Type in 1GP Package Manager UI: IntegrationProviderDef
-
-**Documentation**
-IntegrationProviderDef in _Metadata API Developer Guide_ .
-
-### Invocable Action Extension
-
-Represents extended metadata for Apex classes that are used as invocable actions or data types. This allows developers to specify how
-to present the action's inputs without writing custom code.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** All properties
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-
-### Second-Generation Managed Packages LearningAchievementConfig
-
-**•** None
-
-More Information
-
-**Feature Name**
-Metadata Name: InvocableActionExtension
-
-**Use Case**
-To control ordering, grouping, and conditional visibility of action input parameters. Other uses will be available in the future.
-
-**Considerations When Packaging**
-The maximum number of files that can be included in a package is 10,000. Invocable Action Extensions can significantly affect the
-file count, as each extended Apex class adds five additional extension files. Each extension file also increases package version, creation
-and installation times. If you receive an error regarding too many files or the installation takes too long, consider breaking your
-[package into a set of dependent packages. For more details, see Create Dependencies Between Second-Generation Managed](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_create_dependencies.htm)
-[Packages.](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_create_dependencies.htm)
-
-**Relationship to Other Components**
-This component is paired with an Apex Invocable Action.
-
-**Documentation**
-_Metadata API Developer Guide:_ InvocableActionExtension
-
-### LearningAchievementConfig
-
-Represents the mapping details between a Learning Achievement type and a Learning Achievement record type.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** All but DeveloperName
-
-Both Package Developer and Subscriber Can Editv
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** DeveloperName
-
-
-### Second-Generation Managed Packages Learning Item Type
-
-More Information
-
-**Feature Name**
-Metadata Name: LearningAchievementConfig
-
-**Documentation**
-Education Cloud Developer Guide
-
-### Learning Item Type
-
-Represents a custom exercise type that an Enablement user takes in an Enablement program in the Guidance Center. A custom exercise
-type also requires a corresponding LearningItem record for the Guidance Center and corresponding EnblProgramTaskDefinition and
-EnblProgramTaskSubCategory records for when admins create a program in Program Builder.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** All but DeveloperName
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** DeveloperName
-
-More Information
-
-**Feature Name**
-Metadata Name: LearningItemType
-
-
-### Second-Generation Managed Packages Letterhead
-
-**Use Case**
-
-Include this component in a package with a program if the program has a custom exercise type.
-
-**Considerations When Packaging**
-[See Considerations for Packaging Enablement Programs and Dependencies.](https://developer.salesforce.com/docs/sales/enablement/guide/enablement-package-considerations.html)
-
-**License Requirements**
-Enablement add-on license and the Enablement permission set license are required.
-
-Important: Custom exercises aren’t compatible with Partner Enablement programs.
-
-**Usage Limits**
-[See Enablement Limits.](https://help.salesforce.com/s/articleView?id=sales.enablement_limits.htm&type=5&language=en_US)
-
-**Relationship to Other Components**
-The Learning Item Type component requires a corresponding Enablement Program Task Subcategory component. Both components
-are used with custom exercise types in Enablement programs. Package both of these components with an Enablement Program
-Definition component.
-
-**Documentation**
-
-**•** _Salesforce Help_ [: Sales Programs and Partner Tracks with Enablement](https://help.salesforce.com/s/articleView?id=sales.enablement.htm&type=5&language=en_US)
-
-**•** _Metadata API Developer Guide_ [: EnblProgramTaskSubCategory](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_enblprogramtasksubcategory.htm)
-
-**•** _Metadata API Developer Guide_ [: LearningItemType](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_learningitemtype.htm)
-
-**•** _Object Reference for the Salesforce Platform_ [: EnblProgramTaskDefinition](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_enblprogramtaskdefinition.htm)
-
-**•** _Object Reference for the Salesforce Platform_ [: LearningItem](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_learningitem.htm)
-
-**•** _Sales Programs and Partner Tracks with Enablement Developer Guide_ [: Create a Managed Package for Enablement Programs,](https://developer.salesforce.com/docs/sales/enablement/guide/enablement-package.html)
-[Measures, and Content](https://developer.salesforce.com/docs/sales/enablement/guide/enablement-package.html)
-
-**•** _Sales Programs and Partner Tracks with Enablement Developer Guide_ [: Implement Custom Exercise Types for Enablement Programs](https://developer.salesforce.com/docs/sales/enablement/guide/enablement-custom-exercises-intro.html)
-
-### Letterhead
-
-Represents formatting options for the letterhead in an email template. A letterhead defines the logo, page color, and text settings for
-your HTML email templates. Use letterheads to ensure a consistent look and feel in your company’s emails.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade No
-
-Subscriber Can Delete Component From Org Yes
-
-Package Developer Can Remove Component From Package Yes. Supported in 1GP packages only.
-
-Component Has IP Protection No
-
-
-### Second-Generation Managed Packages Life Science Config Category
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** None
-
-Both Package Developer and Subscriber Can Edit
-
-**•** All attributes except Letterhead Name
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Letterhead Name
-
-More Information
-
-**Feature Name**
-Metadata Name: Letterhead
-
-**Documentation**
-_Metadata API Developer Guide:_ [Letterhead](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_letterhead.htm)
-
-### Life Science Config Category
-
-Represents the category that a Life Sciences configuration record is organized into.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Note: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain terms
-to avoid any effect on customer implementations.
-
-
-### Second-Generation Managed Packages Life Science Config Record
-
-Only Package Developer Can Edit
-
-**•** CategoryLabel
-
-**•** DeveloperName
-
-**•** MasterLabel
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** CategoryType
-
-More Information
-
-**Feature Name**
-Metadata Name: LifeSciConfigCategory
-
-Component Type in 1GP Package Manager UI: Life Science Config Category
-
-**Considerations When Packaging**
-When packaging the LifeSciConfigCategory component, the DeveloperName must match the Category.
-
-**License Requirements**
-Industries Life Sciences Cloud with the Life Sciences Cloud for Customer Engagement Add-on license and the Life Sciences Customer
-Engagement managed package.
-
-**Relationship to Other Components**
-This component defines the category of the configuration defined in a child LifeSciConfigRecord component.
-
-**Documentation**
-_Life Sciences Cloud Developer Guide_ [: LifeSciConfigCategory](https://developer.salesforce.com/docs/atlas.en-us.260.0.life_sciences_dev_guide.meta/life_sciences_dev_guide/meta_lifesciconfigcategory.htm)
-
-### Life Science Config Record
-
-Represents a configuration record for Life Sciences. This object is a child of Life Science Config Category.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-
-### Second-Generation Managed Packages Lightning Bolt
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Note: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain terms
-to avoid any effect on customer implementations.
-
-Only Package Developer Can Edit
-
-**•** IsActive
-
-**•** IsOrgLevel
-
-**•** MasterLabel
-
-**•** ParentConfigRecordId
-
-**•** Type
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** DeveloperName
-
-**•** LifeSciConfigCategoryId
-
-More Information
-
-**Feature Name**
-Metadata Name: LifeSciConfigRecord
-
-Component Type in 1GP Package Manager UI: Life Science Config Record
-
-**Use Case**
-This component holds the configuration records for Life Sciences Cloud for Customer Engagement application.
-
-**Considerations When Packaging**
-
-**•** You must package the LifeSciConfigRecord component with its parent LifeSciConfigCategory component.
-
-**•** The component must be in the inactive state.
-
-**License Requirements**
-Industries Life Sciences Cloud with the Life Sciences Cloud for Customer Engagement Add-on license and the Life Sciences Customer
-Engagement managed package.
-
-**Post Install Steps**
-For the configuration to work, make the component active by setting IsActive to true.
-
-**Relationship to Other Components**
-A LifeSciConfigRecord is a child of LifeSciConfigCategory, and can’t exist without the parent LifeSciConfigCategory.
-
-**Documentation**
-_Life Sciences Cloud Developer Guide_ [: LifeSciConfigRecord](https://developer.salesforce.com/docs/atlas.en-us.260.0.life_sciences_dev_guide.meta/life_sciences_dev_guide/meta_lifesciconfigrecord.htm)
-
-### Lightning Bolt
-
-Represents the definition of a Lightning Bolt Solution, which can include custom apps, flow categories, and Experience Builder templates.
-
-
-### Second-Generation Managed Packages Lightning Message Channel
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes. Supported in 1GP packages only.
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-More Information
-
-**Feature Name**
-Metadata Name: LightningBolt
-
-Component Type in 1GP Package Manager UI: Lightning Bolt
-
-**Documentation**
-_Metadata API Developer Guide:_ [LightningBolt](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_lightningbolt.htm)
-
-### Lightning Message Channel
-
-Represents the metadata associated with a Lightning Message Channel. A Lightning Message Channel represents a secure channel to
-communicate across UI technologies, such as Lightning Web Components, Aura Components, and Visualforce.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection Yes
-
-
-### Second-Generation Managed Packages Lightning Page
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-More Information
-
-**Feature Name**
-Metadata Name: LightningMessageChannel
-
-Component Type in 1GP Package Manager UI: Lightning Message Channel
-
-**Considerations When Packaging**
-[To pass the AppExchange Security Review, the](https://developer.salesforce.com/docs/atlas.en-us.260.0.packagingGuide.meta/packagingGuide/security_review_guidelines.htm) `isExposed` attribute must be set to `false` .
-
-**Documentation**
-_Metadata API Developer Guide_ [: Lightning Message Channel](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_lightningmessagechannel.htm)
-
-_Lightning Web Components Developer Guide_ [: Create a Message Channel](https://developer.salesforce.com/docs/component-library/documentation/en/lwc/lwc.use_message_channel_intro)
-
-### Lightning Page
-
-Represents the metadata associated with a Lightning page. A Lightning page represents a customizable screen made up of regions
-containing Lightning components.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes. Supported in 2GP packages only.
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Lightning page
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-
-### Second-Generation Managed Packages Lightning Type
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-Note: You must have the Manage Prompt Templates permission to successfully package Lightning pages that reference prompt
-templates. Without this permission, package creation succeeds, but the prompt template isn't included in the package.
-
-More Information
-
-**Feature Name**
-Metadata Name: FlexiPage
-
-**Documentation**
-_Metadata API Developer Guide:_ [Flexipage](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_flexipage.htm)
-
-### Lightning Type
-
-Represents a custom Lightning type. Use this type to override the default user interface to create a customized appearance based on
-your business requirements. Deploy this bundle to your organization to implement the overrides.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Description
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-Metadata Name: LightningTypeBundle
-
-
-### Second-Generation Managed Packages Lightning Web Component
-
-Component Type in 1GP Package Manager UI: Lightning Type
-
-**Documentation**
-_Metadata API Developer Guide_ [: LightningTypeBundle](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_lightningtypebundle.htm)
-
-### Lightning Web Component
-
-Represents a Lightning web component bundle. A bundle contains Lightning web component resources.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-You can build Lightning components using two programming models: the Lightning Web Components model, and the original Aura
-Components model.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes. Supported in both 1GP and 2GP packages.
-
-Component Has IP Protection No
-
-When a package developer removes an Aura or Lightning web component from a package, the component remains in a subscriber’s
-org after they install the upgraded package. The administrator of the subscriber’s org can delete the component, if desired. This behavior
-is the same for a Lightning web component or an Aura component with a `public` or `global` access value.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** API Version
-
-**•** Description
-
-**•** isExposed (can only change from false to true)
-
-**•** Label
-
-**•** Markup
-
-**•** Targets
-
-**•** targetConfigs
-
-**•** targetConfig
-
-**•** property
-
-
-### Second-Generation Managed Packages List View
-
-You can’t make certain changes to `<property>` tags on a custom component that’s used in a managed package or an Experience
-[Builder site. For more information, see Considerations for configuring a component for Experience Builder in the](https://developer.salesforce.com/docs/platform/lwc/guide/use-config-for-community-builder.html#considerations) _Lightning Web Components_
-_Developer Guide_ .
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Name
-
-More Information
-
-**Lightning Web Component**
-Metadata Name: LightningComponentBundle
-
-Component Type in 1GP Package Manager UI: Lightning Web Component Bundle
-
-**Considerations When Packaging**
-Licensing Considerations:
-
-Lightning Web Components don’t automatically enforce managed package licensing. Lightning Web Components in a managed
-package can be seen and used by users who don’t have active licenses for that managed package. These Lightning Web Components
-can also be seen and used after a trial of that managed package expires.
-
-AppExchange partners are responsible for enforcing package licensing in their Lightning Web Components. We recommend using
-[an Apex controller that calls either the UserInfo.isCurrentUserLicensed(namespace) or](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_userinfo.htm#apex_System_UserInfo_isCurrentUserLicensed)
-[UserInfo.isCurrentUserLicensedForPackage(packageID) methods, and only rendering the component if](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_userinfo.htm#apex_System_UserInfo_isCurrentUserLicensedForPackage) `true` is returned.
-
-Considerations When Using `isExposed` :
-
-If `isExposed` is false, the package developer can remove configuration targets and a public (@api) property from a component.
-The component isn't available to other namespaces or to Salesforce builders like Lightning App Builder and Experience Builder.
-
-If `isExposed` is true and the component is in a published managed package, the package developer can’t remove configuration
-targets or a public (@api) property from a component. This restriction is enforced even if the target or public property was added
-after the most recent publication of the package.
-
-If `isExposed` is true, the component is available to other namespaces, including namespaces outside of a published managed
-package.
-
-If `isExposed` is true and a `Targets` value is also provided, the component is available to Salesforce builders such as Lightning
-App Builder and Experience Builder.
-
-When you delete a Lightning Web Component with an `isExposed` value of true, we recommend a two-stage process to ensure
-[that the deleted component has no dependencies on the other items in the package. See Remove Components from](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_remove_md_components.htm)
-[Second-Generation Managed Packages for details.](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_remove_md_components.htm)
-
-**Documentation**
-
-[Lightning Web Components Developer Guide](https://developer.salesforce.com/docs/component-library/documentation/en/lwc)
-
-_Lightning Web Components Developer Guide:_ [Add Components to Managed Packages](https://developer.salesforce.com/docs/platform/lwc/guide/use-packaging-add.html)
-
-_Lightning Web Components Developer Guide:_ [Delete Components from Managed Packages](https://developer.salesforce.com/docs/platform/lwc/guide/use-packaging-delete.html)
-
-### List View
-
-ListView allows you to see a filtered list of records, such as contacts, accounts, or custom objects.
-
-
-Second-Generation Managed Packages List View
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade No
-
-Subscriber Can Delete Component From Org Yes
-
-Package Developer Can Remove Component From Package Yes. Supported in both 1GP and 2GP packages.
-
-Component Has IP Protection No
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-[For more details on 2GP component removal, see Remove Metadata Components from Second-Generation Managed Packages.](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_remove_md_components.htm)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** None
-
-Both Package Developer and Subscriber Can Edit
-
-**•** All attributes except View Unique Name
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** View Unique Name
-
-More Information
-
-**Feature Name**
-Metadata Name: ListView
-
-Component Type in 1GP Package Manager UI: List View
-
-**Considerations When Packaging**
-If a subscriber removes a packaged listview from their production org, that listview is deprecated, but not deleted. If that subscriber
-org later creates a sandbox org, and upgrades the package in the sandbox org, the removed listview persists in the sandbox org. To
-remove the listview from the sandbox, package subscribers can click and select **Delete** .
-
-**Relationship to Other Components**
-
-List views associated with queues can’t be included in a managed package or an unlocked package.
-
-**Documentation**
-_Metadata API Developer Guide:_ [ListView](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_listview.htm)
-
-
-### Second-Generation Managed Packages Live Chat Sensitive Data Rule Live Chat Sensitive Data Rule
-
-Represents a rule for masking or deleting data of a specified pattern. Written as a regular expression (regex). Use this object to mask or
-delete data of specified patterns, such as credit card, social security, or phone and account numbers.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: First-Generation Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade No
-
-Subscriber Can Delete Component From Org Yes
-
-Package Developer Can Remove Component From Package Yes, Supported in 1GP Packages only
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** None
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-Metadata Name: LiveChatSensitiveDataRule
-
-Component Type in 1GP Package Manager UI: Sensitive Data Rules
-
-**Documentation**
-_Metadata API Developer Guide:_ [LiveChatSensitiveDataRule](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_livechatsensitivedatarule.htm)
-
-
-### Second-Generation Managed Packages Loyalty Program Setup Loyalty Program Setup
-
-Represents the configuration of a loyalty program process including its parameters and rules. Program processes determine how new
-transaction journals are processed. When new transaction journals meet the criteria and conditions for a program process, actions that
-are set up in the process are triggered for the transaction journals.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection Yes, except templates
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Loyalty Program Process records
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Label
-
-**•** Description
-
-**•** Status
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** API Name
-
-**•** URL
-
-More Information
-
-**Feature Name**
-Metadata Name: LoyaltyProgramSetup
-
-Component Type in 1GP Package Manager UI: Loyalty Program Setup
-
-**Use Case**
-Promotion setup allows loyalty program managers to create loyalty program processes.
-
-**License Requirements**
-Loyalty Management permission set license
-
-**Documentation**
-_Salesforce Help:_ [Create Processes with Promotion Setup](https://help.salesforce.com/s/articleView?id=https://help.salesforce.com/s/articleView?id=xcloud.promotion_setup.htm&type=5&language=en_US)
-
-
-### Second-Generation Managed Packages Managed Content Type Managed Content Type
-
-Represents the definition of custom content types for use with Salesforce CMS. Custom content types are displayed as forms with defined
-fields.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Content
-
-**•** Description
-
-**•** Labels
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-Metadata Name: ManagedContentType
-
-**Use Case**
-Share or distribute custom content types for use in enhanced workspaces in Salesforce CMS.
-
-**Considerations When Packaging**
-Installed content types are available only to enhanced CMS workspaces.
-
-To refer to an installed content type when using Connect REST API, you must use the content type’s fully qualified name. Installed
-content types are available only to enhanced CMS workspace resources.
-
-**Documentation**
-_Metadata API Developer Guide_ [: ManagedContentType](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_managedcontenttype.htm)
-
-_Connect REST API Developer Guide_ [: Enhanced CMS Workspaces Resources](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/connect_resources_managed_content_enhanced_resources.htm)
-
-_CMS Developer Guide_ [: Create Custom Content Type Sample](https://developer.salesforce.com/docs/platform/cms/guide/cms-dev-create-custom-content-type-sample.html)
-
-
-### Second-Generation Managed Packages Marketing App Extension Marketing App Extension
-
-Represents an integration with a third-party app or service that generates prospect external activity.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** DeveloperName
-
-**•** MasterLabel
-
-**•** Description
-
-Both Package Developer and Subscriber Can Edit
-
-**•** IsActive
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-Metadata Name: MarketingAppExtension
-
-Component Type in 1GP Package Manager UI: Marketing App Extension
-
-**Use Case**
-Partners and ISVs can provide integrations with third-parties so Account Engagement customers can enhance their automations.
-
-**Considerations When Packaging**
-Marketing app extensions require an associated action type component to function. The related component activity type isn’t
-supported for packaging.
-
-**License Requirements**
-This feature is available in Plus, Advanced, or Premium editions of Account Engagement. To work with marketing app extensions,
-[users must be a Salesforce admin or have the required permissions to access Marketing Setup.](https://help.salesforce.com/s/articleView?id=mktg.pardot_admin_marketing_admin.htm&type=5&language=en_US)
-
-
-### Second-Generation Managed Packages Marketing App Extension Activity
-
-**Usage Limits**
-The number of active extensions, activities, and actions the end user can have at one time depends on their edition of Account
-Engagement.
-
-**•** Plus—10 active extensions, with 10 active activities and 10 active actions per active extension
-
-**•** Advanced—20 active extensions, with 20 active activities and 20 active actions per active extension
-
-**•** Premium—30 active extensions, with 30 active activities and 30 active actions per active extension
-
-[For more on limits, see Considerations for Working with Marketing App Extensions.](https://help.salesforce.com/s/articleView?id=mktg.pardot_extensions_considerations.htm&type=5&language=en_US)
-
-**Post Install Steps**
-To receive data, the extension must be activated for automations and have a business unit assignment.
-
-**Relationship to Other Components**
-The extension requires an associated action type component to function.
-
-**Documentation**
-This component is part of Account Engagement’s extensibility feature set.
-
-**•** _Salesforce Help:_ [Automate Data Sharing with Third-Party Apps](https://help.salesforce.com/s/articleView?id=mktg.pardot_extensibility_parent.htm&type=5&language=en_US)
-
-**•** _Developer Guide:_ [Work with Extensibility Features](https://developer.salesforce.com/docs/marketing/pardot/guide/extensibility-features-overview.html)
-
-### Marketing App Extension Activity
-
-Represents an Activity Type, which is a prospect activity that occurs in a third-party app and can be used in Account Engagement
-automations.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** MasterLabel
-
-**•** Description
-
-Both Package Developer and Subscriber Can Edit
-
-**•** IsActive
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** DeveloperName
-
-
-### Second-Generation Managed Packages Market Segment Definition
-
-**•** EndpointUrl
-
-**•** MarketingAppExtension
-
-More Information
-
-**Feature Name**
-Metadata Name: MarketingAppExtActivity
-
-Component Type in 1GP Package Manager UI: Marketing App Extension
-
-**Use Case**
-Partners and ISVs can use Activities to submit external prospect engagement data to Marketing Cloud Account Engagement.
-
-**Considerations When Packaging**
-This component is included when the parent component MarketingAppExtension on page 230 is added to a package. The related
-component MarketingAppExtActivity isn’t supported for packaging.
-
-**License Requirements**
-This feature is available in Plus, Advanced, or Premium editions of Account Engagement. To work with marketing app extensions
-[and related components, users must be a Salesforce admin or have the required permissions to access Marketing Setup.](https://help.salesforce.com/s/articleView?id=mktg.pardot_admin_marketing_admin.htm&type=5&language=en_US)
-
-**Usage Limits**
-The number of active extensions, activities, and actions the end user can have at one time depends on their edition of Account
-Engagement.
-
-**•** Plus—10 active activities per active extension
-
-**•** Advanced—20 active activities per active extension
-
-**•** Premium—30 active activities per active extension
-
-[For more information, see Considerations for Working with Marketing App Extensions.](https://help.salesforce.com/s/articleView?id=mktg.pardot_extensions_considerations.htm&type=5&language=en_US)
-
-**Post Install Steps**
-To receive data, the activity and its related extension must be activated for automations.
-
-**Relationship to Other Components**
-This component is a child of the MarketingAppExtension on page 230 component. Activities interact with Marketing Cloud Account
-[Engagement features that support external activities. For more information, see Capture External Prospect Activity.](https://help.salesforce.com/s/articleView?id=mktg.pardot_external_activity_parent.htm&type=5&language=en_US)
-
-**Documentation**
-This component is part of Account Engagement’s extensibility feature set.
-
-**•** _Salesforce Help:_ [Automate Data Sharing with Third-Party Apps](https://help.salesforce.com/s/articleView?id=mktg.pardot_extensibility_parent.htm&type=5&language=en_US)
-
-**•** _Developer Guide:_ [Work with Extensibility Features](https://developer.salesforce.com/docs/marketing/pardot/guide/extensibility-features-overview.html)
-
-### Market Segment Definition
-
-Represents the field values for MarketSegmentDefinition. MarketSegmentDefinition is used to store the exportable metadata of a segment,
-such as segment criteria and other attributes. Developers can create segment definition packages, pass segment definition in the form
-of data build tool (DBT), and publish it on AppExchange for subscriber organizations to install and instantiate these segments.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-
-### Second-Generation Managed Packages MktCalculatedInsightsObjectDef
-
-Packageable In: First-Generation Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Yes, applicable for all properties.
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-Metadata Name: MarketSegmentDefinition
-
-Component Type in 1GP Package Manager UI: Market Segment Definition
-
-### MktCalculatedInsightsObjectDef
-
-Represents Calculated Insight definition such as expression.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: First-Generation Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-
-### Second-Generation Managed Packages MktDataConnection
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** BuilderExpression
-
-**•** CalculatedInsightCreationType
-
-**•** Description
-
-**•** Expression
-
-**•** Label
-
-Both Package Developer and Subscriber Can Edit
-
-**•** CalculatedInsightObjectDefinitionStatus
-
-**•** Description
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** DeveloperName
-
-More Information
-
-**Feature Name**
-Metadata Name: MktCalcInsightObjectDef
-
-Component Type in 1GP Package Manager UI: MktCalcInsightObjectDef.
-
-**Use Case**
-Defines CDP calculated insight for easy creation on subscriber organizations.
-
-**Considerations When Packaging**
-[To package this component, first add it to a data kit. For more information about data kits, see Data Kits in](https://help.salesforce.com/s/articleView?id=data.c360_a_data_package_kits.htm&type=5&language=en_US) _Salesforce Help_ .
-
-**License Requirements**
-You need Customer 360 Audiences Corporate (cdpPsl) licenses on both package developer org and subscriber org.
-
-**Post Install Steps**
-User has to go to the **Calculated Insights** object home in Customer Data Platform, click **New action** and select **Create from a**
-**Package** .
-
-**Relationship to Other Components**
-Calculated Insight Component is tied to the Data Model Object component. The Calculated Insight component must have Data
-Model Object dependencies available on the subscriber organization that are used in the Calculated Insight.
-
-**Documentation**
-_Metadata API Developer Guide:_ [MktCalcInsightObjectDef](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_mktcalcinsightobjectdef.htm)
-
-### MktDataConnection
-
-Represents the connection information of an external connector that can ingest data to Data Cloud, read data from the source, or write
-data to the source in Data Cloud.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-
-Second-Generation Managed Packages MktDataConnection
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** None
-
-Both Package Developer and Subscriber Can Edit
-
-**•** masterLabel
-
-**•** Parameters
-
-**–** paramName
-
-**–** value
-
-**•** Credentials
-
-**–** credentialName
-
-**–** value
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-Metadata Name: MktDataConnection
-
-Component Type in 1GP Package Manager UI: Data Connection
-
-**Use Case**
-To reuse connection parameters.
-
-**Considerations When Packaging**
-Connection credentials are excluded from the package. Available parameters are defined in Connector Metadata which is exposed
-from Connect API.
-
-**License Requirements**
-[Data Cloud must be provisioned. For more information, see Data Cloud: Access and Provisioning.](https://help.salesforce.com/s/articleView?id=000396444&type=1&language=en_US)
-
-**Usage Limits**
-The number of connections per connector type can be up to 200.
-
-**Post Install Steps**
-After you create the connection, it will be in INACTIVE state, you must manually activate the connection.
-
-
-### Second-Generation Managed Packages MktDataTranObject
-
-**Relationship to Other Components**
-Must be used with Data Stream and Activation.
-
-**Documentation**
-[Salesforce Help: Third-Party Data Cloud Connectors](https://developer.salesforce.com/docs/data/data-cloud-int/guide/c360-a-data-cloud-integrations.html)
-
-### MktDataTranObject
-
-An entity that is used to deliver (aka transport) information from the source to a target (target will be called a landing entity).This can
-be the schema of a file, API, Event, or other means of transporting data, such as SubscriberFile1.csv, or SubscriberCDCEvent.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** CreationType
-
-**•** DataSource
-
-**•** DataSourceObject
-
-**•** DeveloperName
-
-**•** ObjectCategory
-
-**•** Status
-
-Both Package Developer and Subscriber Can Edit
-
-**•** DataConnector
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-
-### Second-Generation Managed Packages Named Credential
-
-More Information
-
-**Feature Name**
-Metadata Name: MktDataTranObject
-
-Component Type in 1GP Package Manager UI: It's not a top-level component, it can only be spidered in when customer selects some
-other component. You won't be able to add this component directly to the package.
-
-**License Requirements**
-Data Cloud must be provisioned.
-
-**Documentation**
-_Metadata API Developer Guide:_ [MktDataTranObject](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_mktdatatranobject.htm)
-
-### Named Credential
-
-Represents a named credential, which specifies the URL of a callout endpoint and its required authentication parameters in one definition.
-A named credential can be specified as an endpoint to simplify the setup of authenticated callouts.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes. Supported in 2GP packages only.
-
-Component Has IP Protection No
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Editable Properties After Package Promotion or Installation
-
-Note: In addition to these properties, the Description, ParameterName, ParameterValue, and SequenceNumber properties have
-the same editability as the NamedCredentialParameters they’re included in.
-
-Only Package Developer Can Edit
-
-**•** Label
-
-**•** NamedCredentialType
-
-**•** Legacy Named Credentials only (deprecated and unsupported in future releases)
-
-**–** Endpoint (deprecated)
-
-
-Second-Generation Managed Packages Named Credential
-
-Both Package Developer and Subscriber Can Edit
-
-**•** CalloutOptions
-
-**–** AllowMergeFieldsInBody
-
-**–** AllowMergeFieldsInHeader
-
-**–** GenerateAuthorizationHeader
-
-**•** NamedCredentialParameters
-
-**–** AllowedManagedPackageNamespaces (only subscriber editable)
-
-**–** Authentication
-
-**–** ClientCertificate (only subscriber editable in 2GP)
-
-**–** HttpHeader
-
-**–** OutboundNetworkConnection
-
-**–** Url
-
-**•** Legacy Named Credentials only (deprecated and unsupported in future releases)
-
-**–** AuthProvider (deprecated)
-
-**–** AuthTokenEndpointUrl (deprecated)
-
-**–** AwsAccessKey, AwsAccessSecret, AwsRegion, and AwsService (all deprecated)
-
-**–** Certificate (deprecated)
-
-**–** JwtAudience, JwtFormulaSubject, JwtIssuer, JwtSigningCertificateId, JwtTextSubject, and JwtValidityPeriodSeconds (all deprecated)
-
-**–** OauthRefreshToken, OauthScope, and OathToken (all deprecated)
-
-**–** OutboundNetworkConnectionId (deprecated)
-
-**–** Password (deprecated)
-
-**–** PrincipalType (deprecated)
-
-**–** Protocol (deprecated)
-
-**–** Username (deprecated)
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** FullName
-
-More Information
-
-**Feature Name**
-Metadata Name: `NamedCredential`
-
-**Considerations When Packaging**
-
-Certificates aren’t packageable. If a certificate needs access to an external system, an administrator must upload one to the subscriber
-org and reference it in the named credential.
-
-**Relationship to Other Components**
-You must package NamedCredential with the associated ExternalCredential component.
-
-The named credential defines a callout endpoint and an HTTP transport protocol, while the external credential represents the details
-of how Salesforce authenticates to an external system via an authentication protocol. Each named credential must be mapped to
-at least one external credential.
-
-
-### Second-Generation Managed Packages Object Source Target Map
-
-**Legacy Named Credentials**
-
-Important: In Winter ’23, Salesforce introduced an improved named credential that is extensible and customizable. We
-strongly recommend that you use this preferred credential instead of legacy named credentials. For information on extensible,
-[customizable named credentials, see Named Credentials and External Credentials. Legacy named credentials are deprecated](https://help.salesforce.com/s/articleView?id=nc_named_creds_and_ext_creds.htm&language=en_US)
-and will be discontinued in a future release.
-
-After installing a named credential from a managed or unmanaged package, the subscriber must reauthenticate to the external
-system.
-
-**•** For password authentication, the subscriber reenters the password in the named credential definition.
-
-**•** For OAuth, the subscriber updates the callback URL in the client configuration for the authentication provider and then
-reauthenticates by selecting **Start Authentication Flow on Save** on the named credential.
-
-**Documentation**
-_Salesforce Help_ [: Named Credentials](https://help.salesforce.com/s/articleView?id=xcloud.named_credentials_about.htm&type=5&language=en_US)
-
-_Named Credentials Developer Guide:_ [Named Credentials Packaging Guide](https://developer.salesforce.com/docs/platform/named-credentials/guide/nc-packaging-dev-guide.html)
-
-_Metadata API Developer Guide:_ [NamedCredential](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_namedcredential.htm)
-
-### Object Source Target Map
-
-Contains the object-level mappings between the source and the target objects. The source and target objects can be an MktDataLakeObject
-or an MktDataModelObject. For example, an Email source object can be mapped to the ContactPointEmail object.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** CreationType
-
-**•** DeveloperName
-
-
-### Second-Generation Managed Packages Object Integration Provider Definition Mapping
-
-**•** MasterLabel
-
-**•** ParentObject
-
-**•** SequenceNbr
-
-**•** SourceObject
-
-**•** TargetObject
-
-Both Package Developer and Subscriber Can Edit
-
-**•** LastDataChangeStatusDateTime
-
-**•** LastDataChangeStatusErrorCode
-
-**•** Status
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-Metadata Name: ObjectSourceTargetMap
-
-Component Type in 1GP Package Manager UI: It's not a top-level component, it can only be spidered in when customer selects some
-other component. You won't be able to add this component directly to the package.
-
-**License Requirements**
-Data Cloud must be provisioned.
-
-**Documentation**
-_Metadata API Developer Guide:_ [ObjectSourceTargetMap](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_objectsourcetargetmap.htm)
-
-### Object Integration Provider Definition Mapping
-
-Maps structured, logical data nodes in a context definition to actual Salesforce object fields or external data sources
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP)
-
-Component Is Updated During Package Upgrade No
-
-Subscriber Can Delete Component From Org Yes
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection Yes
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-
-### Second-Generation Managed Packages OcrSampleDocument
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** None
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-### OcrSampleDocument
-
-Represents the details of a sample document or a document type that's used as a reference while extracting and mapping information
-from a customer form.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: First-Generation Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org Yes
-
-Package Developer Can Remove Component From Package Yes. Supported in 1GP packages only.
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** All
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-
-### Second-Generation Managed Packages OcrTemplate
-
-More Information
-
-**Feature Name**
-OcrSampleDocument
-
-Component Type in 1GP Package Manager UI: OcrSampleDocument
-
-**Use Case**
-Migrate sample documents created with the Intelligent Form Reader or Intelligent Document Reader feature.
-
-**Considerations When Packaging**
-If you update the package by deleting OcrSampleDocumentFields associated with the OCRTemplate, the OcrSampleDocumentFields
-are not deleted.
-
-**License Requirements**
-AWSTextract1000LimitAddOn-1 for the Intelligent Form Reader feature or IntelligentDocumentReaderAddOn-1 for the Intelligent
-Document Reader feature.
-
-**Relationship to Other Components**
-DocumentType, ContentAsset, and OcrTemplate (Optional)
-
-**Documentation**
-_Metadata API Developer Guide:_ [OcrSampleDocument](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_ocrsampledocument.htm)
-
-### OcrTemplate
-
-Represents the details of the mapping between a form and a Salesforce object using Intelligent Form Reader.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: First-Generation Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org Yes
-
-Package Developer Can Remove Component From Package Yes. Supported in 1GP packages only.
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** All
-
-
-### Second-Generation Managed Packages Outbound Network Connection
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-OcrTemplate
-
-Component Type in 1GP Package Manager UI: OcrTemplate
-
-**Use Case**
-Migrate Mappings created with the Intelligent Form Reader or Intelligent Document Reader feature.
-
-**Considerations When Packaging**
-OcrTemplate has a dependency on OcrSampleDocument. Before deploying the package, make sure to either include
-OcrSampleDocument in the package or deploy a package that contains OcrSampleDocument.
-
-**License Requirements**
-AWSTextract1000LimitAddOn-1 for the Intelligent Form Reader feature or IntelligentDocumentReaderAddOn-1 for the Intelligent
-Document Reader feature.
-
-**Relationship to Other Components**
-DocumentType and OcrSampleDocument
-
-**Documentation**
-_Metadata API Developer Guide:_ [OcrTemplate](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_ocrtemplate.htm)
-
-### Outbound Network Connection
-
-Represents a private connection between a Salesforce org and a third-party data service. The connection is outbound because the
-callouts are going out of Salesforce.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection No
-
-Note: You can only delete connections that are in an unprovisioned state.
-
-
-### Second-Generation Managed Packages Page Layout
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Note: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain terms
-to avoid any effect on customer implementations.
-
-Only Package Developer Can Edit
-
-**•** Connection Type
-
-**•** Developer Name
-
-**•** Description
-
-**•** Master Label
-
-**•** Region
-
-**•** Service Name
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Status
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-Metadata Name: OutboundNetworkConnection
-
-Component Type in 1GP Package Manager UI: Outbound Network Connection
-
-**Considerations When Packaging**
-
-**•** Packaged connections are installed as unprovisioned. Alert subscribers about how to provision connections after package installation.
-
-**•** If a developer changes the Region or Service Name of a packaged connection that is subscriber-provisioned, the upgrade fails for
-the subscriber. Alert subscribers about tearing down the connection before you update the Region or Service Name fields. As a best
-practice, avoid changing the Region or Service Name of a packaged connection unless necessary.
-
-**•** If you package a Named Credential that references an Outbound Network Connection, the referenced Outbound Network Connection
-component is automatically added to the package.
-
-**License Requirements**
-This feature is available with the Private Connect license.
-
-**Documentation**
-_Salesforce Help:_ [Secure Cross-Cloud Integrations with Private Connect](https://help.salesforce.com/s/articleView?id=xcloud.private_connect_overview.htm&type=5&language=en_US)
-
-_Salesforce Help:_ [Establish an Outbound Connection with AWS](https://help.salesforce.com/s/articleView?id=xcloud.private_connect_outbound_aws.htm&type=5&language=en_US)
-
-### Page Layout
-
-Represents the metadata associated with a page layout.
-
-
-Second-Generation Managed Packages Page Layout
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade No
-
-Subscriber Can Delete Component From Org Yes
-
-Package Developer Can Remove Component From Package Yes. Supported in both 1GP and 2GP packages
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** None
-
-Both Package Developer and Subscriber Can Edit
-
-**•** All attributes except Page Layout Name
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Page Layout Name
-
-More Information
-
-**Feature Name**
-Metadata Name: Layout
-
-**Considerations**
-The page layout of the person uploading a package is the layout used for Group and Professional Edition orgs and becomes the
-default page layout for Enterprise, Unlimited, Performance, and Developer Edition orgs.
-
-Package page layouts alongside complimentary record types if the layout is being installed on an existing object. Otherwise, manually
-apply the installed page layouts to profiles.
-
-If a page layout and a record type are created as a result of installing a package, the uploading user’s page layout assignment for
-that record type is assigned to that record type for all profiles in the subscriber org, unless a profile is mapped during an install or
-upgrade.
-
-**Documentation**
-_Metadata API Developer Guide:_ [Layout](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_layouts.htm)
-
-
-### Second-Generation Managed Packages Path Assistant Path Assistant
-
-Represents Path records.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org Yes
-
-Package Developer Can Remove Component From Package Yes. Supported in 1GP packages only.
-
-Component Has IP Protection No
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** None
-
-Both Package Developer and Subscriber Can Edit
-
-**•** IsActive field
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** SobjectType, SobjectProcessField, and RecordType
-
-More Information
-
-**Feature Name**
-Metadata Name: PathAssistant
-
-Component Type in 1GP Package Manager UI: Path Assistant
-
-**Documentation**
-_Metadata API Developer Guide:_ [PathAssistant](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_pathassistant.htm)
-
-### Payment Gateway Provider
-
-Represents the metadata associated with a payment gateway provider.
-
-
-### Second-Generation Managed Packages Permission Set
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** None
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** All fields
-
-More Information
-
-**Feature Name**
-Metadata Name: PaymentGatewayProvider
-
-**License Requirements**
-Salesforce Order Management, B2B Commerce, or B2C Commerce (for B2B2C Commerce) licenses are required. These licenses enable
-the Payment Platform org permission required to use payments objects.
-
-**Documentation**
-_Salesforce Help:_ [Processing Payments with Payment Gateways](https://help.salesforce.com/s/articleView?id=sales.blng_payment_gateways.htm&type=5&language=en_US)
-
-### Permission Set
-
-Represents a set of permissions that's used to grant more access to one or more users without changing their profile or reassigning
-profiles. You can use permission sets to grant access but not to deny access.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-
-### Second-Generation Managed Packages Permission Set Groups
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes. Supported in both 1GP and 2GP packages.
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-[For more details on 2GP component removal, see Remove Metadata Components from Second-Generation Managed Packages.](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_remove_md_components.htm)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Description
-
-**•** Label
-
-**•** Custom object permissions
-
-**•** Custom field permissions
-
-**•** Apex class access settings
-
-**•** Visualforce page access settings
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Name
-
-More Information
-
-**Feature Name**
-Metadata Name: PermissionSet
-
-Component Type in 1GP Package Manager UI: Permission Set
-
-**Documentation**
-_Metadata API Developer Guide:_ [PermissionSet](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_permissionset.htm)
-
-### Permission Set Groups
-
-Represents a group of permission sets and the permissions within them. Use permission set groups to organize permissions based on
-job functions or tasks. Then, you can package the groups as needed.
-
-
-### Second-Generation Managed Packages Platform Cache
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** None
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Permission Set Group Components (Developer can add and remove while Subscriber can add)
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-Metadata Name: PermissionSetGroup
-
-Component Type in 1GP Package Manager UI: Permission Set Group
-
-**Considerations When Packaging**
-Don't assume that a subscriber's permission set group is the same as what the developer has specified. Although developers can
-define the permission set group and what permission sets can go into it, subscribers can add additional permission sets or mute
-permissions.
-
-**Relationship to Other Components**
-This feature can only be used in conjunction with Permission Sets.
-
-**Documentation**
-_Salesforce Help:_ [Permission Set Groups](https://help.salesforce.com/s/articleView?id=platform.perm_set_groups.htm&type=5&language=en_US)
-
-### Platform Cache
-
-Represents a partition in the Platform Cache.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-
-### Second-Generation Managed Packages Platform Event Channel
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade No
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Master Label
-
-**•** Description
-
-**•** Default Partition
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Organization Capacity
-
-**•** Trial Capacity
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Developer Name
-
-More Information
-
-**Feature Name**
-Metadata Name: PlatformCachePartition
-
-Component Type in 1GP Package Manager UI: Platform Cache Partition
-
-**Documentation**
-
-[Set Up a Platform Cache Partition with Provider Free Capacity](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/data_platform_cache_setup_provider_capacity.htm)
-
-_Metadata API Developer Guide:_ [PlatformCachePartition](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_platformcachepartition.htm)
-
-_Apex Developer Guide:_ [Platform Cache Partitions](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_cache_partition_setup.htm)
-
-### Platform Event Channel
-
-Represents a channel that you can subscribe to in order to receive a stream of events.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade No
-
-
-### Second-Generation Managed Packages Platform Event Channel Member
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection No
-
-More Information
-
-**Feature Name**
-Metadata Name: PlatformEventChannel
-
-Component Type in 1GP Package Manager UI: Platform Event Channel
-
-**Documentation**
-_Metadata API Developer Guide:_ [PlatformEventChannel](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_platformeventchannel.htm)
-
-SEE ALSO:
-
-_Change Data Capture Developer Guide_ [: Compose Streams of Change Data Capture Notifications with Custom Channels](https://developer.salesforce.com/docs/atlas.en-us.260.0.change_data_capture.meta/change_data_capture/cdc_custom_channel.htm)
-
-### Platform Event Channel Member
-
-Represents an entity selected for Change Data Capture notifications on a standard or custom channel, or a platform event selected on
-a custom channel.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection No
-
-More Information
-
-**Feature Name**
-Metadata Name: PlatformEventChannelMember
-
-Component Type in 1GP Package Manager UI: Platform Event Channel Member
-
-**Considerations When Packaging**
-
-**•** As of Winter ’22, installing a managed package that contains Change Data Capture entity selections no longer causes an installation
-error. Before Winter ’22, installing a managed package that contained Change Data Capture entity selections that were over the
-default allocation caused package installation errors.
-
-
-### Second-Generation Managed Packages Platform Event Subscriber Configuration
-
-**•** To package Change Data Capture entity selections, create a custom channel through the PlatformEventChannel metadata type.
-Then add entity selections to the custom channel through the PlatformEventChannelMember metadata type.
-
-**Documentation**
-_Metadata API Developer Guide:_ [PlatformEventChannelMember](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_platformeventchannelmember.htm)
-
-SEE ALSO:
-
-_Change Data Capture Developer Guide_ [: Compose Streams of Change Data Capture Notifications with Custom Channels](https://developer.salesforce.com/docs/atlas.en-us.260.0.change_data_capture.meta/change_data_capture/cdc_custom_channel.htm)
-
-### Platform Event Subscriber Configuration
-
-Represents configuration settings for a platform event Apex trigger, including the batch size, the trigger’s running user, and parallel
-subscription settings.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: First-Generation Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Note: PlatformEventSubscriberConfig is tied to an Apex
-trigger. If the package developer removes the Apex trigger,
-PlatformEventSubscriberConfig is also removed.
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** batchSize
-
-**•** numPartitions
-
-**•** partitionKey
-
-**•** platformEventConsumer
-
-Both Package Developer and Subscriber Can Edit
-
-**•** user
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-
-### Second-Generation Managed Packages Pricing Action Parameters
-
-More Information
-
-**Feature Name**
-Metadata Name: PlatformEventSubscriberConfig
-
-Component Type in 1GP Package Manager UI: Platform Event Subscriber Configuration
-
-**Use Case**
-Override the default running user and batch size of a platform event Apex trigger.
-
-**Relationship to Other Components**
-PlatformEventSubscriberConfig is tied to an Apex trigger.
-
-**Documentation**
-_Platform Events Developer Guide_ [: Configure the User and Batch Size for Your Platform Event Trigger](https://developer.salesforce.com/docs/atlas.en-us.260.0.platform_events.meta/platform_events/platform_events_trigger_config.htm)
-
-_Platform Events Developer Guide_ [: Platform Event Processing at Scale with Parallel Subscriptions for Apex Triggers](https://developer.salesforce.com/docs/atlas.en-us.260.0.platform_events.meta/platform_events/platform_events_ps.htm)
-
-### Pricing Action Parameters
-
-Represents a pricing action associated to a context definition and a pricing procedure.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: First-Generation Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** None
-
-Both Package Developer and Subscriber Can Edit
-
-### • Pricing Action Parameters Name
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-Metadata Name: PricingActionParameters
-
-Component Type in 1GP Package Manager UI: PricingActionParameters
-
-
-### Second-Generation Managed Packages Pricing Recipe
-
-**License Requirements**
-Salesforce Pricing permissions
-
-**Relationship to Other Components**
-All the components that pricing depends on are packaged along with the Pricing Action Parameters component.
-
-**Documentation**
-_Salesforce Help:_ [Pricing Action Parameters in Salesforce Pricing](https://help.salesforce.com/s/articleView?id=ind.pricing_pricing_action_parameters.htm&type=5&language=en_US)
-
-### Pricing Recipe
-
-Represents one out of various data models or sets of entities of a particular cloud that'll be consumed by the pricing data store during
-design and run time.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: First-Generation Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org Yes
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** None
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Recipe Name
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-Metadata Name: PricingRecipe
-
-Component Type in 1GP Package Manager UI: PricingRecipe
-
-
-### Second-Generation Managed Packages Procedure Output Resolution
-
-**Considerations When Packaging**
-There are two prerequisites currently. All the associated contexts aren’t exported. For decision tables, while exporting, column
-additions made to the associated objects aren’t refreshed during export.
-
-**License Requirements**
-Salesforce Pricing permissions
-
-**Relationship to Other Components**
-All the components that pricing is dependent on are packaged along with the pricing recipe.
-
-**Documentation**
-_Salesforce Help:_ [Pricing Recipes](https://help.salesforce.com/s/articleView?language=en_US&id=sf.pricing_pricing_recipes.htm)
-
-### Procedure Output Resolution
-
-Represents the pricing resolution for an pricing element determined using strategy name and formula.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Active Checkbox
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-Metadata Name: ProcedureOutputResolution
-
-Component Type in 1GP Package Manager UI: ProcedureOutputResolution
-
-**Use Case**
-To determine the best price for a product if a pricing rule produces multiple outcomes.
-
-
-### Second-Generation Managed Packages Process
-
-**License Requirements**
-Salesforce Pricing permissions
-
-**Documentation**
-_Salesforce Help:_ [Procedure Output Resolution](https://help.salesforce.com/s/articleView?id=ind.pricing_procedure_output_resolution.htm&type=5&language=en_US)
-
-### Process
-
-Use Flow instead.
-
-[See Flow](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/packaging_packageable_components.htm#mdc_flow)
-
-### Process Flow Migration
-
-Represents a process's migrated criteria and the resulting migrated flow.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection Yes
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** None
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Description
-
-**•** Label
-
-**•** Name
-
-More Information
-
-**Feature Name**
-Metadata Name: ProcessFlowMigration
-
-Component Type in 1GP Package Manager UI: Process Flow Migration
-
-
-### Second-Generation Managed Packages Product Attribute Set
-
-**Use Case**
-
-Include this component only if you’ve used Migrate to Flow tool and wish to have pending Scheduled Actions from migrated
-Processes converted into pending Flow Scheduled Paths in subscriber orgs. This occurs after the migrated Flow is activated in the
-subscriber org.
-
-**Considerations When Packaging**
-
-When packaging a Flow that was migrated from a Process, this component is added automatically. When adding a Flow that was
-migrated from a Process to a change set, this component would need to be added manually.
-
-**Relationship to Other Components**
-
-Flows
-
-**Documentation**
-_Salesforce Help:_ [Migrate Processes and Workflows to Flow](https://help.salesforce.com/s/articleView?id=platform.flow_migrate_to_flow.htm&type=5&language=en_US)
-
-### Product Attribute Set
-
-Represents the ProductAttribute information being used as and attribute such as color_c, size_c .
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** None
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Description
-
-**•** Master Label
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-Metadata Name: ProductAttributeSet
-
-
-### Second-Generation Managed Packages Product Specification Type
-
-**License Requirements**
-A B2B Commerce or D2C Commerce license and access to Commerce objects is required.
-
-**Usage Limits**
-An org can have a maximum of 100 product attribute sets.
-
-For each product attribute set, you can have a maximum of five associated product attribute set items.
-
-**Documentation**
-_Salesforce Help:_ [Product Variations and Attributes](https://help.salesforce.com/s/articleView?id=commerce.comm_var_att_intro.htm&type=5&language=en_US)
-
-_Metadata API Developer Guide:_ [ProductAttributeSet](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_productattributeset.htm)
-
-### Product Specification Type
-
-Represents the type of product specification provided by the user to make the product terminology unique to an industry. A product
-specification type is associated with a product specification record type.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Label
-
-**•** Description
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Name
-
-More Information
-
-**Feature Name**
-Metadata Name: ProductSpecificationType
-
-Component Type in 1GP Package Manager UI: ProductSpecificationType
-
-
-### Second-Generation Managed Packages Product Specification Record Type
-
-**License Requirements**
-Only Salesforce Admins can set up the product specification type. To create and edit product specification type, the Product Catalog
-Management Designer permission set is required. To view product specification type, the Product Catalog Management Viewer
-permission set is required.
-
-**Documentation**
-### Salesforce Help: Product Specification
-
-_Salesforce Help:_ [Create Product Specification Type and Product Specification Record Type](https://help.salesforce.com/s/articleView?id=ind.product_catalog_create_product_specification_type_and_product_specification_record_type.htm&type=5&language=en_US)
-
-### Product Specification Record Type
-
-Represents the relationship between industry-specific product specifications and the product record type.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Label
-
-**•** Record Type
-
-**•** Product Specification Type
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Name
-
-**•** Is Commercial
-
-More Information
-
-**Feature Name**
-Metadata Name: ProductSpecificationRecType
-
-Component Type in 1GP Package Manager UI: ProductSpecificationRecType
-
-
-### Second-Generation Managed Packages Prompts (In-App Guidance)
-
-**License Requirements**
-Only Salesforce admins can set up the product specification record type. To create and edit product specification record type, the
-Product Catalog Management Designer permission set is required. To view product specification record type, the Product Catalog
-Management Viewer permission set is required.
-
-**Documentation**
-_Salesforce Help:_ [Product Specification](https://help.salesforce.com/s/articleView?id=ind.product_catalog_product_specification.htm&type=5&language=en_US)
-
-_Salesforce Help:_ [Create Product Specification Type and Product Specification Record Type](https://help.salesforce.com/s/articleView?id=ind.product_catalog_create_product_specification_type_and_product_specification_record_type.htm&type=5&language=en_US)
-
-### Prompts (In-App Guidance)
-
-Represents the metadata related to in-app guidance, which includes prompts and walkthroughs.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-More Information
-
-**Feature Name**
-Metadata Name: Prompt
-
-Component Type in 1GP Package Manager UI: Prompt
-
-**Considerations When Packaging**
-
-For 2GP packages, ensure that the scratch org definition file includes the `GuidanceHubAllowed` and `Enablement` features.
-[See Build Your Own Scratch Org Definition File in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_def_file.htm) _Salesforce DX Developer Guide_ .
-
-**License Requirements**
-Enablement Admin permission set and Enablement permission set license are required.
-
-**Documentation**
-### Metadata API Developer Guide: Prompt
-
-_Salesforce Help:_ [Guidelines for In-App Guidance in Managed Packages](https://help.salesforce.com/s/articleView?id=sales.customhelp_iag_packages.htm&type=5&language=en_US)
-
-### Quick Action
-
-Represents a specified create or update quick action for an object that then becomes available in the Chatter publisher.
-
-
-### Second-Generation Managed Packages Recommendation Strategy
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Field Overrides
-
-Both Package Developer and Subscriber Can Edit
-
-**•** All attributes except Field Overrides
-
-Note: You can only modify managed package quick action layouts in Salesforce Setup. You can't make changes using Metadata
-API.
-
-Neither Package Developer or Subscriber Can Edit
-
-More Information
-
-**Feature Name**
-Metadata Name: QuickAction
-
-Component Type in 1GP Package Manager UI: Quick Action
-
-**Documentation**
-_Salesforce Help:_ [Quick Actions](https://help.salesforce.com/s/articleView?id=platform.actions_overview.htm&type=5&language=en_US)
-
-### Recommendation Strategy
-
-Represents a recommendation strategy. Recommendation strategies are applications, similar to data flows, that determine a set of
-recommendations to be delivered to the client through data retrieval, branching, and logic operations.
-
-
-### Second-Generation Managed Packages Record Action Deployment
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: First-Generation Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection Yes, except templates
-
-More Information
-
-**Feature Name**
-Metadata Name: RecommendationStrategy
-
-Component Type in 1GP Package Manager UI: Recommendation Strategy
-
-**Use Case**
-You can use this component to create personalized recommendations for end users. A recommendation displays contextually in
-Salesforce and prompts the end user to accept or reject the suggestion. When an end user accepts or rejects the recommendation,
-Salesforce automates a process, such as creating or updating a record.
-
-**Considerations When Packaging**
-When you package a recommendation strategy, you must manually add object dependencies, such as recommendation,
-recommendationReaction, and flow.
-
-**Usage Limits**
-An admin must select an object dependency for Recommendation and RecommendationReaction because object dependencies
-aren't added automatically.
-
-**Documentation**
-_Salesforce Help:_ [Einstein Next Best Action](https://help.salesforce.com/s/articleView?id=platform.einstein_next_best_action.htm&type=5&language=en_US)
-
-### Record Action Deployment
-
-Represents configuration settings for the Actions & Recommendations, Action Launcher, and Bulk Action Panel components.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: First-Generation Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade No
-
-Subscriber Can Delete Component From Org Yes
-
-Package Developer Can Remove Component From Package Yes
-
-
-### Second-Generation Managed Packages Record Alert Data Source Expression Set Definition
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** None
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Channel Configurations
-
-**•** Deployment Contexts
-
-**•** HasGuidedActions
-
-**•** HasRecommendations
-
-**•** Label
-
-**•** Recommendations
-
-**•** SelectableItems
-
-**•** ShouldLaunchActionOnReject
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Name
-
-More Information
-
-**Feature Name**
-Metadata Name: RecordActionDeployment
-
-Component Type in 1GP Package Manager UI: RecordAction Deployment
-
-**Considerations When Packaging**
-If the record action deployment component uses flows, quick actions, objects, or Next Best Action recommendations, include them
-in the package too.
-
-**Documentation**
-_Metadata API Developer Guide:_ [RecordActionDeployment](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_recordactiondeployment.htm)
-
-_Salesforce Help:_ [Create an Actions & Recommendations Deployment](https://help.salesforce.com/s/articleView?id=service.console_lex_guided_action_deployment.htm&type=5&language=en_US)
-
-### Record Alert Data Source Expression Set Definition
-
-Represents information about the data source for a record alert and the association with an expression set definition.
-
-
-### Second-Generation Managed Packages Record Type
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: First-Generation Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** All other fields
-
-Both Package Developer and Subscriber Can Edit
-
-**•** ExpressionSetDefinition
-
-**•** ExpressionSetObject
-
-**•** IsActive
-
-**•** RecordAlertDataSource
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** FullName
-
-**•** Metadata
-
-More Information
-
-**RecAlrtDataSrcExpSetDef**
-Metadata Name: RecAlrtDataSrcExpSetDef
-
-Component Type in 1GP Package Manager UI: RecAlrtDataSrcExpSetDef
-
-**Documentation**
-
-[RecAlrtDataSrcExpSetDef in](https://developer.salesforce.com/docs/atlas.en-us.260.0.financial_services_cloud_object_reference.meta/financial_services_cloud_object_reference/sforce_api_objects_recalrtdatasrcexpsetdef.htm) _Financial Services Cloud Developer Guide_ .
-
-### Record Type
-
-Represents the metadata associated with a record type. Record types let you offer different business processes, picklist values, and page
-layouts to different users. Use this metadata type to create, update, or delete record type definitions for a custom object.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-
-Second-Generation Managed Packages Record Type
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes. Supported in both 1GP and 2GP packages.
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-[For more details on 2GP component removal, see Remove Metadata Components from Second-Generation Managed Packages.](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_remove_md_components.htm)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Description
-
-**•** Record Type Label
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Active
-
-**•** Business Process
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Name
-
-More Information
-
-**Feature Name**
-Metadata Name: RecordType
-
-Component Type in 1GP Package Manager UI: Record Type
-
-**Considerations When Packaging**
-
-**•** If record types are included in the package, the subscriber’s org must support record types to install the package.
-
-**•** When a new picklist value is installed, it’s associated with all installed record types according to the mappings specified by the
-developer. A subscriber can change this association.
-
-**•** Referencing an object’s record type field in a report’s criteria—for example, `Account Record Type` —causes a dependency.
-
-**•** Summarizing by an object’s record type field in a report’s criteria—for example, `Account Record Type` —causes a
-dependency.
-
-**•** If an object’s record type field is included as a column in a report, and the subscriber’s org isn’t using record types on the object
-or doesn’t support record types, the column is dropped during installation.
-
-**•** If you install a custom report type that includes an object’s record type field as a column, that column is dropped if the org
-doesn’t support record types or the object doesn’t have record types defined.
-
-
-### Second-Generation Managed Packages RedirectWhitelistUrl
-
-**Documentation**
-_Metadata API Developer Guide:_ [RecordType](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_recordtype.htm)
-
-### RedirectWhitelistUrl
-
-Represents a trusted URL that’s excluded from redirection restrictions when the redirectionWarning or redirectBlockModeEnabled field
-on the SessionSettings Metadata type is set to true.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: First-Generation Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org Yes
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** None
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Url
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-Metadata Name: RedirectWhitelistUrl
-
-Component Type in 1GP Package Manager UI: RedirectWhitelistUrl
-
-**Use Case**
-Customers can use a Salesforce security setting to specify what happens when a user clicks a hyperlink that redirects to an untrusted
-URL outside the salesforce.com domain. The customer can choose to block these redirections or alert the user that the link is taking
-them outside the Salesforce domain. The URLs in RedirectWhiteListURL are considered trusted for the purpose of that security setting.
-
-
-### Second-Generation Managed Packages Referenced Dashboard
-
-If the Experience Cloud site pages, Lightning Experience pages, or custom Visualforce pages in your package include hyperlinks to
-URLs outside the salesforce.com domain, use RedirectWhitelistURL to ensure that users can access those hyperlinks.
-
-**Considerations When Packaging**
-When you include a RedirectWhitelistURL in a package, the URLs are trusted for redirections across Salesforce. Because this component
-modifies the security of the org, we don’t recommend that you include RedirectWhitelistURL in packages. Instead, instruct customers
-to use the Trusted URLs for Redirects Setup page or the RedirectWhitelistURL Metadata API type to add the URLs to their allowlist
-as part of activating your package. If you choose to include RedirectWhitelistURL components in your package, disclose this change
-prominently in your package documentation to ensure that your customers are aware of the security modification.
-
-**Usage Limits**
-The RedirectWhiteListURL component is available in API version 48.0 and later.
-
-**Relationship to Other Components**
-This component can be used only in conjunction with an Aura or Lightning Web Runtime (LWR) page for an Experience Cloud site,
-a Lightning Page, or a Visualforce Page.
-
-**Documentation**
-_Metadata API Developer Guide_ [: RedirectWhitelistUrl](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_redirectwhitelisturl.htm)
-
-[Salesforce Help: Manage Redirections to External URLs](https://help.salesforce.com/s/articleView?id=xcloud.security_external_redirects.htm&type=5&language=en_US)
-
-_Metadata API Developer Guide_ [: SecuritySettings]](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_securitysettings.htm)
-
-### Referenced Dashboard
-
-Represents the ReferencedDashboard object in CRM Analytics. A referenced dashboard stores information about an externally referenced
-dashboard.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org Yes
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-
-### Second-Generation Managed Packages Registered External Service
-
-**•** Label
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Description
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Application
-
-**•** Embed URL
-
-**•** Template Asset Source Name
-
-**•** Visibility
-
-More Information
-
-**Feature Name**
-Metadata Name: ReferencedDashboard
-
-**License Requirements**
-Enables Tableau Dashboards in CRM Analytics
-
-### Registered External Service
-
-Represents a registered external service, which provides an extension or integration.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** None
-
-Both Package Developer and Subscriber Can Edit
-
-**•** All attributes
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-
-### Second-Generation Managed Packages RelationshipGraphDefinition
-
-More Information
-
-**Feature Name**
-Metadata Name: RegisteredExternalService
-
-Component Type in 1GP Package Manager UI: RegisteredExternalService
-
-**Documentation**
-_Object Reference for the Salesforce Platform:_ [RegisteredExternalService](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_registeredexternalservice.htm)
-
-### RelationshipGraphDefinition
-
-Represents a definition of a graph that you can configure in your organization to traverse object hierarchies and record details, giving
-you a glimpse of how your business works.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** All properties
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-
-### Second-Generation Managed Packages Remote Site Setting
-
-More Information
-
-**Feature Name**
-Metadata Name: RelationshipGraphDefinition
-
-Component Type in 1GP Package Manager UI: RelationshipGraphDefinition
-
-**Documentation**
-_Metadata API Developer Guide:_ [RelationshipGraphDefinition](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_relationshipgraphdefinition.htm)
-
-### Remote Site Setting
-
-Represents a remote site setting.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade No
-
-Subscriber Can Delete Component From Org Yes
-
-Package Developer Can Remove Component From Package Yes. Supported in 2GP packages only.
-
-Component Has IP Protection No
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-[For more details on 2GP component removal, see Remove Metadata Components from Second-Generation Managed Packages.](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_remove_md_components.htm)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** None
-
-Both Package Developer and Subscriber Can Edit
-
-**•** All attributes except Remote Site Name
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Remote Site Name
-
-More Information
-
-**Feature Name**
-Metadata Name: RemoteSiteSettings
-
-
-### Second-Generation Managed Packages Report
-
-**Documentation**
-_Metadata API Developer Guide:_ [RemoteSiteSettings](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_remotesitesetting.htm)
-
-### Report
-
-Represents a custom report.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade No
-
-Subscriber Can Delete Component From Org Yes
-
-Package Developer Can Remove Component From Package Yes. Supported in both 1GP and 2GP packages.
-
-Component Has IP Protection No
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-[For more details on 2GP component removal, see Remove Metadata Components from Second-Generation Managed Packages.](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_remove_md_components.htm)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** None
-
-Both Package Developer and Subscriber Can Edit
-
-**•** All attributes except Report Unique Name
-
-Neither Package Developer or Subscriber Can Edit
-
-### • Report Unique Name
-
-More Information
-
-**Feature Name**
-Metadata Name: Report
-
-Component Type in 1GP Package Manager UI: Report
-
-**Considerations When Packaging**
-If a report includes elements that can’t be packaged, those elements are dropped or downgraded, or the package creation fails. For
-example:
-
-**•** Hierarchy drill-downs are dropped from activity and opportunities reports.
-
-**•** Filters on unpackageable fields are automatically dropped (for example, in filters on standard object record types).
-
-
-### Second-Generation Managed Packages Report Type
-
-**•** Package upload fails if a report includes filter logic on an unpackageable field (for example, in filters on standard object record
-types).
-
-**•** Lookup values on the `Select Campaign` field of standard campaign reports are dropped.
-
-**•** Reports are dropped from packages if they’ve been moved to a private folder or to the Unfiled Public Reports folder.
-
-**•** When a package is installed into an org that doesn’t have Chart Analytics 2.0:
-
-**–** Combination charts are downgraded instead of dropped. For example, a combination vertical column chart with a line added
-is downgraded to a simple vertical column chart. A combination bar chart with more bars is downgraded to a simple bar
-chart.
-
-**–** Unsupported chart types, such as donut and funnel, are dropped.
-
-**Documentation**
-### Metadata API Developer Guide: Report Report Type
-
-Represents the metadata associated with a custom report type. Custom report types allow you to build a framework from which users
-can create and customize reports.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes. Supported in 2GP packages only.
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** All attributes except Development Status and Report Type Name
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Development Status
-
-Neither Package Developer or Subscriber Can Edit
-
-
-### Second-Generation Managed Packages ServiceProcess
-
-**•** Report Type Name
-
-More Information
-
-**Feature Name**
-Metadata Name: ReportType
-
-Component Type in 1GP Package Manager UI: Custom Report Type
-
-**Considerations When Packaging**
-A developer can edit a custom report type in a managed package after it’s released, and can add new fields. Subscribers automatically
-receive these changes when they install a new version of the managed package. However, developers can’t remove objects from
-the report type after the package is released. If you delete a field in a custom report type that’s part of a managed package, and the
-deleted field is part of bucketing or used in grouping, an error message appears.
-
-**Documentation**
-_Metadata API Developer’s Guide:_ [ReportType](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_reporttype.htm)
-
-### ServiceProcess
-
-Represents a process created in Service Process Studio and its associated attributes.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: First-Generation Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** All other fields
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Status
-
-**•** Description
-
-### • ServiceProcessAttribute • ServiceProcessDependency • ServiceProcessItemGroup
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** FullName
-
-
-### Second-Generation Managed Packages Slack App (Beta)
-
-More Information
-
-**ServiceProcess**
-Metadata Name: ServiceProcess
-
-Component Type in 1GP Package Manager UI: ServiceProcess
-
-**Documentation**
-ServiceProcess in _Metadata API Developer Guide_ .
-
-### Slack App (Beta)
-
-Represents a Slack app.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection Yes
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** AppKey, AppToken, ClientKey, ClientSecret, SigningSecret, BotScopes, UserScopes, Config, IntegrationUser, DefaultUser
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-Metadata Name: SlackApp
-
-
-### Second-Generation Managed Packages Service Catalog Category
-
-Component Type in 1GP Package Manager UI: Slack App
-
-**Use Case**
-Represents configuration of a Slack application
-
-**License Requirements**
-Connect to Slack Permission
-
-**Relationship to Other Components**
-Slack apps reference handlers (Apex classes) and view definition components.
-
-**Documentation**
-
-[Apex SDK for Slack Developer Guide](https://developer.salesforce.com/docs/platform/salesforce-slack-sdk/overview)
-
-### Service Catalog Category
-
-Represents the grouping of individual catalog items in Service Catalog.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** ParentCategory
-
-Both Package Developer and Subscriber Can Edit
-
-**•** SortOrder
-
-**•** IsActive
-
-**•** Image
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** FullName
-
-More Information
-
-**Feature Name**
-Metadata Name: SvcCatalogCategory
-
-Component Type in 1GP Package Manager UI: Service Catalog Category
-
-
-### Second-Generation Managed Packages Service Catalog Filter Criteria
-
-**Use Case**
-Group your service catalog items together by associating them with a catalog category.
-
-**License Requirements**
-Service Catalog Add-On License
-
-Service Catalog Builder Permission Set
-
-**Post Install Steps**
-Categories appear in the Service Catalog user UI only if they contain active items.
-
-**Documentation**
-_Salesforce Help:_ [Create a Catalog Category](https://help.salesforce.com/s/articleView?id=service.esc_create_a_catalog_category.htm&type=5&language=en_US)
-
-### Service Catalog Filter Criteria
-
-Represents an eligibility rule that determines if a Service Catalog user has access to a catalog item.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** All fields
-
-Both Package Developer and Subscriber Can Edit
-
-**•** All fields
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** FullName
-
-More Information
-
-**Feature Name**
-Metadata Name: SvcCatalogFilterCriteria
-
-Component Type in 1GP Package Manager UI: Service Catalog Item Definition
-
-
-### Second-Generation Managed Packages Service Catalog Item Definition
-
-**Use Case**
-Use the filter criteria to filter on catalog items.
-
-**License Requirements**
-Service Catalog Add-On License
-
-Service Catalog Builder Permission Set
-
-**Relationship to Other Components**
-Service catalog filter criteria are related to a catalog item definition.
-
-**Documentation**
-_Salesforce Help:_ [Create a Catalog Category](https://help.salesforce.com/s/articleView?id=service.esc_create_a_catalog_category.htm&type=5&language=en_US)
-
-### Service Catalog Item Definition
-
-Represents the entity associated with a specific, individual service available in the Service Catalog.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Flow
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Status
-
-**•** Description
-
-**•** InternalNotes
-
-**•** Image
-
-**•** IsFeatured
-
-**•** IsPublic
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** FullName
-
-
-### Second-Generation Managed Packages Service Catalog Fulfillment Flow
-
-More Information
-
-**Feature Name**
-Metadata Name: SvcCatalogItemDef
-
-Component Type in 1GP Package Manager UI: Service Catalog Item Definition
-
-**Use Case**
-Create a service catalog item that employees can request in the Service Catalog user UI.
-
-**Considerations When Packaging**
-Subscribers can't change properties stored in the catalog item fulfillment flow unless they make a clone of the item and its related
-flow.
-
-**License Requirements**
-Service Catalog Add-On License
-
-Service Catalog Builder Permission Set
-
-**Usage Limits**
-The org can have only 1000 SvcCatalogItemDefs, including those items installed from a managed package.
-
-**Post Install Steps**
-If the item was installed in draft mode, it must be activated before employees can see it in the Service Catalog user UI.
-
-**Relationship to Other Components**
-SvcCatalogItemDef requires a relationship with a catalog category.
-
-**Documentation**
-_Salesforce Help:_ [Create a Catalog Item](https://help.salesforce.com/s/articleView?id=service.esc_create_a_catalog_item.htm&type=5&language=en_US)
-
-### Service Catalog Fulfillment Flow
-
-Represents the flow associated with a specific catalog item in the Service Catalog.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Description
-
-
-### Second-Generation Managed Packages Stationary Asset Environmental Source Record Type
-
-Configuration
-
-**•** Flow
-
-**•** Icon
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** FullName
-
-More Information
-
-**Feature Name**
-Metadata Name: SvcCatalogFulfillmentFlow
-
-Component Type in 1GP Package Manager UI: Service Catalog Fulfillment Flow
-
-**Use Case**
-Make a screen flow available in the Service Catalog builder. You can also use SvcCatalogFulfillmentFlow metadata to describe the
-flow and its inputs in the builder, enabling a clicks-not-code experience for providing inputs to the flow.
-
-**License Requirements**
-Service Catalog Add-On License
-
-Service Catalog Builder Permission Set
-
-**Post Install Steps**
-Fulfillment flows appear in the Service Catalog builder only if the underlying screen flow is active in the org.
-
-**Relationship to Other Components**
-SvcCatalogFulfillmentFlow must be related to a FlowDefinition.
-
-SvcCatalogFulfillmentFlow can have related SvcCatalogFulfillFlowItem records.
-
-**Documentation**
-_Salesforce Help:_ [Catalog Item Fulfillment Flows](https://help.salesforce.com/s/articleView?id=service.esc_catalog_item_fulfillment_flows.htm&type=5&language=en_US)
-
-### Stationary Asset Environmental Source Record Type Configuration
-
-Represents the setup object that contains the mapping between the Stationary Asset Environmental Source record type and internal
-enums. You can primarily use this object for calculations across different record types.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-
-### Second-Generation Managed Packages Static Resource
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** All attributes
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-Metadata Name: StnryAssetEnvSrcCnfg
-
-Component Type in 1GP Package Manager UI: Stationary Asset Environmental Source Record Type Configuration
-
-**Use Case**
-You can use this component to build on top of the current Net Zero Cloud data model and carbon accounting capability to create
-new stationary asset types for end users.
-
-**License Requirements**
-
-**•** Net Zero Cloud Growth license or Net Zero Cloud Starter license
-
-**•** Net Zero Cloud Manager permissions set
-
-**Post Install Steps**
-Enable these org settings:
-
-**•** Net Zero Cloud
-
-**•** Manage Carbon Accounting
-
-**Documentation**
-
-**•** _Salesforce Help:_ [Set Up Record Types for Net Zero Cloud](https://help.salesforce.com/s/articleView?id=ind.netzero_setup_record_types.htm&type=5&language=en_US)
-
-**•** _Salesforce Help:_ [Create a Stationary Asset Environmental Source Record](https://help.salesforce.com/s/articleView?id=ind.netzero_manager_create_building_asset.htm&type=5&language=en_US)
-
-### Static Resource
-
-Represents a static resource file, often a code library in a ZIP file.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes. Supported in 1GP and 2GP packages.
-
-
-### Second-Generation Managed Packages Streaming App Data Connector
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-[For more details on 2GP component removal, see Remove Metadata Components from Second-Generation Managed Packages.](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_remove_md_components.htm)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Description
-
-**•** File
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Name
-
-More Information
-
-**Feature Name**
-Metadata Name: StaticResource
-
-Component Type in 1GP Package Manager UI: Static Resource
-
-**Documentation**
-_Metadata API Developer Guide:_ [StaticResource](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_staticresource.htm)
-
-### Streaming App Data Connector
-
-Represents the connection information specific to Web and Mobile Connectors.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-
-### Second-Generation Managed Packages Sustainability UOM
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** None
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** AppIdentifier
-
-**•** DataConnectorType
-
-**•** StreamingAppDataConnectorType
-
-More Information
-
-**Feature Name**
-Metadata Name: StreamingAppDataConnector
-
-**Use Case**
-The StreamingAppDataConnector is included in a package when you add a data stream (DataStreamDefinition). You need this
-component if you want to package a web or mobile data stream.
-
-**Post Install Steps**
-The package doesn't contain any connection information. The package subscriber must create the connection in their subscriber
-org and then select that connection when they deploy the data kit.
-
-**Documentation**
-_Data Cloud Reference Guide_ [: Capture Web Interactions](https://developer.salesforce.com/docs/atlas.en-us.c360a_api.meta/c360a_api/c360a_api_salesforce_interactions_web_sdk.htm)
-
-_Data Cloud Reference Guide_ [: Integrate your Mobile Applications](https://developer.salesforce.com/docs/atlas.en-us.c360a_api.meta/c360a_api/c360a_api_engagement_mobile_sdk.htm)
-
-### Sustainability UOM
-
-Represents information about the additional unit of measure values defined by a customer.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-
-### Second-Generation Managed Packages Sustainability UOM Conversion
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** All attributes
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-Metadata Name: SustainabilityUom
-
-Component Type in 1GP Package Manager UI: Sustainability Unit of Measure
-
-**License Requirements**
-
-**•** Net Zero Cloud Growth license or Net Zero Cloud Starter license
-
-**•** Net Zero Cloud Manager permissions set
-
-**Post Install Steps**
-Enable these org settings:
-
-**•** Net Zero Cloud
-
-**•** Manage Carbon Accounting
-
-**Documentation**
-
-**•** _Salesforce Help:_ [Create Custom Units of Measure](https://help.salesforce.com/s/articleView?id=ind.netzero_admin_create_custom_unitsofmeasure.htm&type=5&language=en_US)
-
-### Sustainability UOM Conversion
-
-Represents information about the unit of measure conversion for the additional fuel types defined by a customer.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-
-### Second-Generation Managed Packages Timeline Object Definition
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** All attributes
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-Metadata Name: SustnUomConversion
-
-Component Type in 1GP Package Manager UI: Sustainability Unit of Measure Conversion
-
-**License Requirements**
-
-**•** Net Zero Cloud Growth license or Net Zero Cloud Starter license
-
-**•** Net Zero Cloud Manager permissions set
-
-**Post Install Steps**
-Enable these org settings:
-
-**•** Net Zero Cloud
-
-**•** Manage Carbon Accounting
-
-**Documentation**
-
-**•** _Salesforce Help:_ [Create a Unit of Measure Conversion for a Custom Fuel Type](https://help.salesforce.com/s/articleView?id=ind.netzero_admin_create_unitofmeasure_conversion_for_custom_fuel_type.htm&type=5&language=en_US)
-
-### Timeline Object Definition
-
-Represents the container that stores the details of a timeline configuration. You can use this resource with Salesforce objects to see their
-records' related events in a linear time-sorted view.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: First-Generation Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes. Supported in 1GP packages only.
-
-Component Has IP Protection No
-
-
-### Second-Generation Managed Packages Timesheet Template
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Label
-
-**•** FullName
-
-**•** Definition
-
-**•** IsActive
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Label
-
-**•** FullName
-
-**•** Definition
-
-**•** IsActive
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** BaseObject
-
-More Information
-
-**Feature Name**
-Metadata Name: TimelineObjectDefinition
-
-Component Type in 1GP Package Manager UI: Timeline Object Definition
-
-**Use Case**
-Provides out-of-the-box Timeline object definitions.
-
-**License Requirements**
-
-Industries Health Cloud or any other License that has Timeline Permission enabled in them.
-
-**Legacy Component**
-There’s a legacy Timeline component in the Health Cloud Package which is being deprecated in favor of this component.
-
-**Documentation**
-_Health Cloud Developer Guide_ [: TimelineObjectDefinition](https://developer.salesforce.com/docs/atlas.en-us.260.0.health_cloud_object_reference.meta/health_cloud_object_reference/meta_timelineobjectdefinition.htm)
-
-### Timesheet Template
-
-Represents a template for creating time sheets in Field Service.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-
-### Second-Generation Managed Packages Transaction Processing Type
-
-Packageable In: First-Generation Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes. Supported in 1GP packages only.
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-More Information
-
-**Feature Name**
-Metadata Name: TimesheetTemplate
-
-### Transaction Processing Type
-
-Represents the processing constraint settings for a transaction processing request.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** None
-
-Both Package Developer and Subscriber Can Edit
-
-**•** All attributes
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-
-### Second-Generation Managed Packages Translation
-
-More Information
-
-**Feature Name**
-Metadata Name: TransactionProcessingType
-
-Component Type in 1GP Package Manager UI: Transaction Processing Type
-
-**Consideration When Uninstalling**
-TransactionProcessingType records associated with the package are deleted from the org upon uninstallation. If sales transactions,
-such as quotes or orders, reference these records, recreate them with the same DeveloperName. Otherwise, those sales transaction
-records become corrupt.
-
-**Documentation**
-
-[TransactionProcessingType](https://developer.salesforce.com/docs/atlas.en-us.260.0.revenue_lifecycle_management_dev_guide.meta/revenue_lifecycle_management_dev_guide/tooling_api_objects_transactionprocessingtype.htm)
-
-### Translation
-
-Add translations to your managed packages.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** All attributes
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-Metadata Name: Translation
-
-
-### Second-Generation Managed Packages UI Object Relation Config
-
-**Relationship to Other Components**
-When you add this component to a first-generation managed package, the Custom Object Translation component is automatically
-added to your package.
-
-[For details on how subscribers can override translations after installing a package, see Override Translations in Second-Generation](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/entering_translated_terms_in_packages.htm)
-[Managed Packages and Unlocked Packages in the Salesforce DX Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/entering_translated_terms_in_packages.htm)
-
-Considerations When Packaging (Beta)
-
-Enable Language Extension Packages in Dev Hub to create language extension packages that contain translations of components in
-other packages.
-
-Note: This feature is a Beta Service. Customer may opt to try such Beta Service in its sole discretion. Any use of the Beta Service
-is subject to the applicable Beta Services Terms provided at Agreements and Terms.
-
-Language extension packages can only contain translations: Translations and CustomObjectTranslations. If a base package includes
-components that can’t be translated, those components aren’t included when you create a language extension package.
-
-To remove translations delivered by a package extension, uninstall the base package and all related extensions, then reinstall the base
-package and any other desired extensions. Otherwise, translations delivered by the extension remain until you uninstall all packages
-with that namespace.
-
-### UI Object Relation Config
-
-Represents the admin-created configuration of the object relation UI component.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: First-Generation Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Reference Name
-
-
-### Second-Generation Managed Packages User Access Policy
-
-**•** Developer Name
-
-**•** IsActive
-
-Both Package Developer and Subscriber Can Edit
-
-**•** IsActive
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** ContextObject
-
-More Information
-
-**Feature Name**
-Metadata Name: UIObjectRelationConfig
-
-Component Type in 1GP Package Manager UI: UI Object Relation Configuration
-
-**Use Case**
-Provides out-of-the-box relationship card configuration in Health Cloud.
-
-**License Requirements**
-Industries Health Cloud, Industries Insurance, or Industries Automotive licenses
-
-**Documentation**
-_Salesforce Help_ [: Set Up Provider Relationship Cards to Show Practitioner Information](https://help.salesforce.com/s/articleView?id=ind.admin_provider_cards.htm&type=5&language=en_US)
-
-### User Access Policy
-
-Represents a user access policy.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection No
-
-[To confirm whether this component is available in managed 1GP, managed 2GP, or both package types, see Metadata Coverage Report.](https://developer.salesforce.com/docs/success/metadata-coverage-report/references/coverage-report/metadata-coverage-report.html)
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-
-### Second-Generation Managed Packages Validation Rule
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Description
-
-**•** Name
-
-**•** Label
-
-**•** User Criteria Filters
-
-**•** Actions
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Order (only subscriber editable)
-
-**•** Status (only subscriber editable)
-
-**•** Trigger Type (only subscriber editable)
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-Metadata Name: UserAccessPolicy
-
-Component Type in 1GP Package Manager UI: User Access Policy
-
-**Usage Limits**
-User access policies have their status set to Design when installed and can be activated by the subscriber. Subscribers can have up
-to 200 active policies at one time.
-
-**Post Install Steps**
-The subscriber can activate user access policies so that they run automatically when a user record matching the policy’s user criteria
-is created, updated, or both.
-
-**Documentation**
-_Metadata API Developer Guide:_ [UserAccessPolicy](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_useraccesspolicy.htm)
-
-_Salesforce Help:_ [User Access Policies](https://help.salesforce.com/s/articleView?id=platform.perm_user_access_policies.htm&type=5&language=en_US)
-
-### Validation Rule
-
-Represents a validation rule, which is used to verify that the data a user enters in a record is valid and can be saved.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-
-### Second-Generation Managed Packages Vehicle Asset Emissions Source Record Type Configuration
-
-Package Developer Can Remove Component From Package Yes. Supported in both 1GP and 2GP packages.
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-[For more details on 2GP component removal, see Remove Metadata Components from Second-Generation Managed Packages.](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_remove_md_components.htm)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Description
-
-**•** Error Condition Formula
-
-**•** Error Location
-
-**•** Error Message
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Active
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Rule Name
-
-More Information
-
-**Feature Name**
-Metadata Name: ValidationRule
-
-Component Type in 1GP Package Manager UI: Validation Rule
-
-**Considerations When Packaging**
-For custom objects that are packaged, any associated validation rules are implicitly packaged as well.
-
-**Documentation**
-_Metadata API Developer Guide:_ [ValidationRule](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_validationformulas.htm)
-
-### Vehicle Asset Emissions Source Record Type Configuration
-
-Represents the setup object that contains the mapping between the Vehicle Asset Emissions Source record type and internal enums.
-You can primarily use this object for calculations across different record types.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-
-### Second-Generation Managed Packages View Definition (Beta)
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** All attributes
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-Metadata Name: VehicleAssetEmssnSrcCnfg
-
-Component Type in 1GP Package Manager UI: Vehicle Asset Emissions Source Record Type Configuration
-
-**Use Case**
-You can use this component to build on top of the current Net Zero Cloud data model and carbon accounting capability to create
-new vehicle asset types for end users.
-
-**License Requirements**
-
-**•** Net Zero Cloud Growth license or Net Zero Cloud Starter license
-
-**•** Net Zero Cloud Manager permissions set
-
-**Post Install Steps**
-Enable these org settings:
-
-**•** Net Zero Cloud
-
-**•** Manage Carbon Accounting
-
-**Documentation**
-
-**•** _Salesforce Help:_ [Set Up Record Types for Net Zero Cloud](https://help.salesforce.com/s/articleView?id=ind.netzero_setup_record_types.htm&type=5&language=en_US)
-
-**•** _Salesforce Help:_ [Create a Vehicle Asset Emissions Source Record](https://help.salesforce.com/s/articleView?id=ind.netzero_manager_create_vehicle_asset.htm&type=5&language=en_US)
-
-### View Definition (Beta)
-
-Represents a view definition on a Slack app.
-
-
-Second-Generation Managed Packages View Definition (Beta)
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** TargetType, Content, Description
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** None
-
-More Information
-
-**Feature Name**
-Metadata Name: ViewDefinition
-
-Component Type in 1GP Package Manager UI: View Definition
-
-**Use Case**
-Represents a view within a Slack application
-
-**License Requirements**
-Connect to Slack Permission
-
-**Relationship to Other Components**
-View definitions are referenced by Slack apps.
-
-**Documentation**
-
-[Apex SDK for Slack Developer Guide](https://developer.salesforce.com/docs/platform/salesforce-slack-sdk/overview)
-
-
-### Second-Generation Managed Packages Virtual Visit Config Virtual Visit Config
-
-Represents an external video provider configuration, which relays events from Salesforce to the provider.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** ComprehendServiceType
-
-**•** ExperienceCloudSiteUrl
-
-**•** ExternalRoleIdentifier
-
-**•** Label
-
-**•** MessagingRegion
-
-**•** NamedCredential
-
-**•** StorageBucketName
-
-**•** UsageType
-
-**•** VideoCallApptTypeValue
-
-**•** VideoControlRegion
-
-**•** VisitRegion
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Name
-
-More Information
-
-**Feature Name**
-Metadata Name: VirtualVisitConfig
-
-**Documentation**
-_Salesforce Help_ [: Virtual Care](https://help.salesforce.com/s/articleView?id=ind.admin_virtual_care.htm&type=5&language=en_US)
-
-
-### Second-Generation Managed Packages Visualforce Component Visualforce Component
-
-Represents a Visualforce component.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes. Supported in both 1GP and 2GP packages.
-
-Component Has IP Protection Yes
-
-If a developer removes a public Visualforce component from a new version of your 1GP managed package, the component is removed
-from the subscriber’s org upon upgrade. If the Visualforce component is global, it remains in the subscriber org until the administrator
-deletes it.
-
-For 2GP packages, Visualforce components are hard deleted, and only components that aren’t marked as global can be removed from
-a package.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-[For more details on 2GP component removal, see Remove Metadata Components from Second-Generation Managed Packages.](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_remove_md_components.htm)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** API Version
-
-**•** Description
-
-**•** Label
-
-**•** Markup
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Name
-
-More Information
-
-**Feature Name**
-Metadata Name: ApexComponent
-
-
-### Second-Generation Managed Packages Visualforce Page
-
-**Documentation**
-
-[Visualforce Components](https://help.salesforce.com/s/articleView?id=platform.pages_custom_components.htm&type=5&language=en_US)
-
-### Visualforce Page
-
-Represents a Visualforce page.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes. Supported in 1GP and 2GP packages.
-
-Component Has IP Protection No
-
-If a developer removes a public Visualforce component from a new version of your package, the component is removed from the
-subscriber’s org upon upgrade. If the Visualforce component is global, it remains in the subscriber org until the administrator deletes it.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-[For more details on 2GP component removal, see Remove Metadata Components from Second-Generation Managed Packages.](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_remove_md_components.htm)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** API Version
-
-**•** Description
-
-**•** Label
-
-**•** Markup
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Name
-
-More Information
-
-**Feature Name**
-Metadata Name: ApexPage
-
-
-### Second-Generation Managed Packages Wave Analytic Asset Collection
-
-Component Type in 1GP Package Manager UI: Visualforce Page
-
-### Wave Analytic Asset Collection
-
-A collection of CRM Analytics assets.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org Yes
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Folder
-
-**•** Items
-
-**•** Label
-
-Both Package Developer and Subscriber Can Editv
-
-**•** Color
-
-**•** Description
-
-**•** Shares
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Collection Type
-
-More Information
-
-**Feature Name**
-Metadata Name: WaveAnalyticAssetCollection
-
-Component Type in 1GP Package Manager UI: Wave Analytic Asset Collection
-
-
-### Second-Generation Managed Packages Wave Application
-
-**Use Case**
-Represents a collection of CRM Analytics assets.
-
-**Considerations When Packaging**
-Analytics assets should be installed in subscriber orgs via Analytics Templates. The template framework supports the data sync and
-[orchestration needed for visualization assets, along with customizations for each org. For more information, see the Analytics](https://developer.salesforce.com/docs/atlas.en-us.260.0.bi_dev_guide_wave_templates.meta/bi_dev_guide_wave_templates/bi_templatesdev_intro_wave_templates.htm)
-[Templates Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.bi_dev_guide_wave_templates.meta/bi_dev_guide_wave_templates/bi_templatesdev_intro_wave_templates.htm)
-
-**License Requirements**
-Manage CRM Analytics
-
-**Documentation**
-_Salesforce Help_ [: Curate and Share Insights with Collections](https://help.salesforce.com/s/articleView?id=analytics.bi_home_collections&type=5&language=en_US)
-
-### Wave Application
-
-A CRM Analytics application.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org Yes
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Label
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Asset Icon
-
-**•** Description
-
-**•** Shares
-
-Neither Package Developer or Subscriber Can Edit
-
-
-### Second-Generation Managed Packages Wave Component
-
-**•** Folder
-
-**•** Template Origin
-
-**•** Template Version
-
-More Information
-
-**Feature Name**
-Metadata Name: WaveApplication
-
-**Considerations When Packaging**
-Analytics assets should be installed in subscriber orgs via Analytics Templates. The template framework supports the data sync and
-[orchestration needed for visualization assets, along with customizations for each org. For more information, see the Analytics](https://developer.salesforce.com/docs/atlas.en-us.260.0.bi_dev_guide_wave_templates.meta/bi_dev_guide_wave_templates/bi_templatesdev_intro_wave_templates.htm)
-[Templates Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.bi_dev_guide_wave_templates.meta/bi_dev_guide_wave_templates/bi_templatesdev_intro_wave_templates.htm)
-
-**License Requirements**
-Manage CRM Analytics
-
-### Wave Component
-
-A CRM Analytics dashboard component.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org Yes
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Label
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Description
-
-
-### Second-Generation Managed Packages Wave Dataflow
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Application
-
-**•** Template Asset Source Name
-
-More Information
-
-**Feature Name**
-Metadata Name: WaveComponent
-
-**Considerations When Packaging**
-Analytics assets should be installed in subscriber orgs via Analytics Templates. The template framework supports the data sync and
-[orchestration needed for visualization assets, along with customizations for each org. For more information, see the Analytics](https://developer.salesforce.com/docs/atlas.en-us.260.0.bi_dev_guide_wave_templates.meta/bi_dev_guide_wave_templates/bi_templatesdev_intro_wave_templates.htm)
-[Templates Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.bi_dev_guide_wave_templates.meta/bi_dev_guide_wave_templates/bi_templatesdev_intro_wave_templates.htm)
-
-**License Requirements**
-Manage CRM Analytics
-
-### Wave Dataflow
-
-A CRM Analytics data prep dataflow.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org Yes
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Label
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Description
-
-
-### Second-Generation Managed Packages Wave Dashboard
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Application
-
-**•** Dataflow Type
-
-More Information
-
-**Feature Name**
-Metadata Name: WaveDataflow
-
-**Considerations When Packaging**
-Analytics assets should be installed in subscriber orgs via Analytics Templates. The template framework supports the data sync and
-[orchestration needed for visualization assets, along with customizations for each org. For more information, see the Analytics](https://developer.salesforce.com/docs/atlas.en-us.260.0.bi_dev_guide_wave_templates.meta/bi_dev_guide_wave_templates/bi_templatesdev_intro_wave_templates.htm)
-[Templates Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.bi_dev_guide_wave_templates.meta/bi_dev_guide_wave_templates/bi_templatesdev_intro_wave_templates.htm)
-
-**License Requirements**
-Manage CRM Analytics
-
-### Wave Dashboard
-
-A CRM Analytics dashboard.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org Yes
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Label
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Description
-
-
-### Second-Generation Managed Packages Wave Dataset
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Application
-
-**•** Date Version
-
-**•** Template Asset Source Name
-
-More Information
-
-**Feature Name**
-Metadata Name: WaveDashboard
-
-**Considerations When Packaging**
-Analytics assets should be installed in subscriber orgs via Analytics Templates. The template framework supports the data sync and
-[orchestration needed for visualization assets, along with customizations for each org. For more information, see the Analytics](https://developer.salesforce.com/docs/atlas.en-us.260.0.bi_dev_guide_wave_templates.meta/bi_dev_guide_wave_templates/bi_templatesdev_intro_wave_templates.htm)
-[Templates Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.bi_dev_guide_wave_templates.meta/bi_dev_guide_wave_templates/bi_templatesdev_intro_wave_templates.htm)
-
-**License Requirements**
-Manage CRM Analytics
-
-### Wave Dataset
-
-A CRM Analytics dataset.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org Yes
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Label
-
-Both Package Developer and Subscriber Can Edit
-
-
-### Second-Generation Managed Packages Wave Lens
-
-**•** Description
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Application
-
-**•** Template Asset Source Name
-
-**•** Type
-
-More Information
-
-**Feature Name**
-Metadata Name: WaveDataset
-
-**Considerations When Packaging**
-Analytics assets should be installed in subscriber orgs via Analytics Templates. The template framework supports the data sync and
-[orchestration needed for visualization assets, along with customizations for each org. For more information, see the Analytics](https://developer.salesforce.com/docs/atlas.en-us.260.0.bi_dev_guide_wave_templates.meta/bi_dev_guide_wave_templates/bi_templatesdev_intro_wave_templates.htm)
-[Templates Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.bi_dev_guide_wave_templates.meta/bi_dev_guide_wave_templates/bi_templatesdev_intro_wave_templates.htm)
-
-**License Requirements**
-Manage CRM Analytics
-
-### Wave Lens
-
-A CRM Analytics lens.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org Yes
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Label
-
-
-### Second-Generation Managed Packages Wave Recipe
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Description
-
-**•** Visualization Type
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Application
-
-**•** Datasets
-
-**•** Template Asset Source Name
-
-More Information
-
-**Feature Name**
-Metadata Name: WaveLens
-
-**Considerations When Packaging**
-Analytics assets should be installed in subscriber orgs via Analytics Templates. The template framework supports the data sync and
-[orchestration needed for visualization assets, along with customizations for each org. For more information, see the Analytics](https://developer.salesforce.com/docs/atlas.en-us.260.0.bi_dev_guide_wave_templates.meta/bi_dev_guide_wave_templates/bi_templatesdev_intro_wave_templates.htm)
-[Templates Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.bi_dev_guide_wave_templates.meta/bi_dev_guide_wave_templates/bi_templatesdev_intro_wave_templates.htm)
-
-**License Requirements**
-Manage CRM Analytics
-
-### Wave Recipe
-
-A CRM Analytics data prep recipe.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org Yes
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection No
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-
-### Second-Generation Managed Packages Wave Template Bundle
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Label
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Description
-
-**•** Security Predicate
-
-**•** Target Dataset Alias
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Application
-
-**•** Dataflow
-
-**•** Format
-
-**•** Template Asset Source Name
-
-More Information
-
-**Feature Name**
-Metadata Name: Wave Recipe
-
-**Considerations When Packaging**
-Analytics assets should be installed in subscriber orgs via Analytics Templates. The template framework supports the data sync and
-[orchestration needed for visualization assets, along with customizations for each org. For more information, see the Analytics](https://developer.salesforce.com/docs/atlas.en-us.260.0.bi_dev_guide_wave_templates.meta/bi_dev_guide_wave_templates/bi_templatesdev_intro_wave_templates.htm)
-[Templates Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.bi_dev_guide_wave_templates.meta/bi_dev_guide_wave_templates/bi_templatesdev_intro_wave_templates.htm)
-
-**License Requirements**
-Manage CRM Analytics
-
-### Wave Template Bundle
-
-A CRM Analytics template bundle.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org Yes
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection No
-
-
-### Second-Generation Managed Packages Wave Xmd
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Label
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Asset Icon
-
-**•** Description
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Asset Version
-
-**•** Template Type
-
-More Information
-
-**Feature Name**
-Metadata Name: WaveTemplateBundle
-
-**Considerations When Packaging**
-Analytics assets are installed in subscriber orgs via Analytics Templates using the WaveTemplateBundle. The template framework
-supports the data sync and orchestration needed for visualization assets, along with customizations for each org. For more information,
-[see the Analytics Templates Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.bi_dev_guide_wave_templates.meta/bi_dev_guide_wave_templates/bi_templatesdev_intro_wave_templates.htm)
-
-**License Requirements**
-Manage CRM Analytics
-
-### Wave Xmd
-
-The extended metadata for CRM Analytics dataset fields and their formatting for dashboards and lenses.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org Yes
-
-Package Developer Can Remove Component From Package Yes
-
-Component Has IP Protection No
-
-
-### Second-Generation Managed Packages Web Store Template
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Label
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Dates
-
-**•** Dimensions
-
-**•** Measures
-
-**•** Organizations
-
-**•** Wave Visualization
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Application
-
-**•** Dataset
-
-**•** Dataset Connector
-
-**•** Dataset Fully Qualified Name
-
-**•** Origin
-
-**•** Type
-
-More Information
-
-**Feature Name**
-Metadata Name: WaveXmd
-
-**Considerations When Packaging**
-Analytics assets should be installed in subscriber orgs via Analytics Templates. The template framework supports the data sync and
-[orchestration needed for visualization assets, along with customizations for each org. For more information, see the Analytics](https://developer.salesforce.com/docs/atlas.en-us.260.0.bi_dev_guide_wave_templates.meta/bi_dev_guide_wave_templates/bi_templatesdev_intro_wave_templates.htm)
-[Templates Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.bi_dev_guide_wave_templates.meta/bi_dev_guide_wave_templates/bi_templatesdev_intro_wave_templates.htm)
-
-**License Requirements**
-Manage CRM Analytics
-
-### Web Store Template
-
-Represents a configuration for creating commerce stores.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-
-### Second-Generation Managed Packages Workflow Alert
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package No
-
-Component Has IP Protection No
-
-More Information
-
-**Feature Name**
-Metadata Name: WebStoreTemplate
-
-**Documentation**
-_Metadata API Developer Guide:_ [WebStoreTemplate](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_webstoretemplate.htm)
-
-### Workflow Alert
-
-WorkflowAlert represents an email alert associated with a workflow rule.
-
-Component Manageability Rules
-
-Note: When creating a new package or package version, use the Flow component instead of Workflow components. If your
-managed package already includes Workflow components, come up with a plan to migrate to use Flow.
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes. Both protected and non-protected components can be
-removed.
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** None
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Additional Emails
-
-**•** Email Template
-
-**•** From Email Address
-
-
-### Second-Generation Managed Packages Workflow Field Update
-
-**•** Recipients
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Description
-
-More Information
-
-**Feature Name**
-Metadata Name: Workflow
-
-**•** Salesforce prevents you from uploading workflow alerts that have a public group, partner user, or role recipient. Change the recipient
-to a user before uploading your app. During installation, Salesforce replaces that user with the user installing the app, and the installer
-can customize it as necessary.
-
-**•** You can package workflow rules and associated workflow actions, such as email alerts and field updates. However, any time-based
-triggers aren’t included in the package. Notify your installers to set up any time-based triggers that are essential to your app.
-
-**•** References to a specific user in workflow actions, such as the email recipient of a workflow email alert, are replaced by the user
-installing the package. Sometimes workflow actions referencing roles, public groups, account team, opportunity team, or case team
-roles aren’t uploaded.
-
-**•** References to an org-wide address, such as the `From email address` of a workflow email alert, are reset to Current User
-during installation.
-
-[This component can be marked as protected. For more details, see Protected Components in the](https://developer.salesforce.com/docs/atlas.en-us.pkg1_dev.meta/pkg1_dev/packaging_protected_components.htm) _First-Generation Managed Packaging_
-_Developer Guide_ .
-
-### Workflow Field Update
-
-WorkflowFieldUpdate represents a workflow field update.
-
-Component Manageability Rules
-
-Note: When creating a new package or package version, use the Flow component instead of Workflow components. If your
-managed package already includes Workflow components, come up with a plan to migrate to use Flow.
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes. Supported in both 1GP and 2GP packages. Both protected
-and non-protected components can be removed.
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-
-### Second-Generation Managed Packages Workflow Knowledge Publish
-
-**•** Description
-
-**•** Field Value
-
-**•** Formula Value
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Lookup
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Name
-
-More Information
-
-**Feature Name**
-Metadata Name: Workflow
-
-Component Type in 1GP Package Manager UI: Workflow Field Update
-
-**•** Salesforce prevents you from uploading workflow field updates that change an `Owner` field to a queue. Change the updated field
-value to a user before uploading your app. During installation, Salesforce replaces that user with the user installing the app, and the
-installer can customize it as necessary.
-
-**•** Salesforce prevents you from uploading workflow rules, field updates, and outbound messages that reference a record type on a
-standard or managed-installed object.
-
-**•** You can package workflow rules and associated workflow actions, such as email alerts and field updates. However, any time-based
-triggers aren’t included in the package. Notify your installers to set up any time-based triggers that are essential to your app.
-
-[This component can be marked as protected. For more details, see Protected Components in the](https://developer.salesforce.com/docs/atlas.en-us.pkg1_dev.meta/pkg1_dev/packaging_protected_components.htm) _First-Generation Managed Packaging_
-_Developer Guide_ .
-
-### Workflow Knowledge Publish
-
-WorkflowKnowledgePublish represents Salesforce Knowledge article publishing actions and information.
-
-Component Manageability Rules
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: First-Generation Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes, if protected
-
-Component Has IP Protection No
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Action
-
-
-### Second-Generation Managed Packages Workflow Outbound Message
-
-**•** Description
-
-**•** Unique Name
-
-Both Package Developer and Subscriber Can Edit
-
-**•** None
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Object Name
-
-More Information
-
-**Feature Name**
-Metadata Name: WorkflowKnowledgePublish
-
-Component Type in 1GP Package Manager UI: Knowledge Action
-
-**Considerations When Packaging**
-
-WorkflowKnowledgePublish can only be installed in Salesforce Classic orgs with Knowledge enabled.
-
-WorkflowKnowledgePublish includes the article type `*__kav`, which is not supported by Lightning Knowledge.
-
-If you try to install WorkflowKnowledgePublish into an org with Lightning Knowledge enabled, this message is displayed: When
-Lightning Knowledge is enabled, you can’t add an article type.
-
-**License Requirements**
-Salesforce Classic orgs with Knowledge enabled can use this package.
-
-**Documentation**
-_Salesforce Help_ [: Create Workflow Actions for Knowledge](https://help.salesforce.com/s/articleView?id=service.knowledge_actions_create.htm&type=5&language=en_US)
-
-### Workflow Outbound Message
-
-WorkflowOutboundMessage represents an outbound message associated with a workflow rule.
-
-Component Manageability Rules
-
-Note: When creating a new package or package version, use the Flow component instead of Workflow components. If your
-managed package already includes Workflow components, come up with a plan to migrate to use Flow.
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes. Supported in both 1GP and 2GP packages. Both protected
-and non-protected components can be removed.
-
-Component Has IP Protection No
-
-
-### Second-Generation Managed Packages Workflow Rule
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Description
-
-**•** Endpoint URL
-
-**•** Fields to Send
-
-**•** Send Session ID
-
-Both Package Developer and Subscriber Can Edit
-
-**•** User to Send As
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Name
-
-More Information
-
-**Feature Name**
-Metadata Name: Workflow
-
-Component Type in 1GP Package Manager UI: Workflow Outbound Message
-
-Salesforce prevents you from uploading workflow rules, field updates, and outbound messages that reference a record type on a standard
-or managed-installed object.
-
-[This component can be marked as protected. For more details, see Protected Components in the](https://developer.salesforce.com/docs/atlas.en-us.pkg1_dev.meta/pkg1_dev/packaging_protected_components.htm) _First-Generation Managed Packaging_
-_Developer Guide_ .
-
-### Workflow Rule
-
-This metadata type represents a workflow rule.
-
-Component Manageability Rules
-
-Note: When creating a new package or package version, use the Flow component instead of Workflow components. If your
-managed package already includes Workflow components, come up with a plan to migrate to use Flow.
-
-Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
-promoted to the released state.
-
-Packageable In: Second-Generation Managed Packages (2GP), First-Generation
-Managed Packages (1GP)
-
-Component Is Updated During Package Upgrade Yes
-
-Subscriber Can Delete Component From Org No
-
-Package Developer Can Remove Component From Package Yes. Supported in both 1GP and 2GP packages.
-
-Component Has IP Protection No
-
-
-### Second-Generation Managed Packages Workflow Task
-
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
-Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
-[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
-
-[For more details on 2GP component removal, see Remove Metadata Components from Second-Generation Managed Packages.](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_remove_md_components.htm)
-
-Editable Properties After Package Promotion or Installation
-
-Only Package Developer Can Edit
-
-**•** Description
-
-**•** Evaluation Criteria
-
-**•** Rule Criteria
-
-Both Package Developer and Subscriber Can Edit
-
-**•** Active
-
-Neither Package Developer or Subscriber Can Edit
-
-**•** Rule Name
-
-More Information
-
-**•** Feature Name:
-
-Metadata Name: Workflow
-
-Component Type in 1GP Package Manager UI: Workflow Rule
-
-**•** Salesforce prevents you from uploading workflow rules, field updates, and outbound messages that reference a record type on a
-standard or managed-installed object.
-
-**•** Developers can associate or disassociate workflow actions with a workflow rule at any time. These changes, including disassociation,

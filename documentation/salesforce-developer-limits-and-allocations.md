@@ -1,7 +1,7 @@
 # SALESFORCE DEVELOPER LIMITS AND ALLOCATIONS
 
 > Source: https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf
-> Fetched: 2026-03-16T10:27:01Z
+> Fetched: 2026-06-02T08:13:23Z
 Summary
 
 Find the most critical limits
@@ -35,7 +35,7 @@ Contractual limits might also apply, as per your Salesforce contract.
 
 Apex Governor Limits
 
-[Read up on Apex limits details in Execution Governors and Limits](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_gov_limits.htm)
+[Read up on Apex limits details in Execution Governors and Limits](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/apex_gov_limits.htm)
 
 Because Apex runs in a multitenant environment, the Apex runtime engine strictly enforces limits so that
 runaway Apex code or processes don’t monopolize shared resources. If some Apex code exceeds a limit,
@@ -60,7 +60,7 @@ and asynchronous limits. For example, the maximum number of Bulk Apex jobs added
 queue with `System.enqueueJob` is the synchronous limit (50), which is higher than the
 asynchronous limit (1).
 
-Last updated: March 6, 2026
+Last updated: May 8, 2026
 
 Salesforce Developer Limits and Allocations Quick Reference Apex Governor Limits
 
@@ -137,7 +137,7 @@ Salesforce Developer Limits and Allocations Quick Reference Apex Governor Limits
 **Description** **Synchronous** **Asynchronous**
 **Limit** **Limit**
 
-Maximum number of cursor fetch calls per transaction 10 10
+Maximum number of `Cursor.fetch` calls per transaction 100 100
 
 Maximum cumulative number of new cursor rows and pagination 100 million 100 million
 cursor rows per 24-hour period
@@ -236,10 +236,10 @@ namespaces.
 Here’s an example that illustrates the separate certified managed package limits for DML statements. If
 you install a certified managed package, all the Apex code in that package gets its own 150 DML statements.
 These DML statements are in addition to the 150 DML statements your org’s native code can execute.
-This limit increase means more than 150 DML statements can execute during a single transaction if code
-from the managed package and your native org both executes. Similarly, the certified managed package
-gets its own 100-SOQL-query limit for synchronous Apex, in addition to the org’s native code limit of 100
-SOQL queries.
+This limit increase means that more than 150 DML statements can execute during a single transaction if
+code from the managed package and your native org both executes. Similarly, the certified managed
+package gets its own 100-SOQL-query limit for synchronous Apex, in addition to the org’s native code
+limit of 100 SOQL queries.
 
 There’s no limit on the number of certified namespaces that can be invoked in a single transaction.
 However, the number of operations that can be performed in each namespace must not exceed the
@@ -302,27 +302,47 @@ managed package namespaces.
 
 [For more information on Salesforce ISV Partner packages, see Salesforce Partner Programs.](http://sites.force.com/partners/PP2Page?p=P_PartnerPrograms)
 
-Lightning Platform Apex Limits
+Salesforce Platform Apex Limits
 
-The limits in this table aren't specific to an Apex transaction; Lightning Platform enforces these limits.
+The limits in this table aren't specific to an Apex transaction; the Salesforce Platform enforces these limits.
 
 **Description** **Limit**
 
 The maximum number of asynchronous Apex method executions (batch 250,000 or the number
-Apex, future methods, Queueable Apex, and scheduled Apex) per a 24-hour of user licenses in your
-period [1,6,7] org multiplied by 200,
+Apex, future methods, Queueable Apex, and scheduled Apex) per a 24-hour of applicable user
+period. This licensed daily limit is the `DailyAsyncApexExecutions` licenses in your org
+org limit. [1,6,7] multiplied by 200,
 whichever is greater
 
-Number of synchronous concurrent transactions for long-running transactions Based on the number of
-that last longer than 5 seconds for each org. [2] applicable licenses [8] in an
-
-org, the limit is
+The total number of Queueable Apex and future method executions that can The org’s daily
+be enqueued during a 24-hour period, including elastic executions processed asynchronous Apex
 
 
 Salesforce Developer Limits and Allocations Quick Reference Apex Governor Limits
 
 **Description** **Limit**
 
+at a throttled rate (beta). This limit is the method executions limit
+`DailyAsyncApexElasticExecutions` org limit. [6] plus either the org’s
+licensed daily
+asynchronous Apex
+method executions limit
+or 10 million executions,
+whichever is less.
+
+In other words, the extra
+elastic executions added
+to the daily
+asynchronous Apex
+method executions limit
+is capped at a maximum
+of 10 million additional
+executions.
+
+Number of synchronous concurrent transactions for long-running transactions Based on the number of
+that last longer than 5 seconds for each org. [2] applicable licenses [8] in an
+
+org, the limit is
 calculated as a ratio of
 100 licenses to one
 concurrent long-running
@@ -356,6 +376,9 @@ Maximum number of test classes that can be queued per 24-hour period The greater
 number of test classes in
 the org
 
+
+Salesforce Developer Limits and Allocations Quick Reference Apex Governor Limits
+
 For Batch Apex, method executions include executions of the `start`, `execute`, and `finish`
 methods. This limit is for your entire org and is shared with all asynchronous Apex: Batch Apex, Queueable
 Apex, scheduled Apex, and future methods. The license types that count toward this limit include full
@@ -377,11 +400,8 @@ Salesforce user interface including the Developer Console or by inserting `ApexT
 objects using SOAP API.
 
 To check how many asynchronous Apex executions are available, make a request to REST API `limits`
-resource or use Apex methods `OrgLimits.getAll()` or `OrgLimits.getMap()` [. See List](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/dome_limits.htm)
-[Organization Limits in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/dome_limits.htm) _REST API Developer Guide_ [and OrgLimits Class in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_OrgLimits.htm) _Apex Reference Guide_ .
-
-
-Salesforce Developer Limits and Allocations Quick Reference Apex Governor Limits
+resource or use Apex methods `OrgLimits.getAll()` or `OrgLimits.getMap()` [. See List](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_rest.meta/api_rest/dome_limits.htm)
+[Organization Limits in the](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_rest.meta/api_rest/dome_limits.htm) _REST API Developer Guide_ [and OrgLimits Class in the](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_class_System_OrgLimits.htm) _Apex Reference Guide_ .
 
 7 If the number of asynchronous Apex executions needed by a job exceeds the available number that’s
 calculated using the 24-hour rolling limit, an exception is thrown. Batch Apex preemptively checks the
@@ -417,6 +437,11 @@ Maximum SOQL query run time before Salesforce cancels the transaction 120 second
 
 Maximum number of class and trigger code units in a deployment of Apex 7500
 
+
+Salesforce Developer Limits and Allocations Quick Reference Apex Governor Limits
+
+**Description** **Limit**
+
 Apex trigger batch size [2] 200
 
 For loop list batch size 200
@@ -424,7 +449,7 @@ For loop list batch size 200
 Maximum number of records returned for a Batch Apex query in 50 million
 
 ```
- Database.QueryLocator
+               Database.QueryLocator
 
 ```
 
@@ -442,11 +467,6 @@ Maximum number of characters for a class 1 million
 Maximum number of characters for a trigger 1 million
 
 Maximum amount of code used by all Apex code in an org [1,3,4] 6 MB
-
-
-Salesforce Developer Limits and Allocations Quick Reference API Request Limits and Allocations
-
-**Description** **Limit**
 
 Method size limit [2]
 
@@ -479,14 +499,17 @@ the 900 employees who have installed the mobile app count toward this limit.
 Each test push notification that is generated through the Test Push Notification page is limited to a single
 recipient. Test push notifications count toward an org’s hourly push notification limit.
 
+
+Salesforce Developer Limits and Allocations Quick Reference API Request Limits and Allocations
+
 When an org's hourly push notification limit is met, any additional notifications are still created for in-app
 display and retrieval via REST API.
 
 API Request Limits and Allocations
 
 These limits and allocations apply to Salesforce Platform SOAP and REST APIs and any other API built on
-those frameworks, unless noted otherwise. For information about limits on other Salesforce APIs, such as
-Connect REST API, visit that specific documentation.
+those frameworks, unless noted otherwise. For information about limits on other Salesforce APIs, visit that
+specific documentation.
 
 To maintain optimum performance and ensure that the Lightning Platform API is available to all our
 customers, Salesforce balances transaction loads by imposing three types of limits:
@@ -498,9 +521,6 @@ customers, Salesforce balances transaction loads by imposing three types of limi
 **•** Total API Request Allocations
 
 When a call exceeds a request limit, an error is returned.
-
-
-Salesforce Developer Limits and Allocations Quick Reference API Request Limits and Allocations
 
 Concurrent API Request Limits
 
@@ -524,14 +544,17 @@ API Timeout Limits
 
 The timeout limit for REST and SOAP API calls is 10 minutes, except for any query call. The timeout for
 query calls is set by the SOQL limits. For details on SOQL limits, visit _SOQL and SOSL Limits for Search Queries_ .
-For timeout limits on calls made using other Salesforce APIs, such as the Connect REST API and Bulk APIs,
-visit the specific documentation for those APIs.
+For timeout limits on calls made using other Salesforce APIs, such as the Bulk APIs, visit the specific
+documentation for those APIs.
 
 If a request exceeds this limit, the API returns a `REQUEST_RUNNING_TOO_LONG` status code (for
 SOAP API) or a `QUERY_TIMEOUT` exception code (for REST API).
 
-[For calls to Composite Resources in REST API, this timeout applies to the entire composite request, not to](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/resources_composite.htm)
+[For calls to Composite Resources in REST API, this timeout applies to the entire composite request, not to](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_rest.meta/api_rest/resources_composite.htm)
 each subrequest.
+
+
+Salesforce Developer Limits and Allocations Quick Reference API Request Limits and Allocations
 
 Total API Request Allocations
 
@@ -554,16 +577,6 @@ API access enabled
 **•** Lightning Platform - One App:
 
 **•** Customer Community: 0
-
-
-100,000 + (number of licenses x
-calls per license type) + purchased
-API Call Add-Ons
-
-Salesforce Developer Limits and Allocations Quick Reference API Request Limits and Allocations
-
-**Salesforce Edition** **API Calls Per License Type** **Total Calls Per 24-Hour**
-**Per 24-Hour Period** **Period**
 
 **•** Customer Community Login:
 
@@ -603,6 +616,20 @@ Edition orgs
 
 **•** Customer Community Login:
 
+
+100,000 + (number of licenses x
+calls per license type) + purchased
+API Call Add-Ons
+
+100,000 + (number of licenses x
+calls per license type) + purchased
+API Call Add-Ons
+
+Salesforce Developer Limits and Allocations Quick Reference API Request Limits and Allocations
+
+**Salesforce Edition** **API Calls Per License Type** **Total Calls Per 24-Hour**
+**Per 24-Hour Period** **Period**
+
 **•** Customer Community Plus:
 
 **•** Customer Community Plus
@@ -620,16 +647,6 @@ Login: 10
 **•** Partner Community: 200
 
 **•** Partner Community Login: 10
-
-
-100,000 + (number of licenses x
-calls per license type) + purchased
-API Call Add-Ons
-
-Salesforce Developer Limits and Allocations Quick Reference API Request Limits and Allocations
-
-**Salesforce Edition** **API Calls Per License Type** **Total Calls Per 24-Hour**
-**Per 24-Hour Period** **Period**
 
 **•** Lightning Platform Starter: 200
 per member for Unlimited and
@@ -659,15 +676,18 @@ Note: Load, performance, and other system issues can prevent you from using your
 of calls in a 24–hour period.
 
 APIs that count toward this allocation include the Lightning Platform REST API, the Lightning Platform
-SOAP API, Bulk API, and Bulk API 2.0. API calls issued by certain Salesforce connected apps (for example,
-the Salesforce mobile app) don’t count. To determine which APIs affect the allocation, see Monitoring
-Your API Usage.
+SOAP API, Bulk API, Bulk API 2.0, and most Connect REST APIs. API calls issued by certain Salesforce
+connected apps (for example, the Salesforce mobile app) don’t count. To determine which APIs affect the
+allocation, see Monitoring Your API Usage.
 
 Calls that include DebuggingHeader have a separate allocation limit of 1,000 calls per 24-hour period.
 These calls can continue to be made after the total request limit for an org is reached.
 
 Limits and allocations are enforced against the aggregate of all API calls made to the org in a 24-hour
 period. Limits and allocations are not on a per-user basis.
+
+
+Salesforce Developer Limits and Allocations Quick Reference API Request Limits and Allocations
 
 Monitoring Your API Usage
 
@@ -685,10 +705,7 @@ aggregated over 30 days. This information can be found on the Company Informatio
 
 **•** Information returned in the response body (in `<type>API REQUESTS</type>` ) for SOAP APIs.
 
-**•** The `[/limits](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/resources_limits.htm)` call in the Lightning Platform REST API.
-
-
-Salesforce Developer Limits and Allocations Quick Reference API Request Limits and Allocations
+**•** The `[/limits](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_rest.meta/api_rest/resources_limits.htm)` call in the Lightning Platform REST API.
 
 You can configure your org so that email is sent to a designated user when the number of API requests
 has exceeded a specified percentage of the amount allotted. Perform this configuration from Setup by
@@ -728,9 +745,13 @@ account executive.
 
 Before you buy more API calls, review your current API usage, and reduce your total number of requests,
 if possible. For example, you can optimize either your own or a partner client application to use fewer API
+
+
+Salesforce Developer Limits and Allocations Quick Reference Connect REST API Limits
+
 calls and still accomplish the same work. If you use a partner app, consult with the vendor to verify that
 the product makes optimal use of the API. A product that makes inefficient use of the API incurs unnecessary
-[costs for your company. You can also use REST API Composite Resources to improve your application’s](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/resources_composite.htm)
+[costs for your company. You can also use REST API Composite Resources to improve your application’s](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_rest.meta/api_rest/resources_composite.htm)
 performance by minimizing the number of round-trips between the client and server.
 
 Example API Usage Metering Calculations
@@ -742,9 +763,6 @@ plus 15 licenses x 1,000 calls).
 
 **•** For a Developer Edition org that made 14,500 calls at 5:00 AM Wednesday, 499 calls at 11:00 PM
 Wednesday, only one more call can successfully be made until 5:00 AM Thursday.
-
-
-Salesforce Developer Limits and Allocations Quick Reference Connect REST API Limits
 
 Request Size Limits
 
@@ -764,14 +782,10 @@ Connect REST API Limits
 
 Limits protect shared resources. These limits are for Connect REST API consumers.
 
-Connect REST API requests are subject to rate limits. Connect REST API has a different rate limit than other
-Salesforce APIs. Connect REST API has a per user, per application, per hour rate limit. When you exceed
-the rate limit, Connect REST API resources return a 503 Service Unavailable error code.
-
-For migrated orgs and orgs created in Summer ’24 and later, only requests to Chatter REST API resources
-are subject to the per user, per application, per hour rate limit. The documentation for every Chatter
-resource specifies that Chatter is required. Requests to resources that don’t require Chatter count toward
-[the Salesforce Platform total API request allocations, which are per org and span a 24-hour period.](https://developer.salesforce.com/docs/atlas.en-us.260.0.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_api.htm)
+Most Connect REST API requests are subject to the same rate limits as other Salesforce APIs. Only requests
+to Chatter REST API resources (a subset of Connect REST API resources) are subject to a per user, per
+application, per hour rate limit. When you exceed the rate limit, Connect REST API resources return a 503
+Service Unavailable error code.
 
 For applications using a session ID from Salesforce, the rate limit is per user, per hour—there isn’t a separate
 bucket for applications. All applications the user accesses with a session ID use this general quota. To take
@@ -780,6 +794,9 @@ advantage of the per user, per application, per hour limit, use OAuth tokens.
 Note: Load, performance, and other system issues can prevent some limits from being reached.
 Limits can change without notice. Ensure that your applications make efficient use of available
 requests and gracefully handle the 503 error code.
+
+
+Salesforce Developer Limits and Allocations Quick Reference Bulk API and Bulk API 2.0 Limits and Allocations
 
 Bulk API and Bulk API 2.0 Limits and Allocations
 
@@ -796,9 +813,6 @@ allocation.
 
 In Bulk API 2.0, only ingest jobs consume batches. Query jobs don’t. For details, see How Requests Are
 Processed in the _Bulk API 2.0 Developer Guide_ .
-
-
-Salesforce Developer Limits and Allocations Quick Reference Bulk API and Bulk API 2.0 Limits and Allocations
 
 In Bulk API 2.0, batches are created for you automatically. In Bulk API, you must create the batches yourself.
 
@@ -837,6 +851,9 @@ Maximum time that 24 hours The same. (But this only applies
 a job can remain to ingest jobs, not query jobs.)
 open
 
+
+Salesforce Developer Limits and Allocations Quick Reference Bulk API and Bulk API 2.0 Limits and Allocations
+
 Limits Specific to Ingest Jobs
 
 **Item** **Bulk API Limit** **Bulk API 2.0 Limit**
@@ -852,12 +869,6 @@ time size depends on the API version. In API version
 In API version 21.0 and later, the chunk size is
 200 records. Start with the maximum batch
 size of 10,000 records. Salesforce processes
-
-
-Salesforce Developer Limits and Allocations Quick Reference Bulk API and Bulk API 2.0 Limits and Allocations
-
-**Item** **Bulk API Limit** **Bulk API 2.0 Limit**
-
 each batch asynchronously. Adjust batch sizes
 based on processing times. If processing a
 batch takes too long, then the batch times out
@@ -895,6 +906,12 @@ conversion can increase
 the data size by
 approximately 50%. To
 account for the base64
+
+
+Salesforce Developer Limits and Allocations Quick Reference Bulk API and Bulk API 2.0 Limits and Allocations
+
+**Item** **Bulk API Limit** **Bulk API 2.0 Limit**
+
 conversion increase,
 upload data that does not
 exceed 100 MB.
@@ -909,11 +926,6 @@ of fields in a record
 Maximum number 400,000 Same as Bulk API
 of characters in a
 record
-
-
-Salesforce Developer Limits and Allocations Quick Reference Bulk API and Bulk API 2.0 Limits and Allocations
-
-**Item** **Bulk API Limit** **Bulk API 2.0 Limit**
 
 Maximum number 10,000 N/A
 of records in a batch
@@ -952,6 +964,12 @@ in the chunk. This can range from
 chunk size between 100,000 and
 250,000 is recommended
 because smaller chunk sizes can
+
+
+Salesforce Developer Limits and Allocations Quick Reference API Query Cursor Limits
+
+**Item** **Bulk API Limit** **Bulk API 2.0 Limit**
+
 cause empty batches to be
 created and sent.
 
@@ -967,16 +985,11 @@ results
 
 Results lifespan
 
+Maximum retrieved file size
+
 You can retrieve the query job's Same as Bulk API
 results within 7 days of job
 completion.
-
-
-Salesforce Developer Limits and Allocations Quick Reference API Query Cursor Limits
-
-**Item** **Bulk API Limit** **Bulk API 2.0 Limit**
-
-Maximum retrieved file size
 
 1 GB. If processing of the batch
 results in 1 GB of retrieved data,
@@ -1036,6 +1049,10 @@ isn't a limit on the number of open cursors.
 
 When results for a large or complex query can’t be returned in a single batch, one or more server-side
 cursors and corresponding query locators are automatically created. A cursor marks the location of
+
+
+Salesforce Developer Limits and Allocations Quick Reference SOAP API Call Limits
+
 additional query results in the database, and a query locator finds the cursor. To get the additional results,
 use query locator within another call, such as `queryMore()` call in SOAP API or `nextRecordUrl`
 field in REST API.
@@ -1045,9 +1062,6 @@ cursors per user were accessible at the same time, which limited the query resul
 result sets per user. The oldest cursor and result set expired after 15 minutes of inactivity. The removal of
 cursor limits is universal, and applies to all versions of Apex, SOAP API, REST API, Bulk API, Bulk API 2.0, and
 any features built using these technologies.
-
-
-Salesforce Developer Limits and Allocations Quick Reference SOAP API Call Limits
 
 SOAP API Call Limits
 
@@ -1100,6 +1114,12 @@ records, the entire operation fails.
 requested batch size isn’t necessarily the actual batch size.
 Salesforce Web Service Connector (WSC) clients can set
 the batch size by calling `setQueryOptions()` on
+
+
+Salesforce Developer Limits and Allocations Quick Reference Metadata Limits
+
+**API Name** **API Limit** **Limit Description**
+
 the connection object. C# client applications can change
 the batch size in the `QueryOptions` portion of the
 SOAP header before invoking the `query()` call.
@@ -1108,9 +1128,6 @@ If the SOQL statement selects two or more custom fields
 of type long text, the batch size can’t be greater than 200
 records. This limit prevents large SOAP messages from
 being returned.
-
-
-Salesforce Developer Limits and Allocations Quick Reference Metadata Limits
 
 Metadata Limits
 
@@ -1154,8 +1171,13 @@ SOQL and SOSL Limits for Search Queries
 SOQL statements Maximum length of By default, 100,000 characters. For details on SOQL
 SOQL statements statement limits, including information on queries that
 
-[involve external objects, see Understanding Relationship](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_relationships_query_limits.htm)
-[Query Limitations.](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_relationships_query_limits.htm)
+
+Salesforce Developer Limits and Allocations Quick Reference SOQL and SOSL Limits for Search Queries
+
+**Feature** **Limit** **Limit Description**
+
+[involve external objects, see Understanding Relationship](https://developer.salesforce.com/docs/atlas.en-us.262.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_relationships_query_limits.htm)
+[Query Limitations.](https://developer.salesforce.com/docs/atlas.en-us.262.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_relationships_query_limits.htm)
 
 Long, complex SOQL statements, such as statements
 that contain many formula fields, can result in a
@@ -1168,12 +1190,6 @@ this error, reduce the complexity of your SOQL statement.
 Page layouts in Lightning with more than 250 fields can
 also cause a `QUERY_TOO_COMPLICATED` error.
 Lightning uses auto-generated SOQL to retrieve fields
-
-
-Salesforce Developer Limits and Allocations Quick Reference SOQL and SOSL Limits for Search Queries
-
-**Feature** **Limit** **Limit Description**
-
 for a record page layout, so the error can occur even if
 there isn’t any customer-written SOQL.
 
@@ -1200,8 +1216,8 @@ returned unless you specify custom limits in the query. This limit
 
 includes results from child objects. Previous API versions
 return 200 results. When a query is executed from within
-[an Apex class, additional limits apply. See Apex Governor](https://developer.salesforce.com/docs/atlas.en-us.260.0.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_apexgov.htm)
-[Limits for more information.](https://developer.salesforce.com/docs/atlas.en-us.260.0.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_apexgov.htm)
+[an Apex class, additional limits apply. See Apex Governor](https://developer.salesforce.com/docs/atlas.en-us.262.0.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_apexgov.htm)
+[Limits for more information.](https://developer.salesforce.com/docs/atlas.en-us.262.0.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_apexgov.htm)
 
 Availability 2 days, including results in nested queries.
 
@@ -1218,6 +1234,12 @@ SOSL statements SOQL statement character limit defined for your org.
 SOSL search query Maximum length of If the `SearchQuery` string is longer than 10,000
 strings `SearchQuery` string characters, no result rows are returned. If
 `SearchQuery` is longer than 4,000 characters, any
+
+
+Salesforce Developer Limits and Allocations Quick Reference SOQL and SOSL Limits for Search Queries
+
+**Feature** **Limit** **Limit Description**
+
 logical operators are removed. For example, the `AND`
 operator in a statement with a `SearchQuery` that’s
 4,001 characters defaults to the `OR` operator, which
@@ -1235,19 +1257,13 @@ Relationship queries Relationship query
 limits
 be specified in a query. A custom object allows up
 to 40 relationships, so you can reference all the
-
-
-Salesforce Developer Limits and Allocations Quick Reference SOQL and SOSL Limits for Search Queries
-
-**Feature** **Limit** **Limit Description**
-
 child-to-parent relationships for a custom object in
 one query.
 
 **•** A single query of polymorphic fields can count
 multiple times against the child-to-parent
 relationship limit. For more information, see
-[Understanding Relationship Query Limitations.](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_relationships_query_limits.htm)
+[Understanding Relationship Query Limitations.](https://developer.salesforce.com/docs/atlas.en-us.262.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_relationships_query_limits.htm)
 
 **•** No more than 20 parent-to-child relationships can
 be specified in a query.
@@ -1284,6 +1300,11 @@ RecentlyViewed data is periodically truncated down to
 200 records per object. RecentlyViewed data is retained
 for 90 days, after which it is removed on a periodic basis.
 
+
+Salesforce Developer Limits and Allocations Quick Reference Visualforce Limits
+
+**Feature** **Limit** **Limit Description**
+
 OFFSET clause
 
 Maximum number of
@@ -1299,9 +1320,6 @@ SOQL statement a SOQL query controls the order of the query results,
 such as alphabetically beginning with z. If records are
 null, you can use `ORDER BY` to display the empty
 records first or last.
-
-
-Salesforce Developer Limits and Allocations Quick Reference Visualforce Limits
 
 Visualforce Limits
 
@@ -1347,6 +1365,11 @@ read-only mode
 
 Maximum field sets that can be displayed on a single Visualforce page. 50
 
+
+Salesforce Developer Limits and Allocations Quick Reference Platform Event Allocations
+
+**Limit** **Value**
+
 Maximum field sets allowed per sObject. 2,000
 
 Maximum fields through lookup relationships allowed per field set. 25
@@ -1357,15 +1380,12 @@ Platform Event Allocations
 
 Check out allocations for platform events, change data capture events, and Pub/Sub API.
 
-
-Salesforce Developer Limits and Allocations Quick Reference Platform Event Allocations
-
-**[Platform Event Allocations](https://developer.salesforce.com/docs/atlas.en-us.260.0.platform_events.meta/platform_events/platform_event_limits.htm)**
+**[Platform Event Allocations](https://developer.salesforce.com/docs/atlas.en-us.262.0.platform_events.meta/platform_events/platform_event_limits.htm)**
 
 Learn about the allocations for platform events including platform event definitions, event publishing,
 and event delivery.
 
-**[Change Data Capture Allocations](https://developer.salesforce.com/docs/atlas.en-us.260.0.change_data_capture.meta/change_data_capture/cdc_allocations.htm)**
+**[Change Data Capture Allocations](https://developer.salesforce.com/docs/atlas.en-us.262.0.change_data_capture.meta/change_data_capture/cdc_allocations.htm)**
 
 Learn about the allocations for change events including the number custom channels, selected entities
 in a channel, and event delivery.

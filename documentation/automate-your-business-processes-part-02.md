@@ -1,3 +1,5664 @@
+If you’re troubleshooting a flow that fails, the debug option in Flow Builder can be your best friend.
+See real-time details of what your flow does, set input variables, and restart the flow anytime to
+debug a different branch.
+
+Warning: If you debug a flow without choosing to run the flow in rollback mode, the flow
+performs its actions, including any DML operations and Apex code execution. Remember,
+closing or restarting a running flow doesn’t roll back its previously executed actions, callouts,
+and changes committed to the database.
+
+Debug isn't available with all flow types. See Considerations for Troubleshooting Flows on page
+282.
+
+**1.** Open the flow in Flow Builder.
+
+#### 2. Click Debug .
+
+**3.** Set the debug options and input variables.
+
+The debug options vary depending on the flow type.
+
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+USER PERMISSIONS
+
+To debug a flow in Flow
+Builder:
+
+**•** View All Data
+
+Automate Your Business Processes with Salesforce Flow Troubleshoot Flow Errors
+
+**4.** To debug the flow as another user, enable debugging as another user.
+
+**a.** From Setup, in the Quick Find box, enter _`Process`_, and then click **Process Automation Settings** .
+
+**b.** Enable **Let admins debug flows as other users** .
+
+**c.** Save your work.
+
+Warning: When you debug a flow as another user, the flow’s record changes and actions are performed as that user.
+Also, the user’s profile and permission sets determine the object permissions and field-level access of the flow. However,
+flows that always run in system context ignore the user’s object permissions and field-level access.
+
+**d.** In Debug Options, select **Run flow as another user** and search for the user that you want to debug.
+
+You can debug a flow as another user only in a sandbox environment.
+
+**5.** Click **Run** .
+
+
+Automate Your Business Processes with Salesforce Flow Troubleshoot Flow Errors
+
+The debug details for the run appear in a panel on the right.
+
+**6.** If you selected Debug wait element behavior when you set the debug options, select a **Wait Path**, and then click **Continue the**
+**Debug Run** for each Wait element in the flow.
+The debug details for the run appear in a panel on the right.
+
+**7.** (Optional) To restart the flow by using the same or different values for the input variables, click **Debug Again** .
+
+**8.** (Optional) To convert the debug run to a test in a record-triggered flow only, click **Convert to Test** .
+
+Flow Example: Debug a Screen Flow
+Let’s debug a screen flow that creates a contact for each beneficiary on a policy by creating a registration form.
+
+
+Automate Your Business Processes with Salesforce Flow Troubleshoot Flow Errors
+
+Flow Example: Debug a Template-Triggered Prompt Flow
+Let’s debug a prompt flow that integrates with a prompt template for generating a list of events.
+
+SEE ALSO:
+
+Customize What Happens When a Flow Fails
+
+Considerations for Troubleshooting Flows
+
+Lightning Runtime vs. Classic Runtime for Flows
+
+Flows in Transactions
+
+Testing Your Flow
+
+_Trailhead_ [: Flow Troubleshooting](https://trailhead.salesforce.com/content/learn/modules/flow-troubleshooting)
+
+##### Flow Example: Debug a Screen Flow
+
+Let’s debug a screen flow that creates a contact for each beneficiary on a policy by creating a
+registration form.
+
+Before activating and distributing your screen flow, you debug the flow to troubleshoot any flow
+failure.
+
+**1.** Create or open the Registration forms on page 155 screen flow in Flow Builder.
+
+**2.** Click **Debug** .
+
+**3.** Set the debug options.
+
+If you want to run the flow as another user, ensure that **Let admins debug flows as other**
+**users** is enabled in **Process Automation**
+
+**Settings** .
+
+**4.** Click **Run** .
+The debug details for the run appear in a panel on the right.
+
+**5.** Enter the values in the required fields.
+
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+USER PERMISSIONS
+
+To open, edit, or create a
+flow in Flow Builder:
+
+**•** Manage Flow
+
+Automate Your Business Processes with Salesforce Flow Troubleshoot Flow Errors
+
+**6.** Click **Next** .
+
+**7.** Review the Debug Details to see the results.
+
+**8.** (Optional) To restart the flow by using the same or different values for the input variables, click **Change Inputs or Run Again** .
+
+You can’t convert the debug run to a test in the screen flow.
+
+SEE ALSO:
+
+Flow Example: Create a Contact for Each Beneficiary on a Policy
+
+Considerations for Troubleshooting Flows
+
+_Trailhead_ [: Flow Troubleshooting](https://trailhead.salesforce.com/content/learn/modules/flow-troubleshooting)
+
+##### Flow Example: Debug a Template-Triggered Prompt Flow
+
+Let’s debug a prompt flow that integrates with a prompt template for generating a list of events.
+
+Template-triggered prompt flows aren’t compatible with prompt templates created in Winter ’24.
+
+Before creating your sales email prompt template, you debug the flow to troubleshoot any flow
+failure.
+
+**1.** Create or open the Get Marketing Events on page 45 prompt flow in Flow Builder.
+
+**2.** Click **Debug** .
+
+**3.** Set the debug options and input variables.
+
+If you want to run the flow as another user, ensure that **Let admins debug flows as other**
+**users** is enabled in **Process Automation Settings** .
+
+Warning: If you debug a flow without choosing to run the flow in rollback mode, the
+flow performs its actions, including any DML operations and Apex code execution.
+Remember, closing or restarting a running flow doesn’t roll back its previously executed
+actions, callouts, and changes committed to the database.
+
+**4.** Enable **Run flow in rollback mode** under Debug Options.
+
+
+EDITIONS
+
+Available in: Lightning
+Experience
+
+Available in: **Enterprise**,
+**Performance**, and
+**Unlimited** Editions with the
+Einstein for Sales, Einstein for
+Platform, or Einstein for
+Service add-on
+
+USER PERMISSIONS
+
+To open, edit, or create a
+flow in Flow Builder:
+
+**•** Manage Flow
+
+To create and manage
+prompt templates in Prompt
+Builder:
+
+**•** Prompt Template
+Manager permission set
+
+Automate Your Business Processes with Salesforce Flow Troubleshoot Flow Errors
+
+**5.** Click **Run** .
+The debug details for the run appear in a panel on the right.
+
+**6.** Review the Debug Details to see the results.
+
+
+Automate Your Business Processes with Salesforce Flow Troubleshoot Flow Errors
+
+**7.** (Optional) To restart the flow by using the same or different values for the input variables, click **Debug Again** .
+
+
+Automate Your Business Processes with Salesforce Flow Troubleshoot Flow Errors
+
+You can’t convert the debug run to a test in the prompt flow.
+
+SEE ALSO:
+
+Example of Sales Email Template-Triggered Prompt Flow
+
+Considerations for Troubleshooting Flows
+
+_Trailhead_ [: Flow Troubleshooting](https://trailhead.salesforce.com/content/learn/modules/flow-troubleshooting)
+
+#### Troubleshooting Flow URLs
+
+If you’re distributing a flow and the custom button, custom link, or a direct flow URL isn’t working
+as expected, verify the referenced flow. In addition, verify its variables if you’re passing values into
+a flow from the URL.
+
+To make sure that the URL can find the right flow, verify that:
+
+**•** The flow that the URL references hasn’t been deleted or deactivated.
+
+**•** The flow name is correctly spelled and capitalized. It must be an exact, case-sensitive match to
+the flow’s API Name.
+
+If your flow URL references a specific flow version, verify that the version hasn’t been deleted or
+deactivated.
+
+If you’re using the URL to pass values into the flow and the URL can’t access the variable, the
+parameter that references the variable is ignored.
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+Make sure that the URL can find the right flow variable and that the value that you’re passing is compatible with the variable’s data type.
+Verify that the URL variable:
+
+**•** Is spelled and capitalized correctly. It must be an exact, case-sensitive match to the flow variable.
+
+**•** Allows input access.
+
+**•** Hasn’t been renamed in the flow.
+
+**•** Hasn’t been removed from the flow.
+
+**•** Doesn't have a data type of Record.
+
+SEE ALSO:
+
+Customize a Flow URL to Control Finish Behavior
+
+Customize a Flow URL to Set Variable Values
+
+Troubleshoot Flow Errors
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+Select Flow and Process Error Email Recipients
+
+When a process or flow interview fails, a detailed email is sent to the admin who last modified the
+process or flow. However, sometimes the admin isn’t the best person to act on the details of what
+was executed and what went wrong. In that case, you can send error emails to the Apex exception
+email recipients.
+
+**User Permissions Needed**
+
+To edit process automation settings: Customize Application
+
+To create, update, and delete flow list views: Manage Flow
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+Process and flow error emails include the data that's involved in the process or flow, including user-entered data.
+
+**1.** From Setup, enter _`Automation`_ in the Quick Find box, and then select **Process Automation Settings** .
+
+**2.** For Send Process or Flow Email to, select who receives the error emails.
+
+**•** If you select **User Who Last Modified the Process or Flow**, error emails are sent to the user who last modified the flow that
+has the error.
+
+**•** If you select **Apex Exception Email Recipients** [, error emails are sent to the addresses listed on the Apex Exception Email page](https://developer.salesforce.com/docs/atlas.en-us.250.0.apexcode.meta/apexcode/apex_exception_definition.htm#unhandled_exception_emails)
+in Setup.
+
+**3.** Save your changes.
+
+SEE ALSO:
+
+Troubleshoot Flow Errors
+
+[What Happens When an Apex Exception Occurs?](https://help.salesforce.com/s/articleView?id=sf.code_apex_exceptions.htm&language=en_US)
+
+What Happens When a Process Fails?
+
+Customize What Happens When a Flow Fails
+
+Flow Limits and Considerations
+
+When designing, managing, and running flows, consider the permissions, use limits, and data issues.
+
+Flow Usage-Based Entitlements
+Like feature licenses, usage-based entitlements don’t limit what you can do in Salesforce; they
+add to your functionality. If your usage exceeds the allowance, Salesforce contacts you to discuss
+additions to your contract. In the meantime, your flow interviews run as usual.
+
+General Flow Limits
+When using flows, keep flow limits and Apex governor limits in mind.
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Per-Transaction Flow Limits and **Developer** Editions
+Salesforce strictly enforces limits to ensure that any runaway flows don't monopolize shared
+resources in the multitenant environment. Per-transaction limits, which Apex enforces, govern
+flows. If an element causes the transaction to exceed governor limits, the system rolls back the entire transaction. The transaction
+rolls back even if the element has a defined fault connector path.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+Flow Builder Considerations
+When you create a flow in Flow Builder, familiarize yourself with its limitations and behaviors. For example, Flow Builder supports
+only a few locales. Because of intellectual property protection, you can’t open flows installed from managed packages, unless the
+flows are templates.
+
+Salesforce Feature Considerations for Flows
+When designing flows, consider these Salesforce features.
+
+Salesforce Data Considerations for Flows
+When designing flows, keep these Salesforce data considerations in mind.
+
+Flow Feature Considerations
+When designing flows, keep these flow feature considerations in mind. Also, some resources, elements, and screen components
+have more considerations that are described in their reference topics.
+
+Flow Data Considerations
+When designing flows, keep these data considerations in mind.
+
+Flow Management Considerations
+When managing flows, consider the administration and activation limits.
+
+Considerations for Packaging Flows
+You can include a flow in a managed or unmanaged package. Before you create, update, or deploy a package that contains a flow,
+understand the limitations and behaviors of packages.
+
+Change Set Considerations for Flows
+Before you use change sets to deploy a flow, understand the limits and behaviors that are related to component dependencies,
+deployment, and flow triggers.
+
+Considerations for Flows Installed from Packages
+Keep these considerations in mind when you distribute, upgrade, or remove a flow that you installed from a package.
+
+Considerations for Troubleshooting Flows
+Keep these considerations in mind when reviewing a flow error email or using the debug option in Flow Builder.
+
+Run-Time Changes by Release and API Version
+These versioned updates affect only flows that are configured to run on specific API versions. With versioned updates you can test
+and adopt run-time behavior changes for individual flows at your convenience.
+
+SEE ALSO:
+
+Flow Builder Tour
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+Flow Usage-Based Entitlements
+
+Like feature licenses, usage-based entitlements don’t limit what you can do in Salesforce; they add
+to your functionality. If your usage exceeds the allowance, Salesforce contacts you to discuss
+additions to your contract. In the meantime, your flow interviews run as usual.
+
+For per-month entitlements, your contract determines the start and end of the month. You can
+view the start and end dates for your org’s usage-based entitlements on the Company Information
+page in Setup.
+
+Note:
+
+**•** Flows that are launched by another flow via a Subflow element don’t count toward your
+allocation of flow interviews.
+
+**•** When a process built in Process Builder launches a flow, both the process and the flow
+count toward your allocation of flow interviews.
+
+**•** If you enable recursion for a process built in Process Builder, a separate flow interview
+starts each time the process evaluates a record. Each flow interview counts toward your
+allocation of flow interviews.
+
+This table describes the free allocations that are granted based on your org’s edition.
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+This table describes additional allocations that are granted based on purchased user licenses. These allocations apply to the org. It doesn’t
+matter which users run the flows.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+If you have questions about increasing your allocation, contact your Salesforce account executive.
+
+SEE ALSO:
+
+[Usage-Based Entitlements](https://help.salesforce.com/s/articleView?id=sf.users_understanding_tenant_usage_entitlements.htm&language=en_US)
+
+[View Your Salesforce Org’s Usage-Based Entitlements](https://help.salesforce.com/s/articleView?id=sf.users_usagebased_entitlements_viewing.htm&language=en_US)
+
+Flow Types
+
+Reevaluate Records in the Process Builder
+
+How Does Salesforce Process Scheduled Actions?
+
+General Flow Limits
+
+When using flows, keep flow limits and Apex governor limits in mind.
+
+The maximum flow interview size is 1,000,000 B (approximately 1 MB). If the interview is too large,
+it can't be persisted or paused.
+
+These limits apply to segment-triggered flows, form-triggered flows, and automation-event triggered
+flows.
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+**Per-Org Limit** **Starter**
+**Edition**
+
+**Marketing**
+**Cloud**
+**Growth**
+**Edition**
+
+**Marketing**
+**Cloud**
+**Advanced**
+**Edition**
+
+Active flows per flow type 50 500 750
+
+Total flows per flow type 2,000 50,000 50,000
+
+These limits apply to all other flows.
+
+**Per-Org Limit**
+
+**Essentials or**
+**Professional**
+**Editions**
+
+**Enterprise,**
+**Unlimited,**
+**Performance, or**
+**Developer**
+**Editions**
+
+Versions per flow 50 50
+
+Executed elements at runtime per flow None None [1]
+
+Active flows per flow type 5 2,000
+
+Total flows per flow type 5 4,000
+
+Groups of scheduled actions from processes that are executed per hour based on a specific 1,000 1,000
+time
+
+Combined total of these automations that start or resume based on a record’s field value. 20,000 20,000
+
+**•** Resume events that are defined in active flows
+
+**•** Groups of scheduled actions that are defined in active processes
+
+**•** Time triggers that are defined in active workflow rules
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+**Per-Org Limit**
+
+**•** Inactive flow interviews that are resumed
+
+Schedule-triggered flow interviews per 24 hours
+
+**Essentials or**
+**Professional**
+**Editions**
+
+250,000, or the number of user licenses in
+your org multiplied by 200, whichever is
+greater. [2]
+
+**Enterprise,**
+**Unlimited,**
+**Performance, or**
+**Developer**
+**Editions**
+
+1In API version 57.0, the limit of 2000 flow elements was removed. In API version 56.0 and earlier, flows could have a maximum of 2000
+flow elements.
+
+2The license types that count toward this limit include full Salesforce and Salesforce Platform user licenses, App Subscription user licenses,
+Chatter Only users, Identity users, and Company Communities users.
+
+SEE ALSO:
+
+Automate Tasks with Flows
+
+Flow Limits and Considerations
+
+Per-Transaction Flow Limits
+
+Salesforce strictly enforces limits to ensure that any runaway flows don't monopolize shared resources
+in the multitenant environment. Per-transaction limits, which Apex enforces, govern flows. If an
+element causes the transaction to exceed governor limits, the system rolls back the entire transaction.
+The transaction rolls back even if the element has a defined fault connector path.
+
+**1**
+#### **Per-Transaction Limit Value**
+
+Total number of SOQL queries issued 100
+
+(All executions of Get Records elements, and
+executions of Update Records or Delete Records
+elements that use filter conditions)
+
+Total number of records retrieved by SOQL 50,000
+queries
+
+(All executions of Get Records elements, and
+executions of Update Records or Delete Records
+elements that use filter conditions)
+
+Total number of DML statements issued 150
+
+(Create Records, Update Records, and Delete
+Records executions)
+
+Total number of records processed as a result 10,000
+of DML statements
+
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+**1**
+**Per-Transaction Limit** **Value**
+
+Maximum CPU time on the Salesforce servers 10,000 milliseconds
+
+Total number of duplicate updates allowed in one batch 12
+
+1 Autolaunched flows are part of the larger transaction that they were launched through and share that transaction’s limits. For example,
+flows launched from Apex or a process are executed with the Apex or process actions as part of the larger transaction. Flows with Screen
+elements can span multiple transactions. A new transaction begins each time the user clicks **Next** in a screen. Flows with Wait elements
+span multiple transactions. A transaction ends when a flow interview pauses for an event. When the flow interview resumes, a new
+transaction begins. Everything after the Wait element is executed as part of a batch transaction that includes other resumed interviews.
+The batch includes interviews executed by the same user ID, have the same execution time, and have the same flow version ID.
+
+SEE ALSO:
+
+_Apex Developer Guide_ [: Execution Governors and Limits](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_gov_limits.htm)
+
+General Flow Limits
+
+#### Flow Builder Considerations
+
+When you create a flow in Flow Builder, familiarize yourself with its limitations and behaviors. For
+example, Flow Builder supports only a few locales. Because of intellectual property protection, you
+can’t open flows installed from managed packages, unless the flows are templates.
+
+Access to Salesforce Data
+
+#### • Flow Builder uses the permissions and locale assigned to the current user. • Flow Builder has access to information that exists when you open it. If you modify data or
+
+metadata in your org and must refer to it in a flow, close and reopen Flow Builder. For example,
+if you add a custom field or modify an Apex class with Flow Builder open, close and reopen
+#### Flow Builder.
+
+Opening Flows That were Saved in Cloud Flow Designer
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+When you open a flow version created with Cloud Flow Designer in Flow Builder, the Save button is disabled. To edit that version in
+#### Flow Builder, save it as a new version in Flow Builder.
+
+Text Formatting
+
+If you open the Display Text screen component, Choice resource labels, help text, Pause confirmation screens, or input validation, Flow
+Builder converts existing HTML to rich text. Unsupported HTML is removed. The following HTML tags are converted to rich text: <a>,
+<b>, <br>, <font>, <i>, <li>, <p>, <span>, <u>, and <div>. HTML that is pasted into the rich text editor isn't supported.
+
+Rich Text
+
+**•** Images uploaded with the rich text editor are stored in the Files tab, and are visible to everyone in your org.
+
+**•** Images uploaded with the rich text editor aren’t visible in Experience Cloud sites.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+**•** Toggle back to plain text when using a text template in a Post to Chatter action, Send Email action, or in a custom action that expects
+
+plain text. Click and select **Plain Text** .
+
+**•** If you include incomplete HTML symbols such as _`<`_ in rich text, Flow Builder removes the symbols and adjacent strings. For example,
+Flow Builder renders _`2<3`_ as `2` . Include spaces around HTML symbols to render them. For example, _`2 < 3`_ .
+
+Date/Time Values
+
+At run time, time zones for date/time values can differ from what you see in Flow Builder. During run time, date/time values reflect the
+time zone settings of the user who’s running the flow. In Flow Builder, date/time values reflect the time zone settings of the admin who
+configures the flow.
+
+Text Values
+
+**•** Flow Builder doesn't support UTF-8 encoding for text in user input fields.
+
+**•** Flow Builder contains embedded fonts for all locales it supports. The supported locales are:
+
+**–** Chinese (Traditional)
+
+**–** Chinese (Simplified)
+
+**–** English (US)
+
+**–** French (France)
+
+**–** German (Germany)
+
+**–** Japanese (Japan)
+
+**–** Spanish (Spain)
+
+If you enter unsupported characters for a supported locale, they're displayed using system fonts instead of the embedded fonts.
+
+In unsupported locales, your system font settings are used to display all characters in Flow Builder.
+
+**•** Don't enter the string _`null`_ as the value of a text field in Flow Builder.
+
+Output Values
+
+To store the same output value in multiple variables, assign the value to one variable. Then add an Assignment element after the action,
+and set the other variables to the value of the first variable.
+
+Managed Packages
+
+Flow Builder can’t open a flow that is installed from a managed package, unless the flow is a template or overridable.
+
+Step Elements
+
+You can’t add or update steps to a flow in Flow Builder. You also can’t convert steps into screens. If you added a step in Cloud Flow
+Designer, the step still appears on the canvas. We recommend that you remove all steps from your flows.
+
+Action Elements
+
+Legacy Apex actions aren’t organized by the tag in the plug-in code.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+Flows Upgraded from Winter ’12 and Earlier
+
+If you open a flow that was last opened in Winter '12 or earlier, each Boolean decision is converted to a multi-outcome Decision element
+that:
+
+**•** Uses the same label as the old decision.
+
+**•** Takes the API name of the old decision, appended with “_switch”.
+
+**•** Has an outcome labeled “True”. This outcome's API name matches that of the old decision, and its conditions are migrated from the
+True outcome of the old decision.
+
+**•** Has a default outcome labeled “False”.
+
+Terminology
+
+The terminology in some warnings, error messages, and debug details isn’t updated for Flow Builder or Cloud Flow Designer.
+
+#### Salesforce Feature Considerations for Flows
+
+When designing flows, consider these Salesforce features.
+
+##### Security Considerations for Flows
+
+When designing flows, keep these security considerations in mind.
+
+External Object Considerations for Flows
+Keep these considerations in mind when building flows that include external objects.
+
+Lightning Component Considerations for Flows
+Keep these considerations in mind when building flows that include Lightning components.
+
+Considerations for Reactivity in Screen Flows
+Review these considerations before you set up reactivity in your screen flows. Reactivity is
+supported with API version 57.0 or later.
+
+##### Security Considerations for Flows
+
+When designing flows, keep these security considerations in mind.
+
+Flow Interviews
+
+When a user session expires, in-progress flow interviews are interrupted and can’t be resumed. If
+the flow executed actions, such as a Create Records or Post to Chatter element, those actions aren’t
+rolled back. But other progress through the interview, such as what the user entered on the screen,
+is lost.
+
+Tip:
+
+**•** Set your session timeout settings to log out users after an appropriate period.
+
+**•** Encourage your users to pay attention during interviews for alerts about their sessions
+expiring soon.
+
+**•** Remind users to avoid running flows during release upgrades. A typical upgrade takes
+about 5 minutes.
+
+Paused or waiting flow interviews aren’t affected by expired user sessions.
+
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+Shield Platform Encryption
+
+You can’t filter or sort records by encrypted fields for these elements and resources.
+
+**•** Update Records element
+
+**•** Delete Records element
+
+**•** Get Records element
+
+**•** Record Choice Set resource
+
+Screen Flow Inputs
+
+For enhanced security, remove all HTML from publicly accessible input fields in screen flows. For example, an input field on a publicly
+accessible screen flow is mapped to a rich text field in Salesforce. To prevent a malicious URL from accessing the rich text field, create a
+separate flow on the object to strip out the HTML. Optimize the new flow for fast field updates, and set it to run whenever the input field
+isn’t blank. Because several sources can write to a publicly accessible input field, check for HTML at the field level and not at the screen
+level.
+
+You can also use an existing Apex trigger on the object to strip out the HTML.
+
+SEE ALSO:
+
+[Modify Session Security Settings](https://help.salesforce.com/s/articleView?id=sf.admin_sessions.htm&language=en_US)
+
+##### External Object Considerations for Flows
+
+Keep these considerations in mind when building flows that include external objects.
+
+**•** When you create or update external object records, don’t set values for indirect lookup
+relationships that map to a different data type on the external system. For example, don’t set
+a value for a Text indirect lookup relationship that maps to a Date value on the external system.
+
+**•** To find the Salesforce record linked to from an external object by an indirect lookup relationship,
+match the parent object’s `Id` field to the ID in the indirect lookup relationship field. Select the
+indirect lookup relationship, and add _`.Id`_ before the closing curly bracket. For example, an
+indirect lookup relationship connects Contact (parent standard object) to Social Media post
+(child external object). In a flow, the record variable `{!socialMediaPost}` contains field
+values for a social media post. To find the parent contact record, in a Get Records element, filter
+by:
+
+```
+  Id Equals {!socialMediaPost.indirectLookupRelationship_c__c.Id}
+
+```
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+**•** To find the parent external object record linked to by an external lookup relationship, match the parent record’s external ID to the
+external lookup relationship on the child record. For example, an external lookup relationship connects Product Catalog Item (parent
+external object) to Case (child standard object). In a flow, the record variable `{!case}` contains field values for a support case. To
+find the parent product catalog item record, in a Get Records element, filter by:
+
+```
+  ExternalId Equals {!case.externalLookupRelationship_c__c}
+
+```
+
+**•** If Salesforce creates, updates, or deletes data in your org and then accesses external data in the same transaction, an error occurs.
+In your flow, we recommend using a separate transaction to access data in an external system. To do so, end the prior transaction
+by adding a screen or local action to a screen flow or a Wait element to an autolaunched flow. If you use a Wait element, don't use
+a record-based resume time.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+For example, a screen flow creates a contact and then displays a confirmation screen. Next, the flow updates the contact in the
+external system. The flow doesn’t fail because it uses a separate transaction to access the external data.
+
+**•** Don’t update the External ID and Display URL fields in a process or flow.
+
+**•** Record-change processes aren’t supported.
+
+**•** A process or flow must save or commit changes to a standard or a custom object before changing an external object within the
+same transaction. To commit changes to a standard or custom object, you have different options depending on the tool. After an
+action that changes a standard or custom object record:
+
+**–** In Flow Builder, add a screen, local action, or Wait element that pauses until a flow-based time occurs.
+
+**–** In Process Builder, add a scheduled action.
+
+##### Lightning Component Considerations for Flows
+
+Keep these considerations in mind when building flows that include Lightning components.
+
+Note: These topics are designed for developers that build Lightning components.
+
+**•** [Lightning components in flows must comply with Lightning Locker restrictions.](https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/security_code.htm)
+
+**•** [Flows that include Lightning components are supported only in Lightning runtime.](https://help.salesforce.com/articleView?id=flow_distribute_runtime.htm&language=en_US)
+
+###### Which Custom Lightning Component Attribute Types Are Supported in Flows?
+
+Not all Lightning component data types are supported in flows. You can map only these types
+and their associated collection types between flows and Lightning components.
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+Design Attribute Considerations for Flow Screen and Action Components
+To expose an attribute in Flow Builder, define a corresponding `design:attribute` in the
+component bundle's design resource. Keep these guidelines in mind when defining design attributes for flows.
+
+Runtime Considerations for Flows That Include Aura Components
+Depending on where you run your flow, Aura components can look or behave differently than expected. The flow runtime app that's
+used for some distribution methods doesn't include all the necessary resources from the Lightning Component framework. When
+a flow is run from Flow Builder or a direct flow URL (https://yourDomain.my.salesforce.com/flow/MyFlowName), `force` and
+`lightning` events aren’t handled.
+
+###### Which Custom Lightning Component Attribute Types Are Supported in Flows?
+
+Not all Lightning component data types are supported in flows. You can map only these types and
+their associated collection types between flows and Lightning components.
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+**Flow Data**
+**Type**
+
+##### **Lightning Valid Values**
+
+**Component**
+**Attribute**
+**Type**
+
+Apex Custom Apex
+Class
+
+Apex classes that define `@AuraEnabled` fields. Supported
+data types in an Apex class are Boolean, Integer, Long, Decimal,
+Double, Date, DateTime, and String. Single values as well as Lists
+are supported for each data type.
+
+Boolean Boolean
+
+**•** True values: _`true`_, _`1`_, or equivalent expression
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+**Flow Data Type**
+
+**Lightning** **Valid Values**
+**Component**
+**Attribute Type**
+
+**•** False values: _`false`_, _`0`_, or equivalent expression
+
+Currency Number Numeric value or equivalent expression
+
+Date Date _`"YYYY-MM-DD"`_ or equivalent expression
+
+Date/Time (API DateTime _`"YYYY-MM-DDThh:mm:ssZ"`_ or equivalent expression
+name is DateTime)
+
+Number Number Numeric value or equivalent expression
+
+Multi-Select Picklist String
+
+(API name is
+Multi-Select Picklist.)
+
+String value or equivalent expression using this format:
+
+```
+"Blue; Green; Yellow"
+
+```
+
+Picklist String String value or equivalent expression
+
+Record, with a
+specified object
+
+(API name is
+SObject.)
+
+The API name of the
+specified object,
+such as Account or
+Case
+
+Map of key-value pairs or equivalent expression.
+
+Flow record values map only to attributes whose type is the specific object. For example,
+an account record variable can be mapped only to an attribute whose type is Account.
+Flow data types aren’t compatible with attributes whose type is Object.
+
+Text String String value or equivalent expression
+
+(API name is Text.)
+
+###### Design Attribute Considerations for Flow Screen and Action Components
+
+Calculating Minimum and Maximum Values for an Attribute
+
+To validate min and max lengths for a component attribute, use a flow formula or the component's client-side controller.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+Modifying or Deleting **`design:attribute`** Nodes
+
+If a component’s attribute is referenced in a flow, you can’t change the attribute’s type or remove it from the design resource. This
+limitation applies to all flow versions, not just active ones. Remove references to the attribute in all flow versions, and then edit or delete
+the attribute in the design resource.
+
+###### Runtime Considerations for Flows That Include Aura Components
+
+Depending on where you run your flow, Aura components can look or behave differently than
+expected. The flow runtime app that's used for some distribution methods doesn't include all the
+necessary resources from the Lightning Component framework. When a flow is run from Flow
+Builder or a direct flow URL (https://yourDomain.my.salesforce.com/flow/MyFlowName), `force`
+and `lightning` events aren’t handled.
+
+To verify the behavior of your Aura components, test your flow in a way that handles `force` and
+`lightning` events, such as `force:showToast` . You can also add the appropriate event
+handlers directly to your component.
+
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+##### Considerations for Reactivity in Screen Flows
+
+Review these considerations before you set up reactivity in your screen flows. Reactivity is supported
+with API version 57.0 or later.
+
+For information on how to set up components for reactivity, refer to Make Your Screen Flows
+Reactive
+
+General Considerations
+
+**•** Manual outputs of components don’t support reactivity. If you manually set a component
+output, that variable doesn’t change on the same screen when referenced in other components.
+
+**•** Help text and labels don't react to changes in other components.
+
+**•** Data types must match when you’re mapping an output to another component’s input to
+support reactivity.
+
+**•** If validation rules exist for custom components, reactive changes don't trigger validation.
+
+EDITIONS
+
+Available in: Lightning
+Experience, Salesforce
+Classic.
+
+Available in: All versions of
+the mobile app in
+Professional, Performance,
+and Unlimited editions.
+
+**•** The global variable $Flow is reactive. All other global variables such as Custom Labels, Custom Settings, $Organization, $Profile, are
+not reactive.
+
+**•** When mapping a `DateTime` field to `Time`, the value is converted to GMT and stays converted when navigating between screens.
+If mapped to a `DateTime` field, the locale is preserved. For example, if the time value is 8:00 AM in your locale, the converted GMT
+time could be several hours off your time locale (such as 4:00 PM). Refer to A Note About Date/Time and Time Zones for information
+[about Converting Between Date/Time and Text and Date/Time in time zones: Using Date, Date/Time, and Time Values in Formulas](https://help.salesforce.com/s/articleView?id=sf.formula_using_date_datetime.htm&type=5&language=en_US)
+
+#### Salesforce Data Considerations for Flows
+
+When designing flows, keep these Salesforce data considerations in mind.
+
+Setting the Record Type
+
+For example, use a Get Records element to find the Record Type record whose name is “Reduction
+Order.” Then store that record type’s ID in a variable. You can then use the variable to set the `Order`
+`Record Type` field on an order record.
+
+To set the record type for a record, use the record type’s ID. Look up the record type by its name
+and then store its ID in the flow.
+
+Working with Person Accounts
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+If your org uses person accounts, reference `Contact.Salutation` instead of `Account.Salutation` .
+
+Null Values
+
+A flow fails when a filter condition from a Get Records element or an Update Records element references a value that is null. Before you
+reference a value in a filter condition, add a Decision element to check if the value is null.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+Merge Fields
+
+A flow can reference the value of a merge field at run time only if a flow resource stores the value. For example, a flow can't reference a
+merge field that a messaging template contains.
+
+SEE ALSO:
+
+Flow Operations and Read-Only Fields
+
+Considerations for the Apex-Defined Data Type
+
+External Object Considerations for Flows
+
+Flow Operations and Read-Only Fields
+
+Understand when flows have read-only access to field values. You can control the behavior when
+a flow tries to update a read-only field and remove read-only field values from flow operations.
+
+###### Which Fields Are Inaccessible When a Flow Creates or Updates Records?
+
+A flow can perform an operation only if the running user has permission to do so. When a flow
+tries to create or update records, fields that the running user can’t edit are considered _inaccessible_,
+or read only. A field can be inaccessible because the user hasn’t been granted permission to
+edit the field or because it’s a system field that’s always read only.
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Control What Happens When a Flow Tries to Set Values for Read-Only Fields
+
+and **Developer** Editions
+
+When a flow tries to perform an action, such as create or update records, it uses a flow request
+to set values for specific fields. But what happens if the running user doesn’t have edit access
+to all those fields? When you use a record variable or record collection variable in Create Records
+and Update Records elements, that’s up to you. To control the behavior, select or deselect the `Filter inaccessible`
+`fields from flow requests` preference.
+
+Remove Read-Only Fields from a Record Variable
+If a flow tries to update fields that the running user can’t edit and `Filter inaccessible fields from flow`
+`requests` is not enabled for your org, the flow fails. If your record variable includes read-only fields and you can’t grant your
+running users “Edit” permissions for those fields, remove the fields from the record variable. Set the field values individually in a
+Create Records or Update Records element or copy the writable field values into a new record variable.
+
+###### Which Fields Are Inaccessible When a Flow Creates or Updates Records?
+
+A flow can perform an operation only if the running user has permission to do so. When a flow tries
+to create or update records, fields that the running user can’t edit are considered _inaccessible_, or
+read only. A field can be inaccessible because the user hasn’t been granted permission to edit the
+field or because it’s a system field that’s always read only.
+
+To determine which fields are system fields, see the _Object Reference for Salesforce and Lightning_
+_Platform_ . To determine which other fields aren’t editable, review the running user’s permissions.
+
+How Did Read-Only Fields Get in My Record Variable?
+
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+What Do I Do When My Record Variable Includes Read-Only Fields?
+
+For each read-only field that’s stored in your record variable:
+
+**1.** Determine whether the flow uses that field anywhere. If it doesn’t, update the flow so that it doesn’t store a value for that field. This
+suggestion applies only if an element in the flow, such as Get Records, populates the variable.
+
+For example, a Get Records element stores `CreatedByDate`, but no other elements reference that field. You update the Get
+Records element so that it’s no longer storing `CreatedByDate` .
+
+**2.** If the read-only field is referenced in the flow, give the running users the permissions needed for the flow to execute its operations.
+
+**3.** If you can’t give the running users the needed permissions for a field, update the flow so that it doesn’t try to update that field.
+
+Here's an example: Using an Update Records element, a flow updates several fields on an account. While your users can edit
+`Description` and `Account Rating`, they can’t edit `Owner ID` or `LastModifiedDate` . To prevent the flow from failing
+at run time:
+
+**•** Give your users “Edit” permission for `Owner ID` .
+
+**•** Copy only the writable field values ( `Description`, `Account Rating`, and `Owner ID` ) from the original record variable
+into a new record variable. Reference the new record variable in the Update Records element.
+
+Copying only the writable field values ensures that the flow doesn’t try to set a value for `LastModifiedDate` at run time.
+
+SEE ALSO:
+
+Remove Read-Only Fields from a Record Variable
+
+Control What Happens When a Flow Tries to Set Values for Read-Only Fields
+
+_[Object Reference for Salesforce and Lightning Platform](https://developer.salesforce.com/docs/atlas.en-us.object_reference.meta/object_reference/system_fields.htm)_ : System Fields
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+###### Control What Happens When a Flow Tries to Set Values for Read-Only Fields
+
+Tip: We recommend disabling this preference so that you always know when a flow doesn’t set all expected field values.
+
+**1.** From Setup, enter _`Automation`_ in the `Quick Find` box, then select **Process Automation Settings** .
+
+**2.** Select or deselect **Filter inaccessible fields from flow requests** .
+
+If your org was created in Winter ’17 or earlier, the preference is enabled by default. Otherwise, the preference is disabled by default.
+
+Example: A flow updates several fields on an opportunity by using a record variable in an Update Records element. At run time,
+the flow tries to update the Acme account on behalf of your user. The user can edit `Stage` and `Close Date` but not `Amount` .
+As a result, the flow doesn’t have permission to update `Amount` .
+
+**•** If `Filter inaccessible fields from flow requests` is selected, the flow successfully updates the account,
+but it only updates `Stage` and `Close Date` . The flow doesn’t notify anybody that `Amount` wasn’t updated.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+**•** If `Filter inaccessible fields from flow requests` isn’t selected, the flow fails to update the account.
+The admin receives a flow error email. The email includes this error.
+
+```
+       INVALID_FIELD_FOR_INSERT_UPDATE: Unable to create/update fields: Amount
+
+```
+
+That’s API-speak for “The running user doesn’t have permission to edit the Amount field.”
+
+Warning: If you change your org’s selection for this preference, use a sandbox to test how the change impacts your flows.
+Consider following the same process as you would for a critical update.
+
+SEE ALSO:
+
+Which Fields Are Inaccessible When a Flow Creates or Updates Records?
+
+###### Remove Read-Only Fields from a Record Variable
+
+If a flow tries to update fields that the running user can’t edit and `Filter inaccessible`
+`fields from flow requests` is not enabled for your org, the flow fails. If your record
+variable includes read-only fields and you can’t grant your running users “Edit” permissions for those
+fields, remove the fields from the record variable. Set the field values individually in a Create Records
+or Update Records element or copy the writable field values into a new record variable.
+
+Note: If the read-only fields in the record variable are populated by a Get Records or
+Assignment element, consider updating those elements so that they don’t populate that
+field at all.
+
+Copy Field Values from One Record Variable to Another
+
+Record variables and record collection variables can have values set for fields that the running user
+can’t edit. However, you can use the writable values to create or update records with Create Records
+or Update Records elements. To do so, map the writable values from the original record variable
+into a new record variable.
+
+Note: With record collection variables, use loops to map the field values to a new collection.
+
+**1.** Add an Assignment element to your flow. Make sure that the flow executes this element after
+the original record variable has been populated but before the Create or Update element.
+
+**2.** For each writable field in the original record variable, add a row.
+
+Variable—Select {! _`recordVar2`_ . _`field`_ }, where _`recordVar2`_ is the name of the new
+variable and _`field`_ is the field on that variable.
+
+Operator—Select **equals** .
+
+Value—Select {! _`recordVar1`_ . _`field`_ }, where _`recordVar1`_ is the name of the original
+variable and _`field`_ is the field on that variable.
+
+Note: If you plan to reference the variable in an Update Records element, include the
+record’s ID in the new record variable. Although `Id` is read only, the flow uses the value
+to determine which records to update.
+
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+USER PERMISSIONS
+
+To open, edit, or create a
+flow in Flow Builder:
+
+**•** Manage Flow
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+Example: You have a case record variable called `{!myCaseVar_all}` . It stores values for some read-only fields, so you can’t
+use it in an Update Records element. Copy the fields that you want to update to a new record variable: `IsEscalated` and
+`Status` . Also, copy `Id` because it’s required for an update operation. Here’s what those assignment rules look like.
+
+The same example works for a record collection variable. However, because you can’t directly change the values of a collection
+variable, you use a loop. After the flow has iterated over every item in the original collection, it exits the loop.
+
+**•** Using a Loop element, the flow passes each item’s values into a loop variable ( `{!myCaseLoopVar_original}` ).
+
+**•** For each iteration, an Assignment element copies the `Id`, `IsEscalated`, and `Status` fields from the loop variable to
+another record variable ( `{!myCaseLoopVar_final}` ).
+
+**•** The flow then adds the `{!myCaseLoopVar_final}` variable’s values to a new collection. The second Assignment
+element includes this assignment rule.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+SEE ALSO:
+
+Flow Element: Create Records
+
+Flow Element: Update Records
+
+##### Considerations for the Apex-Defined Data Type
+
+Understand these considerations when you’re building flows that include an Apex-defined data
+type.
+
+Flow Builder
+
+**•** Cloud Flow Designer isn’t supported.
+
+**•** A custom component that displays a value, like the Display Text screen component, can display
+all fields from an Apex-defined variable. For example, the {!Car} variable stores all field values
+that are defined in the Car Apex class. If a Display Text screen component has the {!Car}
+Apex-defined variable as the input attribute, the screen displays all the fields from the Car Apex
+class. If the Apex class is from a managed package, only the Apex class ID is displayed.
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+**•** The first time you open an element or resource window in an org with over 200 Apex classes that have the `@AuraEnabled`
+annotation, the window can take longer to load.
+
+**•** Deprecated Apex classes in a managed package appear in Flow Builder.
+
+**•** If a flow invokes Apex, the running user must have the corresponding Apex class assignment in their profile or permission set.
+
+**•** A flow doesn't support a list of lists data type if it's a field on a flow variable that's an Apex-defined data type.
+
+Apex
+
+**•** Supported data types in an Apex class are Boolean, Integer, Long, Decimal, Double, Date, DateTime, and String. Single values and
+lists are supported for each data type. Multiple Apex classes can be combined to represent complex web objects.
+
+**•** The @AuraEnabled annotation for each field is required.
+
+**•** A constructor with no arguments is required.
+
+**•** Class methods aren’t supported.
+
+**•** Getter methods for fields aren’t supported.
+
+**•** Inner classes aren’t supported.
+
+**•** An outer class that has the same name as an inner class isn’t supported.
+
+**•** Referential integrity isn’t supported for Apex class fields. For example, a flow has an Apex-defined variable that represents the model
+field in the Car Apex class. If the model field is modified or deleted in the class, the flow fails.
+
+Input and Output Values
+
+**•** An Apex-defined variable value can't be set or stored outside the flow. The value can't be passed to a Subflow element.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+Local Actions
+
+**•** An Aura component that’s used as a local action can’t set an Apex-defined attribute.
+
+#### Flow Feature Considerations
+
+When designing flows, keep these flow feature considerations in mind. Also, some resources,
+elements, and screen components have more considerations that are described in their reference
+topics.
+
+Flow Conditional Visibility Considerations
+Before you set visibility for a screen component, understand the behavior of conditional visibility
+in flows.
+
+Considerations for Flow Choice Components with Default Values
+Understand how to set a default value using any flow resource for a screen flow’s choice
+component, such as Radio Buttons or a Multi-Select Picklist component.
+
+Flow Variable Considerations
+Before you create a variable resource, understand the behavior of variables in flows.
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+Multi-Select Resource and Screen Field Considerations for Flows
+Checkbox Group, Multi-Select Picklist, and Choice Lookup screen components let flow users select multiple choices. Before you start
+using these screen components, understand how they work in flows—both when you design the flow and when your users run it.
+
+Paused Flow Interview Considerations
+Before you design flows that contain one or more Wait elements, understand the behavior and guidelines.
+
+Flow Stage Considerations
+Before you add stages to your flow, understand how stage references and default active stages work, as well as considerations for
+troubleshooting stages.
+
+Two-Column Flow Considerations
+If your org has Lightning runtime enabled, you can control whether a flow displays in one column or two columns. Before you use
+this feature, understand how the flow layout currently behaves.
+
+Schedule-Triggered Flow Considerations
+A schedule-triggered flow starts at the specified time and frequency for a batch of records. Understand the considerations and special
+behaviors of schedule-triggered flows, also known as scheduled flows.
+
+Record-Triggered Flow Considerations
+A record-triggered autolaunched flow makes additional updates to the triggering record before or after it’s saved to the database.
+Understand the considerations and special behaviors of flows that make before- and after-save updates.
+
+SEE ALSO:
+
+Flow Resources
+
+Flow Elements
+
+Standard Flow Screen Components
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+##### Flow Conditional Visibility Considerations
+
+Before you set visibility for a screen component, understand the behavior of conditional visibility
+in flows.
+
+Null and Empty Strings
+
+A `null` value is evaluated the same way as a `{!$GlobalConstant.EmptyString}` .
+
+Unsupported Data Types and Operators
+
+**•** These operators aren’t supported in conditional visibility.
+
+**–** Was Visited
+
+**–** Was Set
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+**•** These data types aren’t supported in conditional visibility, but you can reference attributes and fields.
+
+**–** Apex-defined data types
+
+**–** Record variables
+
+**•** You can’t reference these results in conditional visibility.
+
+**–** Results of Apex-defined invocable actions
+
+**–** Results of a flow referenced by the current flow with the Subflow element
+
+**•** Any screen input component with **Manually assign variables (advanced)** selected isn’t available as a resource for conditional
+visibility on the same flow screen.
+
+**•** Text that has merge fields included isn’t supported in values. Merge fields on their own are supported.
+
+Text Templates and Formulas
+
+**•** Initial values are evaluated in text templates and formulas.
+
+**•** Changes based on user input aren’t evaluated.
+
+Hidden Screen Input Components
+
+**•** Screen input components hidden by conditional visibility aren’t required when a user runs the flow, even if `Required` is set to
+_`{!$GlobalConstant.True}`_ . When the component appears to the user, it’s treated as required.
+
+**•** If a screen input component is hidden because it doesn’t meet conditional visibility requirements, its value is set to null. But hidden
+picklists in a Dependent Picklists component aren’t set to null unless the entire Dependent Picklists component is hidden.
+
+**•** In an Update Records element, if you update a field by using the value of a hidden screen component, the field value is set to blank.
+Instead, update the field by using a Formula resource that checks if the field is blank before setting the field value. For example, use
+this formula.
+
+```
+  IF( ISBLANK( {!myTextField} ), {!myOriginalFieldValue}, {!myTextField})
+
+```
+
+**•** When you define a condition to set component visibility, you can specify a variable as the resource value. The variable can traverse
+up to three object fields, for example, _`Contact.Account.Owner`_ .
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+Sections and Conditional Field Visibility
+
+If a section’s visibility conditions reference a component contained within the section, the entire section is hidden. If a section’s visibility
+conditions reference a component visibility condition and the visibility conditions evaluate as true, the section is visible.
+
+Focus
+
+When screen components or their parts are rendered after the screen is initially displayed, they’re never focusable. For example, if a
+component asynchronously fetches a list of tasks to display, the focus can’t be set to any of the tasks. If a screen component uses
+conditional visibility and appears only after user input, the focus can’t be set to any part of the screen component.
+
+Circular Logic
+
+Avoid circular logic in your conditions, which can result in poor performance, strange behavior, or an error when your flow is run.
+
+Related Record Fields
+
+Related record fields in your field visibility conditions work only for Lookup fields that have a value set when entering the screen.
+
+Commas in Condition Values
+
+If your condition value contains a comma, add a quotation mark at the beginning and the end of the value. For example, _`“Email,`_
+_`Phone, and Social Media”`_ .
+
+Performance
+
+For the best performance, minimize the number and complexity of conditional visibility conditions on your screen components and
+record fields. There are other ways to control what screen components and record fields your screen flow users have access to view or
+update.
+
+**•** Use a Section component. If you need multiple screen components or record fields to be visible using the same logic, put them in
+a Section component. Then, set the conditional visibility on the Section component, instead of on each component or field.
+
+**•** Use the component’s Disabled attribute instead of conditional visibility. If you don’t want your screen flow users to fill out a screen
+component’s input fields, but it’s OK for them to see the fields, you can disable the component input fields. Set the screen component’s
+Disabled attribute by selecting a resource with a Boolean value. For example, set the Disabled attribute to a Formula resource that
+evaluates to `true` if another screen component is empty.
+
+**•** Use reactive formulas or Screen Actions. If you want to conditionally hide and set the default value of a screen component dynamically,
+depending on the value of another screen component, you don’t need to add a screen component for each value. Instead, use a
+single conditionally visible screen component and use a reactive formula or screen action to populate the default value. See Reactive
+Screen Flow Formula Operators.
+
+SEE ALSO:
+
+Make Flow Screens Dynamic with Conditional Visibility
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+##### Considerations for Flow Choice Components with Default Values
+
+Understand how to set a default value using any flow resource for a screen flow’s choice component,
+such as Radio Buttons or a Multi-Select Picklist component.
+
+The Default Value field appears below the choice options list when you add at least one choice. For
+the Default Value field, specify a picklist value or another flow resource (a variable, a field on a record
+variable, a manually entered value, and so on). You can choose any compatible type reference for
+the flow. You can use a value from a record as the default value, which applies to picklist choices
+or record choices.
+
+When you save and run a flow, the default value determines which options are preselected. None
+of the choice options are duplicated, and the order of the choices is retained.
+
+Flow run time behavior for a default choice option
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+At run time, Salesforce preselects a choice if its value matches the component's default value. When the default value references a flow
+resource, Salesforce resolves that reference before matching. When you save and run the flow, the default value is preselected in the
+resulting list of choices.
+
+For choice components that let the user select a single option, such as Picklists and Radio Buttons, Salesforce preselects the first choice
+that matches:
+
+For choice components that let the user select multiple options, like Multi-Select Picklists and Checkbox Groups, Salesforce preselects
+every choice that matches:
+
+Multiple default values for a choice component
+
+To specify multiple default values for choice components that let the user select multiple options, separate the values with semicolons.
+If the resolved default value includes semicolons, like “Red;Blue”, Salesforce treats each value as a separate default. For example, to set
+the default value to both “Red” and “Blue”, enter _`Red;Blue`_ . At run time, Salesforce preselects every choice option whose value is Red
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+or Blue. Using values that contain semicolons can cause issues with multi-select value matching behavior. If a choice's value is an exact
+match, like Red;Blue, then Salesforce doesn’t select it.
+
+If you configure a choice component with multiple records, use a variable whose value resolves to the record ID for each record, and
+separate the IDs with a semicolon.
+
+Default values from collection choice sets
+
+If you reference a value from a collection choice set as the default value of a choice component, the default value is null when the screen
+loads. To trigger the screen to reload and display the value at runtime, reference the value on the same screen or wrap the value in a
+formula.
+
+##### Flow Variable Considerations
+
+Before you create a variable resource, understand the behavior of variables in flows.
+
+Referring to Blank Fields or Resources
+
+**•** If you leave a field or resource value blank, the value is `null` at run time. To treat a text value
+as an empty string instead of `null`, set it to `{!$GlobalConstant.EmptyString}` .
+
+Boolean Variables
+
+**•** Boolean Types Treat `null` Differently than `false`
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+**•** A flow treats `null` as a different value than `false` . For example, if you try to find a record
+whose checkbox field is set to `null`, no records are returned. Instead, look for records where
+the checkbox field is set to `false` . If you’re using a variable (such as `myCheckbox =`
+`{!varBoolean}` ), make sure that the variable isn’t set to `null` before you reference it in your record filter or condition.
+
+Percentage Variables
+
+**•** If a flow uses record variables to manipulate percentage values, test the flow carefully. When you insert a value into a record variable’s
+percentage field and then reference that field in a formula, the value is divided by 100.
+
+For example, an opportunity’s Probability field is set to 100. If you assign that value to the `{!Opportunity.Probability}`
+record variable, the value is still 100. But if you create a formula whose expression is `{!Opportunity.Probability}`, the
+value is 1.
+
+Available for Input/Output
+
+**•** Disabling input or output access for an existing variable can break the functionality of applications and pages that call the flow and
+access the variable. For example, you can access variables from URL parameters, subflows, and processes.
+
+Setting Input Variables
+
+**•** Process Builder: When a process or flow launches another flow, that flow’s input variables can be assigned values during the launch.
+However, for a text, picklist, or multi-select picklist variable that isn’t a collection, a value of `null` is converted to an empty string.
+
+**•** Actions: Flow actions let you pass the value of the record's ID field into the flow, but that's it. If your flow has a Text input variable
+called recordId, the action passes the record's ID into that variable at runtime. If not, it doesn't and the flow tries to run anyway.
+
+**•** Lightning App Builder: Collection variables, record variables, and record collection variables aren’t supported. The Flow component
+supports only manually entered values for input variables. Text input variables accept a maximum length of 4,000 characters.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+Distributing Flows
+
+**•** When you distribute a flow, don't pass a currency field value from a Salesforce record into a flow currency variable with a URL
+parameter. When a currency field is referenced through a merge field (such as `{!Account.AnnualRevenue}` ), the value
+includes the unit of currency’s symbol (for example, $). Flow currency variables can accept only numeric values, so the flow fails at
+run time. Instead, pass the record's ID to a text variable with a URL parameter. Then in the flow, use the ID to look up that record’s
+value for the currency field.
+
+Number Variables
+
+**•** Number variables are treated as integers by default.
+
+Multi-Select Resource and Screen Field Considerations for Flows
+
+Checkbox Group, Multi-Select Picklist, and Choice Lookup screen components let flow users select
+multiple choices. Before you start using these screen components, understand how they work in
+flows—both when you design the flow and when your users run it.
+
+Configuring a Checkbox Group, Multi-Select Picklist, or Choice Lookup Screen
+Component
+
+**•** These screen components support only one default value. You can’t individually select multiple
+default values. However, you can manually add a value in the default value field and separate
+each value with a semicolon.
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+**•** You can configure a record choice set resource to assign field values from a user-selected record
+to variables in the flow. When a Checkbox Group, Multi-Select Picklist, or Choice Lookup screen
+component uses a record choice set, only values from the last record that the user selects are stored in the flow variables. If multiple
+Checkbox Group, Multi-Select Picklist, or Choice Lookup components on one screen use the same record choice set, the variable
+assignments come from the last record selected from all of those components.
+
+Using Values from a Checkbox Group, Multi-Select Picklist, or Choice Lookup Screen Component
+
+**•** At run time, the value of a Checkbox Group, Multi-Select Picklist, or Choice Lookup screen component is a concatenation of the
+user-selected choice values, separated by semicolons. If a selected choice’s value includes semicolons, the semicolons are removed.
+
+**•** If you reference a Checkbox Group, Multi-Select Picklist, or Choice Lookup screen component in a flow condition:
+
+**–** Make sure that each choice in the screen component has a choice value configured.
+
+**–** Don’t use the same choice in multiple Checkbox Group, Multi-Select Picklist, or Choice Lookup screen components on the same
+screen.
+
+**•** If a Checkbox Group, Multi-Select Picklist, or Choice Lookup has at least one default value, at run time the choices are preselected if
+the choice’s value matches the default value.
+
+SEE ALSO:
+
+Using Choice Resources with Flow Screen Components
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+Paused Flow Interview Considerations
+
+Before you design flows that contain one or more Wait elements, understand the behavior and
+guidelines.
+
+General Considerations
+
+**•** After you deactivate a flow version, its paused interviews continue to wait for the configured
+resume events. If a flow version has paused interviews, you can’t delete it.
+
+**•** An interview can execute only one connector per Wait element. After one of its resume events
+is processed, the remaining resume events are removed from the queue.
+
+**•** If the user who started the interview is deactivated when Salesforce tries to execute a wait
+connector, the interview fails to resume.
+
+**•** If a flow is paused and the flow interview exceeds 1 MB, the interview fails to save and can’t be
+resumed.
+
+**•** You can’t call flows that contain wait elements as subflows.
+
+Transactions and Paused Interviews
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Time-based resume events
+are available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+Platform event-based
+resume events are available
+in: **Enterprise**, **Performance**,
+**Unlimited**, and **Developer**
+Editions
+
+A transaction ends as soon as a flow interview pauses for one or more resume events. When the
+flow interview resumes, a new transaction begins. Everything after the Wait element is executed as part of a batch transaction that
+includes other resumed interviews.
+
+Interviews aren’t resumed independently. They’re grouped into a single batch that starts resuming within one hour after the first interview
+enters the batch. Actions that execute as a result of the grouped interviews are also executed in that transaction. The batch can have
+other interviews that resume at the same time, have the same flow version ID, and are executed by the same user ID. This behavior can
+cause you to exceed your Apex governor limits if the resumed interview executes DML operations or SOQL queries through. For details,
+see Per-Transaction Flow Limits on page 246.
+
+**•** Flow elements, such as Create Records or Apex Action (Legacy)
+
+**•** Apex triggers
+
+**•** Immediate workflow actions
+
+If a Wait element precedes a flow element that executes DML operations or SOQL queries:
+
+**•** Ensure that your flows don’t let a single user execute DML operations or SOQL queries that can exceed limits between Wait elements.
+
+**•** Consider using multiple Wait elements so that the DML operations and SOQL queries are performed in multiple transactions.
+
+**•** Add fault paths for those elements so that the flow returns to the Wait element if the fault message contains: `Too many SOQL`
+`queries` or `Too many DML operations` .
+
+If an interview fails after it’s resumed:
+
+**•** Prior interviews in that batch’s transaction are successful.
+
+**•** Operations that the interview executed before it paused are successful.
+
+**•** If a fault path handles the failure, operations that the interview executed between when it resumed and when it failed are successful.
+The operation that caused the interview to fail isn’t successful.
+
+**•** If a fault path doesn’t handle the failure, operations that the interview executed between when it resumed and when it failed are
+rolled back. The operation that caused the interview to fail isn’t successful.
+
+**•** The remaining interviews in that batch are tried.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+Platform Events
+
+[Tip: Make sure to also review the considerations and allocations for platform events.](https://developer.salesforce.com/docs/atlas.en-us.platform_events.meta/platform_events/platform_events_considerations.htm)
+
+**•** Supported Platform Events
+
+Flows can subscribe to custom platform events and these standard platform events.
+
+**–** AIPredictionEvent
+
+**–** BatchApexErrorEvent
+
+**–** FlowExecutionErrorEvent
+
+**–** FOStatusChangedEvent
+
+**–** OrderSummaryCreatedEvent
+
+**–** OrderSumStatusChangedEvent
+
+**–** PlatformStatusAlertEvent
+
+**•** Formulas—To reference a platform event in a formula, pass the event data into a record variable in the Wait element. Then reference
+the appropriate field in that record variable.
+
+**•** Value Truncation—When you filter platform event messages, values for conditions can’t be more than 765 characters.
+
+**•** Subscriptions Related List—On the platform event’s detail page, the Subscriptions related list shows which entities are waiting to
+receive that platform event’s messages. The related list includes a link to each subscribed process. If flow interviews are waiting for
+that platform event's messages, one “Process” subscriber appears in the Subscriptions related list.
+
+**•** Uninstalling Events—Before you uninstall a package that includes a platform event, delete the interviews that are waiting for that
+platform event’s messages.
+
+**•** Einstein Predictions—A prediction event is sent for each Einstein prediction result, so use event condition filters if you want your
+flow to be triggered only by predictions on a specific object. For example, if your flow uses a Wait element that acts only on predictions
+written to Lead records, add a resume event to check that the AIPredictionEvent.TargetId field equals the current record.
+
+If your flow updates a field that is used by an Einstein prediction, Einstein runs the prediction again and writes back the new results.
+The new results generate a new prediction event that could trigger your flow again, resulting in a loop. To avoid creating a loop,
+only update fields that aren’t used in Einstein predictions.
+
+Platform Cache
+
+When a flow contains a Wait element, make sure that later elements in the flow don't invoke Apex code that stores or retrieves values
+from the session cache. The session-cache restriction applies to Apex actions and to changes that the flow makes to the database that
+cause Apex triggers to fire.
+
+Time-Based Resume Events
+
+**•** Time-based resume events don’t support minutes or seconds.
+
+**•** If an interview is waiting for a time in the past, Salesforce resumes the interview as soon as possible. Depending on how many actions
+Salesforce is processing at the time, actions are executed within one hour.
+
+For example, a flow is configured to email an opportunity owner seven days before the close date. An interview starts for an opportunity
+with the close date set to today. Salesforce resumes the interview within an hour.
+
+**•** An org can process up to 1,000 time-based resume events per hour. When a resume event is processed, its associated interview
+resumes and any other resume events for that interview are removed from the queue. If an org exceeds this limit, Salesforce defers
+the remaining resume events to be processed in the next hour.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+For example, an org has 1,200 resume events scheduled to be processed between 4:00 PM and 5:00 PM. Salesforce processes 1,000
+resume events between 4:00 PM and 5:00 PM and the additional 200 resume events between 5:00 PM and 6:00 PM.
+
+**•** You can’t archive a product or price book that’s referenced in a time-based resume event in a paused interview.
+
+Flow-Based Time
+
+For resume events based on a specific time, the resume time is evaluated using the time zone of the user who created the flow.
+
+Record-Based Time
+
+**•** For resume events based on a record field value, the resume time is evaluated using the org’s time zone.
+
+**•** Resume events can’t reference:
+
+**–** `DATE` or `DATETIME` fields that contain automatically derived functions, such as _`TODAY`_ or _`NOW`_ .
+
+**–** Formula fields that include related-object merge fields.
+
+**•** If you change a date field that’s referenced by an unexecuted resume event in a paused interview, Salesforce recalculates the resume
+events associated with the interview.
+
+For example, a flow is configured to email an opportunity owner seven days before the opportunity close date, and the close date
+is 2/20/2014. The following things could happen.
+
+**–** The close date isn’t updated before the interview resumes. Result: Salesforce resumes the interview on 2/13/2014 and sends
+the email.
+
+**–** The close date is updated to 2/10/2014 before the interview resumes. Result: Salesforce reschedules the resume event and the
+interview resumes on 2/3/2014.
+
+**–** The close date is updated to a date in the past. Result: Salesforce recalculates the resume event and resumes the interview shortly
+after you save the record.
+
+**•** If a resume event references a null date field when the interview executes the Wait element, Salesforce resumes the interview as
+soon as possible. Depending on how many actions Salesforce is processing at the time, actions are executed within one hour.
+
+**•** If a resume event references a date field that has a non-null value when the flow interview executes the Wait element and it’s updated
+to `null` before the resume event is processed, Salesforce resumes the interview within an hour after the date field is updated.
+
+**•** If a record or object that’s referenced by a resume event is deleted, the resume event is removed from the queue. If the interview
+has no other resume events to wait for, the interview is deleted.
+
+**•** Lead Convert Limitations
+
+**–** You can’t convert a lead that’s referenced in a paused interview’s resume event.
+
+**–** If Validation and Triggers from Lead Convert is enabled, existing operations on leads after a Wait element aren’t executed during
+lead conversion.
+
+**–** If a campaign member based on a lead is converted before a paused interview that’s associated with that record finishes,
+Salesforce still executes the interview.
+
+SEE ALSO:
+
+_Platform Events Developer Guide_ [: Considerations for Defining and Publishing Platform Events](https://developer.salesforce.com/docs/atlas.en-us.platform_events.meta/platform_events/platform_events_considerations.htm)
+
+Flow Limits and Considerations
+
+Flow Operators in Decision, Wait, and Collection Filter Elements
+
+Flow Elements: Wait
+
+_Platform Events Developer Guide_ [: Subscribe to Platform Even Messages with Flows](https://developer.salesforce.com/docs/atlas.en-us.platform_events.meta/platform_events/platform_events_subscribe_flow.htm)
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+Flow Stage Considerations
+
+Before you add stages to your flow, understand how stage references and default active stages
+work, as well as considerations for troubleshooting stages.
+
+Stage References
+
+When you reference a stage merge field in a display text field or other label, it resolves to the stage’s
+label. Everywhere else, a stage merge field resolves to the stage's fully qualified name:
+_`namespace`_ . _`flowName`_ : _`stageName`_ or _`flowName`_ : _`stageName`_ .
+
+Whenever possible, use the stage merge field to refer to stages, such as {!myStage}. When you
+reference a stage in a subflow, use the fully qualified name.
+
+Default Active Stages
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+When you mark a stage resource **Active by Default**, the flow automatically sets values for the global variables. Use this setting when a
+stage applies to every branch of the flow.
+
+At run time, the default active stages are sorted in ascending order. How the flow uses the default active stages to update
+`$Flow.ActiveStages` and `$Flow.CurrentStage` depends on whether the flow is a parent flow or a referenced flow.
+
+Parent Flows
+
+The default active stages are added to `$Flow.ActiveStages` in ascending order. `$Flow.CurrentStage` is set to the default
+active stage with the lowest order.
+
+When a flow references two flows, one with stages and one without, configure the flow with stages so that it sets the value for
+`$Flow.ActiveStage` to null at the end of the flow. Then set the value for `$Flow.CurrentStage` to stage 1 at the start of
+the flow.
+
+Referenced Flows
+
+The default active stages are inserted in `$Flow.ActiveStages` in ascending order. `$Flow.CurrentStage` isn’t automatically
+updated.
+
+**•** When `$Flow.CurrentStage` is included in `$Flow.ActiveStages`, the default active stages are inserted in
+`$Flow.ActiveStages` after `$Flow.CurrentStage` .
+
+For example, Flow1 sets `$Flow.ActiveStages` to “1, 2, 3, 4” and `$Flow.CurrentStage` to “3.” It then uses a Subflow
+element to call Flow2. Flow2’s default active stages are “A, B, C.” When Flow2 starts, `$Flow.ActiveStages` becomes “1, 2, 3,
+A, B, C, 4.” `$Flow.CurrentStage` is still “3.”
+
+**•** When `$Flow.CurrentStage` isn’t included in `$Flow.ActiveStages`, the default active stages are added to the end of
+`$Flow.ActiveStages` .
+
+For example, Flow1 sets `$Flow.ActiveStages` to “1, 2, 3, 4” and doesn’t set `$Flow.CurrentStage` . It then uses a
+Subflow element to call Flow2. Flow2’s default active stages are “A, B, C.” When Flow2 starts, `$Flow.ActiveStages` becomes
+“1, 2, 3, 4, A, B, C.” `$Flow.CurrentStage` remains unset.
+
+**•** When `$Flow.CurrentStage` is duplicated in `$Flow.ActiveStages`, the default active stages are appended after the
+first occurrence.
+
+For example, Flow1 sets `$Flow.ActiveStages` to “1, 2, 2, 3, 4” and `$Flow.CurrentStage` to “2.” It then uses a Subflow
+element to call Flow2. Flow2’s default active stages are “A, B, C.” When Flow2 starts, `$Flow.ActiveStages` becomes “1, 2, A,
+B, C, 2, 3, 4.” `$Flow.CurrentStage` remains “2.”
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+Troubleshooting Stages
+
+The flow error email doesn’t specify the values of `$Flow.ActiveStages` and `$Flow.CurrentStage` at the start of an
+interview. To confirm what the initial values are, add temporary elements to display the initial values, such as in a screen display text
+field.
+
+SEE ALSO:
+
+Show Users Progress Through a Flow with Stages
+
+Flow Resource: Stage
+
+Two-Column Flow Considerations
+
+If your org has Lightning runtime enabled, you can control whether a flow displays in one column
+or two columns. Before you use this feature, understand how the flow layout currently behaves.
+
+Note: Starting in Winter ’23, two-column flow layouts are ignored. For a better layout option,
+add Section components to your flow screens. Each Section component lets you organize
+record fields and screen components in up to four adjustable-width columns.
+
+These considerations don’t apply to the Section component in flow screens.
+
+Granularity
+
+The layout setting is applied at the flow level. So you can’t control the layout at the screen or field
+level. If you set a flow to use two columns, every screen in that flow displays in two columns.
+
+Order of Fields
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+You can’t manually control which fields go in which columns. If the flow is set to display two columns, the fields alternate in each column.
+The odd fields (first, third, fifth, and so on) are placed in the left column. The even fields (second, fourth, sixth, and so on) are placed in
+the right column.
+
+If your users navigate screens with the Tab key, they tab through all the fields in the left column and then all the fields in the right column.
+You can’t configure the fields to tab left-to-right.
+
+Responsiveness
+
+The flow layout isn’t responsive to the user’s screen dimensions. It uses the same layout whether the user’s screen is 1 inch wide or 20
+inches wide.
+
+Tip: If users run a flow from a phone or small tablet, don’t apply a two-column layout to the flow.
+
+Compatibility with Section component
+
+For flows that are distributed via Experience Builder, the Lightning App Builder, or the utility bar, each flow screen that contains a Section
+component ignores the Layout property.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+For flows that are distributed via URL, each flow screen that contains a Section component ignores the `flowLayout` URL parameter.
+
+SEE ALSO:
+
+Flow Limits and Considerations
+
+Flow Screen Output Component: Section
+
+Customize a Flow URL to Render Two-Column Screens
+
+Schedule-Triggered Flow Considerations
+
+A schedule-triggered flow starts at the specified time and frequency for a batch of records.
+Understand the considerations and special behaviors of schedule-triggered flows, also known as
+scheduled flows.
+
+These considerations apply to schedule-triggered flows.
+
+**•** A schedule-triggered flow starts at the specified time and frequency. You can’t launch a
+schedule-triggered flow by any other means.
+
+**•** The Start Time field value is based on the Salesforce org’s default time zone.
+
+**•** The View All Data permission is required to activate an autolaunched flow that has a trigger.
+
+**•** The maximum number of schedule-triggered flow interviews per 24 hours is 250,000, or the
+number of user licenses in your org multiplied by 200, whichever is greater. One interview is
+created for each record retrieved by the schedule-triggered flow’s query.
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+If you specify an object so that the flow runs for a batch of records, then set the time, frequency, and record conditions to avoid
+reaching this limit. The maximum limit of records per batch is 200. You can use debug logs to check how many records a
+schedule-triggered flow runs on. Track the number of records with the SCHEDULED_FLOW_DETAIL event. If your org reaches the
+limit, Salesforce sends a flow error email.
+
+**•** If you delete a schedule-triggered flow from the Scheduled Jobs page in Setup, all future recurrences of that flow are canceled. To
+enable future runs, deactivate and reactivate the flow.
+
+**•** If a flow is scheduled to run one time with a date and time that already passed, the flow doesn’t run.
+
+**•** The Default Workflow User runs schedule-triggered flows.
+
+**•** If you need a schedule-triggered flow to invoke Apex code, don’t enable the Require User Access to Apex Classes Invoked by Flow
+update. When that release update is activated, schedule-triggered flows fail when they invoke Apex.
+
+**•** A schedule-triggered flow can make callouts only after executing a Wait element. For example, without a Wait element, the flow
+can’t access external objects, execute Apex actions that make callouts, or execute actions that are generated from External Services
+registrations.
+
+Tip: You can insert a Wait element that pauses the flow for only a moment. Configure the resume event to pause until a
+specified time, with a specific time as the time source. For the base time, specify the `$Flow.CurrentDateTime` global
+variable. Then set the offset to 0 hours. At run time, a Wait element that’s set up this way typically pauses the flow for less than
+a minute.
+
+**•** If you configure an Update Records element to use the ID and all field values from the $Record global variable, enable `Filter`
+`inaccessible fields from flow requests` in your org’s process automation settings. Otherwise, the flow fails
+because the Update Records element tries to set the values for system fields and other read-only fields.
+
+**•** Synchronous Apex transactions invoked by an asynchronous flow contribute to synchronous per-transaction Apex limits. Asynchronous
+flows include scheduled flows and flows with scheduled or asynchronous paths.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+**•** At run time, if a schedule-triggered flow has a Create Records, Delete Records, Get Records, or Update Records element that processes
+multiple records and some records fail, all records are rolled back. The successful records are retried. If the flow has another Create
+Records, Delete Records, Get Records, or Update Records element later in the flow that processes the same failed records, all changes
+are rolled back and the flow transaction fails.
+
+**•** The order of your filter conditions doesn’t matter. The SFDC Optimizer evaluates all filters to optimize performance.
+
+SEE ALSO:
+
+Schedule Triggers for Flows That Run for Batches of Records
+
+Troubleshoot Flow Errors
+
+Flow Operations and Read-Only Fields
+
+Considerations for Troubleshooting Flows
+
+Record-Triggered Flow Considerations
+
+A record-triggered autolaunched flow makes additional updates to the triggering record before or
+after it’s saved to the database. Understand the considerations and special behaviors of flows that
+make before- and after-save updates.
+
+General Considerations
+
+These considerations apply to any record-triggered flows.
+
+**•** Record-triggered flows run custom validation rules.
+
+**•** You can’t reference a screen flow from an autolaunched flow.
+
+**•** The `isChanged` operator isn’t supported on asynchronous paths.
+
+**•** Due to their position in the order of execution, record-triggered flows can behave differently
+from similar workflow rules.
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+**•** Flows that run only when a record is updated to meet the condition requirements are triggered only if all the condition requirements
+change from `false` to `true` . If all the condition requirements already evaluate to `true` and still evaluate to `true` after the
+record is updated, the flow doesn’t run. Scheduled paths are scheduled only if the previous version of the record didn’t meet the
+requirements, and the updated record does meet the requirements.
+
+For example, a record-triggered flow that is set to trigger when a flow is created or updated has the condition Industry equals
+Agriculture. The flow is set to run only when a record is updated to meet the condition requirements.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+In this example, a record-triggered flow that is set to trigger when a flow is created or updated has the conditions Industry equals
+Agriculture OR Billing State equals CA. The flow is set to run only when a record is updated to meet the condition requirements.
+
+Considerations for Fast Field Updates
+
+These considerations apply to record-triggered flows that are optimized for fast field updates (before-save).
+
+**•** The flow can’t perform actions other than updating the triggering record’s field values.
+
+**•** The flow can’t update values in records that are related to the triggering record.
+
+**•** Only these elements are supported: Assignment, Decision, Get Records, and Loop.
+
+**•** The View All Data permission is required to activate an autolaunched flow that has a trigger.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+Considerations for Debug Mode
+
+**•** The `ISCLONE()` formula function always evaluates to `FALSE` when you’re in debug mode. For example, if a record-triggered
+flow contains an `ISCLONE()` formula function in the entry criteria or in a Decision element, `ISCLONE()` evaluates to `FALSE`
+even when you’re debugging with a cloned record.
+
+SEE ALSO:
+
+Record Triggers for Flows That Make Before-Save Updates
+
+_Apex Developer Guide_ [: Triggers and Order of Execution](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_triggers_order_of_execution.htm)
+
+#### Flow Data Considerations
+
+When designing flows, keep these data considerations in mind.
+
+Limits
+
+**•** Each flow interview that executes the flow element Get Records or Update Records enforces
+the SOQL query limit for the maximum number of characters because the element uses a SOQL
+query. For each element per flow interview, the SOQL query limit is 100,000 characters. For
+example, a flow interview executes the Get Records element that uses the In operator on a
+collection of account IDs. If the element contains a collection of account IDs that exceeds 4,700
+IDs and specifies other criteria to exceed the 100,000 character limit, the flow interview can fail.
+
+Permissions
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+**•** For flows that interact with the Salesforce database, make sure that your users have permission to create, read, edit, and delete the
+relevant records and fields. Otherwise, users receive an insufficient privileges error when they try to launch a flow. For example, a
+flow looks up and updates a case record's status. The flow users must have Read and Edit permissions on the `Status` field of the
+Case object.
+
+Variables
+
+**•** If you delete a record variable or record collection variable, variable assignments that use the deleted variable are set to `null` .
+
+**•** When a process or flow launches another flow, that flow’s input variables can be assigned values during the launch. However, for a
+text, picklist, or multi-select picklist variable that isn’t a collection, a value of `null` is converted to an empty string.
+
+**•** Storing field values automatically in the Get Record element is available only for screen flows and autolaunched flows.
+
+Date and Date/Time
+
+**•** At run time, time zones for date/time values can differ from what you see in Flow Builder. During run time, date/time values reflect
+the time zone settings of the user who’s running the flow.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+#### Flow Lightning Runtime Considerations
+
+When running flows, keep these considerations in mind.
+
+Note: In Lightning runtime, flow users always run the active flow version. Flow admins with
+the Manage Flow permission run the latest flow, so they can test the latest flow version
+without activating it for flow users. A flow admin also runs the latest flow version that is
+referenced via a Subflow element.
+
+Flow Interviews
+
+A _flow interview_ is an instance of a flow, much like a record is an instance of an object. The flow
+interview can do many things, including look up and manipulate Salesforce data. In an interview,
+you can pass data into variables and other resources. The data can come from a variety of sources,
+such as Salesforce records that the flow queries, information that a user enters in a screen input
+field, or something that you manually enter.
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+Interviews don’t perform actions—such as sending emails or creating, editing, or deleting records—until the associated transaction is
+complete. Transactions are complete when the interview either finishes or executes a Screen, Local Action, or Wait element. In addition
+to data elements, the Post to Chatter, Submit for Approval, and Quick Actions core actions also create and update records.
+
+When an interview is in flight, the data in the interview isn’t saved to the Salesforce database. If the flow executes an element that creates
+or updates records, such as Update Records or Post to Chatter, only the information configured in that element is saved to the Salesforce
+database.
+
+When an interview executes a Wait element or a user pauses it, all the interview data is serialized and saved to the database as a Paused
+Flow Interview record. When the interview resumes, the Paused Flow Interview record is deleted.
+
+Limitations of Lightning Runtime for Flows
+
+When Lightning runtime is enabled for your Salesforce org, flows in Lightning Experience don’t load in:
+
+**•** Web tabs
+
+**•** List buttons that are set to display an existing window with or without a sidebar
+
+When Lightning runtime is enabled for your org, flows in Salesforce Classic don’t load in custom buttons or links that are set to display
+in an existing window with or without a sidebar.
+
+In number input fields, users can enter up to 17 digits, including digits before and after a decimal point.
+
+At runtime, validation error messages persist on screen flow components even if a user corrects the errors. The user can complete the
+flow interview despite the messages.
+
+SEE ALSO:
+
+Lightning Runtime vs. Classic Runtime for Flows
+
+Flow Element: Subflow
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+Flow Runtime Accessibility Considerations
+
+We strive to make the run-time experience of screen flows follow the best practices in Section 508
+of the Rehabilitation Act and the Web Content Accessibility Guidelines (WCAG) 2.0 Level AA. But
+we have some exceptions.
+
+If you use screen readers or other assistive technology while running screen flows, consider these
+known issues.
+
+**•** The title of the screen doesn’t change when you click Next or Previous, so it’s not always obvious
+that you’ve switched to a different page.
+
+**•** Flow screen components that don’t have defined labels can’t be read properly by assistive
+technology.
+
+**•** Unless you use the ARIA alert role or another method of identifying errors for assistive technology,
+these types of custom error messages can’t be detected by assistive technology.
+
+**–** Error messages that are text components with conditional visibility
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+**–** Error messages that are displayed for components when the associated Validate Input formula expression evaluates to false
+
+**•** Screen readers base pronunciation on their language setting. When that language setting differs from the flow’s language, screen
+readers can’t correctly read the flow screens. This limitation affects flows run from:
+
+**–** Run and Debug buttons in Flow Builder
+
+**–** URLs
+
+**–** Custom buttons and links
+
+**–** Web tabs
+
+**•** Error messages for some Salesforce-provided components aren’t associated with their corresponding input fields. This limitation
+means that screen readers can’t read error messages associated with them. Affected Salesforce-provided components:
+
+**–** Dependent Picklists
+
+**–** Email
+
+**–** Lookup
+
+**–** Phone
+
+**–** Toggle
+
+**–** URL
+
+**•** When a user doesn’t complete a required field in a Dependent Picklists component, the resulting error messages can’t be read by
+screen readers or other assistive technology. Sometimes, one of the error messages is announced one time, but later attempts to
+focus on the field don’t cause the error message to be announced again.
+
+**•** When a user clicks Finish in the Resume window from the Paused Flow Interviews Lightning component on a desktop (LEX), focus
+isn’t set to the Refresh icon button.
+
+**•** When a flow screen is initially displayed, the focus is set to the first visible screen field. Exceptions:
+
+**–** If the flow screen contains an error, the focus is set to the first field with an error.
+
+**–** If the flow screen contains only Display Text components, the focus is set to the body of the flow.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+**•** When screen components or their parts are rendered after the screen is initially displayed, they’re never focusable. For example, if
+a component asynchronously fetches a list of tasks to display, the focus can’t be set to any of the tasks. If a screen component uses
+conditional visibility and appears only after user input, the focus can’t be set to any part of the screen component.
+
+SEE ALSO:
+
+Flow Limits and Considerations
+
+Flow Screen Input Component: Display Image
+
+Flow Management Considerations
+
+When managing flows, consider the administration and activation limits.
+
+Viewing Flows
+
+In Lightning Experience, the Flows page in Setup doesn’t display any flows if a user sets the Sharing
+Settings of the All Flows list view to Only I can see this list view.
+
+Activating Flows
+
+When you activate a new version of a flow, the previously activated version (if one exists) is
+automatically deactivated. Any running flow interview continues to run using the version with
+which it was initiated.
+
+Deleting Flows
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+To delete an active flow version, first deactivate it. If a flow has paused interviews, it can’t be deleted until those interviews are finished
+or deleted. You can delete flows that have never been activated at any time.
+
+Flow Type
+
+If a flow has versions with different types, the active (or latest) version determines the flow type.
+
+Deploying Flows
+
+In production orgs, you can enable the setting to deploy a new active version of a process or flow via change sets or Metadata API. The
+setting doesn't appear in non-production orgs (such as scratch, sandbox, and developer orgs), because you can always deploy a new
+active version.
+
+SEE ALSO:
+
+Deploy Processes and Flows as Active
+
+Flow Limits and Considerations
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+#### Considerations for Packaging Flows
+
+You can include a flow in a managed or unmanaged package. Before you create, update, or deploy
+a package that contains a flow, understand the limitations and behaviors of packages.
+
+Creating Packages
+
+**•** If you want to deploy a flow with a change set, the change set must include all components
+that the flow references.
+
+**•** When you package a flow, all components and fields that the flow references must be available
+in the same package or a dependent package.
+
+**•** If these elements are used in a flow, the packageable components that they reference aren’t
+included in the package automatically. To deploy the package successfully, manually add the
+referenced components to the package.
+
+**–** Post to Chatter
+
+**–** Send Email
+
+**–** Submit for Approval
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+For example, if you deploy a flow that posts to a particular Chatter group, manually add the referenced Chatter group to the package.
+
+**•** If a flow references a Lightning component that depends on a CSP Trusted Site, the trusted site isn’t included in the package
+automatically.
+
+**•** When you upload a package or package version, the active flow version is included. If the flow doesn’t have an active version, the
+latest version is packaged.
+
+Updating Packages
+
+**•** To update a managed package with a different flow version, activate that version and upload the package. Or, deactivate all versions
+of the flow, make sure that the latest flow version is the one to distribute, and then upload the package. If you activate a flow version
+by mistake and upload the package, that flow version is distributed to everyone.
+
+**•** If you install a flow from an unlocked package with the same API name, the new flow overrides the existing flow in the target org.
+
+**•** You can’t include flows in package patches.
+
+Other Considerations
+
+**•** Flow Builder displays Apex actions from managed packages only if the associated method is marked global.
+
+**•** Flow Builder displays email alerts from managed packages only if the email alert isn’t protected.
+
+**•** If you register your namespace after you reference a flow in a Visualforce page or Apex code, add the namespace to the flow name
+before you install the package.
+
+**•** If a flow is installed from a managed package, error emails for that flow’s interviews don’t include details about the individual flow
+elements. The email is sent to either the user who installed the flow or the Apex exception email recipients.
+
+**•** You can’t package flow triggers.
+
+**•** In a packaging org, you can’t delete a flow after you upload it to a released or beta first generation managed package. You can delete
+a flow version from a packaging org after you upload it to a released or beta first-generation managed package, if all these criteria
+are met:
+
+**–** Salesforce Customer Support activated the Managed Component Deletion permission.
+
+**–** The flow version isn’t the most recently packaged version of the flow.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+**–** The flow version isn’t active.
+
+**–** The flow version is not the only version.
+
+**•** Images in rich text for screens aren’t supported in packages.
+
+#### Change Set Considerations for Flows
+
+Before you use change sets to deploy a flow, understand the limits and behaviors that are related
+to component dependencies, deployment, and flow triggers.
+
+Creating Change Sets
+
+**•** If you want to deploy a flow with a change set, the change set must include any component
+the flow references.
+
+**•** When you view the dependent components for the change set, the Component Dependencies
+page lists the dependencies for _all_ versions of the flow. Add all interdependent components
+for the relevant flow version to the outbound change set.
+
+**•** If a flow element references these components, the Component Dependencies page doesn’t
+display that component. To deploy the flow successfully, manually add those referenced
+components to the change set.
+
+**–** Post to Chatter
+
+**–** Send Email
+
+**–** Submit for Approval
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+For example, if you deploy a flow that includes a Submit for Approval element, manually add the referenced approval process.
+
+**•** If a flow references a Lightning component that depends on a CSP Trusted Site, the trusted site isn’t included in the package or
+change set.
+
+Deploying Change Sets
+
+**•** You can include only one version of a flow in a change set.
+
+**•** An active flow in a change set is deployed to its destination as inactive. Manually activate the flow after deployment.
+
+**•** If the flow has no active version when you upload the outbound change set, the latest inactive version is used.
+
+**•** Deploying or redeploying a flow with a change set creates a version of the flow in the destination Salesforce org.
+
+**•** In production orgs, you can enable the setting to deploy a new active version of a process or flow using change sets or Metadata
+API. The setting doesn’t appear in non-production orgs (such as scratch, sandbox, and developer orgs), because you can always
+deploy a new active version.
+
+Flow Triggers
+
+**•** Flow triggers aren’t available in change sets.
+
+SEE ALSO:
+
+Deploy Processes and Flows as Active
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+#### Considerations for Flows Installed from Packages
+
+Keep these considerations in mind when you distribute, upgrade, or remove a flow that you installed
+from a package.
+
+**•** Flow Builder can’t open a flow that is installed from a managed package, unless the flow is a
+template or overridable.
+
+**•** If you install a managed package that contains multiple flow versions in a fresh destination org,
+only the latest flow version is deployed.
+
+**•** If you install a non-template flow from a managed package, error emails for that flow’s interviews
+don’t include any details about the individual flow elements. The email is sent to either the user
+who installed the flow or the Apex exception email recipients.
+
+**•** If you install a flow from an unmanaged package that has the same name but a different version
+number as a flow in your org, the newly installed flow becomes the latest version of the existing
+flow. However, if the packaged flow has the same name and version number as a flow already
+in your org, the package install fails. You can’t overwrite a flow.
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+**•** If you install a flow from an unlocked package that has the same name as a flow in your org, the newly installed flow overrides the
+existing flow.
+
+Status
+
+An active flow in a package is active after it’s installed. The previous active version of the flow in the destination org is deactivated in
+favor of the newly installed version. Any in-progress flows based on the now-deactivated version continue to run without interruption
+but reflect the previous version of the flow.
+
+Distributing Installed Flows
+
+**•** When you create a custom button, link, or web tab for a flow that’s installed from a managed package, include the namespace in
+the URL. The URL format is `/flow/namespace/flowuniquename` .
+
+**•** When you embed a flow that’s installed from a managed package in a Visualforce page, set the name attribute to this format:
+`namespace.flowuniquename` .
+
+Upgrading Installed Flows
+
+Upgrading a managed package in your org installs a new flow version only if there’s a newer flow version from the developer. After
+several upgrades, you can end up with multiple flow versions.
+
+Removing Installed Flows
+
+**•** You can’t delete a flow from an installed package. To remove a packaged flow from your org, deactivate it and then uninstall the
+package.
+
+**•** In a packaging org, you can’t delete a flow after you upload it to a released or beta first generation managed package. You can delete
+a flow version from a packaging org after you upload it to a released or beta first-generation managed package, if all these criteria
+are met:
+
+**–** Salesforce Customer Support activated the Managed Component Deletion permission.
+
+**–** The flow version isn’t the most recently packaged version of the flow.
+
+**–** The flow version isn’t active.
+
+**–** The flow version is not the only version.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+**•** If you have multiple versions of a flow installed from multiple unmanaged packages, you can’t remove only one version by uninstalling
+its package. Uninstalling a package—managed or unmanaged—that contains a single version of the flow removes the entire flow,
+including all versions.
+
+**•** Delete flows from an unlocked package manually—you can’t delete them by removing them from the unlocked package.
+
+Translating Installed Flows
+
+You can translate flow definition names only on the Translate page.
+
+SEE ALSO:
+
+[Use Managed Packages to Develop Your AppExchange Solution](https://developer.salesforce.com/docs/atlas.en-us.packagingGuide.meta/packagingGuide/managed_packaging_intro.htm)
+
+Select Flow and Process Error Email Recipients
+
+Considerations for Packaging Flows
+
+_Salesforce DX Developer Guide_ [Components Available in Managed Packages](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/packaging_packageable_components.htm)
+
+_[First-Generation Managed Packaging Developer Guide:](https://developer.salesforce.com/docs/atlas.en-us.pkg1_dev.meta/pkg1_dev/packaging_install.htm)_ Install a Managed Package
+
+Select Flow and Process Error Email Recipients
+
+#### Considerations for Troubleshooting Flows
+
+Keep these considerations in mind when reviewing a flow error email or using the debug option
+in Flow Builder.
+
+Be careful when debugging flows that contain delete elements. Even if the flow is inactive, it triggers
+the delete operation.
+
+Debugging a Flow
+
+**•** If you debug a flow without choosing to run the flow in rollback mode, the flow performs its
+actions, including any DML operations and Apex code execution. Remember, closing or restarting
+a running flow doesn’t roll back its previously executed actions, callouts, and changes committed
+to the database.
+
+**•** You can’t pass values into input variables of type collection, record, and record collection.
+
+**•** Clicking **Pause** or executing a Wait element closes the flow and ends debugging.
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+**•** When you debug a flow as another user, the flow’s record changes and actions are performed as that user. Also, the user’s profile
+and permission sets determine the object permissions and field-level access of the flow. However, flows that always run in system
+context ignore the user’s object permissions and field-level access.
+
+**•** When you click **Finish** in a flow, the debug details incorrectly state “Selected Navigation Button: NEXT.”
+
+**•** When you debug a schedule-triggered flow, the flow starts only for one record.
+
+**•** When you debug a record-triggered flow, only what’s within the flow is tested. This smaller scope can lead to scenarios where the
+flow executes as intended while debugging, but not at run time. This behavior difference can be due to other triggered flows and
+processes. To see how a record-triggered flow behaves in a real-world scenario, make sure to test it in a sandbox org.
+
+Tracking More Information About a Flow Interview
+
+**•** To store more information about an interview when it’s saved as a Salesforce record, build a custom object that references the
+interview’s GUID. An interview is assigned an 18-character Salesforce ID only when it’s paused and saved as a Salesforce record. Each
+interview, whether in-flight or paused, has a GUID.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+Troubleshooting Stages
+
+The flow error email doesn’t specify the values of `$Flow.ActiveStages` and `$Flow.CurrentStage` at the start of an
+interview. To confirm what the initial values are, add temporary elements to display the initial values, such as with a text field.
+
+Considerations for Flow Error Emails
+
+Review these considerations for the email sent to the admin or Apex exception email recipients
+regarding flow interview errors and Screen and Subflow elements.
+
+General
+
+**•** If the user who started the flow doesn’t have a first name, `null` replaces the user's first name
+in the How the Interview Started section.
+
+**•** Variable assignments display in this pattern: `{!variable} (prior value) =`
+`field/variable (new value)` . If the variable had no prior value, the parentheses
+display as empty. For example: `{!varStatus} () = Status (Delivered)`
+
+**•** If you install a non-template flow from a managed package, error emails for that flow’s interviews
+don’t include any details about the individual flow elements. The email is sent to either the user
+who installed the flow or the Apex exception email recipients.
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+**•** Failed flow interviews for these flow types that are built with the free-form layout in Flow Builder are saved and available to open in
+Flow Builder.
+
+**–** Screen flows
+
+**–** Record-triggered flows
+
+**–** Schedule-triggered flows
+
+**–** Autolaunched flows that aren’t triggered
+
+**•** Failed flow interviews aren’t saved if:
+
+**–** The flow is installed as part of a managed package and isn’t a template.
+
+**–** The failure occurs after the flow interview is paused and then resumed at least one time.
+
+**–** The error is handled because the element that encounters the error is connected to a fault connector.
+
+**–** The failure occurs during an Apex test method.
+
+**–** The flow is a standard flow.
+
+**–** The value of the flow’s metadata field `status` is `Draft` or `InvalidDraft` .
+
+**–** The failed flow interview exceeds 1 MB.
+
+**–** The failed flow interviews already saved in the database exceeds 1 GB.
+
+**•** Failed flow interviews don’t count toward data, file, or paused flow interview storage limits. When failed flow interviews are saved,
+they’re available for up to 14 days and then automatically deleted from the database.
+
+**•** These limits apply when failed flow interviews are saved.
+
+**–** For any specific flow, no more than 100 failed flow interviews are saved in a 24-hour period.
+
+**–** For a batch of up to 200 failed flow interviews in the same transaction, one interview is saved.
+
+**–** Across all the flows in an organization, no more than 3,000 failed flow interviews are saved in a 24-hour period.
+
+**–** Failed flow interviews exceeding 1 MB aren’t saved.
+
+**–** Failed flow interviews aren’t saved if more than 1 GB of failed flow interviews are already saved in the database.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Limits and Considerations
+
+Screen elements
+
+Password fields display in plain text
+
+Subflow elements
+
+**•** The merge field annotation ( `{!variable}` as opposed to just `variable` ) is missing for variables in a referenced flow. For
+example, when an interview enters a subflow and gives details about the inputs, the subflow's variable is `subVariable` instead
+of `{!subVariable}` .
+
+**•** If the error occurs in a referenced flow, the email is sent to the author of the parent flow, but the subject references the name of the
+referenced flow.
+
+**•** If you see multiple Entered flow _`ReferencedFlowName`_ version _`ReferencedFlowVersion`_ messages with no Exited
+_`ReferencedFlowName`_ version _`ReferencedFlowVersion`_ messages in between them, the flow user navigated backwards.
+To prevent this scenario, adjust the navigation options in the first screen of the referenced flow so that the user can’t click **Previous** .
+
+SEE ALSO:
+
+Troubleshoot Flow Errors
+
+Select Flow and Process Error Email Recipients
+
+#### Run-Time Changes by Release and API Version
+
+These versioned updates affect only flows that are configured to run on specific API versions. With versioned updates you can test and
+adopt run-time behavior changes for individual flows at your convenience.
+
+[Available in: both Salesforce Classic (not available in all orgs) and Lightning Experience](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+
+Available in: **Essentials**, **Professional**, **Enterprise**, **Performance**, **Unlimited**, and **Developer** Editions
+
+To change the run-time API version of a flow, open it in Flow Builder and edit the flow version properties.
+
+##### Winter ’25 (API Version 62.0)
+
+These updates affect only flows that are configured to run on API version 62.0 and later.
+
+Summer ’24 (API Version 61.0)
+These updates affect only flows that are configured to run on API version 61.0 and later.
+
+##### Winter ’25 (API Version 62.0)
+
+These updates affect only flows that are configured to run on API version 62.0 and later.
+
+[Available in: both Salesforce Classic (not available in all orgs) and Lightning Experience](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+
+Available in: **Essentials**, **Professional**, **Enterprise**, **Performance**, **Unlimited**, and **Developer** Editions
+
+Enforce Sharing Rules when Apex Launches a Flow
+
+This versioned update enforces sharing rules when an Apex class that’s declared using the with sharing keyword launches an autolaunched
+flow that runs in the default context. To enforce sharing, the Apex class must be declared using the with sharing keyword.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+Previously, the flow ran in system context without sharing even when an Apex class was declared using the with sharing keyword
+launched the flow.
+
+With this versioned update, the flow runs more securely in the default context when an Apex class that’s declared using the with sharing
+keyword launches an autolaunched flow. The flow enforces the sharing rules of the user that executes the Apex class. Previously, when
+sharing rules weren’t enforced, the flow was able to access all data.
+
+This versioned update restricts data access for autolaunched flows that are run in the default context and launched by an Apex class.
+The Apex class must be declared using the with sharing keyword. Data access is restricted to the sharing rules of the user that executed
+the Apex class.
+
+For example, a query can return fewer rows than it did in system context without sharing. An operation can fail because the user doesn’t
+have the correct permissions.
+
+Set Screen Action Outputs to Null Correctly
+
+In API version 62.0 and later, this versioned update makes sure that if a flow run by a screen action has an output that isn’t set by using
+an Assignment element, its outputs are set to null, as expected. Screen components using that output are now updated automatically.
+
+Set Conditionally Hidden Screen Component Outputs to Null Correctly
+
+In API version 62.0 and later, this versioned update makes sure that if a conditionally hidden screen component has a collection as an
+output, its outputs are set to null, as expected.
+
+##### Summer ’24 (API Version 61.0)
+
+These updates affect only flows that are configured to run on API version 61.0 and later.
+
+[Available in: both Salesforce Classic (not available in all orgs) and Lightning Experience](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+
+Available in: **Essentials**, **Professional**, **Enterprise**, **Performance**, **Unlimited**, and **Developer** Editions
+
+Evaluate Null Text Values
+
+With this versioned update, a null text value evaluates to null in a flow. Previously, a null text value evaluated to an empty string value.
+For example, an empty picklist value evaluates to a null text value when the flow runs on API version 61.0 and later.
+
+Flow Reference
+
+Bookmark this page for quick access to information about flow elements, resources, events, and
+more.
+
+Flow Resources
+Each _resource_ represents a value that you can reference throughout the flow.
+
+Flow Elements
+An element represents an action that the flow can execute. Examples include reading or writing
+Salesforce data, displaying information and collecting data from flow users, executing business
+logic, or manipulating data.
+
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+Provided Flow Core Actions
+Perform an action outside of the flow. Choose from Salesforce-provided actions, like Submit for Approval or Send Email, or from your
+org’s quick actions and local actions. To add one of these actions to your flow, add an Action element. Then, in the Action field,
+search for the appropriate action.
+
+Standard Flow Screen Components
+Salesforce provides several standard screen components that extend the types of input fields available in screens.
+
+Flow Connectors
+A connector determines the path that a flow takes at run time.
+
+Flow Operators
+Operators behave differently, depending on what you’re configuring. In Assignment elements, operators let you change resource
+values. In conditions and filters, operators let you evaluate information and narrow the scope of a flow operation.
+
+Flow Version Properties
+A flow version’s properties consist of its label, description, interview label, and type. These properties drive the field values that appear
+on the flow’s detail page.
+
+Flow Resources
+
+Each _resource_ represents a value that you can reference throughout the flow.
+
+In Flow Builder, the Manager panel displays the resources that are available in the flow.
+
+You can create some resources by clicking **New Resource** . Some resources, such as global constants
+and global variables, are provided by the system. Other resources are automatically created when
+you add an element to a flow. For example, when you add a Decision element, a resource for each
+decision outcome is automatically created.
+
+**Flow** **Description** **Creatable from**
+#### **Resource the Resources Tab**
+
+Actions Output values that are stored automatically from Action
+elements.
+
+Choice Create a choice option to use in a screen component, such as
+a Radio Buttons or Multi-Select Picklist component.
+
+Collection Generate a set of choices by using an existing collection of
+Choice records.
+Set
+
+Constant Store a fixed value that you can use throughout a flow.
+
+Decision When you add a Decision element to a flow, its outcomes are
+Outcome available as Boolean resources. If an outcome path has already
+
+been executed in the flow interview, the resource's value is
+`True` .
+
+_`Element`_ Any element that you add to a flow is available as a resource
+with the `was visited` operator in decision outcome
+
+criteria. An element is considered visited when it’s executed
+in the flow interview.
+
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+**Flow** **Description** **Creatable from the**
+**Resource** **Resources Tab**
+
+Any element that you add to a flow that supports a fault connector is available as a
+Boolean resource. If the element is already successfully executed in the flow interview,
+the resource's value is `True` . If the element wasn’t executed or was executed and
+resulted in an error, the resource's value is `False` .
+
+Formula Calculate a value when the formula is used in the flow.
+
+Global Fixed, system-provided values, such as `EmptyString`, `True`, and `False` .
+Constant
+
+Global Variable System-provided variables that reference information about the Salesforce org or
+running user, such as the user’s ID or the API session ID.
+
+Wait
+Configuration
+
+When you add a Wait element to a flow, its configurations are available as Boolean
+resources. If a configuration’s wait conditions are met, the resource’s value is `True` .
+If the configuration has no wait conditions set, the resource’s value is always `True` .
+
+Picklist Choice Generate a set of choices by using the values of a picklist or multi-select picklist field.
+Set
+
+Picklist Values System-provided values for picklist fields in record variables and record collection
+variables. Available only for Assignment elements and conditions.
+
+Record Choice Generate a set of choices by using a filtered list of records.
+Set
+
+Screen Any screen component that you add to a flow is available as a resource. The resource
+Component value depends on the type of screen component. The value for a Text component is
+
+what the user enters. The value for a Picklist component is the stored value of the
+choice that the user selects. The value for a Display Text component is the text that’s
+displayed to the user.
+
+Stage Represent the user’s progress throughout the flow. To identify which stages are
+relevant to the user throughout the flow, assign the stages to the stage system
+
+variables. You can reference stages in flow logic or in the UI, such as with a progress
+indicator. For example, in a payment flow, the stages are payment details, shipping
+details, billing details, and order confirmation.
+
+Text Template Store text that can be changed and used throughout the flow. To format the text, use
+HTML tags.
+
+Variable Store a value that can be changed throughout the flow.
+
+SEE ALSO:
+
+Flow Builder Tour
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+Flow Resource: Choice
+
+Create a choice option to use in a screen component, such as a Radio Buttons or Multi-Select Picklist
+component.
+
+**Field** **Description**
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+```
+API Name
+
+```
+
+An API name can include underscores and alphanumeric characters without
+spaces. It must begin with a letter and can’t end with an underscore. It also
+can’t have two consecutive underscores.
+
+`Description` Helps you differentiate this choice from other resources.
+
+##### Choice Label A user-friendly label for the choice.
+
+```
+Data Type
+
+##### `Choice Value`
+
+```
+
+Controls which screen components this choice can be used in. For example,
+you can’t use a Text choice in a Currency radio button. You can’t change the
+data type of a previously saved choice.
+
+If the user selects this choice, the screen component is set to this value.
+
+Exceptions:
+
+**•** If no choice value is configured, the screen component is set to the
+choice label.
+
+**•** If the choice value references a formula resource, the screen component
+is set to the choice label.
+
+`Display text` Displays a text input component below the choice. This option isn't available
+`input` if the choice's data type is `Boolean` .
+
+Configure Text Input
+
+These fields appear when you select `Display text input` .
+
+**Field** **Description**
+
+`Input` A user-friendly label for the text input component.
+
+```
+Label
+
+```
+
+`Require` Requires the user to enter a value in the text input component before progressing or finishing the flow.
+
+`Validate` Evaluates whether the user entered an acceptable value.
+
+`Error` If the user didn’t enter an acceptable value, this message displays under the text input component. Available only
+`Message` when `Validate` is selected.
+
+`Formula` Boolean formula expression that evaluates whether the user entered an acceptable value. Available only when
+`Validate` is selected.
+
+Example: To let users choose a particular service level, create choices for Gold, Silver, and Bronze. In a screen, display the choices
+with a description of the features included. Then, in the same screen, let the user choose from a Radio Buttons screen component.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+Formatting Choices
+
+**•** Add rich text formatting using the toolbar.
+
+**•** If you open the Display Text screen component, Choice resource labels, help text, Pause confirmation screens, or input validation,
+Flow Builder converts existing HTML to rich text. Unsupported HTML is removed. The following HTML tags are converted to rich text:
+<a>, <b>, <br>, <font>, <i>, <li>, <p>, <span>, <u>, and <div>. HTML that is pasted into the rich text editor isn't supported.
+
+SEE ALSO:
+
+Flow Resources
+
+Standard Flow Screen Components
+
+Using Choice Resources with Flow Screen Components
+
+Flow Resource: Collection Choice Set
+
+Use an existing collection of records or external data to generate a set of choices.
+
+**Field** **Description**
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+```
+API Name
+
+```
+
+The requirement for uniqueness applies only to elements within the
+current flow. Two elements can have the same API name, provided they're
+used in different flows. An API name can include underscores and
+alphanumeric characters without spaces. It must begin with a letter and
+can’t end with an underscore. It also can’t have two consecutive
+underscores.
+
+`Description` Helps you differentiate this resource from other resources.
+
+```
+Record
+
+##### `Collection`
+
+```
+
+The collection you want to use to generate the choices. You can reference
+an Apex-defined collection from an external service, Apex action, or
+another screen component.
+
+Configure Each Choice
+
+For each record that meets the filter conditions, the flow creates a choice using values from the record. Identify which fields to use for
+each choice’s label and value.
+
+**Field** **Description**
+
+```
+Choice Label
+
+```
+
+Determines which field to use as the label for each generated choice. Select a field that enables users
+to differentiate between the generated choices.
+
+Make sure to choose a field that contains data. If the selected field has no value for a given record, the
+corresponding choice’s label is blank at run time.
+
+`Data Type` Data type of the choice’s value. You can’t change the data type of a previously saved collection choice
+set.
+
+```
+Choice Value
+
+```
+
+Determines which field’s value to store when the user selects this choice at run time. The value is
+determined by the most recent user selection of a choice within the generated set.
+
+`Data Type` determines the available options. If you don’t select a field as the choice value, the
+choice label is used instead.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+Tip: In most cases, set the choice label to _`Name`_ and the choice value to _`ID`_ .
+
+Example: Collection choice sets are useful when a flow reuses the same dataset over multiple screens. For example, you’re
+designing a support flow for a company’s IT department that handles support requests related to employee hardware. The flow
+references the same employee hardware data over several screens. To get the employee hardware information, use a Get Records
+action, which populates a record collection. To define the conditions relevant to the support request, use a collection filter on the
+record collection. Next, to display the user choices, add a collection choice set that uses the filtered collection. Create a relevant
+collection filter and collection choice set for each branch of the support flow.
+
+With collection choice sets, the server is queried only when the Get Records element is first executed. In comparison, record choice
+sets require a server query with each use.
+
+SEE ALSO:
+
+Standard Flow Screen Components
+
+Using Choice Resources with Flow Screen Components
+
+Flow Resources
+
+Flow Resource: Constant
+
+Store a fixed value that can be used but not changed throughout a flow.
+
+**Field** **Description**
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+```
+API Name
+
+```
+
+The requirement for uniqueness applies only to elements within the
+current flow. Two elements can have the same API name, provided they're
+used in different flows. An API name can include underscores and
+alphanumeric characters without spaces. It must begin with a letter and
+can’t end with an underscore. It also can’t have two consecutive
+underscores.
+
+`Description` Helps you differentiate the constant from other resources.
+
+`Data Type` Determines the type of value that the constant can store. You can’t change
+the data type of a previously saved constant.
+
+`Value` The constant’s value. This value doesn’t change throughout the flow.
+
+SEE ALSO:
+
+Flow Resources
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+Flow Resource: Formula
+
+Calculate a value when the formula is used in the flow.
+
+**Field** **Description**
+
+```
+API Name
+
+```
+
+The requirement for uniqueness applies only to elements within
+the current flow. Two elements can have the same API name,
+provided they're used in different flows. An API name can include
+underscores and alphanumeric characters without spaces. It must
+begin with a letter and can’t end with an underscore. It also can’t
+have two consecutive underscores.
+
+`Description` Helps you differentiate this formula from other resources.
+
+`Data Type` The data type for the value returned by the formula. You can’t
+change the data type of a previously saved variable.
+
+```
+Decimal Places
+
+##### `Formula`
+
+```
+
+SEE ALSO:
+
+Controls the number of digits to the right of the decimal point up
+to 17 places. If you leave this field blank or set it to zero, only whole
+numbers appear when your flow runs.
+
+Available only when the data type is Number or Currency.
+
+The formula expression that the flow evaluates at run time. The
+returned value must be compatible with `Data Type` .
+
+Some formula functions aren’t supported in Flow Builder.
+
+##### Formula Operators and Functions by Context
+
+Which Functions Aren’t Supported in Flow Formulas?
+
+Flow Resources
+
+Creating Flow Formulas with Flow Formula Builder
+
+Flow Resource: Global Variables
+
+A system-provided variable holds information that can be referenced throughout the flow. For
+example, it can contain information about the Salesforce org, flow, running user, or triggering
+record.
+
+Example: Use `{!$User.Id}` to access the ID of the user who’s running the flow interview.
+
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+Global Variable Considerations for Flows
+
+###### • $Flow is the only global variable available in screen component visibility conditions.
+
+**•** In a record-triggered flow, the `$Record` global variable doesn’t contain the triggering record’s values for fields whose values are
+derived from other records. Examples of derived fields include `Contact.Name` and `User.MediumPhotoUrl` .
+
+**•** Multi-select picklist, time, and location global variables are available only in formulas.
+
+**•** If a field in the database has no value, the corresponding merge field returns a blank value. For example, if no value is set for your
+org’s Country field, `{!$Organization.Country}` returns no value.
+
+**•** `$Label` global variables take longer to load in the flow resource selection list. When selecting a `$Label` global variable, if the
+`$Label` option isn’t visible in the flow resource selection list, close the window and try again in a few minutes.
+
+SEE ALSO:
+
+Flow Operations and Read-Only Fields
+
+Salesforce Data Considerations for Flows
+
+###### Flow Resource: $Flow Global Variables
+
+###### A $Flow global variable provides information about the running interview. Some variables contain
+
+system-provided values. You can update the other variables throughout the flow by using
+Assignments or by storing output values in the variables.
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+**Global Variable**
+
+**Supported** **Description** **Value Set By**
+**Resource**
+**Types**
+
+###### $Flow.ActiveStages Stage $Flow.CurrentDate Text, Date, and
+
+Date/Time
+
+A collection of stages that are Assignment
+relevant to the current path of the
+flow.
+
+For example, each item in a
+progress indicator corresponds to
+
+a stage in
+###### $Flow.ActiveStages .
+
+Date when the flow interview System
+executes the element that
+references the global variable.
+
+###### $Flow.CurrentRecord Text ID of a related record. The value Assignment
+
+must be a single ID for a valid
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+**Global Variable** **Supported** **Description** **Value Set By**
+**Resource Types**
+
+object. All custom objects and most standard
+objects are valid.
+
+When a user pauses the flow interview or the
+interview executes a Wait element, the interview
+is associated with this record by creating a
+FlowRecordRelation record. If the ID isn’t valid,
+the interview fails to pause.
+
+`$Flow.CurrentStage` Stage
+
+The currently selected stage. Assignment
+
+For example, the selected item in a progress
+indicator corresponds to
+`$Flow.CurrentStage` .
+
+`$Flow.CurrentDateTime` Text, Date, and Date and time when the flow interview executes System
+Date/Time the element that references the global variable.
+
+`$Flow.FaultMessage` Text System fault message that can help flow System
+administrators troubleshoot runtime issues.
+
+`$Flow.InterviewGuid` Text Unique identifier for the interview. System
+
+`$Flow.InterviewStartTime` Text, Date, and Date and time when the flow interview started. System
+Date/Time For a flow launched by a Subflow element,
+
+`$Flow.InterviewStartTime` indicates
+when the initial master flow started.
+
+Example: A flow is used internally by call center personnel. For each flow element that interacts with the Salesforce database, a
+fault connector leads to a screen. A Display Text screen component displays the system fault message and instructs the flow user
+to provide that message to the IT department.
+
+```
+  Sorry, but you can't
+
+       read or update records at this time.
+
+  Please open a case with IT, and include the following error message:
+
+  {!$Flow.FaultMessage}
+
+```
+
+Example: If a customer asks to be forgotten, make sure to delete all references to information that could personally identify the
+customer, including data in paused flow interviews. When an interview executes a Wait element or is paused by a user, all the
+interview data is serialized and saved to the database as a Paused Flow Interview record. When the interview is resumed, the
+Paused Flow Interview record is deleted.
+
+To identify which paused interviews include personal data for a contact, lead, or user, build a custom object to track the interview’s
+GUID and the affected contact, lead, or user. When an interview references personal data, such as a lead’s email or credit card
+number, create a record of the custom object using the lead’s ID and `{!$Flow.InterviewGuid}` . Before the final screen,
+delete all records of the custom object referencing the interview’s GUID. That way, the custom object tracks only interviews that
+are saved to the database.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+When a customer asks to be forgotten, create a report that lists all the custom object records where LeadId matches the customer’s
+record. Then for each custom object record, delete the flow interview that corresponds to the provided GUID.
+
+SEE ALSO:
+
+Customize What Happens When a Flow Fails
+
+Flow Resources
+
+Flow Resource: Global Constant
+
+Fixed, system-provided values.
+
+Example: When you create a Boolean variable, the supported values are
+`$GlobalConstant.True` and `$GlobalConstant.False` .
+
+Null Versus Empty String
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+At run time, `{!$GlobalConstant.EmptyString}` and `null` are treated as separate, distinct values.
+
+**•** `{!$GlobalConstant.EmptyString}` indicates a text value with zero characters. It’s used to determine whether a field or
+variable is blank.
+
+**•** `null` indicates that a value doesn’t exist. It’s used to determine whether a field or variable value is available.
+
+**•** To check if a field or variable has been populated with data in a condition, use **Equals** for the operator, and
+**{!$GlobalConstant.EmptyString}** for the value.
+
+**•** To check if a field or variable value isn’t available, in a condition, use **Is Null** for the operator and **{!$GlobalConstant.True}** for the
+value.
+
+Example: To check if a Get Records element found records, in a Decision element outcome condition, use the Get Records record
+collection for the resource, **Is Null** for the operator, and **{!$GlobalConstant.False}** for the value.
+
+Considerations
+
+**•** If you don’t give a text field or variable a starting value, the value is `null` at run time. If you want the value to be treated as an
+empty string, set it to `{!$GlobalConstant.EmptyString}` .
+
+**•** For a text field or component placed on a Screen element, the Is Null operator always evaluates to false. To determine if the field or
+component has no value, use **Equals** for the operator and **{!$GlobalConstant.EmptyString}** for the value.
+
+**•** If a condition compares two text variables, make sure that their default values are either set to
+`{!$GlobalConstant.EmptyString}` or left empty ( `null` ).
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+**•** To check for both a `null` or `{!$GlobalConstant.EmptyString}` value at the same time, use the ISBLANK formula
+function.
+
+SEE ALSO:
+
+Flow Resources
+
+Flow Resource: Picklist Choice Set
+
+Generate a set of choices by using the values of a picklist or multi-select picklist field.
+
+**Field** **Description**
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+```
+API Name
+
+```
+
+The requirement for uniqueness applies only to elements within the
+current flow. Two elements can have the same API name, provided they're
+used in different flows. An API name can include underscores and
+alphanumeric characters without spaces. It must begin with a letter and
+can’t end with an underscore. It also can’t have two consecutive
+underscores.
+
+`Description` Helps you differentiate this resource from other resources.
+
+`Object` The object whose fields you want to select from. You can’t change the
+object for a previously saved picklist choice set.
+
+```
+Data Type
+
+```
+
+Determines whether you can choose from picklist fields or multi-select
+picklist fields. You can’t change the data type of a previously saved picklist
+choice set.
+
+`Field` The picklist or multi-select picklist field to use to generate the list of
+choices.
+
+`Sort Order` Controls the order that the choices appear in. The choices sort based on
+the translated picklist value for the running user’s language.
+
+Example: In a flow that simplifies the process of creating an account, users identify the company’s industry.
+
+Rather than creating one choice for each industry, you add a picklist choice set to the flow and populate a Picklist screen component
+with it. When a user runs the flow, the picklist choice set finds all the values in the database for the Industry field (1) on the Account
+object (2).
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+In addition to being easier than the standalone choice resource to configure, a picklist choice set reduces maintenance. When
+someone adds options to the Account Industry field, the flow automatically reflects the changes. You don’t have to manually
+update the flow.
+
+Considerations
+
+You can’t do the following when using a picklist choice set.
+
+**•** Filter out values that come back from the database. The flow always displays every picklist value for the field, even if you’re using
+record types to narrow down the picklist choices in page layouts.
+
+**•** Customize the label for each option. The flow always displays the label for each picklist value.
+
+**•** Customize the stored value for each option. The flow always stores the API value for each picklist value.
+
+Picklists for Knowledge Articles aren’t supported.
+
+Labels and Values for Translated Fields
+
+When a picklist field has been translated:
+
+**•** Each choice’s label uses the version of the picklist value in the running user’s language.
+
+**•** Each choice’s stored value uses the version of the picklist value in the org’s default language.
+
+SEE ALSO:
+
+Standard Flow Screen Components
+
+Using Choice Resources with Flow Screen Components
+
+Flow Resources
+
+Place Record Fields Directly on Flow Screens
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+Flow Resource: Record Choice Set
+
+Generate a set of choices by using a filtered list of records.
+
+**Field** **Description**
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+```
+API Name
+
+```
+
+The requirement for uniqueness applies only to elements within the
+current flow. Two elements can have the same API name, provided they're
+used in different flows. An API name can include underscores and
+alphanumeric characters without spaces. It must begin with a letter and
+can’t end with an underscore. It also can’t have two consecutive
+underscores.
+
+`Description` Helps you differentiate this resource from other resources.
+
+`Object` The object whose records you want to use to generate the choices. You
+can’t change the object for a previously saved record choice set.
+
+Filter _`Object`_ Records
+
+Determines which records are included in the choice set. For example, to generate a list of all accounts in San Francisco, use filters to
+include only accounts whose Billing City is San Francisco.
+
+Tip: Without filter conditions, a choice is generated for every record of the selected object. If you don’t apply filter conditions,
+make sure to sort the records in ascending or descending order.
+
+Sort _`Object`_ Records
+
+Determines how to sort the filtered list of records and how many records to include in the choice set.
+
+**Field** **Description**
+
+`Sort Order` Controls the order that the choices appear in.
+
+`Sort By` When the sort order is ascending or descending, select the field to order the choices by.
+
+`Maximum Number of` The maximum number of choices to display for the screen component that uses this record choice
+`Choices` set. By default, the maximum is 200.
+
+Configure Each Choice
+
+For each record that meets the filter conditions, the flow creates a choice using values from the record. Identify which fields to use for
+each choice’s label and value.
+
+**Field** **Description**
+
+```
+Choice Label
+
+```
+
+Determines which field to use as the label for each generated choice. Select a field that enables users
+to differentiate between the generated choices.
+
+Make sure to choose a field that contains data. If the selected field has no value for a given record, the
+corresponding choice’s label is blank at run time.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+**Field** **Description**
+
+`Data Type` Data type of the choice’s value. You can’t change the data type of a previously saved record choice
+set.
+
+```
+Choice Value
+
+```
+
+Determines which field’s value to store when the user selects this choice at run time. The value is
+determined by the most recent user selection of a choice within the generated set.
+
+`Data Type` determines the available options. If you don’t select a field as the choice value, the
+choice label is used instead.
+
+Store More _`Object`_ Field Values
+
+When a choice is selected, store field values from the associated record in flow variables that you can reference later.
+
+Note: When a Checkbox Group, Multi-Select Picklist, or Choice Lookup screen component uses a record choice set, only values
+from the last record that the user selects are stored in the flow variables. If multiple Checkbox Group or Multi-Select Picklist
+components on one screen use the same record choice set, the variable assignments come from the last record selected from all
+of those components.
+
+Example: In a support flow for a computer hardware manufacturer, users identify a product to find its latest updates. You create
+a record choice set that displays all products whose product ID starts with a specific string of characters. However, the flow users
+are more likely to know the product’s name than its ID. So for `Choice Label`, select the field that contains the product name,
+and for `Choice Value`, select the ID field. Elsewhere in the flow, you want to display the associated description. To do so, you
+store the Description field value from the user-selected record in a variable.
+
+SEE ALSO:
+
+Flow Operators in Data Elements and Record Choice Sets
+
+Standard Flow Screen Components
+
+Using Choice Resources with Flow Screen Components
+
+Flow Resources
+
+Flow Resource: Stage
+
+Represent the user’s progress throughout the flow. To identify which stages are relevant to the user
+throughout the flow, assign the stages to the stage system variables. You can reference stages in
+flow logic or in the UI, such as with a progress indicator. For example, in a payment flow, the stages
+are payment details, shipping details, billing details, and order confirmation.
+
+**Field** **Description**
+
+`Label` A user-friendly label for the stage. Merge fields aren’t supported.
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+```
+API Name
+
+```
+
+The requirement for uniqueness applies only to elements within the
+current flow. Two elements can have the same API name, provided they're
+used in different flows. An API name can include underscores and
+alphanumeric characters without spaces. It must begin with a letter and
+
+can’t end with an underscore. It also can’t have two consecutive
+underscores.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+**Field** **Description**
+
+`Description` Helps you differentiate this stage from other resources.
+
+`Order` Required. Determines how to sort this stage among the other stages in the flow. The order must be
+unique among all other stages in the flow.
+
+`Active by default` Adds this stage to `{!$Flow.ActiveStages}` when an interview starts.
+
+Usage
+
+When ordering your stages, leave gaps between the numbers in case you later want to add a stage between two other stages. For
+example, if you use 10, 20, and 30 as the order, you can insert a stage at order 15 without updating the original three stages.
+
+Most of the time, stages resolve to the fully qualified name: `namespace.flowName:stageName` or `flowName:stageName` .
+Stages resolve to the label in:
+
+**•** Display contexts, such as choice labels and Display Text screen components
+
+**•** Attributes in screen components that require Lightning runtime
+
+SEE ALSO:
+
+Plan the Stages in Your Flow
+
+Identify the Relevant Stages in Your Flow
+
+Flow Stage Considerations
+
+Flow Resources
+
+Sample Flows That Display Stages
+
+These Online Purchase flows display stages as sections on a progress indicator. Each sample flow displays stages differently based on
+how the flow is configured.
+
+Sample Flow That Displays Stages as Breadcrumbs
+This Online Purchase flow shows visitors what parts of the flow they’ve completed by displaying all stages up to the current stage.
+This flow displays only the stages that the user has visited.
+
+Sample Flow That Displays All the Active Stages
+This Online Purchase flow shows visitors all active stages and the current stage so that they know what to expect throughout this
+flow.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+Sample Flow That Displays Stages as Breadcrumbs
+
+This Online Purchase flow shows visitors what parts of the flow they’ve completed by displaying
+all stages up to the current stage. This flow displays only the stages that the user has visited.
+
+**Example**
+
+This flow includes stages for users to review their cart, enter shipping details, enter billing details,
+enter payment details, and confirm their order. Since we’re displaying the stages as breadcrumbs,
+only the first stage is active by default.
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+When the flow starts, Review Cart is automatically set to `$Flow.CurrentStage` and is the only stage in `$Flow.ActiveStages` .
+
+Each time the flow moves to a different stage, an Assignment element resets the current stage and adds the new stage to the active
+stages.
+
+Note: This sample uses an Aura component to display the flow’s stages. For details, see Represent Your Flow’s Stages Visually.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+The first screen displays only one active stage, which is also the user’s current stage: Review Cart.
+
+Next, the flow moves to a new stage: Shipping Details. To make sure that the active stages and current stage respect the change, the
+flow updates the global variables with an assignment.
+
+`$Flow.ActiveStages` now contains the Review Cart and Shipping Details stages, and `$Flow.CurrentStage` is set to the
+Shipping Details stage.
+
+Often, a user’s shipping details and billing details are the same. On the Shipping Details screen, the user can indicate that the billing
+address is different.
+
+The flow uses the value of the Different Billing Address checkbox to determine where to go next. If the shipping and billing details are
+the same, the flow continues to the Payment Details assignment. If the billing and shipping details are different, the flow moves to the
+Billing Details assignment.
+
+To make sure that the active stages and current stage respect the change, the flow updates the global variables with an assignment.
+
+Now `$Flow.ActiveStages` contains the Review Cart, Shipping Details, and Billing Details stages, and `$Flow.CurrentStage`
+is set to the Billing Details stage.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+After the shipping and billing details are complete, the flow moves to the Payment Details stage. To make sure that the active stages
+and current stage respect that change, the flow updates the global variables with an assignment.
+
+`$Flow.ActiveStages` contains the Review Cart, Shipping Details, Billing Details (if the billing and shipping details are different),
+and Payment Details stages. The `$Flow.CurrentStage` global variable is set to the Payment Details stage.
+
+Finally, the flow moves to the last stage: Order Confirmation. To make sure that the active stages and current stage respect the change,
+the flow updates the global variables with an assignment.
+
+`$Flow.ActiveStages` now contains the Review Cart, Shipping Details, Billing Details (if the billing and shipping details are different),
+Payment Details, and Order Confirmation stages. The `$Flow.CurrentStage` global variable is set to the Order Confirmation stage.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+Sample Flow That Displays All the Active Stages
+
+This Online Purchase flow shows visitors all active stages and the current stage so that they know
+what to expect throughout this flow.
+
+**Example**
+
+This flow includes stages for users to review their cart, enter shipping details, enter billing details,
+enter payment details, and confirm their order. To give users an idea of the steps they go through
+in the flow, we’re displaying all the applicable stages when the flow starts. Every user goes through
+the Review Cart, Shipping Details, Payment Details, and Order Confirmation stages, so those stages
+are all active by default.
+
+Not all users enter billing details, because a user's shipping and billing details can be the same. To
+insert an optional stage in the flow's active stages, create another flow and reference it by using a
+####### Subflow element
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+When the flow starts, Review Cart is automatically set to `$Flow.CurrentStage`, and `$Flow.ActiveStages` contains Review
+Cart, Shipping Details, Payment Details, and Order Confirmation.
+
+Each time the flow moves to a different stage, an Assignment element resets the current stage.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+Note: This sample uses an Aura component to display the flow’s stages. For details, see Represent Your Flow’s Stages Visually.
+
+The first screen displays all active stages and the user’s current stage: Review Cart.
+
+Next, the flow moves to a new stage: Shipping Details. To make sure that the current stage respects the change, the flow updates the
+global variable with an assignment. `$Flow.CurrentStage` is set to the Shipping Details stage.
+
+Often, a user’s shipping details and billing details are the same. On the Shipping Details screen, the user can indicate that the billing
+address is different.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+The flow uses the value of the Different Billing Address checkbox to determine where to go next. If the shipping and billing details are
+the same, the flow continues to the Payment Details assignment. If the billing and shipping details are different, the flow uses a Subflow
+element to reference the Billing Details flow.
+
+The Billing Details flow includes an optional stage for users to enter billing details between shipping and payment details.
+
+When a referenced flow starts, its default active stages are automatically inserted in `$Flow.ActiveStages` after the current stage.
+
+When the Billing Details flow starts, `$Flow.CurrentStage` is Shipping Details. The Billing Details stage is inserted into
+`$Flow.ActiveStages` immediately after the current stage. Now `$Flow.ActiveStages` contains the Review Cart, Shipping
+Details, Billing Details, Payment Details, and Order Confirmation stages.
+
+The flow uses an assignment to set the current stage to Billing Details.
+
+The `$Flow.CurrentStage` global variable is set to the Billing Details stage.
+
+After the shipping and billing details are complete, the flow moves to the Payment Details stage. To make sure that the current stage
+respects that change, the flow updates the system variable with an assignment.
+
+The `$Flow.CurrentStage` global variable is set to the Payment Details stage.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+Finally, the flow moves to the last stage: Order Confirmation. To make sure that the current stage respects the change, the flow updates
+the global variable with an assignment.
+
+`$Flow.ActiveStages` now contains the Review Cart, Shipping Details, Billing Details (if the billing and shipping details are different),
+Payment Details, and Order Confirmation stages. The `$Flow.CurrentStage` global variable is set to the Order Confirmation stage.
+
+Flow Resource: Text Template
+
+Store text that can be changed and used throughout the flow.
+
+**Field** **Description**
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+```
+API Name
+
+```
+
+The requirement for uniqueness applies only to elements within the current
+flow. Two elements can have the same API name, provided they're used
+in different flows.An API name can include underscores and alphanumeric
+characters without spaces. It must begin with a letter and can’t end with
+an underscore. It also can’t have two consecutive underscores.
+
+`Description` Helps you differentiate this text template from other resources.
+
+##### Text Template The text for the template. To reference information from other resources,
+
+use merge fields.
+
+Rich Text
+
+Plain Text
+
+Control the font, size, color, and alignment of text. Add merge fields, HTML
+links, bullet points, or numbered lists. Rich text is on by default. Click
+
+to change to Rich Text.
+
+Send email core actions use plain text. Some custom actions from
+AppExchange or built by Salesforce developers also expect plain text. Click
+
+to change to Plain Text.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+Example: You’re designing a flow that registers people for an event. You create a text template that includes a registrant's name,
+address, and other information. Then you use the template in an email confirmation that the flow sends when it finishes.
+
+SEE ALSO:
+
+Flow Resources
+
+Flow Resource: Variable
+
+Store a value that can be used or changed throughout the flow.
+
+**Field** **Description**
+
+`Apex Class` The Apex class that defines fields for the Apex-defined data type. Only
+fields with the @AuraEnabled annotation are available in a flow.
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+```
+API Name
+
+```
+
+The requirement for uniqueness applies only to elements within the
+current flow. Two elements can have the same API name, provided they're
+used in different flows. An API name can include underscores and
+alphanumeric characters without spaces. It must begin with a letter and
+can’t end with an underscore. It also can’t have two consecutive
+underscores.
+
+`Description` Helps you differentiate this variable from other resources.
+
+```
+Data Type
+
+```
+
+Determines the types of values that the variable can store. You can’t
+change the data type of a previously saved variable.
+
+The Record data type can store multiple field values for one record. The
+Apex-defined data type can store multiple field values for one Apex class.
+
+Looking for sObject? In Flow Builder, that data type changed to Record.
+
+`Allow multiple` When selected, the resource is a collection variable. You can store a list
+`values` of values in collection variables. Collection variables can store only values
+`(collection)` that are compatible with its data type. When the data type is Record, the
+collection variable can only store values for the associated object’s records.
+
+For example, store multiple email addresses in a collection variable, and
+reference the collection variable to send an email.
+
+```
+Object
+
+Decimal Places
+
+Availability
+
+Outside the
+
+Flow
+
+```
+
+The object whose field values you can store in the variable. You can’t
+change the object of a previously saved variable.
+
+Available only when the data type is Record.
+
+Controls the number of digits to the right of the decimal point up to 17
+places. If you leave this field blank or set it to zero, only whole numbers
+appear when your flow runs.
+
+Available only when the data type is Number or Currency.
+
+When a variable is available for input, it can be set at the start of the flow,
+such as when a flow is started from a Lightning page, a process, or another
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+**Field** **Description**
+
+flow. When a variable is available for output, it can be accessed throughout the flow, such as by a
+Lightning web component or another flow.
+
+The default value of the field depends on the release or API version in which the variable is created.
+
+**•** If the variable was created in Summer ’12 or later, or in API version 25.0 or later, by default the
+variable isn’t available for input or output.
+
+**•** If the variable was created in Spring ’12 or earlier, or in API version 24.0 or earlier, by default the
+variable is available for both input and output.
+
+Disabling input or output access for an existing variable can break the functionality of applications
+and pages that call the flow and access the variable. For example, you can access variables from URL
+parameters, processes, and other flows.
+
+This field doesn’t affect how variables are assigned or used within the same flow, for example, through
+these types of elements: Assignment, Create Records, Get Records, and Apex Action.
+
+```
+Default Value
+
+```
+
+SEE ALSO:
+
+Determines the variable value when the flow starts. If you leave this field blank, the value is `null` .
+
+Not available for Picklist and Multi-Select Picklist variables.
+
+Sample Flow That Loops Through a Collection
+
+Flow Element: Loop
+
+Flow Operators in Assignment Elements
+
+Flow Resources
+
+Flow Variable Considerations
+
+Flow Element: Transform
+
+Add Values to a Collection Variable
+
+After you create a collection variable, populate it with values to reference throughout your flow.
+You can’t use a Get Records element to populate a collection variable, but there are some
+workarounds.
+
+To use values from outside the flow, make sure that the collection variable is available for input.
+When the values come from outside the flow, the values can be set only when the flow interview
+starts.
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+Sample Flow That Populates a Collection Variable
+
+Populate a collection variable by populating a record collection variable. Then individually assign
+the record collection variable’s values to the collection variable.
+
+In this scenario, you’re designing a flow to send an email to every employee who lives in San
+Francisco.
+
+The Send Email core action lets you easily send emails from a flow. However, the Recipients parameter
+only accepts text variables and text collection variables. Since multiple users live in San Francisco,
+use a collection variable (rather than entering the email address for each individual user).
+
+You can't use a Get Records element to populate collection variables. First populate a User-based
+record collection variable with field values, including `Email`, from the employees who live in San
+Francisco. Then add those emails to the collection variable.
+
+After the collection variable is populated, use the collection variable as the value for the Send Email
+element’s `Email Addresses (collection)` parameter.
+
+This flow already contains these resources.
+
+**•** A User-based record collection variable called `employeesInSF`
+
+**•** A User-based record variable called `loopVariable`
+
+**•** A Text-based collection variable called `emails_employeesInSF`
+
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+The example flow:
+
+**1.** Finds all user records whose `City` is "San Francisco" and populates `employeesInSF` with those records’ `Email` .
+
+**2.** Loops through the record collection variable so that it can look at each individual user record. The loop copies the values of each
+item in `employeesInSF` to `loopVariable` .
+
+**3.** For each iteration, assigns the user's `Email` to a collection variable that has a Data Type of Text.
+
+**4.** When the loop ends, the flow sends an email to the users whose emails are now stored in `emails_employeesInSF` .
+
+SEE ALSO:
+
+Add Values to a Collection Variable
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+Flow Elements
+
+An element represents an action that the flow can execute. Examples include reading or writing
+Salesforce data, displaying information and collecting data from flow users, executing business
+logic, or manipulating data.
+
+Flow Builder gives you the option of building flows in free-form or in auto-layout. In free-form, the
+#### Elements tab shows the types of elements that you can add to the flow by dragging them onto
+
+the canvas. In auto-layout, click to display the types of elements that you can add. For a list of
+all elements already added to the flow, see the Elements section of the Manager tab.
+
+Flow Elements: Action
+Launch an action that's available in Salesforce by adding an Action element to your flow.
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+Flow Element: Add Prompt Instructions
+Provide data in the form of prompt instructions that are merged into a prompt template in Prompt Builder. This element is available
+only in template-triggered prompt flows.
+
+Flow Element: Apex Action
+Call an Apex class. Apex classes are available as Apex actions only if one of the methods is annotated with `@InvocableMethod` .
+
+Flow Element: Apex Action (Legacy)
+Call an Apex class that uses a legacy Apex interface. Apex classes are available as legacy Apex actions only if the `Process.Plugin`
+interface has been implemented.
+
+Flow Element: Assignment
+Set values in variables, including collection variables, record variables, record collection variables, and global variables.
+
+Flow Element: Collection Filter
+Apply criteria to a collection, and then output a new collection that contains only the items that meet the criteria.
+
+Flow Element: Collection Sort
+Reorder the items within a collection and optionally limit the number of items that remain in the collection after the sort.
+
+Flow Element: Create Records
+Create or update multiple Salesforce records by using a record collection variable. Create or update exactly one Salesforce record
+by using a record variable or other values from the flow.
+
+Flow Element: Custom Error
+Create targeted error messages in record-triggered flows to display in a window on the overall record page or as an inline error on
+a specific field for your users. The change that triggered the flow is rolled back until the error is fixed.
+
+Flow Element: Get Records
+Find Salesforce records that meet filter conditions, and store values from the records in variables.
+
+Flow Element: Decision
+Evaluate a set of conditions, and route users through the flow based on the outcomes of those conditions. This element performs
+the equivalent of an if-then statement.
+
+Flow Element: Delete Records
+Identify Salesforce records to delete by using the IDs stored in a record variable or record collection variable, or by specifying conditions.
+
+Flow Element: Email Alert
+Send an email using an Email Alert action where you specify an email template and a static list of recipients. You add an Action
+element to your flow and search for the name of your already configured Email Alert action.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+Flow Element: Loop
+Start a loop path for iterating over items in a collection variable. For each iteration, the flow temporarily stores the item in the loop
+variable. To execute actions on each item’s field values, use other elements in the loop.
+
+Flow Elements: Wait
+Resume a flow interview after specific conditions are met, a specified amount of time passes, or until a specific date.
+
+Flow Element: Recommendation Assignment
+Generate Einstein Next Best Action recommendations by combining data from records in the recommendation object, records in
+other objects, values in collections, and manually entered values.
+
+Flow Element: Screen
+Collect information from or display information to a user who runs the flow.
+
+Flow Element: Start
+Connect the Start element to the flow element that you want to execute first at run time. In an autolaunched flow, you can open
+the Start element to add a trigger that launches the flow. Without a trigger, you must set up other things to invoke the autolaunched
+flow, such as custom buttons, processes, Apex classes, or Einstein Bots.
+
+Flow Element: Subflow
+Launch another active flow that’s available in your org. A flow launched by another flow is called the _referenced flow_ .
+
+Flow Element: Transform
+Select the flow resources for mapping and transforming source data to target data. You can use the Transform element in screen
+flows, autolaunched flows with no triggers, and record-triggered flows.
+
+Flow Element: Update Records
+Identify Salesforce records to update, and set the values to change in those records. To do so, use the IDs and field values stored in
+a record variable or record collection variable, or use specify conditions to identify the records and set the field values individually.
+
+Flow Builder Elements for Marketing Cloud
+A Flow Builder element represents an action that a flow can execute. Examples include decisions based on criteria and creating and
+deleting Salesforce data. Some Flow Builder elements are available only in Marketing Cloud, such as Send Email Message and Send
+SMS Message.
+
+SEE ALSO:
+
+Flow Resources
+
+Flow Builder Tour
+
+Add and Edit Elements
+
+Flow Elements: Action
+
+Launch an action that's available in Salesforce by adding an Action element to your flow.
+
+Usage
+
+Add an Action element on page 74 to your flow. Then, in the Action field, search for and select the
+action you want to perform or filter by category or type of action. Flow Builder displays descriptions
+for action inputs and outputs. See Provided Flow Core Actions on page 382. If something goes
+wrong, go back to select a different action.
+
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+Set Input Values for the Selected Action
+
+To set the input values for the referenced action, use values from earlier in the flow. Assign values for all required inputs. To assign values
+to optional inputs, select **Include** or **Include with Specified Value** for the toggle associated with the input.
+
+Store Output Values
+
+To use the referenced action's outputs, either use automatic output or assign manual variables. You can’t store output values using both
+automatic output and manually assigned variables.
+
+To use automatic output to reference the action's outputs later in the flow, select the desired output from the resource: Outputs from
+_`ElementName`_ .
+
+To manually assign the referenced action's outputs to variables, expand **Advanced**, and assign variables to the needed outputs. To
+return the referenced action's outputs from a flow, manually assign variables defined with **Available for output** selected.
+
+SEE ALSO:
+
+Flow Elements
+
+Add and Edit Elements
+
+Provided Flow Core Actions
+
+_Trailhead_ [: Data and Actions in Flows](https://trailhead.salesforce.com/content/learn/modules/data-and-actions-in-flows)
+
+Flow Element: Add Prompt Instructions
+
+Provide data in the form of prompt instructions that are merged into a prompt template in Prompt
+Builder. This element is available only in template-triggered prompt flows.
+
+Template-triggered prompt flows aren’t compatible with prompt templates created in Winter ’24.
+
+EDITIONS
+
+Available in: Lightning
+Experience
+
+Available in: **Unlimited+**
+Edition
+
+Available for an additional
+cost in: **Enterprise** and
+**Unlimited** Editions with the
+Einstein for Sales, Einstein for
+Platform, or Einstein for
+Service add-on.
+
+Example: The first Add Prompt Instructions element adds the text _`Hello!`_ . The next Add Prompt instructions element appends
+the {!contact} record variable resource. When the flow finishes, the $Output global variable contains the text, _`Hello! Mary`_,
+where _`Mary`_ is the value that {!contact} references. The same text is merged into the associated prompt template in Prompt
+Builder.
+
+Handle Missing Data in Prompt Instructions
+
+Consider logic or actions that return no data in prompt instructions. Consider these options:
+
+**•** Incorporate an alternative or default value.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+**•** Add instructions that don’t use the data.
+
+**•** Clear the prompt instructions, so nothing is passed outside the flow.
+
+**•** Include prompt instructions that address the missing data.
+
+For example, your prompt instructions depend on accounts that meet filter criteria, but the flow finds no accounts. We recommend
+using logic to handle the missing data. The Decision element can check for data, and the Add Prompt Instructions element can send
+contextual instructions that no data is available.
+
+Get Record IDs
+
+When you insert a resource that references the Get Records element in the Add Prompt Instructions element, the $Output global variable
+stores only the record IDs. For example, the Get Records element retrieves a collection of accounts. Its flow resource {!Get_Accounts} is
+inserted into the Add Prompt Instructions. The $Output global variable stores only the account IDs.
+
+SEE ALSO:
+
+Template-Triggered Prompt Flows
+
+Flow Element: Apex Action
+
+Call an Apex class. Apex classes are available as Apex actions only if one of the methods is annotated
+with `@InvocableMethod` .
+
+Add an Action element to the flow. Filter the list of actions by type rather than category. If your
+##### canvas is in free-form layout, select Apex . If your canvas is in auto-layout, select Apex Action . Select
+
+the action that you want to configure. For details about creating Apex actions, see
+“ `InvocableMethod` [Annotation” in the Apex Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_classes_annotation_InvocableMethod.htm)
+
+Set Input Values
+
+When you set the inputs for the Apex action, use values from earlier in the flow.
+
+Apex actions don’t support lookup fields in record variables as input values.
+
+Store Output Values
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+To reference output values that are stored automatically, specify the API name of the Action element. To store the action’s output values
+manually, select **Manually assign variables (advanced)** . The values are assigned when the code is executed.
+
+Usage
+
+If a flow invokes Apex, the running user must have the corresponding Apex class assignment in their profile or permission set.
+
+If the invoked method creates, updates, or deletes a record, that action isn’t performed until the interview’s transaction completes.
+Transactions are complete when the interview either finishes or executes a Screen, Local Action, or Wait element.
+
+Flow Builder doesn’t display descriptions for input and output values. For details about each parameter, ask the Apex developer for more
+information.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+Flow Builder displays Apex actions from managed packages only if the associated method is marked global.
+
+SEE ALSO:
+
+Add and Edit Elements
+
+Let Flows Execute Apex Actions
+
+Customize What Happens When a Flow Fails
+
+Move and Connect Elements to Change a Flow Route
+
+Flow Element: Apex Action (Legacy)
+
+Call an Apex class that uses a legacy Apex interface. Apex classes are available as legacy Apex actions
+only if the `Process.Plugin` interface has been implemented.
+
+Add an Action element to your flow. Filter the list of actions by type rather than by category. Select
+##### Apex Action (Legacy), and then select the action that you want to configure.
+
+Tip: If your developer hasn’t already implemented the `Process.Plugin` interface on
+the desired class, we recommend using the `@InvocableMethod` annotation instead.
+Unlike the `Process.Plugin` interface, the `@InvocableMethod` annotation supports
+sObject, Collection, Blob, and Time data types and bulkification. It’s also easier to implement.
+To compare the interface and the annotation, see Let Flows Execute Apex Actions on page
+171.
+
+Set Input Values
+
+When you set the inputs for the Apex action, use values from earlier in the flow.
+
+Store Output Values
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+To use the legacy Apex action’s outputs later in the flow, store them in variables. The values are assigned when the code is executed.
+
+Usage & Limitations
+
+If the Apex class creates, updates, or deletes a record, the action isn’t performed until the interview’s transaction is completed. Transactions
+are complete when the interview either finishes or executes a Screen, Local Action, or Wait element.
+
+Flow Builder doesn’t display descriptions for input and output values. For details about each parameter, ask the Apex developer for more
+information.
+
+Legacy Apex actions aren’t organized by the tag in the plug-in code.
+
+Cloud Flow Designer lets you save an Apex Plug-in element without setting values for its required input parameters. If you open the
+corresponding legacy Apex action in Flow Builder, you can’t save changes to the element unless you set values for the required input
+parameters.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+Important: Legacy Apex actions aren’t supported in auto-layout in Flow Builder. Legacy Apex actions are only available to be
+added in free-form in Flow Builder. Existing actions can be edited in both auto-layout and free-form mode.
+
+SEE ALSO:
+
+Add and Edit Elements
+
+Let Flows Execute Apex Actions
+
+Customize What Happens When a Flow Fails
+
+Move and Connect Elements to Change a Flow Route
+
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_namespace_process.htm)_ : Process Namespace
+
+Flow Element: Assignment
+
+Set values in variables, including collection variables, record variables, record collection variables,
+and global variables.
+
+Usage
+
+To update the value of a variable, add an Assignment element to your flow. Specify the API name
+of a variable, an operator, and the value to use.
+
+To update the value of more than one variable in an Assignment element, click Add Assignment.
+For each row, specify the variable, the operator, and the value to assign. At run time, variable
+assignments are made consecutively in the order they're listed in the element.
+
+**Field** **Description**
+
+`Variable` The API name of the variable you want to assign a value to. Select an
+existing variable, or create one.
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+```
+Operator
+
+Value
+
+```
+
+The operation to perform for the assignment. The available operators
+depend on the data type of the specified `Variable` . See Flow Operators
+in Assignment Elements
+
+The value to use in the assignment or the API name of a resource that
+contains the value to use in the assignment. `Variable` and `Value`
+in the same row must have compatible data types.
+
+Example: **Update a Record Variable and Add It to a Record Collection**
+
+To set the field values for a record variable and then add the record variable to a record collection, use an Assignment element on
+a Loop element's For Each path. To create all the records at the same time, use the record collection variable with a Create Records
+element outside of the loop.
+
+This example updates the Account ID, Amount, Description, and Stage fields of the NewOpportunity record variable and then
+adds the record variable to the NewOpportunities record collection variable.
+
+This example contains five variables:
+
+**•** NewOpportunity: **Data Type** is _`Record`_ and **Object** is _`Opportunity`_ .
+
+**•** AccountId: **Data Type** is _`Text`_ .
+
+**•** OpportunityAmount: **Data Type** is _`Currency`_ .
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+**•** OpportunityDescription: **Data Type** is _`Text`_ .
+
+**•** NewOpportunites: **Data Type** is _`Record`_ and **Object** is _`Opportunity`_ . **Allows multiple values** is selected.
+
+The Assignment element in this example has five rows:
+
+**•** The first row sets the record variable's account ID to a variable value:
+
+**–** **Variable** is _`NewOpportunity > Account ID`_
+
+**–** **Operator** is _`Equals`_
+
+**–** **Value** is _`AccountId`_
+
+**•** The second row sets the record variable's amount to a variable value:
+
+**–** **Variable** is _`NewOpportunity > Amount`_
+
+**–** **Operator** is _`Equals`_
+
+**–** **Value** is _`OpportunityAmount`_
+
+**•** The third row sets the record variable's description to a variable value:
+
+**–** **Variable** is _`NewOpportunity > Description`_
+
+**–** **Operator** is _`Equals`_
+
+**–** **Value** is _`OpportunityDescription`_
+
+**•** The fourth row sets the record variable's stage to a literal value from the picklist associated with the Stage field:
+
+**–** **Variable** is _`NewOpportunity > Stage`_
+
+**–** **Operator** is _`Equals`_
+
+**–** **Value** is _`Proposal`_
+
+**•** The fifth row adds the record variable to the record variable collection:
+
+**–** **Variable** is _`NewOpportunities`_
+
+**–** **Operator** is _`Add`_
+
+**–** **Value** is _`NewOpportunity`_
+
+**Here's an Assignment element that sets properties of an opportunity record variable and then adds the variable to an**
+**opportunities record collection**
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+Example: **Set the Value of an Error Message in a Fault Path**
+
+To set a variable equal to a relevant error message, use an Assignment element on a Fault path. Next, use a Go To connector to
+go to a Screen element that displays errors to the flow user. The Screen element uses the variable from the Assignment element
+in a Display Text component.
+
+This example sets the value of the ErrorMessage variable to a string that identifies the problem and what to do about it.
+
+This example contains one variable: ErrorMessage where **Data Type** is _`Text`_ .
+
+This example contains one row:
+
+**•** **Variable** is _`ErrorMessage`_
+
+**•** **Operator** is _`Equals`_
+
+**•** **Value** is _`We couldn't find a record with the specified record ID. Check the record`_
+
+```
+       ID and try again.
+
+```
+
+**Here's an Assignment element that sets the value of a variable to a literal string**
+
+SEE ALSO:
+
+Flow Elements
+
+Flow Operators in Assignment Elements
+
+Flow Element: Create Records
+
+Flow Element: Loop
+
+Move and Connect Elements to Change a Flow Route
+
+Flow Resources
+
+Flow Element: Collection Filter
+
+Apply criteria to a collection, and then output a new collection that contains only the items that
+meet the criteria.
+
+**Field** **Description**
+
+##### Collection The collection variable that is filtered. This field accepts any collection variable
+
+within the same flow.
+
+`Condition` Determines the logic that evaluates conditions.
+
+```
+Requirements
+```
+**•** Choose `All Conditions Are Met` to include values that meet all
+the specified criteria.
+
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+**Field** **Description**
+
+**•** Choose `Any Condition Is Met` to include values that meet any of the specified criteria.
+
+**•** Choose `Custom Condition Logic Is Met` to include values that meet the logic entered in
+`Condition Logic` .
+
+**•** Choose `Formula Evaluates to True` to include values where `Formula` is true for that value.
+
+`Condition` Only appears if `Condition Requirements` is set to `Custom Condition Logic Is Met` .
+`Logic` Enter logic such as _`1 AND (2 OR 3)`_ .
+
+```
+Formula
+
+```
+
+Only appears if `Condition Requirements` is set to `Formula Evaluates to True` . Enter a
+formula that can evaluate to TRUE or FALSE, such as _`{!currentItemFromSourceCollection.Id}`_
+_`== {!varContactID}`_ .
+
+`Field` The field evaluated by this condition. Doesn’t appear if `Condition Requirements` is set to `Formula`
+`Evaluates to True` .
+
+`Operator` The available operators depend on the data type of the selected `Field` .
+
+```
+Value
+
+```
+
+Usage
+
+`Field` and `Value` in the same row must have compatible data types.
+
+Options:
+
+You can filter any collection found in Flow Builder, including collection variables that contain single values, collection variables that
+contain records, and Apex-defined collection variables.
+
+Collection Filter outputs a collection with the filtered results and doesn’t change the contents of the source collection. The output
+collection is null until its corresponding Collection Filter runs.
+
+Note: The output collection variable is named after the Collection Filter element's API name.
+
+Example:
+
+**•** For example, if a Collection Filter element is named _`FilterLeads`_, its output collection is called _`Leads from`_
+_`FilterLeads`_ .
+
+**•** The Collection Filter element also creates a single variable called _`CurrentItem_FilterLeads`_ . It acts as a loop variable
+for the Collection Filter element's input collection.
+
+**•** You can reference the single variable in a formula resource. For example, you can create a Filter element formula condition
+where you set condition requirements to _`Formula Evaluate to True`_ : AND ({currentItem_FilterLeads.LastViewedDate}
+< {!$Flow.CurrentDateTime,{!currentItem_FilterLeads.IsConverted})
+
+If you filter your collection with a formula, the formula must evaluate to a boolean (true or false) value. For more formula considerations,
+see Flow Formula Considerations in Salesforce Help.
+
+If you delete a Collection Filter element, the _`CurrentItem_FilterLeads`_ variable remains in the flow. You can safely delete this
+single record variable after you remove the collection filter element.
+
+Considerations for Defining Filter Criteria
+
+**•** When you define multiple filter criteria, the filter logic usually defaults to AND. But if multiple filters have the same field selected and
+use the equals operator, the filters are combined with OR.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+For example, your filters check whether a case Type equals Problem, Type equals Feature Request, and Escalated equals true. At run
+time, the filters are combined to be `Type = (Problem OR Feature Request) AND Escalated = true` .
+
+**•** The available filter operators depend on the data type of the selected fields. For details, see Flow Operators in Data Elements and
+Record Choice Sets.
+
+SEE ALSO:
+
+Flow Formula Considerations
+
+Flow Operators in Data Elements and Record Choice Sets
+
+Creating Flow Formulas with Flow Formula Builder
+
+Flow Element: Collection Sort
+
+Reorder the items within a collection and optionally limit the number of items that remain in the
+collection after the sort.
+
+**Field** **Description**
+
+##### Collection The collection variable that is sorted. This field accepts any collection variable
+
+`Variable` within the same flow.
+
+`Sort By` The field that the collection is sorted by. This field is only shown if the collection
+variable contains more than one field.
+
+`Sort Order` Sort the collection in ascending or descending order.
+
+`Put empty` When selected, this element sorts records with an empty or null value in the
+`string and` Sort By field at the start of the collection. Otherwise, they’re placed at the end.
+
+```
+null
+
+values
+
+first
+
+```
+
+`How Many` Select `Set the maximum number of items` to determine the
+`Items to` number of items that remain in the collection after the sort.
+
+```
+Keep After
+
+Sorting
+
+```
+
+Usage
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+When the Collection Sort element removes values or changes their order, it makes those changes directly in the selected collection
+variable.
+
+If the collection variable contains more than one field, click `Add Sort Option` to sort by additional fields in order of greater to
+lesser priority. You can sort by up to 3 fields at a time.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+Flow Element: Create Records
+
+Create or update multiple Salesforce records by using a record collection variable. Create or update
+exactly one Salesforce record by using a record variable or other values from the flow.
+
+Note: Looking for the Fast Create and Record Create elements from Cloud Flow Designer?
+The Create Records element combines the functionality of both elements. For the equivalent
+of the Record Create element, create one record and set the record fields using separate
+variables, resources, and literal values. Choosing the other options is the equivalent of the
+Fast Create element.
+
+How many records you choose to create or update and how to set the field values determine what
+to enter in the rest of the Create Records element.
+
+To create a collection of records
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+To create multiple records, you must use the values from a record collection variable. Earlier in the flow, populate the record collection
+variable with the new records’ field values. Make sure the ID field is blank.
+
+To dynamically create some records and update others in a collection, enable **Update Existing Records** . Choose a field on the records
+in the record collection variable that uniquely identifies each record. The flow uses this field to check whether the records exist. Choose
+how to process the remaining records if the flow fails to create or update a record.
+
+When you use a record collection variable to create or update multiple records at once, you reduce the number of DML requests in your
+flow. That means you’re more likely to stay within your org’s limits. For more information, see Flow Bulkification in Transactions.
+
+To create a single record
+
+If you’ve populated a record variable with the field values for the new record, choose to set the record fields by using all the values from
+a record variable. Then select the record variable to use. Make sure the ID field is blank.
+
+To dynamically create or update a record, enable **Update Existing Records** . Choose a field on the record in the record variable that
+uniquely identifies the record. The flow uses this field to check whether the record exists.
+
+To manually map values from various resources in the flow, choose to set the record fields by using separate variables, resources, and
+literal values. Choose the object that you want to create a record for, and set the field values for the record. Optionally, store the ID of
+the created record in a Text variable if you manually created the variable. For example, when you need the record’s ID to create child
+records or to provide a link to the created record.
+
+To dynamically check for a duplicate record to update or create, enable **Check for Matching Records** .
+
+Example: A user enters a name and address into the flow. Verify that a matching user exists by using the Get Records element.
+If a matching contact doesn’t exist, create a record for that user by using the Create Records element.
+
+Usage
+
+To prevent the flow from failing, make sure that:
+
+**•** All required fields are populated with values. The Create Records element populates potentially required fields for you. The fields
+shown are required in the master record type. For custom objects, confirm the required fields in the object definition.
+
+**•** For record variables the ID field values are blank. The flow populates the ID fields after the record is created.
+
+Note: The record isn’t created until the interview’s transaction is completed. Transactions are complete when the interview either
+finishes or executes a Screen, Local Action, or Wait element.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+Considerations
+
+**•** If a Create Records element uses a record collection, doesn’t have a fault path, and the flow fails, no records are created, and the
+flow stops, generating an error.
+
+**•** If a Create Records element uses a record collection and has a fault path, only the successful records are created. The IDs of the
+successful records aren’t populated for the records in the record collection in the flow. The IDs are populated on the records in the
+org.
+
+**•** The Create Records element can’t update matching records that are locked for editing. If Flow Builder finds a matching record and
+attempts to update a field in the record, a warning appears.
+
+**•** The Create Records element can’t update read-only fields in matching records. If Flow Builder finds a matching record and attempts
+to update a field that's always read only or that you don’t have permission to update, a warning appears.
+
+**•** The Create Records element can’t update fields in matching records for objects that don’t support the update function. If Flow Builder
+finds a matching record and attempts to update a field in an object that doesn’t support the update function, an error appears, and
+you can’t activate the flow. To determine whether an object can be updated, see _Object Reference for the Salesforce Platform_ .
+
+SEE ALSO:
+
+Flow Operators in Data Elements and Record Choice Sets
+
+Customize What Happens When a Flow Fails
+
+Move and Connect Elements to Change a Flow Route
+
+Flow Elements
+
+Check for Duplicate Records
+
+To prevent duplicate records, check for records that match a set of criteria and specify what happens
+if the flow finds matching records. Some field-level configurations and validations in your org
+override the settings in the Create Records element.
+
+**1.** Enable **Check for Matching Records** .
+
+**2.** In Condition Requirements, select an option.
+
+**3.** Configure the first condition.
+
+**4.** Add more conditions as needed.
+
+**5.** In the If a single matching record exists area, select an option.
+
+**Option** **Description**
+
+**Update the matching record** Update the matching record with the values that you
+specified in the Create Records element.
+
+**Skip the matching record** Don’t create or update any records.
+
+**6.** In the If multiple matching record exists area, select an option.
+
+**Option** **Description**
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+**Update the most recently modified matching** Update the most recently modified matching record with the values that
+**record** you specified in the Create Records element.
+
+**Skip all matching records** Don’t create or update any records.
+
+**7.** Save your work.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+Flow Element: Custom Error
+
+Create targeted error messages in record-triggered flows to display in a window on the overall
+record page or as an inline error on a specific field for your users. The change that triggered the
+flow is rolled back until the error is fixed.
+
+You can create a custom error message only in the before-save or after-save path of a
+record-triggered flow. You can’t run an error message asynchronously, and the error message can’t
+be called from another flow type.
+
+**FIELD** **DESCRIPTION**
+
+`Label` Identifies the error message on the canvas.
+
+`API Name` The API name must be unique within the current flow. Two elements can
+have the same API name if they’re used in different flows. The name can
+
+include underscores and alphanumeric characters without spaces. It must
+begin with a letter and can’t end with an underscore. It also can’t have
+two consecutive underscores.
+
+`Description` Describes the error message.
+
+EDITIONS
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+```
+Where to Show
+
+the Error
+
+Message
+
+```
+
+Select **In a window on a record page** to display the error message as
+an overall message. Select **As an inline error on a field** to display the
+error message on the field that is causing the error.
+
+`Error Message` Enter text or select a resource to create an error message to display to the
+user when there’s an error on a record change. The error message can
+
+have up to 255 characters. You can use Translation Workbench to translate
+your error messages.
+
+Usage
+
+Use the Custom Error element to roll back a change that triggered a flow and inform the user exactly what caused the error. The user
+can fix the problem and try again. For example, when a user deletes a record that triggers a flow, the flow can return an error message
+that tells the user why the deletion wasn’t allowed.
+
+Considerations
+
+**•** A Custom Error element can contain only one record page error message. To create another record page error message in the same
+flow, use another Custom error element.
+
+**•** A field can have only one error message, but each field can have an error message.
+
+**•** Compound fields aren’t supported.
+
+**•** If an executed fault path has a Custom Error element, the change that triggered the flow is rolled back.
+
+**•** Custom error messages use the same functionality as the addError() Id method in Apex.
+
+SEE ALSO:
+
+_Salesforce Developers_ [: Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_id.htm?_ga=2.201080110.1837804536.1690896507-579833793.1688039438#apex_System_Id_addError)
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+Flow Element: Get Records
+
+Find Salesforce records that meet filter conditions, and store values from the records in variables.
+
+Note: Looking for the Fast Lookup and Record Lookup elements from Cloud Flow Designer?
+The Get Records element combines the functionality of both elements. For the equivalent of
+the Record Lookup element, store only the first record in separate variables. Choosing the
+other options is the equivalent of the Fast Lookup element.
+
+Identify the object whose records you want to find, and specify conditions to narrow down the list
+of returned records. How many records you choose to store and where to store the field values
+determines what to enter in the rest of the Get Records element. When you add a Get Records
+element to a screen flow or an autolaunched flow, we automatically store all the record values in
+a flow variable. When the flow moves to the next element, the values are assigned to the variable.
+
+To store record values manually in a screen flow or autolaunched flow, select **Choose fields and**
+**assign variables (advanced)** .
+
+To store field values manually for only the first record
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+Tip: If you choose to store values from only the first record, filter by a unique field, such as ID. Otherwise, you can’t guarantee
+which record’s field values are stored.
+
+You can store field values from the first record together in a record variable or in separate variables.
+
+To store the values together, select the record variable, and identify the fields whose values you want to store.
+
+To store the values in separate variables, select each field you want to store, and select the variable to store each field value in.
+
+To store field values manually for more than one record
+
+To store field values for multiple records, you must store the values in a record collection variable.
+
+When you use a record collection variable to create, update, or delete multiple records at once, you reduce the number of DML requests
+in your flow. That means you’re more likely to stay within your org’s limits. For more information, see Flow Bulkification in Transactions.
+
+Example:
+
+**•** Find the product name or description for a product with a specific bar code.
+
+**•** Confirm stock availability for a particular item.
+
+**•** Verify a caller’s identity.
+
+Considerations for Defining Filter Criteria
+
+**•** When you define multiple filters, the filter logic usually defaults to AND. However, if multiple filters have the same field selected and
+use the equals operator, the filters are combined with OR.
+
+For example, your filters check whether a case’s Type equals Problem (1), Type equals Feature Request (2), and Escalated equals true
+(3). At run time, the filters are combined to `(1 OR 2) AND 3` .
+
+**•** The available filter operators depend on the data type of the selected fields. For details, see Flow Operators in Data Elements and
+Record Choice Sets.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+**•** To use a Data Cloud object as the data source, your org must include a data mapping for the object. Data mapping relates Data Lake
+Object (DLO) fields to Data Model Object (DMO) fields. If your org doesn’t include a mapping, you can’t select a Data Cloud data
+space or object in the Get Records element.
+
+SEE ALSO:
+
+Flow Operators in Data Elements and Record Choice Sets
+
+Flow Elements
+
+Customize What Happens When a Flow Fails
+
+Move and Connect Elements to Change a Flow Route
+
+Flow Element: Decision
+
+Evaluate a set of conditions, and route users through the flow based on the outcomes of those
+conditions. This element performs the equivalent of an if-then statement.
+
+Outcomes
+
+For each path that the flow can take, create an outcome. For each outcome, specify the conditions
+that must be met for the flow to take that path. To relabel the path that the flow takes if no outcome’s
+conditions are met, click **Default Outcome** .
+
+**Field** **Description**
+
+`Label` Identifies the connector for this outcome on the canvas.
+
+`Outcome` The requirement for uniqueness applies only to elements within the current
+`API Name` flow. Two elements can have the same API name, provided they're used in
+different flows. An API name can include underscores and alphanumeric
+characters without spaces. It must begin with a letter and can’t end with an
+underscore. It also can’t have two consecutive underscores.
+
+`Condition` Determines whether the flow takes this outcome’s path. Sets logic and conditions
+`Requirements` for each outcome that determine if the flow follows its path.
+
+```
+to Execute
+
+Outcome
+
+```
+
+`When to` Available on record-triggered flows. Determines whether this outcome’s path
+`Execute` is taken, based on whether the triggering record is updated to meet the
+`Outcome` condition requirements. For example, the opportunity update that triggered
+the flow to run changed its stage to Closed Won from any value that isn’t Closed
+Won.
+
+This option checks if the triggering record didn't previously meet the condition
+requirements and if the $Record variable now meets the condition requirements.
+If your flow changes any of the $Record variable’s fields before it runs the
+configured Decision element, the Decision checks if the $Record’s new field
+values now meet the condition requirements.
+
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+Example: Using a Decision element, determine whether to:
+
+**•** Give customers a return shipping address or instructions on how to resolve the problem when an item is determined to be
+faulty.
+
+**•** Offer a customer a loan based on the results of a credit scoring formula.
+
+**•** Inform sales leaders when an opportunity’s stage is changed to Closed Won.
+
+Tip: Configure your flow so that it does different things based on what a user selects for a Picklist screen component. To do
+so, add a decision after the screen to create the branches of the flow based on the choices available in the picklist. Then you
+can represent each choice in your decision and connect it to a branch of your flow.
+
+Usage
+
+When a flow executes a Decision element, it evaluates each decision outcome in order. For the first outcome whose conditions are met,
+the flow takes the associated path. If no outcome’s conditions are met, the flow takes the path for the default outcome.
+
+SEE ALSO:
+
+Flow Elements
+
+Define Conditions in a Flow
+
+Flow Operators in Decision, Wait, and Collection Filter Elements
+
+Move and Connect Elements to Change a Flow Route
+
+Flow Element: Delete Records
+
+Identify Salesforce records to delete by using the IDs stored in a record variable or record collection
+variable, or by specifying conditions.
+
+Note: Looking for the Fast Delete and Record Delete elements from Cloud Flow Designer?
+The Delete Records element combines the functionality of both elements.
+
+**•** For the equivalent of the Fast Delete element, use the IDs from a record variable or record
+collection variable.
+
+**•** For the equivalent of the Record Delete element, specify the conditions to identify the
+records to delete.
+
+How you choose to identify the records to delete determines what to enter in the rest of the Delete
+Records element.
+
+**•** Use a record variable or record collection variable.
+
+EDITIONS
+
+Available in: both Salesforce
+[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
+Experience
+
+Available in: **Essentials**,
+**Professional**, **Enterprise**,
+**Performance**, **Unlimited**,
+and **Developer** Editions
+
+If you store the IDs of the records to delete in a record variable or record collection variable, choose to use the IDs from a record
+variable or record collection variable. Then select the variable to use.
+
+Important: For the variable that you select, make sure that each record’s ID value is set. The flow identifies which records to
+delete based on the ID value.
+
+When you use a record collection variable to delete multiple records at once, you reduce the number of DML requests in your flow.
+That means you’re more likely to stay within your org’s limits. For more information, see Flow Bulkification in Transactions.
+
+**•** Specify conditions.
+
+To use conditions to identify the records to delete, choose the object, and add at least one condition to filter down the list of records.
+
+
+Automate Your Business Processes with Salesforce Flow Flow Reference
+
+Example: When a customer accepts a quote, delete the remaining quotes from the opportunity.
+
+Considerations for Defining Filter Criteria
+
+**•** When you define multiple filters, the filter logic usually defaults to AND. However, if multiple filters have the same field selected and
+use the equals operator, the filters are combined with OR.
+
 For example, your filters check whether a case’s Type equals Problem (1), Type equals Feature Request (2), and Escalated equals true
 (3). At run time, the filters are combined to `(1 OR 2) AND 3` .
 
@@ -6956,13506 +12617,3 @@ that has these fields.
 
 **–** `totalAdjProductAmtWithTax`              - Change to the adjusted product subtotal, including tax.
 
-**–** `totalAdjustedDeliveryAmount`              - Change to the adjusted delivery subtotal.
-
-**–** `totalAdjustedDeliveryTaxAmount`              - Change to the adjusted delivery subtotal tax.
-
-**–** `totalAdjustedProductAmount`              - Change to the adjusted product subtotal.
-
-**–** `totalAdjustedProductTaxAmount`              - Change to the adjusted product subtotal tax.
-
-**–** `totalAdjustmentDistributedAmount`              - Change to the total order adjustments.
-
-**–** `totalAdjustmentDistributedTaxAmount`              - Change to the total order adjustments tax.
-
-**–** `totalAmount`              - Change to the pretax total.
-
-**–** `totalExcessFundsAmount`              - The amount of excess funds available on the order payment
-summaries related to the order summary. It’s equal to the captured amount that is owed as a refund
-but isn’t associated with an invoice or credit memo. Excess funds normally occur when order products
-are canceled before fulfillment but after payment has been captured. This situation isn’t common in
-the US, where funds are normally authorized but not captured until the fulfillment process begins. This
-value includes all excess funds related to the order summary, not only the funds related to the current
-action.
-
-**–** `totalRefundableAmount`              - The total amount available to be refunded. It’s the sum of the
-excess funds and any outstanding change order grand total amounts that apply to post-fulfillment
-changes. This value includes all refundable amounts related to the order summary, not only the amount
-related to the current action.
-
-**–** `totalRequiredFundsAmount`              - The total amount associated with the order products added
-in the current action.
-
-This amount isn’t necessarily the amount that must be captured. For example, in an even exchange
-flow, the order amount reduction from canceling the exchanged products offsets the required funds
-amount of the replacement products.
-
-**–** `totalTaxAmount`              - Change to the total tax.
-
-**•** `changeOrderId`            - ID of the change order generated by the action.
-
-**•** `newItems`            - A list of one or more Apex-defined variables of class
-ConnectApi.AddItemOutputRepresentation, each of which represents an added order product, and has
-these fields.
-
-**–** `id`              - ID of the order product summary.
-
-**–** `name`              - Name of the order product summary.
-
-**–** `orderItemAdjustmentLineSummaries`              - A list of zero or more Apex-defined variables of
-class ConnectApi.AddItemAdjustmentOutputRepresentation, each of which represents an order product
-adjustment line summary associated with the added order product summary, and has these fields.
-
-**•** `id`               - ID of the order product adjustment line summary.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Output Parameter** **Description**
-
-**•** `name`               - Name of the order product adjustment line summary.
-
-**•** `orderItemTaxLineItemSummaries`               - A list of zero or more Apex-defined variables of
-class ConnectApi.AddItemTaxOutputRepresentation, each of which represents an order product
-tax line item summary associated with the order product adjustment line summary, and has these
-fields.
-
-**–** `id`                 - ID of the order product tax line item summary.
-
-**–** `name`                 - Name of the order product tax line item summary.
-
-**–** `orderItemTaxLineItemSummaries`              - A list of zero or more Apex-defined variables of class
-ConnectApi.AddItemTaxOutputRepresentation, each of which represents an order product tax line
-item summary associated with the added order product summary, and has these fields.
-
-**•** `id`               - ID of the order product tax line item summary.
-
-**•** `name`               - Name of the order product tax line item summary.
-
-**•** `orderSummaryId`            - ID of the order summary specified in the input.
-
-To set up the Order Item Summary Input:
-
-**1.** Use record variables to define the order product summaries, order product adjustment line summaries, and order product tax line
-item summaries. Sending an Id isn’t required.
-
-**•** Required fields for an order product summary:
-
-**–** ListPrice (Only if Order Summary Pricebook2Id is NULL or empty)
-
-**–** Name
-
-**–** OrderDeliveryGroupSummaryId
-
-**–** OrderSummaryId
-
-**–** PricebookEntryId (Only if Order Summary Pricebook2Id is set)
-
-**–** Product2Id
-
-**–** Quantity
-
-**–** TotalLineAmount
-
-**–** UnitPrice
-
-**–** TypeCode
-
-**–** Type
-
-**•** Required fields for an order product adjustment line summary:
-
-**–** Amount
-
-**–** Name
-
-**–** OrderSummaryId
-
-**•** Required fields for an order product tax line item summary:
-
-**–** Amount
-
-**–** Name
-
-**–** OrderSummaryId
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**–** TaxEffectiveDate
-
-**–** Type
-
-**2.** Use an assignment element to set the `orderItemSummary` field on a runtime_commerce_oms.AddItem variable to the order
-product summary record variable.
-
-**3.** For each adjustment to the product being added, use an assignment element to set the `orderItemAdjustmentLineSummary`
-field on a runtime_commerce_oms.AddItemAdjustment variable to the corresponding order product adjustment line summary
-record variable. Use assignment elements to add the order product tax line summary record variables associated with it to the
-`orderItemTaxLineItemSummaries` field on the same runtime_commerce_oms.AddItemAdjustment variable.
-
-**4.** Use an assignment element to add the runtime_commerce_oms.AddItemAdjustment variables to the
-`orderItemAdjustmentLineSummaries` field on the runtime_commerce_oms.AddItem variable.
-
-**5.** For each tax on the product being added, use an assignment element to add the corresponding order product tax line summary
-record variable to the `orderItemTaxLineItemSummaries` field on the runtime_commerce_oms.AddItem variable.
-
-**6.** Use an assignment element to set the `reasonCode` field on the runtime_commerce_oms.AddItem variable to a valid reason.
-
-**7.** Use an assignment element to add the runtime_commerce_oms.AddItem variable to the `newItems` field on a
-runtime_commerce_oms.AddOrderItemSummaries variable.
-
-**8.** Repeat steps 1 through 6 for each order product that you want to include in the action, adding the inputs to the same
-runtime_commerce_oms.AddOrderItemSummaries variable. You can add up to five order products at a time.
-
-**9.** Use the runtime_commerce_oms.AddOrderItemSummaries variable in the action input.
-
-Flow Core Action for Order Management: Adjust Order Item Summaries Preview
-
-Preview the expected results of adjusting the price of one or more order product summaries on an
-order summary, without executing the adjustment. You can only apply a discount, not an increase.
-The output of this action contains the values that would be set on the change orders created by
-submitting the proposed adjustment.
-
-In Flow Builder, add an Action element to your flow. Select the **Order Management** category, and
-###### search for Adjust Order Item Summaries Preview .
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-**Input Parameter** **Description**
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Order Management
-
-`Order Summary` ID of the order summary associated with the order product summaries that you want to preview adjusting the
-`Id` prices of.
-
-###### Adjust Order This input is an Apex-defined variable of class ConnectApi.AdjustOrderItemSummaryInputRepresentation,
-
-`Product` which includes these fields:
-
-```
-Summaries
-```
-
-**•** `adjustItems` —This field is a list of Apex-defined variables of class
-
-`Input` [ConnectApi.AdjustItemInputRepresentation. Each of the variables includes these fields:](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_adjust_item.htm)
-
-**–** `orderItemSummaryId` —ID of an order product summary to preview a price adjustment for.
-
-**–** `description` —Optional description of the adjustment.
-
-**–** `adjustmentType` —Specifies how to calculate the adjustment amount from the
-`discountValue` field. It can have one of these values:
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-**•** _`AmountWithTax`_ —The value of `discountValue` is the adjustment, including tax.
-
-**•** _`AmountWithoutTax`_ —The value of `discountValue` is the adjustment, not including tax.
-Tax is calculated on the value and added.
-
-**•** _`Percentage`_ —The value of `discountValue` is a percentage discount. It’s divided by 100,
-and then multiplied by the total price and total tax amount of the order product summary to
-determine the adjustment amount.
-
-**–** `discountValue` —The value used to calculate the adjustment amount, as specified by the
-`adjustmentType` . It must be a negative value.
-
-**–** `reason` —Adjustment reason. The value must match one of the picklist values on the Reason field
-of the Order Product Summary Change object.
-
-**•** `allocatedItemsChangeOrderType` —Specifies how change orders would be created for order
-product summary quantities that are currently being fulfilled, defined as QuantityAllocated - QuantityFulfilled.
-It can have one of these values:
-
-**–** _`Disallowed`_ —When distributing the adjustment, ignore any quantities being fulfilled. If an order
-product summary’s entire quantity is being fulfilled, return an error. This value is the default.
-
-**–** _`InFulfillment`_ —When distributing the adjustment, include quantities being fulfilled. Submitting
-the adjustment would create a separate change order for the adjustments made to those quantities.
-
-**–** _`PreFulfillment`_ —When distributing the adjustment, include quantities being fulfilled. Submitting
-the adjustment would include the adjustments made to those quantities in the change order for
-pre-fulfillment quantity adjustments.
-
-Store Output Values
-
-Use output values later in the flow.
-
-**Output Parameter** **Description**
-
-```
-Adjust Order
-
-Product
-
-Summary Output
-
-```
-
-[This output is an Apex-defined variable of class ConnectApi.AdjustOrderSummaryOutputRepresentation, which](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_preview_adjust_output.htm)
-contains the financial changes that would result from the proposed adjustment. Most of the values represent
-the deltas of the values on the associated order summary.
-
-The sign of a value in the `changeBalances` field is the opposite of the corresponding value on a change
-order record. For example, a discount is a positive value in `changeBalances` and a negative value on a
-change order record.
-
-The `orderSummaryId` field is the ID of the order summary specified in the input.
-
-The `changeBalances` field is an Apex-defined variable of class
-[ConnectApi.ChangeItemOutputRepresentation, which includes these fields.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_change_item_output.htm)
-
-**•** `grandTotalAmount` —Change to the total with tax.
-
-**•** `totalAdjDeliveryAmtWithTax` —Change to the adjusted delivery subtotal, including tax.
-
-**•** `totalAdjDistAmountWithTax` —Change to the total order adjustments, including tax.
-
-**•** `totalAdjProductAmtWithTax` —Change to the adjusted product subtotal, including tax.
-
-**•** `totalAdjustedDeliveryAmount` —Change to the adjusted delivery subtotal.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Output Parameter** **Description**
-
-**•** `totalAdjustedDeliveryTaxAmount` —Change to the adjusted delivery subtotal tax.
-
-**•** `totalAdjustedProductAmount` —Change to the adjusted product subtotal.
-
-**•** `totalAdjustedProductTaxAmount` —Change to the adjusted product subtotal tax.
-
-**•** `totalAdjustmentDistributedAmount` —Change to the total order adjustments.
-
-**•** `totalAdjustmentDistributedTaxAmount` —Change to the total order adjustments tax.
-
-**•** `totalAmount` —Change to the pretax total.
-
-**•** `totalExcessFundsAmount` —The amount of excess funds available on the order payment summaries
-related to the order summary. It’s equal to the captured amount that is owed as a refund but isn’t associated
-with an invoice or credit memo. Excess funds normally occur when order products are canceled before
-fulfillment but after payment has been captured. This situation isn’t common in the US, where funds are
-normally authorized but not captured until the fulfillment process begins. This value includes all excess
-funds related to the order summary, not only the funds related to the current action.
-
-**•** `totalRefundableAmount` —The total amount available to be refunded. It’s the sum of the excess
-funds and any outstanding change order grand total amounts that apply to post-fulfillment changes. This
-value includes all refundable amounts related to the order summary, not only the amount related to the
-current action.
-
-**•** `totalTaxAmount` —Change to the total tax.
-
-The `postFulfillmentChangeOrderId` field is always null for a preview action.
-
-The `preFulfillmentChangeOrderId` field is always null for a preview action.
-
-The `inFulfillmentChangeOrderId` field is always null for a preview action.
-
-Usage
-
-When a price adjustment is applied to an order product summary, its quantities are considered in three groups:
-
-**•** Pre-fulfillment—QuantityAvailableToFulfill, which is equal to QuantityOrdered - QuantityCanceled - QuantityAllocated
-
-**•** In-fulfillment—QuantityAllocated - QuantityFulfilled
-
-**•** Post-fulfillment—QuantityAvailableToReturn, which is equal to QuantityFulfilled - QuantityReturnInitiated
-
-You can apply adjustments to these groups in three different ways, controlled by the `allocatedItemsChangeOrderType`
-input property:
-
-**•** Distribute the adjustment evenly between pre-fulfillment and post-fulfillment quantities. Ignore in-fulfillment quantities. Submitting
-the adjustment would create one change order for the adjustments to pre-fulfillment quantities and one change order for the
-adjustments to post-fulfillment quantities.
-
-**•** Distribute the adjustment evenly between pre-fulfillment, in-fulfillment, and post-fulfillment quantities. Submitting the adjustment
-would create one change order for the adjustments to both pre-fulfillment and in-fulfillment quantities, and one change order for
-the adjustments to post-fulfillment quantities.
-
-**•** Distribute the adjustment evenly between pre-fulfillment, in-fulfillment, and post-fulfillment quantities. Submitting the adjustment
-would create one change order for the adjustments to pre-fulfillment quantities, one change order for the adjustments to in-fulfillment
-quantities, and one change order for the adjustments to post-fulfillment quantities.
-
-To set up the Adjust Order Product Summaries Input:
-
-**•** Use Assignment elements to set the `orderItemSummaryId`, `description`, `adjustmentType`, `discountValue`,
-and `reason` field values on one or more `ConnectApi.AdjustItemInputRepresentation` variables.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**•** Use an Assignment element to add the `ConnectApi.AdjustItemInputRepresentation` variables to the
-`changeItems` field on a `ConnectApi.AdjustOrderItemSummaryInputRepresentation` variable.
-
-**•** Use an Assignment element to set the `allocatedItemsChangeOrderType` field on the
-`ConnectApi.AdjustOrderItemSummaryInputRepresentation` variable.
-
-**•** Use the `ConnectApi.AdjustOrderItemSummaryInputRepresentation` variable and the order summary ID in
-the action input.
-
-In a flow for adjusting the prices of order product summaries, display the output of this action for the user to review before executing
-the adjustment. When the user verifies the expected results, pass the same input to an Adjust Order Item Summaries Submit action.
-
-SEE ALSO:
-
-Flow Core Action for Order Management: Adjust Order Item Summaries Submit
-
-Add and Edit Elements
-
-Flow Core Action for Order Management: Adjust Order Item Summaries Submit
-
-Adjust the price of one or more order product summaries on an order summary. You can only apply
-a discount, not an increase. This action creates one or more change order records.
-
-In Flow Builder, add an Action element to your flow. Select the **Order Management** category, and
-###### search for Adjust Order Item Summaries Submit .
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-**Input** **Description**
-**Parameter**
-
-`Order` ID of the order summary associated with the order product summaries that you
-`Summary` want to adjust the prices of.
-
-```
-Id
-
-```
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Order Management
-
-###### `Adjust`
-
-```
-Order
-
-Product
-
-Summaries
-
-Input
-
-```
-
-This input is an Apex-defined variable of class
-[ConnectApi.AdjustOrderItemSummaryInputRepresentation, which includes these](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_adjust_order_item_summary.htm)
-fields:
-
-**•** `adjustItems` —This field is a list of Apex-defined variables of class
-[ConnectApi.AdjustItemInputRepresentation. Each of the variables includes](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_adjust_item.htm)
-these fields:
-
-**–** `orderItemSummaryId` —ID of an order product summary to adjust
-the price of.
-
-**–** `description` —Optional description of the adjustment.
-
-**–** `adjustmentType` —Specifies how to calculate the adjustment
-amount from the `discountValue` field. It can have one of these
-values:
-
-**•** _`AmountWithTax`_ —The value of `discountValue` is the
-adjustment, including tax.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-**•** _`AmountWithoutTax`_ —The value of `discountValue` is the adjustment, not including tax.
-Tax is calculated on the value and added.
-
-**•** _`Percentage`_ —The value of `discountValue` is a percentage discount. It’s divided by 100,
-and then multiplied by the total price and total tax amount of the order product summary to
-determine the adjustment amount.
-
-**–** `discountValue` —The value used to calculate the adjustment amount, as specified by the
-`adjustmentType` . It must be a negative value.
-
-**–** `reason`              - Adjustment reason.The value must match one of the picklist values on the Reason field
-of the Order Product Summary Change object.
-
-**•** `allocatedItemsChangeOrderType` —Specifies how to create change orders for order product
-summary quantities that are currently being fulfilled, defined as QuantityAllocated - QuantityFulfilled. It can
-have one of these values:
-
-**–** _`Disallowed`_ —When distributing the adjustment, ignore any quantities being fulfilled. If an order
-product summary’s entire quantity is being fulfilled, return an error. This value is the default.
-
-**–** _`InFulfillment`_ —When distributing the adjustment, include quantities being fulfilled. Create a
-separate change order for the adjustments made to those quantities.
-
-**–** _`PreFulfillment`_ —When distributing the adjustment, include quantities being fulfilled. Include
-the adjustments made to those quantities in the change order for pre-fulfillment quantity adjustments.
-
-Store Output Values
-
-Use output values later in the flow. The values are assigned when the change orders are created.
-
-**Output Parameter** **Description**
-
-`Adjust Order` [This output is an Apex-defined variable of class ConnectApi.AdjustOrderSummaryOutputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_preview_adjust_output.htm)
-`Product` Depending on the order product summaries included in the adjustment, one or more change orders are
-`Summary Output` generated. If multiple change orders are generated, then the `changeBalances` values combine the values
-from both of them.
-
-The sign of a value in the `changeBalances` field is the opposite of the corresponding value on a change
-order record. For example, a discount is a positive value in `changeBalances` and a negative value on a
-change order record.
-
-The `orderSummaryId` field is the ID of the order summary specified in the input.
-
-The `changeBalances` field is an Apex-defined variable of class
-[ConnectApi.ChangeItemOutputRepresentation, which includes these fields.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_change_item_output.htm)
-
-**•** `grandTotalAmount` —Change to the total with tax.
-
-**•** `totalAdjDeliveryAmtWithTax` —Change to the adjusted delivery subtotal, including tax.
-
-**•** `totalAdjDistAmountWithTax` —Change to the total order adjustments, including tax.
-
-**•** `totalAdjProductAmtWithTax` —Change to the adjusted product subtotal, including tax.
-
-**•** `totalAdjustedDeliveryAmount` —Change to the adjusted delivery subtotal.
-
-**•** `totalAdjustedDeliveryTaxAmount` —Change to the adjusted delivery subtotal tax.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Output Parameter** **Description**
-
-**•** `totalAdjustedProductAmount` —Change to the adjusted product subtotal.
-
-**•** `totalAdjustedProductTaxAmount` —Change to the adjusted product subtotal tax.
-
-**•** `totalAdjustmentDistributedAmount` —Change to the total order adjustments.
-
-**•** `totalAdjustmentDistributedTaxAmount` —Change to the total order adjustments tax.
-
-**•** `totalAmount` —Change to the pretax total.
-
-**•** `totalExcessFundsAmount` —The amount of excess funds available on the order payment summaries
-related to the order summary. It’s equal to the captured amount that is owed as a refund but isn’t associated
-with an invoice or credit memo. Excess funds normally occur when order products are canceled before
-fulfillment but after payment has been captured. This situation isn’t common in the US, where funds are
-normally authorized but not captured until the fulfillment process begins. This value includes all excess
-funds related to the order summary, not only the funds related to the current action.
-
-**•** `totalRefundableAmount` —The total amount available to be refunded. It’s the sum of the excess
-funds and any outstanding change order grand total amounts that apply to post-fulfillment changes. This
-value includes all refundable amounts related to the order summary, not only the amount related to the
-current action.
-
-**•** `totalTaxAmount` —Change to the total tax.
-
-The `postFulfillmentChangeOrderId` is the ID of the change order representing the portion of the
-adjustment that was applied to order product summary quantities that have been fulfilled.
-
-The `preFulfillmentChangeOrderId` is the ID of the change order representing the portion of the
-adjustment that was applied to order product summary quantities that haven’t been fulfilled. If the input
-specified an `allocatedItemsChangeOrderType` of _`PreFulfillment`_, this change order also
-includes the changes applicable to order product summary quantities that are in the process of being fulfilled.
-
-The `inFulfillmentChangeOrderId` is the ID of the change order representing the portion of the
-adjustment that was applied to order product summary quantities that are in the process of being fulfilled.
-This change order is only created for an input that specified an `allocatedItemsChangeOrderType`
-of _`InFulfillment`_ .
-
-Usage
-
-When a price adjustment is applied to an order product summary, its quantities are considered in three groups:
-
-**•** Pre-fulfillment—QuantityAvailableToFulfill, which is equal to QuantityOrdered - QuantityCanceled - QuantityAllocated
-
-**•** In-fulfillment—QuantityAllocated - QuantityFulfilled
-
-**•** Post-fulfillment—QuantityAvailableToReturn, which is equal to QuantityFulfilled - QuantityReturnInitiated
-
-You can apply adjustments to these groups in three different ways, controlled by the `allocatedItemsChangeOrderType`
-input property:
-
-**•** Distribute the adjustment evenly between pre-fulfillment and post-fulfillment quantities. Ignore in-fulfillment quantities. Create one
-change order for the adjustments to pre-fulfillment quantities and one change order for the adjustments to post-fulfillment quantities.
-
-**•** Distribute the adjustment evenly between pre-fulfillment, in-fulfillment, and post-fulfillment quantities. Create one change order
-for the adjustments to both pre-fulfillment and in-fulfillment quantities, and one change order for the adjustments to post-fulfillment
-quantities.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**•** Distribute the adjustment evenly between pre-fulfillment, in-fulfillment, and post-fulfillment quantities. Create one change order
-for the adjustments to pre-fulfillment quantities, one change order for the adjustments to in-fulfillment quantities, and one change
-order for the adjustments to post-fulfillment quantities.
-
-To set up the Adjust Order Product Summaries Input:
-
-**•** Use Assignment elements to set the `orderItemSummaryId`, `description`, `adjustmentType`, `discountValue`,
-and `reason` field values on one or more `ConnectApi.AdjustItemInputRepresentation` variables.
-
-**•** Use an Assignment element to add the `ConnectApi.AdjustItemInputRepresentation` variables to the
-`changeItems` field on a `ConnectApi.AdjustOrderItemSummaryInputRepresentation` variable.
-
-**•** Use an Assignment element to set the `allocatedItemsChangeOrderType` field on the
-`ConnectApi.AdjustOrderItemSummaryInputRepresentation` variable.
-
-**•** Use the `ConnectApi.AdjustOrderItemSummaryInputRepresentation` variable and the order summary ID in
-the action input.
-
-In a flow for adjusting the prices of order product summaries, run an Adjust Order Item Summaries Preview action before running this
-action. Then display its output for the user to review. When the user verifies the expected results, pass the same input to this action.
-
-After submitting a price adjustment, process refunds as appropriate:
-
-**•** If the discount only applied to order product summaries for which payment hasn’t been captured, it doesn’t require a refund. This
-situation normally applies to order products in the US that haven’t been fulfilled.
-
-**•** If the discount applied to order product summaries that haven’t been fulfilled and for which payment has been captured, process
-a refund. In this case, pass the `totalExcessFundsAmount` from `changeBalances` to the Ensure Refunds Async action.
-
-**•** If the discount applied to order product summaries that have been fulfilled, process a refund. Pass the
-`postFulfillmentChangeOrderId` to the Create Credit Memo action, then pass the credit memo to the Ensure Refunds
-Async action.
-
-**•** If the discount applied to both fulfilled and unfulfilled order product summaries for which payment has been captured, process both
-refunds. Pass the `postFulfillmentChangeOrderId` to the Create Credit Memo action, then pass the credit memo and
-the `totalExcessFundsAmount` from `changeBalances` to the Ensure Refunds Async action.
-
-Important: Excess funds aren’t reduced until the payment processor issues a refund. If you don’t process refunds promptly,
-subsequent refunds can be inaccurate. Consider this example.
-
-**•** An order with a total amount of $100 is placed, and the amount is captured immediately.
-
-**•** A product is canceled from the order, resulting in $20 of excess funds.
-
-**•** Before the excess funds are sent to the payment provider in an ensure refunds action, another product is canceled. This
-cancellation adds another $20 of excess funds. However, because the original $20 hasn’t been refunded yet, the cancel action
-returns a total excess funds amount of $40.
-
-**•** The first excess funds amount ($20) is sent to the payment provider in an ensure refunds request.
-
-**•** The second excess funds amount ($40) is sent to the payment provider in an ensure refunds request.
-
-**•** The payment provider receives requests for $60 of refunds, when the correct refund total is $40. Because the total refund
-amount is less than the total captured amount of $100, the payment provider issues $60 in refunds.
-
-SEE ALSO:
-
-Flow Core Action for Order Management: Adjust Order Item Summaries Preview
-
-Add and Edit Elements
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Flow Core Action for Order Management: Authorize Payment
-
-Authorize a payment on a credit card. You can include details for a new credit card or reference an
-existing PaymentMethod.
-
-In Flow Builder, add an Action element to your flow. Select the **Order Management** category, and
-###### search for Authorize Payment . To access this action from REST API, use the name
-
-`authorizePayment` .
-
-Note: This action is available with the PaymentsAPIUser user permission.
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-**Input Parameter** **Description**
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Order Management
-
-`Payment` [This input is an Apex-defined variable of class ConnectApi.AuthorizationRequest, which includes these fields:](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_authorization.htm)
-
-```
-Authorization
-```
-
-**•** `accountId` —ID of the account that contains the payment transaction being authorized.
-```
-Request
-
-```
-
-**•** `accountId` —ID of the account that contains the payment transaction being authorized.
-
-**•** `amount` —Authorization amount.
-
-**•** `comments` —(Optional) Comments for the payment authorization.
-
-**•** `currencyIsoCode` —Three-letter ISO 4217 currency code associated with the payment group record.
-
-**•** `effectiveDate` —Date that the authorization is applied to the transaction.
-
-**•** `paymentGatewayId` —Payment gateway that processes the authorization.
-
-**•** `paymentGroup` —(Optional) Payment group for the authorization. The payload must reference either
-a paymentGroup or a paymentGroupId, but not both. This field is an Apex-defined variable of class
-[ConnectApi.PaymentGroupRequest, which includes these fields:](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_payment_group.htm)
-
-**–** `createPaymentGroup` —(Optional) Specifies whether to create a payment group ( _`true`_ ) or not
-( _`false`_ ).
-
-**–** `currencyIsoCode` —(Optional) Three-letter ISO 4217 currency code associated with the payment
-group record.
-
-**–** `id` —(Optional) ID of the payment group record.
-
-**–** `sourceObjectId` —(Optional) Source object ID of the payment group record. Supports only OrderId.
-
-**•** `paymentMethod` —Payment method for the authorization. The payload must either reference an
-existing payment method or include details for a new payment method, but not both. This field is an
-[Apex-defined variable of class ConnectApi.AuthApiPaymentMethodRequest, which includes these fields:](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_auth_api_payment_method.htm)
-
-[This input includes the fields from the parent class, ConnectApi.BaseApiPaymentMethodRequest.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_base_api_payment_method.htm)
-
-**–** `address` —Address for the payment method. This field is an Apex-defined variable of class
-[ConnectApi.AddressRequest. It includes these fields, all of which are optional:](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_address.htm)
-
-**•** `city`
-
-**•** `companyName`
-
-**•** `country`
-
-**•** `postalCode`
-
-**•** `state`
-
-**•** `street`
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-**–** `cardPaymentMethod` —(Optional) When using a new payment method, the details of that method.
-[This field is an Apex-defined variable of class ConnectApi.CardPaymentMethodRequest, which includes](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_card_payment_method.htm)
-these fields:
-
-**•** `accountId` —Salesforce account to which this payment method is linked.
-
-**•** `cardCategory` —Valid values are _`CreditCard`_ and _`DebitCard`_ .
-
-**•** `cardHolderFirstName` —First name of the card holder.
-
-**•** `cardHolderLastName` —Last name of the card holder.
-
-**•** `cardHolderName` —Full name of the card holder.
-
-**•** `cardNumber` —Card number.
-
-**•** `cardType` —Valid values are:
-
-**–** _`AmericanExpress`_
-
-**–** _`DinersClub`_
-
-**–** _`JCB`_
-
-**–** _`Maestro`_
-
-**–** _`MasterCard`_
-
-**–** _`Visa`_
-
-**•** `comments` —(Optional) Comments for the payment method.
-
-**•** `cvv` —CVV.
-
-**•** `email` —Email of the card holder.
-
-**•** `expiryMonth` —Card expiration month.
-
-**•** `expiryYear` —Card expiration year.
-
-**•** `nickName` —(Optional) Nickname for the payment method.
-
-**•** `startMonth` —(Optional) Start month of the card.
-
-**•** `startYear` —(Optional) Start year of the card.
-
-**–** `id` —(Optional) When using an existing payment method, the ID of that method.
-
-**–** `saveForFuture` —Whether to save the payment method for future use.
-
-Store Output Values
-
-Use output values later in the flow. The values are assigned when a response is received from the payment gateway.
-
-**Output Parameter** **Description**
-
-`Payment` [This output is an Apex-defined variable of class ConnectApi.AuthorizationResponse, which includes these](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_authorization_output.htm)
-`Authorization` fields:
-
-```
-   Response
-```
-
-**•** `error` —If an error is returned, details about that error. This field is an Apex-defined variable of class
-[ConnectApi.ErrorResponse, which includes these fields:](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_error_response.htm)
-
-**–** `errorCode` —Error code.
-
-**–** `message` —More detail, if available.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Output Parameter** **Description**
-
-**•** `gatewayResponse` —Response from the payment gateway. This field is an Apex-defined variable of
-[class ConnectApi.AuthorizationGatewayResponse, which includes this field:](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_authorization_gateway_response.htm)
-
-**–** `gatewayAuthorizationCode` —Payment authorization code.
-
-**•** `paymentAuthorization` —Details about the payment authorization. This field is an Apex-defined
-[variable of class ConnectApi.PaymentAuthorizationResponse, which includes these fields:](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_payment_authorization_output.htm)
-
-**–** `accountId` —ID of the account that contains the payment transaction being authorized.
-
-**–** `amount` —Amount that the gateway authorized for the payment transaction.
-
-**–** `currencyIsoCode` —Three-letter ISO 4217 currency code associated with the payment group
-record.
-
-**–** `effectiveDate` —Date that the authorization becomes effective.
-
-**–** `expirationDate` —Date that the authorization expires.
-
-**–** `id` —ID of the payment authorization record.
-
-**–** `paymentAuthorizationNumber` —System-defined number for the payment authorization
-record.
-
-**–** `requestDate` —Date that the authorization occurred.
-
-**–** `status` —Status of the payment authorization as returned by the gateway.
-
-**•** `paymentGatewayLogs` —Payment gateway log information about the authorization transaction.
-[This field is a list of Apex-defined variables of class ConnectApi.GatewayLogResponse, each of which](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_gateway_log_output.htm)
-includes these fields:
-
-**–** `createdDate` —Date when the gateway log was created.
-
-**–** `gatewayResultCode` —Result codes that show the status of a transaction as it is passed to the
-financial institution and then returned to the client.
-
-**–** `id` —ID of the gateway log record.
-
-**–** `interactionStatus` —Gateway interaction status. It can be `SUCCESS`, `FAILED`, or `TIMEOUT` .
-
-**•** `paymentGroup` —Details about the payment group. This field is an Apex-defined variable of class
-[ConnectApi.PaymentGroupResponse, which includes these fields:](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_payment_group.htm)
-
-**–** `currencyIsoCode` —Three-letter ISO 4217 currency code associated with the payment group
-record.
-
-**–** `id` —ID of the payment group record.
-
-**–** `sourceObjectId` —Source object ID of the payment group record.
-
-**•** `paymentMethod` —Details about the payment method. This field is an Apex-defined variable of class
-[ConnectApi.PaymentMethodResponse, which includes these fields:](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_payment_method_output.htm)
-
-**–** `accountId` —ID of the account for the payment method.
-
-**–** `id` —ID of the payment method.
-
-**–** `status` —Status of the payment method.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Usage
-
-Use this action in custom flows that require payment authorization, such as adding an item to an order or an uneven exchange. Before
-using it, verify with your payment provider that it supports payment authorization calls from Salesforce Order Management.
-
-Flow Core Action for Order Management: Cancel Fulfillment Order Item
-
-Cancel fulfillment order products from a fulfillment order. You can cancel more than one product
-and specify a quantity to cancel for each of them. This action doesn’t cancel the associated order
-product summaries, it only reduces their allocated quantities. Usually, you reallocate the canceled
-quantities to a new fulfillment order.
-
-In Flow Builder, add an Action element to your flow. Select the **Order Management** category, and
-###### search for Cancel Fulfillment Order Item .
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-**Input Parameter** **Description**
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Order Management
-
-###### `Cancel`
-
-```
-Fulfillment
-
-Order Items
-
-Input
-
-```
-
-[This input is an Apex-defined variable of class ConnectApi.FulfillmentOrderLineItemsToCancelInputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_fulfillment_order_line_items_to_cancel.htm)
-
-The variable has one field, `fulfillmentOrderLineItemsToCancel`, which is a list of Apex-defined
-[variables of class ConnectApi.FulfillmentOrderLineItemInputRepresentation. Each of those variables includes](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_fulfillment_order_line_item.htm)
-these fields:
-
-**•** `fulfillmentOrderLineItemId` - Reference to the fulfillment order product to cancel.
-
-**•** `quantity` - Quantity to cancel.
-
-`Fulfillment` Reference to the fulfillment order that you want to cancel fulfillment order items from.
-
-```
-Order Id
-
-```
-
-Store Output Values
-
-**Output Parameter** **Description**
-
-###### `Cancel`
-
-```
-Fulfillment
-
-Order Items
-
-Output
-
-```
-
-Usage
-
-This value is an Apex-defined variable of class
-[ConnectApi.FulfillmentOrderCancelLineItemsOutputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_fulfillment_order_cancel_line_items_output.htm)
-
-This action doesn’t return any data.
-
-To set up the Cancel Fulfillment Order Items Input, first use Assignment elements to set the `fulfillmentOrderLineItemId`
-and `quantity` field values on one or more `ConnectApi.FulfillmentOrderLineItemInputRepresentation`
-variables. Then use an Assignment element to add those variables to the `FulfillmentOrderLineItemsToCancel` field on
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-a `ConnectApi.FulfillmentOrderLineItemsToCancelInputRepresentation` variable. Use that variable in the
-action input.
-
-SEE ALSO:
-
-Add and Edit Elements
-
-Add and Edit Elements
-
-Flow Core Action for Order Management: Cancel Order Item Summaries Preview
-
-Preview the expected results of canceling one or more order product summaries from an order
-summary without executing the cancel. The output of this action contains the values that would
-be set on the change order created by submitting the proposed cancel.
-
-In Flow Builder, add an Action element to your flow. Select the **Order Management** category, and
-###### search for Cancel Order Item Summaries Preview .
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-**Input** **Description**
-**Parameter**
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Order Management
-
-###### `Cancel`
-
-```
-Order
-
-Product
-
-Summary
-
-Items
-
-Input
-
-```
-
-This input is an Apex-defined variable of class
-[ConnectApi.ChangeInputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_change.htm)
-
-The variable has one field: `changeItems` . This field is a list of Apex-defined
-[variables of class ConnectApi.ChangeItemInputRepresentation. Each variable](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_change_item.htm)
-includes these fields:
-
-**•** `changeItemFees` —A list of Apex-defined variables of class
-[ConnectApi.ChangeItemFeeInputRepresentation. Each variable has these](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_change_item_fee.htm)
-fields:
-
-**–** `amount` —Required. Value used to calculate the fee amount, as
-described by the amountType. It must be a positive value.
-
-**–** `amountType` —Required. Describes how the fee amount is calculated.
-It can have one of these values:
-
-**•** _`AmountWithTax`_    - `amount` is the fee amount, including tax.
-
-**•** _`AmountWithoutTax`_    - `amount` is the fee amount, not
-including tax. Tax is calculated on the value and added.
-
-**•** _`Percentage`_    - `amount` is a percentage. The fee amount is
-`amount` divided by 100 and then multiplied by the `TotalPrice`
-and `TotalTaxAmount` of the associated order product summary,
-prorated for the quantity being returned.
-
-**•** _`PercentageGross`_    - `amount` is a percentage. The fee amount
-is `amount` divided by 100 and then multiplied by the
-`TotalLineAmountWithTax` of the associated order product
-summary, prorated for the quantity being returned.
-
-**–** `description` —Description of the fee.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-**–** `priceBookEntryId` —Required unless price books are optional in the org. ID of the price book
-entry associated with the fee product.
-
-**–** `product2Id` —Required. ID of the product representing the fee.
-
-**–** `reason` —Required. Reason for the fee. The value must match an entry in the Order Product Summary
-Change object’s `Reason` picklist.
-
-**•** `orderItemSummaryId` —Required. ID of an order product summary to cancel. It can’t be a shipping
-charge product.
-
-**•** `quantity` —Required. Quantity to cancel.
-
-**•** `reason` —Required. Cancel reason. The value must match one of the picklist values on the Reason field
-of the Order Product Summary Change object.
-
-**•** `shippingReductionFlag` —Required. Boolean flag that specifies whether to prorate any related
-delivery charge based on the price change.
-
-`Order Summary` Reference to the order summary that you want to preview canceling order product summaries from.
-
-```
-   Id
-
-```
-
-Store Output Values
-
-**Output Parameter** **Description**
-
-```
-Cancel Order
-
-Product
-
-Summary Output
-
-```
-
-[This output is an Apex-defined variable of class ConnectApi.PreviewCancelOutputRepresentation, which](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_preview_cancel_output.htm)
-contains the values that would populate a change order record for the proposed cancel.
-
-The sign of a value in the `changeBalances` field is the opposite of the corresponding value on a change
-order record. For example, a discount is a positive value in `changeBalances` and a negative value on a
-change order record.
-
-The `orderSummaryId` field is the ID of the order summary specified in the input.
-
-The `changeBalances` field is an Apex-defined variable of class
-[ConnectApi.ChangeItemOutputRepresentation, which includes these fields.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_change_item_output.htm)
-
-**•** `grandTotalAmount` —Change to the total with tax.
-
-**•** `totalAdjDeliveryAmtWithTax` —Change to the adjusted delivery subtotal, including tax.
-
-**•** `totalAdjDistAmountWithTax` —Change to the total order adjustments, including tax.
-
-**•** `totalAdjProductAmtWithTax` —Change to the adjusted product subtotal, including tax.
-
-**•** `totalAdjustedDeliveryAmount` —Change to the adjusted delivery subtotal.
-
-**•** `totalAdjustedDeliveryTaxAmount` —Change to the adjusted delivery subtotal tax.
-
-**•** `totalAdjustedProductAmount` —Change to the adjusted product subtotal.
-
-**•** `totalAdjustedProductTaxAmount` —Change to the adjusted product subtotal tax.
-
-**•** `totalAdjustmentDistributedAmount` —Change to the total order adjustments.
-
-**•** `totalAdjustmentDistributedTaxAmount` —Change to the total order adjustments tax.
-
-**•** `totalAmount` —Change to the pretax total.
-
-**•** `totalExcessFundsAmount` —The amount of excess funds available on the order payment summaries
-related to the order summary. It’s equal to the captured amount that is owed as a refund but isn’t associated
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Output Parameter** **Description**
-
-with an invoice or credit memo. Excess funds normally occur when order products are canceled before
-fulfillment but after payment is captured. This situation isn’t common in the US, where funds are normally
-authorized but not captured until the fulfillment process begins. This value includes all excess funds related
-to the order summary, not only the funds related to the current action.
-
-**•** `totalFeeAmount` —The total amount of the fees charged for the cancellation.
-
-**•** `totalFeeTaxAmount` —The total amount of tax on the fees charged for the cancellation.
-
-**•** `totalRefundableAmount` —The total amount available to be refunded. It’s the sum of the excess
-funds and any outstanding change order grand total amounts that apply to post-fulfillment changes. This
-value includes all refundable amounts related to the order summary, not only the amount related to the
-current action.
-
-**•** `totalTaxAmount` —Change to the total tax.
-
-Usage
-
-To set up the Cancel Order Product Summary Items Input:
-
-**1.** If you want to charge fees, use Assignment elements to set the `amount`, `amountType`, `description`, `priceBookEntryId`,
-`product2Id`, and `reason` field values on one or more `ConnectApi.ChangeItemFeeInputRepresentation`
-variables.
-
-**2.** Use Assignment elements to set the `orderItemSummaryId`, `quantity`, `reason`, and `shippingReductionFlag`
-field values on one or more `ConnectApi.ChangeItemInputRepresentation` variables.
-
-**3.** If you’re charging fees, use Assignment elements to add the `ConnectApi.ChangeItemFeeInputRepresentation`
-variables to the `changeItemFees` fields on the associated `ConnectApi.ChangeItemInputRepresentation`
-variables.
-
-**4.** Use an Assignment element to add the `ConnectApi.ChangeItemInputRepresentation` variables to the
-`changeItems` field on a `ConnectApi.ChangeInputRepresentation` variable.
-
-**5.** Use the `ConnectApi.ChangeInputRepresentation` variable and the order summary ID in the action input.
-
-In a flow for canceling order product summaries, display the output of this action for the user to review before executing the cancel.
-When the user verifies the expected results, pass the same input to a Cancel Order Item Summaries Submit action.
-
-SEE ALSO:
-
-Add and Edit Elements
-
-Flow Core Action for Order Management: Cancel Order Item Summaries Submit
-
-Cancel one or more order product summaries from an order summary. This action creates a change
-order record.
-
-In Flow Builder, add an Action element to your flow. Select the **Order Management** category, and
-###### search for Cancel Order Item Summaries Submit .
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Order Management
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-```
-Cancel Order
-
-Product
-
-Summary Items
-
-Input
-
-```
-
-[This input is an Apex-defined variable of class ConnectApi.ChangeInputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_change.htm)
-
-The variable has one field: `changeItems` . This field is a list of Apex-defined variables of class
-[ConnectApi.ChangeItemInputRepresentation. Each variable includes these fields:](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_change_item.htm)
-
-**•** `changeItemFees` —A list of Apex-defined variables of class
-[ConnectApi.ChangeItemFeeInputRepresentation. Each variable has these fields:](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_change_item_fee.htm)
-
-**–** `amount` —Required. Value used to calculate the fee amount, as described by the amountType. It must
-be a positive value.
-
-**–** `amountType` —Required. Describes how the fee amount is calculated. It can have one of these values:
-
-**•** _`AmountWithTax`_    - `amount` is the fee amount, including tax.
-
-**•** _`AmountWithoutTax`_    - `amount` is the fee amount, not including tax. Tax is calculated on the
-value and added.
-
-**•** _`Percentage`_    - `amount` is a percentage. The fee amount is `amount` divided by 100 and then
-multiplied by the `TotalPrice` and `TotalTaxAmount` of the associated order product
-summary, prorated for the quantity being returned.
-
-**•** _`PercentageGross`_    - `amount` is a percentage. The fee amount is `amount` divided by 100
-and then multiplied by the `TotalLineAmountWithTax` of the associated order product
-summary, prorated for the quantity being returned.
-
-**–** `description` —Description of the fee.
-
-**–** `priceBookEntryId` —Required unless price books are optional in the org. ID of the price book
-entry associated with the fee product.
-
-**–** `product2Id` —Required. ID of the product representing the fee.
-
-**–** `reason` —Required. Reason for the fee. The value must match an entry in the Order Product Summary
-Change object’s `Reason` picklist.
-
-**•** `orderItemSummaryId` —Required. ID of an order product summary to cancel. It can’t be a shipping
-charge product.
-
-**•** `quantity` —Required. Quantity to cancel.
-
-**•** `reason` —Required. Cancel reason. The value must match one of the picklist values on the Reason field
-of the Order Product Summary Change object.
-
-**•** `shippingReductionFlag` —Required. Boolean flag that specifies whether to prorate any related
-delivery charge based on the price change.
-
-`Order Summary` Reference to the order summary that you want to cancel order product summaries from.
-
-```
-Id
-
-```
-
-Store Output Values
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Output Parameter** **Description**
-
-```
-Cancel Order
-
-Product
-
-Summary Output
-
-```
-
-Usage
-
-[This output is an Apex-defined variable of class ConnectApi.SubmitCancelOutputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_submit_cancel_output.htm)
-
-The sign of a value in the `changeBalances` field is the opposite of the corresponding value on a change
-order record. For example, a discount is a positive value in `changeBalances` and a negative value on a
-change order record.
-
-The `changeBalances` field is an Apex-defined variable of class
-[ConnectApi.ChangeItemOutputRepresentation, which includes these fields.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_change_item_output.htm)
-
-**•** `grandTotalAmount` —Change to the total with tax.
-
-**•** `totalAdjDeliveryAmtWithTax` —Change to the adjusted delivery subtotal, including tax.
-
-**•** `totalAdjDistAmountWithTax` —Change to the total order adjustments, including tax.
-
-**•** `totalAdjProductAmtWithTax` —Change to the adjusted product subtotal, including tax.
-
-**•** `totalAdjustedDeliveryAmount` —Change to the adjusted delivery subtotal.
-
-**•** `totalAdjustedDeliveryTaxAmount` —Change to the adjusted delivery subtotal tax.
-
-**•** `totalAdjustedProductAmount` —Change to the adjusted product subtotal.
-
-**•** `totalAdjustedProductTaxAmount` —Change to the adjusted product subtotal tax.
-
-**•** `totalAdjustmentDistributedAmount` —Change to the total order adjustments.
-
-**•** `totalAdjustmentDistributedTaxAmount` —Change to the total order adjustments tax.
-
-**•** `totalAmount` —Change to the pretax total.
-
-**•** `totalExcessFundsAmount` —The amount of excess funds available on the order payment summaries
-related to the order summary. It’s equal to the captured amount that is owed as a refund but isn’t associated
-with an invoice or credit memo. Excess funds normally occur when order products are canceled before
-fulfillment but after payment is captured. This situation isn’t common in the US, where funds are normally
-authorized but not captured until the fulfillment process begins. This value includes all excess funds related
-to the order summary, not only the funds related to the current action.
-
-**•** `totalFeeAmount` —The total amount of the fees charged for the cancellation.
-
-**•** `totalFeeTaxAmount` —The total amount of tax on the fees charged for the cancellation.
-
-**•** `totalRefundableAmount` —The total amount available to be refunded. It’s the sum of the excess
-funds and any outstanding change order grand total amounts that apply to post-fulfillment changes. This
-value includes all refundable amounts related to the order summary, not only the amount related to the
-current action.
-
-**•** `totalTaxAmount` —Change to the total tax.
-
-The `changeOrderId` field is the ID of the change order record created for the canceled items. Use this
-change order to create a credit memo.
-
-The `feeChangeOrderId` field is the ID of the change order record created for any cancel fees. Use this
-change order to create an invoice.
-
-To set up the Cancel Order Product Summary Items Input:
-
-**1.** If you want to charge fees, use Assignment elements to set the `amount`, `amountType`, `description`, `priceBookEntryId`,
-`product2Id`, and `reason` field values on one or more `ConnectApi.ChangeItemFeeInputRepresentation`
-variables.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**2.** Use Assignment elements to set the `orderItemSummaryId`, `quantity`, `reason`, and `shippingReductionFlag`
-field values on one or more `ConnectApi.ChangeItemInputRepresentation` variables.
-
-**3.** If you’re charging fees, use Assignment elements to add the `ConnectApi.ChangeItemFeeInputRepresentation`
-variables to the `changeItemFees` fields on the associated `ConnectApi.ChangeItemInputRepresentation`
-variables.
-
-**4.** Use an Assignment element to add the `ConnectApi.ChangeItemInputRepresentation` variables to the
-`changeItems` field on a `ConnectApi.ChangeInputRepresentation` variable.
-
-**5.** Use the `ConnectApi.ChangeInputRepresentation` variable and the order summary ID in the action input.
-
-In a flow for canceling order product summaries, run a Cancel Order Item Summaries Preview action before running the action. Then
-display its output for the user to review. When the user verifies the expected results, pass the same input to this action.
-
-SEE ALSO:
-
-Flow Core Action for Order Management: Cancel Order Item Summaries Preview
-
-Add and Edit Elements
-
-###### Flow Core Action for Order Management: Cancel Order Summary Preview
-
-Preview the expected results of canceling all order product summaries for an order summary without
-executing the cancel. The output of this action contains the values that would be set on the change
-order created by submitting the proposed cancel.
-
-In Flow Builder, add an Action element to your flow. Select the **Order Management** category, and
-search for **Cancel Order Summary Preview** .
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-**Input** **Description**
-**Parameter**
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Order Management
-
-```
-Cancel
-
-All Order
-
-Items
-
-Input
-
-```
-
-This input is an Apex-defined variable of class
-[ConnectApi.CancelAllOrderItemsInputRepresentation, which contains details](https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_connectapi_input_cancel_all_order_items.htm)
-about the order summary to preview canceling all order products for.
-
-The `changeItemFees` field is a list of Apex-defined variables of class
-[ConnectApi.ChangeItemFeeWithTaxInputRepresentation. Each of the variables](https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_connectapi_input_change_item_fee_with_tax.htm)
-includes these fields:
-
-**•** `amount` —Positive value used to calculate the fee amount.
-
-**•** `changeItemFees` —List of taxes associated with the change item fees.
-
-**•** `description` —Description of the fee.
-
-**•** `orderDeliveryGroupSummaryId` —ID of the order delivery group
-summary.
-
-**•** `priceBookEntryId` —ID of the price book entry associated with the
-fee product.
-
-**•** `product2Id` —ID of the product representing the fee.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-**•** `reason` —Reason for the cancellation. The value must match one of the picklist values on the Reason
-field of the Order Product Summary Change object.
-
-The `excludedItems` field is a list of items to exclude from the cancellation preview.
-
-The `orderSummaryId` field is the ID of the order summary to preview canceling all order products summaries
-for.
-
-The `reason` field is the reason for the cancellation. The value must match one of the picklist values on the
-Reason field of the Order Product Summary Change object.
-
-The `reasonText` field is the reason text used for the return insights. The value has a max of 255 characters.
-
-Store Output Values
-
-**Output Parameter** **Description**
-
-```
-Preview Cancel
-
-Output
-
-```
-
-[This output is an Apex-defined variable of class ConnectApi.PreviewCancelOutputRepresentation, which](https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_connectapi_output_preview_cancel_output.htm)
-contains the values that would populate a change order record for the proposed cancel.
-
-The sign of a value in the `changeBalances` field is the opposite of the corresponding value on a change
-order record. For example, a discount is a positive value in `changeBalances` and a negative value on a
-change order record.
-
-The `orderSummaryId` field is the ID of the order summary specified in the input.
-
-The `changeBalances` field is an Apex-defined variable of class
-[ConnectApi.ChangeItemOutputRepresentation, which includes these fields.](https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_connectapi_output_change_item_output.htm)
-
-**•** `grandTotalAmount` —Change to the total with tax.
-
-**•** `totalAdjDeliveryAmtWithTax` —Change to the adjusted delivery subtotal, including tax.
-
-**•** `totalAdjDistAmountWithTax` —Change to the total order adjustments, including tax.
-
-**•** `totalAdjProductAmtWithTax` —Change to the adjusted product subtotal, including tax.
-
-**•** `totalAdjustedDeliveryAmount` —Change to the adjusted delivery subtotal.
-
-**•** `totalAdjustedDeliveryTaxAmount` —Change to the adjusted delivery subtotal tax.
-
-**•** `totalAdjustedProductAmount` —Change to the adjusted product subtotal.
-
-**•** `totalAdjustedProductTaxAmount` —Change to the adjusted product subtotal tax.
-
-**•** `totalAdjustmentDistributedAmount` —Change to the total order adjustments.
-
-**•** `totalAdjustmentDistributedTaxAmount` —Change to the total order adjustments tax.
-
-**•** `totalAmount` —Change to the pretax total.
-
-**•** `totalExcessFundsAmount` —The amount of excess funds available on the order payment summaries
-related to the order summary. It’s equal to the captured amount that is owed as a refund but isn’t associated
-with an invoice or credit memo. Excess funds normally occur when order products are canceled before
-fulfillment but after payment is captured. This situation isn’t common in the US, where funds are normally
-authorized but not captured until the fulfillment process begins. This value includes all excess funds related
-to the order summary, not only the funds related to the current action.
-
-**•** `totalFeeAmount` —The total amount of the fees charged for the cancellation.
-
-**•** `totalFeeTaxAmount` —The total amount of tax on the fees charged for the cancellation.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Output Parameter** **Description**
-
-**•** `totalRefundableAmount` —The total amount available to be refunded. It’s the sum of the excess
-funds and any outstanding change order grand total amounts that apply to post-fulfillment changes. This
-value includes all refundable amounts related to the order summary, not only the amount related to the
-current action.
-
-**•** `totalTaxAmount` —Change to the total tax.
-
-Usage
-
-To set up the Cancel All Order Items Input:
-
-**1.** Use Assignment elements to set the `amount`, `amountType`, `changeItemFees`, `description`,
-`orderDeliveryGroupSummaryId`, `priceBookEntryId`, `product2Id`, and `reason` field values on one or more
-`ConnectApi.ChangeItemFeeWithTaxInputRepresentation` variables.
-
-**2.** Use an Assignment element to add the `ConnectApi.ChangeItemFeeWithTaxInputRepresentation` variables to
-the `changeItemFees` field on a `ConnectApi.CancelAllOrderItemsInputRepresentation` variable.
-
-**3.** Use the `ConnectApi.CancelAllOrderItemsInputRepresentation` variable and the order summary ID in the
-action input.
-
-In a flow for canceling all product summaries for an order, display the output of this action for the user to review before executing the
-cancel. When the user verifies the expected results, pass the same input to a Cancel Order Summary Submit action.
-
-###### Flow Core Action for Order Management: Cancel Order Summary Submit
-
-Cancel all order product summaries for an order summary. This action inserts a background operation
-into an asynchronous job queue and returns the ID of that operation.
-
-In Flow Builder, add an Action element to your flow. Select the **Order Management** category, and
-search for **Cancel Order Summary Submit** .
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-**Input** **Description**
-**Parameter**
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Order Management
-
-```
-Cancel
-
-All Order
-
-Items
-
-Input
-
-```
-
-This input is an Apex-defined variable of class
-[ConnectApi.CancelAllOrderItemsInputRepresentation, which contains details](https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_connectapi_input_cancel_all_order_items.htm)
-about the order summary to preview canceling all order products for.
-
-The `changeItemFees` field is a list of Apex-defined variables of class
-[ConnectApi.ChangeItemFeeWithTaxInputRepresentation. Each of the variables](https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_connectapi_input_change_item_fee_with_tax.htm)
-includes these fields:
-
-**•** `amount` —Positive value used to calculate the fee amount.
-
-**•** `changeItemFees` —List of taxes associated with the change item fees.
-
-**•** `description` —Description of the fee.
-
-**•** `orderDeliveryGroupSummaryId` —ID of the order delivery group
-summary.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-**•** `priceBookEntryId` —ID of the price book entry associated with the fee product.
-
-**•** `product2Id` —ID of the product representing the fee.
-
-**•** `reason` —Reason for the cancellation. The value must match one of the picklist values on the Reason
-field of the Order Product Summary Change object.
-
-The `excludedItems` field is a list of items to exclude from the cancellation preview.
-
-The `orderSummaryId` field is the ID of the order summary to preview canceling all order products summaries
-for.
-
-The `reason` field is the reason for the cancellation. The value must match one of the picklist values on the
-Reason field of the Order Product Summary Change object.
-
-The `reasonText` field is the reason text used for the return insights. The value has a max of 255 characters.
-
-Store Output Values
-
-**Output Parameter** **Description**
-
-`Cancel All` [This output is an Apex-defined variable of class ConnectApi.CancelAllOrderItemsAsyncOutputRepresentation,](https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_connectapi_output_cancel_all_order_items_async_output.htm)
-`Order Items` which contains the ID of the asynchronous background operation.
-
-```
-   Async Output
-
-```
-
-Usage
-
-To set up the Cancel All Order Items Input:
-
-**1.** Use Assignment elements to set the `amount`, `amountType`, `changeItemFees`, `description`,
-`orderDeliveryGroupSummaryId`, `priceBookEntryId`, `product2Id`, and `reason` field values on one or more
-`ConnectApi.ChangeItemFeeWithTaxInputRepresentation` variables.
-
-**2.** Use an Assignment element to add the `ConnectApi.ChangeItemFeeWithTaxInputRepresentation` variables to
-the `changeItemFees` field on a `ConnectApi.CancelAllOrderItemsInputRepresentation` variable.
-
-**3.** Use the `ConnectApi.CancelAllOrderItemsInputRepresentation` variable and the order summary ID in the
-action input.
-
-In a flow for canceling all product summaries for an order, run a Cancel Order Summary Preview action before running this action. Then
-display its output for the user to review. When the user verifies the expected results, pass the same input to this action. When the action
-completes, it generates OSAsyncChgCompletedEvent if successful and ProcessExceptionEvent if not.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Flow Core Action for Order Management: Confirm Held Fulfillment Order Capacity
-
-Confirm held fulfillment order capacity at one or more locations. This action decreases a location’s
-held capacity and increases its assigned fulfillment order count. Confirm held capacity when you
-assign a fulfillment order to a location.
-
-In Flow Builder, add an Action element to your flow. Select the **Order Management** category, and
-###### search for Confirm Held Fulfillment Order Capacity .
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-**Input** **Description**
-**Parameter**
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Order Management
-
-This input is an Apex-defined variable of class
-[ConnectApi.ConfirmHeldFOCapacityRequestInputRepresentation, which includes](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_confirm_held_f_o_capacity_request.htm)
-these fields:
-
-###### Confirm This input is an Apex-defined variable of class
-
-`Held` [ConnectApi.ConfirmHeldFOCapacityRequestInputRepresentation, which includes](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_confirm_held_f_o_capacity_request.htm)
-`Fulfillment` these fields:
-
-```
-Order
-```
-
-**•** `allOrNothing` —(Optional) Controls whether a single failed request
-```
-Capacity
-```
-cancels all other requests in the list ( _`true`_ ) or some requests can succeed
-```
-Input
-```
-if others fail ( _`false`_ ). The default value is _`false`_ .
-
-```
-Capacity
-
-Input
-
-```
-
-**•** `capacityRequests` —This field is a list of Apex-defined variables of
-[class ConnectApi.CapacityRequestInputRepresentation. Each of the variables](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_capacity_request.htm)
-represents a request to confirm one fulfillment order assigned to one location,
-and includes these fields:
-
-**–** `actionRequestId` —Unique string that identifies the request. Can
-be a UUID. To identify which requests succeeded or failed, use the action
-request IDs in response data.
-
-**–** `locationId` —ID of the location associated with the request.
-
-Store Output Values
-
-Use output values later in the flow. The values are assigned when the capacity properties are updated.
-
-**Output Parameter** **Description**
-
-###### Confirm Held This output is an Apex-defined variable of class
-
-`Fulfillment` [ConnectApi.ConfirmHeldFOCapacityResponseOutputRepresentation, which includes this field:](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_confirm_held_f_o_capacity_response_output.htm)
-
-```
-Order Capacity
-```
-
-**•** `capacityResponses` —This field is a list of Apex-defined variables of class
-
-`Output` [ConnectApi.CapacityResponseOutputRepresentation, each of which includes these fields:](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_capacity_response_output.htm)
-
-**–** `actionRequestId` —Unique string that identifies the original capacity request.
-
-**–** `error` [—This field is an Apex-defined variable of class ConnectApi.ErrorResponse, which includes](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_error_response.htm)
-these fields:
-
-**•** `errorCode` —Error code, if the request returned an error.
-
-**•** `message` —More error detail, if available.
-
-**–** `success` —Indicates whether the request was successful ( _`true`_ ) or not ( _`false`_ ).
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Flow Core Action for Order Management: Create Credit Memo
-
-Create a credit memo to represent the refund for one or more change orders associated with an
-order summary.
-
-In Flow Builder, add an Action element to your flow. Select the **Order Management** category, and
-###### search for Create Credit Memo .
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-**Input** **Description**
-**Parameter**
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Order Management
-
-```
-Credit
-
-Memo
-
-Input
-
-```
-
-This input is an Apex-defined variable of class
-[ConnectApi.CreateCreditMemoInputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_create_credit_memo.htm)
-
-The variable has one field, `changeOrderIds`, which is a list of IDs of the
-change orders to create a credit memo for.
-
-`Order` Reference to the order summary associated with the change orders.
-
-```
-Summary
-
-Id
-
-```
-
-Store Output Values
-
-**Output Parameter** **Description**
-
-```
-Credit Memo
-
-Output
-
-```
-
-Usage
-
-[This value is an Apex-defined variable of class ConnectApi.CreateCreditMemoOutputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_create_credit_memo_output.htm)
-
-The `creditMemoId` field contains the ID of the created credit memo.
-
-To set up the Credit Memo Input, first use Assignment elements to add the change order IDs to a list of strings variable. Then use that
-variable in the action input.
-
-SEE ALSO:
-
-Flow Core Action for Order Management: Ensure Refunds Async
-
-Add and Edit Elements
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Flow Core Action for Order Management: Create Fulfillment Order
-
-Create one or more fulfillment orders and fulfillment order products for an order delivery group
-summary, which defines a recipient and delivery method. You specify the order product summaries
-to fulfill and the fulfillment locations to handle them. If you specify multiple fulfillment locations, a
-fulfillment order is created for each one.
-
-In Flow Builder, add an Action element to your flow. Select the **Order Management** category, and
-###### search for Create Fulfillment Order .
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-**Input** **Description**
-**Parameter**
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Order Management
-
-```
-Fulfillment
-
-Order
-
-Input
-
-```
-
-This input is an Apex-defined variable of class
-[ConnectApi.FulfillmentOrderInputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_fulfillment_order.htm)
-
-The variable has three fields:
-
-**•** `fulfillmentGroups` - A list of Apex-defined variables of class
-[ConnectApi.FulfillmentGroupInputRepresentation. A fulfillment order is](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_fulfillment_order.htm)
-created for each fulfillment group. A group represents a set of order product
-summaries to fulfill from a single location, using the same fulfillment type.
-Each fulfillment group variable has these fields:
-
-**–** `fulfilledFromLocationId`  - Reference to the fulfillment
-location.
-
-**–** `fulfillmentType`  - The fulfillment type. Specify one of the values
-that you defined for the `Type` field picklist on the Fulfillment Order
-object.
-
-**–** `orderItemSummaries`  - A list of Apex-defined variables of class
-[ConnectApi.OrderItemSummaryInputRepresentation. Each variable has](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_order_item_summary.htm)
-these fields:
-
-**•** `orderItemSummaryId`    - Reference to an order product
-summary.
-
-**•** `quantity`    - The quantity of the order product summary to
-allocate to the fulfillment order.
-
-**–** `referenceId`  - Reference to the fulfillment group input. This action
-doesn’t use this value.
-
-**•** `orderDeliveryGroupSummaryId` - Reference to the order delivery
-group summary associated with the order product summaries.
-
-**•** `orderSummaryId` - Reference to the order summary associated with
-the order product summaries.
-
-Store Output Values
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Output Parameter** **Description**
-
-```
-Fulfillment
-
-Order Output
-
-```
-
-Usage
-
-[This value is an Apex-defined variable of class ConnectApi.FulfillmentOrderOutputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_fulfillment_order_output.htm)
-
-The `fulfillmentOrderIds` field is a list of IDs of the created fulfillment orders.
-
-To set up the Fulfillment Order Input:
-
-**1.** Use Assignment elements to set the `orderItemSummaryId` and `quantity` field values on one or more
-`ConnectApi.OrderItemSummaryInputRepresentation` variables for each fulfillment group.
-
-**2.** Use Assignment elements to add the `ConnectApi.OrderItemSummaryInputRepresentation` variables to the
-`orderItemSummaries` fields on one or more `ConnectApi.FulfillmentGroupInputRepresentation` variables,
-one for each fulfillment group.
-
-**3.** Use Assignment elements to set the `fulfilledFromLocationId` and `fulfillmentType` field values on the fulfillment
-group variables.
-
-**4.** Use Assignment elements to add the fulfillment group variables to the `fulfillmentGroups` field on a
-`ConnectApi.FulfillmentOrderInputRepresentation` variable.
-
-**5.** Use Assignment elements to set the `orderDeliveryGroupSummaryId` and `orderSummaryId` field values on the
-`ConnectApi.FulfillmentOrderInputRepresentation` variable.
-
-**6.** Use the `ConnectApi.FulfillmentOrderInputRepresentation` variable in the action input.
-
-SEE ALSO:
-
-Add and Edit Elements
-
-Flow Core Action for Order Management: Create Fulfillment Orders
-
-Create fulfillment orders and fulfillment order products for multiple order delivery group summaries,
-each of which defines a recipient and delivery method. You specify the order product summaries
-to fulfill and the fulfillment locations to handle them. If you specify multiple fulfillment locations
-for one order delivery group summary, a fulfillment order is created for each one.
-
-In Flow Builder, add an Action element to your flow. Select the **Order Management** category, and
-###### search for Create Fulfillment Orders .
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-**Input** **Description**
-**Parameter**
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Order Management
-
-```
-Fulfillment
-
-Orders
-
-Input
-
-```
-
-This input is an Apex-defined variable of class
-[ConnectApi.MultipleFulfillmentOrderInputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_multiple_fulfillment_order.htm)
-
-The variable has one field: `fulfillmentOrders` . This field is a list of
-[Apex-defined variables of class ConnectApi.FulfillmentOrderInputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_fulfillment_order.htm)
-Each variable has three fields:
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-**•** `fulfillmentGroups`            - A list of Apex-defined variables of class
-[ConnectApi.FulfillmentGroupInputRepresentation. A fulfillment order is created for each fulfillment group.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_fulfillment_order.htm)
-A group represents a set of order product summaries to fulfill from a single location using the same fulfillment
-type. Each fulfillment group variable has these fields:
-
-**–** `fulfilledFromLocationId`              - Reference to the fulfillment location.
-
-**–** `fulfillmentType`              - The fulfillment type. Specify one of the values that you defined for the
-`Type` field picklist on the Fulfillment Order object.
-
-**–** `orderItemSummaries`              - A list of Apex-defined variables of class
-[ConnectApi.OrderItemSummaryInputRepresentation. Each variable has these fields:](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_order_item_summary.htm)
-
-**•** `orderItemSummaryId`               - Reference to an order product summary.
-
-**•** `quantity`               - The quantity of the order product summary to allocate to the fulfillment order.
-
-**–** `referenceId`              - Reference to the fulfillment group input. Use this value to troubleshoot a failure.
-
-**•** `orderDeliveryGroupSummaryId`            - Reference to the order delivery group summary associated
-with the order product summaries.
-
-**•** `orderSummaryId`            - Reference to the order summary associated with the order product summaries.
-
-Store Output Values
-
-**Output Parameter** **Description**
-
-```
-Fulfillment
-
-Orders Output
-
-```
-
-[This value is an Apex-defined variable of class ConnectApi.MultipleFulfillmentOrderOutputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_multiple_fulfillment_order_output.htm)
-
-The variable has one field: `fulfillmentOrders` . This field is a list of Apex-defined variables of class
-[ConnectApi.FulfillmentGroupOutputRepresentation. Each variable has these fields:](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_fulfillment_group_output.htm)
-
-**•** `fulfilledFromLocationId` - Reference to the fulfillment location. This value is included so that
-you can resubmit the creation if it fails.
-
-**•** `fulfillmentOrderId` - Reference to the created fulfillment order.
-
-**•** `fulfillmentType` - The fulfillment type. This value is included if the creation failed, so you can
-resubmit it.
-
-**•** `orderDeliveryGroupSummaryId` - Reference to the order delivery group summary associated
-with the order product summaries. This value is included if the creation failed, so you can resubmit it.
-
-**•** `orderItemSummaries` - A list of Apex-defined variables of class
-[ConnectApi.OrderItemSummaryInputRepresentation. This value is included if the creation failed, so you](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_order_item_summary.htm)
-can resubmit it. Each variable has these fields:
-
-**–** `orderItemSummaryId`  - Reference to an order product summary.
-
-**–** `quantity`  - The quantity of the order product summary to allocate to the fulfillment order.
-
-**•** `orderSummaryId` - Reference to the order summary associated with the order product summaries.
-This value is included if the creation failed, so you can resubmit it.
-
-**•** `referenceId` - Reference to the fulfillment group input. Use this value to troubleshoot a failure.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Usage
-
-To set up the Fulfillment Orders Input:
-
-**1.** For each order delivery group:
-
-**a.** Use Assignment elements to set the `orderItemSummaryId` and `quantity` field values on one or more
-`ConnectApi.OrderItemSummaryInputRepresentation` variables.
-
-**b.** Use Assignment elements to add the `ConnectApi.OrderItemSummaryInputRepresentation` variables to the
-`orderItemSummaries` fields on one or more `ConnectApi.FulfillmentGroupInputRepresentation`
-variables, one for each fulfillment group.
-
-**c.** Use Assignment elements to set the `fulfilledFromLocationId`, `fulfillmentType`, and `referenceId` field
-values on the `ConnectApi.FulfillmentGroupInputRepresentation` variables.
-
-**d.** Use Assignment elements to add the `ConnectApi.FulfillmentGroupInputRepresentation` variables to the
-`fulfillmentGroups` field on a `ConnectApi.FulfillmentOrderInputRepresentation` variable.
-
-**e.** Use Assignment elements to set the `orderDeliveryGroupSummaryId` and `orderSummaryId` field values on the
-`ConnectApi.FulfillmentOrderInputRepresentation` variable.
-
-**2.** Use Assignment elements to add the `ConnectApi.FulfillmentOrderInputRepresentation` variables to the
-`fulfillmentOrders` field on a `ConnectApi.MultipleFulfillmentOrderInputRepresentation` variable.
-
-**3.** Use the `ConnectApi.MultipleFulfillmentOrderInputRepresentation` variable in the action input.
-
-SEE ALSO:
-
-Add and Edit Elements
-
-Flow Core Action for Order Management: Create an Invoice from Change Orders
-
-Create an invoice to represent the charges for one or more change orders. Create invoices for change
-orders that increase order amounts, such as return fees. When you ensure the refund for a return,
-include the invoices for the associated return fees in the input.
-
-In Flow Builder, add an Action element to your flow. Select the **Order Management** category, and
-###### search for Create an Invoice from Change Orders .
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-**Input** **Description**
-**Parameter**
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Order Management
-
-Required. This input is an Apex-defined variable of class
-[ConnectApi.CreateInvoiceFromChangeOrdersInputRepresentation. It has two](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_create_invoice_from_change_orders.htm)
-fields.
-
-###### Create Required. This input is an Apex-defined variable of class
-
-`Invoice` [ConnectApi.CreateInvoiceFromChangeOrdersInputRepresentation. It has two](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_create_invoice_from_change_orders.htm)
-`From` fields.
-
-```
-Change
-```
-
-The `changeOrderIds` field is a list of IDs of the change orders to create an
-
-`Order` invoice for.
-```
-Input
-```
-
-The `orderSummaryId` field is the ID of the order summary associated with
-the change orders.
-
-The `changeOrderIds` field is a list of IDs of the change orders to create an
-invoice for.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Store Output Values
-
-**Output Parameter** **Description**
-
-```
-Invoice Output
-
-```
-
-SEE ALSO:
-
-[This value is an Apex-defined variable of class ConnectApi.ChangeOrdersInvoiceOutputRepresentation. It has](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_change_orders_invoice_output.htm)
-three fields.
-
-The `errors` [field is a list of Apex-defined variables of class ConnectApi.ErrorResponse containing any errors](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_error_response.htm)
-that were returned.
-
-The `invoiceId` field contains the ID of the created invoice.
-
-The `success` field indicates whether the transaction was successful.
-
-Flow Core Action for Order Management: Create Return Order
-
-Flow Core Action for Order Management: Return Return Order Items
-
-Flow Core Action for Order Management: Ensure Refunds Async
-
-Add and Edit Elements
-
-Flow Core Action for Order Management: Create an Invoice from Fulfillment Order
-
-Create an invoice for a fulfillment order that doesn’t have one.
-
-In Flow Builder, add an Action element to your flow. Select the **Order Management** category, and
-###### search for Create an Invoice from Fulfillment Order .
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-**Input** **Description**
-**Parameter**
-
-`Fulfillment` Reference to the fulfillment order that needs an invoice.
-
-```
-Order Id
-
-```
-
-Store Output Values
-
-**Output Parameter** **Description**
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Order Management
-
-```
-Invoice
-
-creation
-
-output
-
-```
-
-SEE ALSO:
-
-[This value is an Apex-defined variable of class ConnectApi.FulfillmentOrderInvoiceOutputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_fulfillment_order_invoice_output.htm)
-
-The `invoiceId` field contains the ID of the created invoice.
-
-Flow Core Action for Order Management: Ensure Funds Async
-
-Add and Edit Elements
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Flow Core Action for Order Management: Create Order Payment Summary
-
-Create an order payment summary for a payment authorization or payments that use the same
-payment method and are attached to the same order summary.
-
-In Flow Builder, add an Action element to your flow. Select the **Order Management** category, and
-###### search for Create Order Payment Summary .
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs. Include at least one payment authorization or
-list of payments. You don’t need both.
-
-**Input** **Description**
-**Parameter**
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Order Management
-
-This input is an Apex-defined variable of class
-[ConnectApi.CreateOrderPaymentSummaryInputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_create_order_payment_summary.htm)
-
-`Order` This input is an Apex-defined variable of class
-`Payment` [ConnectApi.CreateOrderPaymentSummaryInputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_create_order_payment_summary.htm)
-`Summary` The variable includes these fields:
-###### `Create`
-
-**•** `orderSummaryId`       - Reference to the order summary associated with
-```
-Input
-```
-the payments. In orgs with the multicurrency feature enabled, the order
-payment summary inherits the `ISO Currency` value from the order
-summary.
-
-The variable includes these fields:
-
-**•** `paymentAuthorizationId`       - Reference to the payment
-authorization to associate with the summary.
-
-**•** `paymentIds`       - List of IDs of the payments to associate with the summary.
-
-Store Output Values
-
-**Output Parameter** **Description**
-
-```
-Order Payment
-
-Summary Output
-
-```
-
-Usage
-
-[This value is an Apex-defined variable of class ConnectApi.CreateOrderPaymentSummaryOutputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_create_order_payment_summary_output.htm)
-
-The `orderPaymentSummaryId` field contains the ID of the created order payment summary.
-
-To set up the Order Payment Summary Create Input for payments, first use Assignment elements to add the payment IDs to a list of
-strings variable. Then use that variable in the action input.
-
-SEE ALSO:
-
-Add and Edit Elements
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Flow Core Action for Order Management: Create Order Summary
-
-Create an order summary based on an order. That order is considered the original order for the
-order summary. Subsequent change orders that apply to the order summary are also represented
-as order records.
-
-In Flow Builder, add an Action element to your flow. Select the **Order Management** category, and
-###### search for Create Order Summary .
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-**Input** **Description**
-**Parameter**
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Order Management
-
-```
-Order
-
-Summary
-
-###### `Create`
-
-Input
-
-```
-
-This input is an Apex-defined variable of class
-[ConnectApi.OrderSummaryInputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_order_summary.htm)
-
-The variable has these fields:
-
-**•** `businessModel` —The order’s business model. It can have one of these
-values:
-
-**–** B2B
-
-**–** B2C
-
-**•** `externalReferenceIdentifier` —Used to prevent duplicate
-records. This value is case-sensitive.
-
-**•** `name` —Order summary number to assign to the order summary.
-
-**•** `orderId` —Required. The ID of the original order to create an order
-summary for.
-
-**•** `orderLifeCycleType` —Specifies whether the order is managed in
-Salesforce Order Management or by an external system. It can have one of
-these values:
-
-**–** _`MANAGED`_ —The order is managed in Salesforce Order Management. If
-no value is specified, the default is _`MANAGED`_ .
-
-**–** _`UNMANAGED`_ —The order is managed by an external system.
-
-**•** `sourceProcess` —Describes the order process creating the order
-summary. It can have one of these values:
-
-**–** _`OrderOnBehalf`_ —An Order on Behalf Of process.
-
-**–** _`Standard`_ —Any process other than Order on Behalf Of.
-
-**•** `status` —Status to assign to the order summary. The value must match
-one of the picklist values on the `Status` field of the Order Summary object.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Store Output Values
-
-**Output Parameter** **Description**
-
-```
-Order Summary
-
-Output
-
-```
-
-SEE ALSO:
-
-[This value is an Apex-defined variable of class OrderSummaryOutputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_order_summary_output.htm)
-
-The `orderSummaryId` field contains the ID of the created order summary.
-
-Add and Edit Elements
-
-Flow Core Action for Order Management: Create Return Order
-
-Create a return order and return order items for order items belonging to an order summary. You
-can add return fees for any of the order items.
-
-In Flow Builder, add an Action element to your flow. Select the **Order Management** category, and
-###### search for Create Return Order .
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-**Input** **Description**
-**Parameter**
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Order Management and
-Returns
-
-```
-Return
-
-Order
-
-Input
-
-```
-
-This input is an Apex-defined variable of class
-[ConnectApi.ReturnOrderInputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_return_order.htm)
-
-The variable has four fields:
-
-**•** `orderSummaryId` —ID of the order summary containing the items to
-be returned. The order summary’s order lifecycle type must be Managed.
-
-**•** `returnOrderLifeCycleType` —The LifeCycleType of the return
-order. Possible values are:
-
-**–** _`Managed`_ —Process the return order using the actions and APIs. It can
-generate change orders and affects financial fields and rollup calculations.
-
-**–** _`Unmanaged`_ —The return order is for tracking purposes only. It isn’t
-involved in any financial calculations and doesn’t generate any change
-orders. The system doesn’t prevent the creation of duplicate return order
-line items in an unmanaged return order for the same order item.
-
-**•** `returnOrderLineItems` —A list of Apex-defined variables of class
-[ConnectApi.ReturnOrderLineItemInputRepresentation. Each variable has](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_return_order_line_item.htm)
-these fields:
-
-**–** `canReduceShipping` —Whether the associated shipping charge
-can be refunded.
-
-**–** `orderItemSummaryId` —ID of the associated OrderItemSummary.
-If the OrderItemSummary already has an associated ReturnOrderLineItem,
-then you must specify a different `reasonForReturn` . Duplicating
-the reason breaks the financial calculations.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-**–** `quantityExpected` —Quantity expected to be returned.
-
-**–** `quantityReceived` —(Optional) Quantity already physically returned. This value isn’t used by any
-standard features, but it’s provided for use in customizations.
-
-**–** `reasonForReturn` —(Optional) Reason for the return. The value must match an entry in the
-ReturnOrderLineItem object’s ReasonForReturn picklist.
-
-**–** `returnOrderLineItemFees` —(Optional) A list of Apex-defined variables of class
-[ConnectApi.ReturnOrderLineItemFeeInputRepresentation. Each variable has these fields:](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_return_order_line_item_fee.htm)
-
-**•** `amount` —Value used to calculate the fee amount, as described by the amountType. It must be a
-positive value.
-
-**•** `amountType` —Describes how the fee amount is calculated. It can have one of these values:
-
-**–** _`AmountWithTax`_                - `amount` is the fee amount, including tax.
-
-**–** _`AmountWithoutTax`_                - `amount` is the fee amount, not including tax. Tax is calculated on
-the value and added.
-
-**–** _`Percentage`_                - `amount` is a percentage. The fee amount is `amount` divided by 100 and
-then multiplied by the `TotalPrice` and `TotalTaxAmount` of the associated
-OrderItemSummary, prorated for the quantity being returned.
-
-**–** _`PercentageGross`_                - `amount` is a percentage. The fee amount is `amount` divided by
-100 and then multiplied by the `TotalLineAmountWithTax` of the associated
-OrderItemSummary, prorated for the quantity being returned.
-
-**•** `description` —(Optional) Description of the fee.
-
-**•** `product2Id` —ID of the product representing the fee.
-
-**•** `reason` —Reason for the fee. The value must match an entry in the ReturnOrderLineItem object’s
-`ReasonForReturn` picklist.
-
-**•** `status` —Status to assign to the return order. The value must match one of the picklist values on the
-Status field of the Return Order object.
-
-Store Output Values
-
-**Output Parameter** **Description**
-
-```
-Return Order
-
-Output
-
-```
-
-Usage
-
-[This value is an Apex-defined variable of class ConnectApi.ReturnOrderOutputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_return_order_output.htm)
-
-The `returnOrderId` field contains the ID of the created return order.
-
-To set up the Create Return Order Input:
-
-**1.** Use Assignment elements to set the `canReduceShipping`, `orderItemSummaryId`, `quantityExpected`,
-`quantityReceived`, and `reasonForReturn` field values on one or more
-`ConnectApi.ReturnOrderLineItemInputRepresentation` variables.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**2.** If you want to add any return fees, use Assignment elements to set the `amount`, `amountType`, `description`, `product2Id`,
-and `reason` field values on one or more `ConnectApi.ReturnOrderLineItemFeeInputRepresentation`
-variables. The `product2Id` points to a fee product that you created.
-
-**3.** Use Assignment elements to add the `ConnectApi.ReturnOrderLineItemFeeInputRepresentation` variables
-to the `returnOrderLineItemFees` fields on the `ConnectApi.ReturnOrderLineItemInputRepresentation`
-variables representing the associated return order items.
-
-**4.** Use an Assignment element to add the `ConnectApi.ReturnOrderLineItemInputRepresentation` variables to
-the `returnOrderLineItems` field on a `ConnectApi.ReturnOrderInputRepresentation` variable.
-
-**5.** Use Assignment elements to set the `orderSummaryId`, `returnOrderLifeCycleType`, and `status` field values on
-the `ConnectApi.ReturnOrderInputRepresentation` variable.
-
-**6.** Use the `ConnectApi.ReturnOrderInputRepresentation` variable in the action input.
-
-SEE ALSO:
-
-Flow Core Action for Order Management: Return Return Order Items
-
-Add and Edit Elements
-
-Flow Core Action for Order Management: Ensure Funds Async
-
-Ensure funds for an invoice, and apply them to it. If needed, capture authorized funds by sending
-a request to a payment provider. This action inserts a background operation into an asynchronous
-job queue and returns the ID of that operation so you can track its status. Payment gateway responses
-appear in the payment gateway log and don’t affect the background operation status.
-
-In Flow Builder, add an Action element to your flow. Select the **Order Management** category, and
-###### search for Ensure Funds Async .
-
-Note: If the action creates a payment, the payment record’s ClientContext value isn’t
-predictable. Don't use it in custom logic.
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-**Input Parameter** **Description**
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Order Management
-
-###### `Ensure Funds`
-
-```
-Async Input
-
-```
-
-[This input is an Apex-defined variable of class ConnectApi.EnsureFundsAsyncInputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_ensure_funds_async.htm)
-
-The variable has one field: `invoiceId`, which is the ID of the invoice to ensure funds for and apply them to.
-
-`Order Summary` Reference to the order summary associated with the invoice.
-
-```
-Id
-
-```
-
-Store Output Values
-
-**Output Parameter** **Description**
-
-###### `Ensure Funds`
-
-```
-Async Output
-
-```
-
-[This value is an Apex-defined variable of class EnsureFundsAsyncOutputRepresentation. It only returns the ID](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_ensure_funds_async_output.htm)
-of the asynchronous background operation, regardless of whether a call is made to an external payment
-gateway. It doesn’t include any errors from the operation.
-
-The `backgroundOperationId` field contains the ID of the background operation.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Usage
-
-This action applies funds to the invoice balance from order payment summaries associated with the specified order summary following
-this logic:
-
-Note: If multiple order payment summaries have equal `BalanceAmount` values, their order of selection is random.
-
-**1.** Verify that the invoice balance doesn’t exceed the total `BalanceAmount` of all the order payment summaries associated with
-the order summary.
-
-**2.** If an order payment summary has a `BalanceAmount` equal to the invoice balance, apply the funds from that order payment
-summary.
-
-**3.** If no exact match was found, apply funds from the order payment summary with the largest `BalanceAmount` .
-
-**4.** If the invoice still has a balance to ensure, repeat steps 2 and 3 until the full balance is ensured or no captured funds remain.
-
-**5.** If the invoice still has a balance, look for an order payment summary with an authorized amount equal to the remaining invoice
-balance. If one exists, capture and apply the funds from that order payment summary.
-
-**6.** If no exact match was found, capture and apply funds from the order payment summary with the largest authorized amount.
-
-**7.** If the invoice still has a balance to ensure, repeat steps 5 and 6 until the full balance is ensured.
-
-SEE ALSO:
-
-Flow Core Action for Order Management: Create an Invoice from Fulfillment Order
-
-Flow Core Action for Order Management: Ensure Refunds Async
-
-Add and Edit Elements
-
-Flow Core Action for Order Management: Ensure Refunds Async
-
-Ensure refunds for a credit memo or excess funds by sending a request to a payment provider. This
-action inserts a background operation into an asynchronous job queue and returns the ID of that
-operation so you can track its status. Payment gateway responses appear in the payment gateway
-log and don’t affect the background operation status.
-
-In Flow Builder, add an Action element to your flow. Select the **Order Management** category, and
-###### search for Ensure Refunds Async .
-
-Note: If the action creates a refund, the refund record’s ClientContext value isn’t predictable.
-Don't use it in custom logic.
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-**Input Parameter** **Description**
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Order Management
-
-###### `Ensure`
-
-```
-Refunds Async
-
-Input
-
-```
-
-[This input is an Apex-defined variable of class ConnectApi.EnsureReundsAsyncInputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_ensure_refunds_async.htm)
-
-The variable has these fields. You must specify `creditMemoId` or `excessFundsAmount` . You can
-specify both.
-
-**•** `creditMemoId` —The ID of the credit memo to ensure refunds for.
-
-**•** `excessFundsAmount` —The amount of excess funds to apply the refunds against.
-
-**•** `invoicesToPay` —List of invoices for fees that reduce the refund, such as return fees.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-**•** `isAllowPartial` —This value controls the behavior when the amounts included in the `sequences`
-list don’t cover the entire refund amount. If this value is false, the default refund logic is applied to ensure
-the remaining refund amount. If this value is true, the unrefunded balance remains on the credit memo. If
-you don’t specify a `sequences` list, this value is ignored, and the default refund logic is applied. The
-default is false.
-
-**•** `sequences` —This input is an ordered list of refund amounts and the OrderPaymentSummaries to apply
-them to. The process traverses this list in order and stops when it has refunded the full amount. It’s a list of
-Apex-defined variables of class SequenceOrderPaymentSummaryInputRepresentation. It contains these
-fields:
-
-**–** `amount` —Amount of the refund to apply to the OrderPaymentSummary.
-
-**–** `orderPaymentSummaryId` —ID of the OrderPaymentSummary to apply the Amount to.
-
-`Order Summary` Reference to the order summary associated with the credit memo.
-
-```
-   Id
-
-```
-
-Store Output Values
-
-**Output Parameter** **Description**
-
-```
-Ensure Refunds
-
-Async Output
-
-```
-
-Usage
-
-[This value is an Apex-defined variable of class EnsureRefundsAsyncOutputRepresentation. It only returns the](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_ensure_refunds_async_output.htm)
-ID of the asynchronous background operation, regardless of whether a call is made to an external payment
-gateway. It doesn’t include any errors from the operation.
-
-The `backgroundOperationId` field contains the ID of the background operation.
-
-This action applies the refund to order payment summaries associated with the specified order summary following this logic.
-
-Note: If multiple order payment summaries have equal `AvailableToRefund` amounts, their order of selection is random.
-
-**1.** Verify that the credit memo balance and excess funds amount don't exceed the total `AvailableToRefund` amount of all the
-order payment summaries associated with the order summary.
-
-**2.** If `sequences` is specified, follow these steps.
-
-**a.** Traverse the `sequences` list in order and apply the specified refund amounts to the specified order payment summaries.
-
-**b.** If the specified credit memo and excess funds are fully refunded, or if `isAllowPartial` is true, then the action stops here.
-
-**3.** If a credit memo is specified, follow these steps.
-
-**a.** If an order payment summary has an `AvailableToRefund` amount matching the credit memo’s remaining balance, apply
-the refund to that payment.
-
-**b.** If no exact match was found, apply the refund to the order payment summary with the largest `AvailableToRefund`
-amount.
-
-**c.** If the credit memo has any remaining balance, repeat steps a and b until that balance is fully refunded.
-
-**4.** If only one OrderPaymentSummary is specified but has multiple payments, follow these steps.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**a.** If a payment has an amount matching the CreditMemo’s remaining balance, apply the refund to that payment.
-
-**b.** If no exact match was found but one or more payment has a large enough amount to cover the balance, use the payment with
-the smallest amount.
-
-**c.** If no single payment has a large enough amount, use multiple payments in descending order of amount. This ensures the fewest
-payments are used.
-
-**5.** If an excess funds amount is specified, follow these steps.
-
-**a.** Examine those order payment summaries. If one has an `AvailableToRefund` amount matching the excess funds amount,
-apply the refund to that payment.
-
-**b.** If no exact match was found, apply the refund to the order payment summary with the largest `AvailableToRefund`
-amount.
-
-**c.** If any excess funds amount remains, repeat steps a and b until it’s fully refunded.
-
-SEE ALSO:
-
-Flow Core Action for Order Management: Create Credit Memo
-
-Flow Core Action for Order Management: Create an Invoice from Change Orders
-
-Flow Core Action for Order Management: Return Return Order Items
-
-Flow Core Action for Order Management: Ensure Funds Async
-
-Add and Edit Elements
-
-Flow Core Action for Order Management: Find Routes with Fewest Splits
-
-Evaluate ordered product quantities against available inventory to determine the smallest
-combination of locations that can fulfill the order. If multiple combinations of the minimum number
-of locations can fulfill the order, the action returns multiple options. Optionally, you can specify a
-maximum allowable number of locations. By default, the action executes up to 1,000,000 times,
-stopping when it hits 10,000 results.
-
-In Flow Builder, add an Action element to your flow. Select the **Order Management** category, and
-search for **Find Routes With Fewest Splits** .
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-**Input Parameter** **Description**
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Order Management
-
-```
-Order Routing
-
-Minimize
-
-Shipments
-
-Input
-
-```
-
-[This input is an Apex-defined variable of class ConnectApi.FindRoutesWithFewestSplitsInputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_find_routes_with_fewest_splits.htm)
-
-The `locationAvailableInventory` field is a list of Apex-defined variables of class
-[ConnectApi.LocationAvailabilityInputRepresentation. Each of the variables represents a fulfillment location to](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_location_availability.htm)
-consider and includes these fields:
-
-**•** `externalReferenceId` - External reference ID of the inventory location.
-
-**•** `quantity` - Available quantity of the product.
-
-**•** `stockKeepingUnit` - Stock Keeping Unit (SKU) of the product.
-
-The `maximumNumberOfSplits` field is the maximum allowable number of shipment splits. The action
-doesn’t return routing options that involve more than this number of splits.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-Each split represents an additional shipment. Specifying a maximum of 0 returns only locations that can fulfill
-the entire order in a single shipment. A maximum of 1 returns combinations of locations that can fulfill the
-order in one or two shipments, and so on.
-
-The `orderedQuantities` field is a list of Apex-defined variables of class
-[ConnectApi.QuantityWithSkuInputRepresentation. Each of the variables represents an ordered product quantity](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_quantity_with_sku.htm)
-to fulfill, and includes these fields:
-
-**•** `quantity`            - Ordered quantity of the product.
-
-**•** `stockKeepingUnit`            - SKU of the product.
-
-Store Output Values
-
-**Output Parameter** **Description**
-
-```
-Order Routing
-
-Minimize
-
-Shipments
-
-Output
-
-```
-
-Usage
-
-[This output is an Apex-defined variable of class ConnectApi.FindRoutesWithFewestSplitsOutputRepresentation,](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_find_routes_with_fewest_splits_output.htm)
-which contains the sets of fulfillment locations that meet the requirements.
-
-The variable has one field: `targetLocations` . This field is a list of Apex-defined variables of class
-[ConnectApi.AvailableLocationOutputRepresentation, each of which represents a set of fulfillment locations](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_available_location_output.htm)
-that can combine to fulfill the ordered products.
-
-Each of the variables includes one field: `locations` . This field is a list of the locations in the set.
-
-To set up the Order Routing Minimize Shipments Input:
-
-**1.** Use Assignment elements to set the `externalReferenceId`, `quantity`, and `stockKeepingUnit` field values on one
-or more `ConnectApi.LocationAvailabilityInputRepresentation` variables.
-
-**2.** Use Assignment elements to set the `quantity` and `stockKeepingUnit` field values on one or more
-`ConnectApi.QuantityWithSkuInputRepresentation` variables.
-
-**3.** Use an Assignment element to add the `ConnectApi.LocationAvailabilityInputRepresentation` variables to
-the `locationAvailableInventory` field on a
-`ConnectApi.FindRoutesWithFewestSplitsInputRepresentation` variable.
-
-**4.** Optionally, use an Assignment element to set the `maximumNumberOfSplits` field on the
-`ConnectApi.FindRoutesWithFewestSplitsInputRepresentation` variable.
-
-**5.** Use an Assignment element to add the `ConnectApi.QuantityWithSkuInputRepresentation` variables to the
-`orderedQuantities` field on the `ConnectApi.FindRoutesWithFewestSplitsInputRepresentation`
-variable.
-
-**6.** Use the `ConnectApi.FindRoutesWithFewestSplitsInputRepresentation` variable in the action input.
-
-SEE ALSO:
-
-Add and Edit Elements
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Flow Core Action for Order Management: Use OCI to Find Routes with Fewest Splits
-
-Evaluate ordered product quantities against available inventory to determine the smallest
-combination of locations that can fulfill the order. If multiple combinations of the minimum number
-of locations can fulfill the order, the action returns multiple options. Optionally, you can specify a
-maximum allowable number of locations and a list of locations to exclude from the calculation.
-This action combines the Omnichannel Inventory Get Availability action and the Order Management
-Find Routes with Fewest Splits actions. Instead of calling Get Availability and including the output
-in the Find Routes with Fewest Splits input, call this action and specify a location or location group
-to fulfill each ordered product. By default, this action executes up to 1,000,000 times, stopping when
-it hits 10,000 results. This action handles the inventory check.
-
-In Flow Builder, add an Action element to your flow. Select the **Order Management** category, and
-search for **Find Routes With Fewest Splits Using OCI** .
-
-Note: Set the flow’s runtime API version to 54.0 or later.
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-**Input Parameter** **Description**
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Order Management
-
-###### `Find Routes`
-
-```
-With Fewest
-
-Splits Using
-
-OCI Input
-
-```
-
-Store Output Values
-
-This input is an Apex-defined variable of class
-[ConnectApi.FindRoutesWithFewestSplitsUsingOCIInputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_find_routes_with_fewest_splits_using_o_c_i.htm)
-
-The `findRoutesWithFewestSplitsUsingOCIInputs` field is a list of Apex-defined variables of
-[class ConnectApi.FindRoutesWithFewestSplitsGroupUsingOCIInputRepresentation. Each of the variables](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_find_routes_with_fewest_splits_group_using_o_c_i.htm)
-represents one order and includes these fields:
-
-**•** `excludeLocations` —List of locations to exclude from the routing calculations.
-
-**•** `maximumNumberOfSplits` —Maximum allowable number of shipment splits. The action doesn’t
-return routing options that involve more than this number of splits.
-
-Each split represents an additional shipment. Specifying a maximum of 0 returns only locations that can
-fulfill the entire order in a single shipment. A maximum of 1 returns combinations of locations that can fulfill
-the order in one or two shipments, and so on.
-
-**•** `orderedItems` —A list of Apex-defined variables of class
-[ConnectApi.FindRoutesWithFewestSplitsUsingOCIItemInputRepresentation. Each of the variables represents](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_find_routes_with_fewest_splits_using_o_c_i_item.htm)
-an ordered product quantity to fulfill and a location or location group, and includes these fields:
-
-**–** `locationGroupIdentifier` —External reference ID of the inventory location or location group.
-
-**–** `quantity` —Ordered quantity of the product.
-
-**–** `stockKeepingUnit` —Stock Keeping Unit (SKU) of the product.
-
-Use output values later in the flow.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Output Parameter** **Description**
-
-```
-Find Routes
-
-With Fewest
-
-Splits Using
-
-OCI Output
-
-```
-
-Usage
-
-This output is an Apex-defined variable of class
-[ConnectApi.FindRoutesWithFewestSplitsUsingOCIOutputRepresentation, which contains inventory availability](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_find_routes_with_fewest_splits_using_o_c_i_output.htm)
-data and the sets of fulfillment locations that meet the requirements.
-
-The variable has one field: `results` . This field is a list of Apex-defined variables of class
-[ConnectApi.FindRoutesWithFewestSplitsWithInventoryOutputRepresentation, each of which represents the](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_find_routes_with_fewest_splits_with_inventory_output.htm)
-output for one order, and includes these fields:
-
-**•** `inventory` —Inventory availability data for the location groups and locations specified in the input.
-
-**•** `targetLocations` —A list of Apex-defined variables of class
-[ConnectApi.AvailableLocationOutputRepresentation, each of which represents a set of fulfillment locations](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_available_location_output.htm)
-that can combine to fulfill the ordered products. Each of the variables includes one field `locations` .
-This field is a list of the locations in the set.
-
-To set up the Find Routes With Fewest Splits Using OCI Input:
-
-**1.** Use assignment elements to set the values for the `locationGroupIdentifier`, `quantity`, and `stockKeepingUnit`
-field values on one or more ConnectApi.FindRoutesWithFewestSplitsUsingOCIItemInputRepresentation variables.
-
-**2.** Use assignment elements to add the ConnectApi.FindRoutesWithFewestSplitsUsingOCIItemInputRepresentation variables to the
-`orderedItems` field on a ConnectApi.FindRoutesWithFewestSplitsGroupUsingOCIInputRepresentation variable.
-
-**3.** Optionally, use an assignment element to set the value for the `maximumNumberOfSplits` field on the
-ConnectApi.FindRoutesWithFewestSplitsGroupUsingOCIInputRepresentation variable.
-
-**4.** Use an assignment element to add the ConnectApi.FindRoutesWithFewestSplitsGroupUsingOCIInputRepresentation variable to the
-`findRoutesWithFewestSplitsUsingOCIInputs` field on a
-ConnectApi.FindRoutesWithFewestSplitsUsingOCIInputRepresentation variable.
-
-**5.** Repeat steps 1–4 for each order that you want to include in the action, adding the inputs to the same
-ConnectApi.FindRoutesWithFewestSplitsUsingOCIInputRepresentation variable.
-
-**6.** Use the ConnectApi.FindRoutesWithFewestSplitsUsingOCIInputRepresentation variable in the action input.
-
-Flow Core Action for Order Management: Get Fulfillment Order Capacity Values
-
-Get information about the current fulfillment order capacity of one or more locations.
-
-In Flow Builder, add an Action element to your flow. Select the **Order Management** category, and
-###### search for Get Fulfillment Order Capacity Values .
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Order Management
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-`Get` [This input is an Apex-defined variable of class ConnectApi.GetFOCapacityValuesRequestInputRepresentation,](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_get_f_o_capacity_values_request.htm)
-`Fulfillment` which includes this field:
-
-```
-   Order
-```
-
-**•** `locationIds` —List of IDs of the locations to get fulfillment order capacity information for.
-```
-   Capacity
-
-   Values Input
-
-```
-
-Store Output Values
-
-Use output values later in the flow.
-
-**Output Parameter** **Description**
-
-`Get` [This output is an Apex-defined variable of class ConnectApi.GetFOCapacityValuesOutputRepresentation, which](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_get_f_o_capacity_values_output.htm)
-`Fulfillment` includes this field:
-
-```
-   Order Capacity
-```
-
-**•** `locations` —This field is a list of Apex-defined variables of class
-
-`Values Output` [ConnectApi.LocationCapacityOutputRepresentation, each of which includes these fields:](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_location_capacity_output.htm)
-
-**–** `assigned` —Value of the location’s Assigned Fulfillment Order Count.
-
-**–** `capacity` —Value of the location’s Fulfillment Order Capacity. This property represents the location’s
-maximum capacity.
-
-**–** `error` [—This field is an Apex-defined variable of class ConnectApi.ErrorResponse, which includes](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_error_response.htm)
-these fields:
-
-**•** `errorCode` —Error code, if the request returned an error.
-
-**•** `message` —More error detail, if available.
-
-**–** `heldCapacity` —Number of fulfillment orders that the location is holding capacity for.
-
-**–** `locationId` —ID of the location.
-
-Flow Core Action for Order Management: Hold Fulfillment Order Capacity
-
-Hold capacity to process fulfillment orders at one or more locations. This action increases a location’s
-held capacity. Hold capacity when you plan to assign a fulfillment order to a location.
-
-In Flow Builder, add an Action element to your flow. Select the **Order Management** category, and
-###### search for Hold Fulfillment Order Capacity .
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Order Management
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-`Hold` [This input is an Apex-defined variable of class ConnectApi.HoldFOCapacityRequestInputRepresentation, which](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_hold_f_o_capacity_request.htm)
-`Fulfillment` includes these fields:
-
-###### `Order`
-
-**•** `allOrNothing` —(Optional) Controls whether a single failed request cancels all other requests in the
-```
-   Capacity
-```
-list ( _`true`_ ) or whether some requests can succeed if others fail ( _`false`_ ). The default value is _`false`_ .
-```
-   Input
-```
-
-**•** `capacityRequests` —This field is a list of Apex-defined variables of class
-[ConnectApi.CapacityRequestInputRepresentation. Each of the variables represents a request to hold capacity](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_capacity_request.htm)
-for one fulfillment order at one location, and includes these fields:
-
-**–** `actionRequestId` —Unique string that identifies the request. Can be a UUID. Use the action
-request IDs in response data to identify which requests succeeded or failed.
-
-**–** `locationId` —ID of the location associated with the request.
-
-Store Output Values
-
-Use output values later in the flow. The values are assigned when the capacity properties are updated.
-
-**Output Parameter** **Description**
-
-`Hold` [This output is an Apex-defined variable of class ConnectApi.HoldFOCapacityResponseOutputRepresentation,](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_hold_f_o_capacity_response_output.htm)
-`Fulfillment` which includes this field:
-
-```
-   Order Capacity
-```
-
-**•** `capacityResponses` —This field is a list of Apex-defined variables of class
-
-`Output` [ConnectApi.CapacityResponseOutputRepresentation, each of which includes these fields:](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_capacity_response_output.htm)
-
-**–** `actionRequestId` —Unique string that identifies the original capacity request.
-
-**–** `error` [—This field is an Apex-defined variable of class ConnectApi.ErrorResponse, which includes](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_error_response.htm)
-these fields:
-
-**•** `errorCode` —Error code, if the request returned an error.
-
-**•** `message` —More error detail, if available.
-
-**–** `success` —Indicates whether the request was successful ( _`true`_ ) or not ( _`false`_ ).
-
-Flow Core Action for Order Management: Order Routing Rank by Average Distance
-
-Calculate the average distance from sets of inventory locations to an order recipient, and return
-the sets sorted by that average distance. Use this action to compare the average shipping distances
-for different sets of locations that can fulfill an order.
-
-In Flow Builder, add an Action element to your flow. Select the **Order Management** category, and
-###### search for Order Routing Rank By Average Distance .
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Order Management
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-[This input is an Apex-defined variable of class ConnectApi.RankAverageDistanceInputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_rank_average_distance.htm)
-
-`Order Routing` [This input is an Apex-defined variable of class ConnectApi.RankAverageDistanceInputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_rank_average_distance.htm)
-
-```
-Rank By
-```
-
-The `deliveryCountryCode` field is the country code of the order recipient.
-```
-Average
-```
-
-The `deliveryPostalCode` field is the postal code of the order recipient.
-```
-Distance
-```
-
-`Input` The `distanceUnit` field specifies whether to return average distances in miles or kilometers, respectively.
-The value can be _`mi`_ or _`km`_ .
-
-The `deliveryCountryCode` field is the country code of the order recipient.
-
-The `sortResult` field specifies whether to sort the location sets in ascending or descending order by average
-distance. The value can be _`ASC`_ or _`DESC`_ .
-
-The `targetLocations` field is a list of Apex-defined variables of class
-[ConnectApi.TargetLocationInputRepresentation. Each of the variables represents a set of fulfillment locations](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_target_location.htm)
-that can fulfill an order together, and includes one field: `locations` . This field is a list of Apex-defined variables
-[of class ConnectApi.LocationInputRepresentation, each of which represents one location in the list and contains](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_location.htm)
-these fields:
-
-**•** `countryCode`         - Country code of the location.
-
-**•** `locationIdentifier`         - ID of the location.
-
-**•** `postalCode`         - Postal code of the location.
-
-Store Output Values
-
-**Output Parameter** **Description**
-
-[This output is an Apex-defined variable of class ConnectApi.RankAverageDistanceOutputRepresentation, which](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_rank_average_distance_output.htm)
-contains the list of fulfillment location sets, sorted by average distance to the order recipient.
-
-`Order Routing` This output is an Apex-defined variable of class
-`Rank By` contains the list of fulfillment location sets, sorted by average distance to the order recipient.
-
-```
-Average
-```
-
-The `distanceUnit` field is the specified unit of distance. It can be _`miles`_ or
-```
-Distance
-```
-
-The `results` field is a list of Apex-defined variables of class
-```
-Output
-```
-[ConnectApi.AverageDistanceResultOutputRepresentation, each of which includes one field:](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_change_item_output.htm)
-`distanceCalculation` . It’s an Apex-defined variable of class
-[ConnectApi.DistanceCalculationOutputRepresentation, which includes these fields:](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_distance_calculation_output.htm)
-
-The `distanceUnit` field is the specified unit of distance. It can be _`miles`_ or _`kilometers`_ .
-
-**•** `averageDistance`          - Average distance from the locations to the order recipient.
-
-**•** `locations` [— A list of Apex-defined variables of class ConnectApi.LocationOutputRepresentation, each](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_location_output.htm)
-of which represents a location in the set and includes two fields:
-
-**–** `distance`           - Distance from the location to the order recipient.
-
-**–** `locationIdentifier`           - ID of the location.
-
-**•** `rank`          - This result’s rank among all results by average distance to the order recipient.
-
-Usage
-
-To set up the Order Routing Rank By Average Distance Input:
-
-**1.** Use Assignment elements to set the `countryCode`, `locationIdentifier`, and `postalCode` field values on one or
-more `ConnectApi.LocationInputRepresentation` variables to represent the locations in a set.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**2.** Use an Assignment element to add the `ConnectApi.LocationInputRepresentation` variables to the `locations`
-field on a `ConnectApi.TargetLocationInputRepresentation` variable.
-
-**3.** Repeat the previous two steps for each set of fulfillment locations.
-
-**4.** Use an Assignment element to add the `ConnectApi.TargetLocationInputRepresentation` variables to the
-`targetLocations` field on a `ConnectApi.RankAverageDistanceInputRepresentation` variable.
-
-**5.** Use Assignment elements to set the `deliveryCountryCode`, `deliveryPostalCode`, `distanceUnit`, and
-`sortResult` field values on the `ConnectApi.RankAverageDistanceInputRepresentation` variable.
-
-**6.** Use the `ConnectApi.RankAverageDistanceInputRepresentation` variable in the action input.
-
-SEE ALSO:
-
-Add and Edit Elements
-
-Flow Core Action for Order Management: Release Held Fulfillment Order Capacity
-
-Release held fulfillment order capacity at one or more locations. This action decreases a location’s
-held capacity without increasing its assigned fulfillment order count. Release held capacity when
-you cancel assigning a fulfillment order to a location.
-
-In Flow Builder, add an Action element to your flow. Select the **Order Management** category, and
-###### search for Release Held Fulfillment Order Capacity .
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-**Input** **Description**
-**Parameter**
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Order Management
-
-This input is an Apex-defined variable of class
-[ConnectApi.ReleaseHeldFOCapacityRequestInputRepresentation, which includes](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_release_held_f_o_capacity_request.htm)
-these fields:
-
-`Fulfillment` This input is an Apex-defined variable of class
-`Order` [ConnectApi.ReleaseHeldFOCapacityRequestInputRepresentation, which includes](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_release_held_f_o_capacity_request.htm)
-`Location` these fields:
-
-###### `Release`
-
-**•** `allOrNothing` —(Optional) Controls whether a single failed request
-```
-Held
-```
-cancels all other requests in the list ( _`true`_ ) or whether some requests can
-```
-Capacity
-```
-succeed if others fail ( _`false`_ ). The default value is _`false`_ .
-
-```
-Held
-```
-
-cancels all other requests in the list ( _`true`_ ) or whether some requests can
-```
-Capacity
-```
-succeed if others fail ( _`false`_ ). The default value is _`false`_ .
-```
-Input
-```
-
-**•** `capacityRequests` —This field is a list of Apex-defined variables of
-[class ConnectApi.CapacityRequestInputRepresentation. Each of the variables](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_capacity_request.htm)
-represents a request to release capacity for one fulfillment order at one
-location, and includes these fields:
-
-**–** `actionRequestId` —Unique string that identifies the request. Can
-be a UUID. Use the action request IDs in response data to identify which
-requests succeeded or failed.
-
-**–** `locationId` —ID of the location associated with the request.
-
-Store Output Values
-
-Use output values later in the flow. The values are assigned when the capacity properties are updated.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Output Parameter** **Description**
-
-`Fulfillment` This output is an Apex-defined variable of class
-`Order Location` [ConnectApi.ReleaseHeldFOCapacityResponseOutputRepresentation, which includes this field:](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_release_held_f_o_capacity_response_output.htm)
-
-```
-   Release Held
-```
-
-**•** `capacityResponses` —This field is a list of Apex-defined variables of class
-`Capacity` [ConnectApi.CapacityResponseOutputRepresentation, each of which includes these fields:](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_capacity_response_output.htm)
-```
-   Output
-```
-
-**–** `actionRequestId` —Unique string that identifies the original capacity request.
-
-**–** `error` [—This field is an Apex-defined variable of class ConnectApi.ErrorResponse, which includes](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_error_response.htm)
-these fields:
-
-**•** `errorCode` —Error code, if the request returned an error.
-
-**•** `message` —More error detail, if available.
-
-**–** `success` —Indicates whether the request was successful ( _`true`_ ) or not ( _`false`_ ).
-
-Flow Core Action for Order Management: Return Order Item Summaries Preview
-
-Preview the expected results of a simple return of one or more order product summaries from an
-order summary without executing the return. The output of this action contains the values that
-would be set on the change order created by submitting the proposed return.
-
-In Flow Builder, add an Action element to your flow. Select the **Order Management** category, and
-###### search for Return Order Item Summaries Preview .
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-**Input** **Description**
-**Parameter**
-
-`Order` Reference to the order summary that you want to preview returning order product
-`Summary` summaries from.
-
-```
-Id
-
-```
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Order Management
-
-###### `Return`
-
-```
-Order
-
-Product
-
-Summary
-
-Items
-
-Input
-
-```
-
-This input is an Apex-defined variable of class
-[ConnectApi.ChangeInputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_change.htm)
-
-The variable has one field: `changeItems` . This field is a list of Apex-defined
-[variables of class ConnectApi.ChangeItemInputRepresentation. Each variable](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_change_item.htm)
-includes these fields:
-
-**•** `changeItemFees` —A list of Apex-defined variables of class
-[ConnectApi.ChangeItemFeeInputRepresentation. Each variable has these](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_change_item_fee.htm)
-fields:
-
-**–** `amount` —Required. Value used to calculate the fee amount, as
-described by the amountType. It must be a positive value.
-
-**–** `amountType` —Required. Describes how the fee amount is calculated.
-It can have one of these values:
-
-**•** _`AmountWithTax`_    - `amount` is the fee amount, including tax.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-**•** _`AmountWithoutTax`_               - `amount` is the fee amount, not including tax. Tax is calculated on the
-value and added.
-
-**•** _`Percentage`_               - `amount` is a percentage. The fee amount is `amount` divided by 100 and then
-multiplied by the `TotalPrice` and `TotalTaxAmount` of the associated order product
-summary, prorated for the quantity being returned.
-
-**•** _`PercentageGross`_               - `amount` is a percentage. The fee amount is `amount` divided by 100
-and then multiplied by the `TotalLineAmountWithTax` of the associated order product
-summary, prorated for the quantity being returned.
-
-**–** `description` —Description of the fee.
-
-**–** `priceBookEntryId` —Required unless price books are optional in the org. ID of the price book
-entry associated with the fee product.
-
-**–** `product2Id` —Required. ID of the product representing the fee.
-
-**–** `reason` —Required. Reason for the fee. The value must match an entry in the Order Product Summary
-Change object’s `Reason` picklist.
-
-**•** `orderItemSummaryId` —Required. ID of an order product summary to return. It can’t be a shipping
-charge product.
-
-**•** `quantity` —Required. Quantity to return.
-
-**•** `reason` —Required. Return reason. The value must match one of the picklist values on the Reason field
-of the Order Product Summary Change object.
-
-**•** `shippingReductionFlag` —Required. Boolean flag that specifies whether to prorate any related
-delivery charge based on the price change.
-
-Store Output Values
-
-**Output Parameter** **Description**
-
-```
-Return Order
-
-Product
-
-Summary Items
-
-Output
-
-```
-
-[This output is an Apex-defined variable of class ConnectApi.PreviewCancelOutputRepresentation, which](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_preview_cancel_output.htm)
-contains the values that would populate a change order record for the proposed return.
-
-The sign of a value in the `changeBalances` field is the opposite of the corresponding value on a change
-order record. For example, a discount is a positive value in `changeBalances` and a negative value on a
-change order record.
-
-The `orderSummaryId` field is the ID of the order summary specified in the input.
-
-The `changeBalances` field is an Apex-defined variable of class
-[ConnectApi.ChangeItemOutputRepresentation, which includes these fields:](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_change_item_output.htm)
-
-**•** `grandTotalAmount` —Change to the total with tax.
-
-**•** `totalAdjDeliveryAmtWithTax` —Change to the adjusted delivery subtotal, including tax.
-
-**•** `totalAdjDistAmountWithTax` —Change to the total order adjustments, including tax.
-
-**•** `totalAdjProductAmtWithTax` —Change to the adjusted product subtotal, including tax.
-
-**•** `totalAdjustedDeliveryAmount` —Change to the adjusted delivery subtotal.
-
-**•** `totalAdjustedDeliveryTaxAmount` —Change to the adjusted delivery subtotal tax.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Output Parameter** **Description**
-
-**•** `totalAdjustedProductAmount` —Change to the adjusted product subtotal.
-
-**•** `totalAdjustedProductTaxAmount` —Change to the adjusted product subtotal tax.
-
-**•** `totalAdjustmentDistributedAmount` —Change to the total order adjustments.
-
-**•** `totalAdjustmentDistributedTaxAmount` —Change to the total order adjustments tax.
-
-**•** `totalAmount` —Change to the pretax total.
-
-**•** `totalExcessFundsAmount` —The amount of excess funds available on the order payment summaries
-related to the order summary. It’s equal to the captured amount that is owed as a refund, but it isn’t
-associated with an invoice or credit memo. Excess funds normally occur when order products are canceled
-before fulfillment but after payment is captured. This situation isn’t common in the US, where funds are
-normally authorized but not captured until the fulfillment process begins. This value includes all excess
-funds related to the order summary, not only the funds related to the current action.
-
-**•** `totalFeeAmount` —The total amount of the fees charged for the return.
-
-**•** `totalFeeTaxAmount` —The total amount of tax on the fees charged for the return.
-
-**•** `totalRefundableAmount` —The total amount available to be refunded. It’s the sum of the excess
-funds and any outstanding change order grand total amounts that apply to post-fulfillment changes. This
-value includes all refundable amounts related to the order summary, not only the amount related to the
-current action.
-
-**•** `totalTaxAmount` —Change to the total tax.
-
-Usage
-
-To set up the Return Order Product Summary Items Input:
-
-**1.** If you want to charge fees, use Assignment elements to set the `amount`, `amountType`, `description`, `priceBookEntryId`,
-`product2Id`, and `reason` field values on one or more `ConnectApi.ChangeItemFeeInputRepresentation`
-variables.
-
-**2.** Use Assignment elements to set the `orderItemSummaryId`, `quantity`, `reason`, and `shippingReductionFlag`
-field values on one or more `ConnectApi.ChangeItemInputRepresentation` variables.
-
-**3.** If you’re charging fees, use Assignment elements to add the `ConnectApi.ChangeItemFeeInputRepresentation`
-variables to the `changeItemFees` fields on the associated `ConnectApi.ChangeItemInputRepresentation`
-variables.
-
-**4.** Use an Assignment element to add the `ConnectApi.ChangeItemInputRepresentation` variables to the
-`changeItems` field on a `ConnectApi.ChangeInputRepresentation` variable.
-
-**5.** Use the `ConnectApi.ChangeInputRepresentation` variable and the order summary ID in the action input.
-
-In a flow for returning order product summaries, display the output of this action for the user to review before executing the return.
-When the user verifies the expected results, pass the same input to a Return Order Item Summaries Submit action.
-
-SEE ALSO:
-
-Flow Core Action for Order Management: Return Order Item Summaries Submit
-
-Add and Edit Elements
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Flow Core Action for Order Management: Return Order Item Summaries Submit
-
-Return one or more order product summaries from an order summary. This action is a simple return
-that creates a change order but not a return order.
-
-In Flow Builder, add an Action element to your flow. Select the **Order Management** category, and
-###### search for Return Order Item Summaries Submit .
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-**Input** **Description**
-**Parameter**
-
-`Order` Reference to the order summary that you want to return order product summaries
-`Summary` from.
-
-```
-Id
-
-```
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Order Management
-
-###### `Return`
-
-```
-Order
-
-Product
-
-Summary
-
-Items
-
-Input
-
-```
-
-This input is an Apex-defined variable of class
-[ConnectApi.ChangeInputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_change.htm)
-
-The variable has one field: `changeItems` . This field is a list of Apex-defined
-[variables of class ConnectApi.ChangeItemInputRepresentation. Each variable](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_change_item.htm)
-includes these fields:
-
-**•** `changeItemFees` —A list of Apex-defined variables of class
-[ConnectApi.ChangeItemFeeInputRepresentation. Each variable has these](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_change_item_fee.htm)
-fields:
-
-**–** `amount` —Required. Value used to calculate the fee amount, as
-described by the amountType. It must be a positive value.
-
-**–** `amountType` —Required. Describes how the fee amount is calculated.
-It can have one of these values:
-
-**•** _`AmountWithTax`_    - `amount` is the fee amount, including tax.
-
-**•** _`AmountWithoutTax`_    - `amount` is the fee amount, not
-including tax. Tax is calculated on the value and added.
-
-**•** _`Percentage`_    - `amount` is a percentage. The fee amount is
-`amount` divided by 100 and then multiplied by the `TotalPrice`
-and `TotalTaxAmount` of the associated order product summary,
-prorated for the quantity being returned.
-
-**•** _`PercentageGross`_    - `amount` is a percentage. The fee amount
-is `amount` divided by 100 and then multiplied by the
-`TotalLineAmountWithTax` of the associated order product
-summary, prorated for the quantity being returned.
-
-**–** `description` —Description of the fee.
-
-**–** `priceBookEntryId` —Required unless price books are optional in
-the org. ID of the price book entry associated with the fee product.
-
-**–** `product2Id` —Required. ID of the product representing the fee.
-
-**–** `reason` —Required. Reason for the fee. The value must match an entry
-in the Order Product Summary Change object’s `Reason` picklist.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-**•** `orderItemSummaryId` —Required. ID of an order product summary to return. It can’t be a shipping
-charge product.
-
-**•** `quantity` —Required. Quantity to return.
-
-**•** `reason` —Required. Return reason. The value must match one of the picklist values on the Reason field
-of the Order Product Summary Change object.
-
-**•** `shippingReductionFlag` —Required. Boolean flag that specifies whether to prorate any related
-delivery charge based on the price change.
-
-Store Output Values
-
-**Output Parameter** **Description**
-
-```
-Return Order
-
-Product
-
-Summary Items
-
-Output
-
-```
-
-[This output is an Apex-defined variable of class ConnectApi.SubmitReturnOutputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_submit_return_output.htm)
-
-The sign of a value in the `changeBalances` field is the opposite of the corresponding value on a change
-order record. For example, a discount is a positive value in `changeBalances` and a negative value on a
-change order record.
-
-The `changeBalances` field is an Apex-defined variable of class
-[ConnectApi.ChangeItemOutputRepresentation, which includes these fields:](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_change_item_output.htm)
-
-**•** `grandTotalAmount` —Change to the total with tax.
-
-**•** `totalAdjDeliveryAmtWithTax` —Change to the adjusted delivery subtotal, including tax.
-
-**•** `totalAdjDistAmountWithTax` —Change to the total order adjustments, including tax.
-
-**•** `totalAdjProductAmtWithTax` —Change to the adjusted product subtotal, including tax.
-
-**•** `totalAdjustedDeliveryAmount` —Change to the adjusted delivery subtotal.
-
-**•** `totalAdjustedDeliveryTaxAmount` —Change to the adjusted delivery subtotal tax.
-
-**•** `totalAdjustedProductAmount` —Change to the adjusted product subtotal.
-
-**•** `totalAdjustedProductTaxAmount` —Change to the adjusted product subtotal tax.
-
-**•** `totalAdjustmentDistributedAmount` —Change to the total order adjustments.
-
-**•** `totalAdjustmentDistributedTaxAmount` —Change to the total order adjustments tax.
-
-**•** `totalAmount` —Change to the pretax total.
-
-**•** `totalExcessFundsAmount` —The amount of excess funds available on the order payment summaries
-related to the order summary. It’s equal to the captured amount that’s owed as a refund, but it’s not
-associated with an invoice or credit memo. Excess funds normally occur when order products are canceled
-before fulfillment but after payment is captured. This situation isn’t common in the US, where funds are
-normally authorized but not captured until the fulfillment process begins. This value includes all excess
-funds related to the order summary, not only the funds related to the current action.
-
-**•** `totalFeeAmount` —The total amount of the fees charged for the return.
-
-**•** `totalFeeTaxAmount` —The total amount of tax on the fees charged for the return.
-
-**•** `totalRefundableAmount` —The total amount available to be refunded. It’s the sum of the excess
-funds and any outstanding change order grand total amounts that apply to post-fulfillment changes. This
-value includes all refundable amounts related to the order summary, not only the amount related to the
-current action.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Output Parameter** **Description**
-
-**•** `totalTaxAmount` —Change to the total tax.
-
-The `changeOrderId` field is the ID of the change order record created for the returned items. Use this
-change order to create a credit memo.
-
-The `feeChangeOrderId` field is the ID of the change order record created for any return fees. Use this
-change order to create an invoice.
-
-Usage
-
-To set up the Return Order Product Summary Items Input:
-
-**1.** If you want to charge fees, use Assignment elements to set the `amount`, `amountType`, `description`, `priceBookEntryId`,
-`product2Id`, and `reason` field values on one or more `ConnectApi.ChangeItemFeeInputRepresentation`
-variables.
-
-**2.** Use Assignment elements to set the `orderItemSummaryId`, `quantity`, `reason`, and `shippingReductionFlag`
-field values on one or more `ConnectApi.ChangeItemInputRepresentation` variables.
-
-**3.** If you’re charging fees, use Assignment elements to add the `ConnectApi.ChangeItemFeeInputRepresentation`
-variables to the `changeItemFees` fields on the associated `ConnectApi.ChangeItemInputRepresentation`
-variables.
-
-**4.** Use an Assignment element to add the `ConnectApi.ChangeItemInputRepresentation` variables to the
-`changeItems` field on a `ConnectApi.ChangeInputRepresentation` variable.
-
-**5.** Use the `ConnectApi.ChangeInputRepresentation` variable and the order summary ID in the action input.
-
-In a flow for returning order product summaries, run a Return Order Item Summaries Preview action before running this action. Then
-display its output for the user to review. When the user verifies the expected results, pass the same input to this action.
-
-SEE ALSO:
-
-Flow Core Action for Order Management: Return Order Item Summaries Preview
-
-Add and Edit Elements
-
-Flow Core Action for Order Management: Return Return Order Items
-
-Process one or more return order line items belonging to a return order. This action creates a change
-order record for the returned items and makes the processed return order line items read-only. You
-can include return order fees associated with the return order line items. If you do, a change order
-record is created for the return fees. If a processed return order line item has a remaining expected
-quantity, the action creates a separate return order line item representing that quantity.
-
-In Flow Builder, add an Action element to your flow. Select the **Order Management** category, and
-###### search for Return Return Order Items .
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Order Management and
-Returns
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-`Return Order` Reference to the return order that you want to process return order line items from.
-
-```
-   Id
-
-```
-
-```
-Return Items
-
-Input
-
-```
-
-Store Output Values
-
-[This input is an Apex-defined variable of class ConnectApi.ReturnItemsInputRepresentation. It has three fields.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_return_items.htm)
-
-The `returnOrderItemDeliveryCharges` field is an optional list of Apex-defined variables of class
-[ConnectApi.ReturnOrderItemDeliveryChargeInputRepresentation. Each variable includes one field:](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_return_order_item_delivery_charge.htm)
-
-**•** `returnOrderLineItemId` —ID of a return order line item representing a shipping charge to return.
-
-The `returnOrderItemFees` field is an optional list of Apex-defined variables of class
-[ConnectApi.ReturnOrderItemFeeInputRepresentation. Each variable includes these fields:](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_return_order_item_fee.htm)
-
-**•** `quantityReturned` —The quantity of the ReturnOrderLineItem to process. The amount of the fee to
-charge is determined by multiplying the total fee amount by this value, divided by the quantityExpected.
-For example, if the fee amount is $10 and the quantityExpected is 2, if the quantityReturned is 1, $5 is
-charged. This value normally equals the quantity returned of the ReturnOrderLineItem for the returned item
-that the fee applies to. The value must be greater than 0. If this value plus quantityToCancel is less than the
-expected return quantity, the remaining quantity to be returned is added to a new ReturnOrderLineItem.
-
-**•** `quantityToCancel` —The quantity of the ReturnOrderLineItem to remove. This value normally equals
-the quantity canceled of the ReturnOrderLineItem for the returned item that the fee applies to. This value
-can also be used to cancel a portion of the fee. The value must be 0 or greater. If this value plus
-quantityReturned is less than the expected return quantity, the remaining quantity to be returned is added
-to a new ReturnOrderLineItem.
-
-**•** `returnOrderLineItemId` —ID of a return order line item representing a return fee to charge.
-
-The `returnOrderItems` field is a list of Apex-defined variables of class
-[ConnectApi.ReturnOrderItemInputRepresentation. Each of the variables includes these fields:](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_return_order_item.htm)
-
-**•** `quantityReceived` —(Optional) The quantity of the return order line item that has been received.
-The value must be zero or greater. This value isn’t used by any standard features, but is provided for use in
-customizations.
-
-**•** `quantityRejected` —(Optional) The quantity of the return order line item that has been rejected for
-return. The value must be zero or greater. This value isn’t used by any standard features, but is provided for
-use in customizations.
-
-**•** `quantityReturned` —The quantity of the return order line item that has been returned. The value
-must be greater than zero. If this value plus quantityToCancel is less than the expected return quantity,
-then the remaining quantity to be returned is added to a new return order line item.
-
-**•** `quantityToCancel` —(Optional) The quantity of the return order line item to remove because it’s not
-being returned. The value must be zero or greater. If this value plus quantityReturned is less than the
-expected return quantity, then the remaining quantity to be returned is added to a new return order line
-item.
-
-**•** `reasonForRejection` —(Optional) The reason why the rejected quantity, if any, was rejected. This
-value isn’t used by any standard features, but is provided for use in customizations.
-
-**•** `returnOrderLineItemId` —The return order line item ID.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Output Parameter** **Description**
-
-```
-Return Items
-
-Output
-
-```
-
-Usage
-
-[This output is an Apex-defined variable of class ConnectApi.ReturnItemsOutputRepresentation. It has three](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_return_items_output.htm)
-fields.
-
-The `changeOrderId` field is the ID of the change order record created for the returned item and delivery
-charges. Use this change order to create a credit memo.
-
-The `feeChangeOrderId` field is the ID of the change order record created for the return fees. Use this
-change order to create an invoice.
-
-The `returnLineItemSplits` field is a list of Apex-defined variables of class
-[ConnectApi.ReturnOrderItemSplitLineOutputRepresentation, which includes these fields.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_return_order_item_split_line_output.htm)
-
-After a change order is created for a return order line item, the return order line item is read-only. If this action
-is used to return a partial quantity, it creates a new “split” return order line item to hold the remaining quantity
-to be returned. In that case, it returns the IDs of the original and split return order line items in an element of
-the `returnLineItemSplits` output list property.
-
-**•** `newReturnOrderItemId` —ID of the new return order line item that holds the remaining return
-quantity.
-
-**•** `originalReturnOrderItemId` —ID of the original return order line item.
-
-To set up the Return Return Order Items Input:
-
-**1.** Use Assignment elements to set the `quantityReceived`, `quantityRejected`, `quantityReturned`,
-`quantityToCancel`, `reasonForRejection`, and `returnOrderLineItemId` field values on one or more
-`ConnectApi.ReturnOrderItemInputRepresentation` variables.
-
-**2.** If you want to include a delivery charge, use Assignment elements to set the `returnOrderLineItemId` field value on one
-or more `ConnectApi.ReturnOrderItemDeliveryChargeInputRepresentation` variables.
-
-**3.** If you want to include a return fee, use Assignment elements to set the `quantityReturned`, `quantityToCancel`, and
-`returnOrderLineItemId` field values on one or more
-`ConnectApi.ReturnOrderItemFeeInputRepresentation` variables.
-
-**4.** Use an Assignment element to add the `ConnectApi.ReturnOrderItemInputRepresentation` variables to the
-`returnOrderItems` field on a `ConnectApi.ReturnItemsInputRepresentation` variable.
-
-**5.** Use an Assignment element to add the `ConnectApi.ReturnOrderItemDeliveryChargeInputRepresentation`
-variables to the `returnOrderItemDeliveryCharges` field on a
-`ConnectApi.ReturnItemsInputRepresentation` variable.
-
-**6.** Use an Assignment element to add the `ConnectApi.ReturnOrderItemFeeInputRepresentation` variables to the
-`returnOrderItemFees` field on a `ConnectApi.ReturnItemsInputRepresentation` variable.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**7.** Use the `ConnectApi.ReturnItemsInputRepresentation` variable and the return order ID in the action input.
-
-SEE ALSO:
-
-Flow Core Action for Order Management: Create Return Order
-
-Flow Core Action for Order Management: Create Credit Memo
-
-Flow Core Action for Order Management: Create an Invoice from Change Orders
-
-Flow Core Action for Order Management: Ensure Refunds Async
-
-Add and Edit Elements
-
-##### Salesforce Omnichannel Inventory Flow Core Actions
-
-Salesforce Omnichannel Inventory provides several core actions for implementing inventory
-functionality in flows. To add one of these actions to your flow, add an Action element. Then select
-the **Omnichannel Inventory Service** category, and search for the appropriate action.
-
-These actions use Apex-defined input and output variables that map to input and output classes
-in the Apex ConnectApi namespace. For more information on using Apex-defined variables in flows,
-see Considerations for the Apex-Defined Data Type on page 260.
-
-Important: A flow that uses Omnichannel Inventory actions must have a runtime API version
-of 52.0 or later. If possible, always use the latest API version in your flows.
-
-Flow Core Action for Omnichannel Inventory: Create Reservation
-Create one or more inventory reservations at a location or location group.
-
-Flow Core Action for Omnichannel Inventory: Fulfill Reservation
-Fulfill one or more inventory reservations at a location.
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Omnichannel Inventory
-
-Flow Core Action for Omnichannel Inventory: Get Availability
-Get inventory availability data for one or more products at one or more inventory locations or location groups.
-
-Flow Core Action for Omnichannel Inventory: Release Reservation
-Release one or more inventory reservations.
-
-Flow Core Action for Omnichannel Inventory: Transfer Reservation
-Transfer one or more inventory reservations between locations or location groups. This action reduces the reserved quantity at the
-source and increases it at the destination. It doesn’t change physical quantities.
-
-SEE ALSO:
-
-Add and Edit Elements
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Flow Core Action for Omnichannel Inventory: Create Reservation
-
-Create one or more inventory reservations at a location or location group.
-
-In Flow Builder, add an Action element to your flow. Select the **Omnichannel Inventory Service**
-category, and search for **Omnichannel Inventory Service Create Reservation** .
-
-Note: Set the flow’s runtime API version to 52.0 or later.
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-**Input** **Description**
-**Parameter**
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Omnichannel Inventory
-
-```
-Omnichannel
-
-Inventory
-
-###### `Create`
-
-Service
-
-Reservation
-
-Input
-
-```
-
-This input is an Apex-defined variable of class
-[ConnectApi.OCICreateReservationInputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_o_c_i_create_reservation.htm)
-
-The variable has these fields.
-
-**•** `actionRequestId` —A UUID that identifies the request. To identify
-which actions succeeded or failed, use the action request IDs in the output
-variables.
-
-**•** `allowPartialReservations` —Optional. When _`true`_, if the system
-can’t create the entire reservation, then it attempts to create a partial
-reservation.
-
-**•** `createRecords` —A list of up to 100 Apex-defined variables of class
-[ConnectApi.OCICreateReservationSingleInputRepresentation. Each variable](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_o_c_i_create_reservation_single.htm)
-has these fields.
-
-**–** `locationGroupIdentifier` —Identifier of the location group
-at which to reserve inventory. Either `locationGroupIdentifier`
-or `locationIdentifier` is required, but not both.
-
-**–** `locationIdentifier` —Identifier of the location at which to
-reserve inventory. Either `locationIdentifier` or
-`locationGroupIdentifier` is required, but not both.
-
-**–** `quantity` —The quantity of the product to reserve.
-
-**–** `stockKeepingUnit` —The Stock Keeping Unit (SKU) of the product
-to reserve.
-
-**•** `expirationSeconds` —Optional. A length of time in seconds. If the
-reservation isn’t fulfilled within this amount of time after the reservationTime,
-then it expires. The maximum value is 14400.
-
-**•** `externalRefId` —Optional The external reference ID.
-
-**•** `reservationTime` —Optional The time at which to record the
-reservation. Example: 2020-07-24T21:13:00Z
-
-Store Output Values
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Output Parameter** **Description**
-
-```
-Omnichannel
-
-Inventory
-
-Service Create
-
-Reservation
-
-Output
-
-```
-
-[This value is an Apex-defined variable of class ConnectApi.OCICreateReservationOutputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_o_c_i_create_reservation_output.htm)
-
-The variable has these fields.
-
-**•** `details` —A list of Apex-defined variables of class
-[ConnectApi.OCICreateReservationSingleOutputRepresentation. Each variable represents one product being](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_o_c_i_create_reservation_single_output.htm)
-reserved and has these fields.
-
-**–** `errorCode` —The error code, if any.
-
-**–** `locationGroupIdentifier` —Identifier of the location group where the inventory is reserved.
-
-**–** `locationIdentifier` —Identifier of the location where the inventory is reserved
-
-**–** `quantity` —The reserved quantity of the product.
-
-**–** `stockKeepingUnit` —The SKU of the reserved product.
-
-**•** `errors` —A list of Apex-defined variables of class
-[ConnectApi.OCICreateReservationErrorOutputRepresentation. Each variable represents a returned error](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_o_c_i_create_reservation_error_output.htm)
-and has these fields.
-
-**–** `errorCode` —The error code.
-
-**–** `message` —Details of the error, if available.
-
-**•** `expirationTime` —The time at which the reservation would expire.
-
-**•** `reservationTime` —The time when the reservation was recorded.
-
-**•** `success` —Indicates whether the reservation succeeded.
-
-To set up the Omnichannel Inventory Create Service Reservation Input:
-
-**1.** For each product to reserve, use Assignment elements to set the `locationGroupIdentifier` or `locationIdentifier`
-field, `quantity` field, and `stockKeepingUnit` field values on a
-`ConnectApi.OCICreateReservationSingleInputRepresentation` variable.
-
-**2.** Use Assignment elements to add the `ConnectApi.OCICreateReservationSingleInputRepresentation`
-variables to the `createRecords` field on a `ConnectApi.OCICreateReservationInputRepresentation`
-variable.
-
-**3.** Use Assignment elements to set the `actionRequestId`, `allowPartialReservations`, `expirationSeconds`,
-`externalRefId`, and `reservationTime` field values on the
-`ConnectApi.OCICreateReservationInputRepresentation` variable.
-
-**4.** Use the `ConnectApi.OCICreateReservationInputRepresentation` variable in the action input.
-
-SEE ALSO:
-
-Add and Edit Elements
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Flow Core Action for Omnichannel Inventory: Fulfill Reservation
-
-Fulfill one or more inventory reservations at a location.
-
-In Flow Builder, add an Action element to your flow. Select the **Omnichannel Inventory Service**
-category, and search for **Omnichannel Inventory Service Fulfill Reservation** .
-
-Note: Set the flow’s runtime API version to 52.0 or later.
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-**Input** **Description**
-**Parameter**
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Omnichannel Inventory
-
-```
-Omnichannel
-
-Inventory
-
-Service
-
-###### `Fulfill`
-
-Reservation
-
-Input
-
-```
-
-This input is an Apex-defined variable of class
-[ConnectApi.OCIFulfillReservationInputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_o_c_i_fulfill_reservation.htm)
-
-The variable has one field: `fulfillmentRecords` . This field is a list of up
-to 100 Apex-defined variables of class
-
-[ConnectApi.OCIFulfillReservationSingleInputRepresentation. Each variable has](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_o_c_i_fulfill_reservation_single.htm)
-these fields.
-
-**•** `actionRequestId` —A UUID that identifies the request. To identify
-which actions succeeded or failed, use the action request IDs in the output
-variables.
-
-**•** `externalRefId` —Optional. The external reference ID.
-
-**•** `locationIdentifier` —Identifier of the location at which to fulfill the
-reserved inventory.
-
-**•** `quantity` —The quantity of the product to fulfill.
-
-**•** `stockKeepingUnit` —The Stock Keeping Unit of the product to fulfill.
-
-Store Output Values
-
-**Output Parameter** **Description**
-
-```
-Omnichannel
-
-Inventory
-
-Service
-
-###### `Fulfill`
-
-Reservation
-
-Output
-
-```
-
-[This value is an Apex-defined variable of class ConnectApi.OCIFulfillReservationOutputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_o_c_i_fulfill_reservation_output.htm)
-
-The variable has these fields.
-
-**•** `errors` —A list of Apex-defined variables of class
-[ConnectApi.OCIFulfillReservationErrorOutputRepresentation. Each variable represents a returned error and](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_o_c_i_fulfill_reservation_error_output.htm)
-has these fields.
-
-**–** `details` —An Apex-defined variable of class
-[ConnectApi.OCIFulfillReservationSingleOutputRepresentation. Each variable represents a returned](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_o_c_i_fulfill_reservation_single_output.htm)
-error and includes the values from the input so you can resubmit them:
-
-**•** `actionRequestId` —A UUID that identifies the failed request.
-
-**•** `externalRefId` —The external reference ID.
-
-**•** `locationIdentifier` —Identifier of the location at which to fulfill the reserved inventory.
-
-**•** `quantity` —The quantity of the product to fulfill.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Output Parameter** **Description**
-
-**•** `stockKeepingUnit` —The Stock Keeping Unit of the product to fulfill.
-
-**–** `errorCode` —The error code.
-
-**–** `message` —Details of the error, if available.
-
-**•** `success` —Indicates whether the fulfillment succeeded.
-
-To set up the Omnichannel Inventory Service Fulfill Reservation Input:
-
-**1.** For each reservation to fulfill, use Assignment elements to set the `actionRequestId`, `externalRefId`,
-`locationIdentifier`, `quantity`, and `stockKeepingUnit` field values on a
-`ConnectApi.OCIFulfillReservationSingleInputRepresentation` variable.
-
-**2.** Use Assignment elements to add the `ConnectApi.OCIFulfillReservationSingleInputRepresentation`
-variables to the `fulfillmentRecords` field on a `ConnectApi.OCIFulfillReservationInputRepresentation`
-variable.
-
-**3.** Use the `ConnectApi.OCIFulfillReservationInputRepresentation` variable in the action input.
-
-SEE ALSO:
-
-Add and Edit Elements
-
-Flow Core Action for Omnichannel Inventory: Get Availability
-
-Get inventory availability data for one or more products at one or more inventory locations or
-location groups.
-
-In Flow Builder, add an Action element to your flow. Select the **Omnichannel Inventory Service**
-category, and search for **Omnichannel Inventory Service Get Availability** .
-
-Note: Set the flow’s runtime API version to 52.0 or later.
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-**Input** **Description**
-**Parameter**
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Omnichannel Inventory
-
-```
-Omnichannel
-
-Inventory
-
-Service
-
-###### `Get`
-
-```
-
-This input is an Apex-defined variable of class
-[ConnectApi.OCIGetInventoryAvailabilityInputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_o_c_i_get_inventory_availability.htm)
-
-The variable has these fields.
-
-**•** `locationGroupIdentifier` —Optional. Can’t combine with
-```
-Availability
-```
-`locationGroupIdentifiers` or `locationIdentifiers` . The
-```
-Input
-```
-identifier of a location group to retrieve inventory availability data for.
-Specifying this value retrieves inventory data for all locations belonging to
-this group.
-
-**•** `locationGroupIdentifiers` —Optional; can’t combine with
-`locationGroupIdentifier` or `locationIdentifiers` . A list
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-of up to 100 identifiers of location groups to retrieve inventory availability data for.
-
-**•** `locationIdentifiers` —Optional; can’t combine with `locationGroupIdentifier` or
-`locationGroupIdentifiers` . A list of up to 100 identifiers of locations to retrieve inventory
-availability data for.
-
-**•** `stockKeepingUnit` —Optional; can’t combine with `stockKeepingUnits` . The SKU of a product
-to retrieve inventory availability data for. Specifying a SKU with no locations or location groups returns
-availability data for that SKU at all inventory locations that aren’t assigned to location groups.
-
-**•** `stockKeepingUnits` —Optional; can’t combine with `stockKeepingUnit` . A list of up to 100
-SKUs of products to retrieve inventory availability data for.
-
-**•** `useCache` —Optional. Fetch the inventory data from the cache. The default value is `true` .
-
-Store Output Values
-
-**Output Parameter** **Description**
-
-```
-Omnichannel
-
-Inventory
-
-Service Get
-
-Availability
-
-Output
-
-```
-
-[This input is an Apex-defined variable of class ConnectApi.OCIGetInventoryAvailabilityOutputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_o_c_i_get_inventory_availability_output.htm)
-
-The variable has these fields.
-
-**•** `locationGroups` —A list of Apex-defined variables of class
-[ConnectApi.OCILocationGroupAvailabilityOutputRepresentation. Each variable represents availability data](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_o_c_i_location_group_availability_output.htm)
-for one location group and has these fields.
-
-**–** `inventoryRecords` —A list of Apex-defined variables of class
-[ConnectApi.OCIInventoryRecordOutputRepresentation. Each variable represents the availability of one](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_o_c_i_inventory_record_output.htm)
-product and has these fields.
-
-**•** `availableToFulfill` —The Available To Fulfill quantity.
-
-**•** `availableToOrder` —The Available To Order quantity.
-
-**•** `effectiveDate` —The effective date of the inventory.
-
-**•** `futures` —A list of Apex-defined variables of class
-[ConnectApi.OCIFutureInventoryOutputRepresentation. Each variable represents one future restock](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_o_c_i_future_inventory_output.htm)
-and has these fields.
-
-**–** `expectedDate` —Date when the future inventory is expected.
-
-**–** `quantity` —Quantity of the future inventory.
-
-**•** `onHand` —The On Hand quantity.
-
-**•** `reserved` —The Reserved quantity.
-
-**•** `safetyStockCount` —The Safety Stock Count.
-
-**•** `stockKeepingUnit` —The SKU of the product.
-
-**–** `locationGroupIdentifier` —The identifier of the location group.
-
-**•** `locations` —A list of Apex-defined variables of class
-[ConnectApi.OCILocationAvailabilityOutputRepresentation. Each variable represents availability data for](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_o_c_i_location_availability_output.htm)
-one location and has these fields.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Output Parameter** **Description**
-
-**–** `inventoryRecords` —A list of Apex-defined variables of class
-[ConnectApi.OCIInventoryRecordOutputRepresentation. Each variable represents the availability of one](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_o_c_i_inventory_record_output.htm)
-product and has these fields.
-
-**•** `availableToFulfill` —The Available To Fulfill quantity.
-
-**•** `availableToOrder` —The Available To Order quantity.
-
-**•** `effectiveDate` —The effective date of the inventory.
-
-**•** `futures` —A list of Apex-defined variables of class
-[ConnectApi.OCIFutureInventoryOutputRepresentation. Each variable represents one future restock](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_o_c_i_future_inventory_output.htm)
-and has these fields.
-
-**–** `expectedDate` —Date when the future inventory is expected.
-
-**–** `quantity` —Quantity of the future inventory.
-
-**•** `onHand` —The On Hand quantity.
-
-**•** `reserved` —The Reserved quantity.
-
-**•** `safetyStockCount` —The Safety Stock Count.
-
-**•** `stockKeepingUnit` —The SKU of the product.
-
-**–** `locationIdentifier` —The identifier of the location.
-
-To set up the Omnichannel Inventory Service Get Availability Input:
-
-**1.** Use Assignment elements to set the `locationGroupIdentifier`, `locationGroupIdentifiers`, or
-`locationIdentifiers` field value, `stockKeepingUnit` or `stockKeepingUnits` field value, and `useCache`
-field value on a `ConnectApi.OCIGetInventoryAvailabilityInputRepresentation` variable.
-
-**2.** Use the `ConnectApi.OCIGetInventoryAvailabilityInputRepresentation` variable in the action input.
-
-SEE ALSO:
-
-Add and Edit Elements
-
-Flow Core Action for Omnichannel Inventory: Release Reservation
-
-Release one or more inventory reservations.
-
-In Flow Builder, add an Action element to your flow. Select the **Omnichannel Inventory Service**
-category, and search for **Omnichannel Inventory Service Release Reservation** .
-
-Note: Set the flow’s runtime API version to 52.0 or later.
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Omnichannel Inventory
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-```
-Omnichannel
-
-Inventory
-
-Service
-
-Release
-
-```
-
-[This input is an Apex-defined variable of class ConnectApi.OCIReleaseReservationInputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_o_c_i_release_reservation.htm)
-
-The variable has one field: `releaseRecords` . This field is a list of up to 100 Apex-defined variables of class
-[ConnectApi.OCIReleaseReservationSingleInputRepresentation. Each variable has these fields.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_o_c_i_release_reservation_single.htm)
-
-**•** `actionRequestId` —A UUID that identifies the request. To identify which actions succeeded or failed,
-```
-Reservation
-```
-use the action request IDs in the output variables.
-```
-Input
-
-```
-
-**•** `externalRefId` —Optional. The external reference ID.
-
-**•** `locationGroupIdentifier` —Identifier of the location group at which to release the reserved
-inventory. Either `locationGroupIdentifier` or `locationIdentifier` is required, but not
-both.
-
-**•** `locationIdentifier` —Identifier of the location at which to release the reserved inventory. Either
-`locationIdentifier` or `locationGroupIdentifier` is required, but not both.
-
-**•** `quantity` —The quantity of the product to release.
-
-**•** `stockKeepingUnit` —The Stock Keeping Unit of the product to release.
-
-Store Output Values
-
-**Output Parameter** **Description**
-
-```
-Omnichannel
-
-Inventory
-
-Service
-
-Release
-
-Reservation
-
-Output
-
-```
-
-[This value is an Apex-defined variable of class ConnectApi.OCIReleaseReservationOutputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_o_c_i_release_reservation_output.htm)
-
-The variable has these fields.
-
-**•** `errors` —A list of Apex-defined variables of class
-[ConnectApi.OCIReleaseReservationErrorOutputRepresentation. Each variable represents a returned error](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_o_c_i_release_reservation_error_output.htm)
-and has these fields.
-
-**–** `details` —An Apex-defined variable of class
-[ConnectApi.OCIReleaseReservationSingleOutputRepresentation. Each variable represents a returned](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_o_c_i_release_reservation_single_output.htm)
-error and includes the values from the input so you can resubmit them:
-
-**•** `actionRequestId` —A UUID that identifies the failed request.
-
-**•** `externalRefId` —The external reference ID.
-
-**•** `locationGroupIdentifier` —Identifier of the location group at which to release the
-reserved inventory.
-
-**•** `locationIdentifier` —Identifier of the location at which to release the reserved inventory.
-
-**•** `quantity` —The quantity of the product to release.
-
-**•** `stockKeepingUnit` —The Stock Keeping Unit of the product to release.
-
-**–** `errorCode` —The error code.
-
-**–** `message` —Details of the error, if available.
-
-**•** `success` —Indicates whether the release succeeded.
-
-To set up the Omnichannel Inventory Service Release Reservation Input:
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**1.** For each reservation to release, use Assignment elements to set the `actionRequestId`, `externalRefId`,
-`locationGroupIdentifier` or `locationIdentifier`, `quantity`, and `stockKeepingUnit` field values on a
-`ConnectApi.OCIReleaseReservationSingleInputRepresentation` variable.
-
-**2.** Use Assignment elements to add the `ConnectApi.OCIReleaseReservationSingleInputRepresentation`
-variables to the `releaseRecords` field on a `ConnectApi.OCIReleaseReservationInputRepresentation`
-variable.
-
-**3.** Use the `ConnectApi.OCIReleaseReservationInputRepresentation` variable in the action input.
-
-SEE ALSO:
-
-Add and Edit Elements
-
-Flow Core Action for Omnichannel Inventory: Transfer Reservation
-
-Transfer one or more inventory reservations between locations or location groups. This action
-reduces the reserved quantity at the source and increases it at the destination. It doesn’t change
-physical quantities.
-
-In Flow Builder, add an Action element to your flow. Select the **Omnichannel Inventory Service**
-category, and search for **Omnichannel Inventory Service Transfer Reservation** .
-
-Note: Set the flow’s runtime API version to 52.0 or later.
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs.
-
-**Input Parameter** **Description**
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions with Salesforce
-Omnichannel Inventory
-
-```
-Omnichannel
-
-Inventory
-
-Service
-
-```
-
-[This input is an Apex-defined variable of class ConnectApi.OCITransferReservationInputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_o_c_i_transfer_reservation.htm)
-
-The variable has these fields.
-
-**•** `allOrNothingTransferId` —Optional. Controls whether a single failed transfer cancels all other
-###### `Transfer`
-transfers in the transferRecords list.
-```
-Reservation
-```
-
-`Input` **–** To allow some transfers in the transferRecords list to succeed when others fail, don’t set this value.
-
-**–** To cancel all the transfers in the transferRecords list when any of them fail, set this value to a UUID. The
-ID must be unique, but isn’t otherwise used.
-
-**•** `transferRecords` —A list of up to 100 Apex-defined variables of class
-[ConnectApi.OCITransferReservationSingleInputRepresentation. Each variable represents an inventory transfer](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_input_o_c_i_transfer_reservation_single.htm)
-and has these fields.
-
-**–** `actionRequestId` —A UUID that identifies the request. To identify which actions succeeded or
-failed, use the action request IDs in the output variables.
-
-**–** `externalRefId` —Optional. The external reference ID.
-
-**–** `fromLocationGroupIdentifier` —The identifier of the location group transferring the
-reservation. Either `fromLocationGroupIdentifier` or `fromLocationIdentifier` is
-required, but not both.
-
-**–** `fromLocationIdentifier` —The identifier of the location transferring the reservation. Either
-`fromLocationIdentifier` or `fromLocationGroupIdentifier` is required, but not
-both.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-**–** `ignoreAvailabilityCheck` —If true, force the transfer even if the receiving location doesn’t
-have sufficient available inventory. The default value is false.
-
-**–** `quantity` —The quantity of the product reservation to transfer.
-
-**–** `stockKeepingUnit` —The Stock Keeping Unit (SKU) of the product reservation to transfer.
-
-**–** `toLocationGroupIdentifier` —The identifier of the location group receiving the reservation.
-Either `toLocationGroupIdentifier` or `toLocationIdentifier` is required, but not
-both.
-
-**–** `toLocationIdentifier` —The identifier of the location receiving the reservation. Either
-`toLocationIdentifier` or `toLocationGroupIdentifier` is required, but not both.
-
-Store Output Values
-
-**Output Parameter** **Description**
-
-```
-Omnichannel
-
-Inventory
-
-Service
-
-Transfer
-
-Reservation
-
-Output
-
-```
-
-[This value is an Apex-defined variable of class ConnectApi.OCITransferReservationOutputRepresentation.](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_o_c_i_transfer_reservation_output.htm)
-
-The variable has these fields.
-
-**•** `errors` —A list of Apex-defined variables of class
-[ConnectApi.OCITransferReservationErrorOutputRepresentation. Each variable represents a returned error](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_o_c_i_transfer_reservation_error_output.htm)
-and has these fields.
-
-**–** `details` —An Apex-defined variable of class
-[ConnectApi.OCITransferReservationSingleOutputRepresentation. Each variable represents a returned](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_connectapi_output_o_c_i_transfer_reservation_single_output.htm)
-error and includes the fields from the input:
-
-**•** `actionRequestId` —A UUID that identifies the failed request.
-
-**•** `externalRefId` —The external reference ID.
-
-**•** `fromLocationGroupIdentifier` —The identifier of the location group transferring the
-reservation.
-
-**•** `fromLocationIdentifier` —The identifier of the location transferring the reservation.
-
-**•** `ignoreAvailabilityCheck` —Whether this call ignored availability data at the location
-that received the reservation.
-
-**•** `quantity` —The quantity of the product reservation to transfer.
-
-**•** `stockKeepingUnit` —The SKU of the product reservation to transfer.
-
-**•** `toLocationGroupIdentifier` —The identifier of the location group intended to receive
-the reservation.
-
-**•** `toLocationIdentifier` —The identifier of the location intended to receive the reservation.
-
-**–** `errorCode` —The error code.
-
-**–** `message` —Details of the error, if available.
-
-**•** `success` —Indicates whether the transfer succeeded.
-
-To set up the Omnichannel Inventory Service Transfer Reservation Input:
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**1.** For each reservation to transfer, use Assignment elements to set the `actionRequestId`, `externalRefId`,
-`fromLocationGroupIdentifier` or `fromLocationIdentifier`, `quantity`, `stockKeepingUnit`, and
-`toLocationGroupIdentifier` or `toLocationIdentifier` field values on a
-`ConnectApi.OCITransferReservationSingleInputRepresentation` variable.
-
-**2.** Use Assignment elements to add the `ConnectApi.OCITransferReservationSingleInputRepresentation`
-variables to the `transferRecords` field on a `ConnectApi.OCITransferReservationInputRepresentation`
-variable.
-
-**3.** Use an Assignment element to set the `allOrNothingTransferId` field on the
-`ConnectApi.OCITransferReservationInputRepresentation` variable.
-
-**4.** Use the `ConnectApi.OCITransferReservationInputRepresentation` variable in the action input.
-
-SEE ALSO:
-
-Add and Edit Elements
-
-Flow Core Actions: Send Conversation Messages
-
-Send a messaging component to one or more messaging users in enhanced WhatsApp, enhanced
-Apple Messages for Business, enhanced SMS, or Messaging for In-App.
-
-In Flow Builder, add an Action element to your flow. In the Action field, enter _`Messages`_, and
-##### select Send Conversation Messages .
-
-Set Input Values
-
-
-EDITIONS
-
-Available in: Lightning
-Experience
-
-Available
-in: Enterprise, Unlimited,
-and Developer Editions
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Usage
-
-Here’s an example of the Send Conversation Messages action in a simple flow.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-To track messages sent by this action, query the ConvMessageSendRequest object.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Flow Core Action: Send Custom Notification
-
-Add the Send Custom Notification action to a flow, then add recipients and content.
-
-Important: The Send Custom Notifications user permission is enforced in orgs created in
-Winter ’21 or later.
-
-The Send Custom Notifications user permission isn’t required to trigger the Send Custom
-Notification action in processes or flows that run in system context.
-
-Tip:
-
-**•** Before you begin, make sure that the custom notification type you want to call from your
-[process exists. If not, create the notification type.](https://help.salesforce.com/s/articleView?id=sf.notif_builder_custom_type.htm&language=en_US)
-
-**•** To query for the Notification Type ID directly from a flow, add the Get Record element to
-your flow and filter by API name. If you’ve installed a notification type via a managed
-package, filter by the namespace prefix as well as the API name.
-
-**•** To add recipients, define Recipient ID as a resource. Then add values to your Recipient ID
-collection by adding the Assignment element to your flow.
-
-In Flow Builder, add an Action element to your flow. In the Action field, enter _`Notifications`_,
-##### and select Send Custom Notification .
-
-Set Input Values
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-USER PERMISSIONS
-
-To trigger the Send Custom
-Notification action in flows
-that run in user context, REST
-API calls, and Apex callouts:
-##### • Send Custom
-
-Notifications
-
-Use values from earlier in the flow to set the inputs for the email. Specify at least one recipient for the email.
-
-**Field** **Description**
-
-`Custom Notification` The ID of the Custom Notification Type being used for the notification.
-```
-Type ID
-```
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-`Notification Body` The body of the notification that recipients see.
-
-[The content of mobile push notifications depends on the Display full content push notifications](https://help.salesforce.com/s/articleView?id=sf.salesforce_app_notifications_full_content_enable.htm&language=en_US)
-[setting.](https://help.salesforce.com/s/articleView?id=sf.salesforce_app_notifications_full_content_enable.htm&language=en_US)
-
-This parameter accepts single-value resources of any type. That value is treated as text and is limited
-to 750 characters.
-
-`Notification Title` The title of the notification as seen by recipients.
-
-This parameter accepts single-value resources of any type. That value is treated as text and is limited
-to 250 characters.
-
-`Recipient IDs` The ID of the recipient or recipient type of the notification.
-
-Valid values are:
-
-**•** _`User ID`_ —The notification is sent to this user, if this user is active.
-
-**•** _`Account ID`_ —The notification is sent to all active users who are members of this account’s
-Account Team. Valid only if account teams are enabled for your org.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Field** **Description**
-
-**•** _`Opportunity ID`_ —The notification is sent to all active users who are members of this
-opportunity’s Opportunity Team. Valid only if team selling is enabled for your org.
-
-**•** _`Group ID`_ —The notification is sent to all active users who are members of this group.
-
-**•** _`Queue ID`_ —The notification is sent to all active users who are members of this queue.
-
-This parameter accepts collection variables of type Text and is limited to 500 values. The values that
-you enter for an individual Send Custom Notification action can represent a total of up to 10,000 users
-as recipients.
-
-`Target ID` Optional. The Record ID for the target record of the notification.
-
-Specify either a Target ID or a Target Page Reference.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-`Target Page` Optional. The Page Reference for the navigation target of the notification.
-```
-   Reference
-```
-
-Specify either a Target ID or a Target Page Reference.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-[To see how to specify the target using JSON, see pageReference.](https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/components_navigation_page_definitions.htm)
-
-`Sender ID` Optional. The User ID of the sender of the notification.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-Usage
-
-**•** Each notification can have up to 10,000 users as recipients. However, you can add an action to the same process within Process
-Builder or to the same flow in Flow Builder to have more recipients.
-
-**•** Your org saves your most recent 1 million custom notifications for view in notification trays. Your org can save up to 1.2 million
-custom notifications, but it trims the amount to the most recent 1 million notifications when you reach the 1.2 million limit.
-
-**•** An org can execute up to 10,000 notification actions per hour. When you exceed this limit, no more notifications are sent in that
-hour, and all unsent notifications are lost. Notification actions resume in the next hour.
-
-For example, your notification action processes are triggered 10,250 times between 4:00 and 4:59. Salesforce executes the first 10,000
-of those actions. The remaining 250 notifications aren’t sent and are lost. Salesforce begins executing notification actions again at
-5:00.
-
-SEE ALSO:
-
-[Create and Send Custom Desktop or Mobile Notifications](https://help.salesforce.com/s/articleView?id=sf.notif_builder_custom.htm&language=en_US)
-
-Flow Run Context
-
-Flow Elements
-
-Add and Edit Elements
-
-Customize What Happens When a Flow Fails
-
-Move and Connect Elements to Change a Flow Route
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Flow Core Action: Send Email
-
-Send and optionally log an email by specifying the email content and recipients in a flow. If you’re
-using Marketing Cloud Growth, use the Send Email Message on page 377 element to send an email
-to your audience segment.
-
-Note: If you're using Marketing Cloud Growth, use the Send Email Message action instead
-of the Send Email action. The Send Email action doesn't work with audience segments.
-
-Before you begin:
-
-**•** Use a Get Records element to get the email template to use, using the Email Template object
-and filtering by the **Name** (Email Template Name) field.
-
-**•** Then, in `Email Template ID`, select the ID of the record found by the Get Records. For
-example, if you labeled your Get Records element _`Get Email Template`_, select **Email**
-**Template from Get_Email_Template** .
-
-**•** Then, select **Id** (Email Template ID).
-
-##### In Flow Builder, search for Send Email in the element menu, and select Send Email .
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-Important: If the Sender Type is OrgWideEmailAddress, ensure that the user running the flow has the proper profile configurations
-required by the specific org-wide email address being used. Proceeding without the proper configuration results in an error.
-
-Set Input Values
-
-To set the inputs for the email, use values from earlier in the flow. Specify at least one recipient for the email.
-
-Example: You want to send and log an email to a contact record, and also log to its related account record. For the email content,
-you want to use an email template with Contact and Account merge fields. Set `Email Template ID` to the ID of the email
-template to use. Next, set `Log Email on Send` to **{!$GlobalConstant.True}** . Then, set `Recipient ID` to the contact
-record’s ID and `Related Record ID` to the account record’s ID.
-
-**Input Parameter** **Description**
-
-```
-Add Threading Token
-
-to Body
-
-Add Threading Token
-
-to Subject
-
-```
-
-Optional. Indicates whether to create a unique token for the related record and add it to the email
-body.
-
-When the related record is a case record, Email-to-Case uses the token to link future email responses
-to that case.
-
-To link future email responses to other records, create an Apex Email Service and use the
-`EmailMessages.getRecordIdFromEmail` function to find the record that matches the
-token.
-
-Optional. Indicates whether to create a unique token for the related record and add it to the email
-subject.
-
-When the related record is a case record, Email-to-Case uses the token to link future email responses
-to that case.
-
-To link future email responses to other records, create an Apex Email Service and use the
-`EmailMessages.getRecordIdFromEmail` function to find the record that matches the
-token.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-```
-BCC Recipient
-
-Address List
-
-Body
-
-CC Recipient Address
-
-List
-
-Email Template ID
-
-```
-
-Optional. A comma-delimited list of recipient email addresses to send a copy of the email to. Email
-addresses in the BCC list are hidden from all recipients.
-
-This parameter accepts single-value resources of any type. The value is treated as text.
-
-The maximum size for this field is 4,000 bytes.
-
-You can enter values for `BCC Recipient Address List`, `CC Recipient Address`
-`List`, `Recipient ID`, `Recipient Address List`, and `Recipient Address`
-`Collection` as long as the combined number of recipients is 150 or fewer.
-
-The body of the email.
-
-Optional if you’re using an email template. The email template overrides the entry in this field.
-
-Required if you’re not using an email template.
-
-Enter text or select a single-value resource of any type that contains your content, for example, a Text
-Template resource.
-
-If entering text, the value is treated as plain text. If you’re using a resource, the value can be treated
-as plain text or rich text, depending on your selection in `Rich-Text-Formatted Body` .
-
-Optional. A comma-delimited list of recipient email addresses to send a copy of the email to.
-
-This parameter accepts single-value resources of any type. The value is treated as text.
-
-The maximum size for this field is 4,000 bytes.
-
-You can enter values for `BCC Recipient Address List`, `CC Recipient Address`
-`List`, `Recipient ID`, `Recipient Address List`, and `Recipient Address`
-`Collection` as long as the combined number of recipients is 150 or fewer.
-
-Optional. The ID of the Classic or Lightning email template to use for the email subject and body.
-
-If the email template has merge fields from an object other than the one associated with `Recipient`
-`ID`, specify the record used to supply those merge fields in `Related Record ID` .
-
-If you’re using this parameter, `Recipient ID` is required.
-
-This parameter can be used with `Log Email on Send` .
-
-Using email templates in the Send Email action changes the API called by the action, which changes
-[the daily email send limit to the General Email Limit instead of the Daily Workflow Email Limit.](https://help.salesforce.com/s/articleView?id=000381534&type=1&language=en_US)
-
-`Log Email on Send` Optional. Indicates whether to log the email on the specified records’ activity timelines and activity
-history. Valid values are:
-
-**•** **{!$GlobalConstant.True}** —Log the email to the record associated with `Recipient ID`,
-`Related Record ID`, or both.
-
-**•** **{!$GlobalConstant.False}** —Don’t log the email to a record. This value is the default.
-
-To log an email, you must specify a value for `Recipient ID`, `Related Record ID`, or both.
-
-This parameter can be used with `Email Template ID` .
-
-Logging emails with the Send Email action changes the API called by the action, which changes the
-[daily email send limit to the General Email Limit instead of the Daily Workflow Email Limit.](https://help.salesforce.com/s/articleView?id=000381534&type=1&language=en_US)
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-```
-Recipient Address
-
-Collection
-
-Recipient Address
-
-List
-
-Recipient ID
-
-Related Record ID
-
-```
-
-Optional. A collection of the recipients' email addresses.
-
-This parameter accepts collection variables of type Text.
-
-If `Log Email on Send` is set to **{!$GlobalConstant.True}**, the email is logged to the ID specified
-for `Recipient ID`, not the records associated with the email addresses in `Recipient`
-`Address Collection` .
-
-The maximum size for this field is 4,000 bytes.
-
-You can enter values for `BCC Recipient Address List`, `CC Recipient Address`
-`List`, `Recipient ID`, `Recipient Address List`, and `Recipient Address`
-`Collection` as long as the combined number of recipients is 150 or fewer.
-
-Optional. A comma-delimited list of the recipients' email addresses.
-
-This parameter accepts single-value resources of any type. The value is treated as text.
-
-If `Log Email on Send` is set to **{!$GlobalConstant.True}**, the email is logged to the ID specified
-for `Recipient ID`, not the records associated with the email addresses in `Recipient`
-
-```
-Address List
-
-```
-
-The maximum size for this field is 4,000 bytes.
-
-You can enter values for `BCC Recipient Address List`, `CC Recipient Address`
-`List`, `Recipient ID`, `Recipient Address List`, and `Recipient Address`
-`Collection` as long as the combined number of recipients is 150 or fewer.
-
-Optional. The ID of a lead or a contact record.
-
-Required if `Email Template ID` is specified.
-
-If `Log Email on Send` is included, this parameter is the ID of the person to send and log the
-email to.
-
-If `Email Template ID` is included, this parameter is the ID of the person to send an email to
-and populate recipient merge fields with.
-
-If the ID entered in this parameter is a lead record, you can’t use `Related Record ID` .
-
-The maximum size for this field is 4,000 bytes.
-
-You can enter values for `BCC Recipient Address List`, `CC Recipient Address`
-`List`, `Recipient ID`, `Recipient Address List`, and `Recipient Address`
-`Collection` as long as the combined number of recipients is 150 or fewer.
-
-Optional. The ID of a non-recipient record. For example, the ID of a case record.
-
-If `Log Email on Send` is included, this parameter is the ID of a secondary record to log the
-email to.
-
-If `Email Template ID` is included, this parameter is the ID of the non-recipient record used
-to populate email template merge fields.
-
-You can’t use this parameter if the ID entered in `Recipient ID` is a lead record.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-`Rich-Text-Formatted` Optional. Indicates whether you want the resource specified for the `Body` parameter to use rich
-`Body` text. Valid values are:
-
-**•** **{!$GlobalConstant.True}** —Use rich text for the email body.
-
-**•** **{!$GlobalConstant.False}** —Use plain text for the email body. This value is the default.
-
-```
-Sender Email Address
-
-```
-
-Optional. The organization-wide email address that’s used to send the email.
-
-Required when `Sender Type` is set to _`OrgWideEmailAddress`_ .
-
-Required when the running flow user is the guest user.
-
-This parameter accepts a single-value resource of any type. The value is treated as text.
-
-`Sender Type` Optional. The type of sender that the email is sent from. Valid values are:
-
-**•** _`CurrentUser`_ —The email address of the user running the flow. This value is the default.
-
-**•** _`DefaultWorkflowUser`_ —The email address of the default workflow user.
-
-**•** _`OrgWideEmailAddress`_ —The organization-wide email address that is specified in `Sender`
-`Email Address` . When the running flow user is the guest user, the `Sender Email`
-`Address` must be set to a verified organization-wide email. Emails sent from the guest user
-and not using a verified organization-wide email are blocked.
-
-```
-Subject
-
-```
-
-The subject of the email.
-
-Optional if you’re using an email template. The email template overrides the entry in this field.
-
-Required if you’re not using an email template.
-
-Enter text or select a single-value resource of any type that contains your content, for example, a Text
-Template resource. The value is treated as plain text.
-
-`Use Line Breaks` Optional. Indicates whether to render the line breaks in the rich-text-formatted body text template.
-Valid values are true and false. The default value is false.
-
-Usage
-
-At run time, the email isn’t sent until the interview’s transaction completes. Transactions are complete when the interview either finishes
-or executes a Screen, Local Action, or Wait element. Before activating your flow, confirm that your org can send email in **Setup** **Deliverability** - **Access to Send Email (All Email Services)** - **All email** .
-
-If you set Email Deliverability to No Access and:
-
-**•** If you don't set `Email Template ID` or `Log Email on Send` fields, the flow runs but doesn't send the email.
-
-**•** If you do set `Email Template ID` or `Log Email on Send` fields, the flow returns an error when it sends the email.
-
-Setup Configurations for Scheduled Flows
-
-If you use the Send Email action element in a Scheduled-Triggered flow, you must configure the organization-wide email address in
-Setup.
-
-**•** Set the organization-wide email address in **Setup** - **Email** - **Organization-Wide Email Addresses**
-
-**•** Add the organization-wide email address in **Setup** - **Process Automation Settings** - **Automated Process User Email Address**
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Email Sending Limits
-
-**•** If you’re using `Log Email on Send` or `Email Template ID`, the daily email send limit is based on the single email limit.
-[For details, see General Email Limits.](https://help.salesforce.com/s/articleView?id=000381534&type=1&language=en_US)
-
-**•** If you’re not using `Log Email on Send` or `Email Template ID`, the daily email send limit is based on the daily workflow
-[email limit. For details, see Proactive Alert Monitoring: Daily Workflow Email Limit.](https://help.salesforce.com/s/articleView?id=000382442&type=1&language=en_US)
-
-Considerations
-
-**•** Emails sent using the Send Email action don't include email signatures from My Email Settings. To include a signature, add one to
-the email template, flow text template, or other resource used in the Send Email action.
-
-**•** If the `Related Record ID` is set as a Case ID by the flow, Customer Community users can't create an `EmailMessage`
-[record. For details, see Experience Cloud User Licenses.](https://help.salesforce.com/s/articleView?id=sf.users_license_types_communities.htm&language=en_US)
-
-SEE ALSO:
-
-Add and Edit Elements
-
-Options for Sending Emails from Flows
-
-Flow Resource: Text Template
-
-Customize What Happens When a Flow Fails
-
-Move and Connect Elements to Change a Flow Route
-
-Options for Sending Emails from Flows
-
-Flow Core Action: Send Notification Actions
-
-Call a notification type to send. Each Send Notification action corresponds to a supported notification
-type. Send Notification actions are available only for Slack-enabled custom notification types and
-certain Slack-enabled standard notification types.
-
-Note: [To send notifications for Slack, enable Salesforce for Slack Integrations.](https://help.salesforce.com/s/articleView?id=sf.slack_apps_enable.htm&language=en_US)
-
-[To create a custom Slack notification type supported by a Send Notification action, see Create](https://help.salesforce.com/s/articleView?id=sf.notif_builder_create_send_slack.htm&language=en_US)
-[and Send Custom Slack Notifications.](https://help.salesforce.com/s/articleView?id=sf.notif_builder_create_send_slack.htm&language=en_US)
-
-Add an Action element to the flow. In the Action field, select the Send Notification-supported
-notification type that you want to configure. Each Send Notification action corresponds to a
-supported notification type. For example, if you created a custom notification type named My
-Opportunity Notification, look for the My Opportunity Notification action in the Notifications category.
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs for the notification type.
-
-**Field** **Description**
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-USER PERMISSIONS
-
-To trigger a Send Notification
-action in flows that run in
-user context and REST API
-calls:
-
-**•** Send Custom
-Notifications
-
-```
-Recipient IDs
-
-```
-
-Required. The IDs of the notification recipients or recipient types.
-
-[The value must be a collection variable that represents one or more](https://help.salesforce.com/s/articleView?id=sf.flow_ref_resources_variable_populate.htm&language=en_US)
-Salesforce User IDs or Collaboration Room IDs.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Field** **Description**
-
-Some Salesforce features link standard objects to Collaboration Room through the Swarm object. For
-these features, you can find an existing Collaboration Room ID from the Swarm object.
-
-The collection variable’s Data Type must be Text. The collection can have up to 500 values.
-
-```
-Record ID
-
-```
-
-Required. The ID of the record that the notifications are about. The record ID must be an ID from the
-Salesforce object related to the notification type. For example, enter the record ID for an opportunity
-when configuring a notification type associated with the Opportunity object.
-
-For custom notification types, you can find the related object by viewing the notification type's
-settings from Custom Notifications in Setup. For supported standard notification types, refer to the
-Standard Notification Types and Related Objects table.
-
-Enter a record ID or select a variable that identifies the record.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-Standard Notification Types and Related Objects
-
-Use this table to identify which object applies to each standard notification type that’s supported by a Send Notification action. The
-object determines the value that you enter for `Record Id` .
-
-**Standard Notification Type** **Related Salesforce Object**
-
-`Amount Updated` Opportunity
-
-`Close Date Reminder` Opportunity
-
-`Close Date Updated` Opportunity
-
-`Deal Won` Opportunity
-
-`Deals to Watch` Opportunity
-
-`High Priority Case` Case
-
-`New Allergy` Allergy Intolerance
-```
-Intolerance
-
-```
-
-`New Child` Opportunity
-```
-Opportunity
-
-```
-
-`New Care Determinant` Care Determinant
-
-`New Health Condition` Health Condition
-
-`New or Updated Care` Task
-```
-Plan Task
-
-```
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Standard Notification Type** **Related Salesforce Object**
-
-`Next Step Reminder` Opportunity
-
-`Stage Reminder` Opportunity
-
-`Stage Updated` Opportunity
-
-`Updated Care Plan` Case
-
-Usage
-
-**•** Each notification can have up to 10,000 users as recipients. However, you can add another action to the same flow in Flow Builder
-to have more recipients.
-
-**•** You can save up to 1.2 million custom notifications, but notification trays show only your most recent 1 million custom notifications.
-
-**•** You can execute up to 10,000 notification actions per hour. When you exceed this limit, no more notifications are sent in that hour,
-and all unsent notifications are lost. Notification actions resume in the next hour.
-
-**•** The sending rates of Slack notifications are also subject to the limits of the Slack service.
-
-SEE ALSO:
-
-_[Object Reference for the Salesforce Platform](https://developer.salesforce.com/docs/atlas.en-us.object_reference.meta/object_reference/sforce_api_objects_collaborationroom.htm)_ : CollaborationRoom
-
-_[Object Reference for the Salesforce Platform](https://developer.salesforce.com/docs/atlas.en-us.object_reference.meta/object_reference/sforce_api_objects_swarm.htm)_ : Swarm
-
-Flow Core Action: Send Surveys
-
-Create an action to send an active survey by specifying the name, subject, recipients, and invitation
-link options in the flow.
-
-In Flow Builder, add an Action element to your flow. In the Action field, enter the name of an active
-survey. Or, in the left navigation, click **Survey**, and then in the Action field, select an active survey.
-Define the name of the action and the survey recipients.
-
-Note: If you deactivate a survey after it’s added to a flow and then activate it, the Flow Builder
-renders an incorrect Action layout for that survey.
-
-Example: You want to collect feedback from all the participants when a case is closed. First,
-create a flow and get all records where the status of the case object is closed. Then, create
-an action that selects the survey to send to the participants for feedback.
-
-Set Input Values
-
-Specify at least one recipient for the survey.
-
-**Field** **Description**
-
-`Label` Name for the action.
-
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Field** **Description**
-
-```
-API Name
-
-```
-
-Associate an API name for the action.
-
-This parameter auto-generates the API name based on the label, which you can edit, if necessary.
-
-`Description` Optional. Description about the purpose of the action.
-
-```
-Survey Subject
-
-Recipient Type
-
-```
-
-Optional. Select a survey subject that you want to perform the action on. For example, to get all case
-records, select the survey subject as Case, or create a required resource for the subject.
-
-This parameter accepts flow variables of type Text.
-
-Select the type of recipient of the survey. Choose the Lead or Contact recipient type only when there’s
-a default Experience Cloud site selected for sending public surveys.
-
-This parameter accepts flow variable of type Text.
-
-`Unique link` Optional. Each participant receives a unique survey invitation. The responses are mapped to the
-participant name.
-
-`Anonymize responses` Optional. The responses received aren’t mapped to any participant.
-
-`Don’t require` Optional. By default, surveys sent to lead or contact require authentication. However, you can enable
-`authentication` this option to allow access to the survey without any authentication.
-
-`Invitation expires` Optional. Define the number of days after which the access to the survey is restricted.
-
-```
-in days
-
-```
-
-SEE ALSO:
-
-Add and Edit Elements
-
-Flow Core Action: Perform Survey Sentiment Analysis
-
-Get insights into the sentiments that underlie survey responses.
-
-In Flow Builder, add an Action element to your flow. In the Action field, enter _`Sentiment`_, and
-##### select Perform Survey Sentiment Analysis . Or, in the left navigation, click Survey, enter Sentiment in the Action field, and select Perform Survey Sentiment Analysis . Define the
-
-name of the action and the survey recipients.
-
-To access this action from the API, use the name `performSurveySentimentAnalysis` .
-
-Set Input Values
-
-**Field** **Description**
-
-`End Date` Required. The date until when participant responses are processed to get
-sentiment insights.
-
-`Operation` Required. The action performed on the AI Sentiment Result records.
-
-**•** **Create** : Use the create operation when sentiment analysis is yet to
-be done on survey responses and there are no associated AI Sentiment
-
-
-EDITIONS
-
-Available in: both Salesforce
-Classic (not available in all
-orgs) and Lightning
-Experience
-
-Available in: **Enterprise**,
-**Unlimited**, and **Developer**
-Editions
-
-Available with Survey
-Response Pack, Feedback
-Management - Starter, and
-Feedback Management Growth licenses
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Field** **Description**
-
-Result records, or to analyze the sentiment again. After the processing is completed, AI Sentiment
-Result records are created with the sentiment of the survey responses and with the Submitted
-status.
-
-**•** **Update** : Use the update operation to bulk process survey responses that have associated AI
-Sentiment Result records in Draft status. After the processing is completed, the AI Sentiment
-Result records are updated with the sentiment of the survey responses and their status is changed
-to Submitted.
-
-`Question IDs` Required. The IDs of the questions for whose responses you want to get sentiment insights.
-
-`Start Date` Required. The date from when participant responses are processed to get sentiment insights.
-
-`Survey ID` Required. The ID of the survey containing the questions for whose responses you want to get sentiment
-insights.
-
-Usage
-
-At run time, the AI Sentiment Result record isn’t created until the interview’s transaction is completed. After the transactions are completed,
-AI Sentiment Result records are created with Completed status.
-
-Flow Core Action: Get Assessment Response Summary
-
-Create a printable summary view of assessments taken. This action enables you to extract responses
-saved in an assessment and create a flow to generate a document.
-
-In Flow Builder, add an Action element to your flow. In the Action field, search for Get Assessment
-Response Summary invocable action to configure.
-
-Set Input Values
-
-**Field** **Description**
-
-`assessmentId` Required. The ID of the assessment record for which to summarize responses.
-
-Set Output Values
-
-**Set Field** **Description**
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-`assessmentResponseSummary` A JSON string containing the summary assessment question texts and responses for the specified assessment
-record.
-
-Usage
-
-##### Get Assessment Response Summary makes it easy to use a flow to trigger server-side document generation using Docgen. You can use
-
-this invocable action to pass assessment summary data to the downstream processes. This invocable action provides a summary JSON
-that can be consumed in Docgen workflows to generate documents.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-The Get Assessment Response Summary invocable action takes assessment ID as the input to get the OmniProcess ID, which is used to
-retrieve the OmniProcess elements. The assessment ID also retrieves the assessment response and merges the response with the
-OmniProcess elements to create an assessment summary response in JSON.
-
-DocGen Limitations
-
-OmniScript doesn’t provide a modification history of the same OmniScript form, such as the addition or removal of questions. It’s
-recommended that you trigger the document generation when you submit an assessment. The summary API fetches the layout data
-from the active version of the OmniScript.
-
-DocGen has the following limits:
-
-**•** Token data is limited to 131,072 characters.
-
-**•** Server-side document generation - Maximum supported document size is 1 MB.
-
-**•** Client-side document generation - Maximum supported document size is 10 MB.
-
-**•** There’s no image-type support for server-side document generation. Image-type support is only available on the client-side.
-
-##### Slack Flow Core Actions
-
-Manage Slack channels, channel members, and messages from flows. As your Salesforce records
-change, a flow can trigger changes in Slack.
-
-Important: Slack core actions execute in user context. The flow has access to whatever the
-running user of the flow has access to.
-
-Before using a core action for Slack, enable Salesforce for Slack integrations.
-
-##### In Flow Builder, add an Action element to your flow. Select the Slack category, and search for an
-
-action.
-
-Flow Core Actions for Slack: Archive Slack Channel
-Archive a Slack channel in a Slack workspace.
-
-Flow Core Actions for Slack: Check If Users Are Connected to Slack
-Determine whether a collection of Salesforce users is connected to a given Slack workspace.
-
-Flow Core Actions for Slack: Create Slack Channel
-Create a Slack channel in a Slack workspace.
-
-Flow Core Actions for Slack: Edit Slack Message
-Edit a message that was previously sent to Slack.
-
-EDITIONS
-
-Available in: both Salesforce
-Classic and Lightning
-Experience
-
-Available in: **Essentials,**
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-Flow Core Actions for Slack: Get Information About Slack Conversation
-Retrieve the name of a Slack channel and find out whether it’s archived. Archived channels are closed to new activity, but users can
-still view and search an archived channel’s message history.
-
-Flow Core Actions for Slack: Invite Users to Slack Channel
-Add users who are connected to a given Slack app to a Slack channel or direct message.
-
-Flow Core Actions for Slack: Pin or Unpin Slack Message
-Pin or unpin a message in a Slack channel or direct message. Pin messages so that they’re readily available from the conversation
-header.
-
-Flow Core Actions for Slack: Send Slack Message
-Send a message to a Slack channel, direct message, or the Messages tab of a Slack app.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Flow Core Actions for Slack: Send Message to Launch Flow
-Send a message to a Slack channel, direct message, or the Messages tab of a Slack app that includes a button that a recipient can
-use to launch a screen flow.
-
-Flow Core Actions for Slack: Archive Slack Channel
-
-Archive a Slack channel in a Slack workspace.
-
-Before using a core action for Slack, enable Salesforce for Slack integrations.
-
-In Flow Builder, add an Action element to your flow. In the New Action window, select **Slack**, and
-###### then select Archive Slack Channel .
-
-Set Connection Values for Slack
-
-The flow sends the connection values that you provide to Slack to retrieve an access token.
-
-**Input Parameter** **Description**
-
-EDITIONS
-
-Available in: both Salesforce
-Classic and Lightning
-Experience
-
-Available in: **Essentials,**
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-```
-Slack App
-
-Slack Workspace
-
-```
-
-Required. The Slack app that executes the action. Only Slack apps
-that are installed for the org are available. The input value
-evaluates to the Slack app ID.
-
-Required. The Slack workspace where the Slack app is installed.
-Select a value or resource. The input value evaluates to the Slack
-workspace ID.
-
-`Execute Action As` The entity that executes the action. Valid values are:
-
-**•** Slack App—Execute the action as the Slack app that you
-selected in the Slack App field. It’s the default value.
-
-The Slack app must be a member of the conversation to
-execute the action on.
-
-**•** User Who Runs the Flow—Execute the action as the user
-who runs the flow. The user can execute the action only
-when the flow runs in the user context. If the flow runs in
-the system context, the Slack app executes it.
-
-The user must be a member of the conversation to execute
-the action on.
-
-Set Slack Channel
-
-**Input Parameter** **Description**
-
-```
-Slack Channel ID
-
-```
-
-Required. The ID of the channel to archive.
-
-Get the Slack channel ID by logging in to Slack.com and launching Slack in your browser.
-The channel ID is the last parameter in the URL. For example, in this URL, the channel ID
-is `C56789FGHIJ` :
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-```
-                    https://app.slack.com/client/T01234ABCDE/C56789FGHIJ
-
-```
-
-Usage
-
-This action is available only if you enable the connection to Slack in Setup and the user who runs the flow is connected to Slack. Otherwise,
-the action fails.
-
-SEE ALSO:
-
-[Enable Salesforce for Slack Integrations](https://help.salesforce.com/s/articleView?id=sf.slack_apps_enable.htm&language=en_US)
-
-_Salesforce Admins_ [: How Admins Can Connect Salesforce and Slack](https://admin.salesforce.com/blog/2021/how-admins-can-connect-salesforce-and-slack)
-
-Flow Core Actions for Slack: Check If Users Are Connected to Slack
-
-Determine whether a collection of Salesforce users is connected to a given Slack workspace.
-
-Before using a core action for Slack, enable Salesforce for Slack integrations.
-
-In Flow Builder, add an Action element to your flow. In the New Action window, select **Slack**, and
-###### then select Check If Users Are Connected to Slack .
-
-Set Connection Values for Slack
-
-**Input Parameter** **Description**
-
-EDITIONS
-
-Available in: both Salesforce
-Classic and Lightning
-Experience
-
-Available in: **Essentials,**
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-```
-Slack App
-
-Slack Workspace
-
-```
-
-Required. The Slack app that executes the action. Only Slack apps
-that are installed for the org are available. The input value
-evaluates to the Slack app ID.
-
-Required. The Slack workspace where the Slack app is installed.
-Select a value or resource. The input value evaluates to the Slack
-workspace ID.
-
-You can obtain the Slack workspace ID by logging in to Slack.com
-and launching Slack in your browser. The workspace ID is the
-penultimate parameter in the URL. For example, in this URL, the
-workspace ID is `T01234ABCDE` :
-
-```
-https://app.slack.com/client/T01234ABCDE/C56789FGHIJ
-
-```
-
-`Salesforce User ID` Required. The collection resource that contains the Salesforce
-`Collection Resource` user IDs to check. The maximum number of user IDs is 1,000.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Store Output Values
-
-**Output Parameter** **Description**
-
-`Collection of Salesforce` A collection resource that contains the Salesforce user IDs connected to Slack.
-
-```
-   User IDs Connected to Slack
-
-```
-
-`Collection of Salesforce` A collection resource that contains the Salesforce user IDs not connected to Slack.
-
-```
-   User IDs Not Connected to
-
-   Slack
-
-```
-
-Usage
-
-This action is available only if you enable the connection to Slack in Setup. Otherwise, the action fails. Additionally, the user that initiates
-the flow and any users impacted by the action must have logged in to a Salesforce Slack app at least once.
-
-SEE ALSO:
-
-[Enable Salesforce for Slack Integrations](https://help.salesforce.com/s/articleView?id=sf.slack_apps_enable.htm&language=en_US)
-
-_Salesforce Admins_ [: How Admins Can Connect Salesforce and Slack](https://admin.salesforce.com/blog/2021/how-admins-can-connect-salesforce-and-slack)
-
-Flow Core Actions for Slack: Create Slack Channel
-
-Create a Slack channel in a Slack workspace.
-
-Before using a core action for Slack, enable Salesforce for Slack integrations.
-
-In Flow Builder, add an Action element to your flow. In the New Action window, select **Slack**, and
-###### then select Create Slack Channel .
-
-Set Connection Values for Slack
-
-The flow sends the connection values that you provide to Slack to retrieve an access token.
-
-**Input Parameter** **Description**
-
-EDITIONS
-
-Available in: both Salesforce
-Classic and Lightning
-Experience
-
-Available in: **Essentials,**
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-```
-Slack App
-
-Slack Workspace
-
-```
-
-Required. The Slack app that executes the action. Only Slack apps
-that are installed for the org are available. The input value
-evaluates to the Slack app ID.
-
-Required. The Slack workspace where the Slack app is installed.
-Select a value or resource. The input value evaluates to the Slack
-workspace ID.
-
-`Execute Action As` The entity that executes the action. Valid values are:
-
-**•** Slack App—Execute the action as the Slack app that you
-selected in the Slack App field. It’s the default value.
-
-The Slack app must be a member of the conversation to
-execute the action on.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-**•** User Who Runs the Flow—Execute the action as the user who runs the flow. The user
-can execute the action only when the flow runs in the user context. If the flow runs
-in the system context, the Slack app executes it.
-
-The user must be a member of the conversation to execute the action on.
-
-Set Slack Channel Details
-
-**Input Parameter** **Description**
-
-`Slack Channel Name` Required. The name of the new channel. Specify a value or select a resource.
-
-`Channel Type` Select a value or Boolean resource. Valid values are:
-
-**•** Public
-
-**•** Private
-
-**•** Resource
-
-If you select a Boolean resource that evaluates to true, the channel type is private. If you
-select a Boolean resource that evaluates to false, the channel type is public. The default
-channel type is public.
-
-`Slack Workspace ID for` Indicates whether to associate the new channel with a different workspace ID than the
-`Channel` workspace ID of the Slack app. If you turn on this option, select a value or resource.
-
-Store Output Values
-
-**OUTPUT Parameter** **Description**
-
-`Slack Channel ID` The ID of the new channel.
-
-Usage
-
-This action is available only if you enable the connection to Slack in Setup and the user who runs the flow is connected to Slack. Otherwise,
-the action fails.
-
-SEE ALSO:
-
-[Enable Salesforce for Slack Integrations](https://help.salesforce.com/s/articleView?id=sf.slack_apps_enable.htm&language=en_US)
-
-_Salesforce Admins_ [: How Admins Can Connect Salesforce and Slack](https://admin.salesforce.com/blog/2021/how-admins-can-connect-salesforce-and-slack)
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Flow Core Actions for Slack: Edit Slack Message
-
-Edit a message that was previously sent to Slack.
-
-Before using a core action for Slack, enable Salesforce for Slack integrations.
-
-In Flow Builder, add an Action element to your flow. In the New Action window, select **Slack**, and
-###### then select Edit Slack Message .
-
-Set Input Values
-
-The flow sends the connection values that you provide to Slack to retrieve an access token.
-
-**Input Parameter** **Description**
-
-EDITIONS
-
-Available in: both Salesforce
-Classic and Lightning
-Experience
-
-Available in: **Essentials,**
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-```
-Slack App ID for
-
-Token
-
-```
-
-Required. The Slack app that executes the action. Only Slack apps
-that are installed for the org are available. The input value
-evaluates to the Slack app ID.
-
-The Slack app must be a member of the conversation that
-contains the message to edit.
-
-`Slack Conversation` Required. The ID of the channel or the direct message to send
-`ID` the message to. Alternatively, specify a Slack user ID if the
-message was sent to the user via the Messages tab of the Slack
-app. Enter a value or select a resource.
-
-You can obtain the Slack conversation ID by logging in to
-Slack.com and launching Slack in your browser. The conversation
-ID is the last parameter in the URL. For example, in this URL, the
-conversation ID is `C56789FGHIJ` :
-
-```
-            https://app.slack.com/client/T01234ABCDE/C56789FGHIJ
-
-```
-
-`Slack Message` Required. The message to send. Use alongside Post Message
-action. For best results, include no more than 4,000 characters.
-
-Slack truncates messages containing more than 40,000
-characters. Enter a value or select a resource. This action only
-supports editing messages with standard markdown formatting.
-
-Slack supports text formatting with Slack `mrkdown` . To disable
-formatting for a plain text message that contains Slack
-`mrkdown`, use an escape sequence.
-
-Slack doesn’t support text formatting with HTML and renders
-rich text messages as plain text.
-
-```
-Slack Message
-
-Timestamp
-
-```
-
-Required. The timestamp of the message sent. Enter a value or
-select a resource. For example, enter _`1234567890.123456`_ .
-
-The numerals before the period character (.) specify a Unix
-timestamp. The numerals after the period character specify
-microseconds.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-You can store the Slack Message Timestamp output parameter of the Send Slack Message,
-Edit Slack Message, or Send Message To Launch Flow action as a resource to use later.
-
-```
-Slack Workspace ID for Token
-
-```
-
-Usage
-
-Required. The Slack workspace where the Slack app is installed. Select a value or resource.
-The input value evaluates to the Slack workspace ID.
-
-You can obtain the Slack workspace ID by logging in to Slack.com and launching Slack
-in your browser. The workspace ID is the penultimate parameter in the URL. For example,
-in this URL, the workspace ID is `T01234ABCDE` :
-
-```
-https://app.slack.com/client/T01234ABCDE/C56789FGHIJ
-
-```
-
-This action is available only if you enable the connection to Slack in Setup and the user who runs the flow is connected to Slack. Otherwise,
-the action fails.
-
-SEE ALSO:
-
-[Enable Salesforce for Slack Integrations](https://help.salesforce.com/s/articleView?id=sf.slack_apps_enable.htm&language=en_US)
-
-_Salesforce Admins_ [: How Admins Can Connect Salesforce and Slack](https://admin.salesforce.com/blog/2021/how-admins-can-connect-salesforce-and-slack)
-
-Flow Core Actions for Slack: Get Information About Slack Conversation
-
-Retrieve the name of a Slack channel and find out whether it’s archived. Archived channels are
-closed to new activity, but users can still view and search an archived channel’s message history.
-
-Before using a core action for Slack, enable Salesforce for Slack integrations.
-
-In Flow Builder, add an Action element to your flow. In the New Action window, select **Slack**, and
-###### then select Get Information About Slack Conversation .
-
-Set Connection Values for Slack
-
-The flow sends the connection values that you provide to Slack to retrieve an access token.
-
-**Input Parameter** **Description**
-
-EDITIONS
-
-Available in: both Salesforce
-Classic and Lightning
-Experience
-
-Available in: **Essentials,**
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-```
-Slack App
-
-Slack Workspace
-
-```
-
-Required. The Slack app that executes the action. Only Slack apps
-that are installed for the org are available. The input value
-evaluates to the Slack app ID.
-
-Required. The Slack workspace where the Slack app is installed.
-Select a value or resource. The input value evaluates to the Slack
-workspace ID.
-
-`Execute Action As` The entity that executes the action. Valid values are:
-
-**•** Slack App—Execute the action as the Slack app that you
-selected in the Slack App field. It’s the default value.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-The Slack app must be a member of the conversation to execute the action on.
-
-**•** User Who Runs the Flow—Execute the action as the user who runs the flow. The user
-can execute the action only when the flow runs in the user context. If the flow runs
-in the system context, the Slack app executes it.
-
-The user must be a member of the conversation to execute the action on.
-
-Set Slack Conversation
-
-**Input Parameter** **Description**
-
-```
-Slack Conversation ID
-
-```
-
-Store Output Values
-
-Required. The ID of the channel to retrieve information about.
-
-You can obtain the Slack conversation ID by logging in to Slack.com and launching Slack
-in your browser. The conversation ID is the last parameter in the URL. For example, in this
-URL, the conversation ID is `C56789FGHIJ` :
-
-```
-https://app.slack.com/client/T01234ABCDE/C56789FGHIJ
-
-```
-
-**Output Parameter** **Description**
-
-`Conversation Is Archived` Indicates whether the conversation is archived.
-
-`Conversation Is Shared` Indicates whether the conversation is shared with people outside of your org that aren't
-`Externally` part of your Enterprise Grid in Slack.
-
-`Slack Conversation ID` The ID of the Slack conversation that you retrieved information about.
-
-`Slack Conversation Name` The name of the Slack conversation that you retrieved information about.
-
-Usage
-
-This action is available only if you enable the connection to Slack in Setup and the user who runs the flow is connected to Slack. Otherwise,
-the action fails.
-
-SEE ALSO:
-
-[Enable Salesforce for Slack Integrations](https://help.salesforce.com/s/articleView?id=sf.slack_apps_enable.htm&language=en_US)
-
-_Salesforce Admins_ [: How Admins Can Connect Salesforce and Slack](https://admin.salesforce.com/blog/2021/how-admins-can-connect-salesforce-and-slack)
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Flow Core Actions for Slack: Invite Users to Slack Channel
-
-Add users who are connected to a given Slack app to a Slack channel or direct message.
-
-Before using a core action for Slack, enable Salesforce for Slack integrations.
-
-In Flow Builder, add an Action element to your flow. In the New Action window, select **Slack**, and
-###### then select Invite Users to Slack Channel .
-
-Set Connection Values for Slack
-
-**Input Parameter** **Description**
-
-EDITIONS
-
-Available in: both Salesforce
-Classic and Lightning
-Experience
-
-Available in: **Essentials,**
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-```
-Slack App
-
-Slack Workspace
-
-```
-
-Required. The Slack app that executes the action. Only Slack apps
-that are installed for the org are available. The input value
-evaluates to the Slack app ID.
-
-Required. The Slack workspace where the Slack app is installed.
-Select a value or resource. The input value evaluates to the Slack
-workspace ID.
-
-`Execute Action As` The entity that executes the action. Valid values are:
-
-**•** Slack App—Execute the action as the Slack app that you
-selected in the Slack App field. It’s the default value.
-
-The Slack app must be a member of the conversation to
-execute the action on.
-
-**•** User Who Runs the Flow—Execute the action as the user
-who runs the flow. The user can execute the action only
-when the flow runs in the user context. If the flow runs in
-the system context, the Slack app executes it.
-
-The user must be a member of the conversation to execute
-the action on.
-
-Set Slack Channel Details
-
-Use values from earlier in the flow to set the inputs for the action.
-
-**Input Parameter** **Description**
-
-```
-Slack Channel ID
-
-```
-
-Required. The ID of the channel or direct message to invite users to.
-
-You can obtain the Slack channel ID by logging in to Slack.com and launching Slack in
-your browser. The channel ID is the last parameter in the URL. For example, in this URL,
-the channel ID is `C56789FGHIJ` :
-
-```
-https://app.slack.com/client/T01234ABCDE/C56789FGHIJ
-
-```
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-```
-Slack Workspace ID for
-
-Channel
-
-```
-
-Required. The Slack workspace that contains the channel. Select a value or resource. The
-input value evaluates to the Slack workspace ID.
-
-You can obtain the Slack workspace ID by logging in to Slack.com and launching Slack
-in your browser. The workspace ID is the penultimate parameter in the URL. For example,
-in this URL, the workspace ID is `T01234ABCDE` :
-
-```
-https://app.slack.com/client/T01234ABCDE/C56789FGHIJ
-
-```
-
-`Salesforce User ID` The collection resource that contains the Salesforce user IDs to invite to the channel. The
-`Collection Resource` maximum number of user IDs is 1,000.
-
-Usage
-
-This action is available only if you enable the connection to Slack in Setup and the user who runs the flow is connected to Slack. Otherwise,
-the action fails. Additionally, the user that initiates the flow and any users impacted by the action must have logged in to a Salesforce
-Slack app at least one time.
-
-SEE ALSO:
-
-[Enable Salesforce for Slack Integrations](https://help.salesforce.com/s/articleView?id=sf.slack_apps_enable.htm&language=en_US)
-
-_Salesforce Admins_ [: How Admins Can Connect Salesforce and Slack](https://admin.salesforce.com/blog/2021/how-admins-can-connect-salesforce-and-slack)
-
-Flow Core Actions for Slack: Pin or Unpin Slack Message
-
-Pin or unpin a message in a Slack channel or direct message. Pin messages so that they’re readily
-available from the conversation header.
-
-Before using a core action for Slack, enable Salesforce for Slack integrations.
-
-In Flow Builder, add an Action element to your flow. In the New Action window, select **Slack**, and
-###### then select Pin or Unpin Slack Message .
-
-Set Connection Values for Slack
-
-**Input Parameter** **Description**
-
-EDITIONS
-
-Available in: both Salesforce
-Classic and Lightning
-Experience
-
-Available in: **Essentials,**
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-```
-Slack App
-
-Slack Workspace
-
-```
-
-Required. The Slack app that executes the action. Only Slack apps
-that are installed for the org are available. The input value
-evaluates to the Slack app ID.
-
-Required. The Slack workspace where the Slack app is installed.
-Select a value or resource. The input value evaluates to the Slack
-workspace ID.
-
-`Execute Action As` The entity that executes the action. Valid values are:
-
-**•** Slack App—Execute the action as the Slack app that you
-selected in the Slack App field. It’s the default value.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-The Slack app must be a member of the conversation to execute the action on.
-
-**•** User Who Runs the Flow—Execute the action as the user who runs the flow. The user
-can execute the action only when the flow runs in the user context. If the flow runs
-in the system context, the Slack app executes it.
-
-The user must be a member of the conversation to execute the action on.
-
-Set Message Details
-
-**Input Parameter** **Description**
-
-```
-Slack Conversation ID
-
-Slack Message Timestamp
-
-Pin or Unpin Message
-
-```
-
-Usage
-
-Required. The ID of the channel or group direct message to send the message to. Enter
-a value or select a resource.
-
-You can obtain the Slack conversation ID by logging in to Slack.com and launching Slack
-in your browser. The conversation ID is the last parameter in the URL. For example, in this
-URL, the conversation ID is `C56789FGHIJ` :
-
-```
-https://app.slack.com/client/T01234ABCDE/C56789FGHIJ
-
-```
-
-Required. The timestamp of the sent message. Enter a value or select a resource. For
-example, enter _`1234567890.123456`_ .
-
-The numerals before the period character (.) specify a Unix timestamp. The numerals after
-the period character specify microseconds.
-
-You can store the Slack Message Timestamp output parameter of the Send Slack Message,
-Edit Slack Message, or Send Message To Launch Flow action as a resource to use later.
-
-Select a value or Boolean resource. Valid values are:
-
-**Pin**
-Pins the message to the conversation header.
-
-**Unpin**
-Unpins the message from the conversation header.
-
-If you select a Boolean value that evaluates to true, the action pins the message. If you
-select a Boolean value that evaluates to false, the action unpins the message. The default
-is Pin.
-
-This action is available only if you enable the connection to Slack in Setup and the user who runs the flow is connected to Slack. Otherwise,
-the action fails.
-
-SEE ALSO:
-
-[Enable Salesforce for Slack Integrations](https://help.salesforce.com/s/articleView?id=sf.slack_apps_enable.htm&language=en_US)
-
-_Salesforce Admins_ [: How Admins Can Connect Salesforce and Slack](https://admin.salesforce.com/blog/2021/how-admins-can-connect-salesforce-and-slack)
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Flow Core Actions for Slack: Send Slack Message
-
-Send a message to a Slack channel, direct message, or the Messages tab of a Slack app.
-
-Before using a core action for Slack, enable Salesforce for Slack integrations.
-
-In Flow Builder, add an Action element to your flow. In the New Action window, select **Slack**, and
-###### then select Send Slack Message .
-
-Set Connection Values for Slack
-
-**Input Parameter** **Description**
-
-EDITIONS
-
-Available in: both Salesforce
-Classic and Lightning
-Experience
-
-Available in: **Essentials,**
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-```
-Slack App
-
-Slack Workspace
-
-```
-
-Required. The Slack app that executes the action. Only Slack apps
-that are installed for the org are available. The input value
-evaluates to the Slack app ID.
-
-Required. The Slack workspace where the Slack app is installed.
-Select a value or resource. The input value evaluates to the Slack
-workspace ID.
-
-`Execute Action As` The entity that executes the action. Valid values are:
-
-**•** Slack App—Execute the action as the Slack app that you
-selected in the Slack App field. It’s the default value.
-
-The Slack app must be a member of the conversation to
-execute the action on.
-
-**•** User Who Runs the Flow—Execute the action as the user
-who runs the flow. The user can execute the action only
-when the flow runs in the user context. If the flow runs in
-the system context, the Slack app executes it.
-
-The user must be a member of the conversation to execute
-the action on.
-
-Set Slack Message Details
-
-**Input Parameter** **Description**
-
-```
-Slack Conversation ID
-
-```
-
-Required. The ID of the channel or direct message to send the message to. Alternatively,
-specify a Slack user ID to send the message to the user via the Messages tab of the Slack
-app. Enter a value or select a resource.
-
-You can obtain the Slack conversation ID by logging in to Slack.com and launching Slack
-in your browser. The conversation ID is the last parameter in the URL. For example, in this
-URL, the conversation ID is `C56789FGHIJ` :
-
-```
-https://app.slack.com/client/T01234ABCDE/C56789FGHIJ
-
-```
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-```
-Slack Message
-
-```
-
-Required. The message to send. For best results, include no more than 4,000 characters.
-Slack truncates messages containing more than 40,000 characters. Enter a value or select
-a resource.
-
-Slack supports text formatting with Slack `mrkdown` . To disable formatting for a plain
-text message that contains Slack `mrkdown`, use an escape sequence.
-
-Slack doesn’t support text formatting with HTML and renders rich text messages as plain
-text.
-
-`Salesforce Record ID` [The record ID to send to the view. Defining a view is a pilot feature. For more information,](https://developer.salesforce.com/docs/platform/salesforce-slack-sdk/guide/views.html)
-[see Define a View in the](https://developer.salesforce.com/docs/platform/salesforce-slack-sdk/guide/views_create.html) _Apex SDK for Slack (Pilot) Guide_ .
-
-```
-Slack Message Timestamp
-
-```
-
-The timestamp of the Slack message. Specify a timestamp to start a Slack thread. Enter a
-value or select a resource. For example, enter _`1234567890.123456`_ .
-
-The numerals before the period character (.) specify a Unix timestamp. The numerals after
-the period character specify microseconds.
-
-You can store the Slack Message Timestamp output parameter of the Send Slack Message,
-Edit Slack Message, or Send Message To Launch Flow action as a resource to use later.
-
-`View API Name` [The API name of the view that the Slack message is sent with. Defining a view is a pilot](https://developer.salesforce.com/docs/platform/salesforce-slack-sdk/guide/views.html)
-[feature. For more information, see Define a View in the](https://developer.salesforce.com/docs/platform/salesforce-slack-sdk/guide/views_create.html) _Apex SDK for Slack (Pilot) Guide_ .
-
-Store Output Values
-
-**OUTPUT Parameter** **Description**
-
-`Slack Message Timestamp` The timestamp of the sent message.
-
-Usage
-
-This action is available only if you enable the connection to Slack in Setup and the user who runs the flow is connected to Slack. Otherwise,
-the action fails.
-
-SEE ALSO:
-
-[Enable Salesforce for Slack Integrations](https://help.salesforce.com/s/articleView?id=sf.slack_apps_enable.htm&language=en_US)
-
-_Salesforce Admins_ [: How Admins Can Connect Salesforce and Slack](https://admin.salesforce.com/blog/2021/how-admins-can-connect-salesforce-and-slack)
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Flow Core Actions for Slack: Send Message to Launch Flow
-
-Send a message to a Slack channel, direct message, or the Messages tab of a Slack app that includes
-a button that a recipient can use to launch a screen flow.
-
-In Flow Builder, add an Action element to your flow. In the New Action window, select **Slack**, and
-then select the name of the flow to send.
-
-Set Connection Values for Slack
-
-**Input Parameter** **Description**
-
-EDITIONS
-
-Available in: both Salesforce
-Classic and Lightning
-Experience
-
-Available in: **Essentials,**
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-```
-Slack App
-
-Slack Workspace
-
-```
-
-Required. The Slack app that executes the action. Only Slack apps
-that are installed for the org are available. The input value
-evaluates to the Slack app ID.
-
-Required. The Slack workspace where the Slack app is installed.
-Select a value or resource. The input value evaluates to the Slack
-workspace ID.
-
-You can obtain the Slack workspace ID by logging in to Slack.com
-and launching Slack in your browser. The workspace ID is the
-penultimate parameter in the URL. For example, in this URL, the
-workspace ID is `T01234ABCDE` :
-
-```
-https://app.slack.com/client/T01234ABCDE/C56789FGHIJ
-
-```
-
-`Execute Action As` The entity that executes the action. Valid values are:
-
-**•** Slack App—Execute the action as the Slack app that you
-selected in the Slack App field. It’s the default value.
-
-The Slack app must be a member of the conversation to
-execute the action on.
-
-**•** User Who Runs the Flow—Execute the action as the user
-who runs the flow. The user can execute the action only
-when the flow runs in the user context. If the flow runs in
-the system context, the Slack app executes it.
-
-The user must be a member of the conversation to execute
-the action on.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Set Slack Message Details
-
-**Input Parameter** **Description**
-
-```
-Slack Conversation ID
-
-```
-
-Required. The ID of the channel or the direct message to send the message to. Alternatively,
-specify a Slack user ID to send the message to the user via the Messages tab of the Slack
-app. Enter a value or select a resource.
-
-You can obtain the Slack conversation ID by logging in to Slack.com and launching Slack
-in your browser. The conversation ID is the last parameter in the URL. For example, in this
-URL, the conversation ID is `C56789FGHIJ` :
-
-```
-https://app.slack.com/client/T01234ABCDE/C56789FGHIJ
-
-```
-
-`Slack Message` Required. The message to send. For best results, include no more than 4,000 characters.
-Slack truncates messages containing more than 40,000 characters. Enter a value or select
-
-a resource. The message to send can’t be edited. Using the Edit Message action or manual
-editing results in process failures.
-
-Slack supports text formatting with Slack `mrkdown` . To disable formatting for a plain
-text message that contains Slack `mrkdown`, use an escape sequence.
-
-Slack doesn’t support text formatting with HTML and renders rich text messages as plain
-text.
-
-```
-Button Label
-
-```
-
-Required. The label for the button that appears below the message. The user clicks the
-button to launch the flow from Slack.
-
-Slack supports text formatting with Slack `mrkdown` . To disable formatting for a plain
-text message that contains Slack `mrkdown`, use an escape sequence.
-
-Slack doesn’t support text formatting with HTML and renders rich text messages as plain
-text.
-
-`Slack Bot Name` The name of the bot that sends the message in Slack. Enter a value or select a resource.
-
-```
-Slack Message Timestamp
-
-```
-
-Store Output Values
-
-The timestamp of the Slack message. Specify a timestamp to start a Slack thread. Enter a
-value or select a resource. For example, enter _`1234567890.123456`_ .
-
-The numerals before the period character (.) specify a Unix timestamp. The numerals after
-the period character specify microseconds.
-
-You can store the Slack Message Timestamp output parameter of the Send Slack Message,
-Edit Slack Message, or Send Message To Launch Flow action as a resource to use later.
-
-**Input Parameter** **Description**
-
-`Slack Message Timestamp` The timestamp of the message sent.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Usage
-
-This action is available only if you enable the connection to Slack in Setup and the user who runs the flow is connected to Slack. Otherwise,
-the action fails.
-
-SEE ALSO:
-
-[Enable Salesforce for Slack Integrations](https://help.salesforce.com/s/articleView?id=sf.slack_apps_enable.htm&language=en_US)
-
-_Salesforce Admins_ [: How Admins Can Connect Salesforce and Slack](https://admin.salesforce.com/blog/2021/how-admins-can-connect-salesforce-and-slack)
-
-Flow Core Action: Submit for Approval
-
-Submit one Salesforce record for approval.
-
-Tip: Before you begin, store the ID for the record that you want to submit for approval in a
-variable.
-
-##### In Flow Builder, add an Action element to your flow. In the Action field, enter Submit, and select Submit for Approval .
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs for the approval request.
-
-**Input Parameter** **Description**
-
-EDITIONS
-
-Available in: both Salesforce
-Classic and Lightning
-Experience
-
-Available in: **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-```
-Record ID
-
-Approval Process
-
-Name or ID
-
-Next Approver IDs
-
-Skip Entry Criteria
-
-```
-
-The ID of the record that you want to submit for approval.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-The unique name or ID of the approval process that you want to submit the record to. The process
-must have the same object type as the record you specified in `Record ID` .
-
-Required if `Skip Entry Criteria` is set to _`true`_ .
-
-If this parameter and `Submitter ID` aren’t set, the flow succeeds only when: Make sure that:
-
-**•** The approver on submit is determined automatically, and
-
-**•** The user who launched the flow is an allowed initial submitter
-
-**•** The approver on submit is determined automatically.
-
-**•** The initial submitters for the approval processes related to this object include all users who could
-launch this flow.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-The ID of the user to be assigned the approval request when the approval process doesn’t assign the
-approver.
-
-This parameter accepts collection variables of type Text that include exactly one item.
-
-If set to _`true`_, the record isn’t evaluated against the entry criteria set on the process that is defined
-in `Approval Process Name or ID` .
-
-This parameter accepts any single-value resource of type Boolean.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-```
-Submission Comments
-
-Submitter ID
-
-```
-
-Store Output Values
-
-Text that you want to accompany the submission. Don’t reference merge fields or formula expressions.
-
-Submission comments appear in the approval history for the specified record. This text also appears
-in the initial approval request email if the template uses the `{!ApprovalRequest.Comments}`
-merge field.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-The ID for the user who submitted the record for approval. The user receives notifications about
-responses to the approval request.
-
-The user must be one of the allowed submitters for the process.
-
-If you don’t set this field, the user who launched the flow is the submitter. If a workflow rule triggers
-a flow that includes this element, the submitter is the user who triggered the workflow rule. Workflow
-rules can be triggered when a user creates or edits a record. When the record is approved or rejected,
-the user who launched the flow or triggered the workflow rule is notified.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-To use the approval request’s outputs later in the flow, store them in variables. The values are assigned when the approval request is
-created.
-
-**Optional Output** **Description**
-**Parameter**
-
-```
-Instance ID
-
-Instance Status
-
-New Work Item IDs
-
-Next Approver IDs
-
-Record ID
-
-```
-
-The ID of the approval request that was submitted.
-
-This parameter accepts single-value variables of type Text, Picklist, or Multi-Select Picklist.
-
-The status of the current approval request. Valid values are Approved, Rejected, Removed, or Pending.
-
-This parameter accepts single-value variables of type Text, Picklist, or Multi-Select Picklist.
-
-The IDs of the new items submitted to the approval request. There can be 0 or 1 approval processes.
-
-This parameter accepts collection variables of type Text.
-
-The IDs of the users who are assigned as the next approvers.
-
-This parameter accepts collection variables of type Text.
-
-The ID of the record that the flow submitted for approval.
-
-This parameter accepts single-value variables of type Text, Picklist, or Multi-Select Picklist.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Usage
-
-At run time, the approval request isn’t created until the interview’s transaction is completed. Transactions are complete when the
-interview either finishes or executes a Screen, Local Action, or Wait element.
-
-SEE ALSO:
-
-Flow Elements
-
-Add and Edit Elements
-
-Customize What Happens When a Flow Fails
-
-Move and Connect Elements to Change a Flow Route
-
-##### Salesforce Anywhere Core Flow Actions (Beta)
-
-Salesforce Anywhere provides several core actions for implementing Salesforce Anywhere
-functionality in flows. To add one of these actions to your flow, add an Action element. Then select
-the Salesforce Anywhere category, and search for the appropriate action.
-
-Note: Salesforce Anywhere Beta is a Non-GA Service and not a “Service” or part of the
-“Services”, as defined in the Main Services Agreement ("MSA") with Salesforce. Such Non-GA
-[Service is subject to the terms and conditions of the Universal Pilot Research Agreement](https://c1.sfdcstatic.com/content/dam/web/en_us/www/documents/legal/Agreements/beta-agreements/Beta-Services-Agreement.pdf)
-[("UPRA"), including the Data Processing Addendum to the UPRA. Use of this Non-GA Service](https://c1.sfdcstatic.com/content/dam/web/en_us/www/documents/legal/Agreements/beta-agreements/sfdc-pilot-dpa.pdf)
-is at your sole discretion, and any purchase decisions are made only on the basis of Salesforce
-generally available products and features.
-
-These actions are available when you enable Salesforce Anywhere.
-
-EDITIONS
-
-Available in: **Lightning**
-**Experience**
-
-Available in: **Enterprise**,
-**Performance**, **Professional**,
-**Developer**, and **Unlimited**
-Editions
-
-Flow Core Action for Salesforce Anywhere: Create a Salesforce Anywhere Chat (Beta)
-Create a Salesforce Anywhere chat by specifying participants, and optionally, an initial message and chat title.
-
-Flow Core Action for Salesforce Anywhere: Add a Message to a Salesforce Anywhere Chat (Beta)
-Add a message to an existing Salesforce Anywhere chat by specifying the chat URL and message content.
-
-Flow Core Action for Salesforce Anywhere: Add Users to a Salesforce Anywhere Chat (Beta)
-Add users to an existing Salesforce Anywhere chat by specifying the chat URL and the users to be added.
-
-Flow Core Action for Salesforce Anywhere: Send Salesforce Anywhere Alerts to Users (Beta)
-Notify users about Salesforce Anywhere chat by specifying the chat URL and the users to be added.
-
-SEE ALSO:
-
-Add and Edit Elements
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Flow Core Action for Salesforce Anywhere: Create a Salesforce Anywhere Chat (Beta)
-
-Create a Salesforce Anywhere chat by specifying participants, and optionally, an initial message
-and chat title.
-
-Note: Salesforce Anywhere Beta is a Non-GA Service and not a “Service” or part of the
-“Services”, as defined in the Main Services Agreement ("MSA") with Salesforce. Such Non-GA
-[Service is subject to the terms and conditions of the Universal Pilot Research Agreement](https://c1.sfdcstatic.com/content/dam/web/en_us/www/documents/legal/Agreements/beta-agreements/Beta-Services-Agreement.pdf)
-[("UPRA"), including the Data Processing Addendum to the UPRA. Use of this Non-GA Service](https://c1.sfdcstatic.com/content/dam/web/en_us/www/documents/legal/Agreements/beta-agreements/sfdc-pilot-dpa.pdf)
-is at your sole discretion, and any purchase decisions are made only on the basis of Salesforce
-generally available products and features.
-
-In Flow Builder, add an Action element to your flow. Select the Salesforce Anywhere category, and
-search for _`chat`_ . Select **Create Chat** .
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs for the chat.
-
-**Input Parameter** **Description**
-
-EDITIONS
-
-Available in: **Lightning**
-**Experience**
-
-Available in: **Enterprise**,
-**Performance**, **Professional**,
-**Developer**, and **Unlimited**
-Editions
-
-```
-chatMessage
-
-userEmails
-
-```
-
-Store Output Values
-
-The first message sent to the chat.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-A comma-separated list of email addresses belonging to one or more users getting added to the chat. Must
-list at least two email addresses and no more than 50 email addresses.
-
-Email addresses must be part of your Salesforce Anywhere organization. If an email address isn’t included in
-your Salesforce Anywhere organization, the user isn’t included in the chat.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-**Output Parameter** **Description**
-
-```
-chatId
-
-chatTitle
-
-chatUrl
-
-```
-
-Usage
-
-The chat’s ID.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-The name users see at the top of the chat.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-The chat’s URL.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-In Flow Builder, this action doesn’t check the number of email addresses or the validity of the email addresses. When either criteria is
-invalid, the flow fails at run time.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-The API used for this action has a rate limit of 50 requests per minute and 750 requests per hour.
-
-SEE ALSO:
-
-Add and Edit Elements
-
-Flow Core Action for Salesforce Anywhere: Add a Message to a Salesforce Anywhere Chat (Beta)
-
-Add a message to an existing Salesforce Anywhere chat by specifying the chat URL and message
-content.
-
-Note: Salesforce Anywhere Beta is a Non-GA Service and not a “Service” or part of the
-“Services”, as defined in the Main Services Agreement ("MSA") with Salesforce. Such Non-GA
-[Service is subject to the terms and conditions of the Universal Pilot Research Agreement](https://c1.sfdcstatic.com/content/dam/web/en_us/www/documents/legal/Agreements/beta-agreements/Beta-Services-Agreement.pdf)
-[("UPRA"), including the Data Processing Addendum to the UPRA. Use of this Non-GA Service](https://c1.sfdcstatic.com/content/dam/web/en_us/www/documents/legal/Agreements/beta-agreements/sfdc-pilot-dpa.pdf)
-is at your sole discretion, and any purchase decisions are made only on the basis of Salesforce
-generally available products and features.
-
-In Flow Builder, add an Action element to your flow. Select the Salesforce Anywhere category, and
-search for _`message`_ . Select **Add Message to Chat** .
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs for the message.
-
-**Input Parameter** **Description**
-
-EDITIONS
-
-Available in: **Lightning**
-**Experience**
-
-Available in: **Enterprise**,
-**Performance**, **Professional**,
-**Developer**, and **Unlimited**
-Editions
-
-```
-chatUrl
-
-chatMessage
-
-recordId
-
-```
-
-Store Output Values
-
-The chat's URL.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-The message to send to the chat.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-The ID of the Salesforce record to send to the chat. The record's compact layout is displayed in the chat.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-**Output Parameter** **Description**
-
-```
-chatId
-
-chatMessage
-
-chatUrl
-
-```
-
-The chat’s ID.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-The message sent to the chat.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-The chat’s URL.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Output Parameter** **Description**
-
-```
-recordId
-
-```
-
-Usage
-
-The ID of the record sent to the chat.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-Only existing chat members can trigger this action. For example, only an existing chat member can successfully run a flow that sends a
-message to a chat about a service case when that case record is updated.
-
-A flow can’t create a record and then reference that new record ID as an input for this action.
-
-The API used for this action has a rate limit of 50 requests per minute and 750 requests per hour.
-
-SEE ALSO:
-
-Add and Edit Elements
-
-Flow Core Action for Salesforce Anywhere: Add Users to a Salesforce Anywhere Chat (Beta)
-
-Add users to an existing Salesforce Anywhere chat by specifying the chat URL and the users to be
-added.
-
-Note: Salesforce Anywhere Beta is a Non-GA Service and not a “Service” or part of the
-“Services”, as defined in the Main Services Agreement ("MSA") with Salesforce. Such Non-GA
-[Service is subject to the terms and conditions of the Universal Pilot Research Agreement](https://c1.sfdcstatic.com/content/dam/web/en_us/www/documents/legal/Agreements/beta-agreements/Beta-Services-Agreement.pdf)
-[("UPRA"), including the Data Processing Addendum to the UPRA. Use of this Non-GA Service](https://c1.sfdcstatic.com/content/dam/web/en_us/www/documents/legal/Agreements/beta-agreements/sfdc-pilot-dpa.pdf)
-is at your sole discretion, and any purchase decisions are made only on the basis of Salesforce
-generally available products and features.
-
-In Flow Builder, add an Action element to your flow. Select the Salesforce Anywhere category, and
-search for _`users`_ . Select **Add Users to Chat** .
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs for the new users.
-
-**Input Parameter** **Description**
-
-EDITIONS
-
-Available in: **Lightning**
-**Experience**
-
-Available in: **Enterprise**,
-**Performance**, **Professional**,
-**Developer**, and **Unlimited**
-Editions
-
-```
-chatUrl
-
-userEmails
-
-```
-
-The chat's URL.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-Required. A comma-separated list of email addresses belonging to up to 50 users getting added to the chat.
-
-Email addresses must be part of your Salesforce Anywhere organization. If an email address isn’t included in
-your Salesforce Anywhere organization, the user isn’t be included in the chat.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Store Output Values
-
-**Output Parameter** **Description**
-
-```
-chatId
-
-chatUrl
-
-chatTitle
-
-```
-
-Usage
-
-The chat’s ID.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-The chat’s URL.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-The name users see at the top of the chat.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-In Flow Builder, this action doesn’t check the number of email addresses or the validity of the email addresses. When either criteria is
-invalid, the flow fails at run time.
-
-Only existing chat members can trigger this action. For example, only an existing chat member can successfully run a flow that adds
-new users to a chat about a service case when that case record is updated.
-
-The API used for this action has a rate limit of 50 requests per minute and 750 requests per hour.
-
-SEE ALSO:
-
-Add and Edit Elements
-
-Flow Core Action for Salesforce Anywhere: Send Salesforce Anywhere Alerts to Users (Beta)
-
-Notify users about Salesforce Anywhere chat by specifying the chat URL and the users to be added.
-
-Note: Salesforce Anywhere Beta is a Non-GA Service and not a “Service” or part of the
-“Services”, as defined in the Main Services Agreement ("MSA") with Salesforce. Such Non-GA
-[Service is subject to the terms and conditions of the Universal Pilot Research Agreement](https://c1.sfdcstatic.com/content/dam/web/en_us/www/documents/legal/Agreements/beta-agreements/Beta-Services-Agreement.pdf)
-[("UPRA"), including the Data Processing Addendum to the UPRA. Use of this Non-GA Service](https://c1.sfdcstatic.com/content/dam/web/en_us/www/documents/legal/Agreements/beta-agreements/sfdc-pilot-dpa.pdf)
-is at your sole discretion, and any purchase decisions are made only on the basis of Salesforce
-generally available products and features.
-
-In Flow Builder, add an Action element to your flow. Select the Salesforce Anywhere category, and
-search for _`alert`_ . Select **Send Alert** .
-
-Set Input Values
-
-Use values from earlier in the flow to set the inputs for the alert.
-
-**Input Parameter** **Description**
-
-EDITIONS
-
-Available in: **Lightning**
-**Experience**
-
-Available in: **Enterprise**,
-**Performance**, **Professional**,
-**Developer**, and **Unlimited**
-Editions
-
-```
-alertMessage
-
-```
-
-The message sent in the alert.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Input Parameter** **Description**
-
-```
-userEmails
-
-recordId
-
-```
-
-Store Output Values
-
-A comma-separated list of the users’ email addresses.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-The ID of the Salesforce record to send to the chat. The record's compact layout is displayed in the chat.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-**Output Parameter** **Description**
-
-```
-eventOperationId
-
-```
-
-SEE ALSO:
-
-The unique ID generated for the alert.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-_Platform Events Developer Guide_ [: Platform Events Considerations](https://developer.salesforce.com/docs/atlas.en-us.platform_events.meta/platform_events/platform_event_extras.htm)
-
-Add and Edit Elements
-
-Standard Flow Screen Components
-
-Salesforce provides several standard screen components that extend the types of input fields
-available in screens.
-
-If you need more functionality, for example, to install a custom screen component from an external
-[library, have a developer build one for you.](https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/components_config_for_flow_screens_intro.htm)
-
-Flow Screen Input Component: Action Button
-Use the Action Button component so the running user can trigger a screen action with the click
-of a button on a screen. The screen action runs an active autolaunched flow, and the results of
-the autolaunched flow can be shown on the same screen as the button. Using this component
-means that you need fewer screens so users can complete screen flows more quickly.
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-Flow Screen Input Component: Address
-Simplify gathering address information by adding the Address component to a flow screen. The Address screen component displays
-a complete address form that’s customized to your settings. It can also use state and country/territory picklists.
-
-Flow Screen Input Component: Checkbox
-Offer flow users a yes-or-no choice with a checkbox.
-
-Flow Screen Input Component: Checkbox Group
-Let users choose multiple options in a checkbox format.
-
-Flow Screen Input Component: Choice Lookup
-Let users search for and select one option from a set of choices on a flow screen. The component supports only Text values.
-
-Flow Screen Input Component: Currency
-Let users enter currency values from a flow screen.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Flow Screen Input Component: Data Table
-Let users select records from a table in a flow.
-
-Flow Screen Input Component: Date
-Let users enter date values from a flow screen.
-
-Flow Screen Input Component: Date & Time
-Let users enter date and time values from a flow screen, such as to request an appointment.
-
-Flow Screen Input Component: Dependent Picklists
-Display picklists in a flow screen in which the options for one picklist depend on the selected value of another picklist. The Dependent
-Picklists screen component determines which options to display in each picklist by using an existing field dependency in your org.
-A _field dependency_ connects two picklist fields on the same object.
-
-Flow Screen Input Component: Display Image
-Easily insert images in flow screens. Upload images to Salesforce as static resources and then you can reference them while configuring
-the component.
-
-Flow Screen Input Component: Email
-Let users enter email address values from a flow screen.
-
-Flow Screen Input Component: Enhanced Message
-Let users send a messaging component in an enhanced Messaging session.
-
-Flow Screen Input Component: File Upload
-Let users upload files from a flow screen.
-
-Flow Screen Input Component: Long Text Area
-Let users enter a paragraph or two of text from a flow screen.
-
-Flow Screen Input Component: Lookup
-Let users search for and select one or more records in a flow.
-
-Flow Screen Input Component: Multi-Select Picklist
-Let users choose multiple options in a picklist format.
-
-Flow Screen Input Component: Name
-Let users enter multiple name values with one screen component. Instead of the Name screen component, you can use Text input
-fields to capture name information, but it takes a lot more configuration.
-
-Flow Screen Input Component: Number
-Let users enter number values from a flow screen.
-
-Flow Screen Input Component: Order Management Product Selector
-Let users select which fields show in columns during product selector for various transaction types, such as returns or exchanges.
-
-Flow Screen Input Component: Password
-Let users enter sensitive information in a flow screen, such as a social security number. Text entered by the user is masked.
-
-Flow Screen Input Component: Phone
-Let users enter phone values from a flow screen.
-
-Flow Screen Input Component: Picklist
-Let users choose from a list of options in a picklist format.
-
-Flow Screen Input Component: Radio Buttons
-Let users choose from a list of options in a radio button format.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Flow Screen Input Component: Slack Channel Selector
-Let users select a Slack channel to send a Slack message from a flow screen.
-
-Flow Screen Input Component: Slack Workspace Selector
-Let users select a Slack workspace to send a Slack message to from a flow screen.
-
-Flow Screen Input Component: Slider
-Let users visually specify number values from a flow screen.
-
-Flow Screen Input Component: Text
-Let users enter text from a flow screen, such as the name of the user’s company.
-
-Flow Screen Input Component: Toggle
-Let users flip a toggle in a flow screen.
-
-Flow Screen Input Component: URL
-Let users enter URL values in a flow screen.
-
-Flow Screen Output Component: Display Text
-Display information in a flow screen.
-
-Flow Screen Display Component: Repeater
-Collect information about multiple items of the same type on a screen with the Repeater component. To use the output of the
-component elsewhere in the flow, loop over the output and save the relevant data in a variable. Use the variable to build a list of
-records.
-
-Flow Screen Output Component: Section
-Organize screen components and record fields to give your users a better experience.
-
-Flow Screen Input Component: Action Button
-
-Use the Action Button component so the running user can trigger a screen action with the click of
-a button on a screen. The screen action runs an active autolaunched flow, and the results of the
-autolaunched flow can be shown on the same screen as the button. Using this component means
-that you need fewer screens so users can complete screen flows more quickly.
-
-For example, you can make it possible for users to select an account record in a Lookup component,
-click a button to retrieve the contact records associated with the account record, and then display
-the contact records in a Data Table component on the same screen.
-
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Configure the Action Button Name
-
-**Attribute** **Description**
-
-`API Name` The API name of the component.
-
-An API name can include underscores and alphanumeric characters without spaces. It must begin
-with a letter and can’t end with an underscore. It also can’t have two consecutive underscores.
-
-`Label` If you select Use Label as the table title, the user-friendly text that appears above the component.
-
-```
-Disabled
-
-```
-
-Configure the Action
-
-If set to true, the user can’t modify the value. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-**Attribute** **Description**
-
-`Action` The screen action that launches the autolaunched flow. This is the flow that runs when the user clicks
-the button rendered by the Action Button component. The autolaunched flow must be active.
-
-`Label` The user-friendly name for the action associated with the component. This value can be different than
-the label of the flow that you select as the action.
-
-```
-API Name
-
-Set Input Values
-
-View Output Values
-
-```
-
-The API name for the action associated with the component. This value can be different than the API
-name of the flow that you select as the action.
-
-An API name can include underscores and alphanumeric characters without spaces. It must begin
-with a letter and can’t end with an underscore. It also can’t have two consecutive underscores.
-
-Specify the value of each input field required by the action associated with the component. For
-example, if you select an autolaunched flow that requires an Account ID as an input, provide the
-Account ID. Variables that are available for input in the autolaunched flow appear in this area.
-
-View the outputs created by the action. To reference an output elsewhere in the flow, first reference
-the Results field, for example, `actionButtonApiName. Results.output` . Variables that
-are available for output in the autolaunched flow appear in this area. Output values include:
-
-**•** ErrorMessage—Description of an error that occurred while executing the invocable action
-
-**•** IsSuccess—If true, indicates that the invocable action ran without errors
-
-**•** Action.Results.Flow__InterviewGuid—Unique identifier of the flow interview
-
-**•** Action.Results.Flow__InterviewStatus—The status of the flow interview
-
-**•** InProgress—If true, indicates that the screen action is running.
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-   Component
-```
-
-You can set the components to:
-
-**Always**
-Always display the component.
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-Specify the Behavior of Values on Revisited Screens
-
-Specify what this component does when a user enters a value, navigates to a previous screen, and then returns to the screen with this
-component.
-
-**Option** **Description**
-
-`Use values from when` The component retains the values that the user specified and doesn’t update the values to reflect
-`the user last` changes made on previous screens.
-
-```
-   visited this screen
-
-```
-
-```
-Refresh inputs to
-
-incorporate changes
-
-elsewhere in the
-
-flow
-
-```
-
-The component updates the user-specified values to reflect changes made on previous screens.
-
-If you pause and then resume the flow, the flow retains user-specified values only in Checkbox,
-Checkbox Group, Currency, Long Text Area, Multi-Select Picklist, Number, Password, Picklist, Radio
-Buttons, and Text components.
-
-Specify Another Component’s Behavior with the In Progress Output Attribute
-
-When a user clicks an action button, the In Progress attribute for the associated screen action is set to `true` . When the action completes,
-the In Progress attribute is set back to `false` .
-
-Use the In Progress attribute to specify another component’s behavior. For example, use it to disable a screen component while the
-action is running. Set the value of the Disabled field on the component to the In Progress attribute. When In Progress is `true` the
-Disabled field is also set to `true` . When the action completes and In Progress is set to `false`, the disabled field is also set to false.
-
-Considerations
-
-**•** If a user runs a flow with an Action Button component in a web browser, the outputs of the action associated with the component
-are available to the browser. Don’t share sensitive information as the output of an Action Button component.
-
-**•** Autolaunched flows that include Wait elements or subflows with Wait elements aren’t supported as Action Button actions because
-the flow won’t resume after a Wait element.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**•** Action Buttons aren’t supported in Repeater components.
-
-**•** Launching a flow with an asynchronous path isn’t supported.
-
-**•** If a flow launched from the action button doesn't have fault paths, and an error occurs, a generic error message shows under the
-action button. To show a helpful error message to users instead, add fault paths to the launched flow. On each fault path, set an
-output variable to `{!$Flow.FaultMessage}` . Then, on the flow screen with the action button, add a Display Text component
-that's conditionally hidden and contains a helpful error message along with the fault message variable.
-
-Note: Even if a Display Text component content contains an error message, screen readers don’t announce the content as
-an error message.
-
-**•** If an input or output variable in the screen action’s autolaunched flow is a record variable, and you change a field name on the object,
-the new field name isn’t reflected when you refresh the inputs and outputs.
-
-**•** If an input or output variable in the screen action’s autolaunched flow is an Apex variable, and you change the structure of the Apex
-type, those changes aren't reflected when you refresh the inputs and outputs.
-
-SEE ALSO:
-
-Data Safety When Running Screen and Autolaunched Flows in System Context
-
-_Video_ [: Action Button in Salesforce Flow](https://www.youtube.com/watch?v=GS5GAFHpVGk)
-
-Flow Screen Actions
-
-Flow Screen Input Component: Address
-
-Simplify gathering address information by adding the Address component to a flow screen. The
-##### Address screen component displays a complete address form that’s customized to your settings.
-
-It can also use state and country/territory picklists.
-
-For information about adding screen components to your flow screen, see Flow Element: Screen.
-
-Note: This screen component requires Lightning runtime.
-
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Configure the Address Component
-
-You can select resources from the flow, such as variables or global constants, or you can manually enter a value.
-
-**Attribute** **Description**
-
-`API Name` The API name of the component.
-
-An API name can include underscores and alphanumeric characters without spaces. It must begin
-with a letter and can’t end with an underscore. It also can’t have two consecutive underscores.
-
-```
-City Value
-
-Country Code
-
-Country Options
-
-Country Value
-
-Disabled
-
-Label
-
-Postal Code Value
-
-Required
-
-Show Google Maps
-
-Search Field
-
-```
-
-To give City a default value, set this attribute's value.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-The code for the country in the address. To give Country a default value, set this attribute's value.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-The active countries and territories configured in state and country/territory picklists. To override the
-options, set this attribute to a comma-delimited set of countries and territories. This field populates a
-dropdown menu of options.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-The value for the country in the address. To give Country a default value, set this attribute's value.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-If set to true, the user can’t modify the value. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-The label for the heading that appears above the group of address fields.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-To give Postal Code a default value, set this attribute's value.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-If set to true, the running user must enter a value. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Indicates whether to include a search field powered by Google Maps in the component. To include
-a search field, enter `true` as a boolean value. When a user selects an address in the search field, the
-flow populates the other fields in the component.
-
-The default value is `false` .
-
-`Google Maps Search` The label that appears above the Google Maps search field.
-
-```
-Field Label
-
-```
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Attribute** **Description**
-
-```
-State or Province
-
-Code
-
-State or Province
-
-Options
-
-State or Province
-
-Value
-
-Street Value
-
-```
-
-The code for the state or province in the address. If `State/Province Options` is configured,
-this value is selected by default. To give State a default value, set this attribute's value.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-The active states configured in state and country/territory picklists. To override the options, set this
-attribute to a comma-delimited set of states. This field populates a dropdown menu of options.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-The value of the state or province in the address. If `State/Province Options` is configured,
-this value is selected by default. To give State a default value, set this attribute's value.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-To give Street a default value, set this attribute's value.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-Component
-```
-
-You can set the components to:
-
-**Always**
-Always display the component.
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-Validate Input
-
-Provide a formula that evaluates whether what the user entered is valid and the error message to display if invalid.
-
-**Option** **Description**
-
-`Error Message` Specify the error message that appears below the component if the user enters an invalid value.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Option** **Description**
-
-`Formula` Provide a formula expression that returns a Boolean value.
-
-If the formula expression evaluates to `true`, the input is valid. If the formula expression evaluates to
-`false`, the error message appears below the component.
-
-If the user leaves the field blank and the field isn’t required, the flow doesn’t perform the validation.
-If the user leaves the field blank and the field is required, the flow shows the default error message
-and not your custom error message.
-
-Store the Address Component’s Values in the Flow
-
-The flow stores values automatically. If you store values manually, store the attribute’s output value in a variable.
-
-To store values manually, select **Manually assign variables (advanced)** .
-
-All attributes are available to store in flow variables. Most likely, you must store one of these attributes.
-
-**Attribute** **Description**
-
-```
-City Value
-
-Country Code
-
-Country Value
-
-Postal Code Value
-
-State or Province
-
-Code
-
-State or Province
-
-Value
-
-Street Value
-
-```
-
-What the user entered in the City Value field.
-
-This value can be stored in a single-value Text variable or a Text field on a record variable.
-
-What the user entered in the Country Code field.
-
-This value can be stored in a single-value Text variable or a Text field on a record variable.
-
-What the user entered in the Country Value field.
-
-This value can be stored in a single-value Text variable or a Text field on a record variable.
-
-What the user entered in the Postal Code Value field.
-
-This value can be stored in a single-value Text variable or a Text field on a record variable.
-
-What the user entered in the State or Province Code field.
-
-This value can be stored in a single-value Text variable or a Text field on a record variable.
-
-What the user entered in the State of Province Value field. To update records in orgs with the State
-and Country/Territory Picklists setting enabled, use State or Province Code instead.
-
-This value can be stored in a single-value Text variable or a Text field on a record variable.
-
-What the user entered in the Street Value field.
-
-This value can be stored in a single-value Text variable or a Text field on a record variable.
-
-Tip: By default, screen components that run on Lightning runtime version 58 and prior have no memory. If a user enters a value,
-and then does one of the following, the value is lost.
-
-**•** Navigates to another screen and returns to the component’s screen.
-
-**•** Pauses the flow then resumes it.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**•** Navigates to the next screen and triggers an input validation error.
-
-Setting the attribute enables a flow to remember the value. The flow stores the value automatically. If you store values manually,
-store the attribute’s output value in a variable.
-
-Specify the Behavior of Values on Revisited Screens
-
-Specify what this component does when a user enters a value, navigates to a previous screen, and then returns to the screen with this
-component.
-
-**Option** **Description**
-
-`Use values from when` The component retains the values that the user specified and doesn’t update the values to reflect
-`the user last` changes made on previous screens.
-
-```
-   visited this screen
-
-```
-
-```
-Refresh inputs to
-
-incorporate changes
-
-elsewhere in the
-
-flow
-
-```
-
-Considerations
-
-The component updates the user-specified values to reflect changes made on previous screens.
-
-If you pause and then resume the flow, the flow retains user-specified values only in Checkbox,
-##### Checkbox Group, Currency, Long Text Area, Multi-Select Picklist, Number, Password, Picklist, Radio
-
-Buttons, and Text components.
-
-**•** To update records in orgs with the State and Country/Territory Picklists setting enabled, use the Country Code and State or Province
-Code outputs instead of the Country Value and State or Province Value outputs.
-
-**•** The Google Maps search fields isn’t supported in Playground, Experience Builder sites, Lightning Out, Lightning Components for
-Visualforce, and standalone apps.
-
-SEE ALSO:
-
-Standard Flow Screen Components
-
-Flow Screen Input Component: Checkbox
-
-Offer flow users a yes-or-no choice with a checkbox.
-
-Configure the Checkbox Component
-
-**Attribute** **Description**
-
-```
-API Name
-
-Default Value
-
-```
-
-The API name of the component.
-
-An API name can include underscores and alphanumeric characters
-without spaces. It must begin with a letter and can’t end with an
-underscore. It also can’t have two consecutive underscores.
-
-Pre-populated value for the component. If the associated screen isn’t
-executed or the conditions for component visibility aren’t met, the stored
-value of the component is `null` .
-
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Attribute** **Description**
-
-```
-Disabled
-
-```
-
-If set to true, the user can’t modify the value. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-`Label` The text that appears with the screen component that tells the running user how to use it.
-
-`Provide Help` Give your users more context with this screen component. The text you enter is available in an info
-bubble next to the component.
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-Component
-```
-
-You can set the components to:
-
-**Always**
-Always display the component.
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-Validate Input
-
-Provide a formula that evaluates whether what the user entered is valid and the error message to display if invalid.
-
-**Option** **Description**
-
-`Error Message` Specify the error message that appears below the component if the user enters an invalid value.
-
-`Formula` Provide a formula expression that returns a Boolean value.
-
-If the formula expression evaluates to `true`, the input is valid. If the formula expression evaluates to
-`false`, the error message appears below the component.
-
-If the user leaves the field blank and the field isn’t required, the flow doesn’t perform the validation.
-If the user leaves the field blank and the field is required, the flow shows the default error message
-and not your custom error message.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Specify the Behavior of Values on Revisited Screens
-
-Specify what this component does when a user enters a value, navigates to a previous screen, and then returns to the screen with this
-component.
-
-**Option** **Description**
-
-`Use values from when` The component retains the values that the user specified and doesn’t update the values to reflect
-`the user last` changes made on previous screens.
-
-```
-   visited this screen
-
-```
-
-```
-Refresh inputs to
-
-incorporate changes
-
-elsewhere in the
-
-flow
-
-```
-
-Usage
-
-The component updates the user-specified values to reflect changes made on previous screens.
-
-If you pause and then resume the flow, the flow retains user-specified values only in Checkbox,
-##### Checkbox Group, Currency, Long Text Area, Multi-Select Picklist, Number, Password, Picklist, Radio
-
-Buttons, and Text components.
-
-When the user selects the checkbox, the screen component evaluates to `true` . If the user doesn’t select the checkbox, the screen
-component evaluates to `false` . If the associated screen isn’t executed, the screen component evaluates to `null` .
-
-Example: Let users opt into a marketing campaign, agree to a follow-up call after a purchase, or confirm that they understand
-an important policy.
-
-SEE ALSO:
-
-Flow Resource: Global Constant
-
-Standard Flow Screen Components
-
-Flow Screen Input Component: Checkbox Group
-
-Let users choose multiple options in a checkbox format.
-
-Configure the Checkbox Group Component
-
-**Attribute** **Description**
-
-```
-API Name
-
-Choice
-
-```
-
-The API name of the component.
-
-An API name can include underscores and alphanumeric characters
-without spaces. It must begin with a letter and can’t end with an
-underscore. It also can’t have two consecutive underscores.
-
-Add at least one choice, record choice set, or picklist choice set to this
-component. Available only when you add a choice component to the
-screen component.
-
-If you select a dynamic Choice resource such as a collection choice set or
-record choice set, ensure that each value in the Choice resource is unique.
-Otherwise, if a user selects a duplicate value, the value is set incorrectly
-in Salesforce.
-
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Attribute** **Description**
-
-`Component Type` Modify a choice component type.
-
-If the user can select only one option, these component types become available:
-
-**•** Picklist
-
-**•** Radio Buttons
-
-If the user can select multiple options, these component types become available:
-
-**•** Checkbox Group
-
-**•** Multi-select Picklist
-
-`Data Type` Only Text choices are supported for this component.
-
-`Default Value` Pre-selected choice for the component. If the associated screen isn’t executed or the conditions for
-component visibility aren’t met, the stored value of the component is `null` .
-
-```
-Disabled
-
-```
-
-If set to true, the user can’t modify the value. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-`Label` The text that appears with the screen component that tells the running user how to use it.
-
-```
-Let Users Select
-
-Multiple Options
-
-```
-
-Specifies whether the user can choose only one option or multiple options. When you select Yes for
-Let Users Select Multiple Options, Data Type is automatically set to Text, and non-text Choice resources
-are cleared from the component configuration.
-
-`Provide Help` Give your users more context with this screen component. The text you enter is available in an info
-bubble next to the component.
-
-`Require` Requires users to select a value before they can move to the next screen.
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-Component
-```
-
-You can set the components to:
-
-**Always**
-Always display the component.
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Option** **Description**
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-Specify the Behavior of Values on Revisited Screens
-
-Specify what this component does when a user enters a value, navigates to a previous screen, and then returns to the screen with this
-component.
-
-**Option** **Description**
-
-`Use values from when` The component retains the values that the user specified and doesn’t update the values to reflect
-`the user last` changes made on previous screens.
-
-```
-   visited this screen
-
-```
-
-```
-Refresh inputs to
-
-incorporate changes
-
-elsewhere in the
-
-flow
-
-```
-
-Considerations
-
-The component updates the user-specified values to reflect changes made on previous screens.
-
-If you pause and then resume the flow, the flow retains user-specified values only in Checkbox,
-Checkbox Group, Currency, Long Text Area, Multi-Select Picklist, Number, Password, Picklist, Radio
-Buttons, and Text components.
-
-When a user clicks the info bubble for a Checkbox Group component, the help text appears in a separate window. For other types of
-Salesforce-provided components, the help text appears in a popover.
-
-SEE ALSO:
-
-Standard Flow Screen Components
-
-Flow Screen Input Component: Choice Lookup
-
-Let users search for and select one option from a set of choices on a flow screen. The component
-supports only Text values.
-
-Configure the Choice Lookup Component
-
-**Attribute** **Description**
-
-`Label` User-friendly text that appears above the component.
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-```
-API Name
-
-```
-
-The API name of the component.
-
-An API name can include underscores and alphanumeric characters
-without spaces. It must begin with a letter and can’t end with an
-underscore. It also can’t have two consecutive underscores.
-
-`Require` Requires users to select a value before they can move to the next screen.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Attribute** **Description**
-
-```
-Disabled
-
-Placeholder Text
-
-```
-
-If set to true, the user can’t modify the value. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-Text that appears in the field when it’s empty. Use placeholder text to give users a hint about what
-to enter in the field.
-
-This attribute accepts a resource with a single value. The value is treated as text.
-
-`Let Users Select` Specifies whether the user can choose only one option or multiple options. The user can select up to
-`Multiple Options` 25 options.
-
-```
-Choice
-
-```
-
-Add at least one Choice resource such as a record choice set or picklist choice set to this component.
-Available only when you add a choice component to the screen component.
-
-If you select a dynamic Choice resource such as a collection choice set or record choice set, ensure
-that each value in the Choice resource is unique. Otherwise, if a user selects a duplicate value, the
-value is set incorrectly in Salesforce.
-
-You can’t reorder choices or select the same choice twice. Choices must be compatible with the
-component’s `Data Type` setting.
-
-Access the Choice Lookup Component’s Values in the Flow
-
-The flow stores these attributes automatically. You can’t store output values for the Choice Lookup component manually.
-
-**Attribute** **Description**
-
-```
-selectedChoiceLabels
-
-selectedChoiceValues
-
-```
-
-If users can select only one option, the label of the choice option that the user running the flow
-selected.
-
-If users can select multiple options, the semi-colon separated labels of all the choice options the user
-running the flow selected.
-
-Reference the value later in the flow as `{!choiceLookup.selectedChoiceLabels}` .
-
-If users can select only one option, the value of the choice option that the user running the flow
-selected.
-
-If users can select multiple options, the semi-colon separated values of all the choice options the user
-running the flow selected.
-
-Reference the value later in the flow as `{!choiceLookup.selectedChoiceValues}` .
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-   Component
-```
-
-You can set the components to:
-
-**Always**
-Always display the component.
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-Specify the Behavior of Values on Revisited Screens
-
-Specify what this component does when a user enters a value, navigates to a previous screen, and then returns to the screen with this
-component.
-
-**Option** **Description**
-
-`Use values from when` The component retains the values that the user specified and doesn’t update the values to reflect
-`the user last` changes made on previous screens.
-
-```
-   visited this screen
-
-```
-
-```
-Refresh inputs to
-
-incorporate changes
-
-elsewhere in the
-
-flow
-
-```
-
-Considerations
-
-The component updates the user-specified values to reflect changes made on previous screens.
-
-If you pause and then resume the flow, the flow retains user-specified values only in Checkbox,
-Checkbox Group, Currency, Long Text Area, Multi-Select Picklist, Number, Password, Picklist, Radio
-Buttons, and Text components.
-
-**•** The Choice Lookup flow screen component isn’t compatible with mobile devices or standalone Aura apps.
-
-**•** The component searches for matches only in the Choice Label field of the Choice resource that you specify.
-
-**•** Like other Choice fields, the Choice Lookup component supports the Was Selected operator.
-
-**•** The search is case-sensitive.
-
-**•** Initially, 20 choice options display. As you scroll, more choice options load in groups of 100, up to the maximum of 1,020.
-
-**•** If you apply a filter after loading your initial choices, the display resets, showing the new 20 choices.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**•** The Choice Lookup component doesn’t support the Display text input field for Choice resources. For example, if you select the
-Display text input checkbox when you configure a Choice resource and add the resource to the Choice Lookup component, the
-component doesn’t display a text input field when the user selects the corresponding choice at run time.
-
-SEE ALSO:
-
-Choose a Lookup Option for a Flow Screen
-
-Flow Screen Input Component: Currency
-
-Let users enter currency values from a flow screen.
-
-Configure the Currency Component
-
-**Attribute** **Description**
-
-```
-API Name
-
-Decimal Places
-
-Default Value
-
-Disabled
-
-```
-
-The API name of the component.
-
-An API name can include underscores and alphanumeric characters
-without spaces. It must begin with a letter and can’t end with an
-underscore. It also can’t have two consecutive underscores.
-
-Controls the number of digits to the right of the decimal point up to 17
-places. If you leave this field blank or set it to zero, only whole numbers
-appear when your flow runs.
-
-Pre-populated value for the component. If the associated screen isn’t
-executed or the conditions for component visibility aren’t met, the stored
-value of the component is `null` .
-
-If set to true, the user can’t modify the value. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-`Label` The text that appears with the screen component that tells the running
-user how to use it.
-
-`Provide Help` Give your users more context with this screen component. The text you
-enter is available in an info bubble next to the component.
-
-```
-Read Only
-
-```
-
-If set to true, the user can’t modify the value, but the user can copy it. The
-default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-`Require` Requires users to enter a value before they can move to the next screen.
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-   Component
-```
-
-You can set the components to:
-
-**Always**
-Always display the component.
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-Validate Input
-
-Provide a formula that evaluates whether what the user entered is valid and the error message to display if invalid.
-
-**Option** **Description**
-
-`Error Message` Specify the error message that appears below the component if the user enters an invalid value.
-
-`Formula` Provide a formula expression that returns a Boolean value.
-
-If the formula expression evaluates to `true`, the input is valid. If the formula expression evaluates to
-`false`, the error message appears below the component.
-
-If the user leaves the field blank and the field isn’t required, the flow doesn’t perform the validation.
-If the user leaves the field blank and the field is required, the flow shows the default error message
-and not your custom error message.
-
-Specify the Behavior of Values on Revisited Screens
-
-Specify what this component does when a user enters a value, navigates to a previous screen, and then returns to the screen with this
-component.
-
-**Option** **Description**
-
-`Use values from when` The component retains the values that the user specified and doesn’t update the values to reflect
-`the user last` changes made on previous screens.
-
-```
-   visited this screen
-
-```
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Option** **Description**
-
-```
-Refresh inputs to
-
-incorporate changes
-
-elsewhere in the
-
-flow
-
-```
-
-SEE ALSO:
-
-The component updates the user-specified values to reflect changes made on previous screens.
-
-If you pause and then resume the flow, the flow retains user-specified values only in Checkbox,
-Checkbox Group, Currency, Long Text Area, Multi-Select Picklist, Number, Password, Picklist, Radio
-Buttons, and Text components.
-
-Standard Flow Screen Components
-
-Flow Screen Input Component: Data Table
-
-Let users select records from a table in a flow.
-
-Configure the Data Table Name
-
-**Attribute** **Description**
-
-```
-API Name
-
-```
-
-The API name of the component.
-
-An API name can include underscores and alphanumeric characters
-without spaces. It must begin with a letter and can’t end with an
-underscore. It also can’t have two consecutive underscores.
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-`Label` If you select Use Label as the table title, the user-friendly text that appears
-above the component.
-
-`Use Label as` Indicates whether to display the Label value above the table when you
-`the table` run the flow.
-
-```
-title
-
-```
-
-Configure the Data Table Source
-
-**Attribute** **Description**
-
-`Source Collection` A collection of records to use to populate the table.
-
-`Show search bar` Enables users to search and filter their record results.
-
-Configure the Data Table Rows
-
-**Attribute** **Description**
-
-```
-Row Selection Mode
-
-```
-
-Indicates how many rows the user can select in the table. You can set the value to:
-
-**Multiple**
-The user can select any number of rows between the Minimum Row Selection and Maximum
-Row Selection values.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Attribute** **Description**
-
-**Single**
-The user can select up to one row.
-
-**View only**
-The user can’t select any rows.
-
-`Minimum Row` Specifies the minimum number of rows that the user must select.
-
-```
-   Selection
-
-```
-
-`Maximum Row` Specifies the maximum number of rows that the user can select.
-
-```
-   Selection
-
-```
-
-`Default Selection` Collection that specifies which records to preselect in the table.
-
-`Require user to make` Specifies whether the user must select a row before navigating to the next screen.
-
-```
-   a selection
-
-```
-
-Configure the Data Table Columns
-
-To add the first column to the table, configure these fields. To add subsequent columns, click **Add column** . Drag and drop the columns
-to reorder them.
-
-**Attribute** **Description**
-
-```
-Source Field
-
-```
-
-Field from the Source Collection object to display in the column.
-
-Fields with the anyType data type such as the NewValue field of the AccountHistory object aren’t
-supported.
-
-`Custom column label` Indicates whether to display the column Label value you specify as the column header.
-
-`Label` If Custom column label is selected, the text to display as the column header. The text is also read by
-screen readers.
-
-```
-Default Text
-
-Overflow Mode
-
-```
-
-Specifies how text that is longer than the width of the column appears. You can set the value to:
-
-**Wrap Text**
-The screen displays the text on multiple lines.
-
-**Clip Text**
-The screen truncates the text to fit.
-
-Note: If you're using a field that has a namespace, add the namespace to the beginning of the source field. For example, if your
-field's namespace is Acme, enter _`Acme__FieldName__c`_ .
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-   Component
-```
-
-You can set the components to:
-
-**Always**
-Always display the component.
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-Store the Data Table Component’s Values in the Flow
-
-The flow stores values automatically. If you store values manually, store the attribute’s output value in a variable.
-
-To store values manually, select **Manually assign variables (advanced)** .
-
-All attributes are available to store in flow variables, but most likely you must store these attributes.
-
-**Attribute** **Description**
-
-`First Selected Row` First record in the table selected by the flow user. If a user selects two records, this record is the first
-selected record from top to bottom.
-
-`Selected Rows` The list of records that the user selects. The records are ordered according to their position in the table
-from top to bottom.
-
-Tip: By default, screen components that run on Lightning runtime version 58 and prior have no memory. If a user enters a value,
-and then does one of the following, the value is lost.
-
-**•** Navigates to another screen and returns to the component’s screen.
-
-**•** Pauses the flow then resumes it.
-
-**•** Navigates to the next screen and triggers an input validation error.
-
-Setting the attribute enables a flow to remember the value. The flow stores the value automatically. If you store values manually,
-store the attribute’s output value in a variable.
-
-Validate Input
-
-Provide a formula that evaluates whether what the user entered is valid and the error message to display if invalid.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Option** **Description**
-
-`Error Message` Specify the error message that appears below the component if the user enters an invalid value.
-
-`Formula` Provide a formula expression that returns a Boolean value.
-
-If the formula expression evaluates to `true`, the input is valid. If the formula expression evaluates to
-`false`, the error message appears below the component.
-
-If the user leaves the field blank and the field isn’t required, the flow doesn’t perform the validation.
-If the user leaves the field blank and the field is required, the flow shows the default error message
-and not your custom error message.
-
-Specify the Behavior of Values on Revisited Screens
-
-Specify what this component does when a user enters a value, navigates to a previous screen, and then returns to the screen with this
-component.
-
-**Option** **Description**
-
-`Use values from when` The component retains the values that the user specified and doesn’t update the values to reflect
-`the user last` changes made on previous screens.
-
-```
-   visited this screen
-
-```
-
-```
-Refresh inputs to
-
-incorporate changes
-
-elsewhere in the
-
-flow
-
-```
-
-Considerations
-
-The component updates the user-specified values to reflect changes made on previous screens.
-
-If you pause and then resume the flow, the flow retains user-specified values only in Checkbox,
-Checkbox Group, Currency, Long Text Area, Multi-Select Picklist, Number, Password, Picklist, Radio
-Buttons, and Text components.
-
-**•** The Data Table flow screen component isn’t compatible with mobile devices.
-
-**•** If you use the Get Records flow element to retrieve the records to display in the Data Table, select Choose fields and let Salesforce
-do the rest for the best performance.
-
-**•** The maximum height of a Data Table is 400 pixels.
-
-**•** If you choose to wrap the text in a Data Table, ensure that the text doesn’t overflow when you test your flow. Wrapped text can
-overflow when a Data Table is compressed on a screen, for example, when it’s in one of multiple columns.
-
-**•** A Data Table can display up to 1,500 records. However, your search is performed on the entire dataset.
-
-**•** You can select up to 200 records in a Data Table.
-
-**•** If you apply a filter after loading your initial records, only the new results are shown. The initial records are no longer included in the
-display.
-
-**•** If a Data Table includes a formula field and records or updates to records that haven’t been committed to the database, the table
-doesn’t evaluate the formula properly.
-
-For records that don’t exist in the database, update the value of the formula field with an assignment using a static value or Formula
-resource. Doing so doesn’t affect any subsequent Create or Update operations in the flow.
-
-For existing records that have been updated, use an invocable action to reevaluate the formula, or use the IN operator to refresh the
-records and formula field values.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**•** If you include a lookup or master-detail relationship field in a Data Table, the table doesn’t display the field value. For example, a
-Data Table can’t display the Name field of a related record. To display field values from related records, use object formula fields. You
-can also use object formula fields to link to related record fields, for example:
-
-```
-    HYPERLINK( "/" & CASESAFEID(Id), Related_Record__r.Name, "_self" )
-
-```
-
-**•** You can’t search the Time field.
-
-**•** In multi-currency orgs, the Data Table component doesn’t support records that are in a different currency from the user’s personal
-currency.
-
-**•** To display multilingual column header labels in the Data Table component, use the `$Label` global variable to specify custom
-[labels. For more information about creating and translating custom labels, see Custom Labels.](https://help.salesforce.com/s/articleView?id=sf.cl_about.htm&type=5&language=en_US)
-
-**•** [Data Table selections at runtime are subject to the client payload data limit described in Lightning Aura Components Developer](https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/controllers_server_actions_call.htm)
-[Guide. If you exceed this limit, the flow returns a generic error message. For example, if you include file data that exceeds the limit,](https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/controllers_server_actions_call.htm)
-the flow generates an error. We recommend avoiding fields like the VersionData field of ContentVersion records in your source
-collection.
-
-**•** If you rename a field in Object Manager that’s mapped to a column in a Data Table, Salesforce doesn’t update the column name. To
-see the new name in the Data Table, remove the column and then add it again.
-
-**•** If you have a flow open that has a Data Table component, and you update your user settings time zone on another page, refresh
-the flow page to show the updated date and time fields in the Data Table component.
-
-**•** When you set the row selection, be careful if you want to use the row selection of another Data Table component. Salesforce doesn’t
-support the use of row selections that have duplicate record variables without record IDs.
-
-**•** If you set the row-selection mode to single and make it required, or if you set the minimum and maximum row selection to 1,
-Salesforce uses a radio button at run time. Otherwise, we use checkboxes at run time.
-
-**•** If you package a flow that has a Data Table component, the fields used in the Data Table aren't automatically added to the package.
-If you use a field in the Data Table component, you must manually add it to the package.
-
-**•** If you delete a custom field that a Data Table component uses, you must also remove the field from the screen flow where the Data
-Table component is used.
-
-**•** If you use a Data Table component that uses a custom object or custom field in an org without a namespace, and then later add a
-namespace to the org, you must also add that namespace to the associated column fields in the Data Table.
-
-SEE ALSO:
-
-Use Multilingual Labels in Data Table Column Headers
-
-Data Safety When Running Screen and Autolaunched Flows in System Context
-
-Flow Screen Input Component: Date
-
-Let users enter date values from a flow screen.
-
-Configure the Data Component
-
-**Attribute** **Description**
-
-```
-API Name
-
-```
-
-The API name of the component.
-
-An API name can include underscores and alphanumeric characters
-without spaces. It must begin with a letter and can’t end with an
-underscore. It also can’t have two consecutive underscores.
-
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Attribute** **Description**
-
-`Default Value` Pre-populated value for the component. If the associated screen isn’t executed or the conditions for
-component visibility aren’t met, the stored value of the component is `null` .
-
-```
-Disabled
-
-```
-
-If set to true, the user can’t modify the value. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-`Label` The text that appears with the screen component that tells the running user how to use it.
-
-`Provide Help` Give your users more context with this screen component. The text you enter is available in an info
-bubble next to the component.
-
-```
-Read Only
-
-```
-
-If set to true, the user can’t modify the value, but the user can copy it. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-`Require` Requires users to enter a value before they can move to the next screen.
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-Component
-```
-
-You can set the components to:
-
-**Always**
-Always display the component.
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-Validate Input
-
-Provide a formula that evaluates whether what the user entered is valid and the error message to display if invalid.
-
-**Option** **Description**
-
-`Error Message` Specify the error message that appears below the component if the user enters an invalid value.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Option** **Description**
-
-`Formula` Provide a formula expression that returns a Boolean value.
-
-If the formula expression evaluates to `true`, the input is valid. If the formula expression evaluates to
-`false`, the error message appears below the component.
-
-If the user leaves the field blank and the field isn’t required, the flow doesn’t perform the validation.
-If the user leaves the field blank and the field is required, the flow shows the default error message
-and not your custom error message.
-
-Specify the Behavior of Values on Revisited Screens
-
-Specify what this component does when a user enters a value, navigates to a previous screen, and then returns to the screen with this
-component.
-
-**Option** **Description**
-
-`Use values from when` The component retains the values that the user specified and doesn’t update the values to reflect
-`the user last` changes made on previous screens.
-
-```
-   visited this screen
-
-```
-
-```
-Refresh inputs to
-
-incorporate changes
-
-elsewhere in the
-
-flow
-
-```
-
-SEE ALSO:
-
-The component updates the user-specified values to reflect changes made on previous screens.
-
-If you pause and then resume the flow, the flow retains user-specified values only in Checkbox,
-Checkbox Group, Currency, Long Text Area, Multi-Select Picklist, Number, Password, Picklist, Radio
-Buttons, and Text components.
-
-Standard Flow Screen Components
-
-Flow Screen Input Component: Date & Time
-
-Let users enter date and time values from a flow screen, such as to request an appointment.
-
-Configure the Date & Time Component
-
-**Attribute** **Description**
-
-```
-API Name
-
-Default Value
-
-```
-
-The API name of the component.
-
-An API name can include underscores and alphanumeric characters
-without spaces. It must begin with a letter and can’t end with an
-underscore. It also can’t have two consecutive underscores.
-
-Pre-populated value for the component. If the associated screen isn’t
-executed or the conditions for component visibility aren’t met, the stored
-value of the component is `null` .
-
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Attribute** **Description**
-
-```
-Disabled
-
-```
-
-If set to true, the user can’t modify the value. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-`Label` The text that appears with the screen component that tells the running user how to use it.
-
-`Provide Help` Give your users more context with this screen component. The text you enter is available in an info
-bubble next to the component.
-
-```
-Read Only
-
-```
-
-If set to true, the user can’t modify the value, but the user can copy it. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-`Require` Requires users to enter a value before they can move to the next screen.
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-Component
-```
-
-You can set the components to:
-
-**Always**
-Always display the component.
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-Validate Input
-
-Provide a formula that evaluates whether what the user entered is valid and the error message to display if invalid.
-
-**Option** **Description**
-
-`Error Message` Specify the error message that appears below the component if the user enters an invalid value.
-
-`Formula` Provide a formula expression that returns a Boolean value.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Option** **Description**
-
-If the formula expression evaluates to `true`, the input is valid. If the formula expression evaluates to
-`false`, the error message appears below the component.
-
-If the user leaves the field blank and the field isn’t required, the flow doesn’t perform the validation.
-If the user leaves the field blank and the field is required, the flow shows the default error message
-and not your custom error message.
-
-Specify the Behavior of Values on Revisited Screens
-
-Specify what this component does when a user enters a value, navigates to a previous screen, and then returns to the screen with this
-component.
-
-**Option** **Description**
-
-`Use values from when` The component retains the values that the user specified and doesn’t update the values to reflect
-`the user last` changes made on previous screens.
-
-```
-   visited this screen
-
-```
-
-```
-Refresh inputs to
-
-incorporate changes
-
-elsewhere in the
-
-flow
-
-```
-
-SEE ALSO:
-
-The component updates the user-specified values to reflect changes made on previous screens.
-
-If you pause and then resume the flow, the flow retains user-specified values only in Checkbox,
-Checkbox Group, Currency, Long Text Area, Multi-Select Picklist, Number, Password, Picklist, Radio
-Buttons, and Text components.
-
-Standard Flow Screen Components
-
-Flow Screen Input Component: Dependent Picklists
-
-Display picklists in a flow screen in which the options for one picklist depend on the selected value
-of another picklist. The Dependent Picklists screen component determines which options to display
-in each picklist by using an existing field dependency in your org. A _field dependency_ connects two
-picklist fields on the same object.
-
-Note: This screen component requires Lightning runtime.
-
-Configure the Dependent Picklists Component
-
-Tip: Before you add a Dependent Picklists screen component to your flow, define field
-dependencies for the appropriate picklist fields in your org.
-
-You can select resources from the flow, such as variables or global constants, or you can manually
-enter a value.
-
-**Attribute** **Description**
-
-`API Name` The API name of the component.
-
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Attribute** **Description**
-
-An API name can include underscores and alphanumeric characters without spaces. It must begin
-with a letter and can’t end with an underscore. It also can’t have two consecutive underscores.
-
-```
-Disabled
-
-Object API Name
-
-Picklist 1 API Name
-
-Picklist 1 Label
-
-Picklist 1 Required
-
-Picklist 1 Value
-
-Picklist 2 API Name
-
-Picklist 2 Label
-
-Picklist 2 Required
-
-Picklist 2 Value
-
-Picklist 3 API Name
-
-```
-
-If set to true, the user can’t modify the value. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-The API name of the object. The picklist fields that you identify in Picklist 1 API Name, Picklist 2 API
-Name, and Picklist 3 API Name must be associated with this object.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-The API name of the first picklist field. For the specified object, this picklist field must be the controlling
-field in a field dependency between Picklist 1 and Picklist 2.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-The label for the first picklist field.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-If set to `$GlobalConstant.True`, the running user must enter a value.
-
-This attribute accepts single-value Boolean resources.
-
-The default selection for the first picklist field. Configuring this attribute pre-selects an option for the
-field.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-The API name of the second picklist field. For the specified object, this picklist field must be the
-dependent field in a field dependency between Picklist 1 and Picklist 2. If you display a third picklist
-field, Picklist 2 must be the controlling field in a field dependency between Picklist 2 and Picklist 3.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-The label for the second picklist field.
-
-This attribute accepts single-value resources. That value is treated as text.
-
-If set to `$GlobalConstant.True`, the running user must enter a value.
-
-This attribute accepts single-value Boolean resources.
-
-The default selection for the second picklist field. Configuring this attribute pre-selects an option for
-the field.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-The API name of the third picklist field. For the specified object, this picklist field must be the dependent
-field in a field dependency between Picklist 2 and Picklist 3.
-
-This attribute accepts single-value resources. That value is treated as text.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Attribute** **Description**
-
-```
-Picklist 3 Label
-
-Picklist 3 Required
-
-Picklist 3 Value
-
-```
-
-The label for the third picklist field.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-If set to `$GlobalConstant.True`, the running user must enter a value.
-
-This attribute accepts single-value Boolean resources.
-
-The default selection for the third picklist field. Configuring this attribute pre-selects an option for the
-field.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-Note: If your org has a namespace, add the namespace to the beginning of the object's API name, and each picklist API Name.
-For example, if you have a custom object called Insurance_Agent__c, and your org's namespace is Acme,
-enter _`Acme__Insurance_Agent__c`_ .
-
-Store the Dependent Picklists Component’s Values in the Flow
-
-The flow stores values automatically. If you store values manually, store the attribute’s output value in a variable.
-
-To store values manually, select **Manually assign variables (advanced)** .
-
-All attributes are available to store in flow variables. Most likely, you must store one of these attributes.
-
-**Attribute** **Description**
-
-```
-Picklist 1 Value
-
-Picklist 2 Value
-
-Picklist 3 Value
-
-```
-
-What the user selected for the first picklist field.
-
-You can store this value in a single-value Text variable or a Text field on a record variable.
-
-What the user selected for the second picklist field.
-
-You can store this value in a single-value Text variable or a Text field on a record variable.
-
-What the user selected for the third picklist field.
-
-You can store this value in a single-value Text variable or a Text field on a record variable.
-
-Tip: By default, screen components that run on Lightning runtime version 58 and prior have no memory. If a user enters a value,
-and then does one of the following, the value is lost.
-
-**•** Navigates to another screen and returns to the component’s screen.
-
-**•** Pauses the flow then resumes it.
-
-**•** Navigates to the next screen and triggers an input validation error.
-
-Setting the attribute enables a flow to remember the value. The flow stores the value automatically. If you store values manually,
-store the attribute’s output value in a variable.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-   Component
-```
-
-You can set the components to:
-
-**Always**
-Always display the component.
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-Validate Input
-
-Provide a formula that evaluates whether what the user entered is valid and the error message to display if invalid.
-
-**Option** **Description**
-
-`Error Message` Specify the error message that appears below the component if the user enters an invalid value.
-
-`Formula` Provide a formula expression that returns a Boolean value.
-
-If the formula expression evaluates to `true`, the input is valid. If the formula expression evaluates to
-`false`, the error message appears below the component.
-
-If the user leaves the field blank and the field isn’t required, the flow doesn’t perform the validation.
-If the user leaves the field blank and the field is required, the flow shows the default error message
-and not your custom error message.
-
-Specify the Behavior of Values on Revisited Screens
-
-Specify what this component does when a user enters a value, navigates to a previous screen, and then returns to the screen with this
-component.
-
-**Option** **Description**
-
-`Use values from when` The component retains the values that the user specified and doesn’t update the values to reflect
-`the user last` changes made on previous screens.
-
-```
-   visited this screen
-
-```
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Option** **Description**
-
-```
-Refresh inputs to
-
-incorporate changes
-
-elsewhere in the
-
-flow
-
-```
-
-The component updates the user-specified values to reflect changes made on previous screens.
-
-If you pause and then resume the flow, the flow retains user-specified values only in Checkbox,
-Checkbox Group, Currency, Long Text Area, Multi-Select Picklist, Number, Password, Picklist, Radio
-Buttons, and Text components.
-
-Example: For example, in a Dinner Order flow, users select a specific dessert. Each dessert comes in different flavors, and the
-flavor options change based on the dessert that the user selects.
-
-**•** On the Guest Order custom object, define two picklist fields: Dessert and Flavor.
-
-**•** Define a field dependency between Dessert and Flavor, where Dessert is the controlling picklist. Identify which Flavor options
-apply to each Dessert option.
-
-**•** In your flow screen, add a Dependent Picklists screen component. Configure the component with these values.
-
-**Attribute** **Value**
-
-`Object API Name` Guest_Order__c
-
-`Picklist 1 API` Dessert__c
-
-```
-  Name
-
-```
-
-`Picklist 1 Label` Dessert
-
-`Picklist 2 Value` Flavor__c
-
-`Picklist 2 Label` Flavor
-
-When a user runs the flow, the options for Flavor change based on what’s selected for Dessert.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Considerations
-
-Screen input component values are set to null when they’re hidden by conditional visibility. But hidden picklists in a Dependent Picklists
-component aren’t set to null unless the entire Dependent Picklists component is hidden.
-
-SEE ALSO:
-
-Standard Flow Screen Components
-
-[Define Dependent Picklists](https://help.salesforce.com/s/articleView?id=sf.fields_defining_field_dependencies.htm&language=en_US)
-
-Flow Screen Input Component: Display Image
-
-Easily insert images in flow screens. Upload images to Salesforce as static resources and then you
-can reference them while configuring the component.
-
-For information about adding screen components to your flow screen, see Flow Element: Screen.
-
-Note: This screen component requires Lightning runtime.
-
-Configure the Display Image Component
-
-**Attribute** **Description**
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-```
-API Name
-
-Horizontal
-
-Alignment
-
-```
-
-The API name of the component.
-
-An API name can include underscores and alphanumeric characters
-without spaces. It must begin with a letter and can’t end with an
-underscore. It also can’t have two consecutive underscores.
-
-If you don't want the browser to determine the image's horizontal
-alignment, enter a specific alignment value. Valid values are: left, center,
-or right.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Attribute** **Description**
-
-```
-Image Alt Text
-
-Image CSS
-
-Image Height
-
-Image Name
-
-Image Width
-
-```
-
-Alternative text for screen readers and other assistive technology and for browsers that can’t load the
-image. Provide a meaningful description unless the image is purely decorative or redundant.
-
-To have assistive technology skip the image, set `Image Alt Text` to `{`
-`!$GlobalConstant.EmptyString}` .
-
-If you don't set this attribute, assistive technology reads the file path from the image source ( `img`
-`src` ), which can confuse your users and potentially create an accessibility compliance issue.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-Override the CSS for your image by providing your own CSS string. Example: `border-radius:`
-
-```
-8px; box-shadow: 10px 5px 5px blue; opacity: 0.75;
-
-```
-
-This attribute accepts single-value resources. The value is treated as text.
-
-If you don't want the browser to determine the image height, enter a specific height value. Valid values
-are a number and unit, or a percentage of the container. Examples: 200 px, 2 cm, 50%. If you enter a
-number value and don’t enter a unit value, the unit value defaults to pixels.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-Required. The name of a static resource that contains an image file. The image must be a `.png` or
-`.jpg` file.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-If you don't want the browser to determine the image width, enter a specific width value. Valid values
-are a number and unit, or a percentage of the container. Examples: 200 px, 2 cm, 50%. If you enter a
-number value and don’t enter a unit value, the unit value defaults to pixels.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-Store the Display Image Component’s Values in the Flow
-
-The flow stores values automatically. If you store values manually, store the attribute’s output value in a variable.
-
-To store values manually, select **Manually assign variables (advanced)** .
-
-Tip: By default, screen components that run on Lightning runtime version 58 and prior have no memory. If a user enters a value,
-and then does one of the following, the value is lost.
-
-**•** Navigates to another screen and returns to the component’s screen.
-
-**•** Pauses the flow then resumes it.
-
-**•** Navigates to the next screen and triggers an input validation error.
-
-Setting the attribute enables a flow to remember the value. The flow stores the value automatically. If you store values manually,
-store the attribute’s output value in a variable.
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-   Component
-```
-
-You can set the components to:
-
-**Always**
-Always display the component.
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-Validate Input
-
-Provide a formula that evaluates whether what the user entered is valid and the error message to display if invalid.
-
-**Option** **Description**
-
-`Error Message` Specify the error message that appears below the component if the user enters an invalid value.
-
-`Formula` Provide a formula expression that returns a Boolean value.
-
-If the formula expression evaluates to `true`, the input is valid. If the formula expression evaluates to
-`false`, the error message appears below the component.
-
-If the user leaves the field blank and the field isn’t required, the flow doesn’t perform the validation.
-If the user leaves the field blank and the field is required, the flow shows the default error message
-and not your custom error message.
-
-Specify the Behavior of Values on Revisited Screens
-
-Specify what this component does when a user enters a value, navigates to a previous screen, and then returns to the screen with this
-component.
-
-**Option** **Description**
-
-`Use values from when` The component retains the values that the user specified and doesn’t update the values to reflect
-`the user last` changes made on previous screens.
-
-```
-   visited this screen
-
-```
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Option** **Description**
-
-```
-Refresh inputs to
-
-incorporate changes
-
-elsewhere in the
-
-flow
-
-```
-
-SEE ALSO:
-
-The component updates the user-specified values to reflect changes made on previous screens.
-
-If you pause and then resume the flow, the flow retains user-specified values only in Checkbox,
-Checkbox Group, Currency, Long Text Area, Multi-Select Picklist, Number, Password, Picklist, Radio
-Buttons, and Text components.
-
-Standard Flow Screen Components
-
-Flow Screen Input Component: Email
-
-Let users enter email address values from a flow screen.
-
-Note: This screen component requires Lightning runtime.
-
-Configure the Email Component
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-You can select resources from the flow, such as variables or global constants, or you can manually enter a value.
-
-**Attribute** **Description**
-
-`API Name` The API name of the component.
-
-An API name can include underscores and alphanumeric characters without spaces. It must begin
-with a letter and can’t end with an underscore. It also can’t have two consecutive underscores.
-
-```
-Disabled
-
-```
-
-If set to true, the user can’t modify the value. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Attribute** **Description**
-
-```
-Label
-
-Placeholder Text
-
-Read Only
-
-Required
-
-Value
-
-```
-
-The label that appears above the email field.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-Text that appears in the field when it’s empty. Use placeholder text to give users a hint about what
-to enter in the field.
-
-This attribute accepts a resource with a single value. The value is treated as text.
-
-If set to true, the user can’t modify the value, but the user can copy it. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-If set to true, the running user must enter a value. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-The value of the email field. Setting this attribute prepopulates the field. To use the value that the user
-enters, store this attribute’s output in a variable.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-Store the Email Component’s Values in the Flow
-
-The flow stores values automatically. If you store values manually, store the attribute’s output value in a variable.
-
-To store values manually, select **Manually assign variables (advanced)** .
-
-All attributes are available to store in flow variables, but Value is the most likely attribute you must store.
-
-To store the email address that the user entered, store the Value attribute in a flow variable.
-
-Tip: By default, screen components that run on Lightning runtime version 58 and prior have no memory. If a user enters a value,
-and then does one of the following, the value is lost.
-
-**•** Navigates to another screen and returns to the component’s screen.
-
-**•** Pauses the flow then resumes it.
-
-**•** Navigates to the next screen and triggers an input validation error.
-
-Setting the attribute enables a flow to remember the value. The flow stores the value automatically. If you store values manually,
-store the attribute’s output value in a variable.
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-Component
-```
-
-You can set the components to:
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Option** **Description**
-
-**Always**
-Always display the component.
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-Validate Input
-
-Provide a formula that evaluates whether what the user entered is valid and the error message to display if invalid.
-
-**Option** **Description**
-
-`Error Message` Specify the error message that appears below the component if the user enters an invalid value.
-
-`Formula` Provide a formula expression that returns a Boolean value.
-
-If the formula expression evaluates to `true`, the input is valid. If the formula expression evaluates to
-`false`, the error message appears below the component.
-
-If the user leaves the field blank and the field isn’t required, the flow doesn’t perform the validation.
-If the user leaves the field blank and the field is required, the flow shows the default error message
-and not your custom error message.
-
-Specify the Behavior of Values on Revisited Screens
-
-Specify what this component does when a user enters a value, navigates to a previous screen, and then returns to the screen with this
-component.
-
-**Option** **Description**
-
-`Use values from when` The component retains the values that the user specified and doesn’t update the values to reflect
-`the user last` changes made on previous screens.
-
-```
-   visited this screen
-
-```
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Option** **Description**
-
-```
-Refresh inputs to
-
-incorporate changes
-
-elsewhere in the
-
-flow
-
-```
-
-SEE ALSO:
-
-The component updates the user-specified values to reflect changes made on previous screens.
-
-If you pause and then resume the flow, the flow retains user-specified values only in Checkbox,
-Checkbox Group, Currency, Long Text Area, Multi-Select Picklist, Number, Password, Picklist, Radio
-Buttons, and Text components.
-
-Standard Flow Screen Components
-
-Flow Screen Input Component: Enhanced Message
-
-Let users send a messaging component in an enhanced Messaging session.
-
-Configure the Enhanced Message Component
-
-EDITIONS
-
-Messaging is available in:
-Lightning Experience with
-the Digital Engagement
-add-on SKU
-
-Messaging is available in:
-**Enterprise**, **Unlimited**, and
-**Developer** Editions with
-Service Cloud or Sales Cloud
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-SEE ALSO:
-
-Standard Flow Screen Components
-
-_Salesforce Help_ [: Send Structured Content with Messaging Components](https://help.salesforce.com/s/articleView?id=sf.messaging_components_parent.htm&language=en_US)
-
-Flow Screen Input Component: File Upload
-
-Let users upload files from a flow screen.
-
-Note: This screen component requires Lightning runtime.
-
-Configure the File Upload Component
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-You can select resources from the flow, such as variables or global constants, or you can manually enter a value.
-
-**Attribute** **Description**
-
-```
-Accepted Formats
-
-```
-
-Using the format _`.ext`_, enter a comma-separated list of the file extensions that the user can upload.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Attribute** **Description**
-
-```
-Allow Multiple Files
-
-```
-
-If set to _`$GlobalConstant.True`_, the user can upload multiple files.
-
-This attribute accepts single-value Boolean resources.
-
-`API Name` The API name of the component.
-
-An API name can include underscores and alphanumeric characters without spaces. It must begin
-with a letter and can’t end with an underscore. It also can’t have two consecutive underscores.
-
-```
-Disabled
-
-File Upload Label
-
-Hover Text
-
-Related Record ID
-
-```
-
-If set to true, the user can’t modify the value. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-Required. Label that appears above the upload button.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-Tooltip that appears when the user hovers over the component.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-Required. ID of the record to associate the files with. If no value is passed, the component is disabled.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-Note: Custom fields added to the ContentVersion object page are rendered in Experience Cloud sites through the
-contentVersionEditWizard. The contentVersionEditWizard is supported on desktop, but not mobile. Since there’s no screen in
-mobile to edit or add details to custom fields, file uploads fail when custom fields are marked as required.
-
-Store the File Upload Component’s Values in the Flow
-
-All attributes are available to store in flow variables, but usually you must store one of these attributes. The values are assigned to the
-flow variables when the user navigates to the next screen.
-
-**Attribute** **Description**
-
-```
-Content Document IDs
-
-Uploaded File Names
-
-```
-
-The IDs of the uploaded files.
-
-You can store this value in a Text collection variable.
-
-The names of the uploaded files.
-
-You can store this value in a Text collection variable.
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-   Component
-```
-
-You can set the components to:
-
-**Always**
-Always display the component.
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-Validate Input
-
-Provide a formula that evaluates whether what the user entered is valid and the error message to display if invalid.
-
-**Option** **Description**
-
-`Error Message` Specify the error message that appears below the component if the user enters an invalid value.
-
-`Formula` Provide a formula expression that returns a Boolean value.
-
-If the formula expression evaluates to `true`, the input is valid. If the formula expression evaluates to
-`false`, the error message appears below the component.
-
-If the user leaves the field blank and the field isn’t required, the flow doesn’t perform the validation.
-If the user leaves the field blank and the field is required, the flow shows the default error message
-and not your custom error message.
-
-Specify the Behavior of Values on Revisited Screens
-
-Specify what this component does when a user enters a value, navigates to a previous screen, and then returns to the screen with this
-component.
-
-**Option** **Description**
-
-`Use values from when` The component retains the values that the user specified and doesn’t update the values to reflect
-`the user last` changes made on previous screens.
-
-```
-   visited this screen
-
-```
-
-```
-Refresh inputs to
-
-incorporate changes
-
-elsewhere in the
-
-flow
-
-```
-
-The component updates the user-specified values to reflect changes made on previous screens.
-
-If you pause and then resume the flow, the flow retains user-specified values only in Checkbox,
-Checkbox Group, Currency, Long Text Area, Multi-Select Picklist, Number, Password, Picklist, Radio
-Buttons, and Text components.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-File Upload Limits
-
-By default, you can upload up to 10 files simultaneously, unless Salesforce changed that limit. The org limit for the number of files
-simultaneously uploaded is 25 files with a minimum of one file. The maximum file size you can upload is 2 GB. In Experience Cloud sites,
-the file size limits and types allowed follow the settings determined by site file moderation. By default, guest user files are blocked from
-being uploaded. Admins can change the settings to let guest users upload files. From **Setup**    - **, select**    - **General Settings**, and then
-select **Allow site guest users to upload files** . This setting is only valid if the Secure guest user record access setting is enabled in the
-org.
-
-Note: The file upload component isn’t supported on mobile app or browser when used with flows that are accessed through
-URLs. This restriction doesn’t apply when the file upload component is used in Lightning App Builder or Experience Builder.
-
-Lightning Out doesn’t support the File Upload component.
-
-Considerations
-
-If a user doesn’t upload any files, the value of the `Content Document IDs` and `Uploaded File Names` outputs is an empty
-collection, represented as `“[]”` . If you check the ISBLANK or ISNULL operator, the value is always `false` .
-
-SEE ALSO:
-
-Standard Flow Screen Components
-
-Flow Screen Input Component: Long Text Area
-
-Let users enter a paragraph or two of text from a flow screen.
-
-Configure the Long Text Area Component
-
-**Attribute** **Description**
-
-```
-API Name
-
-Default Value
-
-Disabled
-
-```
-
-The API name of the component.
-
-An API name can include underscores and alphanumeric characters
-without spaces. It must begin with a letter and can’t end with an
-underscore. It also can’t have two consecutive underscores.
-
-Pre-populated value for the component. If the associated screen isn’t
-executed or the conditions for component visibility aren’t met, the stored
-value of the component is `null` .
-
-If set to true, the user can’t modify the value. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-`Label` The text that appears with the screen component that tells the running
-user how to use it.
-
-`Provide Help` Give your users more context with this screen component. The text you
-enter is available in an info bubble next to the component.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Attribute** **Description**
-
-```
-Read Only
-
-```
-
-If set to true, the user can’t modify the value, but the user can copy it. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-`Require` Requires users to enter a value before they can move to the next screen.
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-Component
-```
-
-You can set the components to:
-
-**Always**
-Always display the component.
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-Validate Input
-
-Provide a formula that evaluates whether what the user entered is valid and the error message to display if invalid.
-
-**Option** **Description**
-
-`Error Message` Specify the error message that appears below the component if the user enters an invalid value.
-
-`Formula` Provide a formula expression that returns a Boolean value.
-
-If the formula expression evaluates to `true`, the input is valid. If the formula expression evaluates to
-`false`, the error message appears below the component.
-
-If the user leaves the field blank and the field isn’t required, the flow doesn’t perform the validation.
-If the user leaves the field blank and the field is required, the flow shows the default error message
-and not your custom error message.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Specify the Behavior of Values on Revisited Screens
-
-Specify what this component does when a user enters a value, navigates to a previous screen, and then returns to the screen with this
-component.
-
-**Option** **Description**
-
-`Use values from when` The component retains the values that the user specified and doesn’t update the values to reflect
-`the user last` changes made on previous screens.
-
-```
-   visited this screen
-
-```
-
-```
-Refresh inputs to
-
-incorporate changes
-
-elsewhere in the
-
-flow
-
-```
-
-SEE ALSO:
-
-The component updates the user-specified values to reflect changes made on previous screens.
-
-If you pause and then resume the flow, the flow retains user-specified values only in Checkbox,
-Checkbox Group, Currency, Long Text Area, Multi-Select Picklist, Number, Password, Picklist, Radio
-Buttons, and Text components.
-
-Standard Flow Screen Components
-
-Flow Screen Input Component: Lookup
-
-Let users search for and select one or more records in a flow.
-
-Configure the Lookup Component
-
-**Attribute** **Description**
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-```
-API Name
-
-Field API Name
-
-Label
-
-```
-
-The API name of the component.
-
-An API name can include underscores and alphanumeric characters
-without spaces. It must begin with a letter and can’t end with an
-underscore. It also can’t have two consecutive underscores.
-
-The API name of a lookup field on the source object referenced in Object
-API Name.
-
-The lookup field referenced in Field API Name must be a field on the object
-referenced in Object API Name.
-
-For example, if you want to add a lookup for an account, find an object
-that has an account lookup field on it. In this case, let’s use the account
-lookup field on the Contact object. The API name of the account lookup
-field on the Contact object is AccountId, so enter _`AccountId`_ for Field
-API Name, then enter _`Contact`_ for Object API Name.
-
-The text that shows at the top of the component that tells the running
-user how to use the screen component. For example, if you’re adding an
-account lookup, the label could be Select Account.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Attribute** **Description**
-
-`Object API Name` The API name of the source object that has the lookup field referenced in Field API Name.
-
-The source object can be any object that has the type of lookup field that you want to use.
-
-The lookup field referenced in Field API Name must be a field on the object referenced in Object AI
-Name.
-
-To use the Lookup component, the running user of the flow must have the Create permission on the
-source object.
-
-For example, if you want to add a lookup for a contact, find an object that has a contact lookup field
-on it. In this case, let’s use the contact lookup field on the Case object. The API name of the Case object
-is Case, so enter _`Case`_ for Object API Name, then enter _`ContactId`_ for Field API Name.
-
-```
-Disabled
-
-```
-
-If set to true, the user can’t modify the value. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-`Maximum Selections` The maximum number of records that the user can select. The default value is 1.
-
-```
-Record Id
-
-Record Id Collection
-
-Required
-
-```
-
-Initially, if Maximum Selections is _`1`_ or Maximum Selections is greater than 1 and the Record ID
-Collection field is _`null`_, the record ID selected by default for the lookup.
-
-When a user runs the flow, the value changes to the flow user’s selection.
-
-Initially, if Maximum Selections is greater than 1, the default record IDs for the lookup.
-
-If Maximum Selections is greater than 1 and the Record ID field is _`null`_, the first value is the record
-IDs selected by default for the lookup.
-
-You can specify any number of record IDs up to the Maximum Selections value.
-
-When a user runs the flow, the value changes to the flow user’s selections.
-
-If set to true, the running user must enter a value. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Note: If your org has a namespace, add the namespace to the beginning of the object's API name, and field's API Name. For
-example, if you have a custom object called Insurance_Agent__c, and your org's namespace is Acme,
-enter _`Acme__Insurance_Agent__c`_ .
-
-Store the Lookup Component’s Values in the Flow
-
-The flow stores values automatically. If you store values manually, store the attribute’s output value in a variable.
-
-To store values manually, select **Manually assign variables (advanced)** .
-
-All attributes are available to store in flow variables, but most likely you must store these attributes.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Attribute** **Description**
-
-```
-Record ID
-
-Record ID Collection
-
-Record Name
-
-```
-
-If the Maximum Selections value is 1, the ID of the record that the user selects.
-
-You can store this value in a Text variable.
-
-If the Maximum Selections value is greater than 1, the list of IDs of the records that the user selects.
-
-If the Maximum Selections value is 1 and Record ID is null, the first value in the collection is the ID of
-the record that the user selects.
-
-You can store this value in a Text collection variable.
-
-If the Maximum Selections value is 1, the value of the Name field of the record that the user selects.
-
-If the Maximum Selections value is greater than 1, the value of the Name field of the first record that
-the user selects.
-
-You can store this value in a Text variable.
-
-This value isn’t populated when the Name field of the record is an external object.
-
-Tip: By default, screen components that run on Lightning runtime version 58 and prior have no memory. If a user enters a value,
-and then does one of the following, the value is lost.
-
-**•** Navigates to another screen and returns to the component’s screen.
-
-**•** Pauses the flow then resumes it.
-
-**•** Navigates to the next screen and triggers an input validation error.
-
-Setting the attribute enables a flow to remember the value. The flow stores the value automatically. If you store values manually,
-store the attribute’s output value in a variable.
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-Component
-```
-
-You can set the components to:
-
-**Always**
-Always display the component.
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Validate Input
-
-Provide a formula that evaluates whether what the user entered is valid and the error message to display if invalid.
-
-**Option** **Description**
-
-`Error Message` Specify the error message that appears below the component if the user enters an invalid value.
-
-`Formula` Provide a formula expression that returns a Boolean value.
-
-If the formula expression evaluates to `true`, the input is valid. If the formula expression evaluates to
-`false`, the error message appears below the component.
-
-If the user leaves the field blank and the field isn’t required, the flow doesn’t perform the validation.
-If the user leaves the field blank and the field is required, the flow shows the default error message
-and not your custom error message.
-
-Specify the Behavior of Values on Revisited Screens
-
-Specify what this component does when a user enters a value, navigates to a previous screen, and then returns to the screen with this
-component.
-
-**Option** **Description**
-
-`Use values from when` The component retains the values that the user specified and doesn’t update the values to reflect
-`the user last` changes made on previous screens.
-
-```
-   visited this screen
-
-```
-
-```
-Refresh inputs to
-
-incorporate changes
-
-elsewhere in the
-
-flow
-
-```
-
-Considerations
-
-The component updates the user-specified values to reflect changes made on previous screens.
-
-If you pause and then resume the flow, the flow retains user-specified values only in Checkbox,
-Checkbox Group, Currency, Long Text Area, Multi-Select Picklist, Number, Password, Picklist, Radio
-Buttons, and Text components.
-
-**•** The Lookup flow screen component isn’t compatible with mobile devices or standalone Aura apps.
-
-**•** Dependent lookup filters aren’t enforced for the Lookup component in a flow. Other lookup filters are enforced the same as they
-are in Lightning Experience record pages. When the flow accesses the Salesforce database, lookup filters are enforced. For example,
-when the flow executes the Create Records element, the flow fails if the value of the lookup field doesn’t meet the lookup filter
-requirements.
-
-**•** To filter records based on resources and information from the flow, consider using a Choice Lookup component.
-
-**•** A custom lookup field to a user record isn’t supported.
-
-Tip: To let a flow user choose from a list of user records, employ a standard User lookup field like `CreatedById` or
-`LastModifiedById` . `OwnerId` isn’t supported.
-
-**•** At run time, when the flow user types two characters in the field, it shows up to five recent records whose `Name` field matches the
-query.
-
-**•** Dependent lookup filters aren’t supported.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**•** During run time, if the lookup field defined in `Field API Name` isn’t on an assigned page layout, the lookup component displays
-`Search undefined...` . To display the correct text, add the defined lookup field to all of the source object’s page layouts that
-are assigned to running users.
-
-**•** Invalid Record IDs are ignored. A Record ID is invalid if it isn’t a valid Salesforce Record ID or its key prefix doesn’t match with the field
-API name object.
-
-**•** If the Maximum Selections value is 1 and the Record ID Collection and Record ID are both changed, the Record ID takes precedence.
-The Record ID Collection is ignored.
-
-**•** If the Maximum Selections value is greater than 1, the Record ID Collection takes precedence when Record ID is populated. But, if
-Record ID Collection isn’t populated, the Record ID is used to populate Record ID Collection as a single it
-
-**•** Relationship fields that are related to more than one object, also known as polymorphic fields, aren’t supported. For example, because
-a task record’s WhoId field can be related to a contact or a lead, it isn’t supported for this component.
-
-**•** `Field API Name` and `Object API Name` are case-sensitive.
-
-**•** The Lookup flow screen component doesn’t support filtering by the source object record type.
-
-SEE ALSO:
-
-Standard Flow Screen Components
-
-[Considerations for Lookup Filters](https://help.salesforce.com/s/articleView?id=sf.fields_lookup_filters_notes.htm&language=en_US)
-
-[The Enhanced Page Layout Editor](https://help.salesforce.com/s/articleView?id=sf.customize_layoutcustomize_pd.htm&language=en_US)
-
-Flow Screen Input Component: Multi-Select Picklist
-
-Let users choose multiple options in a picklist format.
-
-Configure the Multi-Select Picklist Component
-
-**Attribute** **Description**
-
-```
-API Name
-
-Choice
-
-```
-
-The API name of the component.
-
-An API name can include underscores and alphanumeric characters
-without spaces. It must begin with a letter and can’t end with an
-underscore. It also can’t have two consecutive underscores.
-
-Add at least one choice, record choice set, or picklist choice set to this
-component. Available only when you add a choice component to the
-screen component.
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-`Component Type` Modify a choice component type.
-
-If the user can select only one option, these component types become
-available:
-
-**•** Picklist
-
-**•** Radio Buttons
-
-If the user can select multiple options, these component types become
-available:
-
-**•** Checkbox Group
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Attribute** **Description**
-
-**•** Multi-select Picklist
-
-`Data Type` Only Text choices are supported for this component.
-
-`Default Value` Pre-selected choice for the component. If the associated screen isn’t executed or the conditions for
-component visibility aren’t met, the stored value of the component is `null` .
-
-```
-Disabled
-
-```
-
-If set to true, the user can’t modify the value. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-`Label` The text that appears with the screen component that tells the running user how to use it.
-
-```
-Let Users Select
-
-Multiple Options
-
-```
-
-Specifies whether the user can choose only one option or multiple options. When you select Yes for
-Let Users Select Multiple Options, Data Type is automatically set to Text, and non-text Choice resources
-are cleared from the component configuration.
-
-`Provide Help` Give your users more context with this screen component. The text you enter is available in an info
-bubble next to the component.
-
-`Require` Requires users to select a value before they can move to the next screen.
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-Component
-```
-
-You can set the components to:
-
-**Always**
-Always display the component.
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-Specify the Behavior of Values on Revisited Screens
-
-Specify what this component does when a user enters a value, navigates to a previous screen, and then returns to the screen with this
-component.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Option** **Description**
-
-`Use values from when` The component retains the values that the user specified and doesn’t update the values to reflect
-`the user last` changes made on previous screens.
-
-```
-   visited this screen
-
-```
-
-```
-Refresh inputs to
-
-incorporate changes
-
-elsewhere in the
-
-flow
-
-```
-
-Considerations
-
-The component updates the user-specified values to reflect changes made on previous screens.
-
-If you pause and then resume the flow, the flow retains user-specified values only in Checkbox,
-Checkbox Group, Currency, Long Text Area, Multi-Select Picklist, Number, Password, Picklist, Radio
-Buttons, and Text components.
-
-**•** Rich text isn’t supported in the Multi-Select Picklist component.
-
-SEE ALSO:
-
-Standard Flow Screen Components
-
-Flow Screen Input Component: Name
-
-Let users enter multiple name values with one screen component. Instead of the Name screen
-component, you can use Text input fields to capture name information, but it takes a lot more
-configuration.
-
-Note: This screen component requires Lightning runtime.
-
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Configure the Name Component
-
-You can select resources from the flow, such as variables or global constants, or you can manually enter a value.
-
-**Attribute** **Description**
-
-`API Name` The API name of the component.
-
-An API name can include underscores and alphanumeric characters without spaces. It must begin
-with a letter and can’t end with an underscore. It also can’t have two consecutive underscores.
-
-```
-Disabled
-
-Fields to Display
-
-First Name
-
-Informal Name
-
-Label
-
-Last Name
-
-```
-
-If set to true, the user can’t modify the value. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-By default, the component displays only the First Name and Last Name fields, but other fields are
-available. To customize which fields to display at run time, set this attribute to a comma-separated
-list of the field names.
-
-**•** For First Name, use firstName
-
-**•** For Last Name, use lastName
-
-**•** For Middle Name, use middleName
-
-**•** For Informal Name, use informalName
-
-**•** For Salutation, use salutation
-
-**•** For Suffix, use suffix
-
-This attribute doesn’t control the order that the fields display in.
-
-For example, to display all the fields, set this attribute to _`firstName, lastName,`_
-_`middleName, informalName, salutation, suffix`_ .
-
-This attribute accepts single-value resources. The value is treated as text.
-
-The value of the First Name field. Setting this attribute prepopulates the field. To use the value that
-the user enters, store this attribute’s output in a variable.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-The value of the Informal Name field. Setting this attribute prepopulates the field. To use the value
-that the user enters, store this attribute’s output in a variable.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-The label that appears above the name fields.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-The value of the Last Name field. Setting this attribute prepopulates the field. To use the value that
-the user enters, store this attribute’s output in a variable.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Attribute** **Description**
-
-```
-Middle Name
-
-Read Only
-
-Salutation
-
-Salutation Options
-
-Suffix
-
-```
-
-The value of the Middle Name field. Setting this attribute prepopulates the field. To use the value that
-the user enters, store this attribute’s output in a variable.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-If set to true, the user can’t modify the value, but the user can copy it. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-The value of the Salutation field. Setting this attribute prepopulates the field. To use the value that
-the user enters, store this attribute’s output in a variable.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-By default, the options for Salutation are Mr., Mrs., and Ms. To override these options, set this attribute
-to a comma-separated list of values.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-The value of the Suffix field. Setting this attribute prepopulates the field. To use the value that the user
-enters, store this attribute’s output in a variable.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-Store the Name Component’s Values in the Flow
-
-The flow stores values automatically. If you store values manually, store the attribute’s output value in a variable.
-
-To store values manually, select **Manually assign variables (advanced)** .
-
-All attributes are available to store in flow variables. Most likely, you must store one of these attributes.
-
-**Attribute** **Description**
-
-```
-First Name
-
-Informal Name
-
-Last Name
-
-Middle Name
-
-Salutation
-
-```
-
-What the user entered in the First Name field.
-
-This value can be stored in a single-value Text variable or a Text field on a record variable.
-
-What the user entered in the Informal Name field.
-
-This value can be stored in a single-value Text variable or a Text field on a record variable.
-
-What the user entered in the Last Name field.
-
-This value can be stored in a single-value Text variable or a Text field on a record variable.
-
-What the user entered in the Middle Name field.
-
-This value can be stored in a single-value Text variable or a Text field on a record variable.
-
-What the user entered in the Salutation field.
-
-This value can be stored in a single-value Text variable or a Text field on a record variable.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Attribute** **Description**
-
-```
-Suffix
-
-```
-
-What the user entered in the Suffix field.
-
-This value can be stored in a single-value Text variable or a Text field on a record variable.
-
-Tip: By default, screen components that run on Lightning runtime version 58 and prior have no memory. If a user enters a value,
-and then does one of the following, the value is lost.
-
-**•** Navigates to another screen and returns to the component’s screen.
-
-**•** Pauses the flow then resumes it.
-
-**•** Navigates to the next screen and triggers an input validation error.
-
-Setting the attribute enables a flow to remember the value. The flow stores the value automatically. If you store values manually,
-store the attribute’s output value in a variable.
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-Component
-```
-
-You can set the components to:
-
-**Always**
-Always display the component.
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-Validate Input
-
-Provide a formula that evaluates whether what the user entered is valid and the error message to display if invalid.
-
-**Option** **Description**
-
-`Error Message` Specify the error message that appears below the component if the user enters an invalid value.
-
-`Formula` Provide a formula expression that returns a Boolean value.
-
-If the formula expression evaluates to `true`, the input is valid. If the formula expression evaluates to
-`false`, the error message appears below the component.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Option** **Description**
-
-If the user leaves the field blank and the field isn’t required, the flow doesn’t perform the validation.
-If the user leaves the field blank and the field is required, the flow shows the default error message
-and not your custom error message.
-
-Specify the Behavior of Values on Revisited Screens
-
-Specify what this component does when a user enters a value, navigates to a previous screen, and then returns to the screen with this
-component.
-
-**Option** **Description**
-
-`Use values from when` The component retains the values that the user specified and doesn’t update the values to reflect
-`the user last` changes made on previous screens.
-
-```
-   visited this screen
-
-```
-
-```
-Refresh inputs to
-
-incorporate changes
-
-elsewhere in the
-
-flow
-
-```
-
-SEE ALSO:
-
-The component updates the user-specified values to reflect changes made on previous screens.
-
-If you pause and then resume the flow, the flow retains user-specified values only in Checkbox,
-Checkbox Group, Currency, Long Text Area, Multi-Select Picklist, Number, Password, Picklist, Radio
-Buttons, and Text components.
-
-Standard Flow Screen Components
-
-Flow Screen Input Component: Number
-
-Let users enter number values from a flow screen.
-
-Configure the Number Component
-
-**Attribute** **Description**
-
-```
-API Name
-
-Decimal Places
-
-Default Value
-
-Disabled
-
-```
-
-The API name of the component.
-
-An API name can include underscores and alphanumeric characters
-without spaces. It must begin with a letter and can’t end with an
-underscore. It also can’t have two consecutive underscores.
-
-Controls the number of digits to the right of the decimal point up to 17
-places. If you leave this field blank or set it to zero, only whole numbers
-appear when your flow runs.
-
-Pre-populated value for the component. If the associated screen isn’t
-executed or the conditions for component visibility aren’t met, the stored
-value of the component is `null` .
-
-If set to true, the user can’t modify the value. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Attribute** **Description**
-
-Not supported in Classic runtime for flows.
-
-`Label` The text that appears with the screen component that tells the running user how to use it.
-
-`Provide Help` Give your users more context with this screen component. The text you enter is available in an info
-bubble next to the component.
-
-```
-Read Only
-
-```
-
-If set to true, the user can’t modify the value, but the user can copy it. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-`Require` Requires users to enter a value before they can move to the next screen.
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-Component
-```
-
-You can set the components to:
-
-**Always**
-Always display the component.
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-Validate Input
-
-Provide a formula that evaluates whether what the user entered is valid and the error message to display if invalid.
-
-**Option** **Description**
-
-`Error Message` Specify the error message that appears below the component if the user enters an invalid value.
-
-`Formula` Provide a formula expression that returns a Boolean value.
-
-If the formula expression evaluates to `true`, the input is valid. If the formula expression evaluates to
-`false`, the error message appears below the component.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Option** **Description**
-
-If the user leaves the field blank and the field isn’t required, the flow doesn’t perform the validation.
-If the user leaves the field blank and the field is required, the flow shows the default error message
-and not your custom error message.
-
-Specify the Behavior of Values on Revisited Screens
-
-Specify what this component does when a user enters a value, navigates to a previous screen, and then returns to the screen with this
-component.
-
-**Option** **Description**
-
-`Use values from when` The component retains the values that the user specified and doesn’t update the values to reflect
-`the user last` changes made on previous screens.
-
-```
-   visited this screen
-
-```
-
-```
-Refresh inputs to
-
-incorporate changes
-
-elsewhere in the
-
-flow
-
-```
-
-SEE ALSO:
-
-The component updates the user-specified values to reflect changes made on previous screens.
-
-If you pause and then resume the flow, the flow retains user-specified values only in Checkbox,
-Checkbox Group, Currency, Long Text Area, Multi-Select Picklist, Number, Password, Picklist, Radio
-Buttons, and Text components.
-
-Standard Flow Screen Components
-
-Flow Screen Input Component: Order Management Product Selector
-
-Let users select which fields show in columns during product selector for various transaction types,
-such as returns or exchanges.
-
-Configure the Order Management Product Selector Component
-
-[Note: This screen component requires Lightning runtime.](https://help.salesforce.com/s/articleView?id=sf.flow_distribute_runtime.htm&language=en_US)
-
-Set the product fields by using data in the flow.
-
-**Attribute** **Description**
-
-Configure Columns Required. Select up to ten columns to display.
-
-Order Product Required. A collection of product summaries.
-Summaries
-
-Selected Order Required. The subset collection of product summaries being changed.
-Product Summaries
-
-Selected Order Required. The order summary that the product summaries belong to.
-Summary
-
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Attribute** **Description**
-
-Transaction Type Optional. The type of transaction. Valid values are Cancel, RMS, Return, Reship, Discount, and Exchange.
-
-Attributes to Output
-
-**Attribute** **Description**
-
-Order Product Summaries A collection of product summaries.
-
-Selected Order Summary The selected order summary.
-
-Selected Order Product The subset collection of product summaries being changed.
-Summaries
-
-Transaction Type The type of transaction.
-
-Flow Screen Input Component: Password
-
-Let users enter sensitive information in a flow screen, such as a social security number. Text entered
-by the user is masked.
-
-Note: This screen component doesn’t encrypt the value entered by the user. When the flow
-references a Password screen component, such as in an Assignment element or a Display
-Text screen component, the value isn’t masked.
-
-Configure the Password Component
-
-**Attribute** **Description**
-
-`API Name` The API name of the component.
-
-An API name can include underscores and alphanumeric characters
-without spaces. It must begin with a letter and can’t end with an
-underscore. It also can’t have two consecutive underscores.
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-```
-Default Value
-
-Disabled
-
-```
-
-Pre-populated value for the component. If the associated screen isn’t
-executed or the conditions for component visibility aren’t met, the stored
-value of the component is `null` .
-
-If set to true, the user can’t modify the value. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-`Label` The text that appears with the screen component that tells the running
-user how to use it.
-
-`Provide Help` Give your users more context with this screen component. The text you
-enter is available in an info bubble next to the component.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Attribute** **Description**
-
-```
-Read Only
-
-```
-
-If set to true, the user can’t modify the value, but the user can copy it. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-`Require` Requires users to enter a value before they can move to the next screen.
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-Component
-```
-
-You can set the components to:
-
-**Always**
-Always display the component.
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-Validate Input
-
-Provide a formula that evaluates whether what the user entered is valid and the error message to display if invalid.
-
-**Option** **Description**
-
-`Error Message` Specify the error message that appears below the component if the user enters an invalid value.
-
-`Formula` Provide a formula expression that returns a Boolean value.
-
-If the formula expression evaluates to `true`, the input is valid. If the formula expression evaluates to
-`false`, the error message appears below the component.
-
-If the user leaves the field blank and the field isn’t required, the flow doesn’t perform the validation.
-If the user leaves the field blank and the field is required, the flow shows the default error message
-and not your custom error message.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Specify the Behavior of Values on Revisited Screens
-
-Specify what this component does when a user enters a value, navigates to a previous screen, and then returns to the screen with this
-component.
-
-**Option** **Description**
-
-`Use values from when` The component retains the values that the user specified and doesn’t update the values to reflect
-`the user last` changes made on previous screens.
-
-```
-   visited this screen
-
-```
-
-```
-Refresh inputs to
-
-incorporate changes
-
-elsewhere in the
-
-flow
-
-```
-
-SEE ALSO:
-
-The component updates the user-specified values to reflect changes made on previous screens.
-
-If you pause and then resume the flow, the flow retains user-specified values only in Checkbox,
-Checkbox Group, Currency, Long Text Area, Multi-Select Picklist, Number, Password, Picklist, Radio
-Buttons, and Text components.
-
-Standard Flow Screen Components
-
-Flow Screen Input Component: Phone
-
-Let users enter phone values from a flow screen.
-
-Note: This screen component requires Lightning runtime.
-
-Configure the Phone Component
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-You can select resources from the flow, such as variables or global constants, or you can manually enter a value.
-
-**Attribute** **Description**
-
-`API Name` The API name of the component.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Attribute** **Description**
-
-An API name can include underscores and alphanumeric characters without spaces. It must begin
-with a letter and can’t end with an underscore. It also can’t have two consecutive underscores.
-
-```
-Label
-
-Disabled
-
-Pattern
-
-Placeholder Text
-
-Read Only
-
-Required
-
-Value
-
-```
-
-The label that appears above the phone field.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-If set to true, the user can’t modify the value. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-Determines whether the value is valid. By default, there’s no pattern.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-Text that appears in the field when it’s empty. Use placeholder text to give users a hint about what
-to enter in the field.
-
-This attribute accepts a resource with a single value. The value is treated as text.
-
-If set to true, the user can’t modify the value, but the user can copy it. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-If set to true, the running user must enter a value. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-The value of the phone field. Setting this attribute prepopulates the field. To use the value that the
-user enters, store this attribute’s output in a variable.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-Store the Phone Component’s Values in the Flow
-
-The flow stores values automatically. If you store values manually, store the attribute’s output value in a variable.
-
-To store values manually, select **Manually assign variables (advanced)** .
-
-All attributes are available to store in flow variables, but Value is the most likely attribute you must store.
-
-To store the phone number that the user entered, map the Value attribute to a flow variable.
-
-Tip: By default, screen components that run on Lightning runtime version 58 and prior have no memory. If a user enters a value,
-and then does one of the following, the value is lost.
-
-**•** Navigates to another screen and returns to the component’s screen.
-
-**•** Pauses the flow then resumes it.
-
-**•** Navigates to the next screen and triggers an input validation error.
-
-Setting the attribute enables a flow to remember the value. The flow stores the value automatically. If you store values manually,
-store the attribute’s output value in a variable.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-   Component
-```
-
-You can set the components to:
-
-**Always**
-Always display the component.
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-Validate Input
-
-Provide a formula that evaluates whether what the user entered is valid and the error message to display if invalid.
-
-**Option** **Description**
-
-`Error Message` Specify the error message that appears below the component if the user enters an invalid value.
-
-`Formula` Provide a formula expression that returns a Boolean value.
-
-If the formula expression evaluates to `true`, the input is valid. If the formula expression evaluates to
-`false`, the error message appears below the component.
-
-If the user leaves the field blank and the field isn’t required, the flow doesn’t perform the validation.
-If the user leaves the field blank and the field is required, the flow shows the default error message
-and not your custom error message.
-
-Specify the Behavior of Values on Revisited Screens
-
-Specify what this component does when a user enters a value, navigates to a previous screen, and then returns to the screen with this
-component.
-
-**Option** **Description**
-
-`Use values from when` The component retains the values that the user specified and doesn’t update the values to reflect
-`the user last` changes made on previous screens.
-
-```
-   visited this screen
-
-```
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Option** **Description**
-
-```
-Refresh inputs to
-
-incorporate changes
-
-elsewhere in the
-
-flow
-
-```
-
-SEE ALSO:
-
-The component updates the user-specified values to reflect changes made on previous screens.
-
-If you pause and then resume the flow, the flow retains user-specified values only in Checkbox,
-Checkbox Group, Currency, Long Text Area, Multi-Select Picklist, Number, Password, Picklist, Radio
-Buttons, and Text components.
-
-Standard Flow Screen Components
-
-Flow Screen Input Component: Picklist
-
-Let users choose from a list of options in a picklist format.
-
-Starting with Flow Run-time API version 52, the first option listed for all picklists is --None--. If you
-don’t set a default value for a picklist in Flow Builder, the --None-- option is automatically selected
-at run time. --None-- is treated as a null value. If you set the picklist as required and the user selects
---None--, then the flow run time prevents the user from proceeding to the next screen.
-
-Configure the Picklist Component
-
-**Attribute** **Description**
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-```
-API Name
-
-Choice
-
-```
-
-The API name of the component.
-
-An API name can include underscores and alphanumeric characters
-without spaces. It must begin with a letter and can’t end with an
-underscore. It also can’t have two consecutive underscores.
-
-Add at least one choice, record choice set, or picklist choice set to this
-component. Available only when you add a choice component to the
-screen component.
-
-If you select a dynamic Choice resource such as a collection choice set or
-record choice set, ensure that each value in the Choice resource is unique.
-Otherwise, if a user selects a duplicate value, the value is set incorrectly
-in Salesforce.
-
-`Component Type` Modify a choice component type.
-
-If the user can select only one option, these component types become
-available:
-
-##### • Picklist
-
-**•** Radio Buttons
-
-If the user can select multiple options, these component types become
-available:
-
-**•** Checkbox Group
-
-**•** Multi-select Picklist
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Attribute** **Description**
-
-`Data Type` Controls which choices are available for this component. For example, if you choose Number, you
-can’t select a Text choice.
-
-```
-Decimal Places
-
-```
-
-Controls the number of digits to the right of the decimal point up to 17 places. If you leave this field
-blank or set it to zero, only whole numbers appear when your flow runs.
-
-Available only when the data type is Number or Currency.
-
-`Default Value` Pre-selected choice for the component. If the associated screen isn’t executed or the conditions for
-component visibility aren’t met, the stored value of the component is `null` .
-
-```
-Disabled
-
-```
-
-If set to true, the user can’t modify the value. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-`Label` The text that appears with the screen component that tells the running user how to use it.
-
-```
-Let Users Select
-
-Multiple Options
-
-```
-
-Specifies whether the user can choose only one option or multiple options. When you select Yes for
-Let Users Select Multiple Options, Data Type is automatically set to Text, and non-text Choice resources
-are cleared from the component configuration.
-
-`Provide Help` Give your users more context with this screen component. The text you enter is available in an info
-bubble next to the component.
-
-`Require` Requires users to select a value before they can move to the next screen.
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-Component
-```
-
-You can set the components to:
-
-**Always**
-Always display the component.
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Specify the Behavior of Values on Revisited Screens
-
-Specify what this component does when a user enters a value, navigates to a previous screen, and then returns to the screen with this
-component.
-
-**Option** **Description**
-
-`Use values from when` The component retains the values that the user specified and doesn’t update the values to reflect
-`the user last` changes made on previous screens.
-
-```
-   visited this screen
-
-```
-
-```
-Refresh inputs to
-
-incorporate changes
-
-elsewhere in the
-
-flow
-
-```
-
-Considerations
-
-The component updates the user-specified values to reflect changes made on previous screens.
-
-If you pause and then resume the flow, the flow retains user-specified values only in Checkbox,
-Checkbox Group, Currency, Long Text Area, Multi-Select Picklist, Number, Password, Picklist, Radio
-Buttons, and Text components.
-
-**•** Rich text isn’t supported in the Picklist component.
-
-SEE ALSO:
-
-Standard Flow Screen Components
-
-Flow Screen Input Component: Radio Buttons
-
-Let users choose from a list of options in a radio button format.
-
-Configure the Radio Buttons Component
-
-**Attribute** **Description**
-
-```
-API Name
-
-Choice
-
-```
-
-The API name of the component.
-
-An API name can include underscores and alphanumeric characters
-without spaces. It must begin with a letter and can’t end with an
-underscore. It also can’t have two consecutive underscores.
-
-Add at least one choice, record choice set, or picklist choice set to this
-component. Available only when you add a choice component to the
-screen component.
-
-If you select a dynamic Choice resource such as a collection choice set or
-record choice set, ensure that each value in the Choice resource is unique.
-Otherwise, if a user selects a duplicate value, the value is set incorrectly
-in Salesforce.
-
-All multi-select choice components use a text data type, but radio buttons
-and picklists can also use numbers or Boolean choices.
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-`Component Type` Modify a choice component type.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Attribute** **Description**
-
-If the user can select only one option, these component types become available:
-
-**•** Picklist
-
-**•** Radio Buttons
-
-If the user can select multiple options, these component types become available:
-
-**•** Checkbox Group
-
-**•** Multi-select Picklist
-
-`Data Type` Controls which choices are available for this component. For example, if you choose Number, you
-can’t select a Text choice.
-
-```
-Decimal Places
-
-```
-
-Controls the number of digits to the right of the decimal point up to 17 places. If you leave this field
-blank or set it to zero, only whole numbers appear when your flow runs.
-
-Available only when the data type is Number or Currency.
-
-`Default Value` Pre-selected choice for the component. If the associated screen isn’t executed or the conditions for
-component visibility aren’t met, the stored value of the component is `null` .
-
-```
-Disabled
-
-```
-
-If set to true, the user can’t modify the value. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-`Label` The text that appears with the screen component that tells the running user how to use it.
-
-```
-Let Users Select
-
-Multiple Options
-
-```
-
-Specifies whether the user can choose only one option or multiple options. When you select Yes for
-Let Users Select Multiple Options, Data Type is automatically set to Text, and non-text Choice resources
-are cleared from the component configuration.
-
-`Provide Help` Give your users more context with this screen component. The text you enter is available in an info
-bubble next to the component.
-
-`Require` Requires users to select a value before they can move to the next screen.
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-Component
-```
-
-You can set the components to:
-
-**Always**
-Always display the component.
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Option** **Description**
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-Specify the Behavior of Values on Revisited Screens
-
-Specify what this component does when a user enters a value, navigates to a previous screen, and then returns to the screen with this
-component.
-
-**Option** **Description**
-
-`Use values from when` The component retains the values that the user specified and doesn’t update the values to reflect
-`the user last` changes made on previous screens.
-
-```
-   visited this screen
-
-```
-
-```
-Refresh inputs to
-
-incorporate changes
-
-elsewhere in the
-
-flow
-
-```
-
-SEE ALSO:
-
-The component updates the user-specified values to reflect changes made on previous screens.
-
-If you pause and then resume the flow, the flow retains user-specified values only in Checkbox,
-Checkbox Group, Currency, Long Text Area, Multi-Select Picklist, Number, Password, Picklist, Radio
-Buttons, and Text components.
-
-Standard Flow Screen Components
-
-Flow Screen Input Component: Slack Channel Selector
-
-Let users select a Slack channel to send a Slack message from a flow screen.
-
-Configure the Slack Channel Selector Component
-
-You can select resources from the flow, such as variables or global constants, or you can manually
-enter a value.
-
-Note: This screen component requires Lightning runtime.
-
-**Attribute** **Description**
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-```
-API Name
-
-```
-
-The API name of the component.
-
-An API name can include underscores and alphanumeric characters
-without spaces. It must begin with a letter and can’t end with an
-underscore. It also can’t have two consecutive underscores.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Attribute** **Description**
-
-`Slack app id` The ID of the Slack app connected to Salesforce. This attribute accepts Text variables.
-
-[Only the Slack app owner can get the app ID. From https://api.slack.com, go to your apps, then Basic](https://api.slack.com)
-Information, and find the app’s ID.
-
-`Slack workspace id` The ID of the Slack workspace where the Slack app is installed. This attribute accepts Text variables.
-
-To get the ID, open the web version of Slack and copy the alphanumeric section of the Slack URL
-starting with T.
-
-`Use Bot Token` Fetches a list of Slack channels based on the Slack app’s bot token.
-
-This attribute accepts Boolean resources. If set to `$GlobalConstant.False`, the Slack app uses
-the user token instead of the bot token.
-
-`Use Channel Search` Indicates whether to use type-ahead Slack channel search to fetch a list of Slack channels.
-```
-   API
-```
-
-This attribute accepts Boolean resources. Requires that the Slack app be registered with Slack to use
-the private API.
-
-```
-Label for dropdown
-
-Placeholder for
-
-dropdown
-
-Required
-
-```
-
-Text that appears in the selector heading. Use text to give users a hint of what the Slack channel
-selector is for.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-Text that appears in the field when it’s empty. Use placeholder text to give users a hint about what
-to enter in the field.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-If set to `$GlobalConstant.True`, the running user must enter a value.
-
-This attribute accepts single-value Boolean resources.
-
-`Selected channel id` The ID of the selected Slack channel.
-
-To get the channel ID, right-click the channel and select **View channel details** . The Channel ID is on
-the About tab.
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-Component
-```
-
-You can set the components to:
-
-**Always**
-Always display the component.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Option** **Description**
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-Validate Input
-
-Provide a formula that evaluates whether what the user entered is valid and the error message to display if invalid.
-
-**Option** **Description**
-
-`Error Message` Specify the error message that appears below the component if the user enters an invalid value.
-
-`Formula` Provide a formula expression that returns a Boolean value.
-
-If the formula expression evaluates to `true`, the input is valid. If the formula expression evaluates to
-`false`, the error message appears below the component.
-
-If the user leaves the field blank and the field isn’t required, the flow doesn’t perform the validation.
-If the user leaves the field blank and the field is required, the flow shows the default error message
-and not your custom error message.
-
-Specify the Behavior of Values on Revisited Screens
-
-Specify what this component does when a user enters a value, navigates to a previous screen, and then returns to the screen with this
-component.
-
-**Option** **Description**
-
-`Use values from when` The component retains the values that the user specified and doesn’t update the values to reflect
-`the user last` changes made on previous screens.
-
-```
-   visited this screen
-
-```
-
-```
-Refresh inputs to
-
-incorporate changes
-
-elsewhere in the
-
-flow
-
-```
-
-The component updates the user-specified values to reflect changes made on previous screens.
-
-If you pause and then resume the flow, the flow retains user-specified values only in Checkbox,
-Checkbox Group, Currency, Long Text Area, Multi-Select Picklist, Number, Password, Picklist, Radio
-Buttons, and Text components.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Flow Screen Input Component: Slack Workspace Selector
-
-Let users select a Slack workspace to send a Slack message to from a flow screen.
-
-Configure the Slack Workspace Selector Component
-
-You can select resources from the flow, such as variables or global constants, or you can manually
-enter a value.
-
-Note: This screen component requires Lightning runtime.
-
-**Attribute** **Description**
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-```
-API Name
-
-Slack appID
-
-Workspace ID
-
-Select...
-
-```
-
-The API name of the component.
-
-An API name can include underscores and alphanumeric characters
-without spaces. It must begin with a letter and can’t end with an
-underscore. It also can’t have two consecutive underscores.
-
-The ID of the Slack app connected to Salesforce. This attribute accepts
-Text variables.
-
-[Only the Slack app owner can get the app ID. From https://api.slack.com,](https://api.slack.com)
-go to your apps, then Basic Information, and find the app’s ID.
-
-The ID of the Slack workspace where the Slack app is installed. This
-attribute accepts Text variables.
-
-To get the ID, open the web version of Slack and copy the alphanumeric
-section of the Slack URL starting with T.
-
-Text that appears in the field when it’s empty. Use placeholder text to
-give users a hint about what to enter in the field.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-`Workspace Name` The name of the Slack workspace where the Slack app is installed.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-```
-Required
-
-```
-
-If set to true, the running user must enter a value. The default value is
-false.
-
-This attribute accepts a resource with a Boolean value.
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-Component
-
-```
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Option** **Description**
-
-You can set the components to:
-
-**Always**
-Always display the component.
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-Validate Input
-
-Provide a formula that evaluates whether what the user entered is valid and the error message to display if invalid.
-
-**Option** **Description**
-
-`Error Message` Specify the error message that appears below the component if the user enters an invalid value.
-
-`Formula` Provide a formula expression that returns a Boolean value.
-
-If the formula expression evaluates to `true`, the input is valid. If the formula expression evaluates to
-`false`, the error message appears below the component.
-
-If the user leaves the field blank and the field isn’t required, the flow doesn’t perform the validation.
-If the user leaves the field blank and the field is required, the flow shows the default error message
-and not your custom error message.
-
-Specify the Behavior of Values on Revisited Screens
-
-Specify what this component does when a user enters a value, navigates to a previous screen, and then returns to the screen with this
-component.
-
-**Option** **Description**
-
-`Use values from when` The component retains the values that the user specified and doesn’t update the values to reflect
-`the user last` changes made on previous screens.
-
-```
-   visited this screen
-
-```
-
-```
-Refresh inputs to
-
-incorporate changes
-
-elsewhere in the
-
-flow
-
-```
-
-The component updates the user-specified values to reflect changes made on previous screens.
-
-If you pause and then resume the flow, the flow retains user-specified values only in Checkbox,
-Checkbox Group, Currency, Long Text Area, Multi-Select Picklist, Number, Password, Picklist, Radio
-Buttons, and Text components.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Flow Screen Input Component: Slider
-
-Let users visually specify number values from a flow screen.
-
-Note: This screen component requires Lightning runtime.
-
-Configure the Slider Component
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-You can select resources from the flow, such as variables or global constants, or you can manually enter a value.
-
-**Attribute** **Description**
-
-`API Name` The API name of the component.
-
-An API name can include underscores and alphanumeric characters without spaces. It must begin
-with a letter and can’t end with an underscore. It also can’t have two consecutive underscores.
-
-```
-Label
-
-Disabled
-
-Range Maximum
-
-Range Minimum
-
-##### `Slider Size`
-
-```
-
-This label appears above the slider.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-If set to true, the user can’t modify the value. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-The maximum value of the slider range. The default is 100.
-
-This parameter accepts single-value Number resources.
-
-The minimum value of the slider range. The default is 0.
-
-This parameter accepts Number resources.
-
-Controls the size of the slider. The accepted values are x-small, small, medium, or large.
-
-This parameter accepts single-value resources of any type. That value is treated as text.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Attribute** **Description**
-
-```
-Step Size
-
-Value
-
-```
-
-Divides the slider into a set of steps. The default is 1.
-
-For example, for a range of 0–100, set the Step Size to 10 to let the user select every 10th value. Other
-example step sizes are 0.1 and 5.
-
-This parameter accepts single-value Number resources.
-
-The default value represented by the slider position. Setting this attribute from the Inputs tab pre-sets
-the value.
-
-This parameter accepts single-value Number resources.
-
-Store the Slider Component’s Values in the Flow
-
-The flow stores values automatically. If you store values manually, store the attribute’s output value in a variable.
-
-To store values manually, select **Manually assign variables (advanced)** .
-
-All attributes are available to store in flow variables, but Value is the most likely attribute you must store.
-
-To store the value that the user selected, map the Value attribute to a Number flow variable.
-
-Tip: By default, screen components that run on Lightning runtime version 58 and prior have no memory. If a user enters a value,
-and then does one of the following, the value is lost.
-
-**•** Navigates to another screen and returns to the component’s screen.
-
-**•** Pauses the flow then resumes it.
-
-**•** Navigates to the next screen and triggers an input validation error.
-
-Setting the attribute enables a flow to remember the value. The flow stores the value automatically. If you store values manually,
-store the attribute’s output value in a variable.
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-Component
-```
-
-You can set the components to:
-
-**Always**
-Always display the component.
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Option** **Description**
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-Validate Input
-
-Provide a formula that evaluates whether what the user entered is valid and the error message to display if invalid.
-
-**Option** **Description**
-
-`Error Message` Specify the error message that appears below the component if the user enters an invalid value.
-
-`Formula` Provide a formula expression that returns a Boolean value.
-
-If the formula expression evaluates to `true`, the input is valid. If the formula expression evaluates to
-`false`, the error message appears below the component.
-
-If the user leaves the field blank and the field isn’t required, the flow doesn’t perform the validation.
-If the user leaves the field blank and the field is required, the flow shows the default error message
-and not your custom error message.
-
-Specify the Behavior of Values on Revisited Screens
-
-Specify what this component does when a user enters a value, navigates to a previous screen, and then returns to the screen with this
-component.
-
-**Option** **Description**
-
-`Use values from when` The component retains the values that the user specified and doesn’t update the values to reflect
-`the user last` changes made on previous screens.
-
-```
-   visited this screen
-
-```
-
-```
-Refresh inputs to
-
-incorporate changes
-
-elsewhere in the
-
-flow
-
-```
-
-SEE ALSO:
-
-The component updates the user-specified values to reflect changes made on previous screens.
-
-If you pause and then resume the flow, the flow retains user-specified values only in Checkbox,
-Checkbox Group, Currency, Long Text Area, Multi-Select Picklist, Number, Password, Picklist, Radio
-Buttons, and Text components.
-
-Standard Flow Screen Components
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Flow Screen Input Component: Text
-
-Let users enter text from a flow screen, such as the name of the user’s company.
-
-Configure the Text Component
-
-**Attribute** **Description**
-
-```
-API Name
-
-Default Value
-
-Disabled
-
-```
-
-The API name of the component.
-
-An API name can include underscores and alphanumeric characters
-without spaces. It must begin with a letter and can’t end with an
-underscore. It also can’t have two consecutive underscores.
-
-Pre-populated value for the component. If the associated screen isn’t
-executed or the conditions for component visibility aren’t met, the stored
-value of the component is `null` .
-
-If set to true, the user can’t modify the value. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-`Label` The text that appears with the screen component that tells the running
-user how to use it.
-
-`Provide Help` Give your users more context with this screen component. The text you
-enter is available in an info bubble next to the component.
-
-```
-Read Only
-
-```
-
-If set to true, the user can’t modify the value, but the user can copy it. The
-default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-`Require` Requires users to enter a value before they can move to the next screen.
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-Component
-```
-
-You can set the components to:
-
-**Always**
-Always display the component.
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Option** **Description**
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-Validate Input
-
-Provide a formula that evaluates whether what the user entered is valid and the error message to display if invalid.
-
-**Option** **Description**
-
-`Error Message` Specify the error message that appears below the component if the user enters an invalid value.
-
-`Formula` Provide a formula expression that returns a Boolean value.
-
-If the formula expression evaluates to `true`, the input is valid. If the formula expression evaluates to
-`false`, the error message appears below the component.
-
-If the user leaves the field blank and the field isn’t required, the flow doesn’t perform the validation.
-If the user leaves the field blank and the field is required, the flow shows the default error message
-and not your custom error message.
-
-Specify the Behavior of Values on Revisited Screens
-
-Specify what this component does when a user enters a value, navigates to a previous screen, and then returns to the screen with this
-component.
-
-**Option** **Description**
-
-`Use values from when` The component retains the values that the user specified and doesn’t update the values to reflect
-`the user last` changes made on previous screens.
-
-```
-   visited this screen
-
-```
-
-```
-Refresh inputs to
-
-incorporate changes
-
-elsewhere in the
-
-flow
-
-```
-
-SEE ALSO:
-
-The component updates the user-specified values to reflect changes made on previous screens.
-
-If you pause and then resume the flow, the flow retains user-specified values only in Checkbox,
-Checkbox Group, Currency, Long Text Area, Multi-Select Picklist, Number, Password, Picklist, Radio
-Buttons, and Text components.
-
-Standard Flow Screen Components
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Flow Screen Input Component: Toggle
-
-Let users flip a toggle in a flow screen.
-
-Note: This screen component requires Lightning runtime.
-
-Configure the Toggle Component
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-You can select resources from the flow, such as variables or global constants, or you can manually enter a value.
-
-**Attribute** **Description**
-
-```
-Active Label
-
-```
-
-When the toggle is active, this label appears underneath the toggle. Use it to clarify what active means.
-The default label is “Active.”
-
-This attribute accepts single-value resources. The value is treated as text.
-
-`API Name` The API name of the component.
-
-An API name can include underscores and alphanumeric characters without spaces. It must begin
-with a letter and can’t end with an underscore. It also can’t have two consecutive underscores.
-
-```
-Disabled
-
-Inactive Label
-
-Label
-
-```
-
-If set to true, the user can’t modify the value. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-When the toggle is inactive, this label appears underneath the toggle. Use it to clarify what inactive
-means. The default label is “Inactive.”
-
-This attribute accepts single-value resources. The value is treated as text.
-
-This label appears next to the toggle and describes what the user is enabling.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Attribute** **Description**
-
-```
-Value
-
-```
-
-Whether the toggle is active ( _`$GlobalConstant.True`_ ) or inactive
-( _`$GlobalConstant.False`_ ). Setting this attribute from the Inputs tab controls the default state
-of the toggle. To store the user’s selection in a flow variable, set this attribute from the Outputs tab.
-
-This parameter accepts single-value Boolean resources.
-
-Store the Toggle Component’s Values in the Flow
-
-The flow stores values automatically. If you store values manually, store the attribute’s output value in a variable.
-
-To store values manually, select **Manually assign variables (advanced)** .
-
-All attributes are available to store in flow variables, but Value is the most likely attribute you must store.
-
-To store the user’s selection, map the Value attribute to a Boolean flow variable or a checkbox field on a record variable.
-
-Tip: By default, screen components that run on Lightning runtime version 58 and prior have no memory. If a user enters a value,
-and then does one of the following, the value is lost.
-
-**•** Navigates to another screen and returns to the component’s screen.
-
-**•** Pauses the flow then resumes it.
-
-**•** Navigates to the next screen and triggers an input validation error.
-
-Setting the attribute enables a flow to remember the value. The flow stores the value automatically. If you store values manually,
-store the attribute’s output value in a variable.
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-Component
-```
-
-You can set the components to:
-
-**Always**
-Always display the component.
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Validate Input
-
-Provide a formula that evaluates whether what the user entered is valid and the error message to display if invalid.
-
-**Option** **Description**
-
-`Error Message` Specify the error message that appears below the component if the user enters an invalid value.
-
-`Formula` Provide a formula expression that returns a Boolean value.
-
-If the formula expression evaluates to `true`, the input is valid. If the formula expression evaluates to
-`false`, the error message appears below the component.
-
-If the user leaves the field blank and the field isn’t required, the flow doesn’t perform the validation.
-If the user leaves the field blank and the field is required, the flow shows the default error message
-and not your custom error message.
-
-Specify the Behavior of Values on Revisited Screens
-
-Specify what this component does when a user enters a value, navigates to a previous screen, and then returns to the screen with this
-component.
-
-**Option** **Description**
-
-`Use values from when` The component retains the values that the user specified and doesn’t update the values to reflect
-`the user last` changes made on previous screens.
-
-```
-   visited this screen
-
-```
-
-```
-Refresh inputs to
-
-incorporate changes
-
-elsewhere in the
-
-flow
-
-```
-
-SEE ALSO:
-
-The component updates the user-specified values to reflect changes made on previous screens.
-
-If you pause and then resume the flow, the flow retains user-specified values only in Checkbox,
-Checkbox Group, Currency, Long Text Area, Multi-Select Picklist, Number, Password, Picklist, Radio
-Buttons, and Text components.
-
-Standard Flow Screen Components
-
-Flow Screen Input Component: URL
-
-Let users enter URL values in a flow screen.
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Note: This screen component requires Lightning runtime.
-
-Configure the URL Component
-
-You can select resources from the flow, such as variables or global constants, or you can manually enter a value.
-
-**Attribute** **Description**
-
-`API Name` The API name of the component.
-
-An API name can include underscores and alphanumeric characters without spaces. It must begin
-with a letter and can’t end with an underscore. It also can’t have two consecutive underscores.
-
-```
-Disabled
-
-Label
-
-Pattern
-
-Read Only
-
-Required
-
-Value
-
-```
-
-If set to true, the user can’t modify the value. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-The label that appears above the URL field.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-Determines whether the value is valid. The default pattern verifies that the first character is a letter
-and that the value includes a colon (:).
-
-To force the user to enter a value in a specific format, use a regular expression. Make sure that your
-regular expression checks for a valid protocol in the URL, such as https:// or file:///.
-
-This example expression checks for a secure HTTP protocol (https://) and a specific domain
-(acmewireless.com).
-
-```
-^https?://(?:www\.)?acmewireless\.com/?.*
-
-```
-
-This attribute accepts single-value resources. The value is treated as text.
-
-If set to true, the user can’t modify the value, but the user can copy it. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-Not supported in Classic runtime for flows.
-
-If set to true, the running user must enter a value. The default value is false.
-
-This attribute accepts a resource with a Boolean value.
-
-The value of the URL field. Setting this attribute prepopulates the field. To use the value that the user
-enters, store this attribute’s output in a variable.
-
-This attribute accepts single-value resources. The value is treated as text.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Store the URL Component’s Values in the Flow
-
-The flow stores values automatically. If you store values manually, store the attribute’s output value in a variable.
-
-To store values manually, select **Manually assign variables (advanced)** .
-
-All attributes are available to store in flow variables, but Value is the most likely attribute you must store.
-
-To store the URL that the user entered, map the Value attribute to a flow variable.
-
-Tip: By default, screen components that run on Lightning runtime version 58 and prior have no memory. If a user enters a value,
-and then does one of the following, the value is lost.
-
-**•** Navigates to another screen and returns to the component’s screen.
-
-**•** Pauses the flow then resumes it.
-
-**•** Navigates to the next screen and triggers an input validation error.
-
-Setting the attribute enables a flow to remember the value. The flow stores the value automatically. If you store values manually,
-store the attribute’s output value in a variable.
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-   Component
-```
-
-You can set the components to:
-
-**Always**
-Always display the component.
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-Validate Input
-
-Provide a formula that evaluates whether what the user entered is valid and the error message to display if invalid.
-
-**Option** **Description**
-
-`Error Message` Specify the error message that appears below the component if the user enters an invalid value.
-
-`Formula` Provide a formula expression that returns a Boolean value.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Option** **Description**
-
-If the formula expression evaluates to `true`, the input is valid. If the formula expression evaluates to
-`false`, the error message appears below the component.
-
-If the user leaves the field blank and the field isn’t required, the flow doesn’t perform the validation.
-If the user leaves the field blank and the field is required, the flow shows the default error message
-and not your custom error message.
-
-Specify the Behavior of Values on Revisited Screens
-
-Specify what this component does when a user enters a value, navigates to a previous screen, and then returns to the screen with this
-component.
-
-**Option** **Description**
-
-`Use values from when` The component retains the values that the user specified and doesn’t update the values to reflect
-`the user last` changes made on previous screens.
-
-```
-   visited this screen
-
-```
-
-```
-Refresh inputs to
-
-incorporate changes
-
-elsewhere in the
-
-flow
-
-```
-
-SEE ALSO:
-
-The component updates the user-specified values to reflect changes made on previous screens.
-
-If you pause and then resume the flow, the flow retains user-specified values only in Checkbox,
-Checkbox Group, Currency, Long Text Area, Multi-Select Picklist, Number, Password, Picklist, Radio
-Buttons, and Text components.
-
-Standard Flow Screen Components
-
-_StackOverflow_ [: Sample Regular Expressions for Valid URLs](https://stackoverflow.com/questions/161738/what-is-the-best-regular-expression-to-check-if-a-string-is-a-valid-url)
-
-_MDN_ [: What is a URL?](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL)
-
-Flow Screen Output Component: Display Text
-
-Display information in a flow screen.
-
-Configure the Display Text Component
-
-**Attribute** **Description**
-
-```
-API Name
-
-```
-
-Text box
-
-The API name of the component.
-
-An API name can include underscores and alphanumeric characters
-without spaces. It must begin with a letter and can’t end with an
-underscore. It also can’t have two consecutive underscores.
-
-The text to display to the flow user.
-
-If you include a uniform resource identifier (URI), use one of these
-supported URI prefixes:
-
-**•** `http:`
-
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-**Attribute** **Description**
-
-**•** `https:`
-
-**•** `//`
-
-**•** `/`
-
-**•** `file:`
-
-**•** `ftp:`
-
-**•** `mailto:`
-
-**•** `sfdc:`
-
-**•** `data:`
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-   Component
-```
-
-You can set the components to:
-
-**Always**
-Always display the component.
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-Example: Display a confirmation message that summarizes what the flow did on the user’s behalf.
-
-SEE ALSO:
-
-Standard Flow Screen Components
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Flow Screen Display Component: Repeater
-
-Collect information about multiple items of the same type on a screen with the Repeater component.
-To use the output of the component elsewhere in the flow, loop over the output and save the
-relevant data in a variable. Use the variable to build a list of records.
-
-For the best performance, we recommend setting the flow and runtime to API version 58.0 and
-later.
-
-Configure the Repeater Component
-
-**Attribute** **Description**
-
-`API Name` The API name of the component.
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-[orgs) and Lightning](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)
-Experience
-
-Available in: **Essentials**,
-**Professional**, **Enterprise**,
-**Performance**, **Unlimited**,
-and **Developer** Editions
-
-An API name can include underscores and alphanumeric characters without spaces. It must begin
-with a letter and can’t end with an underscore. It also can’t have two consecutive underscores.
-
-Screen readers use the API name to announce the Repeater component and its child components.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Configure Data Source
-
-Select the collection of items that prepopulates the Repeater component at run time. The Repeater’s child components can reference
-values from this collection.
-
-**Attribute** **Description**
-
-`Collection for` Fields from the selected collection become available to child components in the Repeater.
-```
-   Prepopulated Items
-
-```
-
-`Unique Identifier` The unique identifier for items is the API name of the field that contains a unique identifier for each
-`for Items` item in the collection. This field is set automatically to the object’s ID field.
-
-Configure Display Options
-
-**Attribute** **Description**
-
-```
-Let Users Add or
-
-Remove Items
-
-```
-
-Choose whether screen flow end users can add new items or remove prepopulated items in your
-Repeater instance. End users can remove items that they added manually.
-
-Set the Component Visibility
-
-Specify the logic that determines when the flow displays the component.
-
-**Option** **Description**
-
-`When to Display` Configure when the component is displayed using conditional logic.
-```
-Component
-```
-
-You can set the components to:
-
-**Always**
-Always display the component.
-
-**When all conditions are met (AND)**
-Display the component when all of the conditions that you define are met. Define at least one
-condition.
-
-**When any condition is met (OR)**
-Display the component when at least one of the conditions that you define is met. Define at least
-one condition.
-
-**When custom conditional logic is met**
-Display the component when the condition logic that you define is met. Define at least one
-condition and specify condition logic.
-
-Usage
-
-After you configure the Repeater component, add and configure one or more child components inside the Repeater. The flow stores
-user input for the Repeater component in the `AllItems` attribute of the component. You can loop over the items in this collection
-to create a collection variable that you can use later in the flow.
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Considerations
-
-**•** You can’t include the Action Button (Beta) component or record fields in a Repeater.
-
-**•** The output of Repeater components isn’t supported in Transform, Collection Filter, or Collection Sort elements.
-
-**•** You can’t reference the output of a different Repeater component in a Repeater child component.
-
-**•** Choice components that reference a collection choice set resource in the Choice field aren’t reactive inside Repeater components.
-
-**•** When you create or update a screen, you can move a component on the same screen into the Repeater component. You can also
-move a component from inside a Repeater component to a different place on the screen. However, any references to the moved
-component are broken.
-
-**•** If you move a component with the Manually Assign Variables checkbox selected into a Repeater component, any manual assignments
-are removed and the checkbox is deselected. However, the variables still exist in the flow. We recommend reviewing the component
-after a move to ensure that it doesn’t include broken references.
-
-**•** Users can add up to 30 instances of the Repeater component to the screen at runtime.
-
-**•** The format for a reference to a Repeater component within the component itself is `{!` _**`repeaterAPIName`**_ `.` _**`fieldName`**_ `}` . In
-validation messages and the flow metadata package, the format for the same reference is
-`{!` _**`repeaterAPIName`**_ `.AllItems[$` _**`Items`**_ `].` _**`fieldName`**_ `}` .
-
-**•** The `AllItems` attribute is empty when:
-
-**–** The Repeater component contains only child components that don’t accept user input such as the Display Text component.
-
-**–** A user doesn’t add Repeater instances to the screen.
-
-**•** The `AllItems` attribute is null when all the child components are hidden by conditional field visibility.
-
-Example: This example shows a screen that includes a Repeater component with Text, Date, Toggle, and Checkbox Group child
-components to collect information about subscribers.
-
-SEE ALSO:
-
-Modify Records from User Input in Screens
-
-Flow Example: Create a Contact for Each Beneficiary on a Policy
-
-
-Automate Your Business Processes with Salesforce Flow Flow Reference
-
-Flow Screen Output Component: Section
-
-Organize screen components and record fields to give your users a better experience.
-
-Note: This screen component requires Lightning runtime.
-
-Usage
-
-Use sections to organize screen components and fields to give users context and easier navigation.
-The Section component contains an optional header and up to four side-by-side columns. Each
-column can contain multiple components and fields. You can place multiple sections on a screen,
-each with its own header and number of columns.
-
-Tip: Apply conditional visibility rules to a section to affect all components and fields in that
-section. Use this method to set visibility rules one time for a large number of components,
-even if you want only one column.
-
-EDITIONS
-
-Available in: both Salesforce
-[Classic (not available in all](https://help.salesforce.com/s/articleView?id=sf.overview_edition_lex_only.htm&language=en_US)

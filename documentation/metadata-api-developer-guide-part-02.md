@@ -1,3 +1,11210 @@
+Represents the ReferencedDashboard object in CRM Analytics. A referenced dashboard stores information about an externally
+referenced dashboard.
+
+RelatedRecordAssocCriteria
+Represents criteria for automatically linking records like accounts, leads, opportunities, and cases with the branches that work with
+them.
+
+RelationshipGraphDefinition
+Represents a definition of a graph that you can configure in your organization to traverse object hierarchies and record details, giving
+you a glimpse of how your business works.
+
+RemoteSiteSetting
+Represents a remote site setting. Before any Visualforce page, Apex callout, or JavaScript code using XmlHttpRequest in an s-control
+or custom button can call an external site, that site must be registered in the Remote Site Settings page, or the call fails.
+
+Report
+Represents a custom report. This metadata type only supports custom reports; standard reports aren’t supported.
+
+ReportType
+Represents the metadata associated with a custom report type. Custom report types allow you to build a framework from which
+users can create and customize reports.
+
+RestrictionRule
+Represents a restriction rule or a scoping rule. A restriction rule has `enforcementType` set to `Restrict` and controls the
+access that specified users have to designated records. A scoping rule has `enforcementType` set to `Scoping` and controls
+the default records that your users see without restricting access. This type extends the Metadata metadata type and inherits its
+`fullName` field.
+
+RetrievalSummaryDefinition
+Represents a metadata type that stores the header information of a retrieval definition. It enables the configuration of data retrieval
+patterns for summarizing related records across object relationships.
+
+Role
+Represents a role in your organization.
+
+RoleOrTerritory
+Represents the common base type and valid values for role or territory.
+
+RpaRobotPoolMetadata
+Reserved for future use.
+
+SalesWorkQueueSettings
+Represents settings used to customize work queue options for third-party scoring. In Sales Engagement, you can add a custom
+number field on person accounts, contacts, or leads. Then, use the custom number field to sort the work queue. This type extends
+the Metadata metadata type and inherits its `fullName` field.
+
+SamlSsoConfig
+Represents a SAML Single Sign-On configuration. This type extends the Metadata metadata type and inherits its `fullName` field.
+Single sign-on (SSO) is an authentication method that enables users to access multiple applications with one login and one set of
+credentials. For example, after users log in to your org, they can automatically access all apps from the App Launcher. You can set
+up your Salesforce org to trust a third-party identity provider to authenticate users. Or you can configure a third-party app to rely on
+your org for authentication.
+
+
+Metadata Types
+
+SchedulingObjective
+Represents a scheduling objective in Workforce Engagement. Scheduling objectives define business goals that the scheduling tools
+consider when identifying agents for shifts.
+
+SchedulingRule
+Represents a scheduling rule in Workforce Engagement Management. Scheduling rules determine when agents are assigned to
+shifts.
+
+Scontrol
+Deprecated. Represents an Scontrol component, corresponding to an s-control in the Salesforce user interface.
+
+SearchCustomization
+Represents the configuration of search settings created in Search Manager. The configuration includes the search channel, searchable
+objects and fields, and rules to filter search results.
+
+SearchOrgWideObjectConfig
+Represents an object in the search index. The search index contains org-wide search settings created in Search Manager. Each object
+in the search index includes searchable fields and fields protected by field-level security in search.
+
+ServiceAISetupDefinition
+Represents settings for an Einstein for Service feature such as Einstein Article Recommendations. This type extends the Metadata
+metadata type and inherits its `fullName` field.
+
+ServiceAISetupField
+Represents a field on cases or knowledge articles that Einstein uses to identify relevant articles in Einstein Article Recommendations.
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+ServiceChannel
+Represents a channel of work items that are received from your organization—for example, cases, chats, or leads.
+
+ServicePresenceStatus
+Represents a presence status that can be assigned to a service channel. This type extends the Metadata metadata type and inherits
+its `fullName` field.
+
+ServiceProcess
+Represents a process created in Service Process Studio and its associated attributes.
+
+Settings
+Represents the organization settings related to a feature. For example, your password policies, session settings and network access
+controls are all available in the SecuritySettings component type.
+
+SharedTo
+SharedTo defines the sharing access for a list view or a folder. It can be used to specify the target and source for owner-based sharing
+rules.
+
+SharingBaseRule
+Represents sharing rule settings such as access level and to whom access is granted.
+
+SharingRules
+Represents the base container for sharing rules, which can be criteria-based, ownership-based, territory-based, or for guest user
+access. SharingRules enables you to share records with a set of users, using rules that specify the access level for the target user
+group.
+
+SharingSet
+Represents a sharing set. A sharing set defines an access mapping that grants portal or community users access to objects that are
+associated with their accounts or contacts.
+
+
+Metadata Types
+
+SiteDotCom
+Represents a site for deployment.
+
+Skill
+Represents the settings for a skill used for field service or to route chats to agents in Chat, such as the name of the skill and which
+agents the skills are assigned to.
+
+StandardValueSet
+Represents the set of values in a standard picklist field. This type extends the Metadata metadata type and inherits its `fullName`
+field.
+
+StandardValueSetTranslation
+Contains details for a standard picklist translation. It returns a translated standard value set.This type extends the Metadata metadata
+type and inherits its `fullName` field.
+
+StaticResource
+Represents a static resource file, often a code library in a ZIP file. Static resources allow you to upload content that you can reference
+in a Visualforce page, including archives (such as .zip and .jar files), images, style sheets, JavaScript, and other files. Static resources
+can be used only within your Salesforce org, so you can’t host content here for other apps or websites.
+
+StageAssignment
+Represents a collection of fields to automatically assign stage definitions to records based on rule criteria.
+
+StageDefinition
+Represents a collection of fields to set up the states and transitions for Stage Management.
+
+SustainabilityUom
+Represents the unit of measure (UOM) values for custom fuel types in an org. Track fuel consumption and emission results with the
+flexibility to add custom fuel types and UOM values.
+
+SustnUomConversion
+Represents information about the unit of measure (UOM) conversion for the custom fuel types defined by a customer in an org.
+
+SvcCatalogCategory
+Represents the grouping of individual catalog items in Service Catalog.
+
+SvcCatalogFulfillmentFlow
+Represents the flow associated with a specific catalog item in the Service Catalog.
+
+SvcCatalogItemDef
+Represents the entity associated with a specific, individual service available in the Service Catalog.
+
+SynonymDictionary
+Represents a set of synonym groups, which are groups of words or phrases that are treated as equivalent in users’ searches. You can
+define synonym groups to optimize search results for acronyms, variations of product names, and other terminology unique to your
+organization.
+
+Tag
+Reserved for future use.
+
+TagSet
+Reserved for future use.
+
+Territory
+Represents a territory.
+
+
+Metadata Types
+
+Territory2
+Represents the metadata associated with a sales territory. This type extends the Metadata metadata type and inherits its `fullName`
+field. Available if Sales Territories has been enabled.
+
+Territory2Model
+Represents the metadata associated with a territory model in Sales Territories. This type extends the Metadata metadata type and
+inherits its `fullName` field. Available if Sales Territories has been enabled.
+
+Territory2Rule
+Represents the metadata associated with a territory assignment rule associated with an object, such as Account. Available if Sales
+Territories has been enabled.
+
+Territory2Type
+Represents the metadata for a category of territories in Sales Territories. Every Territory2 must have a Territory2Type. This type extends
+the Metadata metadata type and inherits its `fullName` field. Available if Sales Territories has been enabled.
+
+TimelineObjectDefinition
+Represents the container that stores the details of a timeline configuration. You can use this resource with Salesforce objects to see
+their records' related events in a linear time-sorted view.
+
+TimeSheetTemplate
+Represents a template for creating time sheets in Field Service. This type extends the Metadata metadata type and inherits its
+`fullName` field.
+
+TopicsForObjects
+Represents the ability to assign topics to objects or to remove topic assignments.
+
+TransactionSecurityPolicy
+Represents a transaction security policy definition. Transaction security policies give you a way to look through events in your
+organization and specify actions to take when certain combinations occur.
+
+Translations
+Metadata type that enables work with translations for various supported languages. The ability to translate component labels is part
+of the Translation Workbench.
+
+UIBundle (Beta)
+Represents a Salesforce Multi-Framework app, such as a React app.
+
+UiFormatSpecificationSet
+Represents a set of rules that define the style and visibility of conditional field formatting on Dynamic Forms-enabled Lightning page
+field instances.
+
+UIObjectRelationConfig
+Represents the admin-created configuration of the object relation UI component.
+
+UiPreviewMessageTabDef
+Represents the registration of a custom Marketing Cloud Preview and Test modal tab, created using custom Lightning web components.
+You can register and show multiple tabs in the Preview and Test experience.
+
+UserAccessPolicy
+Represents a user access policy.
+
+UserAuthCertificate
+Represents a PEM-encoded user certificate. These certificates are associated with a user, and externally uploaded. The uploaded
+certificate is used to authenticate the user.
+
+
+Metadata Types
+
+UserCriteria
+Represents the member criteria to use in Experience Cloud site moderation rules. This type extends the Metadata metadata type
+and inherits its `fullName` field..
+
+UserProfileSearchScope
+Reserved for internal use.
+
+UserProvisioningConfig
+Represents information to use during a user provisioning request flow, such as the attributes for an update. This type extends the
+Metadata metadata type and inherits its `fullName` field.
+
+VirtualVisitConfig
+Represents an external video provider configuration, which relays events from Salesforce to the provider.
+
+WaveAnalyticAssetCollection
+Represents a collection of Analytics assets. This type extends the Metadata metadata type and inherits its `fullName` field.
+
+WaveApplication
+Represents the Analytics application. This type extends the Metadata metadata type and inherits its `fullName` field.
+
+WaveComponent
+Represents the WaveComponent object in the Analytics application. This type extends the MetadataWithContent metadata type
+and inherits its `content` and `fullName` fields.
+
+WaveDataflow
+Represents the WaveDataflow object in the Analytics application. This type extends the MetadataWithContent metadata type and
+inherits its `content` and `fullName` fields.
+
+WaveDashboard
+Represents the WaveDashboard object in the Analytics application. This type extends the MetadataWithContent metadata type and
+inherits its `content` and `fullName` fields.
+
+WaveDataset
+Represents the WaveDataset object in the Analytics application. This type extends the Metadata metadata type and inherits its
+`fullName` field.
+
+WaveLens
+Represents the WaveLens object in the Analytics application.
+
+WaveRecipe
+Represents the WaveRecipe type in an Analytics application. A recipe is a saved set of steps to perform on a specific source dataset
+or connected data. This type extends the MetadataWithContent metadata type and inherits its `content` and `fullName` fields.
+
+WaveTemplateBundle
+Represents an Analytics template bundle, which can be used to create Analytics apps. A bundle contains an Analytics template
+definition and all its related resources.This type extends the Metadata metadata type and inherits its `fullName` field.
+
+WaveXmd
+Represents the WaveXmd object in the Analytics application. This type extends the Metadata metadata type and inherits its
+`fullName` field.
+
+WebStoreBundle
+For internal use only.
+
+WebStoreTemplate
+Represents a configuration for creating commerce stores.
+
+
+### Metadata Types Metadata Components and Types
+
+Workflow
+Represents the metadata associated with a workflow rule. A workflow rule sets workflow actions into motion when its designated
+conditions are met. You can configure workflow actions to execute immediately when a record meets the conditions in your workflow
+rule, or set time triggers that execute the workflow actions on a specific day. Use this metadata type to create, update, or delete
+workflow rule definitions.
+
+WorkSkillRouting
+Represents a setup object that stores a set of WorkSkillRoutingAttribute objects. These objects are used to route a work item to an
+agent who has the skills necessary to take the work. This type extends the Metadata metadata type and inherits its `fullName`
+field.
+
+### Metadata Components and Types
+
+Metadata components are not based on sObjects, like objects in the API. Instead, they are based on metadata types, such as ApexClass
+and CustomObject, which extend Metadata, the base class for all metadata types. A component is an instance of a metadata type.
+
+For example, `CustomObject` is a metadata type for custom objects, and the `MyCustomObject__c` component is an instance
+of a custom object.
+
+A metadata type can be identified in the metadata WSDL as any complexType that extends the Metadata complexType. A complexType
+that is a metadata type includes the following element in its WSDL definition:
+
+```
+   <xsd:extension base="tns:Metadata">
+
+```
+
+CustomObject and BusinessProcess extend Metadata so they are metadata types; ActionOverride doesn't extend Metadata so it's not a
+metadata type.
+
+You can individually deploy or retrieve a component for a metadata type. For example, you can retrieve an individual BusinessProcess
+component, but you can't retrieve an individual ActionOverride component. You can only retrieve an ActionOverride component by
+retrieving its encompassing CustomObject component.
+
+Metadata components can be manipulated by asynchronous Metadata API calls or declarative (or file-based) Metadata API calls.
+
+Most of the components can be accessed using Salesforce Extensions for Visual Studio Code. Exceptions are noted in the description of
+the object.
+
+Field Data Types
+
+Each component field has a specific field type. These field types can correspond to other components defined in the WSDL, or primitive
+data types, like `string`, that are commonly used in strongly typed programming languages.
+
+These field data types are used in the messages that are exchanged between your client application and the API. When writing your
+client application, follow the data typing rules defined for your programming language and development environment. Your development
+tool handles the mapping of typed data in your programming language with these data types.
+
+[For more information, see Primitive Data Types in the Salesforce Object Reference.](https://developer.salesforce.com/docs/atlas.en-us.262.0.object_reference.meta/object_reference/primitive_data_types.htm)
+
+Enumeration Fields
+
+Some component fields have a data type that is an enumeration. An enumeration is the API equivalent of a picklist. The valid values of
+the field are restricted to a strict set of possible values, all having the same data type. These values are listed in the field description
+
+
+### Metadata Types Metadata Coverage Report
+
+column for each enumeration field. See `sortBy` for an example of an enumeration field of type string. The XML below shows a sample
+definition of an enumeration of type string in the WSDL.
+
+```
+   <xsd:simpleType name="DashboardComponentFilter">
+
+      <xsd:restriction base="xsd:string">
+
+        <xsd:enumeration value="RowLabelAscending"/>
+
+        <xsd:enumeration value="RowLabelDescending"/>
+
+        <xsd:enumeration value="RowValueAscending"/>
+
+        <xsd:enumeration value="RowValueDescending"/>
+
+      </xsd:restriction>
+
+   </xsd:simpleType>
+
+```
+
+Supported Calls
+
+All of the metadata types are supported by the main calls, unless it is stated otherwise in the individual component sections. The main
+Metadata API calls are:
+
+**•** CRUD calls, such as createMetadata() and deleteMetadata()
+
+**•** File-based calls, such as deploy() and retrieve()
+
+**•** Utility calls, such as listMetadata() and describeMetadata()
+
+### Metadata Coverage Report
+
+Launch the Metadata Coverage report to determine supported metadata components. The Metadata Coverage report is the ultimate
+source of truth for metadata coverage across several channels. These channels include Metadata API, scratch org source tracking, unlocked
+packages, second-generation managed packages, classic managed packages, and more.
+
+[To view the Metadata Coverage report, you don’t have to be logged into an org.](https://developer.salesforce.com/docs/success/metadata-coverage-report/references/coverage-report/metadata-coverage-report.html)
+
+### Unsupported Metadata Types
+
+Some Salesforce features have metadata types that aren’t available in Metadata API. These metadata types can’t be retrieved or deployed
+with Metadata API. To make changes to these types, you must do it manually in each of your organizations.
+
+Some metadata types may also be unsupported in source tracking, packaging, and change sets.
+
+[For a complete list of metadata types and where they’re supported, see Metadata Coverage.](https://developer.salesforce.com/docs/metadata-coverage)
+
+SEE ALSO:
+
+_Salesforce Developers_ [: Metadata Coverage](https://developer.salesforce.com/docs/metadata-coverage)
+
+_Salesforce DX Developer Guide_ [: Track Changes Between Your Project and Org](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_source_tracking.htm)
+
+_[Second-Generation Managed Packaging Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp.htm)_ : Second-Generation Managed Packages
+
+_[Sandboxes: Staging Environments for Customizing and Testing](https://help.salesforce.com/s/articleView?id=platform.changesets.htm&type=5&language=en_US)_ : Change Sets
+
+### Special Behavior in Metadata API Deployments
+
+Important considerations for specific types and contents of a deployment.
+
+Use the information here to determine what to include in your deployment and how the changes appear in the destination.
+
+
+### Metadata Types Metadata Type Limits
+
+[Special Behavior in Deployments](https://help.salesforce.com/s/articleView?id=platform.deploy_special_behavior.htm&type=5&language=en_US)
+
+### Metadata Type Limits
+
+Certain metadata types have deploy and retrieve limits. Limits apply to each individual deploy or retrieve transaction, and there are daily
+limits for specific metadata types.
+
+The individual deploy and retrieve limits represent the maximum count that a metadata type may be deployed or retrieved in a single
+package zip. Daily deploy and retrieve limits apply to individual org usage within a 24-hour period.
+
+Metadata Deploy Limits
+
+**•** Individual Metadata Deploy: 50
+
+**•** Daily Metadata Deploys: 100
+
+Metadata Retrieve Limits
+
+**•** Individual Metadata Retrieve: 100
+
+**•** Daily Metadata Retrievals: 200
+
+Deploy and Retrieve Metadata Limits apply to:
+
+**•** AIAuthoringBundle
+
+**•** AnalyticsDashboard
+
+**•** AnalyticsVisualization
+
+**•** AnalyticsWorkspace
+
+### Data 360 Metadata Types
+
+Check out the metadata types that are used for development in Data 360.
+
+ActivationPlatform
+Represents the ActivationPlatform configuration, such as platform name, delivery schedule, output format, and destination folder.
+
+ActivationPlatformActvAttr
+Represents the information about activation attributes. Reserved for future use.
+
+ActivationPlatformField
+Represents the information about the fields used in ActivationPlatform.
+
+ActvPfrmDataConnectorS3
+Represents the Amazon S3 bucket name and export directory.
+
+ActvPlatformAdncIdentifier
+Represents the information about the identifiers to be activated, such as Email, Phone, Mobile Advertiser (MAID) ID, and Over-the-top
+(OTT) ID.
+
+ActvPlatformFieldValue
+Represents the field values for the ActivationPlatformFields.
+
+AiPluginUtteranceDef
+Represents an utterance that can be used to pick a topic during runtime.
+
+
+Metadata Types Data 360 Metadata Types
+
+CustomerDataPlatformSettings
+Represents an org's Data 360 settings.
+
+DataConnector
+Represents the white-labeled metadata configuration for an external connector in Data 360.
+
+DataConnectorIngestApi
+Represents the connection information specific to Ingestion API.
+
+DataConnectorS3
+Represents the connection information specific to Amazon S3.
+
+DataKitObjectTemplate
+Represents the object in Data Kit Object Template. These object templates are added inside the data kit.
+
+DataKitObjectDependency
+Represents the dependency between two data kit objects. The object templates are added inside the data kit.
+
+DataObjectBuildOrgTemplate
+Represents the derived object template used to define the structure and configuration of data objects in a build organization. The
+object templates are added inside the data kit to deploy metadata.
+
+DataPackageKitDefinition
+Represents the top-level data kit container definition. Content objects can be added after the data kit is defined.
+
+DataPackageKitObject
+Represents the object in Data Kit Content Object. These objects are added inside the data kit.
+
+DataSource
+Used to represent the system where the data was sourced. This object is always needed when creating a Data Stream Definition.
+
+DataSourceBundleDefinition
+Represents the bundle of streams that a user adds to a data kit.
+
+DataSourceField
+Represents the details of a data source field.
+
+DataSourceObject
+Represents the object from where the data was sourced.
+
+DataSourceTenant
+For internal use only.
+
+DataSrcDataModelFieldMap
+Represents the mappings between source data lake object (DLO) fields and target data model object (DMO) fields.
+
+DataStreamDefinition
+Contains data ingestion information such as connection, API, and file retrieval settings.
+
+DataStreamTemplate
+Represents the data stream that a user adds to a data kit.
+
+ExternalDataConnector
+Used to represent the object where the data was sourced.
+
+ExternalDataSource
+Represents the metadata associated with an external data source. Create external data sources to manage connection details for
+integration with data and content that are stored outside your Salesforce org.
+
+
+#### Metadata Types ActivationPlatform
+
+ExternalDataTransportFieldTemplate
+For internal use only.
+
+ExternalDataTranObject
+Represents a definition of a Data 360 schema object. This type extends the Metadata metadata type and inherits its `fullName`
+field.
+
+ExternalDataTransportObjectTemplate
+For internal use only.
+
+FieldSrcTrgtRelationship
+Stores the relationships between a data model object (DMO) and its fields. For example, the `Individual.Id` field has a
+one-to-many relationship (1:M) with the `ContactPointEmail.PartyId` field.
+
+InternalDataConnector
+For internal use only.
+
+MarketSegmentDefinition
+Represents the field values for MarketSegmentDefinition. MarketSegmentDefinition is used to store the exportable metadata of a
+segment, such as segment criteria and other attributes. Developers can create segment definition packages, pass segment definition
+in the form of data build tool (DBT), and publish it on AppExchange for subscriber organizations to install and instantiate these
+segments.
+
+MktCalcInsightObjectDef
+Represents Calculated Insight definition such as expression.
+
+MktDataTranObject
+An entity that is used to deliver (aka transport) information from the source to a target (target will be called a landing entity).This
+can be the schema of a file, API, Event, or other means of transporting data, such as SubscriberFile1.csv, or SubscriberCDCEvent.
+
+ObjectSourceTargetMap
+Contains the object-level mappings between the source and the target objects. The source and target objects can be an
+MktDataLakeObject or an MktDataModelObject. For example, an Email source object can be mapped to the ContactPointEmail
+object.
+
+StreamingAppDataConnector
+Represents the connection information specific to Web and Mobile Connectors.
+
+SEE ALSO:
+
+_[Developer Center](https://developer.salesforce.com/developer-centers/data-cloud)_ : Data Cloud
+
+#### ActivationPlatform
+
+Represents the ActivationPlatform configuration, such as platform name, delivery schedule, output format, and destination folder.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+
+Metadata Types ActivationPlatform
+
+File Suffix and Directory Location
+
+ActivationPlatform components have the suffix `.activationPlatform` and are stored in the `activationPlatforms` folder.
+
+Version
+
+ActivationPlatform components are available in API version 54.0 and later.
+
+Special Access Rules
+
+There are no additional access requirements that are specific to this type.
+
+Fields
+
+**Field Name** **Description**
+
+```
+activationPlatformConnectorType
+
+activationPlatformAdditionalMetadata
+
+dataConnector
+
+description
+
+enabled
+
+```
+
+**Field Type**
+ActivationPlatformConnectorType (enumeration of type string)
+
+**Description**
+Reserved for future use.
+
+**Field Type**
+string
+
+**Description**
+Provides additional details about the activation platform, including subscriber override
+options, partner supported IDs, and file output properties such as maximum file size,
+compression settings, and the maximum number of records per file.
+
+**Field Type**
+string
+
+**Description**
+Reference to the ActvPfrmDataConnectorS3 metadata type, which contains S3 bucket
+and export directory information into which Data 360 writes data.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The description for ActivationPlatform.
+
+**Field Type**
+boolean
+
+**Description**
+
+Required.
+
+
+Metadata Types ActivationPlatform
+
+**Field Name** **Description**
+
+Indicates if ActivationPlatform is enabled ( `true` ) or not ( `false` ). The default is false.
+
+```
+includeSegmentNames
+
+logoUrl
+
+masterLabel
+
+notes
+
+outputFormat
+
+outputGrouping
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether to include the segment name in metadata ( `true` ) or not ( `false` ).
+
+**Field Type**
+string
+
+**Description**
+URL of the logo for the activation channel destination.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The name for the activation channel destination.
+
+**Field Type**
+string
+
+**Description**
+Notes for this ActivationPlartform.
+
+**Field Type**
+ActivationPlatformFileOutputFormat (enumeration of type string)
+
+**Description**
+
+Required.
+
+The output format of the file.
+
+Valid values are:
+
+**•** `CSV`
+
+**•** `JSON`
+
+**•** `PARQUET`
+
+**Field Type**
+ActivationPlatformFileOutputGrouping (enumeration of type string)
+
+**Description**
+
+Required.
+
+The grouping of the output.
+
+Valid values are:
+
+**•** `PER_ACCOUNT`
+
+
+Metadata Types ActivationPlatform
+
+**Field Name** **Description**
+
+**•** `PER_SEGMENT`
+
+```
+periodicRefreshFrequecy
+
+platformType
+
+refreshFrequency
+
+refreshMode
+
+```
+
+**Field Type**
+ActivationPlatformPeriodicFullRefresh (enumeration of type string)
+
+**Description**
+The frequency (in days) for periodic full refreshes when using incremental refresh
+mode.
+
+Valid values are:
+
+**•** `REFRESH_30`
+
+**•** `REFRESH_60`
+
+**Field Type**
+ActivationPlatformType (enumeration of type string)
+
+**Description**
+
+Required.
+
+The type of the Activation Platform.
+
+Valid values are:
+
+**•** `Advertising`
+
+**•** `Analytics`
+
+**•** `Marketing`
+
+**•** `Publishing`
+
+**•** `Technology`
+
+**Field Type**
+ActivationPlatformRefreshFrequency (enumeration of type string)
+
+**Description**
+
+Required.
+
+Indicates how often the activation platform accepts data delivery.
+
+Valid value is:
+
+**•** `TWENTY_FOUR`
+
+**Field Type**
+ActivationPlatformRefreshMode (enumeration of type string)
+
+**Description**
+
+Required.
+
+Defines how the refresh method handles refreshing files.
+
+Valid values are:
+
+**•** `FULL`
+
+
+Metadata Types ActivationPlatform
+
+**Field Name** **Description**
+
+**•** `INCREMENTAL`
+
+Declarative Metadata Sample Definition
+
+The following is an example of an ActivationPlatform component.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <ActivationPlatform xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <dataConnector>S3Connector</dataConnector>
+
+      <description>Activation Platform Description</description>
+
+      <enabled>false</enabled>
+
+      <includeSegmentNames>false</includeSegmentNames>
+
+      <logoUrl>link to logo</logoUrl>
+
+      <masterLabel>MyExternalPlatform</masterLabel>
+
+      <notes>Notes about this Platform</notes>
+
+      <outputFormat>CSV</outputFormat>
+
+      <outputGrouping>PER_ACCOUNT</outputGrouping>
+
+      <refreshMode>FULL</refreshMode>
+
+      <refreshFrequency>TWENTY_FOUR</refreshFrequency>
+
+      <periodicRefreshFrequecy>NEVER</periodicRefreshFrequecy>
+
+      <platformType>Advertising</platformType>
+
+   </ActivationPlatform>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <fullName>MyActivationPlatform</fullName>
+
+      <types>
+
+        <members>APlatform</members>
+
+        <name>ActivationPlatform</name>
+
+      </types>
+
+      <types>
+
+        <members>AccountIdField</members>
+
+        <name>ActivationPlatformField</name>
+
+      </types>
+
+      <types>
+
+        <members>S3Connector</members>
+
+        <name>ActvPfrmDataConnectorS3</name>
+
+      </types>
+
+      <types>
+
+        <members>EmailIdentifier</members>
+
+        <name>ActvPlatformAdncIdentifier</name>
+
+      </types>
+
+      <types>
+
+        <members>AccountIdFieldValue</members>
+
+        <name>ActvPlatformFieldValue</name>
+
+      </types>
+
+      <version>54.0</version>
+
+   </Package>
+
+```
+
+
+#### Metadata Types ActivationPlatformActvAttr
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### ActivationPlatformActvAttr
+
+Represents the information about activation attributes. Reserved for future use.
+
+#### ActivationPlatformField
+
+Represents the information about the fields used in ActivationPlatform.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+#### ActivationPlatformField components have the suffix .activationPlatformField and are stored in the
+
+`activationPlatformFields` folder.
+
+Version
+
+#### ActivationPlatformField components are available in API version 54.0 and later.
+
+Special Access Rules
+
+There are no additional access requirements that are specific to this type.
+
+Fields
+
+**Field Name** **Description**
+
+```
+activationPlatform
+
+helpText
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+Reference to the ActivationPlatform metadata type.
+
+**Field Type**
+string
+
+
+Metadata Types ActivationPlatformField
+
+**Field Name** **Description**
+
+**Description**
+Information about ActivationPlatformField.
+
+```
+isHidden
+
+isRequired
+
+masterLabel
+
+type
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+
+Required.
+
+Indicates whether ActivationPlatformField can be overridden by marketer ( `false` )
+or not ( `true` ). The default is false. Field can’t be overridden by marketer when set to
+`true` .
+
+**Field Type**
+boolean
+
+**Description**
+
+Required.
+
+Indicates whether this ActivationPlatformField is required ( `true` ) or not ( `false` ).
+The default is false.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The name of the ActivationPlaformField.
+
+**Field Type**
+ActivationPlatformFieldDataType (enumeration of type string)
+
+**Description**
+Represents the datatype of the field.
+
+Valid value is:
+
+**•** `Text`
+
+Declarative Metadata Sample Definition
+
+The following is an example of an ActivationPlatformField component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ActivationPlatformField xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <activationPlatform>APlatform</activationPlatform>
+
+   <isHidden>false</isHidden>
+
+   <isRequired>true</isRequired>
+
+   <masterLabel>AccountId</masterLabel>
+
+</ActivationPlatformField>
+
+```
+
+
+#### Metadata Types ActvPfrmDataConnectorS3
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <fullName>MyActivationPlatform</fullName>
+
+      <types>
+
+        <members>APlatform</members>
+
+        <name>ActivationPlatform</name>
+
+      </types>
+
+      <types>
+
+        <members>AccountIdField</members>
+
+        <name>ActivationPlatformField</name>
+
+      </types>
+
+      <version>54.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### ActvPfrmDataConnectorS3
+
+Represents the Amazon S3 bucket name and export directory.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+#### ActvPfrmDataConnectorS3 components have the suffix .actvPfrmDataConnectorS3 and are stored in the
+
+`actvPfrmDataConnectorS3s` folder.
+
+Version
+
+#### ActvPfrmDataConnectorS3 components are available in API version 54.0 and later.
+
+Special Access Rules
+
+There are no additional access requirements that are specific to this type.
+
+
+Metadata Types ActvPfrmDataConnectorS3
+
+Fields
+
+**Field Name** **Description**
+
+```
+bucketName
+
+exportDirectory
+
+masterLabel
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The Amazon S3 bucket name.
+
+**Field Type**
+string
+
+**Description**
+This is an optional field that is reserved for internal use.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The display name of ActvPfrmDataConnectorS3.
+
+Declarative Metadata Sample Definition
+
+The following is an example of an ActvPfrmDataConnectorS3 component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ActvPfrmDataConnectorS3 xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <bucketName>MyS3Bucket</bucketName>
+
+   <exportDirectory>Output</exportDirectory>
+
+   <masterLabel>S3Connector</masterLabel>
+
+</ActvPfrmDataConnectorS3>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <fullName>MyActivationPlatform</fullName>
+
+   <types>
+
+     <members>APlatform</members>
+
+     <name>ActivationPlatform</name>
+
+   </types>
+
+   <types>
+
+     <members>S3Connector</members>
+
+     <name>ActvPfrmDataConnectorS3</name>
+
+   </types>
+
+   <version>54.0</version>
+
+</Package>
+
+```
+
+
+#### Metadata Types ActvPlatformAdncIdentifier
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### ActvPlatformAdncIdentifier
+
+Represents the information about the identifiers to be activated, such as Email, Phone, Mobile Advertiser (MAID) ID, and Over-the-top
+(OTT) ID.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+#### ActvPlatformAdncIdentifier components have the suffix .actvPlatformAdncIdentifier and are stored in the
+
+`actvPlatformAdncIdentifiers` folder.
+
+Version
+
+#### ActvPlatformAdncIdentifier components are available in API version 54.0 and later.
+
+Special Access Rules
+
+There are no additional access requirements that are specific to this type.
+
+Fields
+
+**Field Name** **Description**
+
+```
+activationPlatform
+
+identifierHashMethod
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+Reference to the ActivationPlatform metadata type.Reference to ActivationPlatform.
+
+**Field Type**
+ActivationPlatformIdentifierHashMethod (enumeration of type string)
+
+**Description**
+The hash method of the identifier type. The supported hash method for Email and
+Phone is `SHA256` . The supported hash method for MAID and OTT is `NONE` .
+
+
+Metadata Types ActvPlatformAdncIdentifier
+
+**Field Name** **Description**
+
+```
+identifierType
+
+masterLabel
+
+```
+
+**Field Type**
+ActivationPlatformIdentifierType (enumeration of type string)
+
+**Description**
+
+Required.
+
+The type of identifier to be activated.
+
+Valid values are:
+
+**•** `EMAIL`
+
+**•** `MAID`
+
+**•** `OTT`
+
+**•** `PHONE`
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The name of the identifier.
+
+Declarative Metadata Sample Definition
+
+The following is an example of an ActvPlatformAdncIdentifier component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ActvPlatformAdncIdentifier xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <activationPlatform>APlatform</activationPlatform>
+
+   <identifierHashMethod>SHA256</identifierHashMethod>
+
+   <identifierType>EMAIL</identifierType>
+
+   <masterLabel>EmailIdentifier</masterLabel>
+
+</ActvPlatformAdncIdentifier>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <fullName>MyActivationPlatform</fullName>
+
+   <types>
+
+     <members>APlatform</members>
+
+     <name>ActivationPlatform</name>
+
+   </types>
+
+   <types>
+
+     <members>EmailIdentifier</members>
+
+     <name>ActvPlatformAdncIdentifier</name>
+
+   </types>
+
+   <version>54.0</version>
+
+</Package>
+
+```
+
+
+#### Metadata Types ActvPlatformFieldValue
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### ActvPlatformFieldValue
+
+Represents the field values for the ActivationPlatformFields.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+#### ActvPlatformFieldValue components have the suffix .actvPlatformFieldValue and are stored in the
+
+`actvPlatformFieldValues` folder.
+
+Version
+
+#### ActvPlatformFieldValue components are available in API version 54.0 and later.
+
+Special Access Rules
+
+Fields
+
+**Field Name** **Description**
+
+```
+activationPlatformField
+
+isDefault
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+Reference to the ActivationPlatform metadata type.
+
+**Field Type**
+boolean
+
+**Description**
+
+Required.
+
+Indicates whether the value is default ( `true` ) or not ( `false` ). The default is false.
+Picklist isn’t supported in API version 54.0
+
+
+Metadata Types ActvPlatformFieldValue
+
+**Field Name** **Description**
+
+```
+masterLabel
+
+value
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The name of the field.
+
+**Field Type**
+string
+
+**Description**
+The value of `activationPlatformField` .
+
+Declarative Metadata Sample Definition
+
+The following is an example of an ActvPlatformFieldValue component.
+
+Field with no value:
+
+```
+<ActvPlatformFieldValue xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <activationPlatformField>AccountIdField</activationPlatformField>
+
+   <isDefault>true</isDefault>
+
+   <masterLabel>AccountIdValue</masterLabel>
+
+   <value>null</value>
+
+</ActvPlatformFieldValue>
+
+```
+
+Field with value:
+
+```
+<ActvPlatformFieldValue xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <activationPlatformField>AccountIdField</activationPlatformField>
+
+   <isDefault>true</isDefault>
+
+   <masterLabel>AccountIdValue</masterLabel>
+
+   <value>1234</value>
+
+</ActvPlatformFieldValue>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <fullName>MyActivationPlatform</fullName>
+
+   <types>
+
+     <members>APlatform</members>
+
+     <name>ActivationPlatform</name>
+
+   </types>
+
+   <types>
+
+     <members>AccountIdField</members>
+
+     <name>ActivationPlatformField</name>
+
+   </types>
+
+   <types>
+
+     <members>AccountIdValue</members>
+
+     <name>ActvPlatformFieldValue</name>
+
+```
+
+
+#### Metadata Types AiPluginUtteranceDef
+
+```
+      </types>
+
+      <version>54.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### AiPluginUtteranceDef
+
+Represents an utterance that can be used to pick a topic during runtime.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+#### AiPluginUtteranceDef components are part of other components, such as GenAiPlugin, and aren't used separately.
+
+Version
+
+#### AiPluginUtteranceDef components are available in API version 63.0 and later.
+
+Special Access Rules
+
+#### AiPluginUtteranceDef is available only if Agents is enabled in your org.
+
+Fields
+
+**Field Name** **Description**
+
+```
+developerName
+
+language
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+Represents the API name of the utterance. Can contain only underscores and
+alphanumeric characters and must be unique in your org. It must begin with a letter,
+not include spaces, not end with an underscore, and not contain two consecutive
+underscores.
+
+**Field Type**
+string
+
+
+#### Metadata Types CustomerDataPlatformSettings
+
+**Field Name** **Description**
+
+**Description**
+
+Required.
+
+The language of the utterance.
+
+```
+masterLabel
+
+utterance
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The master label for the utterance.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The utterance.
+
+Declarative Metadata Sample Definition
+
+See GenAiPlugin on page 1391.
+
+#### CustomerDataPlatformSettings
+
+Represents an org's Data 360 settings.
+
+Parent Type and Manifest Access
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all the settings metadata types for the org are accessed using the “Settings” name. See Settings for more details.
+
+File Suffix and Directory Location
+
+#### CustomerDataPlatformSettings values are stored in the CustomerDataPlatformSettings.settings file in
+
+the `settings` folder. The `.settings` files are different from other named components, because there is only one settings file for
+each settings component.
+
+Version
+
+#### CustomerDataPlatformSettings components are available in API version 48.0 and later.
+
+
+#### Metadata Types DataConnector
+
+Special Access Rules
+
+Fields
+
+**Field Name** **Description**
+
+```
+enableCustomerDataPlatform
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether an org has Data 360 enabled ( `true` ) or not ( `false` ).
+
+Declarative Metadata Sample Definition
+
+The following is an example of a CustomerDataPlatformSettings component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CustomerDataPlatformSettings xmlns=“http://soap.sforce.com/2006/04/metadata">
+
+  <enableCustomerDataPlatform>true</enableCustomerDataPlatform>
+
+</CustomerDataPlatformSettings>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns=“http://soap.sforce.com/2006/04/metadata">
+
+  <types>
+
+   <members>CustomerDataPlatform</members>
+
+   <name>Settings</name>
+
+  </types>
+
+  <version>55.0</version>
+
+</Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The wildcard
+applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the manifest
+file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### DataConnector
+
+Represents the white-labeled metadata configuration for an external connector in Data 360.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+
+Metadata Types DataConnector
+
+File Suffix and Directory Location
+
+DataConnector components have the suffix `.dataconnector` and are stored in the `dataconnectors` folder.
+
+Version
+
+DataConnector components are available in API version 64.0 and later.
+
+Special Access Rules
+
+There are no additional access requirements that are specific to this type.
+
+Fields
+
+**Field Name** **Description**
+
+```
+attributes
+
+description
+
+errors
+
+features
+
+icon
+
+```
+
+**Field Type**
+
+DataConnectorAttribute[]
+
+**Description**
+A list of configurable attributes for the data connector.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The description of the data connector.
+
+**Field Type**
+
+DataConnectorError[]
+
+**Description**
+A list of error messages or codes related to the connector’s behavior or configuration
+validation.
+
+**Field Type**
+DataConnectorFeature[] (enumeration of type string)
+
+**Description**
+A list of features supported by the data connector.
+
+Values are:
+
+```
+  Override
+
+```
+
+**Field Type**
+string
+
+
+Metadata Types DataConnector
+
+**Field Name** **Description**
+
+**Description**
+A static resource in SVG format with dimensions of 100x100 pixels and a file size not
+exceeding 100 KB.
+
+```
+licenseAgreement
+
+masterLabel
+
+ownerLocation
+
+ownerLogo
+
+ownerName
+
+parentConnector
+
+releaseLevel
+
+```
+
+**Field Type**
+string
+
+**Description**
+Text of the license agreement associated with the data connector.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The display label of the connector used in user interface (UI).
+
+**Field Type**
+string
+
+**Description**
+A description or URL that specifies where the connector is maintained or hosted.
+
+**Field Type**
+string
+
+**Description**
+A static resource in SVG format with dimensions of 100x100 pixels and a file size not
+exceeding 100 KB.
+
+**Field Type**
+string
+
+**Description**
+The name of the organization that owns the connector.
+
+**Field Type**
+string
+
+**Description**
+The API name of the connector. For example, AwsS3, SNOWFLAKE, ICEBERG, and so
+on.
+
+**Field Type**
+DataConnectorReleaseLevel (enumeration of type string)
+
+**Description**
+
+Required.
+
+
+Metadata Types DataConnector
+
+**Field Name** **Description**
+
+Indicates the connector’s lifecycle stage.
+
+Values are:
+
+**•** `BETA`
+
+**•** `GA`
+
+**•** `IN_DEV`
+
+**•** `PILOT`
+
+```
+supportEmail
+
+supportMessage
+
+supportPhone
+
+translations
+
+```
+
+DataConnectorAttribute
+
+**Field Type**
+string
+
+**Description**
+The support email address users can contact for help with the connector.
+
+**Field Type**
+string
+
+**Description**
+A support-related message or instruction displayed.
+
+**Field Type**
+string
+
+**Description**
+The support phone number users can call for help with the connector.
+
+**Field Type**
+LocalizedValue[]
+
+**Description**
+A list of localized labels and descriptions to support multiple languages in the UI.
+
+**Field Name** **Description**
+
+```
+capabilities
+
+```
+
+**Field Type**
+DataConnectorCapability[] (enumeration of type string)
+
+**Description**
+A list of supported capabilities for the data connector.
+
+Values are:
+
+**•** `DataIn`
+
+**•** `DataInDelete`
+
+**•** `DataInHeader`
+
+**•** `DataInIncremental`
+
+
+Metadata Types DataConnector
+
+**Field Name** **Description**
+
+**•** `DataInSelector`
+
+**•** `DataInStructured`
+
+**•** `DataInUnstructured`
+
+**•** `DataOut`
+
+**•** `Hidden`
+
+**•** `UniqueGroup`
+
+**•** `ZeroCopyIn`
+
+```
+command
+
+commandAttributes
+
+dataType
+
+```
+
+**Field Type**
+string
+
+**Description**
+The command string executed during data operations, such as import or sync.
+
+**Field Type**
+string
+
+**Description**
+A list of attributes passed with the command.
+
+**Field Type**
+DataConnectorDataType (enumeration of type string)
+
+**Description**
+
+Required.
+
+Specifies the type of data input expected.
+
+Values are:
+
+**•** `CHECKBOX`
+
+**•** `COMBOBOX`
+
+**•** `DATE`
+
+**•** `DATETIME`
+
+**•** `EMAIL`
+
+**•** `IDP`
+
+**•** `NAMED_CREDENTIAL`
+
+**•** `NUMBER`
+
+**•** `PASSWORD`
+
+**•** `PASSWORD_FILE`
+
+**•** `PRIVATE_NETWORK_ROUTE`
+
+**•** `RADIO`
+
+**•** `RADIO_BUTTONS`
+
+**•** `TEXT`
+
+**•** `TEXTAREA`
+
+
+Metadata Types DataConnector
+
+**Field Name** **Description**
+
+**•** `TIME`
+
+**•** `TOGGLE`
+
+```
+defaultValue
+
+editable
+
+externalName
+
+masterLabel
+
+max
+
+min
+
+options
+
+```
+
+**Field Type**
+string
+
+**Description**
+The default value assigned to the field if no user input is provided.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the field value can be modified by the user.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The unique name used to reference the connector externally, such as in API calls.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The label used for display in the UI.
+
+**Field Type**
+string
+
+**Description**
+The maximum allowable value or length for the field.
+
+**Field Type**
+string
+
+**Description**
+The minimum allowable value or length for the field.
+
+**Field Type**
+
+DataConnectorAttributeOpt[]
+
+**Description**
+A list of selectable options available for the field.
+
+
+Metadata Types DataConnector
+
+**Field Name** **Description**
+
+```
+order
+
+pattern
+
+placeholder
+
+readonly
+
+required
+
+secure
+
+tooltip
+
+translations
+
+```
+
+**Field Type**
+int
+
+**Description**
+
+Required.
+
+The display order or evaluation order of the field.
+
+**Field Type**
+string
+
+**Description**
+The validation pattern used to ensure input follows a defined format.
+
+**Field Type**
+string
+
+**Description**
+The placeholder text displayed in the input field when empty.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the field is read-only.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the field must have a value.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the field contains sensitive data and should be masked.
+
+**Field Type**
+string
+
+**Description**
+The tooltip text shown to users for additional guidance.
+
+**Field Type**
+LocalizedValue[]
+
+**Description**
+A list of localized labels and descriptions for use in different languages.
+
+
+Metadata Types DataConnector
+
+**Field Name** **Description**
+
+```
+validationMessageError
+
+```
+
+DataConnectorAttributeOpt
+
+**Field Type**
+string
+
+**Description**
+The error message shown when input validation fails for this field.
+
+**Field Name** **Description**
+
+```
+capabilities
+
+conditionAttributes
+
+externalName
+
+masterLabel
+
+```
+
+**Field Type**
+DataConnectorCapability[] (enumeration of type string)
+
+**Description**
+A list of capabilities supported by the data connector.
+
+Values are:
+
+**•** `DataIn`
+
+**•** `DataInDelete`
+
+**•** `DataInHeader`
+
+**•** `DataInIncremental`
+
+**•** `DataInSelector`
+
+**•** `DataInStructured`
+
+**•** `DataInUnstructured`
+
+**•** `DataOut`
+
+**•** `Hidden`
+
+**•** `UniqueGroup`
+
+**•** `ZeroCopyIn`
+
+**Field Type**
+string
+
+**Description**
+A list of attributes used to define conditions in the connector configuration.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The unique name used to reference the connector externally, such as in API calls.
+
+**Field Type**
+string
+
+
+Metadata Types DataConnector
+
+**Field Name** **Description**
+
+**Description**
+
+Required.
+
+The display label for the connector used in the UI.
+
+```
+order
+
+translations
+
+```
+
+DataConnectorError
+
+**Field Type**
+int
+
+**Description**
+
+Required.
+
+The order or priority of the connector in processing context.
+
+**Field Type**
+LocalizedValue[]
+
+**Description**
+A list of localized labels and descriptions for use in different languages.
+
+**Field Name** **Description**
+
+```
+externalName
+
+masterLabel
+
+translations
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The unique name used to reference the object externally, such as in API calls. Must be
+unique across the namespace.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The label displayed in the UI.
+
+**Field Type**
+LocalizedValue[]
+
+**Description**
+A list of localized labels and descriptions for use in different languages.
+
+
+Metadata Types DataConnector
+
+Declarative Metadata Sample Definition
+
+The following is an example of a DataConnector component.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <DataConnector xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <masterLabel>Iceberg Override</masterLabel>
+
+      <icon>Salesforce</icon>
+
+      <parentConnector>ICEBERG</parentConnector>
+
+      <releaseLevel>BETA</releaseLevel>
+
+      <description>Connect to Apache Iceberg tables</description>
+
+      <features>Override</features>
+
+      <ownerName>Slack</ownerName>
+
+      <ownerLogo>Salesforce</ownerLogo>
+
+      <ownerLocation>Settle, USA</ownerLocation>
+
+      <supportMessage>Click download logs before reachout</supportMessage>
+
+      <supportPhone>+15788467513</supportPhone>
+
+      <licenseAgreement>https://www.salesforce.com/company/legal</licenseAgreement>
+
+      <attributes>
+
+        <fullName>IcebergOverride_storageSourceType</fullName>
+
+        <externalName>storageSourceType</externalName>
+
+        <masterLabel>Storage Type</masterLabel>
+
+        <dataType>COMBOBOX</dataType>
+
+        <defaultValue>CATALOG_PROVIDED</defaultValue>
+
+        <capabilities>DataIn</capabilities>
+
+        <capabilities>Hidden</capabilities>
+
+        <order>20</order>
+
+        <editable>true</editable>
+
+        <required>true</required>
+
+        <secure>true</secure>
+
+      </attributes>
+
+   </DataConnector>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>*</members>
+
+        <name>DataConnector</name>
+
+      </types>
+
+      <types>
+
+        <members>*</members>
+
+        <name>StaticResource</name>
+
+      </types>
+
+      <version>64.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+
+#### Metadata Types DataConnectorIngestApi DataConnectorIngestApi
+
+Represents the connection information specific to Ingestion API.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+#### DataConnectorIngestApi components have the suffix .dataConnectorIngestApi and are stored in the
+
+`dataConnectorIngestApis` folder.
+
+Version
+
+#### DataConnectorIngestApi components are available in API version 54.0 and later.
+
+Special Access Rules
+
+You must have the CustomizeApplication user permissions to access the DataConnectorIngestApi type.
+
+Fields
+
+**Field Name** **Description**
+
+```
+masterLabel
+
+sourceName
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+UI label of the Ingestion API Connector.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+Name of the Ingestion API Connector.
+
+
+#### Metadata Types DataConnectorS3
+
+Declarative Metadata Sample Definition
+
+The following is an example of a DataConnectorIngestApi component.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <DataConnectorIngestApi xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <sourceName>CONNECTOR NAME</sourceName>
+
+      <masterLabel>CONNECTOR NAME</masterLabel>
+
+   </DataConnectorIngestApi>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <DataConnectorIngestApi xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <sourceName>MyConnector</sourceName>
+
+      <masterLabel>MyConnector</masterLabel>
+
+   </DataConnectorIngestApi>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type doesn’t support the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about
+using the manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### DataConnectorS3
+
+Represents the connection information specific to Amazon S3.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+File Suffix and Directory Location
+
+#### DataConnectorS3 components have the suffix s3DataConnector and are stored in the s3DataConnectors folder.
+
+Version
+
+#### DataConnectorS3 components are available in API version 50.0 and later.
+
+Special Access Rules
+
+You need the Salesforce CustomizeApplication permission to access this object.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`fileNameWildcard` string Optional. File or Wildcard (*) to be used when finding files.
+
+`importFromDirectory` string Required. Path from the directory to where files are located.
+
+`masterLabel` string Required. The UI name for the S3 data connector.
+
+
+#### Metadata Types DataKitObjectTemplate
+
+**Field Name** **Field Type** **Description**
+
+`s3BucketName` string Optional. The Amazon S3 Name of the Bucket.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a DataConnectorS3 component.
+
+```
+      <?xml version="1.0" encoding="UTF-8"?>
+
+      <DataConnectorS3 xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <fileNameWildcard>*.csv</fileNameWildcard>
+
+      <importFromDirectory>c360-subset-lheader/</importFromDirectory>
+
+      <masterLabel>Person</masterLabel>
+
+      <s3BucketName>bucketeer-aa32faea-8431-4635-8a1d-b323a2d66c7c</s3BucketName>
+
+      </DataConnectorS3>
+
+#### DataKitObjectTemplate
+
+```
+
+Represents the object in Data Kit Object Template. These object templates are added inside the data kit.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. Because changing
+terms in our code can break current implementations, we maintained this metadata type’s name.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+#### DataKitObjectTemplate components have the suffix .DataKitObjectTemplate and are stored in the DataKitObjectTemplate folder.
+
+Version
+
+#### DataKitObjectTemplate components are available in API version 63.0 and later.
+
+Special Access Rules
+
+There are no additional access requirements that are specific to this type.
+
+Fields
+
+**Field Name** **Description**
+
+```
+developerName
+
+```
+
+**Field Type**
+string
+
+
+Metadata Types DataKitObjectTemplate
+
+**Field Name** **Description**
+
+**Description**
+Required. Name of the data kit object template. This can contain only underscores and
+alphanumeric characters and must be unique in your org. It must begin with a letter,
+not include spaces, not end with an underscore, and not contain two consecutive
+underscores.
+
+```
+entityPayload
+
+masterLabel
+
+parentDataPackageKitDefinitionName
+
+sourceObject
+
+sourceObjectType
+
+```
+
+**Field Type**
+string
+
+**Description**
+A string-based JSON payload containing the metadata of a data kit component. The
+payload is templatized to enable variable substitution during the deployment process.
+
+**Field Type**
+string
+
+**Description**
+Required. The label of the data kit object template.
+
+**Field Type**
+string
+
+**Description**
+Required. The linked data kit package definition in the data kit.
+
+**Field Type**
+string
+
+**Description**
+The developer name of the source object for the data kit object template.
+
+**Field Type**
+string
+
+**Description**
+Required. The object type of the metadata component in the data kit. Valid values are:
+
+**•** `MKT_DATA_TRANSFORM`
+
+**•** `MKT_DATA_CONNECTION`
+
+**•** `IDENTITY_RESOLUTION`
+
+**•** `DATA_GRAPH`
+
+**•** `EXT_DATA_SHARE`
+
+**•** `SEMANTIC_SEARCH`
+
+**•** `DATA_ACTION`
+
+**•** `DATA_ACTION_TARGET`
+
+**•** `MARKET_SEGMENT`
+
+**•** `DATA_SPACE_MEMBER`
+
+
+Metadata Types DataKitObjectTemplate
+
+**Field Name** **Description**
+
+**•** `INTERNAL_DATA_CONNECTOR`
+
+**•** `MARKET_SEGMENT_ACTIVATION`
+
+**•** `STREAMING_APP_AND_INGESTION_CONNECTOR`
+
+**•** `ML_CONFIGURED_MODEL`
+
+**•** `ACTIVATION_TARGET`
+
+**•** `SEMANTIC_MODEL`
+
+**•** `PERSONALIZATION_RECOMMENDER`
+
+**•** `PERSONALIZATION_POINT`
+
+**•** `PERSONALIZATION_SCHEMA`
+
+**•** `PERSONALIZATION_OBJECTIVE`
+
+**•** `ENGAGEMENT_SIGNAL`
+
+**•** `PERSONALIZATION_BATCH_DECISION`
+
+**•** `MC_CONNECTOR`
+
+**•** `ML_PREDICTION_JOB`
+
+**•** `ML_RETRIEVER`
+
+**•** `TUA_TEMPLATED_OBJECT`
+
+**•** `IR_RELATED_LIST_ENRICHMENT`
+
+**•** `TAG_METADATA`
+
+**•** `DATA_CLEAN_ROOM_PROVIDER`
+
+**•** `IDP_CONFIGURATION`
+
+**•** `COPY_FIELD_ENRICHMENT`
+
+**•** `DATA_CUSTOM_CODE`
+
+**•** `ANALYTICS_VISUALIZATION`
+
+**•** `ANALYTICS_DASHBOARD`
+
+**•** `ANALYTICS_WORKSPACE`
+
+**•** `SECONDARY_INDEX`
+
+**•** `POLICY_RULE_DEFINITION_METADATA`
+
+**•** `POLICY_RULE_DEFINITION_SET_METADATA`
+
+```
+templateVersion
+
+```
+
+**Field Type**
+string
+
+**Description**
+The version number of the template.
+
+
+#### Metadata Types DataKitObjectDependency
+
+Declarative Metadata Sample Definition
+
+The following is an example of a DataKitObjectTemplate component.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <DataKitObjectTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+
+     <developerName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+
+     <entityPayload>
+
+       {
+
+         "dataSpaceName": "default",
+
+         "type": "DLO",
+
+         "developerName": "DLO_StaticCurrencyRates_Home"
+
+       }
+
+     </entityPayload>
+
+     <masterLabel>StaticCurrencyRates_Home__dll</masterLabel>
+
+     <parentDataPackageKitDefinitionName xsi:nil="true"
+
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+
+     <sourceObject>0viSB00000JzG05YAF</sourceObject>
+
+     <sourceObjectType>DataSpaceMember</sourceObjectType>
+
+     <templateVersion>1</templateVersion>
+
+   </DataKitObjectTemplate>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>StaticCurrencyRates_Home</members>
+
+        <members>StaticCurrencyRates_Home1</members>
+
+        <name>DataKitObjectTemplate</name>
+
+      </types>
+
+      <version>64.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### DataKitObjectDependency
+
+Represents the dependency between two data kit objects. The object templates are added inside the data kit.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. Because changing
+terms in our code can break current implementations, we maintained this metadata type’s name.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+
+Metadata Types DataKitObjectDependency
+
+File Suffix and Directory Location
+
+`DataKitObjectDependency` components have the suffix `.DataKitObjectDependency` and are stored in the
+`DataKitObjectDependency` folder.
+
+Version
+
+DataKitObjectDependency components are available in API version 65.0 and later.
+
+Special Access Rules
+
+You need the Salesforce CustomizeApplication permission to access this object.
+
+Fields
+
+**Field Name** **Description**
+
+```
+dataPackageKitDef
+
+developerName
+
+masterLabel
+
+sourceObject
+
+sourceObjectType
+
+```
+
+**Field Type**
+string
+
+**Description**
+Required. The ID of the linked `DataPackageKitDefinition.`
+
+**Field Type**
+string
+
+**Description**
+Required. The name of the `DataKitObjectDependency` . This name can contain
+only underscores and alphanumeric characters and must be unique in your org. It
+must begin with a letter, not include spaces, not end with an underscore, and not
+contain two consecutive underscores.
+
+**Field Type**
+string
+
+**Description**
+Required. Label that identifies the data kit object dependency.
+
+**Field Type**
+string
+
+**Description**
+The source data kit object template that the target object depends on.
+
+**Field Type**
+string
+
+**Description**
+Required. The type of the source object referenced in the data kit. Valid values are:
+
+**•** `DataKitObjectTemplate`
+
+
+#### Metadata Types DataObjectBuildOrgTemplate
+
+**Field Name** **Description**
+
+**•** `DataSourceObject`
+
+**•** `DataStreamTemplate`
+
+**•** `DataSourceBundleDefinition`
+
+**•** `MKtDataModelObject`
+
+```
+targetObject
+
+```
+
+**Field Type**
+string
+
+**Description**
+Required. The target data kit object template that depends on the source object.
+
+#### DataObjectBuildOrgTemplate
+
+Represents the derived object template used to define the structure and configuration of data objects in a build organization. The object
+templates are added inside the data kit to deploy metadata.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. Because changing
+terms in our code can break current implementations, we maintained this metadata type’s name.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+#### DataObjectBuildOrgTemplate components have the suffix .DataObjectBuildOrgTemplate and are stored in the DataObjectBuildOrgTemplate folder.
+
+Version
+
+#### DataObjectBuildOrgTemplate components are available in API version 63.0 and later.
+
+Special Access Rules
+
+There are no additional access requirements that are specific to this type.
+
+Fields
+
+**Field Name** **Description**
+
+```
+developerName
+
+```
+
+**Field Type**
+string
+
+
+Metadata Types DataObjectBuildOrgTemplate
+
+**Field Name** **Description**
+
+**Description**
+Required. Name of the data object build org template. This name can contain only
+underscores and alphanumeric characters and must be unique in your org.
+
+```
+masterLabel
+
+objectDevName
+
+objectPayload
+
+objectType
+
+templateObject
+
+templateVersion
+
+```
+
+**Field Type**
+string
+
+**Description**
+Required. The label of the data object build org template.
+
+**Field Type**
+string
+
+**Description**
+Required. The developer name of the object created from the `objectPayload`
+entity in the build org.
+
+**Field Type**
+string
+
+**Description**
+Required. The serialized metadata for the entity. The build organization deserializes
+this payload to create the underlying metadata components.
+
+**Field Type**
+string
+
+**Description**
+Required. The type of metadata entity associated with the template. Valid values are:
+
+**•** `DataGraph`
+
+**•** `MktCalculatedInsightObject`
+
+**•** `MktDataModelObject`
+
+**•** `MktDataLakeObject`
+
+**Field Type**
+string
+
+**Description**
+Required. The name of the template associated with the data object build org template.
+
+**Field Type**
+string
+
+**Description**
+The version number of the data object build org template.
+
+
+#### Metadata Types DataPackageKitDefinition
+
+Declarative Metadata Sample Definition
+
+The following is an example of a DataObjectBuildOrgTemplate component.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <DataKitObjectTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+
+     <developerName xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+
+     <entityPayload>
+
+       {
+
+         "dataSpaceName": "default",
+
+         "type": "DLO",
+
+         "developerName": "DLO_StaticCurrencyRates_Home"
+
+       }
+
+     </entityPayload>
+
+     <masterLabel>StaticCurrencyRates_Home__dll</masterLabel>
+
+     <parentDataPackageKitDefinitionName xsi:nil="true"
+
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+
+     <sourceObject>0viSB00000JzG05YAF</sourceObject>
+
+     <sourceObjectType>DataSpaceMember</sourceObjectType>
+
+     <templateVersion>1</templateVersion>
+
+   </DataKitObjectTemplate>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>StaticCurrencyRates_Home</members>
+
+        <members>StaticCurrencyRates_Home1</members>
+
+        <name>DataKitObjectTemplate</name>
+
+      </types>
+
+      <version>64.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### DataPackageKitDefinition
+
+Represents the top-level data kit container definition. Content objects can be added after the data kit is defined.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. Because changing
+terms in our code can break current implementations, we maintained this metadata type’s name.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+
+Metadata Types DataPackageKitDefinition
+
+File Suffix and Directory Location
+
+`DataPackageKitDefinition` components have the suffix `.dataPackageKitDefinition` and are stored in the
+`dataPackageKitDefinitions` folder.
+
+Version
+
+DataPackageKitDefinition components are available in API version 53.0 and later.
+
+Special Access Rules
+
+There are no additional access requirements that are specific to this type.
+
+Fields
+
+**Field Name** **Description**
+
+```
+dataKitType
+
+dataKitSource
+
+description
+
+developerName
+
+isDeployed
+
+```
+
+**Field Type**
+string
+
+**Description**
+The type of data kit created. Available in API version 63.0 and later. Valid values are:
+
+**•** Default
+
+**•** Sandbox
+
+**Field Type**
+string
+
+**Description**
+The data source in the updated data kit. Available in API version 63.0 and later.
+
+**Field Type**
+string
+
+**Description**
+The description of the data kit.
+
+**Field Type**
+string
+
+**Description**
+Required. The name of the application. This name contain only underscores and
+alphanumeric characters and must be unique in your org. It must begin with a letter,
+not include spaces, not end with an underscore, and not contain two consecutive
+underscores.
+
+**Field Type**
+boolean
+
+
+Metadata Types DataPackageKitDefinition
+
+**Field Name** **Description**
+
+**Description**
+Indicates whether the data kit content is deployed.
+
+```
+isEnabled
+
+masterLabel
+
+useDeterministicNaming
+
+versionNumber
+
+dataSpaceDefinitionDevName
+
+deploymentOrder
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the data kit is enabled.
+
+**Field Type**
+string
+
+**Description**
+Required. Label that identifies the AI application throughout the Salesforce user
+interface.
+
+**Field Type**
+boolean
+
+**Description**
+Required. Indicates whether the data kit should use the deterministic naming feature.
+Available in API version 65.0 and later. Valid values are:
+
+**•** True
+
+**•** False
+
+**Field Type**
+double
+
+**Description**
+Auto incremented version number.
+
+**Field Type**
+string
+
+**Description**
+Data space name used to create the data kit. Available in API version 61.0 and later.
+
+**Field Type**
+string
+
+**Description**
+Deployment order of components that are added to the data kit. Available in API
+version 61.0 and later.
+
+
+#### Metadata Types DataPackageKitObject
+
+Declarative Metadata Sample Definition
+
+The following is an example of a DataPackageKitDefinition component.
+
+```
+   <DataPackageKitDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <developerName>SalesforceCRM</developerName>
+
+      <isDeployed>false</isDeployed>
+
+      <isEnabled>false</isEnabled>
+
+      <masterLabel>SalesforceCRM</masterLabel>
+
+      <versionNumber>1.0</versionNumber>
+
+   </DataPackageKitDefinition>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <fullName>SalesforceDataKit</fullName>
+
+      <types>
+
+        <members>SalesforceCRM</members>
+
+        <name>DataPackageKitDefinition</name>
+
+      </types>
+
+      <types>
+
+        <members>Admin</members>
+
+        <name>Profile</name>
+
+      </types>
+
+      <version>53.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### DataPackageKitObject
+
+Represents the object in Data Kit Content Object. These objects are added inside the data kit.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. Because changing
+terms in our code can break current implementations, we maintained this metadata type’s name.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+#### DataPackageKitObject components have the suffix .DataPackageKitObject and are stored in the DataPackageKitObjects folder.
+
+Version
+
+DataPackageKitDefinition components are available in API version 53.0 and later.
+
+
+Metadata Types DataPackageKitObject
+
+Special Access Rules
+
+There are no additional access requirements that are specific to this type.
+
+Fields
+
+**Field Name** **Description**
+
+```
+masterLabel
+
+parentDataPackageKitDefinitionName
+
+referenceObjectName
+
+referenceObjectType
+
+```
+
+**Field Type**
+string
+
+**Description**
+Required. Label that identifies the AI application throughout the Salesforce user
+interface.
+
+**Field Type**
+string
+
+**Description**
+Required. Name of the data kit definition
+
+**Field Type**
+string
+
+**Description**
+Required. The name of the data kit content.
+
+**Field Type**
+string
+
+**Description**
+Required. The type of the content object in the data kit.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a DataPackageKitDefinition component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<DataPackageKitObject xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <masterLabel>CRM</masterLabel>
+
+   <parentDataPackageKitDefinitionName>CRM</parentDataPackageKitDefinitionName>
+
+   <referenceObjectName>CRM</referenceObjectName>
+
+   <referenceObjectType>DLO</referenceObjectType>
+
+</DataPackageKitObject>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <fullName>SalesforceDataKit</fullName>
+
+   <types>
+
+     <members>CRM</members>
+
+```
+
+
+#### Metadata Types DataSource
+
+```
+        <name>DataPackageKitObject</name>
+
+      </types>
+
+      <types>
+
+        <members>Admin</members>
+
+        <name>Profile</name>
+
+      </types>
+
+      <version>53.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### DataSource
+
+Used to represent the system where the data was sourced. This object is always needed when creating a Data Stream Definition.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+File Suffix and Directory Location
+
+#### DataSource components have the suffix dataSource and are stored in the mktDataSources folder.
+
+Version
+
+#### DataSource components are available in API version 50.0 and later.
+
+Special Access Rules
+
+You need the Salesforce CustomizeApplication permission to access this object.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`masterLabel` string Required. The UI name for the Data Source.
+
+`prefix` string Required. Prefix for the Data Source to make Data Source Object records
+unique.
+
+#### DataSourceBundleDefinition
+
+Represents the bundle of streams that a user adds to a data kit.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+
+Metadata Types DataSourceBundleDefinition
+
+Parent Type
+
+[This type extends the Metadata metadata type and inherits its](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/metadata.htm) `fullName` field.
+
+File Suffix and Directory Location
+
+`DataSourceBundleDefinition` components have the suffix `.dataSourceBundleDefinition` and are stored in the
+`dataSourceBundleDefinitions` folder.
+
+Version
+
+DataSourceBundleDefinition components are available in API version 52.0 and later.
+
+Special Access Rules
+
+You need Data 360 permission to access this object.
+
+Fields
+
+**Field Name** **Description**
+
+```
+dataPlatform
+
+description
+
+icon
+
+isMultiDeploymentSupported
+
+masterLabel
+
+```
+
+**Field Type**
+string
+
+**Description**
+Required. Indicates the connector type that the streams in the bundle belong to.
+
+**Field Type**
+string
+
+**Description**
+A description of the associated data source bundle. This field is available in API version
+53.0 and later.
+
+**Field Type**
+string
+
+**Description**
+The icon used in the deployment flow. This field is available in API version 53.0 and
+later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates if the bundle can be deployed multiple times or not. Default value is `false` .
+
+**Field Type**
+string
+
+
+#### Metadata Types DataSourceField
+
+**Field Name** **Description**
+
+**Description**
+Required. Indicates the name of the bundle.
+
+```
+bundleVersion
+
+```
+
+**Field Type**
+int
+
+**Description**
+Indicates the version of the bundle. This field is available in API version 63.0 and later.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a DataSourceBundleDefinition component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<DataSourceBundleDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <dataPlatform>Salesforce_Sales_and_Service_Cloud</dataPlatform>
+
+   <isMultiDeploymentSupported>true</isMultiDeploymentSupported>
+
+   <bundleVersion>1</bundleVersion>
+
+   <masterLabel>b2</masterLabel>
+
+</DataSourceBundleDefinition>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+<types>
+
+    <members>b2</members>
+
+    <name>DataSourceBundleDefinition</name>
+
+</types>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+[manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/file_based_zip_file.htm)
+
+#### DataSourceField
+
+Represents the details of a data source field.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+#### DataSourceField components have the suffix .dataSourceField and are stored in the dataSourceFields folder.
+
+
+Metadata Types DataSourceField
+
+Version
+
+DataSourceField components are available in API version 52.0 and later.
+
+Special Access Rules
+
+You need the Salesforce Customize Application permission to access this metadata type.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`datatype` string Required. Indicates the data type of the field: text, number, or date.
+
+`dateFormat` string The date format of date, time, date/time fields.
+
+```
+definitionCreationType
+
+```
+
+DefinitionCreationType Describes whether this object was added by the user or as part of a standard
+(enumeration of type taxonomy. Available in API version 62.0 and later. Valid values are:
+string)
+
+**•** `Activation_Audience` (Reserved for internal use only)
+
+**•** `ADG`
+
+**•** Activation_Audience. Available in API version 63.0 and later.
+
+**•** `Bridge`
+
+**•** `Calculated_Insight`
+
+**•** `CG_Audience`
+
+**•** `Chunk`
+
+**•** `Curated`
+
+**•** `Custom`
+
+**•** `Derived`
+
+**•** `Directory_Table`
+
+**•** `External`
+
+**•** `Ml_Prediction`
+
+**•** `Segment_Membership`
+
+**•** `Semantic`
+
+**•** `Standard`
+
+**•** `System`
+
+**•** `Transform`
+
+**•** `Vector_Embedding`
+
+`externalDataType` string The type of data in the external system. Available in API version 63.0 and later.
+
+`externalName` string Required. Name of the object in the external system. This is different from the
+developer name.
+
+`fieldFormula` string Used for formulas.
+
+`isDataRequired` boolean If `true`, data is required. Default value is `false` .
+
+
+Metadata Types DataSourceField
+
+**Field Name** **Field Type** **Description**
+
+`isEventDate` boolean If `true`, an event date is required. Default value is `false` . Available in API
+version 63.0 and later.
+
+`isFormula` boolean If `true`, a formula is required. Default value is `false` .
+
+`isRecordModified` boolean If `true`, the system tracks the modification date of the record. Default value
+is `false` . Available in API version 63.0 and later.
+
+`keyQualifierName` string
+
+Contains the developer name of the `keyQualifier` field. Available in API
+version 62.0 and later.
+
+`length` int Length of a string column.
+
+`masterLabel` string Required. Field label.
+
+`precision` int The total number of digits in a number including decimal points. Used for
+currency and for numeric accuracy.
+
+`primaryIndexOrder` int
+
+If supplied, indicates that this field is part of the primary key. The number value
+indicates the order of attributes if it’s a compound primary key. A missing value
+means that this field isn’t part of the primary key.
+
+`scale` int The number of digits to the right of the decimal point. Used for currency and
+for numeric accuracy.
+
+`sequence` int Required. The sequence of this source schema.
+
+`srcKeyQualifier` string
+
+Contains a reference to the source key qualifier record. The source key is the
+MktDataLakeSrcKeyQualifer metadata type. Available in API version 55.0 and
+later.
+
+Indicates if the field is a key qualifier field. Available in API version 55.0 and later.
+
+Values are:
+
+**•** `KEY_QUALIFIER` —The field is used as a key qualifier field.
+
+**•** `NONE` —The field isn’t used as a key qualifier field.
+
+```
+usageTag
+
+```
+
+usageTag
+(enumeration of type
+string)
+
+`versionNumber` double Required. The version of the data source object.
+
+Declarative Metadata Sample Definition
+
+This is an example of a DataSourceObject component and its fields. You can retrieve the DataSourceField component only through its
+parent object, DataSourceObject.
+
+```
+<DataSourceObject xmlns="http://soap.sforce.com/2006/04/metadata"
+
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+   <dataSource>test1108</dataSource>
+
+   <dataSourceFields>
+
+     <fullName>DOB</fullName>
+
+     <datatype>D</datatype>
+
+     <externalName>DOB</externalName>
+
+     <isDataRequired>false</isDataRequired>
+
+```
+
+
+#### Metadata Types DataSourceObject
+
+```
+        <masterLabel>DOB</masterLabel>
+
+        <sequence xsi:nil="true"/>
+
+        <versionNumber xsi:nil="true"/>
+
+      </dataSourceFields>
+
+      <externalRecordIdentifier>individuals_20200125_000000_csv</externalRecordIdentifier>
+
+      <masterLabel>test1108</masterLabel>
+
+      <objectType>Object</objectType>
+
+   </DataSourceObject>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <types>
+
+        <members>test1108</members>
+
+        <name>DataSource</name>
+
+      </types>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### DataSourceObject
+
+Represents the object from where the data was sourced.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+#### DataSourceObject components have the suffix dataSourceObject and are stored in the mktDataSourceObjects folder.
+
+Version
+
+#### DataSourceObject components are available in API version 50.0 and later.
+
+Special Access Rules
+
+You need the Salesforce Customize Application permission to access this metadata type.
+
+
+Metadata Types DataSourceObject
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+```
+accelerationEnabled
+
+```
+
+AccelerationEnabled Acceleration of data stream processing. Available in API version 63.0
+(enumeration and later. Possible values are:
+of type
+
+**•** `Yes`
+
+string)
+
+**•** `Yes`
+
+**•** `No`
+
+`additionalDLOInfoJson` string Additional information about the Directory Table data lake object
+(DLO), such as the directory path and file pattern.
+
+`creationType` string Indicates whether this object was added by the user or as part of a
+standard taxonomy.
+
+`dataConnection` string The source data connector for the Directory Table DLO.
+
+`dataSource` string Required. The system where the data was sourced.
+
+`dataSourceFields` DataSourceField[] An array of data source fields.
+on page 215
+
+`dmoDeveloperName` string The developer name of the Directory Table data model object (DMO).
+
+`dmoLabel` string The UI name of the Directory Table DMO.
+
+`externalDatabaseName` string The name of the external database for the data source object. Available
+in API version 63.0 and later.
+
+`externalObjectName` string The external data source object. Available in API version 63.0 and later.
+
+`externalRecordIdentifier` string The identifier for the data source.
+
+`externalSchemaName` string The name of the schema within the external database. Available in
+API version 63.0 and later.
+
+`masterLabel` string Required. The UI name for the data source object.
+
+`objectCategory` string The category of the data source object.
+
+`objectType` DataObjectType The object type. Possible values are:
+(enumeration
+
+**•** API
+of type
+
+**•** Object
+string)
+
+**•** Table
+
+`sourceObject` string The developer name of the source object for the data source object.
+
+```
+storageType
+
+```
+
+StorageType The type of storage used for data source object. Available in API version
+(enumeration 63.0 and later. Possible values are:
+of type
+
+**•** External
+
+string)
+
+**•** External
+
+**•** Local
+
+`templateVersion` int The version number of the data source object.
+
+
+#### Metadata Types DataSourceTenant DataSourceTenant
+
+For internal use only.
+
+#### DataSrcDataModelFieldMap
+
+Represents the mappings between source data lake object (DLO) fields and target data model object (DMO) fields.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+Parent Type
+
+[This type extends the Metadata metadata type and inherits its](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/metadata.htm) `fullName` field.
+
+File Suffix and Directory Location
+
+#### DataSrcDataModelFieldMap components have the suffix .dataSrcDataModelFieldMap and are stored in the
+
+`dataSrcDataModelFieldMaps` folder.
+
+Version
+
+#### DataSrcDataModelFieldMap components are available in API version 53.0 and later.
+
+Special Access Rules
+
+You need Data 360 permissions to access this object.
+
+Fields
+
+**Field Name** **Description**
+
+```
+filterApplied
+
+filterOperationType
+
+filterValue
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether a filter is applied to a DLO-to-DMO field mapping ( `true` ) or not
+( `false` ). Available in API version 60.0 and later.
+
+**Field Type**
+string
+
+**Description**
+Required when filterApplied is true. The comparison operator used when filtering the
+DLO-to-DMO field mapping. Available in API version 60.0 and later.
+
+**Field Type**
+string
+
+
+Metadata Types DataSrcDataModelFieldMap
+
+**Field Name** **Description**
+
+**Description**
+Required when filterApplied is true. The value used for filtering the DLO-to-DMO field
+mapping. Available in API version 60.0 and later.
+
+```
+masterLabel
+
+sourceField
+
+targetField
+
+templateVersion
+
+versionNumber
+
+```
+
+**Field Type**
+string
+
+**Description**
+Required. A user-friendly name for DataSrcDataModelFieldMap, which is defined when
+the DataSrcDataModelFieldMap is created.
+
+**Field Type**
+string
+
+**Description**
+Required. The developer name of the DLO field.
+
+**Field Type**
+string
+
+**Description**
+Required. The developer name of the DMO field.
+
+**Field Type**
+int
+
+**Description**
+The version number of the field mapping template. Available in API version 61.0 and
+later.
+
+**Field Type**
+double
+
+**Description**
+Required. The version number of the DataSrcDataModelFieldMap.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a DataSrcDataModelFieldMap component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<DataSrcDataModelFieldMap xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <filterApplied>true</filterApplied>
+
+   <filterOperationType>equals</filterOperationType>
+
+   <filterValue>Active</filtervalue>
+
+   <masterLabel>DataSrcDataModel26</masterLabel>
+
+   <sourceField>Account1.LastModifiedDate__c</sourceField>
+
+   <targetField>ssot__Account__dlm.ssot__LastModifiedDate__c</targetField>
+
+   <tepmlateVersion>2</templateVersion>
+
+```
+
+
+#### Metadata Types DataStreamDefinition
+
+```
+      <versionNumber>1.0</versionNumber>
+
+   </DataSrcDataModelFieldMap>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <types>
+
+        <members>DataSrcDataModel26</members>
+
+        <name>DataSrcDataModelFieldMap</name>
+
+   </types>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+[manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/file_based_zip_file.htm)
+
+#### DataStreamDefinition
+
+Contains data ingestion information such as connection, API, and file retrieval settings.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+File Suffix and Directory Location
+
+#### DataStreamDefinition components have the suffix dataStreamDefinition and are stored in the dataStreamDefinitions
+
+folder.
+
+Version
+
+#### DataStreamDefinition components are available in API version 50.0 and later.
+
+Special Access Rules
+
+You need the Salesforce CustomizeApplication permission to access this object.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`areHeadersIncludedInFile` boolean If true, headers are included in the file if this is a single file stream.
+
+`bulkIngest` boolean If true, files are aggregated before data is ingested if the file names
+contain a wildcard. For example, `profiles*.csv` .
+
+`definitionCreationType` string Required. Enum tracks the source of an object or field creation. Valid
+values are:
+
+**•** `Custom`
+
+**•** `Standard`
+
+Valid values available in API version 62.0 and later are:
+
+
+Metadata Types DataStreamDefinition
+
+**Field Name** **Field Type** **Description**
+
+**•** `ADG`
+
+**•** `Calculated_Insight`
+
+**•** `CG_Audience`
+
+**•** `Chunk`
+
+**•** `Directory_Table`
+
+**•** `External`
+
+**•** `Semantic`
+
+**•** `Transform`
+
+**•** `Vector_Embedding`
+
+`dataConnector` string Required. Describe whether this data stream definition was created by
+a customer or by an internal system.
+
+```
+dataConnectorType
+
+```
+
+DataConnectorType The ingestion data source. Valid values are:
+(enumeration of
+
+**•** `ACCOUNTENGAGEMENT`
+
+type string)
+
+**•** `ACCOUNTENGAGEMENT`
+
+**•** `AwsS3`
+
+**•** `AzureBlob`
+
+**•** `BIG_QUERY`
+
+**•** `CuratedEntity`
+
+**•** `DataCloud`
+
+**•** `ExternalPlatform`
+
+**•** `GoogleCloudStorage`
+
+**•** `IngestApi`
+
+**•** `REDSHIFT`
+
+**•** `SalesforceCommerceCloud`
+
+**•** `SalesforceDotCom`
+
+**•** `SalesforceInteractionStudio`
+
+**•** `SalesforceMarketingCloud`
+
+**•** `SFTP`
+
+**•** `Snowflake`
+
+**•** `StreamingApp`
+
+**•** `UPLOAD`
+
+`dataExtensionIdentifier` string For a Marketing Cloud data extension, the unique identifier.
+
+`dataExtractField` string Name of the transport field that’s used when the extract method is CDC.
+
+```
+dataExtractMethods
+
+```
+
+DataImportDataExtractMethods Describes how to identify the data to be extracted. Valid values include:
+(enumeration of
+
+**•** `DATETIME_CDC`
+
+type string)
+
+**•** `FULL_REFRESH`
+
+**•** `NUMERIC_CDC`
+
+
+#### Metadata Types DataStreamTemplate
+
+**Field Name** **Field Type** **Description**
+
+**•** `BINARY_CDC` (reserved for future use)
+
+`dataPlatDataSetBundle` string Identifies which data set bundle this definition was created from. Useful
+in cases where the same item can be configured across data connections.
+
+`dataPlatformDataSet` string The description is provided by the developer.
+
+`dataPlatformDataSetItemName` string Name of the Data Platform Set Item.
+
+`dataSource` string Required. A reference to the data source from which the data originated.
+This is usually the API name or a unique system identifier, such as the
+
+enterprise ID (EID) of the customer in the format `MC_<EID>` . Example:
+`MCEnterprise` or `MC_12345` .
+
+`description` string Required. A description of the data stream definition.
+
+`fileNameWildcard` string File or wildcard (*) used when finding files.
+
+`internalOrganization` string The name of the internal organization.
+
+`isLimitedToNewFiles` boolean If true, file retrieval is limited to new files.
+
+`isMissingFileFailure` boolean If true, treat the case of missing files as a failure.
+
+`masterLabel` string Required. UI label for this data stream definition.
+
+`mktDataLakeObject` string Required. Reference to the landing entity (target) where data will be
+stored.
+
+`mktDataTranObject` string Reference to the object that’s used to transport information from the
+source to a landing entity (target).
+
+#### DataStreamTemplate
+
+Represents the data stream that a user adds to a data kit.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+Parent Type
+
+[This type extends the Metadata metadata type and inherits its](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/metadata.htm) `fullName` field.
+
+File Suffix and Directory Location
+
+#### DataStreamTemplate components have the suffix .dataStreamTemplate and are stored in the dataStreamTemplates
+
+folder.
+
+Version
+
+#### DataStreamTemplate components are available in API version 53.0 and later.
+
+
+Metadata Types DataStreamTemplate
+
+Special Access Rules
+
+You need the Salesforce Customize Application permission to access this metadata type.
+
+Fields
+
+**Field Name** **Description**
+
+```
+dataConnectionSourceParameters
+
+dataSourceBundleDefinition
+
+dataSourceObject
+
+filterCriteria
+
+masterLabel
+
+objectCategory
+
+refreshDayOfMonth
+
+```
+
+**Field Type**
+DataConnectionParamTmpl[]
+
+**Description**
+Input representation for the data connection source parameters.
+
+**Field Type**
+string
+
+**Description**
+Required. Reference to the bundle to which this template belongs.
+
+**Field Type**
+string
+
+**Description**
+Required. Reference to the Data Source Objects (DSOs). A DSO represents the object
+from where the data was sourced.
+
+**Field Type**
+string
+
+**Description**
+Filter applied to the data stream before the information is sent to Data Cloud.
+
+**Field Type**
+string
+
+**Description**
+Required. Name assigned to the data stream template.
+
+**Field Type**
+string
+
+**Description**
+Required. Category of the Data Model Object (DMO).
+
+**Field Type**
+int
+
+**Description**
+The duration of the day of the month after which the data stream must be refreshed.
+
+
+Metadata Types DataStreamTemplate
+
+**Field Name** **Description**
+
+```
+refreshDayOfWeek
+
+refreshFrequency
+
+refreshHours
+
+refreshMode
+
+```
+
+**Field Type**
+int
+
+**Description**
+The duration of the day of the week after which the data stream must be refreshed.
+
+**Field Type**
+DataImportRefreshFrequency (enumeration of type string)
+
+**Description**
+The frequency with which the datastream must be refreshed. Possible values are:
+
+**•** `Batch`
+
+**•** `NONE`
+
+**•** `MINUTES_15`
+
+**•** `MINUTES_30`
+
+**•** `MINUTES_5`
+
+**•** `HOURLY`
+
+**•** `DAILY`
+
+**•** `WEEKLY`
+
+**•** `MONTHLY`
+
+**•** `NOT_APPLICABLE`
+
+**•** `STREAMING`
+
+Possible values available in API version 64.0 and later are:
+
+**•** EVERY_12_HOURS
+
+**•** EVERY_4_HOURS
+
+**Field Type**
+string
+
+**Description**
+The duration after which the datastream must be refreshed.
+
+**Field Type**
+DataImportRefreshMode (enumeration of type string)
+
+**Description**
+The mode of refresh. Possible values are:
+
+**•** `FULL_REFRESH`
+
+**•** `UPSERT`
+
+**•** `INCREMENTAL`
+
+**•** `REPLACE`
+
+**•** `NEAR_REAL_TIME_INCREMENTAL`
+
+**•** `NOT_APPLICABLE`
+
+
+Metadata Types DataStreamTemplate
+
+**Field Name** **Description**
+
+**•** `PARTIAL_UPDATE`
+
+**•** `STREAMING`
+
+```
+refreshStartDate
+
+sourceObjectName
+
+streamType
+
+streamingAppDataConnectorType
+
+templateVersion
+
+```
+
+**Field Type**
+date
+
+**Description**
+The date to retrieve data based on the refresh frequency data. Available in API version
+62.0 and later.
+
+**Field Type**
+string
+
+**Description**
+The name of the source object from which data is streamed. Available in API version
+62.0 and later.
+
+**Field Type**
+StreamType (enumeration of type string)
+
+**Description**
+The type of data stream. Available in API version 62.0 and later. Possible values are:
+
+**•** `DIRECT_ACCESS`
+
+**•** `DIRECT_ACCESS_ACCELERATED`
+
+**•** `INGEST`
+
+**Field Type**
+streamingAppDataConnectorType (enumeration of type string)
+
+**Description**
+The connector app for data streaming. Available in API version 63.0 and later. Possible
+values are:
+
+**•** `MobileApp`
+
+**•** `WebApp`
+
+**Field Type**
+int
+
+**Description**
+The version number of the template. Available in API version 62.0 and later.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a DataStreamTemplate component.
+
+```
+<DataStreamTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <dataSourceBundleDefinition>b2</dataSourceBundleDefinition>
+
+```
+
+
+#### Metadata Types ExternalDataConnector
+
+```
+      <dataSourceObject>sd3ds</dataSourceObject>
+
+      <masterLabel>b2</masterLabel>
+
+      <objectCategory>Profile</objectCategory>
+
+   </DataStreamTemplate>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+    <types>
+
+        <members>ssd3s</members>
+
+        <name>DataStreamTemplate</name>
+
+      </types>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type doesn’t support the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about
+[using the manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/file_based_zip_file.htm)
+
+#### ExternalDataConnector
+
+Used to represent the object where the data was sourced.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+File Suffix and Directory Location
+
+#### ExternalDataConnector components have the suffix externalDataConnector and are stored in the externalDataConnectors folder.
+
+Version
+
+#### ExternalDataConnector components are available in API version 50.0 and later.
+
+Special Access Rules
+
+You need the Salesforce CustomizeApplication permission to access this object.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+```
+dataConnectionStatus
+
+```
+
+DataConnectionStatus Indicates whether you’re connected to a data source. Valid values are:
+(enumeration of
+
+**•** `Connected`
+
+type string)
+
+**•** `Connected`
+
+**•** `Disconnected`
+
+**•** `Failed`
+
+`dataConnectorConfiguration` string Reference to the Data Connector Configuration that is used to retrieve
+or receive data such as DataConnectorS3.
+
+
+#### Metadata Types ExternalDataSource
+
+**Field Name** **Field Type** **Description**
+
+```
+dataConnectorType
+
+```
+
+DataConnectorType Type of connection such as AmazonS3. Valid values are:
+(enumeration of
+
+**•** `ACCOUNTENGAGEMENT`
+
+type string)
+
+**•** `ACCOUNTENGAGEMENT`
+
+**•** `AmazonS3`
+
+**•** `CuratedEntity`
+
+**•** `DataCloud`
+
+**•** `ExternalPlatform`
+
+**•** `GoogleCloudStorage`
+
+**•** `IngestApi`
+
+**•** `SalesforceCommerceCloud`
+
+**•** `SalesforceDotCom`
+
+**•** `SalesforceInteractionStudio`
+
+**•** `SalesforceMarketingCloud`
+
+**•** `SFTP`
+
+**•** `StreamingApp`
+
+**•** `UPLOAD`
+
+`dataPlatform` string Reference to the Data Platform that provides or uses this data, such as
+Amazon_S3.
+
+`externalDataTranObjects` [ExternalDataTranObject](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_externaldatatranobject.htm) Stores the schema objects related to the data connector. Available in
+API version 56.0 and later.
+
+`masterLabel` string Required. The UI name for the ExternalDataConnector.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a ExternalDataConnector component.
+
+```
+     <?xml version="1.0" encoding="UTF-8"?>
+
+     <ExternalDataConnector xmlns="http://soap.sforce.com/2006/04/metadata">
+
+     <dataConnectionStatus>Connected</dataConnectionStatus>
+
+     <dataConnectorConfiguration>Person</dataConnectorConfiguration>
+
+     <dataConnectorType>AmazonS3</dataConnectorType>
+
+     <dataPlatform>Amazon_S3</dataPlatform>
+
+     <masterLabel>AmazonS3</masterLabel>
+
+     </ExternalDataConnector>
+
+#### ExternalDataSource
+
+```
+
+Represents the metadata associated with an external data source. Create external data sources to manage connection details for
+integration with data and content that are stored outside your Salesforce org.
+
+
+Metadata Types ExternalDataSource
+
+Note: All credentials stored within this entity are encrypted under a framework that is consistent with other encryption frameworks
+on the platform. Salesforce encrypts your credentials by auto-creating org-specific keys. Credentials encrypted using the previous
+encryption scheme are migrated to the new framework.
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+ExternalDataSource components are stored in the `dataSources` directory of the corresponding package directory. ExternalDataSource
+components have the suffix `.dataSource`, and the prefix is the name of the external data source.
+
+Version
+
+ExternalDataSource components are available in API version 28.0 and later.
+
+Special Access Rules
+
+As of Spring ’20 and later, only authenticated internal and external users can access this type.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`authProvider` string The authentication provider represented by the AuthProvider
+component.
+
+`certificate` string If you specify a certificate, your Salesforce org supplies it when
+establishing each two-way SSL connection with the external system.
+
+The certificate is used for digital signatures, which verify that
+requests are coming from your Salesforce org.
+
+Tip: For best performance, verify that your remote HTTPS
+encrypted sites have OCSP (Online Certificate Status Protocol)
+stapling turned on.
+
+`customConfiguration` string A string of configuration parameters that are specific to the external
+data source’s `type` .
+
+**•** customConfiguration for Salesforce Connect—Cross-Org
+Adapter
+
+**•** customConfiguration for Salesforce Connect—OData 2.0 or 4.0
+Adapter
+
+**•** customConfiguration for Salesforce Connect—Custom Adapter
+
+`customHttpHeaders` CustomHttpHeaders[] Represents custom HTTP headers used with OData 2.0 or OData 4.0
+connectors. Available in API version 43.0 or later.
+
+
+Metadata Types ExternalDataSource
+
+**Field Name** **Field Type** **Description**
+
+`endpoint` string
+
+The URL of the external system, or if that URL is defined in a named
+credential, the named credential URL. Corresponds to the `URL` in
+the user interface.
+
+A named credential URL contains the scheme `callout:`, the
+name of the named credential, and an optional path. For example:
+`callout:` _`My_Named_Credential`_ `/` _`some_path`_ .
+
+You can append a query string to a named credential URL. Use a
+question mark (?) as the separator between the named credential
+URL and the query string. For example:
+`callout:` _`My_Named_Credential`_ `/` _`some_path`_ `?format=json` .
+
+`externalDataSrcDescriptors` ExternalDataSrcDescriptors[] Represents schema descriptors for an external data source used
+with the Salesforce Connect adapter for Amazon DynamoDB
+
+(available in API version 55.0 or later) or Amazon Athena (available
+in API version 56.0 or later).
+
+`isWritable` boolean
+
+`label` string
+
+`namedCredential` string
+
+Allows the Lightning Platform and users in this org to create, update,
+and delete records for external objects associated with the external
+
+data source. The external object data is stored outside the org. By
+default, external objects are read-only. Corresponds to `Writable`
+`External Objects` in the user interface.
+
+Available in API version 35.0 and later. However, with the cross-org
+adapter for Salesforce Connect, you can set this field to `true` only
+in API version 39.0 and later.
+
+A name for the external data source. The label is displayed in the
+Salesforce user interface, such as in list views.
+
+Examples include Acme Team Marketing Site or Acme SharePoint.
+
+Represents the definition of the referenced named credential for
+an external data source of the type Amazon DynamoDB or Amazon
+Athena.
+
+`oauthRefreshToken` string The OAuth refresh token. Used to obtain a new access token for an
+end user when a token expires.
+
+`oauthScope` string Specifies the scope of permissions to request for the access token.
+Corresponds to the `Scope` in the user interface.
+
+`oauthToken` string The access token issued by the external system.
+
+`password` string The password your org uses to access the external system. Make
+sure that the credentials you use have adequate privileges to access
+
+the external system, perform searches, return data, and return
+information about the external system’s metadata.
+
+
+Metadata Types ExternalDataSource
+
+**Field Name** **Field Type** **Description**
+
+```
+principalType
+
+protocol
+
+```
+
+```
+External
+
+PrincipalType
+```
+
+(enumeration of type string)
+
+`Authentication` The authentication protocol that’s required to access the external
+`Protocol` (enumeration system. The valid values are:
+of type string)
+
+**•** `NoAuthentication`
+
+Determines whether you're using one set or multiple sets of
+credentials to access the external system. Corresponds to
+`Identity Type` in the user interface. The valid values are:
+
+**•** `Anonymous`
+
+**•** `PerUser`
+
+**•** `NamedUser`
+
+**•** `Oauth`
+
+**•** `Password`
+
+For cloud-based Files Connect external systems, select **Oauth 2.0** .
+For on-premises systems, select **Password Authentication** .
+
+For Simple URL data sources, select **No Authentication** .
+
+`repository` string Used for SharePoint Online. If metadata isn't accessible, use this
+field to create tables and default table fields.
+
+`type` `ExternalDataSourceType` Required. For Salesforce Connect, specifies the adapter that connects
+(enumeration of type string) to the external system. The valid values are:
+
+**•** `AmazonAthena` —Amazon Athena
+
+**•** `AmazonDynamoDB` —Amazon DynamoDB
+
+**•** `OData` —OData 2.0 adapter
+
+**•** `OData4` —OData 4.0 adapter
+
+**•** `SfdcOrg` —cross-org adapter
+
+**•** _`ApexClassId`_                         - `DataSource.Provider` class that
+defines the custom adapter created via the Apex Connector
+Framework
+
+For Files Connect, specifies the data source type. The valid values
+are:
+
+**•** `ContentHubSharepoint` —SharePoint 2010 or 2013
+
+**•** `ContentHubSharepointOffice365` —SharePoint
+Online
+
+**•** `ContentHubSharepointOneDrive` —OneDrive for
+Business
+
+**•** `ContentHubGDrive` —Google Drive
+
+**•** `ContenHubIsotope` —Isotope
+
+If Chatter is enabled, you can also specify `SimpleURL` to access
+data hosted on a web server that doesn’t require authentication.
+
+
+Metadata Types ExternalDataSource
+
+**Field Name** **Field Type** **Description**
+
+**•** `outgoingemail` —A data source used for sending an email
+through a quick action.
+
+For Digital Lending Configurator, the valid value is:
+
+**•** `AFPPAttribute` —The data source name for the Application
+Form Product Proposal Attribute virtual object.
+
+For the federated search external data source type, the valid value
+is:
+
+**•** `OpenSearch`
+
+For Transaction Management in Revenue Cloud, the valid values
+are:
+
+**•** `ASPAttribute` —The data source name for the Asset State
+Period Attribute virtual object. Available in API version 63.0 and
+later.
+
+**•** `OIAttribute` —The data source name for the Order Item
+Attribute virtual object. Available in API version 63.0 and later.
+
+**•** `QLIAttribute` —The data source name for the Quote Line
+Item Attribute virtual object. Available in API version 63.0 and
+later.
+
+For SalesAgreement in Manufacturing Cloud, the valid values are:
+
+**•** `SAPAttribute` —The data source name for the
+SalesAgreement Product Attribute virtual object. Available in
+API version 60.0 and later.
+
+These values are reserved for internal use:
+
+**•** `AssetAttribute`
+
+**•** `ClaimAttributeDS`
+
+**•** `ClaimItemAttributeDS`
+
+**•** `CryptoTrEnvChgLogSnp`
+
+**•** `CtrtGrpPlnAttr`
+
+**•** `CtrtGrpPlnGrpClsAttr`
+
+**•** `FAAttribute`
+
+**•** `FLAttribute`
+
+**•** `IAItemProdtAttr`
+
+**•** `Identity`
+
+**•** `InsPolicyAttribute`
+
+**•** `IPAAttribute`
+
+**•** `IPCAttribute`
+
+**•** `IPCvrBnftAttribute`
+
+**•** `IPPAttribute`
+
+**•** `SdbOvenPODataSource`
+
+
+Metadata Types ExternalDataSource
+
+**Field Name** **Field Type** **Description**
+
+**•** `Wrapper`
+
+`username` string The user name that your org uses to access the external system.
+Make sure that the credentials you use have adequate privileges to
+
+access the external system, perform searches, return data, and return
+information about the external system’s metadata.
+
+`version` string Reserved for future use.
+
+CustomHttpHeaders
+
+Represents a custom HTTP header used with OData 2.0 or OData 4.0 connectors. Available in API version 43.0 or later.
+
+**Field Name** **Field Type** **Description**
+
+`description` string A text description of the header field’s purpose.
+
+`headerFieldName` string
+
+`headerFieldValue` string
+
+Required. Name of the header field. The name must contain at least one
+alphanumeric character or underscore. It can also include these
+characters: `! # $ % & ' * + - . ^ _ ` | ~` .
+
+Required. A formula that resolves to the value for the header. The values
+in the formula must evaluate to a string. If the formula resolves to null
+and an empty string, the header isn’t sent.
+
+`isActive` boolean Indicates whether the custom HTTP header is available to use ( `true` )
+or unavailable ( `false` ).
+
+**`customConfiguration`** for Salesforce Connect—Cross-Org Adapter
+
+This sample JSON-encoded configuration string defines parameters that apply when the external data source’s `type` is set to `SfdcOrg` .
+
+```
+{"apiVersion":"32.0","environment":"CUSTOM",
+
+"searchEnabled":"true","timeout":"120"}
+
+```
+
+The parameters correspond to these fields in the user interface:
+
+**•** `apiVersion` - `API Version`
+
+**•** `environment` - `Connect to`
+
+**•** `searchEnabled` - `Enable Search`
+
+**•** `timeout` - `Connection Timeout`
+
+**`customConfiguration`** for Salesforce Connect—OData 2.0 or 4.0 Adapter
+
+This JSON-encoded configuration string defines parameters that apply when the external data source’s `type` is set to `OData` or
+`OData4` .
+
+```
+{"inlineCountEnabled":"true","csrfTokenName":"X-CSRF-Token",
+
+"requestCompression":"false","pagination":"CLIENT",
+
+```
+
+
+Metadata Types ExternalDataSource
+
+```
+   "noIdMapping":"false","format":"ATOM",
+
+   "searchFunc":"","compatibility":"DEFAULT",
+
+   "csrfTokenEnabled":"true","timeout":"120",
+
+   "searchEnabled":"true"}
+
+```
+
+The parameters correspond to these fields in the user interface.
+
+**•** `compatibility`   - `Special Compatibility`
+
+**•** `csrfTokenEnabled`   - `Cross-Site Request Forgery (CSRF) Protection`
+
+**•** `csrfTokenName`   - `Anti-CSRF Token Name`
+
+**•** `format`   - `Format`
+
+**•** `inlineCountEnabled`   - `Request Row Counts`
+
+**•** `noIdMapping`   - `High Data Volume`
+
+**•** `pagination`   - `Server Driven Pagination`
+
+**•** `requestCompression`   - `Compress Requests`
+
+**•** `searchEnabled`   - `Enable Search`
+
+**•** `searchFunc`   - `Custom Query Option for Salesforce Search`
+
+**•** `timeout`   - `Connection Timeout`
+
+Declarative Metadata Sample Definition: OData 2.0 or 4.0
+
+The following is the definition of an external data source for Salesforce Connect—OData 2.0 or 4.0 adapter.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <ExternalDataSource xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <authProvider>FacebookAuth</authProvider>
+
+      <customConfiguration>{"compatibility":"DEFAULT",
+
+      "noIdMapping":"false","inlineCountEnabled":"true",
+
+      "searchEnabled":"true","format":"ATOM",
+
+      "requestCompression":"false","pagination":"SERVER",
+
+      "timeout":"120"}</customConfiguration>
+
+      <customHttpHeaders>
+
+        <headerFieldName>X-User</headerFieldName>
+
+        <headerFieldValue>$User.Username</headerFieldValue>
+
+      </customHttpHeaders>
+
+      <endpoint>http://myappname.herokuapp.com/DataHub.svc</endpoint>
+
+      <label>DataHub</label>
+
+      <principalType>NamedUser</principalType>
+
+      <protocol>Oauth</protocol>
+
+      <type>OData</type>
+
+   </ExternalDataSource>
+
+```
+
+**`customConfiguration`** for Salesforce Connect—Custom Adapter
+
+This sample JSON-encoded configuration string defines the parameter that applies when the external data source’s `type` is set to the
+ID of a `DataSource.Provider` class.
+
+```
+   {"noIdMapping":"false"}
+
+```
+
+The `noIdMapping` parameter corresponds to the `High Data Volume` field in the user interface.
+
+
+Metadata Types ExternalDataSource
+
+**`ExternalDataSrcDescriptors`** for Salesforce Connect Adapter for Amazon
+DynamoDB and for Amazon Athena
+
+Represents schema descriptors for an external data source used with the Salesforce Connect adapter. The schema descriptors are for
+Amazon DynamoDB (available in API version 55.0 or later) or Amazon Athena (available in API version 56.0 or later).
+
+**Field Name** **Field Type** **Description**
+
+`customObject` string If set, the external object associated with the descriptor.
+
+`descriptor` string Required. The descriptor document that contains the metadata
+information.
+
+`descriptorVersion` string If the external system supports schema versioning for the data source,
+the optional descriptor document version tracks the external system's
+
+schema version. Several descriptors with different document versions
+can be active.
+
+`developerName` string Required. The unique name of the child-level setup entity.
+
+`externalDataSource` string Required. The name of the external data source associated with the
+descriptor.
+
+Required. The subtype of the descriptor.
+
+Values are:
+
+**•** `SchemaTableMetadata` - Used to cache information about
+the external system.
+
+**•** `SchemaTableQualifiers` - Used to customize the data
+retrieval query to the external system.
+
+```
+subtype
+
+```
+
+ExternalDataSrcDescSubtype
+(enumeration of
+type string)
+
+`systemVersion` int Required. The version that defines the descriptor format and provides
+compatibility with descriptor formats between Salesforce releases.
+
+Required. The type of the descriptor.
+
+Valid value:
+
+**•** `Schema`
+
+```
+type
+
+```
+
+ExternalDataSrcDescType
+(enumeration of
+type string)
+
+Declarative Metadata Sample Definition: Amazon DynamoDB
+
+The following is an example of an external data source for the Salesforce Connect adapter for Amazon DynamoDB that uses
+`ExternalDataSrcDescriptor` component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ExternalDataSource xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <customConfiguration>{"timeout":"120"}</customConfiguration>
+
+   <externalDataSrcDescriptors>
+
+     <fullName>MyQualifierName</fullName>
+
+     <customObject>MyExternalObject__x</customObject>
+
+     <descriptor>
+
+     {
+
+      "tableName": "MyDynamoDBTable",
+
+```
+
+
+Metadata Types ExternalDataSource
+
+```
+         "columns": {
+
+           "MyField": {"presence": "exists"}
+
+         }
+
+        }
+
+        </descriptor>
+
+        <developerName>MyQualifierName</developerName>
+
+        <externalDataSource>MyDataSource</externalDataSource>
+
+        <subtype>SchemaTableQualifiers</subtype>
+
+        <systemVersion>0</systemVersion>
+
+        <type>Schema</type>
+
+      </externalDataSrcDescriptors>
+
+      <isWritable>true</isWritable>
+
+      <label>MyDataSource</label>
+
+      <namedCredential>MyNamedCredential</namedCredential>
+
+      <principalType>Anonymous</principalType>
+
+      <protocol>NoAuthentication</protocol>
+
+      <type>AmazonDynamoDb</type>
+
+   </ExternalDataSource>
+
+```
+
+Declarative Metadata Sample Definition: Amazon Athena
+
+The following is an example of an external data source for the Salesforce Connect adapter for Amazon Athena that uses
+`ExternalDataSrcDescriptor` component.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <ExternalDataSource xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <customConfiguration>
+
+      {
+
+       "DataCatalog": "AwsDataCatalog",
+
+       "timeout": "120"
+
+      }
+
+      </customConfiguration>
+
+      <externalDataSrcDescriptors>
+
+        <fullName>MyAthenaQualifierName</fullName>
+
+        <customObject>MyAthenaExternalObject__x</customObject>
+
+        <descriptor>
+
+        {
+
+         "tableName": "myathenadatabase.myathenatable",
+
+         "extendedQualifiers": {"workgroup": "primary"},
+
+         "keyColumns": ["ExternalIdComponent", "OtherExternalIdComponent"]
+
+        }
+
+        </descriptor>
+
+        <developerName>MyAthenaQualifierName</developerName>
+
+        <externalDataSource>MyAthenaDataSource</externalDataSource>
+
+        <subtype>SchemaTableQualifiers</subtype>
+
+        <systemVersion>0</systemVersion>
+
+        <type>Schema</type>
+
+      </externalDataSrcDescriptors>
+
+      <isWritable>false</isWritable>
+
+      <label>MyAthenaDataSource</label>
+
+      <namedCredential>MyAthenaNamedCredential</namedCredential>
+
+      <principalType>Anonymous</principalType>
+
+      <protocol>NoAuthentication</protocol>
+
+      <type>AmazonAthena</type>
+
+   </ExternalDataSource>
+
+```
+
+
+#### Metadata Types ExternalDataTransportFieldTemplate
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### ExternalDataTransportFieldTemplate
+
+For internal use only.
+
+#### ExternalDataTranObject
+
+Represents a definition of a Data 360 schema object. This type extends the Metadata metadata type and inherits its `fullName` field.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+File Suffix and Directory Location
+
+#### ExternalDataTranObject components have the suffix .externalDataTranObject and are stored in the
+
+`externalDataTranObjects` folder.
+
+Version
+
+#### ExternalDataTranObject components are available in API version 55.0 and later.
+
+Special Access Rules
+
+#### ExternalDataTranObject is available only if Data 360 is provisioned.
+
+Fields
+
+**Field Name** **Description**
+
+```
+availabilityStatus
+
+creationType
+
+```
+
+**Field Type**
+AvailabilityStatus (enumeration of type string)
+
+**Description**
+
+Required.
+
+Represents the availability of the object. Valid values are:
+
+**•** `Available`
+
+**•** `In_Use`
+
+**Field Type**
+DefinitionCreationType (enumeration of type string)
+
+**Description**
+
+Required.
+
+
+Metadata Types ExternalDataTranObject
+
+**Field Name** **Description**
+
+Describes whether this object was added by the Customer or as part of a Standard
+Taxonomy or by the System. Valid values are:
+
+**•** `Segment_Membership`
+
+**•** `Activation_Audience` (Reserved for internal use only)
+
+**•** `Custom`
+
+**•** `Standard`
+
+**•** `System`
+
+**•** `Derived`
+
+**•** `Bridge`
+
+**•** `Curated`
+
+**•** `Standard`
+
+Valid values available in API version 62.0 and later are:
+
+**•** `ADG`
+
+**•** `Calculated_Insight`
+
+**•** `CG_Audience`
+
+**•** `Chunk`
+
+**•** `Directory_Table`
+
+**•** `External`
+
+**•** `Semantic`
+
+**•** `Transform`
+
+**•** `Vector_Embedding`
+
+```
+extDataTranObjectTemplate
+
+externalDataTranFields
+
+masterLabel
+
+```
+
+**Field Type**
+string
+
+**Description**
+Reserved for internal use and read-only. Reference to the associated
+ExtDataTranObjectTemplate data kit object. The system populates this field when
+a data kit that contains a data stream is deployed.
+
+**Field Type**
+
+ExternalDataTranField
+
+**Description**
+
+Optional.
+
+Stores the fields related to that schema object.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+
+Metadata Types ExternalDataTranObject
+
+**Field Name** **Description**
+
+The UI name for the object.
+
+```
+mktDataTranObject
+
+objectCategory
+
+```
+
+ExternalDataTranField
+
+**Field Type**
+
+MktDataTranObject
+
+**Description**
+
+Optional.
+
+An entity that is used to transport information from the source to a target.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+Reference to the Object Category. For Transport, they're Profile, Engagement, or
+Other.
+
+Stores the fields related to ExternalDataTranObject schema.
+
+**Field Name** **Description**
+
+```
+creationType
+
+datatype
+
+```
+
+**Field Type**
+DefinitionCreationType (enumeration of type string).
+
+**Description**
+
+Required.
+
+Describes whether this object was added by the Customer or as part of a Standard Taxonomy
+or by the System. Valid values are:
+
+**•** `Segment_Membership`
+
+**•** `Custom`
+
+**•** `Standard`
+
+**•** `System`
+
+**•** `Derived`
+
+**•** `Bridge`
+
+**•** `Curated`
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+
+Metadata Types ExternalDataTranObject
+
+**Field Name** **Description**
+
+Phone, currency, number, or other assigned type.
+
+```
+dateFormat
+
+extDataTranFieldTemplate
+
+externalName
+
+isCurrencyIsoCode
+
+isDataRequired
+
+length
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+Optional.
+
+The Date format of date, time, date/time fields in this Transport field.
+
+**Field Type**
+string
+
+**Description**
+Reserved for internal use and read-only. Reference to the associated
+ExtDataTranFieldTemplate data kit object. The system populates this field when a data kit
+that contains a data stream is deployed.
+
+**Field Type**
+string
+
+**Description**
+
+Optional.
+
+Name of the object in the external system (different from Developer Name).
+
+**Field Type**
+boolean
+
+**Description**
+
+Optional.
+
+If true, this field is a currency ISO code.
+
+**Field Type**
+boolean
+
+**Description**
+
+Optional.
+
+If true, data is required for this field.
+
+**Field Type**
+int
+
+**Description**
+
+Optional.
+
+Length of a string column.
+
+`masterLabel` Optional. Field label.
+
+
+Metadata Types ExternalDataTranObject
+
+**Field Name** **Description**
+
+```
+mktDataTranField
+
+precision
+
+primaryIndexOrder
+
+scale
+
+sequence
+
+```
+
+MktDataTranField
+
+**Field Type**
+
+mktDataTranFieldType on page 242
+
+**Description**
+
+Optional.
+
+**Field Type**
+int
+
+**Description**
+
+Optional.
+
+Used for currency and numeric accuracy.
+
+**Field Type**
+int
+
+**Description**
+
+Optional.
+
+If supplied, indicates this field is part of the primary key where the number value (starting
+at 1) indicates the order of attributes if it's a compound primary key. Missing value means
+this field isn’t part of the primary key.
+
+**Field Type**
+int
+
+**Description**
+
+Optional.
+
+Used for currency and numbers.
+
+**Field Type**
+int
+
+**Description**
+
+Optional.
+
+The sequence of this source schema.
+
+Stores fields related to MktDataTranObject.
+
+**Field Name** **Description**
+
+```
+creationType
+
+```
+
+**Field Type**
+DefinitionCreationType (enumeration of type string).
+
+
+Metadata Types ExternalDataTranObject
+
+**Field Name** **Description**
+
+**Description**
+
+Required.
+
+Describes whether this object was added by the Customer or as part of a Standard Taxonomy
+or by the System. Valid values are:
+
+**•** `Segment_Membership`
+
+**•** `Custom`
+
+**•** `Standard`
+
+**•** `System`
+
+**•** `Derived`
+
+**•** `Bridge`
+
+**•** `Curated`
+
+**•** Valid values available in API version 62.0 and later are:
+
+**–** `ADG`
+
+**–** `Calculated_Insight`
+
+**–** `CG_Audience`
+
+**–** `Chunk`
+
+**–** `Directory_Table`
+
+**–** `External`
+
+**–** `Semantic`
+
+**–** `Transform`
+
+**–** `Vector_Embedding`
+
+```
+datatype
+
+dateFormat
+
+externalName
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+Phone, currency, number, or other assigned type.
+
+**Field Type**
+string
+
+**Description**
+
+Optional.
+
+The Date format of date, time, date/time fields in this Transport field.
+
+**Field Type**
+string
+
+**Description**
+
+Optional.
+
+
+Metadata Types ExternalDataTranObject
+
+**Field Name** **Description**
+
+Name of the object in the external system (different from Developer Name).
+
+```
+isDataRequired
+
+length
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+
+Optional.
+
+If true, data is required for this field.
+
+**Field Type**
+int
+
+**Description**
+
+Optional.
+
+Length of a string column.
+
+`masterLabel` Optional. Field label.
+
+```
+precision
+
+primaryIndexOrder
+
+scale
+
+sequence
+
+```
+
+**Field Type**
+int
+
+**Description**
+
+Optional.
+
+Used for currency and numeric accuracy.
+
+**Field Type**
+int
+
+**Description**
+
+Optional.
+
+If supplied, indicates this field is part of the primary key where the number value (starting
+at 1) indicates the order of attributes if it's a compound primary key. Missing value means
+this field isn’t part of the primary key.
+
+**Field Type**
+int
+
+**Description**
+
+Optional.
+
+Used for currency and numbers.
+
+**Field Type**
+int
+
+**Description**
+
+Optional.
+
+
+#### Metadata Types ExternalDataTransportObjectTemplate
+
+**Field Name** **Description**
+
+The sequence of this source schema.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a ExternalDataTranObject component.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <ExternalDataTranObject xmlns="http://soap.sforce.com/2006/04/metadata">
+
+        <fullName>PlatformTraces</fullName>
+
+        <availabilityStatus>Available</availabilityStatus>
+
+        <creationType>Custom</creationType>
+
+        <masterLabel>PlatformTraces</masterLabel>
+
+        <objectCategory>Salesforce_SFDCReferenceModel_0_93.Engagement</objectCategory>
+
+   </ExternalDataTranObject>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>*</members>
+
+        <name>ExternalDataTranObject</name>
+
+      </types>
+
+      <version>55.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+[manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/file_based_zip_file.htm)
+
+#### ExternalDataTransportObjectTemplate
+
+For internal use only.
+
+#### FieldSrcTrgtRelationship
+
+Stores the relationships between a data model object (DMO) and its fields. For example, the `Individual.Id` field has a one-to-many
+relationship (1:M) with the `ContactPointEmail.PartyId` field.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+
+Metadata Types FieldSrcTrgtRelationship
+
+File Suffix and Directory Location
+
+FieldSrcTrgtRelationship components have the suffix `.fieldSrcTrgtRelationship` and are stored in the
+`fieldSrcTrgtRelationships` folder.
+
+Version
+
+FieldSrcTrgtRelationship components are available in API version 51.0 and later.
+
+Special Access Rules
+
+To access this metadata type, you must have the Customize Application user permission.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+Required. Describes whether this object was added by the user or as
+part of a standard taxonomy.
+
+Values are:
+
+**•** `ADG`
+
+**•** `Activation_Audience`
+
+**•** `Bridge`
+
+**•** `Calculated_Insight`
+
+**•** `Chunk`
+
+**•** `Curated`
+
+**•** `Custom`
+
+**•** `Derived`
+
+**•** `Directory_Table`
+
+**•** `External`
+
+**•** `Ml_Prediction`
+
+**•** `Segment_Membership`
+
+**•** `Semantic`
+
+**•** `Standard`
+
+**•** `System`
+
+**•** `Transform`
+
+**•** `Vector_Embedding`
+
+```
+definitionCreationType
+
+```
+
+DefinitionCreationType
+(enumeration of
+type string)
+
+`lookupFieldName` string Reference to the DMO lookup field.
+
+`masterLabel` string Required. The UI name for the field relationship.
+
+Optional. The type of relationship that exists between the source and
+the target.
+
+Values are:
+
+
+```
+owner
+
+```
+
+FieldSrcTrgtRelationshipOwner
+(enumeration of
+type string)
+
+#### Metadata Types InternalDataConnector
+
+**Field Name** **Field Type** **Description**
+
+**•** `SObject`                          - The source of the relationship is a DMO and the target
+is a standard or custom SObject.
+
+**•** `DataCloud`                          - Both the source and the target of the relationship
+are DMOs.
+
+The field is needed only when the target is an SObject. The system can
+infer the value when the target is a DMO.
+
+Required. Cardinality of the relationship between the source and target
+fields.
+
+Values are:
+
+**•** `ManyToOne`
+
+**•** `OneToOne`
+
+```
+relationshipCardinality
+
+```
+
+RelationshipCardinality
+(enumeration of
+type string)
+
+`sourceFieldName` string Required. Name of the field that represents the source side of the
+relationship.
+
+`targetEntity` string Optional. Name of the entity that represents the target side of the
+relationship. The target entity can be a DMO or a standard or custom
+
+SObject. The field is needed only when the target entity is an SObject.
+The system can infer the value when the target entity is a DMO.
+
+`targetFieldName` string Required. Name of the field that represents the target side of the
+relationship.
+
+#### InternalDataConnector
+
+For internal use only.
+
+#### MarketSegmentDefinition
+
+Represents the field values for MarketSegmentDefinition. MarketSegmentDefinition is used to store the exportable metadata of a segment,
+such as segment criteria and other attributes. Developers can create segment definition packages, pass segment definition in the form
+of data build tool (DBT), and publish it on AppExchange for subscriber organizations to install and instantiate these segments.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+Parent Type
+
+This type extends the Metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+#### MarketSegmentDefinition components have the suffix .marketSegmentDefinition and are stored in the
+
+`marketSegmentDefinitions` folder.
+
+
+Metadata Types MarketSegmentDefinition
+
+Version
+
+MarketSegmentDefinition components are available in API version 55.0 and later.
+
+Fields
+
+**Field Name** **Description**
+
+```
+additionalMetadata
+
+excludeCriteria
+
+includeCriteria
+
+masterLabel
+
+segmentOn
+
+segmentType
+
+```
+
+**Field Type**
+string
+
+**Description**
+An XML clob to hold name value pairs for storing additional metadata. Not applicable
+for DBT type segment.
+
+**Field Type**
+string
+
+**Description**
+Holds the JSON exclude criteria for UI based segments. Not applicable for DBT or
+Lookalike segments.
+
+**Field Type**
+string
+
+**Description**
+An XML wrapped in a CDATA section that captures DBT definition. Only single model
+DBT is supported.
+
+**Field Type**
+string
+
+**Description**
+
+Required. Display name of the field value.
+
+**Field Type**
+string
+
+**Description**
+Required when `segmentType` is `UI` . Points to relevant MktDataModelObject entity
+instance. Must be a valid developerName for an MktDataModelObject instance of
+Profile type.
+
+**Field Type**
+MarketSegmentType (enumeration of type string)
+
+**Description**
+
+Required. Type of the segment to be created. Only DBT is supported via API.
+
+Values are:
+
+**•** `DBT`
+
+
+Metadata Types MarketSegmentDefinition
+
+**Field Name** **Description**
+
+**•** `Lookalike`
+
+**•** `UI`
+
+**•** `EinsteinGPTSegmentsUI`
+
+Declarative Metadata Sample Definition
+
+The following is an example of a MarketSegmentDefinition component.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <MarketSegmentDefinition>
+
+      <segmentType>DBT</segmentType>
+
+      <includeCriteria>
+
+      <![CDATA[
+
+        <DbtPipeline>
+
+           <models>
+
+             <model>
+
+               <name>m1</name>
+
+               <sql>select ssot__Individual__dlm.ssot__Id__c from
+
+   ssot__Individual__dlm</sql>
+
+             </model>
+
+           </models>
+
+        </DbtPipeline>
+
+        ]]>
+
+      </includeCriteria>
+
+      <masterLabel>msd2_simple</masterLabel>
+
+   </MarketSegmentDefinition>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+   <ns2:Package xmlns:ns2="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>*</members>
+
+        <name>MarketSegmentDefinition</name>
+
+      </types>
+
+      <version>55.0</version>
+
+   </ns2:Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+[wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_settings.htm)
+[manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/file_based_zip_file.htm)
+
+
+#### Metadata Types MktCalcInsightObjectDef MktCalcInsightObjectDef
+
+Represents Calculated Insight definition such as expression.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+#### MktCalcInsightObjectDef components have the suffix mktCalcInsightObjectDef and are stored in the mktCalcInsightObjectDefs folder.
+
+Version
+
+#### MktCalcInsightObjectDef components are available in API version 52.0 and later.
+
+Special Access Rules
+
+You need the Salesforce CustomizeApplication permission to access this object.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`builderExpression` string Reserved for internal use.
+
+`creationType` [CalculatedInsightCreationType(enumeration](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_objects_intro.htm#enumeration_title) Required. Describes whether this Calculated Insight Object Definition
+of type string) was added was added by the customer. Valid values include: Custom.
+
+`description` string The description for this Calculated Insight Object Definition.
+
+`expression` string Required when the Calculated Insight Object Definition is for internal
+insight type. This is the SQL query to generate the calculated insight.
+
+`masterLabel` string Required. App name for this Calculated Insight Object Definition.
+
+`system` string
+
+Required. Indicates how this calculated insight object definition was
+added, by the customer or by the system. Valid values are:
+
+**•** Custom
+
+**•** System (API version 61.0 and later)
+
+
+#### Metadata Types MktDataTranObject
+
+Declarative Metadata Sample Definition
+
+The following is an example of a MktCalcInsightObjectDef component.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <MktCalcInsightObjectDef xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <creationType>Custom</creationType>
+
+      <description>InsightName description</description>
+
+      <expression>SELECT COUNT(ssot__Individual__dlm.ssot__Id__c) as count__c FROM
+
+   ssot__Individual__dlm</expression>
+
+   </MktCalcInsightObjectDef>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### MktDataTranObject
+
+An entity that is used to deliver (aka transport) information from the source to a target (target will be called a landing entity).This can
+be the schema of a file, API, Event, or other means of transporting data, such as SubscriberFile1.csv, or SubscriberCDCEvent.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+File Suffix and Directory Location
+
+#### MktDataTranObject components have the suffix mktDataTranObject and are stored in the mktDataTranObjects folder.
+
+Version
+
+#### MktDataTranObject components are available in API version 50.0 and later.
+
+Special Access Rules
+
+You need the Salesforce CustomizeApplication permission to access this object.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`connector` string Required. Data 360 connector name that allows you to connect the data
+source to Data 360.
+
+`creationType` DefinitionCreationType Required. Describe whether this object was added as the result of the
+Customer or as part of a Standard Taxonomy.
+
+**•** Valid values available in API version 62.0 and later are:
+
+**–** `ADG`
+
+**–** `Calculated_Insight`
+
+
+Metadata Types MktDataTranObject
+
+**Field Name** **Field Type** **Description**
+
+**–** `CG_Audience`
+
+**–** `Chunk`
+
+**–** `Directory_Table`
+
+**–** `External`
+
+**–** `Semantic`
+
+**–** `Transform`
+
+**–** `Vector_Embedding`
+
+`dataSource` string
+
+Required. Your reference to the data source from which the data
+originated (source of that data such as the name of a CRM Org. Example:
+MC Enterprise.
+
+`dataSourceObject` string Required. Represents the object name from where the data is sourced.
+Example: ecommerce-OrderItem.
+
+`masterLabel` string Required. The UI name for the Data Transport Object.
+
+`objectCategory` string Required. Reference to the Object Category. For Transport, these are
+Profile, Engagement, or Other.
+
+MktDataTranField
+
+This is a sub-type to MktDataTranObject.
+
+**Field Name** **Field Type** **Description**
+
+`creationType` DefinitionCreationType Optional: Was this object added as a result of the Customer, part of a Standard
+Taxonomy.
+
+**•** Valid values available in API version 62.0 and later are:
+
+**–** `ADG`
+
+**–** `Calculated_Insight`
+
+**–** `CG_Audience`
+
+**–** `Chunk`
+
+**–** `Directory_Table`
+
+**–** `External`
+
+**–** `Semantic`
+
+**–** `Transform`
+
+**–** `Vector_Embedding`
+
+`datatype` string Required. Phone, currency, number, or other assigned type.
+
+`dateFormat` string Optional: The Date format of date, time, date/time fields in this Transport field.
+
+
+#### Metadata Types ObjectSourceTargetMap
+
+**Field Name** **Field Type** **Description**
+
+`externalName` string Optional. Name of the object in the external system (different from Developer
+Name).
+
+`isDataRequired` boolean Optional. If true, data is required for this field.
+
+`length` int Optional. Length of a string column
+
+`masterLabel` string Optional? Field label.
+
+`precision` int Optional. Used for currency and numeric accuracy.
+
+`primaryIndexOrder` int Optional. If supplied, indicates this field is part of the primary key where the
+number value (starting at 1) indicates the order of attributes if this happens to
+
+be a compound primary key. Missing value means this field is not part of the
+primary key.
+
+`scale` int Optional. Used for currency and numeric accuracy.
+
+`sequence` int Optional. The sequence of this source schema.
+
+#### ObjectSourceTargetMap
+
+Contains the object-level mappings between the source and the target objects. The source and target objects can be an MktDataLakeObject
+or an MktDataModelObject. For example, an Email source object can be mapped to the ContactPointEmail object.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+#### ObjectSourceTargetMap components have the suffix .objectSourceTargetMap and are stored in the
+
+`objectSourceTargetMaps` folder.
+
+Version
+
+#### ObjectSourceTargetMap components are available in API version 51.0 and later.
+
+Special Access Rules
+
+To access this metadata type, you must have the Customize Application user permission.
+
+
+Metadata Types ObjectSourceTargetMap
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+```
+creationType
+
+```
+
+DefinitionCreationType Describes whether this object was added by the user or as part of a
+(enumeration of standard taxonomy. Valid values are:
+type string)
+
+**•** `ADG`
+
+**•** `Activation_Audience`
+
+**•** `Bridge`
+
+**•** `Calculated_Insight`
+
+**•** `CG_Audience` (Available in API version 62.0 and later)
+
+**•** `Chunk`
+
+**•** `Curated`
+
+**•** `Custom`
+
+**•** `Derived`
+
+**•** `Directory_Table`
+
+**•** `External`
+
+**•** `Ml_Prediction`
+
+**•** `Segment_Membership`
+
+**•** `Semantic`
+
+**•** `Standard`
+
+**•** `System`
+
+**•** `Transform`
+
+**•** `Vector_Embedding`
+
+`fieldSourceTargetMaps` FieldSourceTargetMap[] Contains the field-level mappings associated with this object mapping.
+
+`masterLabel` string Required. The UI name for the target map.
+
+`sequenceNbr` int
+
+Use this field to display multiple mappings between the same two
+objects, for a consistent customer experience when presenting the
+mappings.
+
+`sourceObjectName` string Required. Name of the source object that’s mapped, such as Email, or
+SfmcEnt1_Subscriber.
+
+`targetObjectName` string Required. Name of the target object that’s mapped, such as
+ContactPointEmail or Individual.
+
+FieldSourceTargetMap
+
+Contains the field-level mappings between the source and the target objects.
+
+The source and target can be MktDataLakeField or MktDataModelField.
+
+For example, you can map a Person source object’s field called emailAddress to an Individual target object's field called emailAddress.
+
+
+Metadata Types ObjectSourceTargetMap
+
+**Field Name** **Field Type** **Description**
+
+Describes whether this object was added by the user or as part of a standard
+taxonomy.
+
+Values are:
+
+**•** `ADG`
+
+**•** `Activation_Audience`
+
+**•** `Bridge`
+
+**•** `Calculated_Insight`
+
+**•** `Chunk`
+
+**•** `Curated`
+
+**•** `Custom`
+
+**•** `Derived`
+
+**•** `Directory_Table`
+
+**•** `External`
+
+**•** `Ml_Prediction`
+
+**•** `Segment_Membership`
+
+**•** `Semantic`
+
+**•** `Standard`
+
+**•** `System`
+
+**•** `Transform`
+
+**•** `Vector_Embedding`
+
+```
+creationType
+
+```
+
+DefinitionCreationType
+(enumeration of type
+string)
+
+`filterApplied` boolean Specifies whether the field-level mapping is an event type filter ( `true` ) or not
+( `false` ).
+
+`filterOperationType` string
+
+If the field-level mapping is an event type filter, specifies the filtering operator.
+
+Value is:
+
+**•** `Equal`
+
+`filterValue` string If the field-level mapping is an event type filter, specifies the object that contains
+the event type field.
+
+`isSourceFormula` boolean Specifies whether the source field is a formula ( `true` ) or not ( `false` ). If `true`,
+you must include the sourceFormula value.
+
+`sourceField` string Required. The source object field that’s mapped, such as `EmailAddr` or
+`SfmcEnt1_Subscriber.FName` .
+
+`sourceFormula` string A formula, such as concatenation, date function, or constant value.
+
+`targetField` string Required. The target object field that’s mapped, such as
+`SfmcEnt1_Email.EmailAddr` or `Individual.FirstName` .
+
+
+#### Metadata Types StreamingAppDataConnector StreamingAppDataConnector
+
+Represents the connection information specific to Web and Mobile Connectors.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+#### StreamingAppDataConnector components have the suffix .streamingAppDataConnector and are stored in the
+
+`streamingAppDataConnectors` folder.
+
+Version
+
+#### StreamingAppDataConnector components are available in API version 55.0 and later.
+
+Special Access Rules
+
+There are no additional access requirements that are specific to this type.
+
+Fields
+
+**Field Name** **Description**
+
+```
+appIdentifier
+
+dataConnectorType
+
+isProtected
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The unique app identifier (UUID).
+
+**Field Type**
+DataConnectorType (enumeration of type string)
+
+**Description**
+
+Required.
+
+The value of the field is restricted to `SteamingApp` .
+
+Possible values are:
+
+**•** `DataCloud`
+
+#### • StreamingApp
+
+**Field Type**
+boolean
+
+
+Metadata Types StreamingAppDataConnector
+
+**Field Name** **Description**
+
+**Description**
+An auto-generated value that doesn’t impact the behavior of the metadata type.
+
+```
+masterLabel
+
+streamingAppDataConnectorType
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The display name of the connector.
+
+**Field Type**
+StreamingAppDataConnectorType (enumeration of type string)
+
+**Description**
+
+Required.
+
+The type of connector.
+
+Possible values are:
+
+**•** `MobileApp`
+
+**•** `WebApp`
+
+Declarative Metadata Sample Definition
+
+The following is an example of a StreamingAppDataConnector component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<StreamingAppDataConnector xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <appIdentifier>61826b62-6b90-49ff-8259</appIdentifier>
+
+   <dataConnectorType>StreamingApp</dataConnectorType>
+
+   <masterLabel>My Web Application</masterLabel>
+
+   <streamingAppDataConnectorType>WebApp</streamingAppDataConnectorType>
+
+</StreamingAppDataConnector>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <fullName>MyPackage</fullName>
+
+   <namespacePrefix>ns1</namespacePrefix>
+
+   <types>
+
+     <members>My_Web_Application_Behavioral_Events_F4DA8759</members>
+
+     <name>DataStreamDefinition</name>
+
+   </types>
+
+   <types>
+
+     <members>My_Web_Application_61826b62_6b90_49ff_8259</members>
+
+     <name>ExternalDataConnector</name>
+
+   </types>
+
+   <types>
+
+```
+
+
+### Metadata Types AccountPlanObjMeasCalcDef
+
+```
+        <members>My_Web_Application_61826b62_6b90_49ff_8259</members>
+
+        <name>StreamingAppDataConnector</name>
+
+      </types>
+
+      <version>55.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+### AccountPlanObjMeasCalcDef
+
+Represents the metadata associated with an account plan objective measure calculation definition. An account plan objective measure
+calculation definition contains a target object, rollup field, and logic for calculating the current value of a sales account plan objective
+measure.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+### AccountPlanObjMeasCalcDef components have the suffix .accountPlanObjMeasCalcDef and are stored in the
+
+`accountPlanObjMeasCalcDefs` folder.
+
+Version
+
+### AccountPlanObjMeasCalcDef components are available in API version 63.0 and later.
+
+Special Access Rules
+
+To access AccountPlanObjMeasCalcDef components, enable account plans.
+
+Fields
+
+**Field Name** **Description**
+
+```
+conditions
+
+```
+
+**Field Type**
+
+AccountPlanObjMeasCalcCond
+
+**Description**
+The field and value combinations for filtering records to include in the calculation
+definition.
+
+
+Metadata Types AccountPlanObjMeasCalcDef
+
+**Field Name** **Description**
+
+```
+description
+
+developerName
+
+masterLabel
+
+rollupType
+
+```
+
+**Field Type**
+string
+
+**Description**
+A summary of the calculation definition that’s visible to users when they select the
+definition for an account plan objective measure.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The unique name of the object in the API. The name:
+
+**•** must be 40 characters or fewer
+
+**•** must begin with a letter
+
+**•** can contain only underscores and alphanumeric characters
+
+**•** can’t include spaces
+
+**•** can’t end with an underscore
+
+**•** can’t contain 2 consecutive underscores
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+Label for this calculation definition. This display value is the internal label that doesn't
+get translated.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The method for calculating the account plan objective measure’s current value from
+records that match the calculation definition and any optional conditions.
+
+Possible values are:
+
+**•** `Count`
+
+**•** `Max`
+
+**•** `Min`
+
+**•** `Sum`
+
+In Setup, this field’s label is Calculation Type.
+
+
+Metadata Types AccountPlanObjMeasCalcDef
+
+**Field Name** **Description**
+
+```
+status
+
+targetField
+
+targetObject
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+Specifies the status of the calculation definition. Possible values are:
+
+**•** `Active`
+
+**•** `Draft`
+
+**•** `Inactive`
+
+Only active calculation definitions are available for users to select when they specify
+an account plan objective measure.
+
+**Field Type**
+string
+
+**Description**
+The field on `TargetObject` to use for calculating the account plan objective
+measure’s current value. Rollup fields on the Campaign, Case, Contact, or Opportunity
+object are supported.
+
+In Setup, this field’s label is Rollup Field.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The object to use for calculating the account plan objective measure’s current value.
+
+Possible values are:
+
+**•** `Campaign`
+
+**•** `Case`
+
+**•** `Contact`
+
+**•** `Opportunity`
+
+AccountPlanObjMeasCalcCond
+
+Represents a field and value combination for filtering records to include in the calculation of a sales account plan objective measure’s
+current value.
+
+**Field Name** **Description**
+
+```
+fieldName
+
+```
+
+**Field Type**
+string
+
+
+Metadata Types AccountPlanObjMeasCalcDef
+
+**Field Name** **Description**
+
+**Description**
+
+Required.
+
+A field on the calculation definition’s `TargetObject` that you want to filter by.
+Fields on the Campaign, Case, Contact, or Opportunity objects are supported.
+
+```
+operation
+
+value
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The logical operator for matching records with the specified field value.
+
+Possible values are:
+
+**•** `Contains`
+
+**•** `Equals`
+
+**•** `GreaterOrEqual`
+
+**•** `GreaterThan`
+
+**•** `LessOrEqual`
+
+**•** `LessThan`
+
+**•** `NotContain`
+
+**•** `NotEqual`
+
+**•** `StartsWith`
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The value to match for the specified field.
+
+Declarative Metadata Sample Definition
+
+The following is an example of an AccountPlanObjMeasCalcDef component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<AccountPlanObjMeasCalcDef xmlns="http://soap.sforce.com/2006/04/metadata">
+
+ <conditions>
+
+  <fieldName>StageName</fieldName>
+
+  <operation>Equals</operation>
+
+  <value>ClosedWon</value>
+
+ </conditions>
+
+ <description>Define sales revenue goals. Current Value will be
+
+  auto-calculated as the sum of your selected Opportunities
+
+  Amount with 'Closed Won' Stage.
+
+```
+
+
+### Metadata Types AccountRelationshipShareRule
+
+```
+    </description>
+
+    <developerName>Opportunity_Revenue_Targets</developerName>
+
+    <masterLabel>Opportunity Revenue Targets</masterLabel>
+
+    <rollupType>Sum</rollupType>
+
+    <status>Active</status>
+
+    <targetField>Amount</targetField>
+
+    <targetObject>Opportunity</targetObject>
+
+   </AccountPlanObjMeasCalcDef>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+         <members>Opportunity_Revenue_Targets</members>
+
+         <name>AccountPlanObjMeasCalcDef</name>
+
+      </types>
+
+      <version>63.0</version>
+
+   </Package>
+
+### AccountRelationshipShareRule
+
+```
+
+The rule that determines which object records are shared, how they’re shared, the account relationship type that shares the records,
+and the level of access granted to the records.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+This type extends the MetadataWithContent metadata type and inherits its `content` and `fullName` fields.
+
+File Suffix and Directory Location
+
+### AccountRelationshipShareRule components have the suffix .accountRelationshipShareRule and are stored in the
+
+`.accountRelationshipShareRules` folder.
+
+Version
+
+### AccountRelationshipShareRule components are available in API version 45.0 and later.
+
+Special Access Rules
+
+Access to the AccountRelationshipShareRule type requires orgs to enable the Account Relationships permission. The Manage Experiences
+permission is required for user access.
+
+
+Metadata Types AccountRelationshipShareRule
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`accessLevel` string Type of access granted by the share rule. Valid values are:
+
+**•** Read
+
+**•** Edit
+
+`accountToCriteriaField` string
+
+Criteria that must be met for the data to be shared. Valid values include
+any custom or standard lookup to Account or User on top-level objects.
+
+To get the full list for your org, do a Describe on the ARSR entity.
+
+`description` string A meaningful explanation of the sharing rule.
+
+`entityType` string The type of data shared by this share rule. Valid values are:
+
+**•** Account
+
+**•** Campaign
+
+**•** Case
+
+**•** Contact
+
+**•** Custom Object
+
+**•** Lead
+
+**•** Opportunity
+
+**•** Order
+
+**•** Quote
+
+API names of top-level custom objects in the org can also be used, for
+example, CustomObject__c.
+
+`masterLabel` string The label assigned to the sharing rule to identify it.
+
+`staticFormulaCriteria` string A way to further filter what data gets shared. This string must be a
+deterministic formula, and spanning isn’t allowed.
+
+`type` string Match the type of an account relationship for data to be shared according
+to the accountToCriteriaField and the staticFormulaCriteria fields.
+
+Declarative Metadata Sample Definition
+
+The following is an example of an AccountRelationshipShareRule component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<AccountRelationshipShareRule xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <accessLevel>Edit</accessLevel>
+
+   <accountToCriteriaField>Account.OwnerId</accountToCriteriaField>
+
+   <description>TestDescription</description>
+
+   <entityType>Account</entityType>
+
+   <masterLabel>TestName</masterLabel>
+
+   <staticFormulaCriteria>YearStarted = &quot;1980&quot;</staticFormulaCriteria>
+
+```
+
+
+### Metadata Types AccountingFieldMapping
+
+```
+      <type>Dealer</type>
+
+   </AccountRelationshipShareRule>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <Package>
+
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>ArsrDevName</members>
+
+        <name>AccountRelationshipShareRule</name>
+
+      </types>
+
+   <version>45.0</version>
+
+   </Package>
+
+```
+
+This metadata type supports the wildcard character * (asterisk) in the package.xml manifest file.
+
+### AccountingFieldMapping
+
+Represents the accounting field mappings to organize your data and bring it to ledger entry records.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+### AccountingFieldMapping components have the suffix .accountingFieldMapping and are stored in the
+
+`accountingFieldMappings` folder.
+
+Version
+
+### AccountingFieldMapping components are available in API version 58.0 and later.
+
+Fields
+
+**Field Name** **Description**
+
+```
+accountingModelConfig
+
+```
+
+**Field Type**
+string
+
+**Description**
+Required.
+
+Record ID of the AccountingModelConfig record that the Field Mapping is associated
+with.
+
+
+Metadata Types AccountingFieldMapping
+
+**Field Name** **Description**
+
+```
+isForAllocationType
+
+isForPaymentType
+
+isForTransactionType
+
+isProtected
+
+mappingBehavior
+
+masterLabel
+
+sourceField
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+Reserved for internal use.
+
+**Field Type**
+boolean
+
+**Description**
+Reserved for internal use.
+
+**Field Type**
+boolean
+
+**Description**
+Reserved for internal use.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether this component is protected ( `true` ) or not protected ( `false` ).
+
+Default value is `false` .
+
+**Field Type**
+MappingBehaviorType (enumeration of type string)
+
+**Description**
+Required.
+
+Specifies how the target’s field data is mapped from the source field only when the
+journal entry is created. When set to `CurrentValue`, Subledger reverses and
+replaces journal entries whose value differs from the value in `sourceField` .
+
+Valid values are:
+
+**•** `CurrentValue`
+
+**•** `PointInTime`
+
+**Field Type**
+string
+
+**Description**
+Required.
+
+A user-friendly name for AccountingFieldMapping, which is defined when the
+AccountingFieldMapping is created.
+
+**Field Type**
+string
+
+
+Metadata Types AccountingFieldMapping
+
+**Field Name** **Description**
+
+**Description**
+The API name of the field on the source object that is mapped to the target field.
+
+```
+targetField
+
+```
+
+**Field Type**
+string
+
+**Description**
+Required.
+
+The API name of the field on the Transaction Journal record for this mapping.
+
+Declarative Metadata Sample Definition
+
+The following is an example of an AccountingFieldMapping component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<AccountingFieldMapping xmlns="http://soap.sforce.com/2006/04/metadata">
+
+ <accountingModelConfig>ModelConfigOne</accountingModelConfig>
+
+ <fullName>FieldMappingOne</fullName>
+
+ <masterLabel>FieldMappingOne</masterLabel>
+
+ <isForAllocationType>true</isForAllocationType>
+
+ <isForPaymentType>true</isForPaymentType>
+
+ <isForTransactionType>true</isForTransactionType>
+
+ <mappingBehavior>PointInTime</mappingBehavior>
+
+ <sourceField>TransactionJournal.MappingTargetOne__c</sourceField>
+
+ <targetField>MappingTargetOne__c</targetField>
+
+ <isProtected>false</isProtected>
+
+</AccountingFieldMapping>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package
+
+ xmlns="http://soap.sforce.com/2006/04/metadata">
+
+ <types>
+
+  <members>FieldMappingOne</members>
+
+  <name>AccountingFieldMapping</name>
+
+ </types>
+
+ <version>58.0</version>
+
+</Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+
+### Metadata Types AccountingModelConfig AccountingModelConfig
+
+Represents the mapping of the financial data model to a logical data model and configuration for the generation of Transaction Journal
+records.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+### AccountingModelConfig components have the suffix .accountingModelConfig and are stored in the
+
+`accountingModelConfigs` folder.
+
+Version
+
+### AccountingModelConfig components are available in API version 57.0 and later.
+
+Fields
+
+**Field Name** **Description**
+
+```
+accountingType
+
+defaultAccrualAccountCode
+
+defaultWriteOffAccountCode
+
+```
+
+**Field Type**
+AccountingType (enumeration of type string)
+
+**Description**
+
+Required.
+
+Determines whether the accounting set generates revenue or expense type transaction
+journal records.
+
+Valid values are:
+
+**•** `Expense`
+
+**•** `Revenue`
+
+**Field Type**
+string
+
+**Description**
+The code for your accounting system's default accrual account.
+
+**Field Type**
+string
+
+**Description**
+Represents the name of your account for written off payments.
+
+
+Metadata Types AccountingModelConfig
+
+**Field Name** **Description**
+
+```
+earliestCreatedDate
+
+expectedCashFlowGrouping
+
+financeBook
+
+internalMappingDetails
+
+isActive
+
+isGroupedByFundAccount
+
+```
+
+**Field Type**
+dateTime
+
+**Description**
+
+Required.
+
+The date used to filter source records for processing. The Accounting Subledger only
+considers records created on or after this date.
+
+**Field Type**
+ExpectedCashFlowGrouping (enumeration of type string)
+
+**Description**
+Determines whether Accounting Subledger groups transaction journal records by
+fund account or by a combination of fund account and due date.
+
+Note: Changing this setting doesn't impact existing records; it only affects
+records created or reversed afterward.
+
+Valid values are:
+
+**•** `GroupByFundAccount`
+
+**•** `GroupByFundAndDueDate`
+
+**Field Type**
+string
+
+**Description**
+Reserved for internal use.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+Represents the structure of your financial data in JSON format.
+
+**Field Type**
+boolean
+
+**Description**
+
+Required.
+
+Indicates whether only records that are true are processed when the Subledger Job
+runs.
+
+**Field Type**
+boolean
+
+**Description**
+Reserved for internal use.
+
+
+Metadata Types AccountingModelConfig
+
+**Field Name** **Description**
+
+```
+isUsed
+
+jobFilterCriteria
+
+masterLabel
+
+paidCashFlowGrouping
+
+recordTypeFilter
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+
+Required.
+
+Indicates whether the Accounting Model has been used or activated at least once
+( `true` ) or not ( `false` ).
+
+Note: If the value is set to `true`, you can’t select another object for the object
+model or change the number of objects associated with that Accounting Model.
+
+**Field Type**
+string
+
+**Description**
+Reserved for internal use.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+A user-friendly name for AccountingModelConfig, which is defined when the
+AccountingModelConfig is created.
+
+**Field Type**
+PaidCashFlowGrouping (enumeration of type string)
+
+**Description**
+Determines the level of detail for generated transaction journal records.
+
+Valid values are:
+
+**•** `GroupByFundAccount` —Accounting Subledger splits all transaction journal
+records into fund accounts. Secondary records are created for payment type records
+but not for transaction type records.
+
+**•** `GroupBySummary` —Accounting Subledger only splits credits for revenue and
+debits for expenses by fund accounts.
+
+**Field Type**
+string
+
+**Description**
+Specify the record type IDs from the primary object to be processed. This field is
+case-sensitive.
+
+Note: If no record type is specified in the filter, all records are processed.
+
+
+Metadata Types AccountingModelConfig
+
+**Field Name** **Description**
+
+```
+runOrder
+
+```
+
+**Field Type**
+int
+
+**Description**
+Determines the load order sequence of the multiple Accounting Model. The lower
+number runs first. For example, load order 1 runs before load order 2.
+
+Declarative Metadata Sample Definition
+
+The following is an example of an AccountingModelConfig component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<AccountingModelConfig
+
+ xmlns="http://soap.sforce.com/2006/04/metadata">
+
+ <fullName>ModelConfigOne</fullName>
+
+ <masterLabel>ModelConfigOne</masterLabel>
+
+ <defaultAccrualAccountCode>abc</defaultAccrualAccountCode>
+
+ <defaultWriteOffAccountCode>abc</defaultWriteOffAccountCode>
+
+ <isUsed>false</isUsed>
+
+ <isActive>false</isActive>
+
+ <runOrder>123</runOrder>
+
+ <recordTypeFilter>abcabc</recordTypeFilter>
+
+ <earliestCreatedDate>2021-12-01T00:00:00.000Z</earliestCreatedDate>
+
+ <internalMappingDetails>abcabc</internalMappingDetails>
+
+ <accountingType>Revenue</accountingType>
+
+ <expectedCashFlowGrouping>GroupByFundAccount</expectedCashFlowGrouping>
+
+ <paidCashFlowGrouping>GroupBySummary</paidCashFlowGrouping>
+
+</AccountingModelConfig>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package
+
+ xmlns="http://soap.sforce.com/2006/04/metadata">
+
+ <types>
+
+  <members>ModelConfigOne</members>
+
+  <name>AccountingModelConfig</name>
+
+ </types>
+
+ <version>57.0</version>
+
+</Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+
+### Metadata Types ActionLinkGroupTemplate ActionLinkGroupTemplate
+
+Represents the action link group template. Action link templates let you reuse action link definitions and package and distribute action
+links. An action link is a button on a feed element. Clicking on an action link can take a user to another Web page, initiate a file download,
+or invoke an API call to an external server or Salesforce. Use action links to integrate Salesforce and third-party services into the feed.
+Every action link belongs to an action link group and action links within the group are mutually exclusive.
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+### ActionLinkGroupTemplate components have the suffix .actionLinkGroupTemplate and are stored in the
+
+`actionLinkGroupTemplates` folder.
+
+Version
+
+### ActionLinkGroupTemplate components are available in API version 33.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`actionLinkTemplates` ActionLinkTemplate Action link templates that are associated with the action link group
+on page 272[] template.
+
+```
+category
+
+executionsAllowed
+
+```
+
+PlatformAction Required. The location of the action link group within the feed element.
+GroupCategory Values are:
+(enumeration of
+
+**•** `Primary` —The action link group is displayed in the body of the
+
+type string)
+
+feed element.
+
+**•** `Overflow` —The action link group is displayed in the overflow
+menu of the feed element.
+
+### ActionLink Required. The number of times an action link can be executed. Values
+
+ExecutionsAllowed are:
+(enumeration of
+
+**•** `Once` —An action link can be executed only once across all users.
+
+type string)
+
+**•** `Once` —An action link can be executed only once across all users.
+
+**•** `OncePerUser` —An action link can be executed only once for
+each user.
+
+`hoursUntilExpiration` int
+
+**•** `Unlimited` —An action link can be executed an unlimited number
+of times by each user. If the action link’s `actionType` is `Api` or
+`ApiAsync`, you can’t use this value.
+
+Required. The number of hours from when the action link group is
+created until it's removed from associated feed elements and can no
+longer be executed. The maximum value is 8,760.
+
+
+Metadata Types ActionLinkGroupTemplate
+
+**Field Name** **Field Type** **Description**
+
+`isPublished` boolean
+
+Required. If `true`, the action link group template is published. Action
+link group templates shouldn’t be published until at least one action
+link template is associated with it.
+
+`name` string Required. The name of the action link group template to use in code.
+
+ActionLinkTemplate
+
+ActionLinkTemplate components are used to create multiple action links that share properties.
+
+**Field Name** **Field Type** **Description**
+
+`actionUrl` string Required. The action link URL. For example, a `Ui` action link URL is a Web page.
+A `Download` action link URL is a link to the file to download. `Ui` and
+
+`Download` action link URLs are provided to clients. An `Api` or `ApiAsync`
+action link URL is a REST resource. `Api` and `ApiAsync` action link URLs
+aren’t provided to clients. Links to Salesforce can be relative. All other links
+must be absolute and start with `https://` .
+
+`headers` string Template for the HTTP headers sent when corresponding action links are
+invoked. This field can be used only for `Api` and `ApiAsync` action links.
+
+This field can contain context variables and binding variables in the form
+`{!Bindings.` _**`key`**_ `}` .
+
+`isConfirmationRequired` boolean Required. If `true`, a confirmation dialog appears before the action is executed.
+
+`isGroupDefault` boolean
+
+`label` string
+
+Required. If `true`, action links derived from this template are the default or
+primary action in their action groups. There can be only one default action per
+action group.
+
+A custom label to display on the action link button. If none of the `LabelKey`
+values make sense for an action link, use a custom label. Set the `LabelKey`
+field to `None` and enter a label name in the `Label` field.
+
+`labelKey` string Required. Key for the set of labels to display for these action link states: new,
+pending, success, failed. For example, the Approve set contains these labels:
+
+Approve, Pending, Approved, Failed. For a complete list of keys and labels, see
+[Action Link Labels in the](https://developer.salesforce.com/docs/atlas.en-us.262.0.chatterapi.meta/chatterapi/connect_appendices_action_links_labels.htm) _Connect REST API Developer Guide_ .
+
+```
+linkType
+
+```
+
+ActionLinkType Required. The type of action link. One of these values:
+(enumeration of type
+
+**•** `Api` —The action link calls a synchronous API at the action URL. Salesforce
+
+string)
+
+sets the status to `SuccessfulStatus` or `FailedStatus` based
+on the HTTP status code returned by your server.
+
+**•** `ApiAsync` —The action link calls an asynchronous API at the action URL.
+The action remains in a `PendingStatus` state until a third party makes
+a request to `/connect/action-links/` _**`actionLinkId`**_ to set
+the status to `SuccessfulStatus` or `FailedStatus` when the
+asynchronous operation is complete.
+
+**•** `Download` —The action link downloads a file from the action URL.
+
+
+Metadata Types ActionLinkGroupTemplate
+
+**Field Name** **Field Type** **Description**
+
+**•** `Ui` —The action link takes the user to a web page at the action URL.
+
+`method` ActionLink Required. HTTP method for the action URL. One of these values:
+HttpMethod
+
+**•** `HttpDelete` —Returns HTTP 204 on success. Response body or output
+(enumeration of type
+class is empty.
+string)
+
+**•** `HttpGet` —Returns HTTP 200 on success.
+
+**•** `HttpHead` —Returns HTTP 200 on success. Response body or output
+class is empty.
+
+**•** `HttpPatch` —Returns HTTP 200 on success or HTTP 204 if the response
+body or output class is empty.
+
+**•** `HttpPost` —Returns HTTP 201 on success or HTTP 204 if the response
+body or output class is empty. Exceptions are the batch posting resources
+and methods, which return HTTP 200 on success.
+
+**•** `HttpPut` —Return HTTP 200 on success or HTTP 204 if the response body
+or output class is empty.
+
+`Ui` and `Download` action links must use `HttpGet` .
+
+`position` int Required. An integer specifying the position of the action link template relative
+to other action links in the group. 0 is the first position.
+
+`requestBody` string Template for the HTTP request body sent when corresponding action links are
+invoked. This field can be used only for `Api` and `ApiAsync` action links.
+
+This field can contain context variables and binding variables in the form
+`{!Bindings.` _**`key`**_ `}` .
+
+`userAlias` string If you selected `CustomUser` or `CustomExcludedUser` for
+`UserVisibility`, this field is the alias for the custom user. Use the alias
+
+in a template binding to specify the custom user when an action link group is
+created using the template.
+
+```
+userVisibility
+
+```
+
+ActionLink Required. Who can see the action link. This value is set per action link, not per
+UserVisibility action link group. Values are:
+(enumeration of type
+
+**•** `Creator` —Only the creator of the action link can see the action link.
+
+string)
+
+**•** `Creator` —Only the creator of the action link can see the action link.
+
+**•** `Everyone` —Everyone can see the action link.
+
+**•** `EveryoneButCreator` —Everyone but the creator of the action link
+can see the action link.
+
+**•** `Manager` —Only the manager of the creator of the action link can see
+the action link.
+
+**•** `CustomUser` —Only the custom user can see the action link.
+
+**•** `CustomExcludedUser` —Everyone but the custom user can see the
+action link.
+
+
+Metadata Types ActionLinkGroupTemplate
+
+Declarative Metadata Sample Definition
+
+The following is an example of an ActionLinkGroupTemplate component.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <ActionLinkGroupTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+
+     <actionLinkTemplates>
+
+       <actionUrl>/services/data/{!Bindings.word}/chatter/feed-elements</actionUrl>
+
+       <headers>Content-Type:{!Bindings.word3}</headers>
+
+       <isConfirmationRequired>true</isConfirmationRequired>
+
+       <isGroupDefault>true</isGroupDefault>
+
+       <labelKey>Add</labelKey>
+
+       <linkType>API</linkType>
+
+       <method>httpPost</method>
+
+       <position>0</position>
+
+       <requestBody>{"body":{"messageSegments":[{"type": "Text",
+
+       "text": "{!Bindings.word1}"}]},"subjectId": "{!Bindings.word2}",
+
+       "feedElementType": "feedItem"}</requestBody>
+
+       <userAlias>customExcludedUser</userAlias>
+
+       <userVisibility>CustomExcludedUser</userVisibility>
+
+     </actionLinkTemplates>
+
+     <category>Primary</category>
+
+     <executionsAllowed>OncePerUser</executionsAllowed>
+
+     <hoursUntilExpiration>10</hoursUntilExpiration>
+
+     <isPublished>true</isPublished>
+
+     <name>MyPackage</name>
+
+   </ActionLinkGroupTemplate>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>*</members>
+
+        <name>ActionLinkGroupTemplate</name>
+
+      </types>
+
+      <version>33.0</version>
+
+   </Package>
+
+```
+
+Usage
+
+If you modify action link group templates, you overwrite the related action link templates.
+
+If you delete a published action link group template, you delete all related action link information which includes deleting all action links
+that were instantiated using the template from feed items.
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+
+### Metadata Types ActionPlanTemplate ActionPlanTemplate
+
+Represents the instance of an action plan template.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its fullName field.
+
+File Suffix and Directory Location
+
+### ActionPlanTemplate components have the suffix .apt and are stored in the actionPlanTemplates folder.
+
+Version
+
+Action Plan Template components are available in API version 47.0 and later.
+
+Special Access Rules
+
+To create or access action plan templates, you must have the Customize Application permission and the IndustriesActionPlans license.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+### actionPlanTemplateItem ActionPlanTemplateItem The instance of an item on an action plan template version.
+
+on page 276
+
+### actionPlanTemplateItemDependencies ActionPlanTemplateItemDependency[] Defines the dependencies between action plan template items. Available
+
+on page 277 in API version 59.0 and later.
+
+```
+actionPlanType
+
+```
+
+### ActionPlanTemplateType Type of the action plan template. Valid values are:
+
+(enumeration of
+
+**•** `Industries`
+
+type string)
+
+**•** `Industries`
+
+**•** `Retail`
+
+**•** `ITSM` —Available in API version 65.0 and later.
+
+**•** `PrvdEngmtCompliance`
+
+**•** `KAM`
+
+Available in API version 63.0 and later.
+
+`category` string Category for this action plan template. Available in API version 64.0 and
+later.
+
+`description` string The description of the action plan template.
+
+`estimatedCompletionDays` int Estimated number of days required to complete the action plan. Available
+in API version 64.0 and later.
+
+
+Metadata Types ActionPlanTemplate
+
+**Field Name** **Field Type** **Description**
+
+`fileBasedTemplatePath` string File path for a file-based action plan template. Available in API version
+64.0 and later.
+
+`isAdHocItemCreationEnabled` boolean
+
+Required. Indicates whether ad hoc item creation is enabled for this
+action plan template ( `true` ) or not ( `false` ). Available in API version
+59.0 and later.
+
+`name` string Required. The name of the action plan template.
+
+`ParentTemplateId` reference
+
+The ID of the parent Action Plan Template record. This field is a
+relationship field to the ParentTemplate and refers to
+ActionPlanTemplate. Available in API version 66.0 and later.
+
+`sourceType` string Source type of the action plan template. Available in API version 64.0
+and later.
+
+`status` string Status of the action plan template. Available in API version 64.0 and later.
+
+`subcategory` string Subcategory for this action plan template. Available in API version 64.0
+and later.
+
+`targetEntityType` string Required. The parent object this action plan template relates to.
+Supported parent objects are Account, BusinessMilestone, Campaign,
+
+Case, Claim, Contact, Contract, InsurancePolicy, InsurancePolicyCoverage,
+Lead, Opportunity, PersonLifeEvent, and Visit and custom objects with
+activities enabled.
+
+`uniqueName` string Required. The unique identifier for this action plan template record.
+
+ActionPlanTemplateItem
+
+Represents the instance of an item on an action plan template version.
+
+**Field Name** **Field Type** **Description**
+
+`actionPlanTemplateItemValue` ActionPlanTemplateItemValue The value associated with the action plan template item.
+on page 277
+
+`displayOrder` int The order in which this item is displayed within the action plan template version.
+
+`isRequired` boolean Indicates whether the task created from this template item is required.
+
+`itemEntityType` string Required. The name of the field on the action plan template item that this value
+is for. Available in API version 48.0 and later.
+
+`name` string Required. The name of the action plan template item.
+
+`uniqueName` string Required. The unique identifier for this action plan template item record.
+
+
+Metadata Types ActionPlanTemplate
+
+ActionPlanTemplateItemDependency
+
+Represents a dependency between action plan template items, defining the sequential relationship and creation timing of items. Available
+in API version 59.0 and later.
+
+**Field Name** **Field Type** **Description**
+
+`creationType` string Required. Defines how the dependent item is created in the action plan.
+
+`name` string Required. Name of the dependency relationship.
+
+`previousTemplateItem` ActionPlanTemplateItem Required. Reference to the prerequisite template item that must be completed
+on page 276 before the dependent item begins.
+
+`templateItem` ActionPlanTemplateItem Required. Reference to the dependent template item that relies on the
+on page 276 completion of the previous item.
+
+ActionPlanTemplateItemValue
+
+Represents the value associated with an action plan template item.
+
+**Field Name** **Field Type** **Description**
+
+`itemEntityType` string Required. The name of the field on the action plan template item that this value
+is for. Available in API version 48.0 and later.
+
+`name` string Required. The name of the action plan template item value.
+
+`valueFormula` string The formula for this action plan template item.
+
+`valueLiteral` string The value for this action plan template item.
+
+Declarative Metadata Sample Definition
+
+The following is an example of an ActionPlanTemplate component.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <ActionPlanTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <actionPlanTemplateItem>
+
+        <actionPlanTemplateItemValue>
+
+           <name>Subject</name>
+
+           <valueLiteral>APT 01 Account Packaging APTI 01</valueLiteral>
+
+           <itemEntityType>Task</itemEntityType>
+
+        </actionPlanTemplateItemValue>
+
+        <actionPlanTemplateItemValue>
+
+           <name>Priority</name>
+
+           <valueLiteral>Normal</valueLiteral>
+
+           <itemEntityType>Task</itemEntityType>
+
+        </actionPlanTemplateItemValue>
+
+        <actionPlanTemplateItemValue>
+
+           <name>ActivityDate</name>
+
+           <valueFormula>StartDate + 10</valueFormula>
+
+           <itemEntityType>Task</itemEntityType>
+
+```
+
+
+Metadata Types ActionPlanTemplate
+
+```
+        </actionPlanTemplateItemValue>
+
+        <displayOrder>1</displayOrder>
+
+        <isRequired>true</isRequired>
+
+        <itemEntityType>Task</itemEntityType>
+
+        <name>APT 01 Account Packaging APTI 01</name>
+
+   <uniqueName>APT_01_Account_Packaging_APTI_01_2827f387_9dbc_11e9_920a_e95716848ddd</uniqueName>
+
+      </actionPlanTemplateItem>
+
+      <actionPlanTemplateItem>
+
+        <actionPlanTemplateItemValue>
+
+           <name>Subject</name>
+
+           <valueLiteral>APT 01 Account Packaging APTI 02</valueLiteral>
+
+           <itemEntityType>Task</itemEntityType>
+
+        </actionPlanTemplateItemValue>
+
+        <actionPlanTemplateItemValue>
+
+           <name>Priority</name>
+
+           <valueLiteral>Normal</valueLiteral>
+
+           <itemEntityType>Task</itemEntityType>
+
+        </actionPlanTemplateItemValue>
+
+        <actionPlanTemplateItemValue>
+
+           <name>ActivityDate</name>
+
+           <valueFormula>StartDate + 10</valueFormula>
+
+           <itemEntityType>Task</itemEntityType>
+
+        </actionPlanTemplateItemValue>
+
+        <displayOrder>1</displayOrder>
+
+        <isRequired>true</isRequired>
+
+        <itemEntityType>Task</itemEntityType>
+
+        <name>APT 01 Account Packaging APTI 02</name>
+
+   <uniqueName>APT_01_Account_Packaging_APTI_02_3430da7b_9dbc_11e9_920a_b5d3292906c3</uniqueName>
+
+      </actionPlanTemplateItem>
+
+      <actionPlanTemplateItem>
+
+        <actionPlanTemplateItemValue>
+
+           <name>Subject</name>
+
+           <valueLiteral>APT 01 Account Packaging APTI 03</valueLiteral>
+
+           <itemEntityType>Task</itemEntityType>
+
+        </actionPlanTemplateItemValue>
+
+        <actionPlanTemplateItemValue>
+
+           <name>Priority</name>
+
+           <valueLiteral>Normal</valueLiteral>
+
+           <itemEntityType>Task</itemEntityType>
+
+        </actionPlanTemplateItemValue>
+
+        <actionPlanTemplateItemValue>
+
+           <name>ActivityDate</name>
+
+           <valueFormula>StartDate + 10</valueFormula>
+
+           <itemEntityType>Task</itemEntityType>
+
+        </actionPlanTemplateItemValue>
+
+        <displayOrder>1</displayOrder>
+
+        <isRequired>true</isRequired>
+
+        <itemEntityType>Task</itemEntityType>
+
+        <name>APT 01 Account Packaging APTI 03</name>
+
+```
+
+
+Metadata Types ActionPlanTemplate
+
+```
+   <uniqueName>APT_01_Account_Packaging_APTI_03_2d0363d9_9dbc_11e9_920a_219a003f176d</uniqueName>
+
+      </actionPlanTemplateItem>
+
+      <actionPlanTemplateItemDependencies>
+
+        <name>APT Task Dependency</name>
+
+        <creationType>OnPreviousItemCompleted</creationType>
+
+        <previousTemplateItem>
+
+           <actionPlanTemplateItemValue>
+
+             <name>Subject</name>
+
+               <valueLiteral>APT 01 Account Packaging APTI 01</valueLiteral>
+
+               <itemEntityType>Task</itemEntityType>
+
+             </actionPlanTemplateItemValue>
+
+             <actionPlanTemplateItemValue>
+
+               <name>Priority</name>
+
+               <valueLiteral>Normal</valueLiteral>
+
+               <itemEntityType>Task</itemEntityType>
+
+             </actionPlanTemplateItemValue>
+
+             <actionPlanTemplateItemValue>
+
+               <name>ActivityDate</name>
+
+               <valueFormula>StartDate + 10</valueFormula>
+
+               <itemEntityType>Task</itemEntityType>
+
+           </actionPlanTemplateItemValue>
+
+           <displayOrder>1</displayOrder>
+
+           <isRequired>true</isRequired>
+
+           <itemEntityType>Task</itemEntityType>
+
+           <name>APT 01 Account Packaging APTI 01</name>
+
+   <uniqueName>APT_01_Account_Packaging_APTI_01_2827f387_9dbc_11e9_920a_e95716848ddd</uniqueName>
+
+        </previousTemplateItem>
+
+        <templateItem>
+
+           <actionPlanTemplateItemValue>
+
+           <name>Subject</name>
+
+           <valueLiteral>APT 01 Account Packaging APTI 02</valueLiteral>
+
+           <itemEntityType>Task</itemEntityType>
+
+           </actionPlanTemplateItemValue>
+
+           <actionPlanTemplateItemValue>
+
+             <name>Priority</name>
+
+             <valueLiteral>Normal</valueLiteral>
+
+             <itemEntityType>Task</itemEntityType>
+
+           </actionPlanTemplateItemValue>
+
+           <actionPlanTemplateItemValue>
+
+             <name>ActivityDate</name>
+
+             <valueFormula>StartDate + 10</valueFormula>
+
+             <itemEntityType>Task</itemEntityType>
+
+           </actionPlanTemplateItemValue>
+
+           <displayOrder>1</displayOrder>
+
+           <isRequired>true</isRequired>
+
+           <itemEntityType>Task</itemEntityType>
+
+           <name>APT 01 Account Packaging APTI 02</name>
+
+   <uniqueName>APT_01_Account_Packaging_APTI_02_3430da7b_9dbc_11e9_920a_b5d3292906c3</uniqueName>
+
+        </templateItem>
+
+```
+
+
+### Metadata Types ActionableListDefinition
+
+```
+      </actionPlanTemplateItemDependencies>
+
+      <description>APT 01 Account Packaging Description</description>
+
+      <name>APT 01 Account Packaging</name>
+
+      <targetEntityType>Account</targetEntityType>
+
+      <actionPlanType>Industries</actionPlanType>
+
+     <uniqueName>APT_01_Account_Packaging_0c9e8b15_9dbc_11e9_920a_8d6ecf990219</uniqueName>
+
+      <isAdHocItemCreationEnabled>false</isAdHocItemCreationEnabled>
+
+      <category>Onboarding</category>
+
+      <subcategory>OnBoarding Product</subcategory>
+
+      <estimatedCompletionDays>4</estimatedCompletionDays>
+
+      <sourceType>Migrated From SandBox</sourceType>
+
+      <fileBasedTemplatePath>Action Plan Template</fileBasedTemplatePath>
+
+      <status>Draft</status>
+
+   </ActionPlanTemplate>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>*</members>
+
+        <name>ActionPlanTemplate</name>
+
+      </types>
+
+      <version>47.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+[manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/file_based.htm)
+
+### ActionableListDefinition
+
+Represents the data source definition details associated with an actionable list.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+### ActionableListDefinition components have the suffix .actionableListDefinition and are stored in the
+
+`actionableListDefinitions` folder.
+
+
+Metadata Types ActionableListDefinition
+
+Version
+
+ActionableListDefinition components are available in API version 57.0 and later.
+
+Fields
+
+**Field Name** **Description**
+
+```
+actionableListDatasetColumns
+
+actionableListMemberStatuses
+
+batchCalcJobDefinition
+
+datasetName
+
+edgeMart
+
+isActive
+
+masterLabel
+
+```
+
+**Field Type**
+
+ActionableListDatasetColumn[]
+
+**Description**
+The object that stores columns in a dataset associated with an actionable list.
+
+**Field Type**
+
+ActionableListMemberStatus[]
+
+**Description**
+The object that stores the status and the corresponding status icon details of an
+individual actionable list member.
+
+**Field Type**
+string
+
+**Description**
+The batch calculation job definition that's associated with the creation of an actionable
+list. This field is a relationship field.
+
+**Field Type**
+string
+
+**Description**
+The name of the dataset that is associated with the actionable list.
+
+**Field Type**
+string
+
+**Description**
+The edgemart dataset that's associated with the actionable list. Available in API version
+58.0 and later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the actionable list definition is active ( `true` ) or not ( `false` ).
+
+The default value is `false` .
+
+**Field Type**
+string
+
+
+Metadata Types ActionableListDefinition
+
+**Field Name** **Description**
+
+**Description**
+
+Required.
+
+The master label of the actionable list definition.
+
+```
+objectName
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The object for which the actionable list is created.
+
+Possible values are organized by the API version in which they were introduced. Values
+are available in all versions after introduction unless noted otherwise.
+
+Possible values are:
+
+API version 60.0 and later:
+
+```
+  PersonLifeEvent
+
+```
+
+API version 60.0 and later with Insurance Managed Package:
+
+**•** `Claim`
+
+**•** `InsurancePolicy`
+
+**•** `Quote`
+
+API version 59.0 and later with Health Cloud:
+
+**•** `CareFacilityBed`
+
+**•** `CareRequest`
+
+**•** `CareRequestItem`
+
+**•** `CareServiceVisit`
+
+**•** `CareServiceVisitPlan`
+
+**•** `ClinicalServiceRequest`
+
+API version 59.0 and later with Loyalty Cloud:
+
+**•** `LoyaltyProgramMember`
+
+API version 59.0 and later:
+
+**•** `Case`
+
+API version 58.0 and later with Automotive Cloud:
+
+**•** `Vehicle`
+
+API version 58.0 and later:
+
+**•** `Asset`
+
+**•** `Lead`
+
+**•** `Opportunity`
+
+API version 57.0 and later:
+
+
+Metadata Types ActionableListDefinition
+
+**Field Name** **Description**
+
+**•** `Account`
+
+**•** `Contact`
+
+ActionableListDatasetColumn
+
+Represents the information about the columns in a dataset associated with an actionable list.
+
+**Table 2: Fields**
+
+**Field Name** **Description**
+
+```
+dataDomain
+
+dataType
+
+```
+
+**Field Type**
+DatasetColumnDataType (enumeration of type string)
+
+**Description**
+The data domain that is mapped to the data type of the dataset column.
+
+Possible values are:
+
+**•** `Dates`
+
+**•** `Dimensions`
+
+**•** `Measures`
+
+**Field Type**
+DatatableDataType (enumeration of type string)
+
+**Properties**
+Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
+
+**Description**
+The data type of the dataset column in the actionable list. Available in API version 58.0 and
+later.
+
+Possible values are:
+
+**•** `Boolean`
+
+**•** `Currency`
+
+**•** `Date`
+
+**•** `DateTime`
+
+**•** `Email`
+
+**•** `Location`
+
+**•** `Number`
+
+**•** `Percent`
+
+**•** `Phone`
+
+**•** `Text`
+
+**•** `Url`
+
+
+Metadata Types ActionableListDefinition
+
+**Field Name** **Description**
+
+```
+displayOrder
+
+isDefault
+
+isGroupedByListDefObj
+
+IsTypeAheadSearchEnabled
+
+objectName
+
+```
+
+**Field Type**
+int
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The order in which the actionable list dataset columns are displayed. Available in API version
+58.0 and later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the dataset column is added to the actionable list by default ( `true` ) or
+not ( `false` ).
+
+The default value is `false` .
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the dataset column is grouped by the object defined in the actionable
+list definition ( `true` ) or not ( `false` ). Available in API version 59.0 and later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the type-ahead search for filters is enabled ( `true` ) or not ( `false` ).
+Available in API version 60.0 and later.
+
+**Field Type**
+string
+
+**Description**
+The name of the object that's associated with the dataset column.
+
+Possible values are:
+
+API version 60.0 and later:
+
+```
+  PersonLifeEvent
+
+```
+
+API version 60.0 and later with Insurance Managed Package:
+
+**•** `Claim`
+
+**•** `InsurancePolicy`
+
+**•** `Quote`
+
+API version 59.0 and later with Health Cloud:
+
+**•** `CareFacilityBed`
+
+
+Metadata Types ActionableListDefinition
+
+**Field Name** **Description**
+
+**•** `CareRequest`
+
+**•** `CareRequestItem`
+
+**•** `CareServiceVisit`
+
+**•** `CareServiceVisitPlan`
+
+**•** `ClinicalServiceRequest`
+
+API version 59.0 and later with Loyalty Cloud:
+
+**•** `LoyaltyProgramMember`
+
+API version 59.0 and later:
+
+**•** `Case`
+
+API version 58.0 and later with Automotive Cloud:
+
+**•** `Vehicle`
+
+API version 58.0 and later:
+
+**•** `Asset`
+
+**•** `Lead`
+
+**•** `Opportunity`
+
+API version 57.0 and later:
+
+**•** `Account`
+
+**•** `Contact`
+
+```
+sourceColumnApiName
+
+sourceFieldName
+
+```
+
+**Field Type**
+string
+
+**Description**
+The API name of the column in the source dataset.
+
+**Field Type**
+string
+
+**Description**
+The name of the field in the object for which the actionable list dataset is created.
+
+ActionableListMemberStatus
+
+Represents the status and the corresponding status icon details of an individual actionable list member.
+
+**Table 3: Fields**
+
+**Field Name** **Description**
+
+```
+iconName
+
+```
+
+**Field Type**
+string
+
+
+Metadata Types ActionableListDefinition
+
+**Field Name** **Description**
+
+**Description**
+The name of the icon that's mapped to the status.
+
+```
+status
+
+```
+
+**Field Type**
+string
+
+**Description**
+The status of the actionable list member.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a ActionableListDefinition component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ActionableListDefinition
+
+ xmlns="http://soap.sforce.com/2006/04/metadata">
+
+ <actionableListDatasetColumns>
+
+  <isDefault>true</isDefault>
+
+  <sourceFieldName>NewColumn1</sourceFieldName>
+
+ </actionableListDatasetColumns>
+
+ <actionableListDatasetColumns>
+
+  <sourceColumnApiName>ApiName</sourceColumnApiName>
+
+  <dataDomain>Dimensions</dataDomain>
+
+  <isDefault>false</isDefault>
+
+  <sourceFieldName>NewColumn2</sourceFieldName>
+
+  <objectName>Account</objectName>
+
+  <displayOrder>1</displayOrder>
+
+  <dataType>Text</dataType>
+
+ </actionableListDatasetColumns>
+
+ <actionableListMemberStatuses>
+
+  <iconName>NewMember1</iconName>
+
+  <status>Active</status>
+
+ </actionableListMemberStatuses>
+
+ <isActive>true</isActive>
+
+ <masterLabel>NewMember2</masterLabel>
+
+ <objectName>Account</objectName>
+
+ <isProtected>true</isProtected>
+
+ <batchCalcJobDefinition>Test1</batchCalcJobDefinition>
+
+ <datasetName>AccountDef</datasetName>
+
+</ActionableListDefinition>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+  <types>
+
+    <members>*</members>
+
+    <name>ActionableListDefinition</name>
+
+  </types>
+
+```
+
+
+### Metadata Types AdvAccountForecastSet
+
+```
+     <version>66.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+### AdvAccountForecastSet
+
+Represents the forecast sets that define the forecast configurations for each business unit or different groups of accounts. With separate
+forecast sets at account or business unit level, you can focus on account-specific data and manage configuration updates for one business
+unit without impacting any other business unit’s data.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+### AdvAccountForecastSet components have the suffix .advAccountForecastSet and are stored in the AdvAccountForecastSet folder.
+
+Version
+
+### AdvAccountForecastSet components are available in API version 53.0 and later.
+
+Special Access Rules
+
+The advanced account forecasting feature setting for Manufacturing Cloud is required to create an advanced account forecast set.
+
+Fields
+
+**Field Name** **Description**
+
+```
+accountFieldName
+
+calculationFrequency
+
+```
+
+**Field Type**
+string
+
+**Description**
+The field name for the account in the advanced account forecast fact record.
+
+**Field Type**
+AdvAcctFcstCalcFrequency (enumeration of type string)
+
+**Description**
+The frequency at which the forecast set is recalculated automatically.
+
+
+Metadata Types AdvAccountForecastSet
+
+**Field Name** **Description**
+
+Possible values are:
+
+**•** `Monthly`
+
+**•** `Quarterly`
+
+**•** `Weekly`
+
+**•** `Yearly`
+
+The default value is `Monthly` .
+
+```
+description
+
+dimensions
+
+displayGroups
+
+forecastAdjPeriods
+
+forecastFactObjectName
+
+forecastFormulas
+
+```
+
+**Field Type**
+string
+
+**Description**
+The description of the advanced account forecast set record.
+
+**Field Type**
+
+AdvAcctForecastDimension[]
+
+**Description**
+The dimensions selected for an advanced account forecast set to categorize the forecast
+data.
+
+**Field Type**
+
+AdvAcctFrcstDisplayGroup[]
+
+**Description**
+The information about the groups for the advanced account forecast set measures or
+dimensions.
+
+**Field Type**
+
+AdvAcctForecastAdjPeriod[]
+
+**Description**
+The details about the adjustment period of the advanced account forecast values.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The API name of the object that contains the advanced forecast fact records.
+
+**Field Type**
+
+AdvAccountForecastFormula[]
+
+**Description**
+The formulas based on which forecast values are calculated.
+
+
+Metadata Types AdvAccountForecastSet
+
+**Field Name** **Description**
+
+```
+forecastPeriodGroupName
+
+forecastQuantityFieldName
+
+forecastRevenueFieldName
+
+forecastSetFieldName
+
+forecastSetName
+
+forecastStatusFieldName
+
+generationDpeDefName
+
+measureDefinitions
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The name of the advanced account forecast period group record.
+
+**Field Type**
+string
+
+**Description**
+The field name for the forecast quantity in the advanced account forecast fact record.
+
+**Field Type**
+string
+
+**Description**
+The field name for the forecast revenue in the advanced account forecast record.
+
+**Field Type**
+string
+
+**Description**
+The field name for the Forecast Set ID in the advanced account forecast fact record.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The name of the advanced account forecast set record.
+
+**Field Type**
+string
+
+**Description**
+The field name for the status in the advanced account forecast fact record.
+
+**Field Type**
+string
+
+**Description**
+The name of the data processing engine (DPE) definition that’s used to generate
+advanced account forecast fact records.
+
+**Field Type**
+
+AdvAcctForecastMeasureDef[]
+
+
+Metadata Types AdvAccountForecastSet
+
+**Field Name** **Description**
+
+**Description**
+The measures to display in the advanced account forecasts grid for the forecast set.
+
+```
+periodFieldName
+
+recalculateDpeDefName
+
+regenerationDpeDefName
+
+rolloverDpeDefName
+
+rolloverFrequency
+
+status
+
+```
+
+**Field Type**
+string
+
+**Description**
+The field name for the period in the advanced account forecast fact record.
+
+**Field Type**
+string
+
+**Description**
+The name of the data processing engine definition that’s used to recalculate the
+advanced account forecast fact records.
+
+**Field Type**
+string
+
+**Description**
+The name of the data processing engine definition that’s used to regenerate the
+advanced account forecast fact records.
+
+**Field Type**
+string
+
+**Description**
+The data processing engine definition that’s used to generate the rollover advanced
+account forecast fact records.
+
+**Field Type**
+AdvAcctFcstCalcFrequency (enumeration of type string)
+
+**Description**
+The frequency of rollover of the advanced account forecast records.
+
+Possible values are:
+
+**•** `Monthly`
+
+**•** `Quarterly`
+
+**•** `Weekly`
+
+**•** `Yearly`
+
+The default value is `Monthly` .
+
+**Field Type**
+AdvAccForecastSetStatus (enumeration of type string)
+
+**Description**
+
+Required.
+
+
+Metadata Types AdvAccountForecastSet
+
+**Field Name** **Description**
+
+The status of the advanced account forecast set.
+
+Possible values are:
+
+**•** `Active`
+
+**•** `Inactive`
+
+AdvAccountForecastFormula
+
+Represents the formulas that are used to calculate forecast values in real time after applying the DPE calculations. For example, processing
+forecast rollover for all accounts at the start of a month.
+
+**Field Name** **Description**
+
+```
+endPeriod
+
+formulaExpression
+
+formulaType
+
+startPeriod
+
+```
+
+**Field Type**
+int
+
+**Description**
+
+Required.
+
+The period until when the forecast formula is applicable.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The formula based on which forecast values are calculated.
+
+**Field Type**
+AdvAcctFcstFormulaType (enumeration of type string)
+
+**Description**
+
+Required.
+
+Specifies the calculation type for the formula.
+
+Possible values are:
+
+**•** `QUANTITY`
+
+**•** `REVENUE`
+
+The default value is `QUANTITY` .
+
+**Field Type**
+int
+
+**Description**
+
+Required.
+
+The period from when the forecast formula is applicable.
+
+
+Metadata Types AdvAccountForecastSet
+
+AdvAcctForecastAdjPeriod
+
+Represents details about the adjustment period of the advanced account forecast values.
+
+**Field Name** **Description**
+
+```
+adjustmentDayCount
+
+frequency
+
+profileName
+
+startDay
+
+```
+
+**Field Type**
+int
+
+**Description**
+
+Required.
+
+The number of days during which you can make forecast adjustments.
+
+**Field Type**
+PeriodTypes (enumeration of type string)
+
+**Description**
+
+Required.
+
+The frequency that’s applicable to make any forecast adjustments.
+
+Possible values are:
+
+**•** `Month`
+
+**•** `Quarter`
+
+**•** `Week`
+
+**•** `Year`
+
+The default value is `Month` .
+
+**Field Type**
+string
+
+**Description**
+The name of the profile with which you can adjust the forecast set.
+
+**Field Type**
+int
+
+**Description**
+
+Required.
+
+The start date for forecast adjustments.
+
+AdvAcctForecastDimension
+
+Represents the dimensions selected for an advanced account forecast set to categorize the data. For example, a business unit requires
+forecast data for each account aggregated by product and ship-from location.
+
+
+Metadata Types AdvAccountForecastSet
+
+**Field Name** **Description**
+
+```
+advAcctForecastDimName
+
+dimensionFieldName
+
+dimensionSourceName
+
+hierarchySequenceNumber
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The name of the advanced account forecast dimension.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The API name of the field for the dimension in the custom object that contains the
+generated advanced account forecast records.
+
+**Field Type**
+string
+
+**Description**
+The name of the dimension source associated with the advanced account forecast set
+dimension record.
+
+**Field Type**
+int
+
+**Description**
+
+Required.
+
+The sequence number of the dimension source associated with the forecast set.
+
+AdvAcctForecastMeasureDef
+
+Represents information about the measures to display in the advanced account forecasts grid for the forecast set.
+
+**Field Name** **Description**
+
+```
+advAcctForecastMeasureDefName
+
+aggregationType
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The name of the definition for the advanced account forecast measure.
+
+**Field Type**
+AdvAcctFcstAggregationType (enumeration of type string)
+
+
+Metadata Types AdvAccountForecastSet
+
+**Field Name** **Description**
+
+**Description**
+
+Required.
+
+The type of aggregation that’s used for calculating the advanced account forecast
+values.
+
+Possible values are:
+
+**•** `AVERAGE`
+
+**•** `MAXIMUM`
+
+**•** `MINIMUM`
+
+**•** `SUM`
+
+The default value is `SUM` .
+
+```
+computationMethod
+
+forecastDataMeasureName
+
+forecastMeasureName
+
+forecastMeasureType
+
+```
+
+**Field Type**
+AdvAcctFcstComputationMethod (enumeration of type string)
+
+**Description**
+
+Required.
+
+The method that’s used for calculating the advanced account forecast values.
+
+Values are:
+
+**•** `CUSTOM`
+
+**•** `DATA_PROCESSING_ENGINE_DEFINITION`
+
+**•** `FORMULA`
+
+The default value is `DATA_PROCESSING_ENGINE_DEFINITION` .
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The field of the facts object used for the advanced account forecast measure.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The name for the advanced account forecast measure to show on UI.
+
+**Field Type**
+AdvAcctFcstMeasureType (enumeration of type string)
+
+**Description**
+
+Required.
+
+
+Metadata Types AdvAccountForecastSet
+
+**Field Name** **Description**
+
+The measure type that’s used for the generated advanced forecast values.
+
+Possible values are:
+
+**•** `QUANTITY`
+
+**•** `REVENUE`
+
+The default value is `QUANTITY` .
+
+```
+isAdjustmentTracked
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the adjustments made to the advanced account forecast values for
+this metric are tracked ( `true` ) or not ( `false` ).
+
+AdvAcctFrcstDisplayGroup
+
+Represents information about the groups for the advanced account forecast set measures or dimensions.
+
+**Field Name** **Description**
+
+```
+advAcctFrcstDisplayGroupName
+
+displayGroupItems
+
+displayGroupType
+
+isDefault
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The name of the advanced account forecast display group.
+
+**Field Type**
+
+AdvAcctFrcstDplyGroupItem[]
+
+**Description**
+The items associated with a display group for an advanced account forecast set.
+
+**Field Type**
+AdvAcctFrcstDisplayGroupType (enumeration of type string)
+
+**Description**
+The category of the display group.
+
+Possible value is:
+
+**•** `MEASURE`
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the display group is the default group ( `true` ) or not ( `false` ).
+
+
+Metadata Types AdvAccountForecastSet
+
+**Field Name** **Description**
+
+```
+userProfileName
+
+```
+
+**Field Type**
+string
+
+**Description**
+The name of the profile for which the display group is applicable.
+
+AdvAcctFrcstDplyGroupItem
+
+Represents information about the items associated with a display group for an advanced account forecast set.
+
+**Field Name** **Description**
+
+```
+advAcctFrcstDplyGroupItemName
+
+displayOrder
+
+measureReferenceName
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The name of the advanced account forecast display group that’s associated with the
+group item.
+
+**Field Type**
+int
+
+**Description**
+
+Required.
+
+The display order of the display group item.
+
+**Field Type**
+string
+
+**Description**
+The ID of the measure associated with the display group item.
+
+Declarative Metadata Sample Definition
+
+The following is an example of an AdvAccountForecastSet component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<AdvAccountForecastSet xmlns="http://soap.sforce.com/2006/04/metadata"
+
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+   <calculationFrequency>Quarterly</calculationFrequency>
+
+   <forecastAdjPeriods>
+
+     <adjustmentDayCount>5</adjustmentDayCount>
+
+     <frequency>Quarter</frequency>
+
+     <profileName xsi:nil="true"/>
+
+     <startDay>1</startDay>
+
+```
+
+
+Metadata Types AdvAccountForecastSet
+
+```
+      </forecastAdjPeriods>
+
+      <forecastFormulas>
+
+        <endPeriod>12</endPeriod>
+
+        <formulaExpression>6</formulaExpression>
+
+        <startPeriod>2</startPeriod>
+
+        <formulaType>QUANTITY</formulaType>
+
+      </forecastFormulas>
+
+      <forecastPeriodGroupName>PeriodGroup1</forecastPeriodGroupName>
+
+      <accountFieldName>Account</accountFieldName>
+
+      <periodFieldName>Period</periodFieldName>
+
+      <forecastQuantityFieldName>ForecastedQuantity</forecastQuantityFieldName>
+
+      <forecastRevenueFieldName>ForecastedRevenue</forecastRevenueFieldName>
+
+      <forecastFactObjectName>AdvAccountForecastFact</forecastFactObjectName>
+
+      <forecastSetFieldName>AdvAcctForecastSetPartner</forecastSetFieldName>
+
+      <rolloverFrequency>Monthly</rolloverFrequency>
+
+      <forecastStatusFieldName>Status</forecastStatusFieldName>
+
+      <description>sample forecast set</description>
+
+      <regenerationDpeDefName xsi:nil="true"/>
+
+      <rolloverDpeDefName xsi:nil="true"/>
+
+      <recalculateDpeDefName xsi:nil="true"/>
+
+      <generationDpeDefName xsi:nil="true"/>
+
+      <status>Inactive</status>
+
+      <forecastSetName>Forecast Set 1</forecastSetName>
+
+      <dimensions>
+
+        <dimensionFieldName>Account</dimensionFieldName>
+
+        <dimensionSourceName>DimSource1</dimensionSourceName>
+
+        <hierarchySequenceNumber>1</hierarchySequenceNumber>
+
+        <advAcctForecastDimName>DimensionName</advAcctForecastDimName>
+
+      </dimensions>
+
+      <measureDefinitions>
+
+        <forecastDataMeasureName>MeasureName</forecastDataMeasureName>
+
+        <advAcctForecastMeasureDefName>Sample Def Name</advAcctForecastMeasureDefName>
+
+        <isAdjustmentTracked>true</isAdjustmentTracked>
+
+        <forecastMeasureName>Samplemeasure name</forecastMeasureName>
+
+        <aggregationType>MINIMUM</aggregationType>
+
+        <computationMethod>DATA_PROCESSING_ENGINE_DEFINITION</computationMethod>
+
+        <forecastMeasureType>QUANTITY</forecastMeasureType>
+
+      </measureDefinitions>
+
+      <displayGroups>
+
+        <advAcctFrcstDisplayGroupName>Sample Measure Group</advAcctFrcstDisplayGroupName>
+
+        <displayGroupType>MEASURE</displayGroupType>
+
+        <isDefault>false</isDefault>
+
+        <userProfileName xsi:nil="true"/>
+
+        <displayGroupItems>
+
+          <advAcctFrcstDplyGroupItemName>Sample Quantity</advAcctFrcstDplyGroupItemName>
+
+           <measureReferenceName>Sample Def Name</measureReferenceName>
+
+           <displayOrder>1</displayOrder>
+
+        </displayGroupItems>
+
+      </displayGroups>
+
+   </AdvAccountForecastSet>
+
+```
+
+
+### Metadata Types AffinityScoreDefinition
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>*</members>
+
+        <name>AdvAccountForecastSet</name>
+
+      </types>
+
+     <version>66.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+### AffinityScoreDefinition
+
+Represents the affinity information used in calculations to analyze and categorize contacts for marketing purposes.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+Parent Type
+
+[This type extends the Metadata metadata type and inherits its](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/metadata.htm) `fullName` field.
+
+File Suffix and Directory Location
+
+### AffinityScoreDefinition components have the suffix .affinityScoreDefinition and are stored in the
+
+`affinityScoreDefinitions` folder.
+
+Version
+
+### AffinityScoreDefinition components are available in API version 66.0 and later.
+
+Special Access Rules
+
+This metadata type is available only if the Fundraising Access license is enabled for the org and the Fundraising admin permission is
+assigned to users.
+
+Fields
+
+**Field Name** **Description**
+
+```
+affinityScoreDefinitionDesc
+
+```
+
+**Field Type**
+string
+
+
+Metadata Types AffinityScoreDefinition
+
+**Field Name** **Description**
+
+**Description**
+Description of the affinity score definition.
+
+```
+affinityScoreDefinitionName
+
+affinityScoreType
+
+masterLabel
+
+numberOfMonths
+
+numberOfRanges
+
+scoreRangeList
+
+```
+
+**Field Type**
+string
+
+**Description**
+Name of the affinity score definition.
+
+**Field Type**
+AffinityScoreType (enumeration of type string)
+
+**Description**
+Type of the affinity score that’s defined.
+
+Valid values are:
+
+**•** `CAP` —Capacity, Ability, Propensity (CAP)
+
+**•** `RFM` —Recency, Frequency, Monetary (RFM)
+
+The default value is `RFM` .
+
+**Field Type**
+string
+
+**Description**
+Label for this affinity score definition value. This display value is the internal label that
+doesn't get translated.
+
+**Field Type**
+int
+
+**Description**
+Number of months to analyze the records for calculating the affinity score.
+
+**Field Type**
+int
+
+**Description**
+
+Required.
+
+Number of ranges to use in the calculation, ranging from 0 to 9. Provide the
+corresponding range list values in the `scoreRangeList` field.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+
+Metadata Types AffinityScoreDefinition
+
+**Field Name** **Description**
+
+Ranges that are referenced in the affinity score calculation. This field is used with
+`scoreRangeList` . For example, to calculate RFM with `numberOfRanges` value
+as 3, provide the values for the `scoreRangeList` field in this format.
+
+```
+                       {
+
+                         "R ranges":"0-30, 31-100, 100+",
+
+                         "F ranges":"0-10, 11-100, 100+",
+
+                         "M ranges":"0-1000, 1001-5000, 5000+"
+
+                       }
+
+```
+
+```
+sourceFieldApiNameList
+
+sourceObjectApiNameList
+
+targetFieldApiNameList
+
+targetObjectApiName
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+API names of the source fields that are referenced in the score calculation.
+
+**Field Type**
+string
+
+**Description**
+API names of the source objects that are referenced in the score calculation.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+API names of the target fields where the calculated scores are added.
+
+**Field Type**
+string
+
+API name of the target object where the calculated scores are added.
+
+Declarative Metadata Sample Definition
+
+This example shows a sample of an AffinityScoreDefinition component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<AffinityScoreDefinition
+
+ xmlns="http://soap.sforce.com/2006/04/metadata">
+
+ <affinityScoreDefinitionDesc>RFM Affinity Score</affinityScoreDefinitionDesc>
+
+ <affinityScoreDefinitionName>AffinityScoreDefinition_RFM</affinityScoreDefinitionName>
+
+ <affinityScoreType>RFM</affinityScoreType>
+
+ <masterLabel>MasterLabel</masterLabel>
+
+ <numberOfMonths>12</numberOfMonths>
+
+ <numberOfRanges>3</numberOfRanges>
+
+```
+
+
+Metadata Types AffinityScoreDefinition
+
+```
+    <scoreRangeList>
+
+        [
+
+         {
+
+           "name": "R Ranges",
+
+           "direction": "ascending",
+
+           "ranges": [30,90,180]
+
+         },
+
+         {
+
+           "name": "F Ranges",
+
+           "direction": "descending",
+
+           "ranges": [10,15,100]
+
+         },
+
+         {
+
+           "name": "M Ranges",
+
+           "direction": "descending",
+
+           "ranges": [500,1000,5000]
+
+         }
+
+      ]
+
+       </scoreRangeList>
+
+    <sourceFieldApiNameList>
+
+        [
+
+         {
+
+           "name": "R Source",
+
+           "values":
+
+             [
+
+              {
+
+               "fieldName": "DonorGiftSummary.DaysSinceLastGift",
+
+               "fieldWeight": 1
+
+              }
+
+             ]
+
+         },
+
+         {
+
+           "name": "F Source",
+
+           "values":
+
+             [
+
+              {
+
+               "fieldName": "DonorGiftSummary.GiftCount",
+
+               "fieldWeight": 1
+
+              }
+
+             ]
+
+         },
+
+         {
+
+           "name": "M Source",
+
+           "values":
+
+             [
+
+              {
+
+               "fieldName": "DonorGiftSummary.TotalGiftsCount",
+
+               "fieldWeight": 1
+
+              }
+
+             ]
+
+         }
+
+        ]
+
+       </sourceFieldApiNameList>
+
+    <targetFieldApiNameList>
+
+```
+
+
+Metadata Types AffinityScoreDefinition
+
+```
+        [
+
+         {
+
+           "name": "R Target",
+
+           "values":
+
+             [
+
+              {
+
+               "fieldName": "DonorGiftSummary.RecencyScore",
+
+               "fieldWeight": 1
+
+              }
+
+             ]
+
+         },
+
+         {
+
+           "name": "F Target",
+
+           "values":
+
+             [
+
+              {
+
+               "fieldName": "DonorGiftSummary.FrequencyScore",
+
+               "fieldWeight": 1
+
+              }
+
+             ]
+
+         },
+
+         {
+
+           "name": "M Target",
+
+           "values":
+
+             [
+
+              {
+
+               "fieldName": "DonorGiftSummary.MonetaryScore",
+
+               "fieldWeight": 1
+
+              }
+
+             ]
+
+         }
+
+        ]
+
+       </targetFieldApiNameList>
+
+   </AffinityScoreDefinition>
+
+```
+
+This example shows a sample of the `package.xml` file that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>*</members>
+
+        <name>AffinityScoreDefinition</name>
+
+      </types>
+
+      <version> 66.0 </version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+[manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/file_based_zip_file.htm)
+
+
+### Metadata Types AIApplication AIApplication
+
+Represents an instance of an AI application. For example, Einstein Prediction Builder.
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+File Suffix and Directory Location
+
+### AIApplication components have the suffix .ai and are stored in the aiApplications folder.
+
+Version
+
+### AIApplication is available in API version 50.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`developerName` string Required. Represents the name of the application. Can contain only underscores
+and alphanumeric characters and must be unique in your org. It must begin
+
+with a letter, not include spaces, not end with an underscore, and not contain
+two consecutive underscores.
+
+Note: Only users with View DeveloperName OR View Setup and
+Configuration permission can view, group, sort, and filter this field.
+
+`masterLabel` string Label that identifies the AI application throughout the Salesforce user interface.
+
+```
+status
+
+type
+
+```
+
+### AIApplicationStatus Required. The status of the application. Valid values are:
+
+(enumeration of type
+
+**•** `Disabled`
+
+string)
+
+**•** `Enabled`
+
+**•** `Migrated`
+
+### AIApplicationType The type of AI application. Valid values are:
+
+(enumeration of type
+
+**•** `PredictionBuilder`
+
+string)
+
+**•** `Disabled`
+
+**•** `Draft`
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+
+### Metadata Types AIApplicationConfig AIApplicationConfig
+
+Additional prediction information related to an AI application. This type extends the Metadata metadata type and inherits its `fullName`
+field.
+
+File Suffix and Directory Location
+
+### AIApplicationConfig components have the suffix .aiapplicationconfig and are stored in the aiApplicationConfigs
+
+folder.
+
+Version
+
+### AIApplicationConfig is available in API version 50.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`aiApplicationDeveloperName` string Required. Represents the AIApplication to which AIApplicationConfig belongs.
+Can contain only underscores and alphanumeric characters and must be unique
+
+in your org. It must begin with a letter, not include spaces, not end with an
+underscore, and not contain two consecutive underscores. Available in API
+version 51.0 and later.
+
+`applicationId` string Required. The ID of the parent AI application.
+
+`developerName` string Represents the name of the application config. Can contain only underscores
+and alphanumeric characters and must be unique in your org. It must begin
+
+with a letter, not include spaces, not end with an underscore, and not contain
+two consecutive underscores.
+
+`insightReasonEnabled` boolean Required. When `true`, generates the predictors, or field values, that were
+used to generate the prediction value.
+
+`masterLabel` string Required. Label that identifies the AI application configuration throughout the
+Salesforce user interface.
+
+`rank` int Required. Reserved for future use.
+
+```
+scoringMode
+
+```
+
+AIScoringMode Required. Frequency with which the prediction scores are written back. Valid
+(enumeration of type values are:
+string)
+
+**•** `Batch`
+
+**•** `OnDemand`
+
+**•** `Streaming`
+
+
+### Metadata Types AiAuthoringBundle
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+### AiAuthoringBundle
+
+Represents an AI authoring bundle, which is a container for AI-related authoring content. For example, an AI authoring bundle for an
+Agentforce agent contains an Agent Script file and the associated metadata content.
+
+### AiAuthoringBundle packages and manages AI authoring artifacts with version control features. This metadata type provides a structured
+
+way to organize, version, and target AI-related content within your Salesforce org.
+
+Parent Type
+
+This type extends the Metadata metadata type.
+
+Directory Structure
+
+### AiAuthoringBundle agents are stored in an aiAuthoringBundles folder with a specific structure. Here’s an example of the structure.
+
+```
+   +--aiAuthoringBundles
+
+      +--my_service_agent (1)
+
+        +--my_service_agent.agent (2)
+
+        +--my_service_agent.bundle-meta.xml (3)
+
+      +--my_employee_agent (1)
+
+        +--my_employee_agent.agent (2)
+
+        +--my_employee_agent.bundle-meta.xml (3)
+
+```
+
+The bundle includes the following resources:
+
+**•** A folder (1) for each agent. If the folder suffix contains an underscore followed by a number (for example, `my_service_agent_5` ),
+that number indicates the agent version. If there isn't a number in the suffix, the agent definition applies to the latest version of the
+agent.
+
+**•** [Each agent folder contains a file that defines the agent (2). For example, this file can be an Agent Script definition. See Agent Script](https://developer.salesforce.com/docs/einstein/genai/guide/get-started.html)
+[in the Agentforce Developer Guide for details.](https://developer.salesforce.com/docs/einstein/genai/guide/get-started.html)
+
+**•** Each agent folder contains the metadata associated with the agent (3). Be sure to review the description for the `target` field to
+understand how to distinguish committed agent versions from uncommitted versions.
+
+Version
+
+### AiAuthoringBundle is available in API version 65.0 and later.
+
+
+Metadata Types AiAuthoringBundle
+
+Fields
+
+**Field Name** **Description**
+
+```
+bundleType
+
+target
+
+versionDescription
+
+versionTag
+
+```
+
+**AiAuthoringBundleType (enumeration of type string)**
+
+**Description**
+Specifies the type or category of the AI authoring bundle, indicating the kind of AI
+authoring content contained within the bundle. Currently, this value must be
+
+`AGENT` [, which represents an Agent Script agent. See Agent Script in the Agentforce](https://developer.salesforce.com/docs/einstein/genai/guide/get-started.html)
+[Developer Guide for details.](https://developer.salesforce.com/docs/einstein/genai/guide/get-started.html)
+
+**string**
+
+**Description**
+
+Specifies the context or destination for the AI authoring bundle, defining how the
+bundle content should be applied or deployed.
+
+To commit an agent version, Agentforce agents must specify the
+`developerName` for the Bot on page 489 and BotVersion on page 510
+components, separated by a period: `{Bot}.{BotVersion}` . For example,
+`Agentforce_Service_Agent.v2` . These two components tie the AI
+authoring bundle to a specific agent and a specific agent version.
+
+[This field is automatically populated when you publish an agent with Agentforce](https://developer.salesforce.com/docs/einstein/genai/guide/agent-dx.html)
+[DX. Publishing an agent with this field present is the equivalent to committing the](https://developer.salesforce.com/docs/einstein/genai/guide/agent-dx.html)
+agent in Agentforce Builder with the **Commit Version** button.
+
+If you want to deploy an agent to your org in draft state, omit this field.
+
+**string**
+
+**Description**
+Provides a human-readable description of the bundle version, documenting what
+changes or features are included in this version of the AI authoring bundle.
+
+**string**
+
+**Description**
+Defines a version identifier or tag for the AI authoring bundle. This value can be
+used for version tracking and management of different bundle iterations.
+
+Declarative Metadata Sample Definition
+
+The following `package.xml` file is an example of an AiAuthoringBundle component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <types>
+
+     <members>New_Agent</members>
+
+     <name>AiAuthoringBundle</name>
+
+   </types>
+
+```
+
+
+### Metadata Types AiEvaluationDefinition
+
+```
+      <version>65.0</version>
+
+   </Package>
+
+```
+
+In the `.zip` file for this bundle, each agent is nested in the `aiAuthoringBundles` folder. This example shows the directory
+structure in the `.zip` file for an agent named `New_Agent` . Each agent bundle folder must contain an agent file and a metadata file.
+
+```
+   +--aiAuthoringBundles
+
+      +--New_Agent
+
+        +--New_Agent.agent
+
+        +--New_Agent.bundle-meta.xml
+
+```
+
+[To see an example of an Agent Script agent file, see Agent Script in the Agentforce Developer Guide.](https://developer.salesforce.com/docs/einstein/genai/guide/get-started.html)
+
+This example shows the metadata XML for the agent in the file `New_Agent.bundle-meta.xml` . The example commits the agent
+version because it contains a `target` value. Uncommitted versions don't contain this field.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <AiAuthoringBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <bundleType>AGENT</bundleType>
+
+      <target>Agentforce_Service_Agent.v2</target>
+
+      <versionTag>DF 2026.3</versionTag>
+
+   </AiAuthoringBundle>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+### AiEvaluationDefinition
+
+Represents an agent evaluation, including subject metadata and a set of test cases.
+
+In Metadata API, you can create test definitions, including specifying inputs and expected outcomes, and deploy them to different orgs.
+In Connect API, you can execute test scenarios, poll for results, and retrieve test outcomes.
+
+[This type extends the Metadata metadata type and inherits its](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/metadata.htm) `fullName` [field. For more information on testing agents, see the Testing](https://developer.salesforce.com/docs/einstein/genai/guide/testing-api.html)
+[API Developer Guide.](https://developer.salesforce.com/docs/einstein/genai/guide/testing-api.html)
+
+File Suffix and Directory Location
+
+### AiEvaluationDefinition components have the suffix .aiEvaluationDefinition and are stored in the
+
+`aiEvaluationDefinitions` folder.
+
+Version
+
+### AiEvaluationDefinition is available in API version 63.0 and later. Individual fields may have specific minimum API version requirements
+
+as noted in the field descriptions.
+
+Special Access Rules
+
+### AiEvaluationDefinition is available only if Agentforce is enabled. See Set Up Agents in Salesforce Help.
+
+
+Metadata Types AiEvaluationDefinition
+
+Fields
+
+**Field Name** **Description**
+
+```
+description
+
+name
+
+```
+
+**string**
+
+**Description**
+The
+purpose
+
+of the
+test.
+
+**string**
+
+**Description**
+Required.
+The
+
+API
+name
+of the
+test.
+Can
+contain
+only
+underscores
+and
+alphanumeric
+characters
+and
+must
+be
+unique
+in your
+org. It
+must
+begin
+with a
+letter,
+not
+include
+spaces,
+not
+end
+with
+an
+underscore,
+and
+not
+contain
+two
+
+
+Metadata Types AiEvaluationDefinition
+
+**Field Name** **Description**
+
+consecutive
+underscores.
+
+```
+subjectName
+
+subjectType
+
+```
+
+**string**
+
+**Description**
+Required.
+A
+
+unique
+identifier
+for the
+agent
+being
+tested.
+Make
+sure
+that
+this
+identifier
+matches
+the API
+name
+of the
+agent,
+which
+you
+can
+find on
+the
+agent
+details
+page
+in
+Setup.
+
+**string**
+
+**Description**
+Required.
+The
+
+type of
+subject
+being
+tested.
+The
+only
+currently
+supported
+
+
+Metadata Types AiEvaluationDefinition
+
+**Field Name** **Description**
+
+value
+is
+`AGENT` .
+
+```
+subjectVersion
+
+testCase
+
+```
+
+AiEvaluationTestCase
+
+Represents a test case.
+
+**string**
+
+**Description**
+The
+agent
+
+version
+to test.
+If not
+provided,
+the
+latest
+active
+version
+is used
+by
+default.
+You
+can
+find
+the
+version
+in the
+BotVersion
+metadata
+type.
+
+**AiEvaluationTestCase[]**
+**on page**
+**310**
+
+**Description**
+A list
+of test
+cases.
+
+
+Metadata Types AiEvaluationDefinition
+
+**Field Name** **Description**
+
+```
+expectation
+
+inputs
+
+number
+
+```
+
+AiEvaluationExpectation
+
+Represents the expected outcome for a test case.
+
+**AiEvaluationExpectation[]**
+**on page**
+**311**
+
+**Description**
+The
+criteria
+
+used
+to test
+the
+artifact's
+responses.
+
+**AiEvaluationAgentTestCaseInput[]**
+**on page**
+**324**
+
+**Description**
+The
+specific
+
+input
+provided
+to the
+artifact
+being
+tested.
+
+**int**
+
+**Description**
+The
+unique
+
+number
+for the
+test
+case. If
+not
+provided,
+the
+value
+is
+automaticay **l**
+calculated.
+
+
+Metadata Types AiEvaluationDefinition
+
+**Field Name** **Description**
+
+```
+expectedValue
+
+label
+
+```
+
+**string**
+
+**Description**
+The
+expected
+
+outcome
+of the
+test.
+The
+format
+of this
+field
+depends
+on the
+value
+of the
+name
+field.
+The
+expected
+outcome
+is
+compared
+against
+the
+response
+generated
+when
+you
+run
+the
+test
+using
+[Connect](https://developer.salesforce.com/docs/einstein/genai/guide/testing-api-connect.html)
+[REST](https://developer.salesforce.com/docs/einstein/genai/guide/testing-api-connect.html)
+[API](https://developer.salesforce.com/docs/einstein/genai/guide/testing-api-connect.html)
+
+**string**
+
+**Description**
+An
+optional
+
+label
+for an
+expectation.
+Typically
+added
+when
+
+
+Metadata Types AiEvaluationDefinition
+
+**Field Name** **Description**
+
+using
+the
+same
+custom
+expectation
+name
+multiple
+times
+in a
+test
+case. If
+provided,
+this
+label
+appears
+in the
+test
+results;
+otherwise,
+the
+expectation
+name
+appears.
+
+```
+name
+
+```
+
+**string**
+
+**Description**
+Required.
+The
+
+expectation
+name.
+Valid
+values
+are:
+
+**•** `topic_sequence_match` :
+The
+
+```
+   expectedValue
+```
+
+field
+value
+is
+a
+string
+represe **n** tig
+the
+topic
+that
+the
+
+
+Metadata Types AiEvaluationDefinition
+
+**Field Name** **Description**
+
+agent
+is
+expected
+to
+use,
+such
+as
+**`O`** `TBSingl` **`e`** `RcordSu` **`m`** `ary` .
+For
+a
+list
+of
+agent
+topics,
+see
+Standard
+Agent
+Topic
+R **e** frence
+in
+Salesforce
+Help.
+
+**•** `action_sequence_match` :
+The
+
+```
+                          expectedValue
+```
+
+field
+value
+is
+a
+
+```
+                          string[]
+```
+
+represe **n** tig
+a
+list
+of
+actions
+that
+you
+expect
+the
+artifact
+to
+take
+during
+the
+test,
+such
+as
+
+
+Metadata Types AiEvaluationDefinition
+
+**Field Name** **Description**
+
+```
+                          ['IdentifyRecordByName',
+```
+
+`'action2']` .
+For
+a
+list
+of
+agent
+actions,
+see
+Standard
+Agent
+Action
+R **e** frence
+in
+Salesforce
+Help.
+This
+option
+was
+previously
+caed **l**
+`action_sequence_match` .
+
+**•** `bot_response_rating` :
+The
+
+```
+                          expectedValue
+```
+
+field
+value
+is
+a
+string
+represe **n** tig
+the
+expected
+response
+gen **e** ratd
+by
+the
+artifact,
+such
+as
+
+```
+                          Su m arization
+
+                          of
+
+                          the
+
+                          Global
+
+                          Media
+```
+
+`account` .
+
+
+Metadata Types AiEvaluationDefinition
+
+**Field Name** **Description**
+
+**•** `coherence` :
+A
+gen **e** ratd
+answer
+is
+coh **e** rnt
+if
+it’s
+easy
+to
+understand
+and
+has
+no
+grammatical
+e **r** ors.
+If
+you
+use
+this
+quality
+check,
+you
+don't
+need
+an
+
+```
+                          expectedValue
+```
+
+field
+value.
+
+**•** `completene` **`s`** :
+A
+gen **e** ratd
+answer
+is
+compl **e** t
+if
+it
 includes
 all
 the
@@ -138,7 +11345,7 @@ parameter
 
 **AiEvaluationTestCaseCritParam[]**
 **on page**
-**316**
+**319**
 
 **Description**
 Required
@@ -555,7 +11762,7 @@ contextVariable
 
 **AiEvalCopilotTestCaseCntxtVar[]**
 **on page**
-**322**
+**325**
 
 **Description**
 An
@@ -583,7 +11790,7 @@ utterance
 
 **AiEvalCopilotTestCaseConv[]**
 **on page**
-**323**
+**326**
 
 **Description**
 An
@@ -859,7 +12066,7 @@ Here's an example of an AiEvaluationDefinition component.
 Wildcard Support in the Manifest File
 
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-[manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/file_based_zip_file.htm)
+[manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/file_based_zip_file.htm)
 
 ### AIScoringModelDefinition
 
@@ -2635,9 +13842,9 @@ Values are:
 
 **•** `button`
 
-**•** `component`
-
 **•** `container`
+
+**•** `extension`
 
 **•** `filter`
 
@@ -2712,6 +13919,8 @@ Values are:
 
 **•** `navigate`
 
+**•** `parameter`
+
 **•** `recordaction`
 
 **Field Type**
@@ -2741,13 +13950,13 @@ Values are:
 **Field Type**
 string
 
-**Description**
-The parameter for the action. This is a JSON string.
-
 
 Metadata Types AnalyticsDashboard
 
 **Field Name** **Description**
+
+**Description**
+The parameter for the action. This is a JSON string.
 
 Example:
 
@@ -2815,12 +14024,12 @@ Example:
 
 ```
 
+
+Metadata Types AnalyticsDashboard
+
 AnlytDshbrdWdgtDynamicTkn
 
 Represents a widget dynamic token for a Tableau Next dashboard.
-
-
-Metadata Types AnalyticsDashboard
 
 **Field Name** **Description**
 
@@ -2889,13 +14098,13 @@ initialValues
 **Field Type**
 string
 
-**Description**
-The initial values for the filter.
-
 
 Metadata Types AnalyticsDashboard
 
 **Field Name** **Description**
+
+**Description**
+The initial values for the filter.
 
 ```
 parameters
@@ -2962,13 +14171,13 @@ parameters
 **Field Type**
 string
 
-**Description**
-The parameters for the filter widget. This is a JSON String.
-
 
 Metadata Types AnalyticsDashboard
 
 **Field Name** **Description**
+
+**Description**
+The parameters for the filter widget. This is a JSON String.
 
 Example:
 
@@ -3034,13 +14243,13 @@ The initial values for the parameters.
 **Field Type**
 string
 
-**Description**
-The parameters for the filter widget. This is a JSON String.
-
 
 Metadata Types AnalyticsDashboard
 
 **Field Name** **Description**
+
+**Description**
+The parameters for the filter widget. This is a JSON String.
 
 Example:
 
@@ -3108,13 +14317,13 @@ The API name of the visualization.
 **Field Type**
 string
 
-**Description**
-The version of the visualization.
-
 
 Metadata Types AnalyticsDashboard
 
 **Field Name** **Description**
+
+**Description**
+The version of the visualization.
 
 ```
 parameters
@@ -3207,18 +14416,18 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
           <row>2</row>
 
-          <rowspan>10</rowspan>
-
-        </pageWidgets>
-
-        <pageWidgets>
-
 ```
 
 
 Metadata Types AnalyticsDashboard
 
 ```
+             <rowspan>10</rowspan>
+
+           </pageWidgets>
+
+           <pageWidgets>
+
              <analyticsDashboardWidget>text_2</analyticsDashboardWidget>
 
              <colspan>9</colspan>
@@ -3309,16 +14518,16 @@ Metadata Types AnalyticsDashboard
 
         <analyticsDashboard>My_Dashboard</analyticsDashboard>
 
-        <buttonWidgetDefs>
-
-   <parameters>{&quot;text&quot;:&quot;Button&quot;,&quot;alignmentX&quot;:&quot;center&quot;,&quot;alignmentY&quot;:&quot;center&quot;,&quot;fontSize&quot;:16}</parameters>
-
 ```
 
 
 Metadata Types AnalyticsDashboard
 
 ```
+        <buttonWidgetDefs>
+
+   <parameters>{&quot;text&quot;:&quot;Button&quot;,&quot;alignmentX&quot;:&quot;center&quot;,&quot;alignmentY&quot;:&quot;center&quot;,&quot;fontSize&quot;:16}</parameters>
+
         </buttonWidgetDefs>
 
         <type>button</type>
@@ -3399,16 +14608,16 @@ Metadata Types AnalyticsDashboard
 
            <initialValues>null</initialValues>
 
+```
+
+
+Metadata Types AnalyticsDashboard
+
+```
    <parameters>{&quot;receiveFilterSource&quot;:{&quot;filterMode&quot;:&quot;all&quot;,&quot;widgetIds&quot;:[]},&quot;filterOption&quot;:{&quot;objectName&quot;:&quot;Account&quot;,&quot;fieldName&quot;:&quot;Account_Id&quot;,&quot;dataType&quot;:&quot;Text&quot;,&quot;selectionType&quot;:&quot;multiple&quot;},&quot;isLabelHidden&quot;:false}</parameters>
 
            <source>AccountModel</source>
 
-```
-
-
-### Metadata Types AnalyticSnapshot
-
-```
         </filterWidgetDefs>
 
         <label>Account Id</label>
@@ -3487,15 +14696,13 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-### AnalyticSnapshot
+
+### Metadata Types AnalyticSnapshot AnalyticSnapshot
 
 Represents a reporting snapshot. A reporting snapshot lets you report on historical data. Authorized users can save tabular or summary
 report results to fields on a custom object, then map those fields to corresponding fields on a target object. They can then schedule
 when to run the report to load the custom object's fields with the report's data. Reporting snapshots enable you to work with report
 data similarly to how you work with other records in Salesforce.
-
-
-Metadata Types AnalyticSnapshot
 
 Declarative Metadata File Suffix and Directory Location
 
@@ -3515,8 +14722,7 @@ Fields
 `groupColumn` string A column that specifies which level to extract data from the
 source report. It’s only applicable for summary reports.
 
-`mappings` AnalyticSnapshotMapping[] A list of reporting snapshot mappings. For valid values, see
-AnalyticSnapshotMapping.
+### mappings AnalyticSnapshotMapping[] A list of reporting snapshot mappings. For valid values, see AnalyticSnapshotMapping.
 
 `name` string Required. The display name of the reporting snapshot.
 
@@ -3527,9 +14733,7 @@ used to run the reporting snapshot.
 
 `targetObject` string Required. The custom object where data is inserted.
 
-AnalyticSnapshotMapping
-
-AnalyticSnapshotMapping defines the mapping for the reporting snapshot. Valid values are:
+### AnalyticSnapshotMapping AnalyticSnapshotMapping defines the mapping for the reporting snapshot. Valid values are:
 
 **Field** **Field Type** **Description**
 
@@ -3541,6 +14745,11 @@ AnalyticSnapshotMapping defines the mapping for the reporting snapshot. Valid va
 **•** The field on the sourceReport that you want to map to the targetField
 in the targetObject
 
+
+Metadata Types AnalyticSnapshot
+
+**Field** **Field Type** **Description**
+
 **•** A summary of a filed on the sourceReport (for Summary reports only)
 
 **•** A field on the reporting snapshot, such as JobName, RunningUser, or
@@ -3550,11 +14759,6 @@ ExecutionTime (set through the user interface)
 
 `sourceType` ReportJobSourceTypes[] List that defines the report format for the reporting snapshot. For valid
 (enumeration of type string) values, see ReportJobSourceTypes.
-
-
-Metadata Types AnalyticSnapshot
-
-**Field** **Field Type** **Description**
 
 `targetField` string A field on the targetObject into which this particular sourceField is inserted.
 
@@ -3619,6 +14823,12 @@ Here’s a sample XML definition of a reporting snapshot.
 
       <name>my snapshot</name >
 
+```
+
+
+### Metadata Types AnalyticsVisualization
+
+```
       <runningUser>user@salesforce.com</runningUser>
 
       <sourceReport>myFolder/mytSummaryReport</sourceReport>
@@ -3628,9 +14838,6 @@ Here’s a sample XML definition of a reporting snapshot.
    </AnalyticSnapshot>
 
 ```
-
-
-### Metadata Types AnalyticsVisualization
 
 Wildcard Support in the Manifest File
 
@@ -3676,13 +14883,14 @@ The maximum number of 100
 
 deploy operations in a 24-hour window.
 
-The maximum number of 200
-### AnalyticsVisualization components across all
-
-retrieve operations in a 24-hour window.
-
 
 Metadata Types AnalyticsVisualization
+
+**Definition** **Limit**
+
+The maximum number of 200
+AnalyticsVisualization components across all
+retrieve operations in a 24-hour window.
 
 Fields
 
@@ -3693,17 +14901,13 @@ actions
 
 analyticsWorkspace
 
+creationSource
+
 dataSource
 
 description
 
 fields
-
-lastDraftModifiedDate
-
-lastPublishedDate
-
-masterLabel
 
 ```
 
@@ -3727,6 +14931,12 @@ The Tableau Next workspace the visualization belongs to.
 string
 
 **Description**
+The creation source for the visualization.
+
+**Field Type**
+string
+
+**Description**
 
 Required.
 
@@ -3745,6 +14955,30 @@ AnalyticsVizField[]
 **Description**
 A list of data fields for the visualization. A visualization has 0 or more fields.
 
+
+Metadata Types AnalyticsVisualization
+
+**Field Name** **Description**
+
+```
+lastDraftModifiedDate
+
+lastPublishedDate
+
+masterLabel
+
+templateAssetSourceName
+
+templateSource
+
+version
+
+views
+
+visualSpecification
+
+```
+
 **Field Type**
 dateTime
 
@@ -3760,35 +14994,11 @@ The date and time the workspace was last published.
 **Field Type**
 string
 
-
-Metadata Types AnalyticsVisualization
-
-**Field Name** **Description**
-
 **Description**
 
 Required.
 
 The name of the visualization.
-
-```
-templateAssetSourceName
-
-templateSource
-
-version
-
-views
-
-visualSpecification
-
-workspaceAssetRelationships
-
-```
-
-AnalyticsVizField
-
-Represents a data field in a visualization.
 
 **Field Type**
 string
@@ -3823,7 +15033,21 @@ base64Binary
 
 Required.
 
+
+Metadata Types AnalyticsVisualization
+
+**Field Name** **Description**
+
 The visual specification for the visualization.
+
+```
+workspaceAssetRelationships
+
+```
+
+AnalyticsVizField
+
+Represents a data field in a visualization.
 
 **Field Type**
 
@@ -3832,9 +15056,6 @@ AnalyticsWorkspaceAsset[]
 **Description**
 A list of analytics assets in the workspace this visualization is associated with. A
 visualization has 0 or more workspace asset relationships.
-
-
-Metadata Types AnalyticsVisualization
 
 **Field Name** **Description**
 
@@ -3848,10 +15069,6 @@ computeUsing
 displayCategory
 
 fieldKey
-
-fieldName
-
-function
 
 ```
 
@@ -3892,7 +15109,19 @@ string
 
 Required.
 
+
+Metadata Types AnalyticsVisualization
+
+**Field Name** **Description**
+
 The key for the field.
+
+```
+fieldName
+
+function
+
+```
 
 **Field Type**
 string
@@ -3908,12 +15137,9 @@ The function type of the visualization field.
 
 Values are:
 
+**•** `Attr`
+
 **•** `Avg`
-
-
-Metadata Types AnalyticsVisualization
-
-**Field Name** **Description**
 
 **•** `Count`
 
@@ -3921,9 +15147,15 @@ Metadata Types AnalyticsVisualization
 
 **•** `DatePartDay`
 
+**•** `DatePartHour`
+
+**•** `DatePartMinute`
+
 **•** `DatePartMonth`
 
 **•** `DatePartQuarter`
+
+**•** `DatePartSecond`
 
 **•** `DatePartWeek`
 
@@ -3933,9 +15165,15 @@ Metadata Types AnalyticsVisualization
 
 **•** `DateTruncDay`
 
+**•** `DateTruncHour`
+
+**•** `DateTruncMinute`
+
 **•** `DateTruncMonth`
 
 **•** `DateTruncQuarter`
+
+**•** `DateTruncSecond`
 
 **•** `DateTruncWeek`
 
@@ -3952,6 +15190,11 @@ Metadata Types AnalyticsVisualization
 **•** `FiscalDateTruncMonth`
 
 **•** `FiscalDateTruncQuarter`
+
+
+Metadata Types AnalyticsVisualization
+
+**Field Name** **Description**
 
 **•** `FiscalDateTruncWeek`
 
@@ -3982,20 +15225,6 @@ Metadata Types AnalyticsVisualization
 ```
 hierarchyName
 
-```
-
-**Field Type**
-string
-
-**Description**
-The hierarchy name for the field.
-
-
-Metadata Types AnalyticsVisualization
-
-**Field Name** **Description**
-
-```
 label
 
 objectName
@@ -4004,11 +15233,13 @@ quickTableCalc
 
 role
 
-type
-
 ```
 
-AnalyticsVizViewDef
+**Field Type**
+string
+
+**Description**
+The hierarchy name for the field.
 
 **Field Type**
 string
@@ -4038,7 +15269,19 @@ Values are:
 
 **•** `Dimension`
 
+
+Metadata Types AnalyticsVisualization
+
+**Field Name** **Description**
+
 **•** `Measure`
+
+```
+type
+
+```
+
+AnalyticsVizViewDef
 
 **Field Type**
 VisualizationFieldType (enumeration of type string)
@@ -4049,6 +15292,8 @@ The type of the visualization field.
 Values are:
 
 **•** `Field`
+
+**•** `MapPosition`
 
 **•** `MeasureNames`
 
@@ -4061,31 +15306,19 @@ Represents a view definition for a Tableau Next visualization.
 ```
 analyticsVizVersion
 
-```
-
-**Field Type**
-string
-
-
-Metadata Types AnalyticsVisualization
-
-**Field Name** **Description**
-
-**Description**
-The version of the visualization the view is associated with.
-
-```
 fullName
 
 isOriginal
 
 masterLabel
 
-version
-
-viewSpecification
-
 ```
+
+**Field Type**
+string
+
+**Description**
+The version of the visualization the view is associated with.
 
 **Field Type**
 string
@@ -4113,6 +15346,18 @@ string
 Required.
 
 The name of the view definition.
+
+
+Metadata Types AnalyticsVisualization
+
+**Field Name** **Description**
+
+```
+version
+
+viewSpecification
+
+```
 
 **Field Type**
 double
@@ -4145,62 +15390,62 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
   <fields>
 
+   <displayCategory>Discrete</displayCategory>
+
+   <fieldKey>Field1</fieldKey>
+
+   <fieldName>Lead_Source18</fieldName>
+
+   <objectName>Opportunity_Home</objectName>
+
+   <role>Dimension</role>
+
+   <type>Field</type>
+
+  </fields>
+
+  <fields>
+
+   <fieldKey>Field2</fieldKey>
+
+   <displayCategory>Continuous</displayCategory>
+
+   <fieldName>Amount</fieldName>
+
+   <function>Sum</function>
+
+   <objectName>Opportunity_Home</objectName>
+
+   <role>Measure</role>
+
+   <type>Field</type>
+
+  </fields>
+
+  <views>
+
+   <fullName>default</fullName>
+
+   <masterLabel>My_Visualization_default</masterLabel>
+
+   <viewSpecification>
+
+{&quot;filters&quot;:[{&quot;fieldKey&quot;:&quot;Field1&quot;,&quot;filterInfos&quot;:[{&quot;isCustom&quot;:false,&quot;isExcludes&quot;:false,&quot;type&quot;:&quot;In&quot;,&quot;useA l &quot;:false,&quot;values&quot;:[&quot;NewBusine s &quot;]},{&quot;includeA l ValuesWhenEmpty&quot;:true,&quot;isExcludes&quot;:false,&quot;operator&quot;:&quot;Contains&quot;,&quot;type&quot;:&quot;WildCard&quot;,&quot;value&quot;:&quot;&quot;}],&quot;isContext&quot;:false}],&quot;sorts&quot;:[{&quot;byField&quot;:&quot;Field2&quot;,&quot;fieldKey&quot;:&quot;Field1&quot;,&quot;order&quot;:&quot;Ascending&quot;,&quot;type&quot;:&quot;Nested&quot;}]}</viewSpecification>
+
+   <isOriginal>true</isOriginal>
+
+  </views>
+
+  <masterLabel>My_Visualization</masterLabel>
+
+  <version>64.0</version>
+
 ```
 
 
-Metadata Types AnalyticsVisualization
+### Metadata Types AnalyticsWorkspace
 
 ```
-      <displayCategory>Discrete</displayCategory>
-
-      <fieldKey>Field1</fieldKey>
-
-      <fieldName>Lead_Source18</fieldName>
-
-      <objectName>Opportunity_Home</objectName>
-
-      <role>Dimension</role>
-
-      <type>Field</type>
-
-     </fields>
-
-     <fields>
-
-      <fieldKey>Field2</fieldKey>
-
-      <displayCategory>Continuous</displayCategory>
-
-      <fieldName>Amount</fieldName>
-
-      <function>Sum</function>
-
-      <objectName>Opportunity_Home</objectName>
-
-      <role>Measure</role>
-
-      <type>Field</type>
-
-     </fields>
-
-     <views>
-
-      <fullName>default</fullName>
-
-      <masterLabel>My_Visualization_default</masterLabel>
-
-      <viewSpecification>
-
-   {&quot;filters&quot;:[{&quot;fieldKey&quot;:&quot;Field1&quot;,&quot;filterInfos&quot;:[{&quot;isCustom&quot;:false,&quot;isExcludes&quot;:false,&quot;type&quot;:&quot;In&quot;,&quot;useA l &quot;:false,&quot;values&quot;:[&quot;NewBusine s &quot;]},{&quot;includeA l ValuesWhenEmpty&quot;:true,&quot;isExcludes&quot;:false,&quot;operator&quot;:&quot;Contains&quot;,&quot;type&quot;:&quot;WildCard&quot;,&quot;value&quot;:&quot;&quot;}],&quot;isContext&quot;:false}],&quot;sorts&quot;:[{&quot;byField&quot;:&quot;Field2&quot;,&quot;fieldKey&quot;:&quot;Field1&quot;,&quot;order&quot;:&quot;Ascending&quot;,&quot;type&quot;:&quot;Nested&quot;}]}</viewSpecification>
-
-      <isOriginal>true</isOriginal>
-
-     </views>
-
-     <masterLabel>My_Visualization</masterLabel>
-
-     <version>64.0</version>
-
      <templateSource></templateSource>
 
      <templateAssetSourceName></templateAssetSourceName>
@@ -4247,8 +15492,7 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-
-### Metadata Types AnalyticsWorkspace AnalyticsWorkspace
+### AnalyticsWorkspace
 
 Represents a Tableau Next workspace.
 
@@ -4268,6 +15512,9 @@ folder.
 Version
 
 ### AnalyticsWorkspace components are available in API version 64 and later.
+
+
+Metadata Types AnalyticsWorkspace
 
 Limits
 
@@ -4294,6 +15541,10 @@ Fields
 ```
 description
 
+masterLabel
+
+workspaceAssetRelationships
+
 ```
 
 **Field Type**
@@ -4301,18 +15552,6 @@ string
 
 **Description**
 The workspace description.
-
-
-Metadata Types AnalyticsWorkspace
-
-**Field Name** **Description**
-
-```
-masterLabel
-
-workspaceAssetRelationships
-
-```
 
 **Field Type**
 string
@@ -4335,12 +15574,19 @@ AnalyticsWorkspaceAsset
 
 Represents a Tableau Next analytics asset.
 
+
+Metadata Types AnalyticsWorkspace
+
 **Field Name** **Description**
 
 ```
 asset
 
 assetType
+
+assetUsageType
+
+metadataSourceType
 
 ```
 
@@ -4378,20 +15624,6 @@ Values are:
 
 **•** `SemanticModel` (Semantic Model)
 
-
-Metadata Types AnalyticsWorkspace
-
-**Field Name** **Description**
-
-```
-assetUsageType
-
-metadataSourceType
-
-workspace
-
-```
-
 **Field Type**
 AnalyticsWorkspaceAssetUsageType (enumeration of type string)
 
@@ -4418,6 +15650,16 @@ Values are:
 **•** `Promoted`
 
 **•** `Reused`
+
+
+### Metadata Types AnimationRule
+
+**Field Name** **Description**
+
+```
+workspace
+
+```
 
 **Field Type**
 string
@@ -4459,27 +15701,24 @@ The following is an example of an AnalyticsWorkspace component.
 
 ```
 
-
-### Metadata Types AnimationRule
-
 The following is an example `package.xml` that references the previous definition.
 
 ```
-   <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
 
-     <types>
+  <types>
 
-      <members>*</members>
+   <members>*</members>
 
-      <name>AnalyticsWorkspace</name>
+   <name>AnalyticsWorkspace</name>
 
-     </types>
+  </types>
 
-     <version>64.0</version>
+  <version>64.0</version>
 
-   </Package>
+</Package>
 
 ```
 
@@ -4493,16 +15732,19 @@ manifest file, see Deploying and Retrieving Metadata with the Zip File.
 Represents criteria for determining when an animation is displayed to Path users.This type extends the Metadata metadata type and
 inherits its `fullName` field.
 
+
+Metadata Types AnimationRule
+
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
 
 File Suffix and Directory Location
 
-### AnimationRule components have the suffix animationRule and are stored in the animationRules folder.
+AnimationRule components have the suffix `animationRule` and are stored in the `animationRules` folder.
 
 Version
 
-### AnimationRule components are available in API version 46.0 and later.
+AnimationRule components are available in API version 46.0 and later.
 
 Fields
 
@@ -4522,11 +15764,6 @@ user selects the designated picklist values in a path. Valid values are:
 A value of `always` triggers an animation every time. The values
 `often`, `sometimes`, and `rarely` trigger an animation progressively
 less frequently.
-
-
-Metadata Types AnimationRule
-
-**Field Name** **Field Type** **Description**
 
 `developerName` string Required. The developer name for the animation rule.
 
@@ -4552,6 +15789,11 @@ displayed.
 
 `targetField` string Required. Name of the field used to determine when to display an
 animation.
+
+
+### Metadata Types AppFrameworkTemplateBundle
+
+**Field Name** **Field Type** **Description**
 
 `targetFieldChangeToValues` string
 
@@ -4605,23 +15847,17 @@ The following is an example `package.xml` that references the AnimationRule comp
 
    </types>
 
-```
+   <types>
 
+     <members>AnimationRule_Developer_Name</members>
 
-### Metadata Types AppFrameworkTemplateBundle
+     <name>AnimationRule</name>
 
-```
-      <types>
+   </types>
 
-        <members>AnimationRule_Developer_Name</members>
+   <version>46.0</version>
 
-        <name>AnimationRule</name>
-
-      </types>
-
-      <version>46.0</version>
-
-   </Package>
+</Package>
 
 ```
 
@@ -4638,11 +15874,13 @@ Parent Type
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
+
+Metadata Types AppFrameworkTemplateBundle
+
 File Suffix and Directory Location
 
 An app framework template bundle is a folder that contains definition files for a template. Unlike other metadata components, a
-### AppFrameworkTemplateBundle component isn’t represented with a single component file, but instead by a collection of JSON and
-
+AppFrameworkTemplateBundle component isn’t represented with a single component file, but instead by a collection of JSON and
 other definition files. Each definition file represents a resource in a template, such as semantic models, workspaces, visualizations, and
 dashboards. For example, this directory structure shows the hierarchy of the folders and files for one app framework template definition,
 myTemplate.
@@ -4677,9 +15915,6 @@ subfolder under the `appTemplate` folder and named with the template's fully qua
 a template-info.json file to specify the metadata about the template and the references to other definition files. An entire bundle doesn’t
 have a suffix and definition files can have one of the these suffixes.
 
-
-Metadata Types AppFrameworkTemplateBundle
-
 Version
 
 AppFrameworkTemplateBundle components are available in API version 64.0 and later.
@@ -4695,6 +15930,20 @@ Fields
 ```
 assetVersion
 
+```
+
+**Field Type**
+double
+
+**Description**
+The API version of the template bundle.
+
+
+Metadata Types AppFrameworkTemplateBundle
+
+**Field Name** **Description**
+
+```
 description
 
 label
@@ -4705,13 +15954,11 @@ templateBadgeIcon
 
 templateStatus
 
+templateSubtype
+
+templateType
+
 ```
-
-**Field Type**
-double
-
-**Description**
-The API version of the template bundle.
 
 **Field Type**
 string
@@ -4745,18 +15992,6 @@ string
 **Description**
 The status of the template.
 
-
-### Metadata Types ArticleType
-
-**Field Name** **Description**
-
-```
-templateSubtype
-
-templateType
-
-```
-
 **Field Type**
 string
 
@@ -4778,24 +16013,30 @@ This is an example `package.xml` that references the previous definition.
 
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 
-<types>
+```
 
-   <members>myTemplate</members>
 
-   <name>AppFrameworkTemplateBundle</name>
+### Metadata Types ArticleType
 
-</types>
+```
+   <types>
 
-<version>64.0</version>
+      <members>myTemplate</members>
 
-</Package>
+      <name>AppFrameworkTemplateBundle</name>
+
+   </types>
+
+   <version>64.0</version>
+
+   </Package>
 
 ```
 
 Wildcard Support in the Manifest File
 
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about the manifest
-[file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/file_based_zip_file.htm)
+[file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/file_based_zip_file.htm)
 
 ### ArticleType
 
@@ -4809,9 +16050,6 @@ its particular content. User access to article types is controlled by permission
 “Read,” “Edit,” or “Delete” permissions to users. For example, the article manager can allow internal users to read, create, and edit FAQ
 [article types, but let partner users only read FAQs. See “Knowledge Article Types” in the Salesforce online help and Knowledge in the](https://help.salesforce.com/s/articleView?id=service.knowledge_article_types_manage.htm&type=5&language=en_US)
 _SOAP API Developer Guide_ .
-
-
-Metadata Types ArticleType
 
 Declarative Metadata File Suffix and Directory Location
 
@@ -4850,7 +16088,10 @@ of the article type to which they belong. This is shown in the following sample 
 
 Version
 
-ArticleTypes are available in API version 19.0 and later.
+### ArticleTypes are available in API version 19.0 and later.
+
+
+Metadata Types ArticleType
 
 Fields
 
@@ -4891,11 +16132,6 @@ gender.
 
 `pluralLabel` string Plural version of the `label` value.
 
-
-Metadata Types ArticleType
-
-**Field Name** **Field Type** **Description**
-
 `startsWith` StartsWith (enumeration of
 type string)
 
@@ -4911,7 +16147,7 @@ filterable, and nillable.
 **Field Name** **Field Type** **Description**
 
 `articleTypeTemplates` ArticleTypeTemplate on page Indicates which article-type template applies in the specified channel.
-378[]
+381[]
 
 ArticleTypeTemplate
 
@@ -4927,15 +16163,17 @@ Sets the article-type template for a specific channel. If not specified, the def
 
 **•** `Pkb` : the public knowledge base.
 
+
+Metadata Types ArticleType
+
+**Field Name** **Field Type** **Description**
+
 **•** `Csp` : the Customer Portal.
 
 **•** `Prm` : the partner portal.
 
-`page` string
-
-Represents the name of the custom Visualforce page used as a custom
-article-type template. Use this field when you select `Page` in the
-template field.
+`page` string Represents the name of the custom Visualforce page used as a custom
+article-type template. Use this field when you select template
 
 `template` string Indicates the article-type template used for the specified channel:
 
@@ -4951,18 +16189,12 @@ Declarative Metadata Sample Definitions
 A sample article type definition follows:
 
 ```
-<?xml version="1.0" encoding="UTF-8"?>
+   <?xml version="1.0" encoding="UTF-8"?>
 
-<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+   <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
 
-   <articleTypeChannelDisplay>
+      <articleTypeChannelDisplay>
 
-```
-
-
-Metadata Types ArticleType
-
-```
         <articleTypeTemplates>
 
            <channel>App</channel>
@@ -5021,12 +16253,16 @@ Metadata Types ArticleType
 
 ```
 
+
+#### Metadata Types ArticleType Layout
+
 Wildcard Support in the Manifest File
 
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-ArticleType Layout
+#### ArticleType Layout
+
 Represents the metadata associated with an article type page layout. Article type layouts determine which fields users can view and
 edit when entering data for an article. Article type layouts also determine which sections appear when users view articles.
 
@@ -5042,19 +16278,18 @@ custom field definitions.
 
 SEE ALSO:
 
-ArticleType Layout
+#### ArticleType Layout
 
 ArticleType CustomField
 
-
-#### Metadata Types ArticleType Layout ArticleType Layout
+#### ArticleType Layout
 
 Represents the metadata associated with an article type page layout. Article type layouts determine which fields users can view and edit
 when entering data for an article. Article type layouts also determine which sections appear when users view articles.
 
 The format of the article, for example whether layout sections display as subtabs or as a single page with links, is defined by the article-type
 template. Each article type has only one layout, but you can choose a different template for each of the article type's four channels. See
-[Knowledge in](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_guidelines_knowledge.htm) _SOAP API Developer Guide_ .
+[Knowledge in](https://developer.salesforce.com/docs/atlas.en-us.262.0.api.meta/api/sforce_api_guidelines_knowledge.htm) _SOAP API Developer Guide_ .
 
 File Suffix and Directory Location
 
@@ -5071,6 +16306,9 @@ Fields
 
 `layoutSections` LayoutSection[] The main sections of the layout containing the article fields. The
 order here determines the layout order.
+
+
+Metadata Types ArticleType Layout
 
 LayoutSection
 
@@ -5103,9 +16341,6 @@ string)
 
 LayoutColumn represents the items in a column within a layout section.
 
-
-Metadata Types ArticleType Layout
-
 **Field Name** **Field Type** **Description**
 
 `layoutItems` LayoutItem[] The individual items within a column (ordered from top to bottom).
@@ -5123,26 +16358,32 @@ Declarative Metadata Sample Definition
 The following is the definition of an ArticleType page layout:
 
 ```
-   <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-   <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
+<Layout xmlns="http://soap.sforce.com/2006/04/metadata">
 
-      <layoutSections>
+   <layoutSections>
 
-        <customLabel>true</customLabel>
+     <customLabel>true</customLabel>
 
-        <label>Description</label>
+     <label>Description</label>
 
-        <layoutColumns>
+     <layoutColumns>
 
-           <layoutItems>
+        <layoutItems>
 
-             <field>description__c</field>
+          <field>description__c</field>
 
-           </layoutItems>
+        </layoutItems>
 
-           <layoutItems>
+        <layoutItems>
 
+```
+
+
+#### Metadata Types ChannelLayout
+
+```
              <field>dateTime__c</field>
 
            </layoutItems>
@@ -5181,8 +16422,7 @@ ArticleType
 
 ArticleType CustomField
 
-
-#### Metadata Types ChannelLayout ChannelLayout
+#### ChannelLayout
 
 Represents the metadata associated with a communication channel layout. Communication channel layouts let admins share article
 content inline into communication channels (for example, in email publishers, Experience Builder sites, or social media publishers).
@@ -5213,6 +16453,11 @@ later.
 `doesExcludeFiles` boolean Indicates whether related files are left off emails ( `true` ) or attached to
 emails ( `false` ). The default is `false`, meaning related files are
 
+
+Metadata Types ChannelLayout
+
+**Field Name** **Field Type** **Description**
+
 attached. Available when Lightning Knowledge is enabled in API version
 48.0 and later.
 
@@ -5224,15 +16469,11 @@ is enabled in API version 47.0 and later, `Chat`, `Messaging`, and
 
 `label` string Required. The label for this configuration.
 
-#### layoutItems ChannelLayoutItem The article fields contained in the layout. The order here determines the
-
-on page 383[] field order.
+`layoutItems` ChannelLayoutItem The article fields contained in the layout. The order here determines the
+on page 386[] field order.
 
 `recordType` string The name of the record type that the channel layout applies to. The
 default is the primary record type. Available in API version 41.0 and later.
-
-
-#### Metadata Types ArticleType CustomField
 
 ChannelLayoutItem
 
@@ -5291,6 +16532,12 @@ The following is an example `package.xml` that references the previous definitio
 
         <name>ChannelLayout</name>
 
+```
+
+
+#### Metadata Types ArticleType CustomField
+
+```
       </types>
 
       <version>41.0</version>
@@ -5312,9 +16559,6 @@ Always specify the full name whenever you create or update a custom field. For e
    MyArticleType__kav.MyCustomField__c
 
 ```
-
-
-Metadata Types ArticleType CustomField
 
 Declarative Metadata File Suffix and Directory Location
 
@@ -5355,6 +16599,9 @@ Note: If you create a knowledge validation rule, the errors always display at th
 field. Therefore, write the errors descriptively so authors know how to satisfy the validation rule. For example, identify which field
 is causing the error. The Salesforce Classic user interface does not support field level error messages for articles.
 
+
+Metadata Types ArticleType CustomField
+
 **Field Name** **Field Type** **Description**
 
 `defaultValue` string If specified, represents the default value of the field. This field
@@ -5382,11 +16629,6 @@ For more information on lookup relationships, see "Object
 Relationships" in Salesforce Help.
 
 `description` string Description of the field.
-
-
-Metadata Types ArticleType CustomField
-
-**Field Name** **Field Type** **Description**
 
 `formula` string If specified, represents a formula on the field.
 
@@ -5434,6 +16676,11 @@ YourObject, the relationship name might be YourObjects.
 `required` boolean Indicates whether the field requires a value on creation ( `true` )
 or not ( `false` ).
 
+
+Metadata Types ArticleType CustomField
+
+**Field Name** **Field Type** **Description**
+
 `type` FieldType Required. Indicates the field type for the field. Valid values are:
 
 **•** `Checkbox` available in version 30.0 and later
@@ -5457,11 +16704,6 @@ or not ( `false` ).
 **•** `Lookup`
 
 **•** `Number`
-
-
-### Metadata Types ApexClass
-
-**Field Name** **Field Type** **Description**
 
 **•** `Percent`
 
@@ -5516,12 +16758,13 @@ ArticleType
 
 ArticleType Layout
 
-### ApexClass
+
+### Metadata Types ApexClass ApexClass
 
 Represents an Apex class. An Apex class is a template or blueprint from which Apex objects are created. Classes consist of other classes,
 user-defined methods, variables, exception types, and static initialization code.
 
-[For more information, see the Lightning Platform Apex Code Developer's Guide. This type extends the MetadataWithContent metadata](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/)
+[For more information, see the Lightning Platform Apex Code Developer's Guide. This type extends the MetadataWithContent metadata](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/)
 type and inherits its `content` and `fullName` fields.
 
 Note: By default, you can’t deploy updates to an Apex class if there are one or more active jobs for that class. To deploy updates
@@ -5530,9 +16773,6 @@ in this case, do one of the following.
 **•** Cancel Apex jobs before deploying changes to Apex code. Reschedule the jobs after the deployment.
 
 **•** Enable deployments with Apex jobs in the Salesforce user interface in the Deployment Settings page.
-
-
-Metadata Types ApexClass
 
 Supported Calls
 
@@ -5571,13 +16811,18 @@ underscore (_) character, must start with a letter, and can’t end with an
 underscore or contain two consecutive underscore characters. This field is
 inherited from the Metadata component.
 
+
+Metadata Types ApexClass
+
+**Field Name** **Field Type** **Description**
+
 `packageVersions` PackageVersion[]
 
 The list of installed managed package versions that are referenced by this Apex
 class.
 
-[For more information about managed packages, see Second-Generation](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_dev2gp.htm)
-[Managed Packages in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_dev2gp.htm) _Salesforce DX Developer Guide_ . This field is available in
+[For more information about managed packages, see Second-Generation](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_dev2gp.htm)
+[Managed Packages in the](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_dev2gp.htm) _Salesforce DX Developer Guide_ . This field is available in
 API version 16.0 and later.
 
 `status` ApexCodeUnitStatus
@@ -5586,15 +16831,12 @@ The status of the Apex class. The following string values are valid:
 
 **•** `Active`                    - The class is active.
 
-**•** `Deleted`                    - The class is marked for deletion. This value is useful for managed
+**•** `Deleted`                     - The class is marked for deletion. This value is useful for managed
 packages, because it allows a class to be deleted when a managed package
 is updated.
 
 ApexCodeUnitStatus includes an `Inactive` option, but it’s only supported
 for ApexTrigger; it isn’t supported for ApexClass.
-
-
-Metadata Types ApexClass
 
 PackageVersion
 
@@ -5603,7 +16845,7 @@ in a package. The version number has the format _`majorNumber.minorNumber.patchN
 and minor numbers increase to a chosen value during every major release. The _`patchNumber`_ is generated and updated only for a
 patch release. It’s available in API version 16.0 and later.
 
-[See Set Package Versions for Apex Classes and Triggers in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_manpkgs_subscriber_version.htm) _Apex Developer Guide_ .
+[See Set Package Versions for Apex Classes and Triggers in the](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/apex_manpkgs_subscriber_version.htm) _Apex Developer Guide_ .
 
 **Field Name** **Field Type** **Description**
 
@@ -5627,6 +16869,9 @@ has a _`majorNumber.minorNumber`_ format.
 
 `minorNumber` int Required. The minor number of the package version. A package version number
 has a _`majorNumber.minorNumber`_ format.
+
+
+### Metadata Types ApexComponent
 
 Declarative Metadata Sample Definition
 
@@ -5665,12 +16910,6 @@ metadata file.
 
    <ApexClass xmlns="http://soap.sforce.com/2006/04/metadata">
 
-```
-
-
-### Metadata Types ApexComponent
-
-```
       <apiVersion>66.0</apiVersion>
 
    </ApexClass>
@@ -5690,7 +16929,7 @@ ApexTrigger
 
 Represents a Visualforce component.
 
-For more information, see Visualforce in Salesforce Help and StaticResource: MetadataWithContent on page 2327
+For more information, see Visualforce in Salesforce Help and StaticResource: MetadataWithContent on page 2360
 
 Declarative Metadata File Suffix and Directory Location
 
@@ -5701,6 +16940,9 @@ Visualforce components are stored in the `components` folder in the correspondin
 Version
 
 Visualforce components are available in API version 12.0 and later.
+
+
+### Metadata Types ApexEmailNotifications
 
 Fields
 
@@ -5727,11 +16969,6 @@ be unique, begin with a letter, not include spaces, not end with an underscore,
 and not contain two consecutive underscores. This field is inherited from the
 Metadata component.
 
-
-### Metadata Types ApexEmailNotifications
-
-**Field Name** **Field Type** **Description**
-
 `label` string Required. The label for this component.
 
 `packageVersions` PackageVersion[]
@@ -5743,8 +16980,8 @@ Package components and Visualforce custom component are distinct concepts.
 A package is comprised of many elements, such as custom objects, Apex classes
 and triggers, and custom pages and components.
 
-[For more information about managed packages, see Second-Generation](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_dev2gp.htm)
-[Managed Packages in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_dev2gp.htm) _Salesforce DX Developer Guide_ . This field is available in
+[For more information about managed packages, see Second-Generation](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_dev2gp.htm)
+[Managed Packages in the](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_dev2gp.htm) _Salesforce DX Developer Guide_ . This field is available in
 API version 16.0 and later.
 
 Wildcard Support in the Manifest File
@@ -5761,6 +16998,9 @@ ApexPage
 The ApexEmailNotifications type allows you to define users and email addresses that receive email for unhandled Apex errors. Flow
 errors can also use this metadata type.
 
+
+Metadata Types ApexEmailNotifications
+
 Declarative Metadata File Suffix and Directory Location
 
 The component filename is `apexEmailNotifications.notifications` . The Apex email notification file is stored in the
@@ -5768,18 +17008,17 @@ The component filename is `apexEmailNotifications.notifications` . The Apex emai
 
 Version
 
-### ApexEmailNotifications components are available in API version 49.0 and later.
+ApexEmailNotifications components are available in API version 49.0 and later.
 
 Fields
 
 **Field Name** **Field Type** **Description**
 
-### apexEmailNotification ApexEmailNotification A specific Apex email notification. You can specify multiple notifications. ApexEmailNotification
+`apexEmailNotification` ApexEmailNotification A specific Apex email notification. You can specify multiple notifications.
+
+ApexEmailNotification
 
 Represents an Apex email notification.
-
-
-Metadata Types ApexEmailNotifications
 
 Note: Each ApexEmailNotification can contain an email or a user but not both.
 
@@ -5815,6 +17054,9 @@ deployed, test1@example.com is deleted, because it's not in the deployed list.
 Note: The ApexEmailNotifications metadata type isn't supported in `destructiveChanges.xml` . To delete specific
 ApexEmailNotification items, deploy a new ApexEmailNotifications without those items. To delete all Apex email notifications in
 an org, deploy an empty list of ApexEmailNotifications.
+
+
+### Metadata Types ApexPage
 
 Declarative Metadata Sample Definition
 
@@ -5862,9 +17104,6 @@ This example uses a wildcard in `package.xml` .
 
 ```
 
-
-### Metadata Types ApexPage
-
 This sample deploys an Apex email notification that notifies a Salesforce user in the org.
 
 ```
@@ -5911,6 +17150,9 @@ Represents a Visualforce page.
 For more information, see _Visualforce_ in Salesforce Help. This type extends the MetadataWithContent metadata type and inherits its
 `content` and `fullName` fields.
 
+
+Metadata Types ApexPage
+
 Declarative Metadata File Suffix and Directory Location
 
 The file suffix is `.page` for the page file. The accompanying metadata file is named _`PageName`_ `-meta.xml` .
@@ -5932,11 +17174,6 @@ This metadata type contains the following fields:
 Required. The API version for this page. Every page has an API version
 specified at creation. This field is available in API version 15.0 and later.
 If you set this field to a number lower than 15.0, it’s changed to 15.0.
-
-
-Metadata Types ApexPage
-
-**Field Name** **Field Type** **Description**
 
 `content` base64Binary The page content. Base 64-encoded binary data. Before making an
 API call, client applications must encode the binary attachment data
@@ -5977,13 +17214,18 @@ inaccessible.
 
 `label` string Required. The label for this page.
 
+
+### Metadata Types ApexTestSuite
+
+**Field Name** **Field Type** **Description**
+
 `packageVersions` PackageVersion[]
 
 The list of installed managed package versions that are referenced by
 this Visualforce page.
 
 For more information about managed packages, see
-[Second-Generation Managed Packages in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_dev2gp.htm) _Salesforce DX Developer_
+[Second-Generation Managed Packages in the](https://developer.salesforce.com/docs/atlas.en-us.262.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_dev2gp.htm) _Salesforce DX Developer_
 _Guide_ . This field is available in API version 16.0 and later.
 
 Declarative Metadata Sample Definition
@@ -6003,21 +17245,18 @@ This is your new Page.
 
 ```
 
-
-### Metadata Types ApexTestSuite
-
 `SampleApexPage.page-meta.xml` :
 
 ```
-   <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-   <ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
+<ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
 
-      <description>This is a sample Visualforce page.</description>
+   <description>This is a sample Visualforce page.</description>
 
-      <label>SampleApexPage</label>
+   <label>SampleApexPage</label>
 
-   </ApexPage>
+</ApexPage>
 
 ```
 
@@ -6041,6 +17280,9 @@ File Suffix and Directory Location
 Version
 
 ### ApexTestSuite components are available in API version 38.0 and later.
+
+
+Metadata Types ApexTestSuite
 
 Fields
 
@@ -6067,12 +17309,6 @@ that don’t originate from managed packages.
 
        <!-- A*Class adds AClass, AnotherClass, AwesomeClass, and so on. -->
 
-```
-
-
-### Metadata Types ApexTrigger
-
-```
      <testClassName> Namespace1.NamespacedTestClass </testClassName>
 
      <testClassName>*</testClassName> <!-- Adds all local tests. -->
@@ -6135,6 +17371,12 @@ the `ApexClass` type in `package.xml` .
 
      </types>
 
+```
+
+
+### Metadata Types ApexTrigger
+
+```
      <version>38.0</version>
 
    </Package>
@@ -6153,9 +17395,6 @@ such as before object records are inserted into the database, or after records h
 
 For more information, see “Manage Apex Triggers” in Salesforce Help. This type extends the MetadataWithContent metadata type and
 inherits its `content` and `fullName` fields.
-
-
-Metadata Types ApexTrigger
 
 Supported Calls
 
@@ -6190,6 +17429,11 @@ underscore (_) character, must start with a letter, and can’t end with an
 underscore or contain two consecutive underscore characters. This field is
 inherited from the Metadata component.
 
+
+### Metadata Types AppMenu
+
+**Field Name** **Field Type** **Description**
+
 `packageVersions` PackageVersion[]
 
 The list of installed managed package versions that are referenced by this Apex
@@ -6204,14 +17448,11 @@ and later.
 
 **•** `Active`                    - The trigger is active.
 
-**•** `Inactive`                    - The trigger is inactive, but not deleted.
+**•** `Inactive`                     - The trigger is inactive, but not deleted.
 
-**•** `Deleted`                    - The trigger is marked for deletion. Useful for managed packages,
+**•** `Deleted`                     - The trigger is marked for deletion. Useful for managed packages,
 because it allows a trigger to be deleted when a managed package is
 updated.
-
-
-### Metadata Types AppMenu
 
 Declarative Metadata Sample Definition
 
@@ -6221,26 +17462,26 @@ The following sample creates the `MyhelloWorld.trigger` trigger, and the corresp
 `MyHelloWorld.trigger` file:
 
 ```
-   trigger helloWorldAccountTrigger on Account (before insert) {
+trigger helloWorldAccountTrigger on Account (before insert) {
 
-     Account[] accs = Trigger.new;
+  Account[] accs = Trigger.new;
 
-     MyHelloWorld.addHelloWorld(accs);
+  MyHelloWorld.addHelloWorld(accs);
 
-   }
+}
 
 ```
 
 `MyHelloWorld.trigger-meta.xml` :
 
 ```
-   <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-   <ApexTrigger xmlns="http://soap.sforce.com/2006/04/metadata">
+<ApexTrigger xmlns="http://soap.sforce.com/2006/04/metadata">
 
-      <apiVersion>66.0</apiVersion>
+   <apiVersion>66.0</apiVersion>
 
-   </ApexTrigger>
+</ApexTrigger>
 
 ```
 
@@ -6257,9 +17498,10 @@ ApexClass
 
 Represents the app menu or the Salesforce mobile navigation menu. Reserved for future use.
 
-### AppointmentAssignmentPolicy
 
-Represents the information about a resource assignment rule.This type extends the Metadata metadata type and inherits its `fullName`
+### Metadata Types AppointmentAssignmentPolicy AppointmentAssignmentPolicy
+
+Represents the information about a resource assignment rule. This type extends the Metadata metadata type and inherits its `fullName`
 field.
 
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
@@ -6274,9 +17516,6 @@ folder.
 Version
 
 AppointmentSchedulingPolicy components are available in API version 53.0 and later.
-
-
-Metadata Types AppointmentAssignmentPolicy
 
 Fields
 
@@ -6317,6 +17556,12 @@ The following is an example of an appointmentAssignmentPolicy component.
 
      <policyType>loadBalancing</policyType>
 
+```
+
+
+### Metadata Types AppointmentSchedulingPolicy
+
+```
      <policyApplicableDuration>Weekly</policyApplicableDuration>
 
      <utilizationFactor>TotalAppointmentDuration</utilizationFactor>
@@ -6351,8 +17596,7 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-
-### Metadata Types AppointmentSchedulingPolicy AppointmentSchedulingPolicy
+### AppointmentSchedulingPolicy
 
 Represents a set of rules for scheduling appointments using Lightning Scheduler. This type extends the Metadata metadata type and
 inherits its `fullName` field.
@@ -6380,6 +17624,11 @@ Fields
 
 `appointmentAssignmentPolicy` string The name of the appointment assignment policy. This field is available
 in API version 53.0 and later.
+
+
+Metadata Types AppointmentSchedulingPolicy
+
+**Field Name** **Field Type** **Description**
 
 `appointmentStartTimeInterval` picklist Required. The proposed time interval in minutes between appointment
 start times. For example, if you set the interval to `15`, appointments can
@@ -6410,11 +17659,6 @@ then begin at the top of the hour and at 15-minute intervals thereafter
 **•** `180`
 
 **•** `240`
-
-
-Metadata Types AppointmentSchedulingPolicy
-
-**Field Name** **Field Type** **Description**
 
 **•** `300`
 
@@ -6448,6 +17692,19 @@ is available in API version 54.0 and later.
 
 `shouldConsiderCalendarEvents` boolean
 
+Required. Indicates whether to check the external calendar for resource
+availability ( `true` ) or not ( `false` ). This field is available in API version
+53.0 and later.
+
+Required. Indicates whether to consider events on the Salesforce calendar
+to determine the availability of service resources to be assigned to
+appointments ( `true` ) or not ( `false` ).
+
+
+Metadata Types AppointmentSchedulingPolicy
+
+**Field Name** **Field Type** **Description**
+
 `shouldEnforceExcludedResource` boolean
 
 `shouldEnforceRequiredResource` boolean
@@ -6458,13 +17715,9 @@ is available in API version 54.0 and later.
 
 `shouldRespectVisitingHours` boolean
 
-Required. Indicates whether to check the external calendar for resource
-availability ( `true` ) or not ( `false` ). This field is available in API version
-53.0 and later.
+`shouldUsePrimaryMembers` boolean
 
-Required. Indicates whether to consider events on the Salesforce calendar
-to determine the availability of service resources to be assigned to
-appointments ( `true` ) or not ( `false` ).
+`shouldUseSecondaryMembers` boolean
 
 Required. Indicates whether this appointment scheduling policy prevents
 excluded service resources from being assigned to appointments ( `true` )
@@ -6485,15 +17738,6 @@ be assigned to appointments ( `true` ) or not ( `false` ).
 Required. Indicates whether this appointment scheduling policy prevents
 users from scheduling appointments outside of an account’s visiting
 hours ( `true` ) or not ( `false` ).
-
-
-Metadata Types AppointmentSchedulingPolicy
-
-**Field Name** **Field Type** **Description**
-
-`shouldUsePrimaryMembers` boolean
-
-`shouldUseSecondaryMembers` boolean
 
 Required. Indicates whether this appointment scheduling policy allows
 only service resources who are primary members of a service territory
@@ -6542,22 +17786,25 @@ The following is an example of an appointmentSchedulingPolicy component.
 
 The following is an example `package.xml` that references the previous definition.
 
+
+### Metadata Types ApprovalProcess
+
 ```
-<?xml version="1.0" encoding="UTF-8"?>
+   <?xml version="1.0" encoding="UTF-8"?>
 
- <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 
-  <types>
+     <types>
 
-   <members>sample</members>
+      <members>sample</members>
 
-   <name>AppointmentSchedulingPolicy</name>
+      <name>AppointmentSchedulingPolicy</name>
 
-  </types>
+     </types>
 
-  <version>47.0</version>
+     <version>47.0</version>
 
- </Package>
+   </Package>
 
 ```
 
@@ -6566,8 +17813,7 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-
-### Metadata Types ApprovalProcess ApprovalProcess
+### ApprovalProcess
 
 Represents the metadata associated with an approval process. An approval process automates how records are approved in Salesforce.
 An approval process specifies each step of approval, including who to request approval from and what to do at each point of the process.
@@ -6599,13 +17845,18 @@ Fields
 
 `active` boolean
 
-`allowRecall` boolean
-
 Required. Whether the approval process is active.
 
 After an approval process is activated, you can’t add, delete,
 or change the order of the steps or change its reject or skip
 behavior, even if the process is inactive.
+
+
+Metadata Types ApprovalProcess
+
+**Field Name** **Field Type** **Description**
+
+`allowRecall` boolean
 
 Whether to allow submitters to recall approval requests.
 
@@ -6627,12 +17878,6 @@ the approval page displays the following:
 
 If you enable notifications in the Salesforce mobile app, keep
 in mind that approvers can view this list of fields on a mobile
-
-
-Metadata Types ApprovalProcess
-
-**Field Name** **Field Type** **Description**
-
 device. Select only the fields necessary for users to decide
 whether to approve or reject records.
 
@@ -6675,6 +17920,11 @@ to overwrite an existing approval process with entry criteria,
 then the entry criteria from the existing process are applied
 to the deployed process.
 
+
+Metadata Types ApprovalProcess
+
+**Field Name** **Field Type** **Description**
+
 `finalApprovalActions` ApprovalAction Specifies which workflow actions to execute when all required
 approvals have been given for a record.
 
@@ -6691,11 +17941,6 @@ Default: `false` .
 initially submitted for approval.
 
 `label` string Required. Name of the approval process.
-
-
-Metadata Types ApprovalProcess
-
-**Field Name** **Field Type** **Description**
 
 `nextAutomatedApprover` NextAutomatedApprover
 
@@ -6742,6 +17987,11 @@ permission for the given object
 the record through user permissions and the
 organization-wide sharing defaults for the given object
 
+
+Metadata Types ApprovalProcess
+
+**Field Name** **Field Type** **Description**
+
 `showApprovalHistory` boolean Whether to add the Approval History related list to the
 approval page, which is where the approver can view the
 
@@ -6756,9 +18006,6 @@ to customize the page layouts for the given object.
 ApprovalSubmitter
 
 Represents a user or set of users who can submit records for approval.
-
-
-Metadata Types ApprovalProcess
 
 **Field Name** **Field Type** **Description**
 
@@ -6822,6 +18069,11 @@ string)
 
 **•** `portalRole`
 
+
+Metadata Types ApprovalProcess
+
+**Field Name** **Field Type** **Description**
+
 **•** `portalRoleSubordinates`
 
 **•** `allInternalUsers` —all Salesforce users in the organization
@@ -6835,9 +18087,6 @@ or reject the record.
 
 `field` string[] An array of fields that are displayed on the page for the approver to approve
 or reject the record.
-
-
-Metadata Types ApprovalProcess
 
 ApprovalStep
 
@@ -6875,6 +18124,11 @@ process.
 `entryCriteria` ApprovalEntryCriteria Determines which records can enter this step of the approval
 process.
 
+
+Metadata Types ApprovalProcess
+
+**Field Name** **Field Type** **Description**
+
 `ifCriteriaNotMet` StepCriteriaNotMetType Specifies what to do for records that don't meet the entry
 (enumeration of type string) criteria. Valid values are:
 
@@ -6898,11 +18152,6 @@ only underscores and alphanumeric characters, begin with a
 letter, not include spaces, not end with an underscore, and not
 contain two consecutive underscores. The requirement for
 uniqueness is only within the specific approval process.
-
-
-Metadata Types ApprovalProcess
-
-**Field Name** **Field Type** **Description**
 
 `rejectBehavior` ApprovalStepRejectBehavior Required, except for the first step in the approval process.
 Specifies what happens if the approver rejects the request
@@ -6933,6 +18182,11 @@ Represents the assigned approvers for an approval step. Each step supports up to
 
 `approver` Approver[] An array of assigned approvers for this step of the approval process.
 
+
+Metadata Types ApprovalProcess
+
+**Field Name** **Field Type** **Description**
+
 ```
 whenMultipleApprovers
 
@@ -6960,11 +18214,6 @@ the following and the `name` is ignored:
 **•** `adhoc`
 
 **•** `userHierarchyField`
-
-
-Metadata Types ApprovalProcess
-
-**Field Name** **Field Type** **Description**
 
 ```
 type
@@ -7003,6 +18252,11 @@ but not both.
 
 `booleanFilter` string Filter logic for `criteriaItems` . Exclude this field if you enter a `formula` .
 
+
+Metadata Types ApprovalProcess
+
+**Field Name** **Field Type** **Description**
+
 `criteriaItems` FilterItem[]
 
 Filter criteria that a record must meet to enter the approval process or approval
@@ -7026,11 +18280,6 @@ For the first step in the approval process, the reject behavior is determined by
 **•** `RejectRequest` —Rejects the request even if previous steps were approved.
 Salesforce performs all rejection actions specified for this step and all final rejection
 actions.
-
-
-Metadata Types ApprovalProcess
-
-**Field Name** **Field Type** **Description**
 
 **•** `BackToPrevious` —Rejects the request, and returns the approval request to
 the previous approver. Salesforce performs all rejection actions specified for this
@@ -7056,6 +18305,9 @@ which user to assign as the approver. For example, the standard
 
 `Manager` hierarchy field can be used to assign approvers for employee
 PTO (paid time off) requests.
+
+
+Metadata Types ApprovalProcess
 
 Declarative Metadata Sample Definition
 
@@ -7104,12 +18356,6 @@ The following is an example of an ApprovalProcess component:
 
         <field>Name</field>
 
-```
-
-
-Metadata Types ApprovalProcess
-
-```
         <field>Owner</field>
 
         <field>MyLeadCustomField__c</field>
@@ -7170,6 +18416,12 @@ Metadata Types ApprovalProcess
 
       </approvalStep>
 
+```
+
+
+Metadata Types ApprovalProcess
+
+```
       <approvalStep>
 
         <allowDelegate>false</allowDelegate>
@@ -7218,12 +18470,6 @@ Metadata Types ApprovalProcess
 
            <type>RejectRequest</type>
 
-```
-
-
-Metadata Types ApprovalProcess
-
-```
         </rejectBehavior>
 
       </approvalStep>
@@ -7284,6 +18530,12 @@ Metadata Types ApprovalProcess
 
       <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
 
+```
+
+
+Metadata Types ApprovalProcess
+
+```
       <entryCriteria>
 
         <criteriaItems>
@@ -7332,12 +18584,6 @@ Metadata Types ApprovalProcess
 
         </action>
 
-```
-
-
-### Metadata Types AssignmentRules
-
-```
       </finalRejectionActions>
 
       <finalRejectionRecordLock>false</finalRejectionRecordLock>
@@ -7394,6 +18640,9 @@ Metadata Types ApprovalProcess
 
 ```
 
+
+### Metadata Types AssignmentRules
+
 Wildcard Support in the Manifest File
 
 Use the wildcard character `*` (asterisk) in the `package.xml` manifest file to retrieve all approval processes for all objects. You can’t
@@ -7432,12 +18681,8 @@ this syntax:
 
 ```
 
-
-Metadata Types AssignmentRules
-
 You can also access specific assignment rules for an object. The following example only accesses the “samplerule” and “newrule”
-assignment rules on the Case object. Notice that for this example the type name syntax is `AssignmentRule` and not
-`AssignmentRules` .
+### assignment rules on the Case object. Notice that for this example the type name syntax is AssignmentRule and not AssignmentRules .
 
 ```
       <types>
@@ -7459,13 +18704,16 @@ all Case assignment rules are stored in the `Case.assignmentRules` file.
 
 Version
 
-AssignmentRules components are available in API version 27.0 and later.
+### AssignmentRules components are available in API version 27.0 and later.
 
 Fields
 
 **Field Name** **Field Type** **Description**
 
 `assignmentRule` AssignmentRule[] Represents the definitions of the named assignment rules.
+
+
+Metadata Types AssignmentRules
 
 AssignmentRule
 
@@ -7491,9 +18739,6 @@ rule.
 RuleEntry
 
 Represents the fields used by the rule.
-
-
-Metadata Types AssignmentRules
 
 **Field Name** **Field Type** **Description**
 
@@ -7531,6 +18776,11 @@ assignment is done `true` ) or if the current team is added
 to the case instead of replacing the previous team ( `false` ).
 
 `team` string[] The name of the case team. It can occur 0 or more times.
+
+
+Metadata Types AssignmentRules
+
+**Field Name** **Field Type** **Description**
 
 `template` string
 
@@ -7573,45 +18823,39 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
         <template>emailtemplate</template>
 
-```
+     </ruleEntry>
 
+   </assignmentRule>
 
-### Metadata Types AssessmentQuestion
+   <assignmentRule>
 
-```
-        </ruleEntry>
+     <fullName>Another samplerule</fullName>
 
-      </assignmentRule>
+     <active>false</active>
 
-      <assignmentRule>
+     <ruleEntry>
 
-        <fullName>Another samplerule</fullName>
+        <assignedTo>otherUser@org.com</assignedTo>
 
-        <active>false</active>
+        <assignedToType>User</assignedToType>
 
-        <ruleEntry>
+        <criteriaItems>
 
-           <assignedTo>otherUser@org.com</assignedTo>
+          <field>Case.IsEscalated</field>
 
-           <assignedToType>User</assignedToType>
+          <operation>equals</operation>
 
-           <criteriaItems>
+          <value>False</value>
 
-             <field>Case.IsEscalated</field>
+        </criteriaItems>
 
-             <operation>equals</operation>
+        <template>emailtemplate</template>
 
-             <value>False</value>
+     </ruleEntry>
 
-           </criteriaItems>
+   </assignmentRule>
 
-           <template>emailtemplate</template>
-
-        </ruleEntry>
-
-      </assignmentRule>
-
-   </AssignmentRules>
+</AssignmentRules>
 
 ```
 
@@ -7620,7 +18864,8 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-### AssessmentQuestion
+
+### Metadata Types AssessmentQuestion AssessmentQuestion
 
 Represents the container object that stores the questions required for an assessment.
 
@@ -7645,33 +18890,19 @@ Fields
 ```
 assessmentQuestionVersion
 
-```
-
-**Field Type**
-### AssessmentQuestionVersion
-
-
-Metadata Types AssessmentQuestion
-
-**Field Name** **Description**
-
-**Description**
-The object that stores the question versions for the assessment questions.
-
-```
 dataType
 
 developerName
 
 displayTextCategory
 
-formulaResponseDataType
-
-name
-
-questionCategory
-
 ```
+
+**Field Type**
+### AssessmentQuestionVersion
+
+**Description**
+The object that stores the question versions for the assessment questions.
 
 **Field Type**
 string
@@ -7696,8 +18927,24 @@ underscores.
 **Field Type**
 string
 
+
+Metadata Types AssessmentQuestion
+
+**Field Name** **Description**
+
 **Description**
 Specifies the category of the display text when the data type is Text Block.
+
+```
+formulaResponseDataType
+
+name
+
+questionCategory
+
+relatedQuestion
+
+```
 
 **Field Type**
 string
@@ -7723,16 +18970,6 @@ Required.
 
 Stores the question category.
 
-
-Metadata Types AssessmentQuestion
-
-**Field Name** **Description**
-
-```
-relatedQuestion
-
-```
-
 **Field Type**
 string
 
@@ -7750,14 +18987,6 @@ additionalInformation
 
 description
 
-guidanceInformation
-
-helpText
-
-isActive
-
-name
-
 ```
 
 **Field Type**
@@ -7771,6 +19000,28 @@ string
 
 **Description**
 The description for the assessment question. This text isn’t rendered on the assessment.
+
+
+Metadata Types AssessmentQuestion
+
+**Field Name** **Description**
+
+```
+guidanceInformation
+
+helpText
+
+isActive
+
+name
+
+optionSourceResponseValue
+
+questionText
+
+responseValues
+
+```
 
 **Field Type**
 string
@@ -7798,28 +19049,10 @@ The default value is `false` .
 **Field Type**
 string
 
-
-Metadata Types AssessmentQuestion
-
-**Field Name** **Description**
-
 **Description**
 Required.
 
 Name of the assessment question version record.
-
-```
-optionSourceResponseValue
-
-questionText
-
-responseValues
-
-status
-
-versionNumber
-
-```
 
 **Field Type**
 boolean
@@ -7842,8 +19075,20 @@ on the assessment.
 **Field Type**
 string
 
+
+Metadata Types AssessmentQuestion
+
+**Field Name** **Description**
+
 **Description**
 Holds the values to be defined in the picklist, multiselect picklist, or radio buttons.
+
+```
+status
+
+versionNumber
+
+```
 
 **Field Type**
 string
@@ -7868,61 +19113,61 @@ The following is an example of an AssessmentQuestion component.
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 
-```
+<AssessmentQuestion
 
+ xmlns="http://soap.sforce.com/2006/04/metadata">
 
-Metadata Types AssessmentQuestion
+ <assessmentQuestionVersion>
 
-```
-   <AssessmentQuestion
+  <additionalInformation>ParentQuestionDevName AI</additionalInformation>
 
-    xmlns="http://soap.sforce.com/2006/04/metadata">
+  <description>ParentQuestionDevName Desc</description>
 
-    <assessmentQuestionVersion>
+  <helpText>ParentQuestionDevName HT</helpText>
 
-     <additionalInformation>ParentQuestionDevName AI</additionalInformation>
+  <isActive>true</isActive>
 
-     <description>ParentQuestionDevName Desc</description>
+  <name>ParentQuestionDevName</name>
 
-     <helpText>ParentQuestionDevName HT</helpText>
+  <optionSourceResponseValue>true</optionSourceResponseValue>
 
-     <isActive>true</isActive>
+  <questionText>ParentQuestionDevName Text</questionText>
 
-     <name>ParentQuestionDevName</name>
+  <status>Active</status>
 
-     <optionSourceResponseValue>true</optionSourceResponseValue>
+  <versionNumber>1</versionNumber>
 
-     <questionText>ParentQuestionDevName Text</questionText>
+ </assessmentQuestionVersion>
 
-     <status>Active</status>
+ <dataType>DateTime</dataType>
 
-     <versionNumber>1</versionNumber>
+ <developerName>ParentQuestionDevName</developerName>
 
-    </assessmentQuestionVersion>
+ <name>ParentQuestionDevName</name>
 
-    <dataType>DateTime</dataType>
+ <questionCategory>Demographic</questionCategory>
 
-    <developerName>ParentQuestionDevName</developerName>
-
-    <name>ParentQuestionDevName</name>
-
-    <questionCategory>Demographic</questionCategory>
-
-   </AssessmentQuestion>
+</AssessmentQuestion>
 
 ```
 
 The following is an example `package.xml` that references the previous definition.
 
 ```
-   <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-   <Package
+<Package
 
-    xmlns="http://soap.sforce.com/2006/04/metadata">
+ xmlns="http://soap.sforce.com/2006/04/metadata">
 
-    <types>
+ <types>
 
+```
+
+
+### Metadata Types AssessmentQuestionSet
+
+```
      <members>*</members>
 
      <name>AssessmentQuestion</name>
@@ -7960,9 +19205,6 @@ Before you deploy assessment questions, we recommend that you review these consi
 
 **•** If the Related Question isn’t available in the target org, deploying the assessment question fails.
 
-
-### Metadata Types AssessmentQuestionSet
-
 **•** If an assessment question with the same developer name exists in the target org, deploying the assessment question updates the
 values of the other fields in the target org.
 
@@ -7983,13 +19225,17 @@ Parent Type
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
+
+Metadata Types AssessmentQuestionSet
+
 File Suffix and Directory Location
 
-### AssessmentQuestionSet components have the suffix .AssessmentQuestionSet and are stored in the AssessmentQuestionSets folder.
+AssessmentQuestionSet components have the suffix `.AssessmentQuestionSet` and are stored in the
+`AssessmentQuestionSets` folder.
 
 Version
 
-### AssessmentQuestionSet components are available in API version 55.0 and later.
+AssessmentQuestionSet components are available in API version 55.0 and later.
 
 Fields
 
@@ -7999,6 +19245,8 @@ Fields
 assessmentQuestionDeveloperNames
 
 developerName
+
+name
 
 ```
 
@@ -8019,19 +19267,8 @@ Required.
 
 The developer name for the assessment question set. Can contain only underscores
 and alphanumeric characters and must be unique in your org. It must begin with a
-
-
-Metadata Types AssessmentQuestionSet
-
-**Field Name** **Description**
-
 letter, not include spaces, not end with an underscore, and not contain two consecutive
 underscores.
-
-```
-name
-
-```
 
 **Field Type**
 string
@@ -8054,42 +19291,48 @@ The following is an example of an AssessmentQuestionSet component.
 
  <developerName>QuestionSetDevName</developerName>
 
- <name>QuestionSetName</name>
+```
 
- <assessmentQuestionDeveloperNames>QuestionDevName</assessmentQuestionDeveloperNames>
 
-</AssessmentQuestionSet>
+### Metadata Types Audience
+
+```
+    <name>QuestionSetName</name>
+
+    <assessmentQuestionDeveloperNames>QuestionDevName</assessmentQuestionDeveloperNames>
+
+   </AssessmentQuestionSet>
 
 ```
 
 The following is an example `package.xml` that references the previous definition.
 
 ```
-<?xml version="1.0" encoding="UTF-8"?>
+   <?xml version="1.0" encoding="UTF-8"?>
 
-<Package
+   <Package
 
- xmlns="http://soap.sforce.com/2006/04/metadata">
+    xmlns="http://soap.sforce.com/2006/04/metadata">
 
- <types>
+    <types>
 
-  <members>*</members>
+     <members>*</members>
 
-  <name>AssessmentQuestion</name>
+     <name>AssessmentQuestion</name>
 
- </types>
+    </types>
 
- <types>
+    <types>
 
-  <members>*</members>
+     <members>*</members>
 
-  <name>AssessmentQuestionSet</name>
+     <name>AssessmentQuestionSet</name>
 
- </types>
+    </types>
 
- <version>55.0</version>
+    <version>55.0</version>
 
-</Package>
+   </Package>
 
 ```
 
@@ -8101,9 +19344,6 @@ manifest file, see Deploying and Retrieving Metadata with the Zip File.
 Usage
 
 Before you retrieve assessment question sets, we recommend that you review these considerations.
-
-
-### Metadata Types Audience
 
 **•** When retrieving an assessment question set, if its fields contain values, then the XML definition must contain tags with those values.
 
@@ -8129,13 +19369,16 @@ deploying the assessment question sets inserts the questions in the correct orde
 Represents the audience in an Experience Builder site. An audience consists of different types of criteria, where the audience can be
 assigned and used for targeting in a site. This type extends the Metadata metadata type and inherits its `fullName` field.
 
+
+Metadata Types Audience
+
 File Suffix and Directory Location
 
-### Audience components have the suffix .audience and are stored in the audience folder.
+Audience components have the suffix `.audience` and are stored in the `audience` folder.
 
 Version
 
-### Audience components are available in API version 44.0 and later.
+Audience components are available in API version 44.0 and later.
 
 Special Access Rules
 
@@ -8153,14 +19396,8 @@ Fields
 
 `container` string Required. The name of the site or org that contains the audience.
 
-### criteria AudienceCriteria Required. Criteria in an audience. This field is available in API version 47.0
-
+`criteria` AudienceCriteria Required. Criteria in an audience. This field is available in API version 47.0
 and later.
-
-
-Metadata Types Audience
-
-**Field Name** **Field Type** **Description**
 
 `criterion` AudienceCriterion[]
 
@@ -8204,6 +19441,9 @@ _**`Name`**_ `.audience` .
 `targets` PersonalizationTarget Targets for the audience. This field is available in API version 47.0 and
 Infos later.
 
+
+Metadata Types Audience
+
 AudienceCriteria
 
 Represents criteria for an audience. This subtype is available in API version 47.0 and later.
@@ -8223,16 +19463,7 @@ OR 3. This field is available in API version 45.0 and later.
 
 `criterionValue` AudienceCriteriaValue The value of the criterion.
 
-```
-operator
-
-```
-
-AudienceCriterion The operator associated with this criterion. Valid values are:
-Operator(enumeration
-
-**•** `Equal`
-
+`operator` AudienceCriterionOperator(enumeration The operator associated with this criterion. Valid values are:
 of type string)
 
 **•** `Equal`
@@ -8240,11 +19471,6 @@ of type string)
 **•** `NotEqual`
 
 **•** `GreaterThan`
-
-
-Metadata Types Audience
-
-**Field Name** **Field Type** **Description**
 
 **•** `GreaterThanOrEqual`
 
@@ -8289,6 +19515,9 @@ type string)
 For a list of AudienceCriteriaValue fields that you can use with each
 AudienceCriterion `type` field value, see this table.
 
+
+Metadata Types Audience
+
 AudienceCriteriaValue
 
 Represents the value of a criterion in an audience. For a list of AudienceCriteriaValue fields that you can use with each AudienceCriterion
@@ -8316,11 +19545,6 @@ AudienceCriterion `type` field is `FieldBased` .
 
 `entityType` string Type of object. You can use this field only when the value of the
 AudienceCriterion `type` field is `FieldBased` .
-
-
-Metadata Types Audience
-
-**Field Name** **Field Type** **Description**
 
 `fieldValue` string Value of a field. You can use this field only when the value of the
 AudienceCriterion `type` field is `FieldBased` .
@@ -8363,14 +19587,19 @@ city
 
 country
 
-subdivision
-
 ```
 
-```
-Domain domain
 
-Profile profile
+Metadata Types Audience
+
+**AudienceCriterion Type** **AudienceCriteriaValue Fields**
+
+```
+                                 subdivision
+
+   Domain domain
+
+   Profile profile
 
 ```
 
@@ -8407,9 +19636,6 @@ Represents targets for an audience. This subtype is available in API version 47.
 
 When deploying an audience, you must include ExperienceBundle in your package to support experience variation targets.
 
-
-Metadata Types Audience
-
 **Field Name** **Field Type** **Description**
 
 `target` PersonalizationTarget List of targets for an audience.
@@ -8427,7 +19653,7 @@ Required. Group name of the target. Groups bundle related target and audience
 pairs. You can have up to 2,000 groups and 500 targets per group.
 
 To determine the target group name, see
-h **t** [ps://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_personalization_names.htm](https://developer.salesforce.com/docs/atlas.en-us.260.0.communities_dev.meta/communities_dev/communities_dev_personalization_names.htm)
+h **t** [ps://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_personalization_names.htm](https://developer.salesforce.com/docs/atlas.en-us.262.0.communities_dev.meta/communities_dev/communities_dev_personalization_names.htm)
 in the _Experience Cloud Developer Guide_ .
 
 `priority` int Priority of the target. Within a group, priority determines which target is returned
@@ -8439,6 +19665,11 @@ Supported values include:
 **•** `ExperienceVariation` (API version 47.0 and later)
 
 **•** `NavigationLinkSet` (API version 49.0 and later)
+
+
+Metadata Types Audience
+
+**Field Name** **Field Type** **Description**
 
 **•** `Report` (API version 49.0 and later)
 
@@ -8457,7 +19688,7 @@ variation, such as `ContactSupport_ContactSupportFor`
 `California_Page` for a page variation.
 
 To determine the target developer name, see
-h **t** [ps://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_personalization_names.htm](https://developer.salesforce.com/docs/atlas.en-us.260.0.communities_dev.meta/communities_dev/communities_dev_personalization_names.htm)
+h **t** [ps://developer.salesforce.com/docs/atlas.en-us.communities_dev.meta/communities_dev/communities_dev_personalization_names.htm](https://developer.salesforce.com/docs/atlas.en-us.262.0.communities_dev.meta/communities_dev/communities_dev_personalization_names.htm)
 in the _Experience Cloud Developer Guide_ .
 
 Declarative Metadata Sample Definition
@@ -8473,64 +19704,64 @@ The following is an example of an Audience component.
 
    <container>Customer</container>
 
+   <criteria>
+
+     <criterion>
+
+        <criteriaNumber>1</criteriaNumber>
+
+        <criterionValue>
+
+          <country>United States</country>
+
+          <subdivision>Nevada</subdivision>
+
+        </criterionValue>
+
+        <operator>Equal</operator>
+
+        <type>GeoLocation</type>
+
+     </criterion>
+
+     <criterion>
+
+        <criteriaNumber>2</criteriaNumber>
+
+        <criterionValue>
+
+          <profile>customer community user</profile>
+
+        </criterionValue>
+
+        <operator>Equal</operator>
+
+        <type>Profile</type>
+
+     </criterion>
+
+     <criterion>
+
+        <criteriaNumber>3</criteriaNumber>
+
+        <criterionValue>
+
+          <domain>sampledomain.example.com</domain>
+
+        </criterionValue>
+
+        <operator>Equal</operator>
+
+        <type>Domain</type>
+
+     </criterion>
+
 ```
 
 
 Metadata Types Audience
 
 ```
-      <criteria>
-
-        <criterion>
-
-           <criteriaNumber>1</criteriaNumber>
-
-           <criterionValue>
-
-             <country>United States</country>
-
-             <subdivision>Nevada</subdivision>
-
-           </criterionValue>
-
-           <operator>Equal</operator>
-
-           <type>GeoLocation</type>
-
-        </criterion>
-
-        <criterion>
-
-           <criteriaNumber>2</criteriaNumber>
-
-           <criterionValue>
-
-             <profile>customer community user</profile>
-
-           </criterionValue>
-
-           <operator>Equal</operator>
-
-           <type>Profile</type>
-
-        </criterion>
-
-        <criterion>
-
-           <criteriaNumber>3</criteriaNumber>
-
-           <criterionValue>
-
-             <domain>sampledomain.example.com</domain>
-
-           </criterionValue>
-
-           <operator>Equal</operator>
-
-           <type>Domain</type>
-
-        </criterion>
-
         <criterion>
 
            <criteriaNumber>4</criteriaNumber>
@@ -8585,12 +19816,6 @@ Metadata Types Audience
 
            </criterionValue>
 
-```
-
-
-Metadata Types Audience
-
-```
            <operator>Equal</operator>
 
            <type>Permission</type>
@@ -8643,6 +19868,12 @@ Metadata Types Audience
 
       <targets>
 
+```
+
+
+Metadata Types Audience
+
+```
         <target>
 
            <groupName>c194d79c-5c6b-4c6a-8d14-0e7042564355$#$Branding</groupName>
@@ -8679,9 +19910,6 @@ users accessing sensitive data, use standard Salesforce security features, such 
 
 **Delete targets**
 To delete a single target from an audience, deploy the entire list of targets for the audience minus the one that you want to delete.
-
-
-Metadata Types Audience
 
 To delete all the targets from an audience, deploy the audience with empty targets tags. For example:
 
@@ -8729,6 +19957,9 @@ To delete all the targets from an audience, deploy the audience with empty targe
      </Audience>
 
 ```
+
+
+### Metadata Types AuraDefinitionBundle
 
 **Update an audience without updating targets**
 To update an audience without updating targets, deploy the audience without targets tags. For example:
@@ -8784,9 +20015,6 @@ for the targets.
 To change the priority of a target that affects priority in another audience, deploy both audiences with their entire list of targets with
 the new priority values for the targets.
 
-
-### Metadata Types AuraDefinitionBundle
-
 **Update the target assignment for an audience**
 To reassign a target to a new audience, deploy both audiences with their entire list of targets. Deploy one list with the target removed,
 and the other list with the target added.
@@ -8805,6 +20033,9 @@ File Suffix and Directory Location
 
 An AuraDefinitionBundle component is a folder that contains definition files. Unlike most other metadata components, an
 ### AuraDefinitionBundle component isn’t a single file, it’s a collection of files. Each file represents a resource in a bundle, such as markup,
+
+
+Metadata Types AuraDefinitionBundle
 
 applications, code files (including controllers and helpers), events, documentation, and interfaces. For example, this directory structure
 shows the hierarchy of the folders and files for two bundles: `bundle1` and `bundle2` .
@@ -8833,9 +20064,6 @@ folder. The name of each definition file must start with the bundle name.
 
 A bundle doesn’t have a suffix. Definition files can have one of these suffixes:
 
-
-Metadata Types AuraDefinitionBundle
-
 Each bundle can have only one file each with a suffix of `.app`, `.cmp`, `.design`, `.evt`, `.intf`, or `.tokens` .
 
 Version
@@ -8850,6 +20078,9 @@ metadata type describes an Aura component.
 Special Access Rules
 
 Definitions can be created only in organizations with defined namespaces.
+
+
+Metadata Types AuraDefinitionBundle
 
 Fields
 
@@ -8886,11 +20117,6 @@ bundle references. Available in API version 35.0 and later.
 `styleContent` base64Binary The CSS for the definition.
 
 `SVGContent` base64Binary The SVG image for the definition.
-
-
-Metadata Types AuraDefinitionBundle
-
-**Field Name** **Field Type** **Description**
 
 `testsuiteContent` base64Binary Reserved for internal use.
 
@@ -8933,67 +20159,67 @@ aura
 
 The following samples show the contents of the metadata definition files that correspond to the sample `aura` directory.
 
+
+### Metadata Types AuthProvider
+
 Content of `sampleCmp.cmp` :
 
 ```
-<aura:component>
+   <aura:component>
 
-   <aura:attribute name="val1" type="String" default="Value"/>
+      <aura:attribute name="val1" type="String" default="Value"/>
 
-   <aura:attribute name="val2" type="String" />
+      <aura:attribute name="val2" type="String" />
 
-   <aura:handler name="init" value="{!this}" action="{!c.myAction}"/>
+      <aura:handler name="init" value="{!this}" action="{!c.myAction}"/>
 
-     <ui:outputText value='Hello world!'/>
+        <ui:outputText value='Hello world!'/>
 
-     <ui:outputText value='{!v.val1}'/>
+        <ui:outputText value='{!v.val1}'/>
 
-     <ui:outputText value='{!v.val2}'/>
+        <ui:outputText value='{!v.val2}'/>
 
-</aura:component>
+   </aura:component>
 
 ```
 
 Content of `sampleCmpController.js` :
 
 ```
-({
+   ({
 
-  myAction : function(component) {
+     myAction : function(component) {
 
-   component.set('v.val1','Value1');
+      component.set('v.val1','Value1');
 
-   component.set('v.val2','Value2');
+      component.set('v.val2','Value2');
 
-  }
+     }
 
-})
+   })
 
 ```
 
 This `package.xml` references the definitions of all Lightning components that are present in the `sampleCmp` bundle.
 
 ```
-<?xml version="1.0" encoding="UTF-8"?>
+   <?xml version="1.0" encoding="UTF-8"?>
 
-<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 
-   <types>
+      <types>
 
-     <members>sampleCmp</members>
+        <members>sampleCmp</members>
 
-     <name>AuraDefinitionBundle</name>
+        <name>AuraDefinitionBundle</name>
 
-   </types>
+      </types>
 
-   <version>66.0</version>
+      <version>66.0</version>
 
-</Package>
+   </Package>
 
 ```
-
-
-### Metadata Types AuthProvider
 
 Wildcard Support in the Manifest File
 
@@ -9014,6 +20240,9 @@ Authentication providers are stored in the `authproviders` directory. The file n
 Version
 
 Authentication providers are available in API version 27.0 and later.
+
+
+Metadata Types AuthProvider
 
 Special Access Rules
 
@@ -9050,11 +20279,6 @@ see “Usage.”
 `consumerSecret` string The consumer secret of the app that is registered at the third-party provider.
 After it’s set, you can’t change the value. When using `create()`, this
 
-
-Metadata Types AuthProvider
-
-**Field Name** **Field Type** **Description**
-
 field must be encrypted. To create an encrypted form of the consumer
 secret from plaintext:
 
@@ -9089,6 +20313,12 @@ type string) The control plane is the part of the Anypoint Platform architecture
 
 includes Anypoint Exchange and determines the login URL. If you select
 User-Specified, you must enter the Consumer Key and Consumer Secret.
+
+
+Metadata Types AuthProvider
+
+**Field Name** **Field Type** **Description**
+
 Obtain the values from the MuleSoft connected app that you created to
 store the authentication details for your Salesforce org. Available in API
 version 57.0 and later. Valid values include:
@@ -9122,11 +20352,6 @@ private key generated by Apple. Available in API version 48.0 and later.
 
 `errorUrl` string A custom error URL for the authentication provider to use to report errors.
 
-
-Metadata Types AuthProvider
-
-**Field Name** **Field Type** **Description**
-
 `executionUser` string
 
 `flow` string
@@ -9157,6 +20382,12 @@ in the Authentication Provider User Registration standard flow.
 
 A default account is required to use a flow registration handler to create
 and update external users. You can specify a default account here or in the
+
+
+Metadata Types AuthProvider
+
+**Field Name** **Field Type** **Description**
+
 flow itself. If you use both, the default account that's configured in the flow
 takes precedent.
 
@@ -9190,11 +20421,6 @@ authentication provider. If provided, Salesforce validates the returned
 value with the `access_token` value. Available in API version 30.0 and
 later.
 
-
-Metadata Types AuthProvider
-
-**Field Name** **Field Type** **Description**
-
 `includeOrgIdInIdentifier` boolean Used to differentiate between users with the same user ID from two sources
 (such as two sandboxes). If enabled ( `true` ), Salesforce stores the org ID
 
@@ -9224,6 +20450,11 @@ This field is available in API version 59.0 and later.
 
 `linkKickoffUrl` string The URL for linking existing Salesforce users to a third-party account. This
 field is read-only. Available in API version 43.0 and later.
+
+
+Metadata Types AuthProvider
+
+**Field Name** **Field Type** **Description**
 
 `logoutUrl` string The destination for users after they log out if they authenticated using
 single sign-on. The URL must be fully qualified with an http or https prefix,
@@ -9267,11 +20498,6 @@ Bitbucket APIs. The `Bitbucket` provider isn’t available as an SSO
 provider, so users can’t log in to a Salesforce org using their Bitbucket
 login credentials. Available in API version 61.0 and higher.
 
-
-Metadata Types AuthProvider
-
-**Field Name** **Field Type** **Description**
-
 **•** `Custom` —A provider configured with a custom authentication
 provider plug-in. Available in API version 36.0 and later.
 
@@ -9298,6 +20524,11 @@ accessed via Microsoft Azure Active Directory. Available in API version
 authentication for a Microsoft Office 365 service, like SharePoint Online.
 The `MicrosoftACS` provider doesn't support SSO. Available in API
 version 31.0 and later.
+
+
+Metadata Types AuthProvider
+
+**Field Name** **Field Type** **Description**
 
 **•** `MuleSoft` . Available in API version 57.0 and later.
 
@@ -9334,12 +20565,6 @@ enabled ( `true` ), the client credentials are sent in a header to the
 
 `tokenUrl` instead of a query string. The credentials are in the standard
 OpenID Connect Basic Credentials header format, which is `Basic`
-
-
-Metadata Types AuthProvider
-
-**Field Name** **Field Type** **Description**
-
 `<token>`, where `<token>` is the base64-encoded string
 `"clientkey:clientsecret"` . Available in API version 30.0 and
 later.
@@ -9347,12 +20572,6 @@ later.
 `sendSecretInApis` boolean
 
 `ssoKickoffUrl` string
-
-`tokenUrl` string
-
-`userInfoUrl` string
-
-AuthProvParamFwdAllowlist
 
 Determines whether the encrypted consumer secret appears in API
 responses. If enabled (default), the secret appears in the response. If
@@ -9376,6 +20595,17 @@ The URL for performing single sign-on into Salesforce from a third party
 by using its third-party credentials. This field is read-only. Available in API
 version 43 and later.
 
+
+Metadata Types AuthProvider
+
+**Field Name** **Field Type** **Description**
+
+`tokenUrl` string
+
+`userInfoUrl` string
+
+AuthProvParamFwdAllowlist
+
 The OAuth token endpoint URL of an OpenID Connect authentication
 provider. Available in API version 29.0 and later.
 
@@ -9394,9 +20624,6 @@ Represents an allowlisted URL parameter that can be forwarded from authenticatio
 URL. Use this type to add custom functionality to authentication providers. For example, allowlist a `ui_locales` parameter and use
 it to send a user's language preference from Salesforce to the third-party provider's login page. You can allowlist up to 10 parameters.
 
-
-Metadata Types AuthProvider
-
 Declarative Metadata Sample Definition
 
 Note: Starting in November 2022, enter the `consumerSecret` value as plaintext, for example,
@@ -9404,35 +20631,41 @@ Note: Starting in November 2022, enter the `consumerSecret` value as plaintext, 
 were entered as encrypted values can be deployed throughout the Winter ‘23 release.
 
 ```
-   <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-   <AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
+<AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
 
-      <consumerKey>yourappkey</consumerKey>
+   <consumerKey>yourappkey</consumerKey>
 
-      <consumerSecret>PwdVxXjzu3NCZ3MD4He+wA==</consumerSecret>
+   <consumerSecret>PwdVxXjzu3NCZ3MD4He+wA==</consumerSecret>
 
-      <executionUser>admin@your.org</executionUser>
+   <executionUser>admin@your.org</executionUser>
 
-      <friendlyName>FacebookAuthProvider</friendlyName>
+   <friendlyName>FacebookAuthProvider</friendlyName>
 
-      <providerType>Facebook</providerType>
+   <providerType>Facebook</providerType>
 
-      <registrationHandler>RegistrationHandler</registrationHandler>
+   <registrationHandler>RegistrationHandler</registrationHandler>
 
-      <sendSecretInApis>true</sendSecretInApis>
+   <sendSecretInApis>true</sendSecretInApis>
 
-   </AuthProvider>
+</AuthProvider>
 
 ```
 
 This example package manifest references the previous AuthProvider definition.
 
 ```
-   <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
 
+```
+
+
+Metadata Types AuthProvider
+
+```
       <types>
 
         <members>FacebookAuthProvider</members>
@@ -9474,9 +20707,6 @@ providers for authentication.
 
 **•** Salesforce
 
-
-### Metadata Types AutoResponseRules
-
 **•** Slack
 
 To use a Salesforce-managed auth provider, leave these fields blank when creating your auth provider from the Auth. Provider Setup
@@ -9501,7 +20731,8 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-### AutoResponseRules
+
+### Metadata Types AutoResponseRules AutoResponseRules
 
 Represents an auto-response rule that sets conditions for sending automatic email responses to lead or case submissions based on the
 attributes of the submitted record. You can access rules metadata for all applicable objects, for a specific object, or for a specific rule on
@@ -9550,17 +20781,15 @@ You can also access specific auto-response rules for an object. The following ex
 
 ```
 
-
-Metadata Types AutoResponseRules
-
 File Suffix and Directory Location
 
-AutoResponseRules for an object have the suffix `.autoResponseRules` and are stored in the `autoResponseRules` folder.
+### AutoResponseRules for an object have the suffix .autoResponseRules and are stored in the autoResponseRules folder.
+
 For example, all Case auto-response rules are stored in the `Case.autoResponseRules` file.
 
 Version
 
-AutoResponseRules components are available in API version 27.0 and later.
+### AutoResponseRules components are available in API version 27.0 and later.
 
 Fields
 
@@ -9568,9 +20797,12 @@ Fields
 
 `autoresponseRule` AutoResponseRule[] Represents the definitions of the named auto-response rules.
 
-AutoResponseRule
+### AutoResponseRule
 
 Represents whether a rule is active or not and the order in which the entry is processed in the rule.
+
+
+Metadata Types AutoResponseRules
 
 **Field Name** **Field Type** **Description**
 
@@ -9607,11 +20839,6 @@ both fields.
 
 `replyToEmail` string The email address that appears in the reply-to header.
 
-
-### Metadata Types BatchCalcJobDefinition
-
-**Field Name** **Field Type** **Description**
-
 `senderEmail` string The email address of the person or queue sending the email
 notification.
 
@@ -9641,29 +20868,35 @@ recommend using a Classic email template.
 
      <ruleEntry>
 
-        <criteriaItems>
+```
 
-          <field>Case.Description</field>
 
-          <operation>contains</operation>
+### Metadata Types BatchCalcJobDefinition
 
-          <value>testing</value>
+```
+           <criteriaItems>
 
-        </criteriaItems>
+             <field>Case.Description</field>
 
-        <senderEmail>test@test.org</senderEmail>
+             <operation>contains</operation>
 
-        <senderName>tester name j</senderName>
+             <value>testing</value>
 
-        <replyToEmail>test@@test.org</replyToEmail>
+           </criteriaItems>
 
-        <template>emailtemplate</template>
+           <senderEmail>test@test.org</senderEmail>
 
-     </ruleEntry>
+           <senderName>tester name j</senderName>
 
-   </autoResponseRule>
+           <replyToEmail>test@@test.org</replyToEmail>
 
-</AutoResponseRules>
+           <template>emailtemplate</template>
+
+        </ruleEntry>
+
+      </autoResponseRule>
+
+   </AutoResponseRules>
 
 ```
 
@@ -9680,17 +20913,15 @@ Parent Type
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
-
-Metadata Types BatchCalcJobDefinition
-
 File Suffix and Directory Location
 
-BatchCalcJobDefinition components have the suffix `.batchCalcJobDefinition` and are stored in the
+### BatchCalcJobDefinition components have the suffix .batchCalcJobDefinition and are stored in the
+
 `batchCalcJobDefinitions` folder.
 
 Version
 
-BatchCalcJobDefinition components are available in API version 51.0 and later.
+### BatchCalcJobDefinition components are available in API version 51.0 and later.
 
 Special Access Rules
 
@@ -9705,6 +20936,9 @@ To use this metadata type, one of these licenses is required:
 **•** Manufacturing Cloud
 
 **•** Net Zero Cloud
+
+
+Metadata Types BatchCalcJobDefinition
 
 Fields
 
@@ -9740,12 +20974,6 @@ of type string) are:
 writeback records ( `true` ) or not ( `false` ). The default value is `false`,
 
 and only the first instance of a failure is recorded in the error file. If set
-
-
-Metadata Types BatchCalcJobDefinition
-
-**Field Name** **Field Type** **Description**
-
 to `true`, all failed records are recorded in the error file for the writeback
 node.
 
@@ -9777,6 +21005,11 @@ of type string) Valid values are:
 
 **•** `CORE`
 
+
+Metadata Types BatchCalcJobDefinition
+
+**Field Name** **Field Type** **Description**
+
 Available in API version 59.0 and later.
 
 `filters` BatchCalcJobFilter[] Collection of filter nodes in a data processing engine. definition.
@@ -9807,25 +21040,15 @@ sets. Valid values are:
 **•** `AccountingSubledger` —This value is reserved for internal
 use.
 
+**•** `AccrualsAndPayoutEngine`
+
 **•** `ActionableList`
 
 **•** `AdvancedAccountForecast`
 
+**•** `AutomotiveFoundation`
+
 **•** `BenefitManagement`
-
-
-```
-processType
-
-```
-
-BatchCalcProcessType
-(enumeration of
-type string)
-
-Metadata Types BatchCalcJobDefinition
-
-**Field Name** **Field Type** **Description**
 
 **•** `BillingSchedulesforInvoiceGeneration`
 
@@ -9848,7 +21071,25 @@ Metadata Types BatchCalcJobDefinition
 
 **•** `EmployeeService` —Available in API version 63.0 and later.
 
+**•** `EnergyUtilitiesSales`
+
 **•** `FinancialSummaryRollup`
+
+**•** `FlexibleHierarchy`
+
+
+```
+processType
+
+```
+
+BatchCalcProcessType
+(enumeration of
+type string)
+
+Metadata Types BatchCalcJobDefinition
+
+**Field Name** **Field Type** **Description**
 
 **•** `ForeignExchangeGainLossCalculations` —Available
 in API version 65.0 and later.
@@ -9884,6 +21125,8 @@ version 64.0 and later.
 
 **•** `LoyaltyPointsAggregation`
 
+**•** `MediaAdSales`
+
 **•** `NextGenForecasting` —Available in API version 64.0 and
 earlier.
 
@@ -9892,22 +21135,21 @@ earlier.
 **•** `PatientServicesProgram` —Available in API version 64.0
 and later.
 
+**•** `PlanningAndForecasting`
+
 **•** `PnmRosterFileUpload`
 
 **•** `PriceProtection`
 
 **•** `ProductCatalogManagement`
 
-
-Metadata Types BatchCalcJobDefinition
-
-**Field Name** **Field Type** **Description**
-
 **•** `ProgramBasedBusiness`
 
 **•** `ProviderSearch` —This value is reserved for internal use.
 
 **•** `Rebates`
+
+**•** `RebateAndAccrualManagementAdvanced`
 
 **•** `Recruitment`
 
@@ -9918,6 +21160,11 @@ Metadata Types BatchCalcJobDefinition
 
 **•** `TestAtomicWritebackScale` —Available in API version 64.0
 and later.
+
+
+Metadata Types BatchCalcJobDefinition
+
+**Field Name** **Field Type** **Description**
 
 **•** `TestProcessType`
 
@@ -9962,9 +21209,6 @@ BatchCalcJobAggregateField
 
 Represents a collection of fields relating to an aggregation field in an aggregate node of a data processing engine.
 
-
-Metadata Types BatchCalcJobDefinition
-
 Fields
 
 **Field Name** **Field Type** **Description**
@@ -9976,6 +21220,20 @@ Valid values are:
 **•** `Unique` —A count of unique values.
 
 **•** `Sum` —The sum of all values.
+
+
+```
+aggregateFunction
+
+```
+
+BatchCalcJobAggregateFunction
+(enumeration of type
+string)
+
+Metadata Types BatchCalcJobDefinition
+
+**Field Name** **Field Type** **Description**
 
 **•** `Max` —The largest value.
 
@@ -9992,15 +21250,6 @@ Valid values are:
 **•** `VarP` —The variance with population.
 
 **•** `Count` —The total count of values.
-
-```
-aggregateFunction
-
-```
-
-BatchCalcJobAggregateFunction
-(enumeration of type
-string)
 
 `alias` string Required. Name that subsequent nodes within the data processing engine use
 to refer to the aggregate field.
@@ -10031,9 +21280,6 @@ BatchCalcJobAtomicWritebackRelationship
 Represents the relationships between the writeback objects that are involved in a composite writeback operation. It captures the
 relationships between these objects and the sequence in which they should be processed.
 
-
-Metadata Types BatchCalcJobDefinition
-
 **Field Name** **Field Type** **Description**
 
 `childWriteback` string Field name that's associated with the child writeback object in a composite
@@ -10041,6 +21287,11 @@ Metadata Types BatchCalcJobDefinition
 
 `childWriteback` string Name of the child writeback object that's associated with the writeback
 `ObjectName` relationship.
+
+
+Metadata Types BatchCalcJobDefinition
+
+**Field Name** **Field Type** **Description**
 
 `parentWriteback` string Field name that's associated with the parent writeback object in a composite
 `ObjectField` writeback relationship. Available in API version 63.0 and later.
@@ -10081,9 +21332,6 @@ BatchCalcJobCustomNodeParameter
 
 Represents the field mappings of an extension node.
 
-
-Metadata Types BatchCalcJobDefinition
-
 Fields
 
 **Field Name** **Field Type** **Description**
@@ -10091,6 +21339,9 @@ Fields
 `name` string Required. Name of a parameter.
 
 `value` string Required. Value of a parameter.
+
+
+Metadata Types BatchCalcJobDefinition
 
 BatchCalcJobDatasource
 
@@ -10159,11 +21410,6 @@ string)
 
 `name` string Required. Name of a data source node.
 
-
-Metadata Types BatchCalcJobDefinition
-
-**Field Name** **Field Type** **Description**
-
 `sourceName` string Required. Name of a standard or custom object from which the data source
 node extracts data.
 
@@ -10188,6 +21434,11 @@ type string)
 **•** `CSV`
 
 **•** `DataModelObject`
+
+
+Metadata Types BatchCalcJobDefinition
+
+**Field Name** **Field Type** **Description**
 
 **•** `StandardObject`
 
@@ -10229,20316 +21480,3 @@ BatchCalcJobDataType
 (enumeration of type
 string)
 
-`isPrimaryKey` boolean Indicates whether a column name is the primary key ( `true` ) or not ( `false` )
-for the Data Cloud CSV file.
-
-`name` string Required. Name of the field. Can be either of the following:
-
-**•** Name of the source field selected in the associated data source object.
-
-**•** Name from a nested lookup object with three child levels.
-
-BatchCalcJobFilter
-
-Represents a collection of fields relating to a filter node in a data processing engine.
-
-
-Metadata Types BatchCalcJobDefinition
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`criteria` BatchCalcJobFilter
-Criteria[]
-
-Collection of filter criteria in a filter node.
-
-The field is required when `isDynamicFilter` is set to `False` .
-
-`description` string Description of the batch calculation job filter.
-
-`filterCondition` string
-
-Logic that is specified to apply the filter conditions.
-
-The field is required when `isDynamicFilter` is set to `False` .
-
-`filterParameterName` string Name of the parameter of type filter.
-
-`isDynamicFilter` boolean Indicates whether the filter criteria is dynamic. If value is set to `True`, filter
-criteria is passed in runtime with `filterParameterName` .
-
-`label` string Required. Label of the filter node.
-
-`name` string Required. Name of the filter node.
-
-`sourceName` string Required. Name of the source node.
-
-BatchCalcJobForecast
-
-Represents a collection of fields relating to a forecast node in a data processing engine. Available in API version 58.0 and later.
-
-Fields
-
-**Field** **Field Type** **Description**
-**Name**
-
-`accuracyPercent` BatchCalcJobFrcstAccuracy (enumeration of type string)
-
-The interval percentage to
-account for errors in
-forecasts.
-
-Possible values are:
-
-**•** `Eighty`
-
-**•** `NinetyFive`
-
-**•** `None`
-
-The default value is `None` .
-
-`aggregationFields` BtchCalcJobFrcstAggrFld[] The list of fields to
-forecast.
-
-`dateFieldName` string
-
-Required.
-
-The date field from the
-source node used to
-
-
-Metadata Types BatchCalcJobDefinition
-
-**Field** **Field Type** **Description**
-**Name**
-
-forecast values for the
-specified forecast length.
-
-`description` string The description of the
-forecast node.
-
-`forecastModelType` BatchCalcJobFrcstModel (enumeration of type string)
-
-The model used to
-forecast data.
-
-Possible values are:
-
-**•** `Additive`
-
-**•** `Auto`
-
-**•** `Multiplicative`
-
-The default value is `Auto` .
-
-`forecastPeriodCount` int The number of time
-periods to generate
-
-forecast data. For example,
-if you select Year-Month
-as the forecast period
-type, and 4 as the forecast
-period count, the forecast
-results are generated for
-the next 4 months.
-
-The minimum and the
-default count is 1, and the
-maximum is 100.
-
-`forecastPeriodType` BatchCalcJobFrcstPeriodType (enumeration of type string)
-
-
-Required.
-
-The type of forecast period
-to group date field values
-in the forecast results.
-
-Possible values are:
-
-**•** `FiscalYear`
-
-**•** `FiscalYearMonth`
-
-**•** `FiscalYearQuarter`
-
-**•** `FiscalYearWeek`
-
-**•** `Year`
-
-**•** `YearMonth`
-
-**•** `YearMonthDay`
-
-**•** `YearQuarter`
-
-**•** `YearWeek`
-
-Metadata Types BatchCalcJobDefinition
-
-**Field** **Field Type** **Description**
-**Name**
-
-`groupFields` BatchCalcJobFrcstGrpFld[] The source fields for
-grouping the data to be
-
-processed by the forecast
-node.
-
-`label` string
-
-`name` string
-
-`periodStartDateName` string
-
-`seasonality` BatchCalcJobFrcstSeasonality (enumeration of type string)
-
-
-Required.
-
-The name of the forecast
-node in the UI.
-
-Required.
-
-A unique name for the
-forecast node.
-
-Required.
-
-The start date of the
-forecast period.
-
-Represents the periodic
-fluctuations that occur
-
-around the same time
-every year.
-
-Possible values are:
-
-**•** `Two`
-
-**•** `Three`
-
-**•** `Four`
-
-**•** `Five`
-
-**•** `Six`
-
-**•** `Seven`
-
-**•** `Eight`
-
-**•** `Nine`
-
-**•** `Ten`
-
-**•** `Eleven`
-
-**•** `Twelve`
-
-**•** `Thirteen`
-
-**•** `Fourteen`
-
-**•** `Fifteen`
-
-**•** `Sixteen`
-
-**•** `Seventeen`
-
-**•** `Eighteen`
-
-**•** `Nineteen`
-
-**•** `Twenty`
-
-Metadata Types BatchCalcJobDefinition
-
-**Field** **Field Type** **Description**
-**Name**
-
-**•** `TwentyOne`
-
-**•** `TwentyTwo`
-
-**•** `TwentyThree`
-
-**•** `TwentyFour`
-
-**•** `Auto`
-
-**•** `None`
-
-The default value is `None` .
-
-`shouldExcludeLastPeriod` boolean Indicates whether to
-ignore the last period in
-
-the source node when it
-has incomplete data
-( `true` ) or not ( `false` ).
-
-The default value is
-`false` .
-
-`sourceName` string
-
-BtchCalcJobFrcstAggrFld
-
-Represents a list of fields to forecast in a forecast node.
-
-**Field Name** **Field Type** **Description**
-
-Required.
-
-The name of the source
-node.
-
-A source can be any node
-other than the datasink
-and register node.
-
-`aggregateFunction` BatchCalcJobAggregateFunction
-(enumeration of type string)
-
-
-Required.
-
-The function of the aggregate field.
-
-Possible values are:
-
-**•** `Avg`
-
-**•** `Count`
-
-**•** `Max`
-
-**•** `Min`
-
-**•** `Std`
-
-**•** `StdP`
-
-**•** `Sum`
-
-**•** `Unique`
-
-Metadata Types BatchCalcJobDefinition
-
-**Field Name** **Field Type** **Description**
-
-**•** `Var`
-
-**•** `VarP`
-
-`aggregationResultLabel` string
-
-`fieldName` string
-
-BatchCalcJobFrcstGrpFld
-
-Required.
-
-The name of the aggregation result generated from
-the aggregation function that’s applied to the source
-node field.
-
-Required.
-
-The name of the source field.
-
-Represents source fields for grouping the data to be processed by the forecast node.
-
-**Field Name** **Field Type** **Description**
-
-`fieldName` string
-
-`groupBy` string
-
-BatchCalcJobHierarchyPath
-
-Required.
-
-The name of the source field to group the data to be processed by the
-forecast node.
-
-A comma-separated list of values to group data by.
-
-Required when the source field type is Date or DateTime.
-
-Possible values are:
-
-**•** `Second`
-
-**•** `Second Epoch`
-
-**•** `Minute`
-
-**•** `Hour`
-
-**•** `Day`
-
-**•** `Day Epoch`
-
-**•** `Week`
-
-**•**
-
-**•** `Month`
-
-**•** `Quarter`
-
-**•** `Year`
-
-Represents a collection of hierarchy path nodes in a data processing engine definition.
-
-
-Metadata Types BatchCalcJobDefinition
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`description` string Description of the hierarchy path node.
-
-`hierarchyFieldName` string Required. Field name that contains the hierarchy path.
-
-`isSelfFieldValueIncluded` boolean Indicates whether the self value is included in the calculated hierarchy path
-( `True` ) or not ( `False` ).
-
-`label` string Required. Label of the hierarchy path node.
-
-`name` string Required. Name of the hierarchy path node.
-
-`parentFieldName` string Required. Parent field name to calculate hierarchy path.
-
-`selfFieldName` string Required. Self field name to calculate hierarchy path.
-
-`sourceName` string Required. Name of the source node.
-
-BatchCalcJobFilterCriteria
-
-Represents a collection of fields relating to a filter condition in a filter node in a data processing engine.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`inputVariable` string Name of the input variable used as a filter.
-
-Required. Operator that is specified in the filter condition.
-
-Valid values are:
-
-**•** `Equals`
-
-**•** `NotEquals`
-
-**•** `GreaterThan`
-
-**•** `GreaterThanOrEqual`
-
-**•** `LessThan`
-
-**•** `LessThanOrEqual`
-
-**•** `StartsWith`
-
-**•** `EndsWith`
-
-**•** `Contains`
-
-**•** `DoesNotContain`
-
-**•** `IsNull`
-
-**•** `IsNotNull`
-
-**•** `In`
-
-**•** `NotIn`
-
-
-```
-operator
-
-```
-
-BatchCalcJobFilter
-Operator
-(enumeration of type
-string)
-
-Metadata Types BatchCalcJobDefinition
-
-**Field Name** **Field Type** **Description**
-
-`sequence` integer Required. Sequence number used to refer the criteria in a filter node.
-
-`sourceFieldName` string Required. Name of the field from the source node to apply the filter.
-
-`value` string Value used to filter data from the source node.
-
-BatchCalcJobParameter
-
-Represents a collection of fields relating to an input variable in a data processing engine.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`dataType` BatchCalcJobParameter Required. Data type of the parameter. Valid values are:
-DataType
-
-**•** `Date`
-(enumeration of type
-
-**•** `DateTime`
-string)
-
-**•** `Expression`
-
-**•** `FileIdentifier`
-
-**•** `Filter`
-
-**•** `Numeric`
-
-**•** `Text`
-
-`defaultValue` string Default value of the parameter.
-
-`description` string Description of the batch calculation job parameter.
-
-`isMultiValue` boolean Indicates whether the parameter has different values ( `True` ) or not ( `False` ).
-This field is supported only for the `Text` data type.
-
-`label` string Required. Label of the batch calculation job parameter.
-
-`name` string Required. Name of the batch calculation job parameter.
-
-BatchCalcJobSourceJoin
-
-Represents a collection of fields relating to a join node in a data processing engine.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`description` string Description of the join node.
-
-
-Metadata Types BatchCalcJobDefinition
-
-**Field Name** **Field Type** **Description**
-
-`fields` BatchCalcJobJoin Collection of fields in a join node.
-ResultField[]
-
-`joinKeys` BatchCalcJobJoin Collection of mapping of fields from the primary source node and the second
-Key[] source node in a join node.
-
-`label` string Required. Label of the join node.
-
-`name` string Required. Name of the join node.
-
-`primarySourceName` string Required. Name associated with the node as the primary source node.
-
-`secondarySourceName` string Required. Name associated with the node as the secondary source node.
-
-```
-type
-
-```
-
-BatchCalcJobSource Required. Type of join specified between the primary source node and
-JoinType secondary source node. Valid values are:
-(enumeration of type
-
-**•** `LeftOuter`
-
-string)
-
-**•** `LeftOuter`
-
-**•** `RightOuter`
-
-**•** `Inner`
-
-**•** `Outer`
-
-**•** `Lookup`
-
-BatchCalcJobJoinKey
-
-Represents a collection of fields relating to a mapping of fields from the first source node and second source node in a join node of a
-data processing engine.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`primarySourceFieldName` string Required. Mapped field name of the primary source node.
-
-`secondarySourceFieldName` string Required. Mapped field name of the secondary source node.
-
-BatchCalcJobJoinResultField
-
-Represents a collection of fields relating to a set of resultant fields in a join node of a data processing engine.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`alias` string Required. Name that subsequent nodes within the data processing engine
-definition use to refer to the resultant field.
-
-
-Metadata Types BatchCalcJobDefinition
-
-**Field Name** **Field Type** **Description**
-
-`sourceFieldName` string Required. Name of field from the primary or secondary data source.
-
-`sourceName` string Required. Source node of the primary or secondary data source.
-
-BatchCalcJobTransform
-
-Represents a collection of fields relating to a data transformation in a data processing engine.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`description` string The description of the batch calculation job transform.
-
-`droppedFields` BatchCalcJobTransform The collection of dropped fields in a data transformation. Available when the
-DroppedField[] transformation type is `Slice` .
-
-`expressionFields` BatchCalcJobTransform The collection of formula fields in a data transformation. Available when the
-AddedField[] transformation type is `Expression` .
-
-`label` string Required. The label of the batch calculation job transform.
-
-`name` string Required. The name of the batch calculation job transform.
-
-`orderBy` BatchCalcJobOrderByField A collection of fields that’s used to sort the records within each partition group.
-on page 460[]
-
-`partitionBy` string[] A group of fields that’s used to partition the source data into partition groups.
-
-`sourceName` string Required. Name of the source node.
-
-Required. The type of transformation.
-
-Valid values are:
-
-**•** `ComputeRelative—` This transformation calculates values based on
-values of the same partition group.
-
-**•** `Expression` —This transformation calculates values based on existing
-values of fields in the same record.
-
-**•** `Slice` —This transformation removes fields from the source node.
-
-```
-transformType
-
-```
-
-BatchCalcJobTransform
-Type (enumeration of
-type string)
-
-BatchCalcJobTransformDroppedField
-
-Represents a collection of fields relating to a dropped field in a data transformation of a data processing engine.
-
-
-Metadata Types BatchCalcJobDefinition
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`sourceFieldName` string Required. Name of the field that is dropped.
-
-BatchCalcJobTransformAddedField
-
-Represents a collection of fields relating to a formula in a data transformation of a data processing engine.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`alias` string Required. Name that subsequent nodes within the data processing engine use
-to the transform node.
-
-Required. Data type of the formula.
-
-Valid values are:
-
-**•** `Boolean` —Available in API version 65.0 and later.
-
-**•** `Date`
-
-**•** `DateTime`
-
-**•** `MultiValue`
-
-**•** `Numeric`
-
-**•** `Text`
-
-```
-dataType
-
-```
-
-BatchCalcJobDataType
-(enumeration of type
-string)
-
-`decimalPlaces` integer Number of digits to the right of a decimal point in the value. Required for the
-`Numeric` data type.
-
-`expression` string Required. Formula defined by the user.
-
-`length` integer Total length of the value including the decimal places. Required for data types:
-`Text` and `Numeric` .
-
-BatchCalcJobOrderByField
-
-Represents a collection of fields that are used to sort the partitioned data.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`name` string Required. Name of the field that is used to sort data.
-
-
-Metadata Types BatchCalcJobDefinition
-
-**Field Name** **Field Type** **Description**
-
-`orderType` BatchCalcJobOrderType(enumeration
-of type string)
-
-BatchCalcJobUnion
-
-Order in which the data is sorted.
-
-Valid values are:
-
-**•** Ascending
-
-**•** Descending
-
-Represents a collection of fields relating to the union of data from two nodes in a data processing engine.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`description` string Description of the batch calculation job union.
-
-`isDisjointedSchema` boolean
-
-Indicates whether the union is of two disjointed datasets ( `true` ) or not
-( `false` ). Set to `True` to allow joining of two datasets having no common
-fields.
-
-`label` string Required. Label of the batch calculation job union.
-
-`name` string Required. Name of the batch calculation job union.
-
-`sources` string[] Names of the source nodes.
-
-BatchCalcJobWritebackObject
-
-Represents a collection of fields relating to the object in which the results of the data processing engine are written back.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`canWrtbckToNonEditableFields` boolean
-
-Indicates whether the non-editable fields are included in field mapping when
-the action type is upsert. The default value is `false` .
-
-Available in API version 64.0 and later.
-
-`description` string Descriptions of the batch calculation job writeback object.
-
-`externalIdFieldName` string
-
-Unique external field ID for the target object name.
-
-Available in API version 60.0 and later.
-
-`fields` BatchCalcJobWriteback Collection of the writeback fields.
-Mapping[]
-
-
-Metadata Types BatchCalcJobDefinition
-
-**Field Name** **Field Type** **Description**
-
-`filterCondition` string
-
-The condition that filters the records from a writeback dataset for a user.
-Examples of a filter condition include a user ID, stage name, and a security
-policy that returns only the records that a user owns.
-
-Available in API version 57.0 and later.
-
-`folderName` string The folder where the writeback dataset is saved. Available in API version 57.0
-and later.
-
-`groupBy` string Reserved for future use.
-
-`isChangedRow` boolean Indicates whether a row in the write back object is changed. Set to `True` to
-write back the changed rows.
-
-`isExistingDataset` boolean
-
-Indicates whether a CRM Application (CRMA) dataset or a Data 360 Data Lake
-object is present ( `true` ) or will be created ( `false` ). Available in API version
-62.0 and later.
-
-`label` string Required. Name of the write back object.
-
-`name` string Required. Name of the batch calculation job write back object.
-
-Type of operation specified.
-
-Valid values are:
-
-**•** `Delete` —This value is available in API version 56.0 and later.
-
-**•** `Insert`
-
-**•** `Overwrite` —Available only when `storageType` is
-`DataLakeObject` . This value is available in API version 60.0 and later.
-
-**•** `Update`
-
-**•** `Upsert`
-
-```
-operationType
-
-```
-
-BatchCalcJobWriteback
-Opn (enumeration of
-type string)
-
-`sharingInheritanceObjectName` string The name of the source object from which the row-level sharing inheritance
-settings are applied. Available in API version 57.0 and later.
-
-`shouldCreateTargetObject` boolean Indicates whether target Data Lake Object or Salesforce Object is created in
-Salesforce ( `true` ) or not ( `false` ). Available in API version 65.0 and later.
-
-`shouldMngRowLockFor` boolean Reserved for future use.
-
-```
-GroupedRec
-
-```
-
-`sourceName` string Required. Name of the source node associated with the write back object.
-
-Specifies where you want to use the data stored in the source node. Available
-in API version 57.0 and later.
-
-Valid values are:
-
-**•** `Analytics`
-
-**•** `DataLakeObject`
-
-**•** `sObject`
-
-The default value is `sObject` .
-
-
-```
-storageType
-
-```
-
-BatchCalcJobWriteback
-Type (enumeration of
-type string)
-
-Metadata Types BatchCalcJobDefinition
-
-**Field Name** **Field Type** **Description**
-
-`targetObjectName` string Required. Object that is inserted or upserted by the data processing engine.
-
-`writebackSequence` integer Sequence in which the target object is updated by the data processing engine.
-
-`writebackUser` string ID of the user whose permissions decide which objects and fields of the target
-object can be updated.
-
-BatchCalcJobWritebackMapping
-
-Represents a collection of fields relating to the mapping between results and the fields in the target object.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`fieldType` string Target field type on the writeback object. Valid values are:
-
-**•** Primary Key
-
-**•** Qualifier Key
-
-Available in API version 64.0 and later.
-
-isAutogenerated boolean
-
-Indicates whether the target field value on the writeback object is
-autogenerated ( `true` ) or not ( `false` ).
-
-Available in API version 64.0 and later.
-
-`parentName` string Name of the lookup object. Required only when the `relationshipName`
-field is defined.
-
-`relationshipName` string Name of the lookup relationship.
-
-`runtimeParameter` boolean
-
-Indicates whether the source field from runtime parameter is `true` or `false` .
-The default value is `false` .
-
-Available in API version 59.0 and later.
-
-`sourceFieldName` string Required. Name of the field in the source node that is written back.
-
-`targetFieldName` string Name of the sObject field to which the results are written back.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a BatchCalcJobDefinition component.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<BatchCalcJobDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <aggregates>
-
-     <description>Aggregate Description</description>
-
-     <fields>
-
-```
-
-
-Metadata Types BatchCalcJobDefinition
-
-```
-           <aggregateFunction>Count</aggregateFunction>
-
-           <alias>NameCount</alias>
-
-           <sourceFieldName>Name</sourceFieldName>
-
-        </fields>
-
-        <groupBy>ContactId</groupBy>
-
-        <groupBy>Name</groupBy>
-
-        <label>AggregateOpportunities</label>
-
-        <name>AggregateOpportunities</name>
-
-        <sourceName>Opportunity</sourceName>
-
-      </aggregates>
-
-      <forecasts>
-
-        <description>ForecastNode Description</description>
-
-        <label>ContactForecast</label>
-
-        <name>ContactForecast</name>
-
-        <sourceName>Contact</sourceName>
-
-        <dateFieldName>CreatedDate</dateFieldName>
-
-        <forecastPeriodType>YearMonth</forecastPeriodType>
-
-        <shouldExcludeLastPeriod>false</shouldExcludeLastPeriod>
-
-        <forecastPeriodCount>12</forecastPeriodCount>
-
-        <periodStartDateName>CreatedDateYM</periodStartDateName>
-
-        <forecastModelType>Auto</forecastModelType>
-
-        <seasonality>None</seasonality>
-
-        <accuracyPercent>None</accuracyPercent>
-
-        <aggregationFields>
-
-           <aggregateFunction>Count</aggregateFunction>
-
-           <aggregationResultLabel>CountOfLastName</aggregationResultLabel>
-
-           <fieldName>LastName</fieldName>
-
-        </aggregationFields>
-
-        <groupFields>
-
-           <fieldName>LastModifiedDate</fieldName>
-
-           <groupBy>Week</groupBy>
-
-        </groupFields>
-
-      </forecasts>
-
-      <appends>
-
-        <description>Append desc</description>
-
-        <isDisjointedSchema>true</isDisjointedSchema>
-
-        <label>AppendAllAccounts</label>
-
-        <name>AppendAllAccounts</name>
-
-        <sources>AccountsOfManufacturingIndustry</sources>
-
-        <sources>ComputeRelativeManufacturingIndustry</sources>
-
-      </appends>
-
-      <datasources>
-
-        <description>Desc Contact</description>
-
-        <fields>
-
-           <alias>Id</alias>
-
-           <name>Id</name>
-
-           <isPrimaryKey>false</isPrimaryKey>
-
-           <dataType>Text</dataType>
-
-        </fields>
-
-        <fields>
-
-           <alias>LastName</alias>
-
-           <name>LastName</name>
-
-           <isPrimaryKey>false</isPrimaryKey>
-
-           <dataType>Text</dataType>
-
-```
-
-
-Metadata Types BatchCalcJobDefinition
-
-```
-        </fields>
-
-        <fields>
-
-           <alias>CreatedDate</alias>
-
-           <name>CreatedDate</name>
-
-           <isPrimaryKey>false</isPrimaryKey>
-
-           <dataType>Date</dataType>
-
-        </fields>
-
-        <fields>
-
-           <alias>LastModifiedDate</alias>
-
-           <name>LastModifiedDate</name>
-
-           <isPrimaryKey>false</isPrimaryKey>
-
-           <dataType>Date</dataType>
-
-        </fields>
-
-        <label>Contact</label>
-
-        <name>Contact</name>
-
-        <sourceName>Contact</sourceName>
-
-        <type>StandardObject</type>
-
-        <fileSource>ContentManagement</fileSource>
-
-        <fileIdentifier>069xx0000004CAeAAM</fileIdentifier>
-
-        <CSVDelimiter>COMMA</CSVDelimiter>
-
-        <filePath>parentFolder/childFolder</filePath>
-
-      </datasources>
-
-      <datasources>
-
-        <fields>
-
-           <alias>Name</alias>
-
-           <name>Name</name>
-
-           <isPrimaryKey>false</isPrimaryKey>
-
-           <dataType>Text</dataType>
-
-        </fields>
-
-        <fields>
-
-           <alias>ContactId</alias>
-
-           <name>ContactId</name>
-
-           <isPrimaryKey>false</isPrimaryKey>
-
-           <dataType>Text</dataType>
-
-        </fields>
-
-        <label>Opportunity</label>
-
-        <name>Opportunity</name>
-
-        <sourceName>Opportunity</sourceName>
-
-        <type>StandardObject</type>
-
-        <fileSource>ContentManagement</fileSource>
-
-        <fileIdentifier>069xx0000004CAeAAM</fileIdentifier>
-
-        <CSVDelimiter>COMMA</CSVDelimiter>
-
-        <filePath>parentFolder/childFolder</filePath>
-
-      </datasources>
-
-      <description>Calculates and creates transaction journal records based on the orders
-
-   placed by the loyalty program members. The transaction journals are used to accrue points
-
-    to the member.</description>
-
-      <filters>
-
-        <criteria>
-
-           <operator>Equals</operator>
-
-           <sequence>1</sequence>
-
-           <sourceFieldName>LastName</sourceFieldName>
-
-           <value>Salesforce</value>
-
-        </criteria>
-
-```
-
-
-Metadata Types BatchCalcJobDefinition
-
-```
-        <description>Filter Desc</description>
-
-        <filterCondition>1</filterCondition>
-
-        <isDynamicFilter>false</isDynamicFilter>
-
-        <label>AccountsOfManufacturingIndustry</label>
-
-        <name>AccountsOfManufacturingIndustry</name>
-
-        <sourceName>AccountOpportunities</sourceName>
-
-      </filters>
-
-      <hierarchyPaths>
-
-        <description>Hierarchy Path Node</description>
-
-        <hierarchyFieldName>Hierarchy_Path</hierarchyFieldName>
-
-        <isAggregationRequired>true</isAggregationRequired>
-
-        <isSelfFieldValueIncluded>true</isSelfFieldValueIncluded>
-
-        <label>Get Hierarchy</label>
-
-        <name>Get_Hierarchy</name>
-
-        <parentFieldName>ContactId</parentFieldName>
-
-        <selfFieldName>LastName</selfFieldName>
-
-        <sourceName>AppendAllAccounts</sourceName>
-
-        <aggregateFields>
-
-           <aggregateFunction>Count</aggregateFunction>
-
-           <aggregationFieldName>*</aggregationFieldName>
-
-           <aggregateFieldAliasName>CountOfLastName</aggregateFieldAliasName>
-
-        </aggregateFields>
-
-      </hierarchyPaths>
-
-      <isTemplate>false</isTemplate>
-
-      <executionPlatformObjectType>None</executionPlatformObjectType>
-
-      <joins>
-
-        <description>Left Outer Join</description>
-
-        <fields>
-
-           <alias>ContactId</alias>
-
-           <sourceFieldName>Id</sourceFieldName>
-
-           <sourceName>Contact</sourceName>
-
-        </fields>
-
-        <fields>
-
-           <alias>LastName</alias>
-
-           <sourceFieldName>LastName</sourceFieldName>
-
-           <sourceName>Contact</sourceName>
-
-        </fields>
-
-        <fields>
-
-           <alias>NameCount</alias>
-
-           <sourceFieldName>NameCount</sourceFieldName>
-
-           <sourceName>AggregateOpportunities</sourceName>
-
-        </fields>
-
-        <fields>
-
-           <alias>OpportunityName</alias>
-
-           <sourceFieldName>Name</sourceFieldName>
-
-           <sourceName>AggregateOpportunities</sourceName>
-
-        </fields>
-
-        <joinKeys>
-
-           <primarySourceFieldName>Id</primarySourceFieldName>
-
-           <secondarySourceFieldName>ContactId</secondarySourceFieldName>
-
-        </joinKeys>
-
-        <label>AccountOpportunities</label>
-
-        <name>AccountOpportunities</name>
-
-        <primarySourceName>Contact</primarySourceName>
-
-```
-
-
-Metadata Types BatchCalcJobDefinition
-
-```
-        <secondarySourceName>AggregateOpportunities</secondarySourceName>
-
-        <type>LeftOuter</type>
-
-      </joins>
-
-      <label>Create Transaction Journals Based on Orders</label>
-
-      <parameters>
-
-        <dataType>Date</dataType>
-
-        <defaultValue>2020-01-01</defaultValue>
-
-        <description>Desc TextParameter</description>
-
-        <isMultiValue>false</isMultiValue>
-
-        <label>DateParameter</label>
-
-        <name>DateParameter</name>
-
-      </parameters>
-
-      <parameters>
-
-        <dataType>Filter</dataType>
-
-        <defaultValue>{&quot;filterCondition&quot;: &quot;1 AND 2&quot;,
-
-   &quot;criteria&quot;: [{&quot;sourceFieldName&quot;:
-
-   &quot;NameCount&quot;,&quot;operator&quot;: &quot;GreaterThan&quot;,&quot;value&quot;:
-
-   &quot;20&quot;,&quot;sequence&quot;: &quot;1&quot;}, {&quot;sourceFieldName&quot;:
-
-   &quot;Name&quot;,&quot;operator&quot;: &quot;Equals&quot;,&quot;value&quot;:
-
-   &quot;Salesforce&quot;,&quot;sequence&quot;: &quot;2&quot;}]}</defaultValue>
-
-        <isMultiValue>false</isMultiValue>
-
-        <label>FilterParameter</label>
-
-        <name>FilterParameter</name>
-
-      </parameters>
-
-      <parameters>
-
-        <dataType>Numeric</dataType>
-
-        <defaultValue>5000</defaultValue>
-
-        <description>Desc TextParameter</description>
-
-        <isMultiValue>false</isMultiValue>
-
-        <label>NumericParameter</label>
-
-        <name>NumericParameter</name>
-
-      </parameters>
-
-      <parameters>
-
-        <dataType>Text</dataType>
-
-        <defaultValue>@salesforce.com</defaultValue>
-
-        <description>Desc TextParameter</description>
-
-        <isMultiValue>false</isMultiValue>
-
-        <label>TextParameter</label>
-
-        <name>TextParameter</name>
-
-      </parameters>
-
-      <processType>Rebates</processType>
-
-      <definitionRunMode>Batch</definitionRunMode>
-
-      <status>Inactive</status>
-
-      <transforms>
-
-        <description>transforms Desc</description>
-
-        <expressionFields>
-
-           <alias>NewLastName</alias>
-
-           <dataType>Text</dataType>
-
-           <expression>TODAY()</expression>
-
-           <length>80</length>
-
-        </expressionFields>
-
-        <label>ManufacturingIndustry</label>
-
-        <name>ManufacturingIndustry</name>
-
-        <sourceName>AccountsOfManufacturingIndustry</sourceName>
-
-```
-
-
-Metadata Types BatchCalcJobDefinition
-
-```
-        <transformationType>Expression</transformationType>
-
-      </transforms>
-
-      <transforms>
-
-        <droppedFields>
-
-           <sourceFieldName>NewLastName</sourceFieldName>
-
-        </droppedFields>
-
-        <label>MediaIndustry</label>
-
-        <name>MediaIndustry</name>
-
-        <sourceName>ManufacturingIndustry</sourceName>
-
-        <transformationType>Slice</transformationType>
-
-      </transforms>
-
-      <transforms>
-
-        <description>compute relative transforms Desc</description>
-
-        <expressionFields>
-
-           <alias>NewLastName</alias>
-
-           <dataType>Text</dataType>
-
-           <expression>rank()</expression>
-
-           <length>80</length>
-
-        </expressionFields>
-
-        <label>ComputeRelativeManufacturingIndustry</label>
-
-        <name>ComputeRelativeManufacturingIndustry</name>
-
-        <orderBy>
-
-           <name>LastName</name>
-
-           <orderType>Ascending</orderType>
-
-        </orderBy>
-
-        <partitionBy>LastName</partitionBy>
-
-        <sourceName>MediaIndustry</sourceName>
-
-        <transformationType>ComputeRelative</transformationType>
-
-      </transforms>
-
-      <customNodes>
-
-        <name>RebatesCustomNode</name>
-
-        <label>Rebates Custom Node</label>
-
-        <description>customNodes Desc</description>
-
-        <sources>Get_Hierarchy</sources>
-
-        <extensionName>RebatesExpression</extensionName>
-
-        <extensionNamespace>industries_mfg</extensionNamespace>
-
-        <parameters>
-
-           <name>inputColumn</name>
-
-           <value>LastName</value>
-
-        </parameters>
-
-        <parameters>
-
-           <name>isFilterCriteria</name>
-
-           <value>true</value>
-
-        </parameters>
-
-        <parameters>
-
-           <name>outputColumn</name>
-
-           <value>GenName</value>
-
-        </parameters>
-
-      </customNodes>
-
-      <writebacks>
-
-        <fields>
-
-           <sourceFieldName>GenName</sourceFieldName>
-
-           <targetFieldName>LastName</targetFieldName>
-
-        </fields>
-
-```
-
-
-### Metadata Types BatchProcessJobDefinition
-
-```
-        <isChangedRow>false</isChangedRow>
-
-        <label>exportToContact</label>
-
-        <name>exportToContact</name>
-
-        <description>Export To Contact</description>
-
-        <operationType>Insert</operationType>
-
-        <sourceName>RebatesCustomNode</sourceName>
-
-        <targetObjectName>Contact</targetObjectName>
-
-        <writebackSequence>1</writebackSequence>
-
-        <canWrtbckToNonEditableFields>false</canWrtbckToNonEditableFields>
-
-      </writebacks>
-
-      <writebacks>
-
-        <fields>
-
-           <sourceFieldName>CreatedDateYM</sourceFieldName>
-
-           <targetFieldName>CreatedDate</targetFieldName>
-
-        </fields>
-
-        <isChangedRow>false</isChangedRow>
-
-        <isExistingDataset>false</isExistingDataset>
-
-        <label>exportToContactFC</label>
-
-        <name>exportToContactFC</name>
-
-        <description>Export To Contact</description>
-
-        <operationType>Insert</operationType>
-
-        <sourceName>ContactForecast</sourceName>
-
-        <targetObjectName>Contact</targetObjectName>
-
-        <writebackSequence>2</writebackSequence>
-
-        <canWrtbckToNonEditableFields>false</canWrtbckToNonEditableFields>
-
-      </writebacks>
-
-   </BatchCalcJobDefinition>
-
-```
-
-The following is an example `package.xml` that references the previous definition.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <!-
-     ~ Copyright 2020 Salesforce, Inc.
-
-     ~ All Rights Reserved
-
-     ~ Company Confidential
-
-   -->
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-     <types>
-
-       <members>*</members>
-
-       <name>BatchCalcJobDefinition</name>
-
-     </types>
-
-     <version>60.0</version>
-
-   </Package>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### BatchProcessJobDefinition
-
-Represents the details of a Batch Management job definition.
-
-
-Metadata Types BatchProcessJobDefinition
-
-This type extends the Metadata metadata type and inherits its `fullName` field.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-File Suffix and Directory Location
-
-BatchProcessJobDefinition components have the suffix `.batchProcessJobDefinition` and are stored in the
-`batchProcessJobDefinitions` folder.
-
-Version
-
-BatchProcessJobDefinition components are available in API version 51.0 and later.
-
-Special Access Rules
-
-To use this metadata type, your Salesforce org must have the Loyalty Management or the Rebate Management license. The Loyalty
-Program Process type is only available in orgs that have Loyalty Management enabled.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`batchSize` integer Required. Number of records that each Batch Management job can
-process. Flow type Batch Management jobs can process up to 2000
-
-records and Loyalty Program Process type Batch Management jobs can
-process up to 250 records.
-
-`dataSource` BatchDataSource Required. Source of information whose records must be processed by
-on page 471[] the Batch Management job.
-
-`description` string Description of the Batch Management job, up to 255 characters.
-
-`executionProcessApiName` string API name of process that must be executed by the Batch Management
-job. This field is available in API version 55.0 and later.
-
-**•** If the batch job’s type is Flow, enter the API name of an active flow
-that the batch job must execute.
-
-**•** If the batch job’s type is Loyalty Program Process, enter:
-
-**–** Transaction_Journals if you want the batch job to process
-Transaction Journal records by applying the applicable active
-loyalty program process of the type TransactionJournal.
-
-**–** API name of an active loyalty process of the type TierProcessing
-if you want the batch job to run the loyalty program process to
-assess the tier of eligible members. The API name consists of the
-name of the process, the process type, and the name of the
-loyalty program separated by two consecutive underscores. For
-example, the process API name is `Update Member`
-`Tier__TierProcessing__Inner Circle` if the
-
-
-Metadata Types BatchProcessJobDefinition
-
-**Field Name** **Field Type** **Description**
-
-process name is Update Member Tier, the process type is
-TierProcessing, and the loyalty program name is Inner Circle.
-
-You can use database-based APEX classes that let you use flex queues in
-the Batch Management job, allowing to place more than 5 jobs in a
-queue. This functionality is applicable to all Industry Clouds that use
-[managed packages. See Apex Flex Queue.](https://help.salesforce.com/s/articleView?id=platform.code_apex_flex_queue.htm&type=5&language=en_US)
-
-`flowApiName` string
-
-API name of an active flow process that must be executed by the Batch
-Management job.
-
-You can either specify the flow API name in the
-`executionProcessApiName` field or in the `flowApiName`
-field.
-
-`flowInputVariable` string Input variable of associated flow that is used by the batch job to uniquely
-identify records.
-
-`masterLabel` string Required. Name of the Batch Management job, up to 80 characters.
-
-`processGroup` string Required. Name of the group for which the Batch Management job
-processes records.
-
-`retryCount` integer Required. Number of times this Batch Management job must be rerun
-in case it fails. The maximum retry count is 3. Valid values are 1–3.
-
-`retryInterval` integer Required. Number of milliseconds after which the Batch Management
-job must be rerun in case it fails. Valid values are 1,000–10,000.
-
-`status` string Indicates the status of the Batch Management job. Valid values are
-`Active` and `Inactive` .
-
-`type` string (enumeration The type of process that the Batch Management job must execute. This
-of type string) field is available in API version 55.0 and later. Valid values are:
-
-**•** `Flow`
-
-**•** `Loyalty Program Process`
-
-BatchDataSource
-
-Represents the source of information whose records must be processed by the Batch Management job.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`condition` string Required. Criteria defined to filter the records.
-
-`criteria` string Type of filter criteria that’s used to filter records for processing.
-
-
-Metadata Types BatchProcessJobDefinition
-
-**Field Name** **Field Type** **Description**
-
-`dataSourceType` string Type of data source that's used to create the batch job definition. Valid values
-are:
-
-**•** SingleSobject
-
-**•** MultiSobject
-
-Available in API version 64.0 and later.
-
-`filters` BatchDataSrcFilterCriteria Filter criterion that decides which records must be processed by the Batch
-on page 472[] Management job.
-
-orderFields BatchDataSourceOrderField Fields that are used to order the records before the records are added to a
-on page 473 batch in a job.
-
-`sourceObject` string
-
-`sourceObjectField` string
-
-BatchDataSrcFilterCriteria
-
-Required. API name of an object whose records must be processed by the
-batch job.
-
-If the batch job type is Loyalty Program Process, the source object must be:
-
-**•** TransactionJournal if the batch job is used to process transaction journals
-by applying the applicable loyalty program process.
-
-**•** An object that stores the details of loyalty program members whose tier
-must be assessed by the loyalty program process specified in the
-executionProcessApiName field.
-
-API name of the source object field that uniquely identifies records for which
-the batch job is executed. This field is available in API version 57.0 and later.
-
-This field is only applicable when the batch job’s type is Loyalty Program Process
-and a TierProcess type active loyalty program process is specified in the
-
-`executionProcessApiName` field. Specify the API name of a field that
-is a lookup to the LoyaltyProgramMember object and uniquely identifies the
-members whose tier must be assessed.
-
-Represents the filter conditions that decide which records must be processed by the Batch Management job.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-domainObjectName string Name of the object the field is associated with. Available in API version 64.0
-and later.
-
-`dynamicValueType` string Data type of the input variable used as a filter.
-
-`fieldName` string Required. Name of the field that must be used to filter records.
-
-`fieldPath` string Stores the path to a field in the object. Available in API version 64.0 and later.
-
-
-Metadata Types BatchProcessJobDefinition
-
-**Field Name** **Field Type** **Description**
-
-`fieldValue` string Required. Value of the field that must be filtered. Specify the field if
-`isDynamicValue` is set to `False` .
-
-`isDynamicValue` boolean Required. Indicates whether the filter criteria is dynamic.
-
-`operator` string (enumeration Required. Operator that is specified in the filter criteria. Valid values are:
-of type string)
-
-**•** `equals`
-
-**•** `excludes`
-
-**•** `greaterThan`
-
-**•** `greaterThanOrEqualTo`
-
-**•** `in`
-
-**•** `includes`
-
-**•** `lessThan`
-
-**•** `LessThanOrEqualTo`
-
-**•** `GreaterOrEqual`
-
-**•** `like`
-
-**•** `notEquals`
-
-**•** `notIn`
-
-`sequenceNo` integer Required. Sequence number used to refer the criteria in a filter.
-
-BatchDataSourceOrderField
-
-Represents the fields that are used to group data.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-domainObjectName string Required. Name of the object the field is associated with. Available in API version
-64.0 and later.
-
-`fieldName` string Required. Name of the field that must be used to filter records. Available in API
-version 64.0 and later.
-
-`fieldPath` string Required. Stores the path to a field in the object. Available in API version 64.0
-and later.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a BatchProcessJobDefinition component.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-```
-
-
-Metadata Types BatchProcessJobDefinition
-
-```
-   <BatchProcessJobDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
-
-     <batchSize>10</batchSize>
-
-     <dataSource>
-
-       <condition>1</condition>
-
-       <criteria>all</criteria>
-
-       <filters>
-
-         <dynamicValue>false</dynamicValue>
-
-         <dynamicValueType>string</dynamicValueType>
-
-         <fieldName>Name</fieldName>
-
-         <fieldValue>abcd</fieldValue>
-
-         <operator>equals</operator>
-
-         <sequenceNo>1</sequenceNo>
-
-       </filters>
-
-       <sourceObject>Account</sourceObject>
-
-     </dataSource>
-
-     <flowApiName>Flow1</flowApiName>
-
-     <flowInputVariable>recordId</flowInputVariable>
-
-     <masterLabel>BatchJob1</masterLabel>
-
-     <processGroup>Loyalty</processGroup>
-
-     <retryCount>2</retryCount>
-
-     <retryInterval>1000</retryInterval>
-
-     <status>Inactive</status>
-
-     <description>test</description>
-
-     <type>Flow</type>
-
-     <executionProcessApiName>testFlow</executionProcessApiName>
-
-   </BatchProcessJobDefinition>
-
-```
-
-The following is an example of a Flow object used in Metadata API.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <!-
-     ~ Copyright 2020 Salesforce, Inc.
-
-     ~ All Rights Reserved
-
-     ~ Company Confidential
-
-   -->
-
-   <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-
-     <apiVersion>51.0</apiVersion>
-
-     <interviewLabel>Flow1 {!$Flow.CurrentDateTime}</interviewLabel>
-
-     <label>Flow1</label>
-
-     <processMetadataValues>
-
-       <name>BuilderType</name>
-
-       <value>
-
-         <stringValue>LightningFlowBuilder</stringValue>
-
-       </value>
-
-     </processMetadataValues>
-
-     <processMetadataValues>
-
-       <name>OriginBuilderType</name>
-
-       <value>
-
-         <stringValue>LightningFlowBuilder</stringValue>
-
-       </value>
-
-     </processMetadataValues>
-
-     <processType>AutoLaunchedFlow</processType>
-
-     <recordLookups>
-
-       <name>getAcc</name>
-
-```
-
-
-Metadata Types BatchProcessJobDefinition
-
-```
-       <label>getAcc</label>
-
-       <locationX>614</locationX>
-
-       <locationY>465</locationY>
-
-       <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-
-       <filterLogic>and</filterLogic>
-
-       <filters>
-
-         <field>Id</field>
-
-         <operator>EqualTo</operator>
-
-         <value>
-
-           <elementReference>recordId</elementReference>
-
-         </value>
-
-       </filters>
-
-       <getFirstRecordOnly>true</getFirstRecordOnly>
-
-       <object>Account</object>
-
-       <storeOutputAutomatically>true</storeOutputAutomatically>
-
-     </recordLookups>
-
-     <start>
-
-       <locationX>73</locationX>
-
-       <locationY>213</locationY>
-
-       <connector>
-
-         <targetReference>getAcc</targetReference>
-
-       </connector>
-
-     </start>
-
-     <status>Draft</status>
-
-     <variables>
-
-       <name>recordId</name>
-
-       <dataType>String</dataType>
-
-       <isCollection>false</isCollection>
-
-       <isInput>true</isInput>
-
-       <isOutput>false</isOutput>
-
-     </variables>
-
-   </Flow>
-
-```
-
-The following is an example `package.xml` that references the previous definition.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-     <types>
-
-       <members>*</members>
-
-       <name>BatchProcessJobDefinition</name>
-
-     </types>
-
-     <types>
-
-       <members>Flow1</members>
-
-       <name>Flow</name>
-
-     </types>
-
-     <version>51.0</version>
-
-   </Package>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-
-### Metadata Types BillingSettings BillingSettings
-
-Represents the settings for Salesforce Billing.
-
-Parent Type and Manifest Access
-
-[This type extends the Metadata metadata type and inherits its](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/metadata.htm) `fullName` field.
-
-[In the package manifest, all the settings metadata types for the org are accessed using the “Settings” name. See Settings for more details.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_settings.htm)
-
-File Suffix and Directory Location
-
-### The BillingSettings values are stored in the BillingSettings.settings file in the settings folder. The .settings
-
-files are different from other named components, because there’s only one settings file for each settings component.
-
-Version
-
-### BillingSettings components are available in API version 62.0 and later.
-
-Special Access Rules
-
-These settings are available when Billing is enabled.
-
-Fields
-
-**Field Name** **Description**
-
-```
-acctRecGlAccount
-
-billingContextDefinition
-
-billingContextSourceMapping
-
-```
-
-**Field Type**
-string
-
-**Description**
-General ledger account to record the credit amount for unrealized or realized losses
-and the debit amount for unrealized or realized gains in transaction journals. Available
-in API version 64.0 and later.
-
-**Field Type**
-string
-
-**Description**
-[Name of the context definition that the Create Billing Schedules for Orders API uses](https://developer.salesforce.com/docs/atlas.en-us.260.0.revenue_lifecycle_management_dev_guide.meta/revenue_lifecycle_management_dev_guide/connect_resources_create_billing_schedules.htm)
-to understand your order data. Available in API version 64.0 and later.
-
-**Field Type**
-string
-
-**Description**
-Name of the context mapping that links Order fields to billing transaction context
-nodes. Available in API version 64.0 and later.
-
-
-Metadata Types BillingSettings
-
-**Field Name** **Description**
-
-```
-billingIntraCtxtSrcMapping
-
-defaultAPClosureDPEDefnName
-
-defaultApplyCreditMemoFlow
-
-defaultBillingTreatment
-
-defaultEmailTemplate
-
-defaultInvPreviewTemplate
-
-defaultInvoiceDocTemplate
-
-defaultLegalEntity
-
-```
-
-**Field Type**
-string
-
-**Description**
-Name of the custom context mapping that maps your custom or standard Order fields
-to billing transaction context nodes. Available in API version 64.0 and later.
-
-**Field Type**
-string
-
-**Description**
-Org-wide default value to specify the Data Processing Engine (DPE) definition to close
-legal entity accounting periods. Available in API version 64.0 and later.
-
-**Field Type**
-string
-
-**Description**
-Default flow that’s used to apply the credit memo to invoices. Available in API version
-64.0 and later.
-
-**Field Type**
-string
-
-**Description**
-Org-wide default value to specify the name of the billing treatment. Available in API
-version 64.0 and later.
-
-**Field Type**
-string
-
-**Description**
-Default email template to send the generated invoice PDFs. Available in API version
-64.0 and later.
-
-**Field Type**
-string
-
-**Description**
-Default template to generate PDFs of invoice previews. Available in API version 64.0
-and later.
-
-**Field Type**
-string
-
-**Description**
-Default template to generate PDFs of invoices. Available in API version 64.0 and later.
-
-**Field Type**
-string
-
-
-Metadata Types BillingSettings
-
-**Field Name** **Description**
-
-**Description**
-Org-wide default value to specify the name of the legal entity. Available in API version
-64.0 and later.
-
-```
-defaultTaxTreatment
-
-enableBillingDisputeManagement
-
-enableBillingSetup
-
-enableCreditMemoSequenceService
-
-enableCrMemoApplicationToPostedInvoices
-
-enableFailedPaymentsRetry
-
-```
-
-**Field Type**
-string
-
-**Description**
-Org-wide default value to specify the name of the tax treatment. Available in API
-version 64.0 and later.
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether to enable Dispute Management ( `true` ) or not ( `false` ). The default
-value is `false` . Available in API version 66.0 and later.
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether to enable Billing setting ( `true` ) or not ( `false` ). The default value
-is `false` .
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether to mandate the application of sequence policy for credit memos
-( `true` ) or not ( `false` ). The default value is `false` .
-
-Available in API version 66.0 and later with Revenue Cloud Billing.
-
-**Field Type**
-boolean
-
-**Description**
-
-Indicates whether to enable Apply Credits to Posted Invoices setting ( `true` ) or not
-( `false` ). The default value is `false` .
-
-This setting automates settlement of invoices through application of credits to posted
-invoices. The credit application level determines whether credits are automatically
-applied to invoices or invoice lines.
-
-**Field Type**
-boolean
-
-
-Metadata Types BillingSettings
-
-**Field Name** **Description**
-
-**Description**
-
-Indicates whether to retry failed payment schedule items automatically based on the
-defined payment retry rules ( `true` ) or not ( `false` ). The default value is `false` .
-Available in API version 66.0 and later.
-
-```
-enableForeignExchangeTrxnJrnlCreation
-
-enableInvoiceEmailDelivery
-
-enableInvoicePdfGeneration
-
-enableInvoiceSequenceService
-
-enableNegInvoiceLnConversionToCrMemoLn
-
-```
-
-**Field Type**
-boolean
-
-**Description**
-
-Indicates whether to create Transaction Journal records for invoices that hold balance
-amounts (partially settled and not fully settled posted invoices) to record foreign
-exchange unrealized gains or losses during the closure activity of a legal entity
-accounting period. The default value is `false` . Available in API version 65.0 and later
-with Revenue Cloud Billing.
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether to enable Configure Email Delivery Settings ( `true` ) or not ( `false` ).
-The default value is `false` . Available in API version 63.0 and later with Revenue Cloud
-Billing.
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether to enable Document Generation setting ( `true` ) or not ( `false` ).
-The default value is `false` . Available in API version 63.0 and later with Revenue Cloud
-Billing.
-
-**Field Type**
-boolean
-
-**Description**
-
-Indicates whether to mandate the application of sequence policy for posted invoices
-( `true` ) or not ( `false` ). The default value is `false` .
-
-If enabled, each posted invoice is assigned an invoice number. Available in API version
-65.0 and later with Revenue Cloud Billing.
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether to enable Convert Negative Invoice Lines to Credit Memo Lines
-setting ( `true` ) or not ( `false` ). The default value is `false` .
-
-
-Metadata Types BillingSettings
-
-**Field Name** **Description**
-
-```
-enablePaymentSchedulesAndItemsCreation
-
-enableTransactionJournalCreation
-
-enableTransactionsApplicationToInvoices
-
-```
-
-**Field Type**
-boolean
-
-**Description**
-
-Indicates whether to create a default payment schedule policy and payment schedule
-treatment ( `true` ) or not ( `false` ). The default value is `false` .
-
-If enabled, payment schedules and payment schedule items are created during financial
-transactions such as posting of invoices. Available in API version 64.0 and later with
-Revenue Cloud Billing.
-
-**Field Type**
-boolean
-
-**Description**
-
-Indicates whether to create Transaction Journal records based on the defined general
-ledger account assignment rules for the billing entities when billing transaction records
-are created or updated ( `true` ) or not ( `false` ). The default value is `false` . Available
-in API version 63.0 and later with Revenue Cloud Billing.
-
-Billing transaction records include these transaction types.
-
-**•** Invoice
-
-**•** Invoice Line
-
-**•** Invoice Line Tax
-
-**•** Credit Memo
-
-**•** Credit Memo Line
-
-**•** Credit Memo Line Tax
-
-**•** Payment
-
-**•** Refund
-
-**•** Payment Line Invoice
-
-**•** Payment Line Invoice Line
-
-**•** Credit Memo Inv Application
-
-**•** Credit Memo Line Invoice Line
-
-**Field Type**
-boolean
-
-**Description**
-
-Indicates whether to enable Credit Application Level setting ( `true` ) or not ( `false` ).
-The default value is `false` .
-
-**Revenue Cloud Advanced**
-
-This setting applies balances of credit memos to invoices or balances of credit memo
-lines to invoice lines. For the latter, amounts and balances on the invoices are rolled-up
-from the related invoice lines.
-
-
-Metadata Types BillingSettings
-
-**Field Name** **Description**
-
-**Revenue Cloud Billing**
-
-This setting applies balances of credit memos and payments to invoices or balances
-of credit memo lines and payments lines to invoice lines. For the latter, amounts and
-balances on the invoices are rolled-up from the related invoice lines.
-
-```
-enableTrxnAmountsStorageInCorpCurrency
-
-realisedGainGlAccount
-
-realisedLossGlAccount
-
-ruleBasedCrAndPymtAppln
-
-unrealisedGainGlAccount
-
-unrealisedLossGlAccount
-
-```
-
-**Field Type**
-boolean
-
-**Description**
-
-Indicates whether to allow conversion of amounts of the Invoice, Invoice Line, Credit
-Memo, and Credit Memo Line records to your corporate currency ( `true` ) or not
-( `false` ). The default value is `false` . Available in API version 63.0 and later.
-
-Store the converted amounts in corporate currency-specific amount fields.
-
-**Field Type**
-string
-
-**Description**
-Name of the general ledger account to record realized gains in transaction journals.
-Available in API version 64.0 and later.
-
-**Field Type**
-string
-
-**Description**
-Name of the general ledger account to record realized losses in transaction journals.
-Available in API version 64.0 and later.
-
-**Field Type**
-string
-
-**Description**
-Automates the settlement of the posted invoices by applying payments and credits
-that meet the specified application rules. The rules application level determines whether
-payments or credits are applied first to the invoices. The ruleset displays a list of
-selectable rules. Available in API version 66.0 and later.
-
-**Field Type**
-string
-
-**Description**
-Name of the general ledger account to record unrealized gains in transaction journals.
-Available in API version 64.0 and later.
-
-**Field Type**
-string
-
-
-### Metadata Types BlacklistedConsumer
-
-**Field Name** **Description**
-
-**Description**
-Name of the general ledger account to record unrealized losses in transaction journals.
-Available in API version 64.0 and later.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a BillingSettings component.
-
-```
-   <BillingSettings xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <enableBillingSetup>true</enableBillingSetup>
-
-      <enableForeignExchangeTrxnJrnlCreation>true</enableForeignExchangeTrxnJrnlCreation>
-
-      <enableInvoicePdfGeneration>true</enableInvoicePdfGeneration>
-
-     <enableTransactionsApplicationToInvoices>true</enableTransactionsApplicationToInvoices>
-
-     <enableCrMemoApplicationToPostedInvoices>true</enableCrMemoApplicationToPostedInvoices>
-
-      <enableInvoiceEmailDelivery>true</enableInvoiceEmailDelivery>
-
-      <enableInvoiceSequenceService>true</enableInvoiceSequenceService>
-
-      <enableTransactionJournalCreation>true</enableTransactionJournalCreation>
-
-      <enableTrxnAmountsStorageInCorpCurrency>true</enableTrxnAmountsStorageInCorpCurrency>
-
-      <enablePaymentSchedulesAndItemsCreation>true</enablePaymentSchedulesAndItemsCreation>
-
-   </BillingSettings>
-
-```
-
-The following is an example `package.xml` that references the previous definition.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>Billing</members>
-
-        <name>Settings</name>
-
-      </types>
-
-      <version> 66.0 </version>
-
-   </Package>
-
-```
-
-Wildcard Support in the Manifest File
-
-The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The wildcard
-[applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the manifest](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_settings.htm)
-[file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/file_based_zip_file.htm)
-
-### BlacklistedConsumer
-
-Represents a connected app that is inaccessible to your Salesforce org’s users.This type extends the Metadata metadata type and inherits
-its `fullName` field.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-
-Metadata Types BlacklistedConsumer
-
-File Suffix and Directory Location
-
-BlacklistedConsumer components have the suffix `.blacklistedConsumer` and are stored in the `blacklistedConsumers`
-folder.
-
-Version
-
-BlacklistedConsumer components are available in API version 49.0 and later.
-
-Fields
-
-This metadata type contains the following fields:
-
-**Field Name** **Field Type** **Description**
-
-`blockedByApiWhitelisting` boolean Set to `true` to apply the Permitted Users policy, `Admin approved`
-`users are pre-authorized` to all connected apps in the org.
-
-This policy limits access to only users with the associated profile or
-permission set assigned to the app. Set to `false` to allow access to
-the connected app. False is the default value.
-
-`consumerKey` string
-
-Required. A value used by the consumer for identification of the
-connected app to Salesforce. Referred to as `client_id` in OAuth 2.0.
-
-After you define and save the value, it can’t be edited. The value must
-be alphanumeric, can’t contain special characters or spaces, and must
-be between 8–256 characters. Consumer keys must be globally unique.
-
-`consumerName` string Required. The name of the connected app being blocked.
-
-`masterLabel` string Required. The primary label for the connected app record.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a component.
-
-```
-<BlacklistedConsumer xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <consumerKey>testConsumerKey</consumerKey>
-
-   <consumerName>testName</consumerName>
-
-   <blockedByApiWhitelisting>false</blockedByApiWhitelisting>
-
-   <masterLabel>myTest</masterLabel>
-
-</BlacklistedConsumer>
-
-```
-
-The following is an example `package.xml` that references the previous definition.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <types>
-
-     <members>*</members>
-
-     <name>BlacklistedConsumer</name>
-
-   </types>
-
-```
-
-
-### Metadata Types Bot
-
-```
-      <version>49.0</version>
-
-   </Package>
-
-```
-
-Usage
-
-Use this type judiciously for connected apps that you want to make inaccessible to your org’s users. Blocking an app ends all current
-user sessions and prevents future sessions. To block malicious attempts to access your org’s data, we recommend using API Access
-Control instead. This feature restricts users from accessing your Salesforce APIs unless they are pre-authorized through an approved
-connected app.
-
-### Bot
-
-Represents a definition of an Einstein Bot configuration that can have one or more versions. Only one version can be active.
-
-Parent Type
-
-This type extends the Metadata metadata type and inherits its `fullName` field.
-
-File Suffix and Directory Location
-
-### Bot components have the suffix .bot and are stored in the bots folder.
-
-Version
-
-### Bot components are available in API version 43.0 and later.
-
-Special Access Rules
-
-### Bot is available only if Chat and Einstein Bots are enabled in your org. Bot metadata deployment and retrieval are not supported for Lead Nurturing and Sales Coach Agents.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`agentDSLEnabled` boolean Reserved for internal use.
-
-`agentTemplate` string If this Bot represents an agent, this field represents the name of the agent
-template used to create it. Available in API version 64.0 and later.
-
-```
-agentType
-
-```
-
-GenAiAgentType
-(enumeration of
-type string)
-
-`botMlDomain` LocalMlDomain on
-page 485
-
-Specifies the agent type for this agent. For example,
-`AgentforceServiceAgent` . Available in API version 64.0 and
-later.
-
-Represents the Einstein intent set that groups intents, entities, and
-variables associated with a bot. All Einstein Bot versions under the same
-bot now share an intent set. Available in API version 44.0 and later.
-
-
-Metadata Types Bot
-
-**Field Name** **Field Type** **Description**
-
-`botUser` string Specifies the username of the user account, not the first and last name
-or the user ID. Available in API version 46.0 and later.
-
-`botVersions` BotVersion on page Represents the configuration details for a specific Einstein Bots version,
-505 including dialogs, intents, entities, and variables.
-
-`contextVariables` ConversationContextVariable Represents the context variables that enable your bot to gather customer
-on page 486 information regardless of channel. Available in API 45.0 and later.
-
-`conversationChannelProviders` ConversationDefintonChannelProvider **i** Represents a list of the conversation channels linked to the bot. Available
-
-[] on page 487 in API version 51.0 and later.
-
-`defaultOutboundFlow` string Specifies a fallback escalation behavior if the primary agent escalation
-behavior is not available. For example, Agentforce Service Agents can
-
-route conversations to human service reps. Available in API version 65.0
-and later.
-
-`description` string A description of the bot.
-
-`label` string Label that identifies the bot throughout the Salesforce user interface.
-
-`logPrivateConversationData` boolean Specifies whether to log customer inputs as part of conversation data
-( `true` ) or not ( `false` ). Available in API version 48.0 and later.
-
-`pageContextVariables` PageContextVariable Provides page-level context variables for the bot. Available in API version
-on page 488[] 64.0 and later.
-
-sessionTimeout int Represents the maximum amount of minutes that a bot session can be
-idle. Available in API version 58.0 and later.
-
-```
-type
-
-```
-
-LocalMlDomain
-
-BotType Required. The default value is `Bot` . This field represents the configuration
-(enumeration of type of the bot. Valid values are:
-type string)
-
-**•** `Bot`         - Default Einstein Bot configuration.
-
-**•** `ExternalCopilot`         - An external-facing agent. For example,
-an Agentforce Service agent.
-
-**•** `InternalCopilot`         - An internal-facing agent. For example,
-an Agentforce Employee agent.
-
-An Einstein Intent Set local to the current bot version.
-
-**Field Name** **Field Type** **Description**
-
-`label` string Label that represents an Einstein Intent Set local to the current bot version
-throughout the Salesforce user interface.
-
-`mlIntents` MlIntent[] List of intents associated with this local intent set.
-
-`mlSlotClasses` MlSlotClass[] List of entities associated with this local intent set.
-
-
-Metadata Types Bot
-
-**Field Name** **Field Type** **Description**
-
-`name` string Required. This unique name prevents conflicts with other local Einstein Intent
-Sets. This name can contain only underscores and alphanumeric characters
-
-and must be unique in your org. It must begin with a letter, not include spaces,
-not end with an underscore, and not contain two consecutive underscores.
-
-ConversationContextVariable
-
-A context variable local to the current bot version. Available in API version 45.0 and later.
-
-**Field Name** **Field Type** **Description**
-
-`contextVariableMappings` ConversationContextVariableMapping Represents the mapping between a context variable, channel type, and sObject
-on page 487 field.
-
-```
-dataType
-
-```
-
-ConversationDataType Required. Represents the data type of the context variable. Valid values are:
-(enumeration of type
-
-**•** `Text`
-
-string)
-
-**•** `Text`
-
-**•** `Number`
-
-**•** `Boolean`
-
-**•** `Object`
-
-**•** `Date`
-
-**•** `DateTime`
-
-**•** `Currency`
-
-**•** `Id`
-
-`description` string A description of this variable. This value may be used by the Agentforce planner
-service. Available in API version 63.0 and later.
-
-`developerName` string Required. Represents the name of the context variable. Can contain only
-underscores and alphanumeric characters and must be unique in your org. It
-
-must begin with a letter, not include spaces, not end with an underscore, and
-not contain two consecutive underscores.
-
-`includeInPrompt` boolean Indicates whether the variable is injected into the prompt sent to the Agentforce
-model. If `true`, the variable appears in the **Included Fields** section of the UI.
-
-Note: The default variables `Id`, `EndUserId`, and
-`EndUserLanguage` always appear in the **Included Fields** section
-of the UI, regardless of their value of `includeInPrompt` . We
-recommend that you don't change the value of `includeInPrompt`
-for these default variables, as changing the value can prevent your agent
-from accessing important session data.
-
-Available in API version 63.0 and later.
-
-`label` string Required. A label that identifies the context variable throughout the Salesforce
-user interface.
-
-
-Metadata Types Bot
-
-**Field Name** **Field Type** **Description**
-
-`SObjectType` string Valid values are:
-
-**•** `BotDefinition`
-
-**•** `Queue`
-
-ConversationContextVariableMapping
-
-Represents the mapping between a context variable, channel type, and sObject field.
-
-**Field Name** **Field Type** **Description**
-
-`fieldName` string Required. The API name of an SObject field to be used as part of the mapping.
-
-```
-messageType
-
-```
-
-MessageType Required. Represents the message channel. Valid values are:
-(enumeration of type
-
-**•** `Alexa`
-
-string)
-
-**•** `Alexa`
-
-**•** `AppleBusinessChat` —Messages sent in enhanced Apple Messages
-for Business channels.
-
-**•** `EmbeddedMessaging` —Messages sent in Messaging for In-App and
-Web channels. Available in API version 50.0 and later.
-
-**•** `Facebook`
-
-**•** `GoogleHome`
-
-**•** `InternalCopilot`
-
-**•** `Line`
-
-**•** `Omega`
-
-**•** `Phone`
-
-**•** `Text`
-
-**•** `WeChat`
-
-**•** `WebChat`
-
-**•** `WhatsApp`
-
-`SObjectType` string Required. SObject type for the field property defined as part of the mapping.
-Valid values are:
-
-**•** `LiveChatTranscript`
-
-**•** `MessagingEndUser`
-
-**•** `MessagingSession`
-
-ConversationDefinitionChannelProvider
-
-The developer name of a conversation channel linked to the bot. Available in API version 51.0 and later.
-
-Note: To add, edit, or remove a messaging channel, you must use the UI. If you deploy a bot with messaging channel providers,
-those providers aren’t visible in Metadata API.
-
-
-Metadata Types Bot
-
-**Field Name** **Field Type** **Description**
-
-`agentRequired` boolean Specifies whether an agent must be online for the bot to be active ( `true` ) or
-not ( `false` ) The default is `false` .
-
-`chatButtonName` string Required. The developer name of a LiveChatButton metadata component.
-
-PageContextVariable
-
-A page-level context variable used by the bot. Available in API version 64.0 and later.
-
-**Field Name** **Field Type** **Description**
-
-`SObjectType` string Specifies the sObject type associated with this page context variable.
-
-```
-dataType
-
-```
-
-ConversationDataType Required. Represents the data type of the page context variable. Valid values
-(enumeration of type are:
-string)
-
-**•** `Text`
-
-**•** `Number`
-
-**•** `Boolean`
-
-**•** `Object`
-
-**•** `Date`
-
-**•** `DateTime`
-
-**•** `Currency`
-
-**•** `Id`
-
-`description` string A description of the page context variable.
-
-`developerName` string Required. Represents the unique API name of the page context variable. Can
-contain only underscores and alphanumeric characters and must be unique
-
-in your org. It must begin with a letter, not include spaces, not end with an
-underscore, and not contain two consecutive underscores.
-
-`label` string Required. A label that identifies the page context variable throughout the
-Salesforce user interface.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a Bot. This example has been trimmed to make it easier to read.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<Bot xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <botMlDomain>
-
-     <label>Astros Pizza</label>
-
-     <mlIntents>
-
-        <developerName>New_Order</developerName>
-
-        <label>New Order</label>
-
-        <mlIntentUtterances>
-
-          <utterance>Today is pie day so I want pie</utterance>
-
-```
-
-
-Metadata Types Bot
-
-```
-           </mlIntentUtterances>
-
-        </mlIntents>
-
-        <mlSlotClasses>
-
-           <developerName>Size</developerName>
-
-           <extractionType>Value</extractionType>
-
-           <label>Size</label>
-
-           <mlSlotClassValues>
-
-             <synonymGroup>
-
-               <languages>en_US</languages>
-
-               <terms>Big</terms>
-
-               <terms>Extra Large</terms>
-
-               <terms>X-Large</terms>
-
-               <terms>Grande</terms>
-
-               <terms>Huge</terms>
-
-             </synonymGroup>
-
-             <value>Large</value>
-
-           </mlSlotClassValues>
-
-        </mlSlotClasses>
-
-        <name>Astros_Pizza_ld1</name>
-
-      </botMlDomain>
-
-      <botVersions>
-
-        <fullName>v1</fullName>
-
-        <botDialogGroups>
-
-           <developerName>Order_Management</developerName>
-
-           <label>Order Management</label>
-
-        </botDialogGroups>
-
-        <botDialogs>
-
-           <botDialogGroup>Order_Management</botDialogGroup>
-
-           <botSteps>
-
-             <botMessages>
-
-               <message> ������Pizza Time! ������ </message>
-
-             </botMessages>
-
-             <type>Message</type>
-
-           </botSteps>
-
-           <botSteps>
-
-             <botStepConditions>
-
-               <leftOperandName>Verified_User</leftOperandName>
-
-               <leftOperandType>ConversationVariable</leftOperandType>
-
-               <operatorType>Equals</operatorType>
-
-               <rightOperandValue>false</rightOperandValue>
-
-             </botStepConditions>
-
-             <botSteps>
-
-               <botNavigation>
-
-                  <botNavigationLinks>
-
-                    <targetBotDialog>Customer_Verification</targetBotDialog>
-
-                  </botNavigationLinks>
-
-                  <type>Call</type>
-
-               </botNavigation>
-
-               <type>Navigation</type>
-
-             </botSteps>
-
-             <type>Group</type>
-
-           </botSteps>
-
-           <botSteps>
-
-             <botStepConditions>
-
-```
-
-
-Metadata Types Bot
-
-```
-               <leftOperandName>Location</leftOperandName>
-
-               <leftOperandType>ConversationVariable</leftOperandType>
-
-               <operatorType>IsNotSet</operatorType>
-
-             </botStepConditions>
-
-             <botSteps>
-
-               <botNavigation>
-
-                  <botNavigationLinks>
-
-                    <targetBotDialog>Select_Location</targetBotDialog>
-
-                  </botNavigationLinks>
-
-                  <type>Call</type>
-
-               </botNavigation>
-
-               <type>Navigation</type>
-
-             </botSteps>
-
-             <type>Group</type>
-
-           </botSteps>
-
-           <botSteps>
-
-             <botVariableOperation>
-
-               <botInvocation>
-
-                  <invocationActionName>CreateOrderService</invocationActionName>
-
-                  <invocationActionType>apex</invocationActionType>
-
-                  <invocationMappings>
-
-                    <parameterName>customer</parameterName>
-
-                    <type>Input</type>
-
-                    <variableName>Contact</variableName>
-
-                    <variableType>ConversationVariable</variableType>
-
-                  </invocationMappings>
-
-                  <invocationMappings>
-
-                    <parameterName>location</parameterName>
-
-                    <type>Input</type>
-
-                    <variableName>Location</variableName>
-
-                    <variableType>ConversationVariable</variableType>
-
-                  </invocationMappings>
-
-                  <invocationMappings>
-
-                    <parameterName>output</parameterName>
-
-                    <type>Output</type>
-
-                    <variableName>Pizza_Order</variableName>
-
-                    <variableType>ConversationVariable</variableType>
-
-                  </invocationMappings>
-
-               </botInvocation>
-
-               <type>Set</type>
-
-             </botVariableOperation>
-
-             <type>VariableOperation</type>
-
-           </botSteps>
-
-           <botSteps>
-
-             <botMessages>
-
-              <message>Perfect, let&apos;s work on your order from our {!Location.Name}
-
-    location</message>
-
-             </botMessages>
-
-             <type>Message</type>
-
-           </botSteps>
-
-           <botSteps>
-
-             <botNavigation>
-
-               <botNavigationLinks>
-
-                  <targetBotDialog>Add_Items_to_Order</targetBotDialog>
-
-```
-
-
-Metadata Types Bot
-
-```
-               </botNavigationLinks>
-
-               <type>Redirect</type>
-
-             </botNavigation>
-
-             <type>Navigation</type>
-
-           </botSteps>
-
-           <developerName>New_Order</developerName>
-
-           <label>New Order</label>
-
-           <mlIntent>New_Order</mlIntent>
-
-           <showInFooterMenu>false</showInFooterMenu>
-
-        </botDialogs>
-
-        <conversationVariables>
-
-           <dataType>Object</dataType>
-
-           <developerName>Contact</developerName>
-
-           <label>Contact</label>
-
-        </conversationVariables>
-
-        <conversationVariables>
-
-           <dataType>Text</dataType>
-
-           <developerName>Delivery_Address</developerName>
-
-           <label>Delivery Address</label>
-
-        </conversationVariables>
-
-        <conversationVariables>
-
-           <dataType>Object</dataType>
-
-           <developerName>Pizza_Order</developerName>
-
-           <label>Pizza Order</label>
-
-        </conversationVariables>
-
-        <entryDialog>Welcome</entryDialog>
-
-        <mainMenuDialog>Main_Menu</mainMenuDialog>
-
-      </botVersions>
-
-      <contextVariables>
-
-        <contextVariableMappings>
-
-           <SObjectType>LiveChatTranscript</SObjectType>
-
-           <fieldName>LiveChatTranscript.ChatKey</fieldName>
-
-           <messageType>WebChat</messageType>
-
-        </contextVariableMappings>
-
-        <dataType>Text</dataType>
-
-        <developerName>ChatKey</developerName>
-
-        <label>Chat Key</label>
-
-      </contextVariables>
-
-      <contextVariables>
-
-        <contextVariableMappings>
-
-           <SObjectType>LiveChatTranscript</SObjectType>
-
-           <fieldName>LiveChatTranscript.ContactId</fieldName>
-
-           <messageType>WebChat</messageType>
-
-        </contextVariableMappings>
-
-        <dataType>Id</dataType>
-
-        <developerName>ContactId</developerName>
-
-        <label>Contact Id</label>
-
-      </contextVariables>
-
-      <contextVariables>
-
-        <contextVariableMappings>
-
-           <SObjectType>LiveChatTranscript</SObjectType>
-
-           <fieldName>LiveChatTranscript.LiveChatVisitorId</fieldName>
-
-           <messageType>WebChat</messageType>
-
-        </contextVariableMappings>
-
-```
-
-
-### Metadata Types BotBlock
-
-```
-        <dataType>Id</dataType>
-
-        <developerName>EndUserId</developerName>
-
-        <label>End User Id</label>
-
-      </contextVariables>
-
-      <contextVariables>
-
-        <contextVariableMappings>
-
-           <SObjectType>LiveChatTranscript</SObjectType>
-
-           <fieldName>LiveChatTranscript.Id</fieldName>
-
-           <messageType>WebChat</messageType>
-
-        </contextVariableMappings>
-
-        <dataType>Id</dataType>
-
-        <developerName>RoutableId</developerName>
-
-        <label>Routable Id</label>
-
-      </contextVariables>
-
-   ....<conversationChannelProviders>
-
-        <agentRequired>false</agentRequired>
-
-        <chatButtonName>Chat_Button_For_Bot</chatButtonName>
-
-      </conversationChannelProviders>
-
-      <label>Astro&apos;s Pizza</label>
-
-   </Bot>
-
-```
-
-The following is an example `package.xml` that references the previous definition.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>Pizza_Bot</members>
-
-        <name>Bot</name>
-
-      </types>
-
-      <version>45.0</version>
-
-   </Package>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### BotBlock
-
-Represents the configuration details for a specific Einstein Bot block, including dialogs and variables.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-Parent Type
-
-This type extends the Metadata metadata type and inherits its `fullName` field.
-
-File Suffix and Directory Location
-
-### BotBlock components have the suffix .botBlock and are stored in the botBlocks folder.
-
-
-Metadata Types BotBlock
-
-Version
-
-BotBlock components are available in API version 58.0 and later.
-
-Special Access Rules
-
-BotBlock is available only if Chat and Einstein Bots are enabled in your org.
-
-Bot metadata deployment and retrieval are not supported for Lead Nurturing and Sales Coach Agents.
-
-Fields
-
-**Field Name** **Description**
-
-```
-botBlockVersions
-
-description
-
-masterLabel
-
-richContentEnabled
-
-```
-
-BotBlockVersion
-
-**Field Type**
-
-BotBlockVersion[]
-
-**Description**
-The configuration details for specific Einstein Bot block versions, including dialogs and
-variables.
-
-**Field Type**
-string
-
-**Description**
-A description of the bot block.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-A user-friendly label for BotBlock, which is defined when the block is created.
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether the block is available for enhanced bots ( `true` ) or for only standard
-bots ( `false` ). The default is `false` .
-
-Represents the configuration details for an Einstein Bot block version, including dialogs and variables.
-
-**Field Name** **Description**
-
-```
-botDialogs
-
-```
-
-**Field Type**
-
-BotDialog[] on page 509
-
-
-Metadata Types BotBlock
-
-**Field Name** **Description**
-
-**Description**
-The list of dialogs in this bot block.
-
-```
-conversationGoals
-
-conversationLanguages
-
-conversationVariables
-
-description
-
-mlDomain
-
-permissionSet
-
-status
-
-```
-
-**Field Type**
-
-ConversationDefinitionGoal[] on page 529
-
-**Description**
-The list of goals in this bot block. Available in API version 57.0 and later.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-Specifies the language of the bot block.
-
-**Field Type**
-
-ConversationVariable[] on page 530
-
-**Description**
-A container that stores a specific piece of data collected from the customer. You can
-use variables within dialog actions as both inputs and outputs. Available in API version
-44.0 and later.
-
-**Field Type**
-string
-
-**Description**
-A description of the bot block.
-
-**Field Type**
-
-LocalMlDomain on page 485
-
-**Description**
-
-Required.
-
-The Einstein Intent Set that groups intents, entities, and variables associated with a
-block.
-
-**Field Type**
-string
-
-**Description**
-The permission set associated with the bot block. Available in API version 59.0 and
-later.
-
-**Field Type**
-ConvDefBlockVersionStatus (enumeration of type string)
-
-
-Metadata Types BotBlock
-
-**Field Name** **Description**
-
-**Description**
-
-Required.
-
-Indicates whether a block is published or is a draft.
-
-Values are:
-
-**•** `Published`
-
-Declarative Metadata Sample Definition
-
-The following is an example of a BotBlock component.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <BotBlock xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <access xsi:nil="true"/>
-
-      <botBlockVersions>
-
-        <fullName>Published</fullName>
-
-        <botDialogs>
-
-           <developerName>Test_Dialog_1646070168572</developerName>
-
-           <label>Test_Dialog_1646070168572</label>
-
-           <showInFooterMenu>false</showInFooterMenu>
-
-        </botDialogs>
-
-        <botDialogs>
-
-           <developerName>Test_Dialog_1646070168926</developerName>
-
-           <label>Test_Dialog_1646070168926</label>
-
-           <showInFooterMenu>false</showInFooterMenu>
-
-        </botDialogs>
-
-        <botDialogs>
-
-           <botSteps>
-
-             <stepIdentifier>s4</stepIdentifier>
-
-             <type>Wait</type>
-
-           </botSteps>
-
-           <developerName>Main_Menu</developerName>
-
-           <label>Main Menu</label>
-
-           <mlIntent>Main_Menu</mlIntent>
-
-           <showInFooterMenu>false</showInFooterMenu>
-
-        </botDialogs>
-
-        <botDialogs>
-
-           <botSteps>
-
-             <botMessages>
-
-               <message>Goodbye! Click the &quot;End Chat&quot; button to end this
-
-   chat</message>
-
-               <messageIdentifier>m2</messageIdentifier>
-
-             </botMessages>
-
-             <stepIdentifier>s6</stepIdentifier>
-
-             <type>Message</type>
-
-           </botSteps>
-
-           <botSteps>
-
-             <stepIdentifier>s7</stepIdentifier>
-
-             <type>Wait</type>
-
-```
-
-
-Metadata Types BotBlock
-
-```
-           </botSteps>
-
-           <developerName>End_Chat</developerName>
-
-           <label>End Chat</label>
-
-           <mlIntent>End_Chat</mlIntent>
-
-           <showInFooterMenu>false</showInFooterMenu>
-
-        </botDialogs>
-
-        <botDialogs>
-
-           <botSteps>
-
-             <botMessages>
-
-               <message>Unfortunately, there are no agents available at the
-
-   moment</message>
-
-               <messageIdentifier>m3</messageIdentifier>
-
-             </botMessages>
-
-             <stepIdentifier>s8</stepIdentifier>
-
-             <type>Message</type>
-
-           </botSteps>
-
-           <botSteps>
-
-             <stepIdentifier>s9</stepIdentifier>
-
-             <type>Wait</type>
-
-           </botSteps>
-
-           <developerName>No_Agent_Available</developerName>
-
-           <label>No Agent</label>
-
-           <showInFooterMenu>false</showInFooterMenu>
-
-        </botDialogs>
-
-        <botDialogs>
-
-           <botSteps>
-
-             <botMessages>
-
-               <message>Hi! I&apos;m your helpful bot.</message>
-
-               <messageIdentifier>m1</messageIdentifier>
-
-             </botMessages>
-
-             <stepIdentifier>s1</stepIdentifier>
-
-             <type>Message</type>
-
-           </botSteps>
-
-           <botSteps>
-
-             <conversationRecordLookup>
-
-               <SObjectType>Account</SObjectType>
-
-               <conditions>
-
-                  <leftOperand>Account.Phone</leftOperand>
-
-                  <operatorType>Equal</operatorType>
-
-                  <rightOperandValue>Value</rightOperandValue>
-
-                  <sortOrder>0</sortOrder>
-
-               </conditions>
-
-               <lookupFields>
-
-                  <fieldName>Account.Phone</fieldName>
-
-               </lookupFields>
-
-               <lookupFields>
-
-                  <fieldName>Account.OwnerId</fieldName>
-
-               </lookupFields>
-
-               <maxLookupResults>1</maxLookupResults>
-
-               <sourceVariableName>_LastCustomerInput</sourceVariableName>
-
-               <sourceVariableType>ConversationVariable</sourceVariableType>
-
-               <targetVariableName>MyCustomVariable</targetVariableName>
-
-             </conversationRecordLookup>
-
-             <stepIdentifier>s2</stepIdentifier>
-
-```
-
-
-Metadata Types BotBlock
-
-```
-             <type>RecordLookup</type>
-
-           </botSteps>
-
-           <botSteps>
-
-             <botNavigation>
-
-               <botNavigationLinks>
-
-                  <targetBotDialog>Main_Menu</targetBotDialog>
-
-                  <targetVariable xsi:nil="true"/>
-
-                  <targetVariableType xsi:nil="true"/>
-
-               </botNavigationLinks>
-
-               <type>Redirect</type>
-
-             </botNavigation>
-
-             <stepIdentifier>s3</stepIdentifier>
-
-             <type>Navigation</type>
-
-           </botSteps>
-
-           <developerName>Welcome</developerName>
-
-           <label>Welcome</label>
-
-           <mlIntent>Welcome</mlIntent>
-
-           <showInFooterMenu>false</showInFooterMenu>
-
-        </botDialogs>
-
-        <conversationLanguages>en_US</conversationLanguages>
-
-        <conversationVariables>
-
-           <dataType>Text</dataType>
-
-           <developerName>TestVariableABC</developerName>
-
-           <label>TestVariableABC</label>
-
-        </conversationVariables>
-
-        <conversationVariables>
-
-           <dataType>Text</dataType>
-
-           <developerName>TestVariableXYZ</developerName>
-
-           <label>TestVariableXYZ</label>
-
-        </conversationVariables>
-
-        <conversationVariables>
-
-           <collectionType>List</collectionType>
-
-           <dataType>Object</dataType>
-
-           <developerName>MyCustomVariable</developerName>
-
-           <label>MyCustomVariable</label>
-
-        </conversationVariables>
-
-        <description>Created for testing.</description>
-
-        <mlDomain>
-
-           <label>vPub</label>
-
-           <mlIntents>
-
-             <developerName>End_Chat</developerName>
-
-             <label>End Chat</label>
-
-             <mlIntentUtterances>
-
-               <language>es</language>
-
-               <utterance>Utterance1</utterance>
-
-             </mlIntentUtterances>
-
-             <mlIntentUtterances>
-
-               <language>es</language>
-
-               <utterance>Utterance2</utterance>
-
-             </mlIntentUtterances>
-
-             <mlIntentUtterances>
-
-               <language>es</language>
-
-               <utterance>Utterance3</utterance>
-
-             </mlIntentUtterances>
-
-```
-
-
-### Metadata Types BotTemplate
-
-```
-           </mlIntents>
-
-           <mlIntents>
-
-             <description>Main Menu Intent</description>
-
-             <developerName>Main_Menu</developerName>
-
-             <label>Main Menu</label>
-
-           </mlIntents>
-
-           <mlIntents>
-
-             <description>Welcome Intent</description>
-
-             <developerName>Welcome</developerName>
-
-             <label>Welcome</label>
-
-           </mlIntents>
-
-           <name>blockDevName0001_vPub</name>
-
-        </mlDomain>
-
-        <status>Published</status>
-
-      </botBlockVersions>
-
-      <description>Collects the user&apos;s first name, last name, email address, phone
-
-   number, and company name.</description>
-
-      <masterLabel>User Info Collection Block</masterLabel>
-
-      <richContentEnabled>true</richContentEnabled>
-
-   </BotBlock>
-
-```
-
-The following is an example `package.xml` that references the previous definition.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>AgentTransfer</members>
-
-        <name>BotBlock</name>
-
-      </types>
-
-      <version>58.0</version>
-
-   </Package>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### BotTemplate
-
-Represents the configuration details for a specific Einstein Bot template, including dialogs and variables.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-Parent Type
-
-This type extends the Metadata metadata type and inherits its `fullName` field.
-
-File Suffix and Directory Location
-
-### BotTemplate components have the suffix .botTemplate and are stored in the botTemplates folder.
-
-
-Metadata Types BotTemplate
-
-Version
-
-BotTemplate components are available in API version 55.0 and later.
-
-Special Access Rules
-
-BotTemplate is available only if Chat and Einstein Bots are enabled in your org.
-
-Bot metadata deployment and retrieval are not supported for Lead Nurturing and Sales Coach Agents.
-
-Fields
-
-**Field Name** **Description**
-
-```
-botDialogGroups
-
-botDialogs
-
-conversationLanguages
-
-contextVariables
-
-conversationGoals
-
-conversationSystemDialogs
-
-```
-
-**Field Type**
-
-BotDialogGroup[] on page 508
-
-**Description**
-The list of dialog groups in this bot template.
-
-**Field Type**
-
-BotDialog[] on page 509
-
-**Description**
-The list of dialogs in this bot template.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-Specifies the language of the bot template.
-
-**Field Type**
-
-ConversationContextVariable[] on page 486
-
-**Description**
-Represents the context variables that enable your bot to gather customer information
-regardless of channel.
-
-**Field Type**
-
-ConversationDefinitionGoal[] on page 529
-
-**Description**
-The list of goals in this bot template. Available in API version 57.0 and later.
-
-**Field Type**
-
-ConversationSystemDialog[] on page 530
-
-**Description**
-A system function assigned to a dialog.
-
-
-Metadata Types BotTemplate
-
-**Field Name** **Description**
-
-```
-conversationVariables
-
-description
-
-entryDialog
-
-icon
-
-mainMenuDialog
-
-masterLabel
-
-mlDomain
-
-```
-
-**Field Type**
-
-ConversationVariable[] on page 530
-
-**Description**
-A container that stores a specific piece of data collected from the customer. You can
-use variables within dialog actions as both inputs and outputs.
-
-**Field Type**
-string
-
-**Description**
-A description of the bot template.
-
-**Field Type**
-string
-
-**Description**
-A reference to the first dialog that the bot presents to your customer. For example,
-`Welcome` .
-
-**Field Type**
-string
-
-**Description**
-The icon used to identify the template.
-
-**Field Type**
-string
-
-**Description**
-A reference to the dialog identified as the main menu dialog. For example, `Main`
-`Menu` .
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-A user-friendly label for BotTemplate, which is defined when the BotTemplate is created.
-
-**Field Type**
-
-LocalMlDomain on page 485
-
-**Description**
-
-Required.
-
-Represents the Einstein Intent Set that groups intents, entities, and variables associated
-with a template.
-
-
-Metadata Types BotTemplate
-
-**Field Name** **Description**
-
-```
-permissionSet
-
-richContentEnabled
-
-type
-
-```
-
-**Field Type**
-string
-
-**Description**
-The permission set associated with the bot template. Available in API version 59.0 and
-later.
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether the template is available for enhanced bots ( `true` ) or for standard
-bots ( `false` ). The default is `false` .
-
-**Field Type**
-BotType (enumeration of type string)
-
-**Description**
-This field represents the configuration type of the bot. The default value is `Bot` .
-
-Valid values are:
-
-**•** `Bot` —Default Einstein Bot configuration.
-
-**•** `ExternalCopilot`  - An external-facing agent. For example, an Agentforce
-Service agent.
-
-**•** `InternalCopilot`  - An internal-facing agent. For example, an Agentforce
-Employee agent.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a BotTemplate component.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<BotTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <botDialogGroups>
-
-     <developerName>dialog_group1</developerName>
-
-     <label>dialog group1</label>
-
-   </botDialogGroups>
-
-   <botDialogs>
-
-     <developerName>Test_Dialog_1</developerName>
-
-     <label>Test_Dialog_1</label>
-
-     <showInFooterMenu>false</showInFooterMenu>
-
-   </botDialogs>
-
-   <botDialogs>
-
-     <developerName>Test_Dialog_2</developerName>
-
-     <label>Test_Dialog_2</label>
-
-     <showInFooterMenu>false</showInFooterMenu>
-
-   </botDialogs>
-
-   <botDialogs>
-
-     <botSteps>
-
-```
-
-
-Metadata Types BotTemplate
-
-```
-           <botMessages>
-
-             <message>Hi! I&apos;m your helpful bot.</message>
-
-             <messageIdentifier>m1</messageIdentifier>
-
-           </botMessages>
-
-           <stepIdentifier>s1</stepIdentifier>
-
-           <type>Message</type>
-
-        </botSteps>
-
-        <botSteps>
-
-          <conversationRecordLookup>
-
-            <SObjectType>Account</SObjectType>
-
-            <conditions>
-
-               <leftOperand>Account.Phone</leftOperand>
-
-               <operatorType>Equal</operatorType>
-
-               <rightOperandValue>Value</rightOperandValue>
-
-               <sortOrder>0</sortOrder>
-
-            </conditions>
-
-            <lookupFields>
-
-               <fieldName>Account.Phone</fieldName>
-
-            </lookupFields>
-
-            <lookupFields>
-
-               <fieldName>Account.OwnerId</fieldName>
-
-            </lookupFields>
-
-            <maxLookupResults>1</maxLookupResults>
-
-            <sourceVariableName>_LastCustomerInput</sourceVariableName>
-
-            <sourceVariableType>ConversationVariable</sourceVariableType>
-
-            <targetVariableName>MyCustomVariable</targetVariableName>
-
-          </conversationRecordLookup>
-
-          <stepIdentifier>s2</stepIdentifier>
-
-          <type>RecordLookup</type>
-
-        </botSteps>
-
-        <botSteps>
-
-           <botNavigation>
-
-             <botNavigationLinks>
-
-               <targetBotDialog>Main_Menu</targetBotDialog>
-
-             </botNavigationLinks>
-
-             <type>Redirect</type>
-
-           </botNavigation>
-
-           <stepIdentifier>s3</stepIdentifier>
-
-           <type>Navigation</type>
-
-        </botSteps>
-
-        <developerName>Welcome</developerName>
-
-        <label>Welcome</label>
-
-        <mlIntent>Welcome</mlIntent>
-
-        <showInFooterMenu>false</showInFooterMenu>
-
-      </botDialogs>
-
-      <botDialogs>
-
-        <botSteps>
-
-           <stepIdentifier>s4</stepIdentifier>
-
-           <type>Wait</type>
-
-        </botSteps>
-
-        <developerName>Main_Menu</developerName>
-
-        <label>Main Menu</label>
-
-        <mlIntent>Main_Menu</mlIntent>
-
-        <showInFooterMenu>false</showInFooterMenu>
-
-```
-
-
-Metadata Types BotTemplate
-
-```
-      </botDialogs>
-
-      <botDialogs>
-
-        <botSteps>
-
-           <botMessages>
-
-             <message>Goodbye! Click the &quot;End Chat&quot; button to end this
-
-   chat</message>
-
-             <messageIdentifier>m2</messageIdentifier>
-
-           </botMessages>
-
-           <stepIdentifier>s6</stepIdentifier>
-
-           <type>Message</type>
-
-        </botSteps>
-
-        <botSteps>
-
-           <stepIdentifier>s7</stepIdentifier>
-
-           <type>Wait</type>
-
-        </botSteps>
-
-        <developerName>End_Chat</developerName>
-
-        <label>End Chat</label>
-
-        <mlIntent>End_Chat</mlIntent>
-
-        <showInFooterMenu>false</showInFooterMenu>
-
-      </botDialogs>
-
-      <botDialogs>
-
-        <botSteps>
-
-           <botMessages>
-
-            <message>Unfortunately, there are no agents available at the moment</message>
-
-             <messageIdentifier>m3</messageIdentifier>
-
-           </botMessages>
-
-           <stepIdentifier>s8</stepIdentifier>
-
-           <type>Message</type>
-
-        </botSteps>
-
-        <botSteps>
-
-           <stepIdentifier>s9</stepIdentifier>
-
-           <type>Wait</type>
-
-        </botSteps>
-
-        <developerName>No_Agent_Available</developerName>
-
-        <label>No Agent</label>
-
-        <showInFooterMenu>false</showInFooterMenu>
-
-      </botDialogs>
-
-      <contextVariables>
-
-        <contextVariableMappings>
-
-           <SObjectType>LiveChatTranscript</SObjectType>
-
-           <fieldName>LiveChatTranscript.ChatKey</fieldName>
-
-           <messageType>WebChat</messageType>
-
-        </contextVariableMappings>
-
-        <dataType>Text</dataType>
-
-        <developerName>ChatKey</developerName>
-
-        <label>Chat Key</label>
-
-      </contextVariables>
-
-      <conversationLanguages>en_US</conversationLanguages>
-
-      <conversationSystemDialogs>
-
-        <dialog>No_Agent_Available</dialog>
-
-        <type>TransferFailed</type>
-
-      </conversationSystemDialogs>
-
-      <conversationSystemDialogs>
-
-```
-
-
-Metadata Types BotTemplate
-
-```
-        <dialog>Test_Dialog_1</dialog>
-
-        <type>ErrorHandling</type>
-
-      </conversationSystemDialogs>
-
-      <conversationVariables>
-
-        <dataType>Text</dataType>
-
-        <developerName>TestVariableXYZ</developerName>
-
-        <label>TestVariableXYZ</label>
-
-      </conversationVariables>
-
-      <conversationVariables>
-
-        <collectionType>List</collectionType>
-
-        <dataType>Object</dataType>
-
-        <developerName>MyCustomVariable</developerName>
-
-        <label>MyCustomVariable</label>
-
-      </conversationVariables>
-
-      <description>Description of BotTemplate</description>
-
-      <entryDialog>Test_Dialog_1</entryDialog>
-
-      <icon>AA8qwqXXXXX</icon>
-
-      <mainMenuDialog>Test_Dialog_2</mainMenuDialog>
-
-      <masterLabel>Astro Bot</masterLabel>
-
-      <mlDomain>
-
-        <label>Astro Bot</label>
-
-        <mlIntents>
-
-           <developerName>End_Chat</developerName>
-
-           <label>End Chat</label>
-
-           <mlIntentUtterances>
-
-             <utterance>Utterance1</utterance>
-
-             <language>es</language>
-
-           </mlIntentUtterances>
-
-           <mlIntentUtterances>
-
-             <utterance>Utterance2</utterance>
-
-             <language>es</language>
-
-           </mlIntentUtterances>
-
-           <mlIntentUtterances>
-
-             <utterance>Utterance3</utterance>
-
-             <language>es</language>
-
-           </mlIntentUtterances>
-
-        </mlIntents>
-
-        <mlIntents>
-
-           <developerName>Main_Menu</developerName>
-
-           <label>Main Menu</label>
-
-           <description>Main Menu Intent</description>
-
-        </mlIntents>
-
-        <mlIntents>
-
-           <developerName>Welcome</developerName>
-
-           <label>Welcome</label>
-
-           <description>Welcome Intent</description>
-
-        </mlIntents>
-
-        <name>Astro_Bot_ld1</name>
-
-      </mlDomain>
-
-      <richContentEnabled>true</richContentEnabled>
-
-   </BotTemplate>
-
-```
-
-
-### Metadata Types BotVersion
-
-The following is an example `package.xml` that references the previous definition.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>*</members>
-
-        <name>BotTemplate</name>
-
-      </types>
-
-      <version>55.0</version>
-
-   </Package>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### BotVersion
-
-Represents the configuration details for a specific Einstein Bot version, including dialogs and variables.
-
-Parent Type
-
-This type extends the Metadata metadata type and inherits its `fullName` field.
-
-File Suffix and Directory Location
-
-### BotVersion components have the suffix .bot and are stored in the bot folder. BotVersion is a top-level child of Bot and shares its
-
-suffix and file directory.
-
-Version
-
-### BotVersion components are available in API version 43.0 and later.
-
-Special Access Rules
-
-### BotVersion is available only if Chat and Einstein Bots are enabled in your org.
-
-Bot metadata deployment and retrieval are not supported for Lead Nurturing and Sales Coach Agents.
-
-Fields
-
-**Field Name** **Description**
-
-```
-botDialogGroups
-
-```
-
-**Field Type**
-
-BotDialogGroup[] on page 508
-
-**Description**
-The list of dialog groups in this bot version.
-
-
-Metadata Types BotVersion
-
-**Field Name** **Description**
-
-```
-botDialogs
-
-company
-
-conversationGoals
-
-conversationPlanner
-
-conversationSystemDialogs
-
-conversationVariables
-
-copilotPrimaryLangauge
-
-copilotSecondaryLanguages
-
-```
-
-**Field Type**
-
-BotDialog[] on page 509
-
-**Description**
-The list of dialogs in this bot version.
-
-**Field Type**
-string
-
-**Description**
-Reserved for internal use.
-
-**Field Type**
-
-ConversationDefinitionGoal[] on page 529
-
-**Description**
-The list of goals in this bot verion. Available in API version 57.0 and later.
-
-**Field Type**
-
-ConversationDefinitionPlanner[] on page 529
-
-**Description**
-Represents the API name of the Agent planner service GenAiPlanner on page 1359.
-
-Available in API version 60.0 and later.
-
-**Field Type**
-
-ConversationSystemDialog[] on page 530
-
-**Description**
-A system function assigned to a dialog. Available in API version 48.0 and later.
-
-**Field Type**
-
-ConversationVariable[] on page 530
-
-**Description**
-A container that stores a specific piece of data collected from the customer. You
-can use variables within dialog actions as both inputs and outputs. Available in
-API version 44.0 and later.
-
-**Field Type**
-Language (enumeration of type string)
-
-**Description**
-Represents the primary language of a Copilot or Agent.
-
-**Field Type**
-string
-
-**Description**
-Reserved for internal use.
-
-
-Metadata Types BotVersion
-
-**Field Name** **Description**
-
-```
-entryDialog
-
-initialIntentDetectionEnabled
-
-intentDisambiguationEnabled
-
-intentThreshold
-
-intentV3Enabled
-
-knowledgeActionEnabled
-
-knowledgeFallbackEnabled
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-A reference to the first dialog that the bot presents to your customer. For example,
-`Welcome` .
-
-**Field Type**
-boolean
-
-**Description**
-Reserved for internal use.
-
-**Field Type**
-boolean
-
-**Description**
-Reserved for internal use.
-
-**Field Type**
-double
-
-**Description**
-
-Specifies how strictly a user message must match with a bot intent.
-
-Valid values are between 1 and 5, where 1 is the least strict and 5 is the most strict.
-
-To turn on this feature, contact Salesforce Customer Support. This field is available
-in API version 63.0 and later.
-
-**Field Type**
-boolean
-
-**Description**
-Reserved for internal use.
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether a knowledge action is enabled. The default value is `false` .
-
-**Field Type**
-boolean
-
-**Description**
-Reserved for internal use.
-
-
-Metadata Types BotVersion
-
-**Field Name** **Description**
-
-```
-mainMenuDialog
-
-nlpProviders
-
-responseDelayMilliseconds
-
-role
-
-surfacesEnabled
-
-toneType
-
-```
-
-BotDialogGroup
-
-The list of dialog groups in this bot version.
-
-**Field Type**
-string
-
-**Description**
-A reference to the dialog identified as the main menu dialog. For example, `Main`
-`Menu` .
-
-**Field Type**
-
-ConversationDefinitionNlpProvider[] on page 532
-
-**Description**
-Defines the language provider which is used for a particular language. Available
-in API version 49.0 and later.
-
-**Field Type**
-int
-
-**Description**
-An optional default or custom delay after every bot response to simulate typing.
-
-**Field Type**
-string
-
-**Description**
-Reserved for internal use.
-
-**Field Type**
-boolean
-
-**Description**
-Reserved for internal use.
-
-**Field Type**
-GenAiBotToneType (enumeration of type string)
-
-**Description**
-The tone of the bot. Valid values are:
-
-**•** `Casual`
-
-**•** `Formal`
-
-**•** `Neutral`
-
-
-Metadata Types BotVersion
-
-**Field Name** **Description**
-
-```
-description
-
-developerName
-
-label
-
-```
-
-BotDialog
-
-The list of dialogs in this bot version.
-
-**Field Type**
-string
-
-**Description**
-A description of the bot dialog group.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-This unique name prevents conflicts with other dialog groups associated with the same
-bot version. This name can contain only underscores and alphanumeric characters. The
-name must begin with a letter, not include spaces, not end with an underscore, and not
-contain two consecutive underscores.
-
-Note: Only users with View DeveloperName OR View Setup and Configuration
-permission can view, group, sort, and filter this field.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-A label that identifies the dialog group throughout the Salesforce user interface.
-
-**Field Name** **Description**
-
-```
-botDialogGroup
-
-botSteps
-
-description
-
-```
-
-**Field Type**
-string
-
-**Description**
-The bot dialog group that contains this bot dialog.
-
-**Field Type**
-
-BotStep[] on page 511
-
-**Description**
-A list of steps that are executed as part of the dialog.
-
-**Field Type**
-string
-
-
-Metadata Types BotVersion
-
-**Field Name** **Description**
-
-**Description**
-A description of the bot dialog.
-
-```
-developerName
-
-isPlaceholderDialog
-
-label
-
-mlIntent
-
-mlIntentTrainingEnabled
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-This unique name prevents conflicts with other dialogs associated with the same bot version.
-This name can contain only underscores and alphanumeric characters. It must begin with
-a letter, not include spaces, not end with an underscore, and not contain two consecutive
-underscores.
-
-Note: Only users with View DeveloperName OR View Setup and Configuration
-permission can view, group, sort, and filter this field.
-
-**Field Type**
-boolean
-
-**Description**
-In a bot block, indicates whether a dialog is a placeholder ( `true` ) or not ( `false` ). In a bot
-template or bot version not associated with a bot block, this field is read-only and the value
-is `false` . Available in API version 58.0 and later.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-A label that identifies the dialog throughout the Salesforce user interface.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-A label that identifies the dialog throughout the Salesforce user interface. The name of the
-intent associated with a dialog.
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether Einstein is turned on to train an intent model for the dialog intent ( `true` )
-or turned off for the exact match option ( `false` ). The default value is `false` . Available
-in API version 46.0 and later.
-
-
-Metadata Types BotVersion
-
-**Field Name** **Description**
-
-```
-showInFooterMenu
-
-```
-
-BotStep
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether to show this dialog in the Bot Options menu. The default value is `false` .
-
-A step that is executed as part of the dialog.
-
-**Field Name** **Description**
-
-```
-booleanFilter
-
-botInvocation
-
-botMessages
-
-botNavigation
-
-botStepConditions
-
-botSteps
-
-```
-
-**Field Type**
-string
-
-**Description**
-This field is reserved for future use.
-
-**Field Type**
-
-BotInvocation on page 513
-
-**Description**
-Bot Invocation used by a BotStep of type `Invocation` .
-
-**Field Type**
-
-BotMessage[] on page 515
-
-**Description**
-List of bot messages used by a BotStep of type `Message` .
-
-**Field Type**
-
-BotNavigation on page 515
-
-**Description**
-Bot Navigation used by a BotStep of type `Navigation` .
-
-**Field Type**
-
-BotStepCondition[] on page 517
-
-**Description**
-List of BotStep conditions associated with a BotStep of type `Group` .
-
-**Field Type**
-
-BotStep[] on page 511
-
-**Description**
-List of BotSteps associated to a Bot Step of type `Group` .
-
-
-Metadata Types BotVersion
-
-**Field Name** **Description**
-
-```
-botVariableOperation
-
-conditionLogicType
-
-conversationRecordLookup
-
-conversationStepGoalMappings
-
-conversationSystemMessage
-
-messageDefinition
-
-stepIdentifier
-
-```
-
-**Field Type**
-
-BotVariableOperation[] on page 518
-
-**Description**
-Bot Variable Operation used by a BotStep of type `VariableOperation` .
-
-**Field Type**
-ConversationDefinitionLogicalOperatorType (enumeration of type string)
-
-**Description**
-Represents the type of conditional logic used by a BotStep. Values are:
-
-**•** `And`
-
-**•** `Or`
-
-Available in API version 58.0 and later.
-
-**Field Type**
-
-ConversationRecordLookup[] on page 523
-
-**Description**
-A lookup action to the Conversation record. Available in API version 46.0 and later.
-
-**Field Type**
-
-ConversationDefinitionStepGoalMapping[] on page 527
-
-**Description**
-The API name of a goal used by a BotStep of type GoalStep. Available in API version
-57.0 and later.
-
-**Field Type**
-
-ConversationSystemMessage[] on page 527
-
-**Description**
-System messages that represent an action for a BotStep, such as transferring to an
-agent or ending a chat. Available in API version 46.0 and later.
-
-**Field Type**
-
-ConversationDefinitionRichMessage[] on page 528
-
-**Description**
-List of configuration details used by a BotStep that references a messaging component.
-Available in API version 54.0 and later.
-
-**Field Type**
-string
-
-**Description**
-A unique key that identifies a step within a dialog. It is used to link translated labels to
-labels within the step. This field is recommended for all step records and is required
-for translated step labels. Available in API version 53.0 and later.
-
-
-Metadata Types BotVersion
-
-**Field Name** **Description**
-
-If a step is created via the UI, the `stepIdentifier` is automatically generated. If
-a step is created via API, the `stepIdentifier` must be provided. The
-`stepIdentifier` can contain letters, numbers, dashes, and underscores, up to
-255 characters.
-
-```
-type
-
-```
-
-BotInvocation
-
-**Field Type**
-BotStepType (enumeration of type string)
-
-**Description**
-
-Required.
-
-Values are:
-
-**•** `GoalStep` (Available in API version 57.0 and later.)
-
-**•** `Group`
-
-**•** `Invocation`
-
-**•** `Message`
-
-**•** `Navigation`
-
-**•** `RecordLookup` (Available in API version 48.0 and later.)
-
-**•** `RichMessage` (Available in API version 54.0 and later.)
-
-**•** `SystemMessage`
-
-**•** `VariableOperation`
-
-**•** `Wait`
-
-Bot Invocation used by a BotStep of type `Invocation` .
-
-**Field Name** **Description**
-
-```
-invocationActionName
-
-invocationActionType
-
-```
-
-**Field Type**
-string
-
-**Description**
-The name of the invocable action used by a Bot Invocation.
-
-**Field Type**
-ConversationInvocableTargetType (enumeration of type string)
-
-**Description**
-Available dialog action types are:
-
-Values are:
-
-**•** `apex`
-
-**•** `externalService` (Available in API version 53.0 and later.)
-
-**•** `flow`
-
-
-Metadata Types BotVersion
-
-**Field Name** **Description**
-
-**•** `logFeedback` (Available in API version 51.0 and later.)
-
-**•** `logGoalAchieved` (Deprecated in API version 57.0 and later.)
-
-**•** `standardInvocableAction`
-
-```
-invocationMappings
-
-```
-
-BotInvocationMapping
-
-**Field Type**
-
-BotInvocationMapping[] on page 514
-
-**Description**
-List of Bot Invocation Mappings for a Bot Invocation.
-
-List of Bot Invocation Mappings for a Bot Invocation.
-
-**Field Name** **Description**
-
-```
-parameterName
-
-recordName
-
-type
-
-value
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-Name of an Input/Output parameter of the parent Bot Invocation target.
-
-**Field Type**
-string
-
-**Description**
-Name of the record that is used as part of an Invocation mapping. Available in API
-version 54.0 and later.
-
-**Field Type**
-BotInvocationMappingType (enumeration of type string)
-
-**Description**
-
-Required.
-
-Values are:
-
-**•** `Input`
-
-**•** `Output`
-
-**Field Type**
-string
-
-**Description**
-Literal value to be assigned to the specified parameter.
-
-
-Metadata Types BotVersion
-
-**Field Name** **Description**
-
-```
-variableName
-
-variableType
-
-```
-
-BotMessage
-
-**Field Type**
-string
-
-**Description**
-Name of the Bot Variable that is used as part of an Invocation mapping.
-
-**Field Type**
-ConversationVariableType (enumeration of type string)
-
-**Description**
-This field relates to the type of variable used in this invocation mapping.
-
-Values are:
-
-**•** `ContextVariable`
-
-**•** `ConversationVariable`
-
-**•** `PageContextVariable`
-
-A bot message used by a BotStep of type `Message` .
-
-**Field Name** **Description**
-
-```
-message
-
-messageIdentifier
-
-```
-
-BotNavigation
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-Message to display as part of an outgoing message from the bot to the customer.
-
-**Field Type**
-string
-
-**Description**
-A unique key that identifies a message within a dialog. It is used to link translated labels
-to labels within the message. This field is recommended for all message records and
-is required for translated message labels. Available in API version 53.0 and later.
-
-If a message is created via the UI, the `messageIdentifier` is automatically
-generated. If a message is created via API, the `messageIdentifier` must be
-provided. `messageIdentifier` can contain letters, numbers, dashes, and
-underscores, up to 255 characters.
-
-Bot navigation used by a BotStep of type `Navigation` .
-
-
-Metadata Types BotVersion
-
-**Field Name** **Description**
-
-```
-botNavigationLinks
-
-type
-
-```
-
-BotNavigationLink
-
-**Field Type**
-
-BotNavigationLink[] on page 516
-
-**Description**
-List of Bot Navigation links associated with a Bot Navigation of type `Call` or
-`Redirect` .
-
-**Field Type**
-BotNavigationType (enumeration of type string)
-
-**Description**
-
-Required.
-
-Values are:
-
-**•** `Call`
-
-**•** `Redirect`
-
-**•** `TransferToAgent`
-
-List of Bot Navigation links associated with a Bot Navigation of type `Call` or `Redirect` .
-
-**Field Name** **Description**
-
-```
-label
-
-targetBotDialog
-
-targetVariable
-
-targetVariableType
-
-```
-
-**Field Type**
-string
-
-**Description**
-Label displayed when more than one Bot Navigation Link is available under a Bot
-Navigation of type `Redirect` . The target dialog label is used when no label is
-provided.
-
-**Field Type**
-string
-
-**Description**
-Name of the target dialog to be called as part of this Bot Navigation Link.
-
-**Field Type**
-string
-
-**Description**
-In the Redirect to Dialog Rule Action, the ID of the target object variable to be called
-as part of this Bot Navigation link. Available in API version 57.0 and later.
-
-**Field Type**
-ConversationVariableType (enumeration of type string)
-
-
-Metadata Types BotVersion
-
-**Field Name** **Description**
-
-**Description**
-In the Redirect to Dialog Rule Action, the type of variable referred to in
-`targetVariable` . Available in API version 57.0 and later.
-
-Values are:
-
-**•** `ContextVariable`
-
-**•** `ConversationVariable`
-
-**•** `PageContextVariable`
-
-BotStepCondition
-
-List of BotStep conditions associated with a BotStep of type `Group` .
-
-**Field Name** **Description**
-
-```
-leftOperandName
-
-leftOperandType
-
-operatorType
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-Name of the variable used as the left side of the condition operation.
-
-**Field Type**
-ConversationVariableType (enumeration of type string)
-
-**Description**
-
-Required.
-
-Type of the variable used as the left side of the condition operation.
-
-Values are:
-
-**•** `ContextVariable`
-
-**•** `ConversationVariable`
-
-**•** `PageContextVariable`
-
-**Field Type**
-BotStepConditionOperatorType (enumeration of type string)
-
-**Description**
-
-Required.
-
-Values are:
-
-**•** `Equals`
-
-**•** `GreaterThan` (Available in API version 47.0 and later.)
-
-**•** `GreaterThanOrEqualTo` (Available in API version 47.0 and later.)
-
-**•** `IsNotSet`
-
-
-Metadata Types BotVersion
-
-**Field Name** **Description**
-
-**•** `IsSet`
-
-**•** `LessThan` (Available in API version 47.0 and later.)
-
-**•** `LessThanOrEqualTo` (Available in API version 47.0 and later.)
-
-**•** `NotEquals`
-
-```
-rightOperandValue
-
-```
-
-BotVariableOperation
-
-**Field Type**
-string
-
-**Description**
-Value that is used as the right side of the condition operation. This value is ignored
-when using `IsSet` and `IsNotSet` operators.
-
-Bot variable operation used by a BotStep of type `VariableOperation` .
-
-**Field Name** **Description**
-
-```
-askCollectIfSet
-
-autoSelectIfSingleChoice
-
-botInvocation
-
-```
-
-**Field Type**
-boolean
-
-**Description**
-If `true`, the bot runs a Bot Variable Operation of type `Collect` regardless of whether
-the variable already has a value. When a value exists for a variable, the bot asks the
-user for the relevant information, and the bot overwrites the existing value with the
-user-provided value. If `false`, the bot skips variables with an existing value and
-maintains the existing value. The default is `false` . Available in API version 51.0 and
-later.
-
-**Field Type**
-boolean
-
-**Description**
-If `true`, the bot automatically selects the answer in the conversation flow when only
-one button choice is available in a Bot Variable Operation of type `Collect` and a
-`quickReplyType` value of `Dynamic` . If `false`, the bot presents the single
-button choice and waits for the user’s response. The default is `false` . Available in
-API version 51.0 and later.
-
-**Field Type**
-
-BotInvocation on page 513
-
-**Description**
-Bot Invocation used to provide Dynamic choices by a Bot Variable Operation of type
-`Collect` and `quickReplyType` of `Dynamic` .
-
-
-Metadata Types BotVersion
-
-**Field Name** **Description**
-
-```
-botMessages
-
-botQuickReplyOptions
-
-botVariableOperands
-
-ignoreIntentRecognition
-
-invalidInputBotNavigation
-
-```
-
-messageDefinition
-
-```
-optionalCollect
-
-```
-
-**Field Type**
-
-BotMessage[] on page 515
-
-**Description**
-List of Bot Messages used as prompt messages by a Bot Variable Operation of type
-`Collect` .
-
-**Field Type**
-
-BotQuickReplyOption[] on page 521
-
-**Description**
-List of static choice options used by a Bot Variable Operation of type `Collect` and
-`quickReplyType` of `Static` .
-
-**Field Type**
-
-BotVariableOperand[] on page 522
-
-**Description**
-List of Bot Variable Operands associated with a Bot Variable of type `Set` or `Unset` .
-
-**Field Type**
-boolean
-
-**Description**
-If `true` the bot requires a response to a Question dialog step. The bot doesn't perform
-intent recognition for any user messages that do not fit the entity requirements. The
-bot repeats the question until the customer's response fits the entity requirements.
-Available in API version 63.0 and later.
-
-**Field Type**
-
-BotNavigation on page 515
-
-**Description**
-Bot Navigation used by a Bot Variable Operation of type `Collect` . This navigation
-is executed when the associated Bot Invocation doesn’t return any options.
-
-**Field Type**
-
-ConversationDefinitionRichMessage on page 528
-
-**Description**
-Configuration details that reference a messaging component. Outputs are used by a
-Bot Variable Operation of type `Set` . Available in API version 58.0 and later.
-
-**Field Type**
-boolean
-
-**Description**
-If `true`, the bot asks the repair attempts once and then moves on to the next dialog
-step. The default value is `false` . Available in API version 48.0 and later.
-
-
-Metadata Types BotVersion
-
-**Field Name** **Description**
-
-```
-quickReplyOptionTemplate
-
-quickReplyType
-
-quickReplyWidgetType
-
-retryMessages
-
-sourceVariableName
-
-sourceVariableType
-
-```
-
-**Field Type**
-string
-
-**Description**
-Formula template used to resolve a label for Dynamic choice options of type `Object` .
-
-**Field Type**
-BotQuickReplyType (enumeration of type string)
-
-**Description**
-
-Values are:
-
-**•** `Dynamic`
-
-**•** `Static`
-
-**Field Type**
-BotWidgetType (enumeration of type string)
-
-**Description**
-
-Values are:
-
-**•** `Buttons`
-
-**•** `Menu`
-
-**Field Type**
-
-BotMessage[] on page 515
-
-**Description**
-[In Conversation Repair, the messages assigned to repair attempts. Available in API](https://help.salesforce.com/articleView?id=bots_service_setup_dialog_question_text.htm&language=en_US)
-version 48.0 and later.
-
-**Field Type**
-string
-
-**Description**
-Name of the source `VariableName` used in the variable operation. Available in
-API version 47.0 and later.
-
-**Field Type**
-ConversationVariableType (enumeration of type string)
-
-**Description**
-This name defines the data type of `VariableName` used in the variable operation.
-
-Values are:
-
-**•** `ContextVariable`
-
-**•** `ConversationVariable`
-
-**•** `PageContextVariable`
-
-
-Metadata Types BotVersion
-
-**Field Name** **Description**
-
-```
-successMessages
-
-type
-
-variableOperationIdentifier
-
-```
-
-BotQuickReplyOption
-
-**Field Type**
-
-BotMessage[] on page 515
-
-**Description**
-In a File dialog step, the message displayed to the customer as part of type
-`CollectAttachment` to confirm a successful file upload. Available in API version
-57.0 and later.
-
-**Field Type**
-BotVariableOperationType (enumeration of type string)
-
-**Description**
-
-Required.
-
-Values are:
-
-**•** `Collect`
-
-**•** `CollectAttachment` (Available in API version 57.0 and later.)
-
-**•** `Set`
-
-**•** `SetConversationLanguage` (Available in API version 53.0 and later.)
-
-**•** `Unset`
-
-**Field Type**
-string
-
-**Description**
-A unique key that identifies a variable operation within a dialog. It is used to link
-translated labels to labels within the variable operation. This field is recommended for
-all variable operation records and is required for translated variable operation labels.
-Available in API version 53.0 and later.
-
-If a variable operation is created via the UI, the
-`variableOperationIdentifier` is automatically generated. If a variable
-operation is created via API, the `variableOperationIdentifier` must be
-provided. `variableOperationIdentifier` can contain letters, numbers,
-dashes, and underscores, up to 255 characters.
-
-List of static choice options used by a bot variable operation of type `Collect` and `quickReplyType` of `Static` .
-
-**Field Name** **Description**
-
-```
-literalValue
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-
-Metadata Types BotVersion
-
-**Field Name** **Description**
-
-Value to be displayed as a menu or button choice to your customer.
-
-```
-quickReplyOptionIdentifier
-
-```
-
-BotVariableOperand
-
-**Field Type**
-string
-
-**Description**
-A unique key that identifies a quick reply option within a dialog. It is used to link
-translated labels to labels within the quick reply option. This field is recommended for
-all quick reply option records and is required for translated quick reply option labels.
-Available in API version 53.0 and later.
-
-If a quick reply option is created via the UI, the `quickReplyOptionIdentifier`
-is automatically generated. If a message is created via API, the
-`quickReplyOptionIdentifier` must be provided.
-`quickReplyOptionIdentifier` can contain letters, numbers, dashes, and
-underscores, up to 255 characters.
-
-List of bot variable operands associated with a bot variable of type `Set` or `Unset` .
-
-**Field Name** **Description**
-
-```
-disableAutoFill
-
-sourceName
-
-sourceType
-
-```
-
-**Field Type**
-boolean
-
-**Description**
-Disables auto-fill behavior for a bot variable under a bot variable operation of type
-`Collect` .
-
-**Field Type**
-string
-
-**Description**
-Name of the source CustomField or MlSlotClass used in the variable operation.
-
-**Field Type**
-ConversationVariableOperandSourceType (enumeration of type string)
-
-**Description**
-
-Values are:
-
-**•** `BotDefinition` (Available in API version 46.0 and later.)
-
-**•** `ContextVariable` (Available in API version 45.0 and later.)
-
-**•** `ConversationVariable`
-
-**•** `FlowDefinition` (Available in API version 52.0 and later.)
-
-**•** `MlSlotClass`
-
-**•** `Queue` (Available in API version 46.0 and later.)
-
-
-Metadata Types BotVersion
-
-**Field Name** **Description**
-
-**•** `StandardConversationVariable`
-
-**•** `StandardMlSlotClass`
-
-**•** `Value`
-
-```
-sourceValue
-
-targetName
-
-targetType
-
-```
-
-**Field Type**
-string
-
-**Description**
-Literal value used as the source for this variable operation.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-Name of the target variable used in the variable operation.
-
-**Field Type**
-ConversationVariableType (enumeration of type string)
-
-**Description**
-
-Required.
-
-Type of the target used in the variable operation.
-
-Values are:
-
-**•** `ContextVariable`
-
-**•** `ConversationVariable`
-
-**•** `PageContextVariable`
-
-ConversationRecordLookup
-
-Information related to the linked conversation. Currently only works on Lightning Knowledge. Available in API version 46.0 and later.
-
-**Field Name** **Description**
-
-```
-SObjectType
-
-conditions
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-Specifies the SObjectType of the ID stored in a bot variable.
-
-**Field Type**
-
-ConversationRecordLookupCondition[] on page 525
-
-
-Metadata Types BotVersion
-
-**Field Name** **Description**
-
-**Description**
-The conditions associated with this lookup. Available in API version 51.0 and later.
-
-```
-filterLogic
-
-lookupFields
-
-maxLookupResults
-
-sortFieldName
-
-sortOrder
-
-sourceVariableName
-
-```
-
-**Field Type**
-string
-
-**Description**
-The logical operator that connects the conditions.
-
-Values are:
-
-**•** `And`
-
-**•** `Or`
-
-Available in API version 51.0 and later.
-
-**Field Type**
-
-ConversationRecordLookupField[] on page 526
-
-**Description**
-Definition of the fields that are used for this lookup.
-
-**Field Type**
-int
-
-**Description**
-
-Required.
-
-The maximum number of records to return (1-3).
-
-**Field Type**
-string
-
-**Description**
-The name of the field used to sort the lookup results. Available in API version 51.0 and
-later.
-
-**Field Type**
-SortOrder (enumeration of type string)
-
-**Description**
-The display order of the lookup results.
-
-Values are:
-
-**•** `Asc`
-
-**•** `Desc`
-
-Available in API version 51.0 and later.
-
-**Field Type**
-string
-
-
-Metadata Types BotVersion
-
-**Field Name** **Description**
-
-**Description**
-The input for this lookup operation.
-
-```
-sourceVariableType
-
-targetVariableName
-
-```
-
-**Field Type**
-ConversationVariableType (enumeration of type string)
-
-**Description**
-Type of the target used in the variable operation.
-
-Values are:
-
-**•** `ContextVariable`
-
-**•** `ConversationVariable`
-
-**•** `PageContextVariable`
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-The variable that holds the results of this lookup.
-
-ConversationRecordLookupCondition
-
-List of conditions associated with a ConversationRecordLookup. Available in API version 51.0 and later.
-
-**Field Name** **Description**
-
-```
-leftOperand
-
-operatorType
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-Field on which the condition operation takes place.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-The operator applied to the leftOperand.
-
-Values are:
-
-**•** `Equals`
-
-**•** `NotEquals`
-
-**•** `IsSet`
-
-
-Metadata Types BotVersion
-
-**Field Name** **Description**
-
-**•** `IsNotSet`
-
-**•** `GreaterThan`
-
-**•** `LessThan`
-
-**•** `GreaterThanOrEqualTo`
-
-**•** `LessThanOrEqualTo`
-
-```
-rightOperandName
-
-rightOperandType
-
-rightOperandValue
-
-sortOrder
-
-```
-
-**Field Type**
-string
-
-**Description**
-The name of the variable to compare against.
-
-**Field Type**
-ConversationVariableType (enumeration of type string)
-
-**Description**
-The type of the variable to compare against.
-
-Values are:
-
-**•** `ContextVariable`
-
-**•** `ConversationVariable`
-
-**•** `PageContextVariable`
-
-**Field Type**
-string
-
-**Description**
-The custom value to compare against. This value is ignored when using `IsSet` and
-`IsNotSet` operators.
-
-**Field Type**
-int
-
-**Description**
-
-Required.
-
-Order in which the conditions are applied.
-
-ConversationRecordLookupField
-
-The fields used in a conversation record lookup. Available in API version 46.0 and later.
-
-**Field Name** **Description**
-
-```
-fieldName
-
-```
-
-**Field Type**
-string
-
-
-Metadata Types BotVersion
-
-**Field Name** **Description**
-
-**Description**
-
-Required.
-
-Defines the field names used in the Conversation Lookup function.
-
-ConversationDefinitionStepGoalMapping
-
-Represents the association between a goal and a BotStep. A goal can be associated with only one BotStep and one dialog at a time.
-Available in API version 57.0 and later.
-
-**Field Name** **Description**
-
-```
-goalName
-
-```
-
-**Field Type**
-string
-
-**Description**
-The API name of the goal.
-
-ConversationSystemMessage
-
-System messages that represent an action for a Bot Step, such as transferring to an agent or ending a chat. Available in API version 46.0
-and later.
-
-**Field Name** **Description**
-
-```
-systemMessageMappings
-
-type
-
-```
-
-**Field Type**
-
-ConversationSystemMessageMapping on page 527
-
-**Description**
-Defines the type of system message to be sent.
-
-**Field Type**
-ConversationSystemMessageType (enumeration of type string)
-
-**Description**
-
-Required.
-
-This field defines the values available for a system message.
-
-Values are:
-
-**•** `EndChat`
-
-**•** `Transfer`
-
-ConversationSystemMessageMapping
-
-List of mappings that indicate additional information provided for the system message. Available in API version 46.0 and later.
-
-
-Metadata Types BotVersion
-
-**Field Name** **Description**
-
-```
-mappingType
-
-parameterType
-
-variableName
-
-```
-
-**Field Type**
-ConversationMappingType (enumeration of type string)
-
-**Description**
-
-Required.
-
-Defines the type of mapping used in the record.
-
-Values are:
-
-**•** `Input`
-
-**•** `Output`
-
-**Field Type**
-ConversationSystemMessageParamType (enumeration of type string)
-
-**Description**
-
-Required.
-
-Defines the type of parameter the value is mapped to.
-
-Values are:
-
-**•** `Transfer`
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-Name of the variable that contains the value passed to the system message.
-
-ConversationDefinitionRichMessage
-
-Represents the configuration details for referencing a messaging component, such as an enhanced link. Available in API version 54.0
-and later.
-
-**Field Name** **Description**
-
-```
-messageDefinitionMappings
-
-```
-
-**Field Type**
-
-BotInvocationMapping[] on page 514
-
-**Description**
-List of mappings for referencing a messaging component. Includes any input
-parameters and their values. Optionally, specifies the conversation variable for storing
-any outputs.
-
-Input parameter values can be either static values or references to conversation or
-context variables.
-
-
-Metadata Types BotVersion
-
-**Field Name** **Description**
-
-```
-messageDefinitionName
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-The API name of the messaging component referenced by the bot.
-
-ConversationDefinitionGoal
-
-A goal included in the bot version. Available in API version 57.0 and later.
-
-**Field Name** **Description**
-
-```
-developerName
-
-label
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-A unique name that prevents conflicts with other goals associated with the same bot
-version. This name can contain only underscores and alphanumeric characters. It must
-begin with a letter, not include spaces, not end with an underscore, and not contain
-two consecutive underscores.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-A label that identifies the goal throughout the Salesforce user interface. This label can
-contain only underscores and alphanumeric characters. It must begin with a letter,
-not include spaces, not end with an underscore, and not contain two consecutive
-underscores.
-
-ConversationDefinitionPlanner
-
-Represents the API name for the Agent planner service. Available in API version 60.0 and later.
-
-**Field Name** **Description**
-
-```
-genAiPlannerName
-
-```
-
-**Field Type**
-string
-
-
-Metadata Types BotVersion
-
-**Field Name** **Description**
-
-**Description**
-The name of an agent planner service that uses a large language model (LLM) and a
-reasoning strategy to decompose a given task into smaller subtasks, identify the most
-suitable actions for each subtask, and invoke them.
-
-ConversationSystemDialog
-
-A system function assigned to a dialog. Available in API version 48.0 and later.
-
-**Field Name** **Description**
-
-```
-dialog
-
-type
-
-```
-
-ConversationVariable
-
-**Field Type**
-string
-
-**Description**
-The dialog name triggered when this system event fires.
-
-**Field Type**
-ConversationSystemDialogType (enumeration of type string)
-
-**Description**
-The type of system event. Required. Valid values are:
-
-**•** `Disambiguation` (Reserved for Future Use)
-
-**•** `DisambiguationFailed` (Reserved for Future Use)
-
-**•** `ErrorHandling`
-
-**•** `KnowledgeAction` (Available in API version 60.0.)
-
-**•** `KnowledgeFallback` (Available in API version 51.0.)
-
-**•** `TransferFailed`
-
-A container that stores a specific piece of data collected from the customer. You can use variables within dialog actions as both inputs
-and outputs. Available in API version 44.0 and later.
-
-**Field Name** **Description**
-
-```
-collectionType
-
-dataType
-
-```
-
-**Field Type**
-ConversationVariableCollectionType (enumeration of type string)
-
-**Description**
-This field defines whether a variable is designated as a List Variable. Valid value is List.
-
-**Field Type**
-ConversationVariableCollectionType (enumeration of type string)
-
-
-Metadata Types BotVersion
-
-**Field Name** **Description**
-
-**Description**
-
-Required.
-
-Valid values are:
-
-**•** `Boolean`
-
-**•** `Currency`
-
-**•** `Date`
-
-**•** `DateTime`
-
-**•** `Id` (available in API 45.0 and later.)
-
-**•** `Object`
-
-**•** `Number`
-
-**•** `Text`
-
-```
-description
-
-developerName
-
-includeInPrompt
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-A description of this variable. This value may be used by the Agentforce planner service.
-Available in API version 63.0 and later.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-This name can contain only underscores and alphanumeric characters and must be unique
-in your org. It must begin with a letter, not include spaces, not end with an underscore, and
-not contain two consecutive underscores. Only users with View DeveloperName OR View
-Setup and Configuration permission can view, group, sort, and filter this field.
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether the variable is injected into the prompt sent to the Agentforce model. If
-`true`, the variable appears in the **Included Fields** section of the UI.
-
-Note: The default variables `Id`, `EndUserId`, and `EndUserLanguage` always
-appear in the **Included Fields** section of the UI, regardless of their value of
-
-`includeInPrompt` . We recommend that you don't change the value of
-`includeInPrompt` for these default variables, as changing the value can prevent
-your agent from accessing important session data.
-
-Available in API version 63.0 and later.
-
-
-Metadata Types BotVersion
-
-**Field Name** **Description**
-
-```
-label
-
-SObjectType
-
-visibility
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-Label that identifies a variable throughout the Salesforce user interface.
-
-**Field Type**
-string
-
-**Description**
-Specifies the SObjectType of the ID stored in a bot variable. Valid values are:
-
-**•** `BotDefinition`
-
-**•** `Queue`
-
-**Field Type**
-ConversationVariableVisibilityType (enumeration of type string)
-
-**Description**
-
-Required. Determines which components can set this variable. If the visibility is `internal`,
-the variable can only be set by action outputs. If the visibility is `external`, the variable
-can also be set by the API.
-
-Valid values are:
-
-**•** `internal`
-
-**•** `external`
-
-ConversationDefinitionNlpProvider
-
-Defines the natural language service that is used for the language assigned to a bot version. Available in API version 49.0 and later.
-
-**Field Name** **Description**
-
-```
-language
-
-nlpProviderName
-
-```
-
-**Field Type**
-Language
-
-**Description**
-
-Required.
-
-The language assigned to a bot version.
-
-**Field Type**
-string
-
-**Description**
-If nlpProviderType is EinsteinAI, this field is blank. If Apex, this field holds the Apex class
-name of the service.
-
-
-Metadata Types BotVersion
-
-**Field Name** **Description**
-
-```
-nlpProviderType
-
-```
-
-**Field Type**
-ConversationDefinitionNlpProviderType (enumeration of type string)
-
-**Description**
-
-Required.
-
-Default value is `EinsteinAi` . Valid values are:
-
-**•** `EinsteinAi`
-
-**•** `Apex`
-
-Declarative Metadata Sample Definition
-
-The following is an example of a BotVersion.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<Bot xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <botMlDomain>
-
-     <label>Astros Pizza</label>
-
-     <mlIntents>
-
-        <developerName>New_Order</developerName>
-
-        <label>New Order</label>
-
-        <mlIntentUtterances>
-
-          <utterance>Today is pie day so I want pie</utterance>
-
-        </mlIntentUtterances>
-
-     </mlIntents>
-
-     <mlSlotClasses>
-
-        <developerName>Size</developerName>
-
-        <extractionType>Value</extractionType>
-
-        <label>Size</label>
-
-        <mlSlotClassValues>
-
-          <synonymGroup>
-
-            <languages>en_US</languages>
-
-            <terms>Big</terms>
-
-            <terms>Extra Large</terms>
-
-            <terms>X-Large</terms>
-
-            <terms>Grande</terms>
-
-            <terms>Huge</terms>
-
-          </synonymGroup>
-
-          <value>Large</value>
-
-        </mlSlotClassValues>
-
-     </mlSlotClasses>
-
-     <name>Astros_Pizza_ld1</name>
-
-   </botMlDomain>
-
-   <botVersions>
-
-     <fullName>v1</fullName>
-
-     <botDialogGroups>
-
-        <developerName>Order_Management</developerName>
-
-        <label>Order Management</label>
-
-     </botDialogGroups>
-
-     <botDialogs>
-
-```
-
-
-Metadata Types BotVersion
-
-```
-           <botDialogGroup>Order_Management</botDialogGroup>
-
-           <botSteps>
-
-             <botMessages>
-
-               <message> ������Pizza Time! ������ </message>
-
-               <messageIdentifier>Greeting_Message</messageIdentifier>
-
-             </botMessages>
-
-             <stepIdentifier>Greeting</stepIdentifier>
-
-             <type>Message</type>
-
-           </botSteps>
-
-           <botSteps>
-
-             <botStepConditions>
-
-               <leftOperandName>Verified_User</leftOperandName>
-
-               <leftOperandType>ConversationVariable</leftOperandType>
-
-               <operatorType>Equals</operatorType>
-
-               <rightOperandValue>false</rightOperandValue>
-
-             </botStepConditions>
-
-             <botSteps>
-
-               <botNavigation>
-
-                  <botNavigationLinks>
-
-                    <targetBotDialog>Customer_Verification</targetBotDialog>
-
-                  </botNavigationLinks>
-
-                  <type>Call</type>
-
-               </botNavigation>
-
-               <stepIdentifier>Call_Customer_Verification</stepIdentifier>
-
-               <type>Navigation</type>
-
-             </botSteps>
-
-             <stepIdentifier>Verify_User</stepIdentifier>
-
-             <type>Group</type>
-
-           </botSteps>
-
-           <botSteps>
-
-             <botStepConditions>
-
-               <leftOperandName>Location</leftOperandName>
-
-               <leftOperandType>ConversationVariable</leftOperandType>
-
-               <operatorType>IsNotSet</operatorType>
-
-             </botStepConditions>
-
-             <botSteps>
-
-               <botNavigation>
-
-                  <botNavigationLinks>
-
-                    <targetBotDialog>Select_Location</targetBotDialog>
-
-                  </botNavigationLinks>
-
-                  <type>Call</type>
-
-               </botNavigation>
-
-               <stepIdentifier>Call_Select_Location</stepIdentifier>
-
-               <type>Navigation</type>
-
-             </botSteps>
-
-             <stepIdentifier>Set_Location</stepIdentifier>
-
-             <type>Group</type>
-
-           </botSteps>
-
-           <botSteps>
-
-             <botVariableOperation>
-
-               <botInvocation>
-
-                  <invocationActionName>CreateOrderService</invocationActionName>
-
-                  <invocationActionType>apex</invocationActionType>
-
-                  <invocationMappings>
-
-```
-
-
-Metadata Types BotVersion
-
-```
-                    <parameterName>customer</parameterName>
-
-                    <type>Input</type>
-
-                    <variableName>Contact</variableName>
-
-                    <variableType>ConversationVariable</variableType>
-
-                  </invocationMappings>
-
-                  <invocationMappings>
-
-                    <parameterName>location</parameterName>
-
-                    <type>Input</type>
-
-                    <variableName>Location</variableName>
-
-                    <variableType>ConversationVariable</variableType>
-
-                  </invocationMappings>
-
-                  <invocationMappings>
-
-                    <parameterName>output</parameterName>
-
-                    <type>Output</type>
-
-                    <variableName>Pizza_Order</variableName>
-
-                    <variableType>ConversationVariable</variableType>
-
-                  </invocationMappings>
-
-               </botInvocation>
-
-               <type>Set</type>
-
-               <variableOperationIdentifier>Set_Order</variableOperationIdentifier>
-
-             </botVariableOperation>
-
-             <stepIdentifier>Create_Order</stepIdentifier>
-
-             <type>VariableOperation</type>
-
-           </botSteps>
-
-           <botSteps>
-
-             <botMessages>
-
-              <message>Perfect, let&apos;s work on your order from our {!Location.Name}
-
-    location</message>
-
-               <messageIdentifier>Start_Order_Message</messageIdentifier>
-
-             </botMessages>
-
-             <stepIdentifier>Start_Order</stepIdentifier>
-
-             <type>Message</type>
-
-           </botSteps>
-
-           <botSteps>
-
-             <messageDefinition>
-
-               <messageDefinitionName>Astros_Pizza_Menu</messageDefinitionName>
-
-             </messageDefinition>
-
-             <stepIdentifier>36e5a7cb-50c4-4279-aa06-1217eba1bf62</stepIdentifier>
-
-             <type>RichMessage</type>
-
-           </botSteps>
-
-           <botSteps>
-
-             <botNavigation>
-
-               <botNavigationLinks>
-
-                  <targetBotDialog>Add_Items_to_Order</targetBotDialog>
-
-               </botNavigationLinks>
-
-               <type>Redirect</type>
-
-             </botNavigation>
-
-             <stepIdentifier>Proceed_To_Add_Items</stepIdentifier>
-
-             <type>Navigation</type>
-
-           </botSteps>
-
-           <developerName>New_Order</developerName>
-
-           <label>New Order</label>
-
-           <mlIntent>New_Order</mlIntent>
-
-           <showInFooterMenu>false</showInFooterMenu>
-
-```
-
-
-### Metadata Types BrandingSet
-
-```
-        </botDialogs>
-
-        <conversationVariables>
-
-           <dataType>Object</dataType>
-
-           <developerName>Contact</developerName>
-
-           <label>Contact</label>
-
-        </conversationVariables>
-
-        <conversationVariables>
-
-           <dataType>Text</dataType>
-
-           <developerName>Delivery_Address</developerName>
-
-           <label>Delivery Address</label>
-
-        </conversationVariables>
-
-        <conversationVariables>
-
-           <dataType>Object</dataType>
-
-           <developerName>Pizza_Order</developerName>
-
-           <label>Pizza Order</label>
-
-        </conversationVariables>
-
-        <entryDialog>Welcome</entryDialog>
-
-        <mainMenuDialog>Main_Menu</mainMenuDialog>
-
-      </botVersions>
-
-      <label>Astro&apos;s Pizza</label>
-
-   </Bot>
-
-```
-
-The following is an example `package.xml` that references the previous definition.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>Astros Pizza_Bot.v1</members>
-
-        <name>BotVersion</name>
-
-      </types>
-
-      <version>45.0</version>
-
-   </Package>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type doesn’t support the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about
-using the manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### BrandingSet
-
-Represents the definition of a set of branding properties for an Experience Builder site or for your org's Lightning Experience theme.
-
-This type extends the Metadata metadata type and inherits its `fullName` field.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-File Suffix and Directory Location
-
-### BrandingSet components have the suffix brandingSet and are stored in the brandingSets folder.
-
-
-Metadata Types BrandingSet
-
-Version
-
-BrandingSet components are available in API version 40.0 and later.
-
-Special Access Rules
-
-The BrandingSet type is available when at least one of the following is enabled in your org: Digital Experiences, Surveys, or Lightning
-Experience. All users, including unauthenticated guest users, can access this type.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`brandingSetProperty` BrandingSetProperty[] An array containing the name and value of each branding property, such
-as `TextColor:#333` .
-
-`description` string A description of the set of branding properties.
-
-`masterLabel` string Required. The user interface name of the set of branding properties.
-
-`type` string The assigned branding set definition for this BrandingSet.
-
-BrandingSetProperty
-
-Represents the definition of a branding property in the Theme panel in Experience Builder or in the Edit Theme page in Setup.
-
-**Field Name** **Field Type** **Description**
-
-`propertyName` string Required. The name of the branding property, such as `TextColor` .
-
-`propertyValue` string The value of the branding property, such as `#333` .
-
-Branding Properties for Lightning Experience Themes
-
-Use these properties to describe Lightning Experience themes. Each propertyName is case-sensitive and must use all capital letters.
-Some properties only apply to either Salesforce Lightning Design System (SLDS) 1 themes or SLDS 2 themes.
-
-**Property** **Description**
-
-```
-ACCENT_COLOR_1
-
-```
-
-**Field Type**
-string
-
-**Description**
-The primary accent color used to highlight active states of the
-user interface like navigation, tabs, and hover states. Must be
-a valid hex color string in the format #54C254.
-
-Available only for SLDS 2 themes. Available in API version 64.0
-and later.
-
-
-Metadata Types BrandingSet
-
-**Property** **Description**
-
-```
-ACCENT_COLOR_2
-
-ACCENT_COLOR_3
-
-ACCENT_CONTAINER_CONTENT_COLOR_1
-
-ACCENT_CONTAINER_CONTENT_COLOR_2
-
-ACCENT_CONTAINER_CONTENT_COLOR_3
-
-```
-
-**Field Type**
-string
-
-**Description**
-A variant of the primary accent color used to highlight active
-states of the user interface like navigation, tabs, and hover
-states. Must be a valid hex color string in the format #54C254.
-
-Available only for SLDS 2 themes. Available in API version 64.0
-and later.
-
-**Field Type**
-string
-
-**Description**
-A variant of the primary accent color used to highlight active
-states of the user interface, like navigation, tabs, and hover
-states. Must be a valid hex color string in the format #54C254.
-
-Available only for SLDS 2 themes. Available in API version 64.0
-and later.
-
-**Field Type**
-string
-
-**Description**
-The primary color used for the icons and text within accent
-containers. Must be a valid hex color string in the format
-#54C254.
-
-Available only for SLDS 2 themes. Available in API version 65.0
-and later.
-
-**Field Type**
-string
-
-**Description**
-A variant of the primary color used for the icons and text within
-accent containers. Must be a valid hex color string in the format
-#54C254.
-
-Available only for SLDS 2 themes. Available in API version 65.0
-and later.
-
-**Field Type**
-string
-
-**Description**
-A variant of the primary color used for the icons and text within
-accent containers. Must be a valid hex color string in the format
-#54C254.
-
-
-Metadata Types BrandingSet
-
-**Property** **Description**
-
-Available only for SLDS 2 themes. Available in API version 65.0
-and later.
-
-```
-BANNER_IMAGE
-
-BRAND_COLOR
-
-BRAND_IMAGE
-
-CONTAINER_ACCENT_COLOR_1
-
-CONTAINER_ACCENT_COLOR_2
-
-```
-
-**Field Type**
-string
-
-**Description**
-The path to the image to display in the background of your
-org's pages. Use a JPG, PNG, or GIF that's 1800x360 pixels and
-[smaller than 5 MB. Must refer to an asset file that already exists](https://help.salesforce.com/s/articleView?id=experience.admin_files_asset_files.htm&type=5&language=en_US)
-within the org.
-
-Available only for SLDS 1 themes.
-
-**Field Type**
-string
-
-**Description**
-The color to display on your nav bar and other important areas
-of Salesforce. Must be a valid hex color string in the format
-#54C254.
-
-**Field Type**
-string
-
-**Description**
-The path to the image to display as your logo. Use a JPG, PNG,
-or GIF that’s 600x120 pixels and smaller than 5 MB. Must refer
-[to an asset file that already exists within the org.](https://help.salesforce.com/s/articleView?id=experience.admin_files_asset_files.htm&type=5&language=en_US)
-
-**Field Type**
-string
-
-**Description**
-The primary color used for the background of branded
-component containers like the brand button. Container accent
-colors are also used for hover states for branded component
-containers. Must be a valid hex color string in the format
-#54C254.
-
-Available only for SLDS 2 themes. Available in API version 64.0
-and later.
-
-**Field Type**
-string
-
-**Description**
-A variant of the primary color used for the background of
-branded component containers. Container accent colors are
-also used for hover states for branded component containers.
-Must be a valid hex color string in the format #54C254.
-
-
-Metadata Types BrandingSet
-
-**Property** **Description**
-
-Available only for SLDS 2 themes. Available in API version 64.0
-and later.
-
-```
-CONTAINER_ACCENT_COLOR_3
-
-GROUP_IMAGE
-
-GROUPS_BANNER_IMAGE
-
-HEADER_BACKGROUND_COLOR
-
-LINK_AS_BACKGROUND
-
-```
-
-**Field Type**
-string
-
-**Description**
-A variant of the primary color used for the background of
-branded component containers. Container accent colors are
-also used for hover states for branded component containers.
-Must be a valid hex color string in the format #54C254.
-
-Available only for SLDS 2 themes. Available in API version 64.0
-and later.
-
-**Field Type**
-string
-
-**Description**
-The default group avatar image. Use a JPG, PNG, or GIF that's
-200x200 pixels and smaller than 5 MB. Group owners can
-[change their avatar image. Must refer to an asset file that](https://help.salesforce.com/s/articleView?id=experience.admin_files_asset_files.htm&type=5&language=en_US)
-already exists within the org.
-
-**Field Type**
-string
-
-**Description**
-The default banner image for group pages. Use a JPG, PNG, or
-GIF that’s 1800x360 pixels and smaller than 5 MB. Group owners
-[can change their banner image. Must refer to an asset file that](https://help.salesforce.com/s/articleView?id=experience.admin_files_asset_files.htm&type=5&language=en_US)
-already exists within the org.
-
-**Field Type**
-string
-
-**Description**
-The color to display at the top of your org pages. Your logo,
-global search, and global actions appear on top of the global
-header background. Must be a valid hex color string in the
-format #54C254.
-
-Available only for SLDS 1 themes.
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether you want links in your org to use your
-selected brand color ( `true` ) or not ( `false` ). The default value
-is `true` .
-
-
-Metadata Types BrandingSet
-
-**Property** **Description**
-
-Available only for SLDS 1 themes.
-
-```
-OVERRIDE_A11Y_COLOR
-
-OVERRIDE_LOADING_PAGE
-
-PAGE_BACKGROUND_COLOR
-
-PROFILE_BANNER_IMAGE
-
-USER_IMAGE
-
-```
-
-**Field Type**
-string
-
-**Description**
-When you select a value for `BRAND_COLOR`, a color palette
-that complements your brand color and is WCAG 2.0 compliant
-is automatically generated. In places where your selected brand
-color isn’t accessible, an accessible color is used instead. If you
-provide a value for `OVERRIDE_A11Y_COLOR`, your value
-is used in the instances described in place of an automatically
-generated color.
-
-Overriding the accessible brand color only updates the first tile
-in your brand-based color palette, which affects colors like links
-and buttons. Overriding the accessibility brand color can make
-text harder to read.
-
-Must be a valid hex color string in the format #54C254.
-
-Available only for SLDS 1 themes.
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether your provided brand logo displays while a
-Lighting Experience page loads or refreshes ( `true` ) or not
-( `false` ). The default value is `false` .
-
-**Field Type**
-string
-
-**Description**
-The color used for page backgrounds. Must be a valid hex color
-string in the format #54C254.
-
-Available only for SLDS 1 themes.
-
-**Field Type**
-string
-
-**Description**
-The default banner image for user profiles. Use a JPG, PNG, or
-GIF that's 1800x360 pixels and smaller than 5 MB. Users can
-[change their profile banner image. Must refer to an asset file](https://help.salesforce.com/s/articleView?id=experience.admin_files_asset_files.htm&type=5&language=en_US)
-that already exists within the org.
-
-**Field Type**
-string
-
-
-Metadata Types BrandingSet
-
-**Property** **Description**
-
-**Description**
-The default avatar image for user profiles. Use a JPG, PNG, or
-GIF that's 200x200 pixels and smaller than 5 MB. Users can
-[change their profile avatar image. Must refer to an asset file](https://help.salesforce.com/s/articleView?id=experience.admin_files_asset_files.htm&type=5&language=en_US)
-that already exists within the org.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a BrandingSet component.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <BrandingSet xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <brandingSetProperty>
-
-        <propertyName>TextTransformStyle</propertyName>
-
-        <propertyValue>uppercase</propertyValue>
-
-      </brandingSetProperty>
-
-      <brandingSetProperty>
-
-        <propertyName>DetailTextColor</propertyName>
-
-        <propertyValue>#696969</propertyValue>
-
-      </brandingSetProperty>
-
-      <brandingSetProperty>
-
-        <propertyName>BorderColor</propertyName>
-
-        <propertyValue>#D4D4D4</propertyValue>
-
-      </brandingSetProperty>
-
-      <brandingSetProperty>
-
-        <propertyName>HeaderImage</propertyName>
-
-        <propertyValue></propertyValue>
-
-      </brandingSetProperty>
-
-      <brandingSetProperty>
-
-        <propertyName>HeaderFonts</propertyName>
-
-        <propertyValue>Montserrat</propertyValue>
-
-      </brandingSetProperty>
-
-      <brandingSetProperty>
-
-        <propertyName>CardBackgroundColor</propertyName>
-
-        <propertyValue>rgba(255, 255, 255, 0)</propertyValue>
-
-      </brandingSetProperty>
-
-      <brandingSetProperty>
-
-        <propertyName>LoginBackgroundColor</propertyName>
-
-        <propertyValue>#F4F4F4</propertyValue>
-
-      </brandingSetProperty>
-
-      <brandingSetProperty>
-
-        <propertyName>ActionColor</propertyName>
-
-        <propertyValue>#2574A9</propertyValue>
-
-      </brandingSetProperty>
-
-      <brandingSetProperty>
-
-        <propertyName>_ActionColorTrans</propertyName>
-
-        <propertyValue>rgba(25, 124, 190, 0.9)</propertyValue>
-
-      </brandingSetProperty>
-
-      <brandingSetProperty>
-
-        <propertyName>CompanyLogo</propertyName>
-
-```
-
-
-Metadata Types BrandingSet
-
-```
-        <propertyValue></propertyValue>
-
-      </brandingSetProperty>
-
-      <brandingSetProperty>
-
-        <propertyName>LoginBackgroundImage</propertyName>
-
-        <propertyValue>../../../../sfsites/picasso/core/external/
-
-           salesforceIdentity/images/background.jpg?v=1</propertyValue>
-
-      </brandingSetProperty>
-
-      <brandingSetProperty>
-
-        <propertyName>_LinkColorDarker</propertyName>
-
-        <propertyValue>#135F90</propertyValue>
-
-      </brandingSetProperty>
-
-      <brandingSetProperty>
-
-        <propertyName>_ActionColorDarker</propertyName>
-
-        <propertyValue>#135F90</propertyValue>
-
-      </brandingSetProperty>
-
-      <brandingSetProperty>
-
-        <propertyName>_HoverColor</propertyName>
-
-        <propertyValue>rgba(25, 124, 190, 0.1)</propertyValue>
-
-      </brandingSetProperty>
-
-      <brandingSetProperty>
-
-        <propertyName>ErrorFontColor</propertyName>
-
-        <propertyValue>#ff9e9e</propertyValue>
-
-      </brandingSetProperty>
-
-      <brandingSetProperty>
-
-        <propertyName>TextColor</propertyName>
-
-        <propertyValue>#333</propertyValue>
-
-      </brandingSetProperty>
-
-      <brandingSetProperty>
-
-        <propertyName>OverlayTextColor</propertyName>
-
-        <propertyValue>#FFFFFF</propertyValue>
-
-      </brandingSetProperty>
-
-      <brandingSetProperty>
-
-        <propertyName>PrimaryFont</propertyName>
-
-        <propertyValue>Lato</propertyValue>
-
-      </brandingSetProperty>
-
-      <brandingSetProperty>
-
-        <propertyName>LinkColor</propertyName>
-
-        <propertyValue>#2574A9</propertyValue>
-
-      </brandingSetProperty>
-
-      <masterLabel>ex</masterLabel>
-
-      <type>napili:branding-napili-merged</type>
-
-   </BrandingSet>
-
-```
-
-The following is an example `package.xml` that references the previous definition.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>MyBrandingSet</members>
-
-        <name>BrandingSet</name>
-
-      </types>
-
-      <version>40.0</version>
-
-   </Package>
-
-```
-
-
-### Metadata Types BriefcaseDefinition
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### BriefcaseDefinition
-
-Represents a briefcase definition. A briefcase makes selected records available for specific users and groups to view when they’re offline
-in the Salesforce Field Service mobile app for iOS and Android. This type extends the Metadata metadata type and inherits its `fullName`
-field.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-File Suffix and Directory Location
-
-### BriefcaseDefinition components have the suffix .briefcaseDefinition and are stored in the briefcaseDefinitions
-
-folder.
-
-Version
-
-### BriefcaseDefinition components are available in API version 50.0 and later.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`briefcaseRules` BriefcaseRule[] A list of rules that specify which records are included in the briefcase.
-
-`description` string Description of the briefcase.
-
-`isActive` boolean
-
-Required. Indicates whether the briefcase is active by default ( `true` ) or
-inactive ( `false` ). Activate a briefcase to make the selected records
-available to assignees.
-
-`masterLabel` string Required. Label for the briefcase name that appears in the Salesforce
-user interface.
-
-`type` BriefcaseType Applies if multiple briefcase types are available in your org. Enum values
-include:
-
-**•** `Standard` : Standard briefcase that can be used with priming APIs.
-
-**•** `HighVolume` : Increased capacity briefcase that’s used with
-performance priming in the Salesforce Field Service mobile app.
-
-**•** `MobileAppSync` : Automatically generated briefcase that’s used
-for performance priming in the Salesforce Field Service mobile app.
-
-
-Metadata Types BriefcaseDefinition
-
-BriefcaseRule
-
-Represents a rule that specifies records to be included in the BriefcaseDefinition.
-
-**Field Name** **Field Type** **Description**
-
-`briefcaseRuleFilters` BriefcaseRuleFilter[] A list of filters on a rule.
-
-`filterLogic` string The filter logic for record selection, for example, `1 AND 2` where 1 and 2
-correspond to filter 1 and filter 2. Filter logic operators include `AND` and `OR` .
-
-`isAscendingOrder` boolean Indicates whether the records should be sorted in ascending order ( `true` ) or
-descending order ( `false` ).
-
-`isRelatedFilesRule` boolean
-
-Indicates whether the briefcase rule is part of a hierarchical set of rules that
-configure the offline priming of file attachments. Available only for the Offline
-App (Salesforce Mobile App Plus).
-
-To configure the offline priming of file attachments, create a set of four
-hierarchical briefcase rules:
-
-**•** A rule with `targetEntity` set to the object with the file attachments
-at the first level
-
-**•** A rule with `targetEntity` set to `ContentDocumentLink` at the
-second level
-
-**•** A rule with `targetEntity` set to `ContentDocument` at the third
-level
-
-**•** A rule with `targetEntity` set to `ContentVersion` at the fourth
-level
-
-See the Declarative Metadata Sample Definition section for an example briefcase
-definition that configures the offline priming of file attachments.
-
-The `ContentDocumentLink`, `ContentDocument`, and
-`ContentVersion` rules must all have `isRelatedFilesRule` set to
-`true` . To delete a briefcase configuration for file attachments, you must delete
-the `ContentDocumentLink` rule and all of its nested rules. You can’t
-delete a single rule within the hierarchy of `ContentDocumentLink`,
-`ContentDocument`, and `ContentVersion` rules.
-
-When `isRelatedFilesRule` is set to true, you must use the
-`recordLimit` field to limit the number of file attachments returned by a
-briefcase rule. Apply the same `recordLimit` value across the
-`ContentDocumentLink`, `ContentDocument`, and
-`ContentVersion` rules. You can optionally filter file attachments by file
-size and file type through Briefcase Builder in Setup.
-
-After you set a value for `isRelatedFilesRule`, you can no longer modify
-the field. The value that you set persists for the life of the rule.
-
-`orderBy` string The field to order the records by, which determines how the records can be
-sorted. For example, Account Name or Created By.
-
-
-Metadata Types BriefcaseDefinition
-
-**Field Name** **Field Type** **Description**
-
-```
-queryScope
-
-```
-
-`FilterScope` A group of records to restrict the scope of this rule. Valid values include:
-(enumeration of type
-
-**•** `Everything`
-
-string)
-
-**•** `Everything`
-
-**•** `AssignedToMe`
-
-**•** `Mine`
-
-The `AssignedToMe` scope is supported for the ServiceAppointment object
-only.
-
-`recordLimit` int The maximum number of records for an object on the briefcase rule. The
-maximum is 50,000 records that meet the criteria. However, the records returned
-
-by one briefcase rule must fit within the maximum limit of 50,000 records
-across active briefcases. If there are more records that match the criteria than
-the record limit allows, the `orderBy` field determines which records are
-returned.
-
-`relatedRules` BriefcaseRule[] A list of rules that are related to the current rule.
-
-`relationshipField` string Required for `relatedRules` . Defines the Salesforce object field that relates
-the `relatedRules` field to another `relatedRules` field or the
-
-`briefcaseRules` field on the BriefcaseDefinition metadata type that it's
-nested in. For example, an Account object rule can be related to a Contact
-object rule using the Account ID object field. In this example, the value for the
-related rule's `relationshipField` is `AccountID` .
-
-```
-relationshipType
-
-```
-
-`BriefcaseRuleRelationshipType` Required for `relatedRules` . Defines the relationship between the
-(enumeration of type `relatedRules` field and another `relatedRules` field or the
-string) `briefcaseRules` field on the BriefcaseDefinition metadata type that it's
-
-nested in. Valid values include:
-
-**•** `ParentToChild`
-
-**•** `ChildToParent`
-
-`targetEntity` string
-
-BriefcaseRuleFilter
-
-Specifies filter criteria for a BriefcaseRule.
-
-Required. The API name of the standard object, custom object, or custom
-metadata type that the briefcase rule selects records from.
-
-If the `targetEntity` is a custom metadata type, the briefcase rule can’t
-include any other fields. You can add only one briefcase rule for the same
-
-custom metadata type in a briefcase. Custom metadata types are supported
-as the `targetEntity` for top-level rules only–you can’t create a related
-rule with `targetEntity` as a custom metadata type.
-
-
-Metadata Types BriefcaseDefinition
-
-**Field Name** **Field Type** **Description**
-
-```
-filterOperator
-
-```
-
-```
-BriefcaseFilterOperator
-```
-
-(enumeration of type
-string)
-
-Required. The comparison operator for this rule filter. Capitalization matters
-with date filter operators. Be sure to specify date literals in uppercase. Some
-valid date literals include TODAY, YESTERDAY and TOMORROW.
-
-Valid values include:
-
-**•** `d` —Ends with
-
-**•** `e` —Equals
-
-**•** `g` —Greater than
-
-**•** `h` —Greater than or equal
-
-**•** `l` —Less than
-
-**•** `m` —Less than or equal
-
-**•** `n` —Not equals. This value is applicable only when `filterValue` is
-empty.
-
-**•** `s` —Starts with
-
-`filterSeqNumber` int Required. The filter number. When you apply multiple filters, the filters are
-numbered sequentially, 1, 2, 3, and so on.
-
-`filterValue` string
-
-The value that the field and criteria evaluate. For example, `true` or `false`
-for a boolean field whose criteria or filter operator is Equals.
-
-Be sure to specify date literals in uppercase. Some valid date literals include
-TODAY, YESTERDAY and TOMORROW.
-
-For `targetEntityField` values that accept a user ID, such as `OwnerId`
-or `CreatedById`, enter `$User.Id` to pass the ID of the user making the
-request.
-
-To evaluate `targetEntityField` by whether the field is empty or not
-empty, leave `filterValue` blank and set `filterOperator` to `e`
-(equals) or `n` (not equals).
-
-`targetEntityField` string Required. The API name of the field to filter by. This field is from the
-`targetEntity` on BriefcaseRule. Compound fields aren't supported. Fields
-
-encrypted with deterministic encryption can be used in filters with equals and
-not equals operators.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a BriefcaseDefinition component for account records.
-
-The following is an example definition of a briefcase definition. If you include a rule filter, you must include a filter logic.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<BriefcaseDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <briefcaseRules>
-
-     <briefcaseRuleFilters>
-
-       <filterOperator>g</filterOperator>
-
-       <filterSeqNumber>1</filterSeqNumber>
-
-```
-
-
-Metadata Types BriefcaseDefinition
-
-```
-          <filterValue>50000.00</filterValue>
-
-          <targetEntityField>AnnualRevenue</targetEntityField>
-
-        </briefcaseRuleFilters>
-
-        <briefcaseRuleFilters>
-
-           <filterOperator>l</filterOperator>
-
-           <filterSeqNumber>2</filterSeqNumber>
-
-           <filterValue>50</filterValue>
-
-           <targetEntityField>NumberOfEmployees</targetEntityField>
-
-        </briefcaseRuleFilters>
-
-        <filterLogic>1 AND 2</filterLogic>
-
-        <isAscendingOrder>false</isAscendingOrder>
-
-        <orderBy>NumberOfEmployees</orderBy>
-
-        <queryScope>Everything</queryScope>
-
-        <recordLimit>1000</recordLimit>
-
-        <targetEntity>Account</targetEntity>
-
-      </briefcaseRules>
-
-      <description>Account Briefcase</description>
-
-      <isActive>true</isActive>
-
-      <masterLabel>Account With Standard Fields</masterLabel>
-
-   </BriefcaseDefinition>
-
-```
-
-The following is an example `package.xml` that references the previous definition.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>AccountWithCustomFields</members>
-
-        <name>BriefcaseDefinition</name>
-
-      </types>
-
-      <version>49.0</version>
-
-   </Package>
-
-```
-
-This example briefcase definition configures the offline priming of file attachments for the WorkOrder object. Files Priming is available
-only for the Offline App (Salesforce Mobile App Plus).
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <BriefcaseDefinition xmlns="http://soap.sforce.com/2006/04/metadata"
-
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-
-     <briefcaseRules>
-
-        <isAscendingOrder>false</isAscendingOrder>
-
-        <orderBy>SystemModstamp</orderBy>
-
-        <queryScope>Everything</queryScope>
-
-        <recordLimit>25</recordLimit>
-
-        <targetEntity>WorkOrder</targetEntity>
-
-        <relatedRules>
-
-          <targetEntity>ContentDocumentLink</targetEntity>
-
-          <relationshipField>LinkedEntityId</relationshipField>
-
-          <relationshipType>ParentToChild</relationshipType>
-
-          <isAscendingOrder>false</isAscendingOrder>
-
-          <isRelatedFilesRule>true</isRelatedFilesRule>
-
-          <queryScope>Everything</queryScope>
-
-          <recordLimit>2</recordLimit>
-
-          <relatedRules>
-
-            <targetEntity>ContentDocument</targetEntity>
-
-            <relationshipField>ContentDocumentId</relationshipField>
-
-```
-
-
-### Metadata Types BusinessProcessGroup
-
-```
-            <relationshipType>ChildToParent</relationshipType>
-
-            <isAscendingOrder>false</isAscendingOrder>
-
-            <isRelatedFilesRule>true</isRelatedFilesRule>
-
-            <queryScope>Everything</queryScope>
-
-            <recordLimit>2</recordLimit>
-
-            <relatedRules>
-
-               <targetEntity>ContentVersion</targetEntity>
-
-               <relationshipField>ContentDocumentId</relationshipField>
-
-               <relationshipType>ParentToChild</relationshipType>
-
-               <isAscendingOrder>false</isAscendingOrder>
-
-               <isRelatedFilesRule>true</isRelatedFilesRule>
-
-               <queryScope>Everything</queryScope>
-
-               <recordLimit>2</recordLimit>
-
-            </relatedRules>
-
-          </relatedRules>
-
-        </relatedRules>
-
-     </briefcaseRules>
-
-     <description xsi:nil="true"/>
-
-     <isActive>true</isActive>
-
-     <masterLabel>WorkOrder with Related Files</masterLabel>
-
-   </BriefcaseDefinition>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-Usage
-
-Briefcase objects are available in orgs that have Briefcase Builder and Field Service enabled.
-
-### BusinessProcessGroup
-
-Represents the surveys used to track customers’ experiences across different stages in their lifecycle. This type extends the Metadata
-metadata type and inherits its `fullName` field.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-File Suffix and Directory Location
-
-### BusinessProcessGroup components have the suffix .businessProcessGroup and are stored in the businessProcessGroups
-
-folder.
-
-Version
-
-### BusinessProcessGroup components are available in API version 49.0 and later.
-
-
-Metadata Types BusinessProcessGroup
-
-Special Access Rules
-
-This metadata type is available in orgs with Surveys enabled with the Customer Lifecycle Designer license.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`businessProcessDefinitions` BusinessProcessDefinition A list that defines stages in a customer lifecycle map.
-on page 551[]
-
-`customerSatisfactionMetric` SurveyQuestionType(enumeration
-of type string)
-
-Required. Types of questions that can be associated with stages in a
-customer lifecycle map.
-
-Valid values are:
-
-**•** `Attachment`
-
-**•** `Boolean`
-
-**•** `CSAT`
-
-**•** `Currency`
-
-**•** `Date`
-
-**•** `DateTime`
-
-**•** `FreeText`
-
-**•** `Image`
-
-**•** `NPS`
-
-**•** `Matrix`
-
-**•** `MultiChoice`
-
-**•** `MultiSelectPicklist`
-
-**•** `NPS`
-
-**•** `Number`
-
-**•** `Picklist`
-
-**•** `Rating`
-
-**•** `ShortText`
-
-**•** `Slider`
-
-**•** `StackRank`
-
-**•** `Toggle`
-
-`description` string A description of the customer lifecycle map.
-
-`masterLabel` string Required. The name of the customer lifecycle map.
-
-
-Metadata Types BusinessProcessGroup
-
-BusinessProcessDefinition
-
-**Field Name** **Field Type** **Description**
-
-`businessProcessFeedbacks` BusinessProcessFeedback A list of stages in a customer lifecycle map.
-on page 551[]
-
-`description` string A description of a stage in the customer lifecycle map.
-
-`developerName` string
-
-Required. The API name of a stage in the customer lifecycle map.
-
-Only users with View DeveloperName OR View Setup and Configuration
-permission can view, group, sort, and filter this field.
-
-`masterLabel` string Required. The name of a stage in the customer lifecycle map.
-
-`sequenceNumber` int Required. The position of a stage in the customer lifecycle map.
-
-BusinessProcessFeedback
-
-**Field Name** **Field Type** **Description**
-
-`actionName` string Required. The name of the survey used to collect feedback
-
-`actionParam` string Required. The name of the survey question used to collect feedback.
-
-`actionType` ExpFeedbackCo **l** Type(enumeration Required. The mode of feedback collection. Valid values are:
-of type string)
-
-**•** `PHONE_CALL`
-
-**•** `SURVEY`
-
-Declarative Metadata Sample Definition
-
-The following is an example of a BusinessProcessGroup component.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<BusinessProcessGroup xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <businessProcessDefinitions>
-
-     <developerName>Customer_Onboarding</developerName>
-
-     <masterLabel>Customer Onboarding</masterLabel>
-
-     <description>A stage in a customer's lifecycle.</description>
-
-     <sequenceNumber>0</sequenceNumber>
-
-     <businessProcessFeedbacks>
-
-        <actionType>Survey</actionType>
-
-        <actionName>New Customer CSAT</actionName>
-
-        <actionParam>How would you rate our service?</actionParam>
-
-     </businessProcessFeedbacks>
-
-   </businessProcessDefinitions>
-
-   <customerSatisfactionMetric>NPS</customerSatisfactionMetric>
-
-   <masterLabel>Customer Lifecycle</masterLabel>
-
-   <description>This map tracks the feedback provided by customers' at different stages
-
-```
-
-
-### Metadata Types CallCenter
-
-```
-   during their lifecycle.</description>
-
-   </BusinessProcessGroup>
-
-```
-
-The following is an example `package.xml` that references the previous definition.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>policyholder</members>
-
-        <name>BusinessProcessGroup</name>
-
-      </types>
-
-      <version>49.0</version>
-
-   </Package>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### CallCenter
-
-Represents the Call Center definition used to integrate Salesforce with a third-party computer-telephony integration (CTI) system, a
-partner telephony system, or partner Contact Center as a Service (CCaaS) system.
-
-Parent Type
-
-This type extends the Metadata metadata type and inherits its `fullName` field.
-
-File Suffix and Directory Location
-
-### CallCenter components have the suffix .callCenter and are stored in the callCenters folder.
-
-Version
-
-### CallCenter components are available in API version 27.0 and later.
-
-Special Access Rules
-
-There are no additional access requirements that are specific to this type.
-
-Fields
-
-**Field Name** **Description**
-
-```
-adapterUrl
-
-```
-
-**Field Type**
-string
-
-
-Metadata Types CallCenter
-
-**Field Name** **Description**
-
-**Description**
-Optional field. A URL that points to an adapter.
-
-```
-contactCenterChannels
-
-displayName
-
-displayNameLabel
-
-internalNameLabel
-
-sections
-
-version
-
-```
-
-**Field Type**
-
-ContactCenterChannel[]
-
-**Description**
-Relates Bring Your Own Channel for Contact Center as a Service (CCaaS) messaging
-channels to a CallCenter and represents the routing details for a voicemail configuration.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-The display name of this call center.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-The label of the `displayName` field in Call Center setup page.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-The label of the `internalName` field in Call Center setup page.
-
-**Field Type**
-
-CallCenterSection[]
-
-**Description**
-Custom setup items defined for this call center.
-
-**Field Type**
-string
-
-**Description**
-The version of this call center.
-
-
-Metadata Types CallCenter
-
-CallCenterSection
-
-**Field Name** **Description**
-
-```
-items
-
-label
-
-name
-
-```
-
-CallCenterItem
-
-**Field Type**
-
-CallCenterItem[]
-
-**Description**
-Contains the label, name, and value that describe the sections.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-The label of the section.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-The name of the section.
-
-**Field Name** **Description**
-
-```
-label
-
-name
-
-value
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-The label of the custom setup item.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-The name of the custom setup item.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-
-Metadata Types CallCenter
-
-**Field Name** **Description**
-
-The value of the custom setup item.
-
-ContactCenterChannel
-
-Represents a junction subtype that relates a Bring Your Own Channel for Contact Center as a Service (CCaaS) messaging channel to a
-CallCenter type for Bring Your Own Channel for CCaaS. This subtype also represents the routing details for a voicemail configuration and
-routing information for callback requests. This subtype is available in API version 56.0 and later.
-
-**Field Name** **Description**
-
-```
-channel
-
-contactCenter
-
-omniCallbackFallbackQueue
-
-omniCallbackHandler
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-For Bring Your Own Channel for CCaaS, this field represents the unique ID of the Bring
-Your Own Channel messaging channel (MessagingChannel) that’s associated with the
-contact center (CallCenterId). Available in API version 60.0 and later.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-For Bring Your Own Channel for CCaaS, this field represents the unique ID of the contact
-center (CallCenterId) that’s associated with the Bring Your Own Channel messaging
-channel (MessagingChannel). Available in API version 60.0 and later.
-
-**Field Type**
-string
-
-**Description**
-If callbacks are configured for the contact center and the contact center uses
-Omni-Channel Unified Routing, this field represents the unique ID of the fallback queue
-to use if contact request routing through an Omni-Channel flow fails. Don't change
-the value in this field. Instead, configure contact request routing in Lightning Experience.
-Available in API version 65.0 and later.
-
-**Field Type**
-string
-
-**Description**
-If callbacks are configured for the contact center and the contact center uses
-Omni-Channel Unified Routing, this field represents the unique ID of the flow or queue
-used to route contact requests. Don't change the value in this field. Instead, configure
-contact request routing in Lightning Experience. Available in API version 65.0 and later.
-
-
-Metadata Types CallCenter
-
-**Field Name** **Description**
-
-```
-voiceMailFallbackQueue
-
-voiceMailHandler
-
-```
-
-**Field Type**
-string
-
-**Description**
-If voicemail routing is configured for the contact center, this field represents the unique
-ID of the fallback queue to use if voicemail routing fails. Don't change the value in this
-field. Instead, configure voicemail routing in Lightning Experience.
-
-**Field Type**
-string
-
-**Description**
-If voicemail routing is configured for the contact center, this field represents the unique
-ID of the flow used to route voicemails. Don't change the value in this field. Instead,
-configure voicemail routing in Lightning Experience.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a CallCenter component:
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<CallCenter xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <adapterUrl>http://localhost:11000</adapterUrl>
-
-   <displayName>Demo Call Center Adapter</displayName>
-
-   <displayNameLabel>Display Name</displayNameLabel>
-
-   <internalNameLabel>Internal Name</internalNameLabel>
-
-   <sections>
-
-     <items>
-
-        <label>Description</label>
-
-        <name>reqDescription</name>
-
-        <value>Demo Call Center Adapter</value>
-
-     </items>
-
-     <items>
-
-        <label>CTI Connector ProgId</label>
-
-        <name>reqProgId</name>
-
-        <value>DemoAdapter.DemoAdapter.1</value>
-
-     </items>
-
-     <items>
-
-        <label>Version</label>
-
-        <name>reqVersion</name>
-
-        <value>3.0</value>
-
-     </items>
-
-     <items>
-
-        <label>CTI Adapter URL</label>
-
-        <name>reqAdapterUrl</name>
-
-        <value>http://localhost:11000</value>
-
-     </items>
-
-     <label>General Information</label>
-
-     <name>reqGeneralInfo</name>
-
-   </sections>
-
-```
-
-
-### Metadata Types CallCenterRoutingMap
-
-```
-      <sections>
-
-        <items>
-
-           <label>Outside Prefix</label>
-
-           <name>reqOutsidePrefix</name>
-
-           <value>1</value>
-
-        </items>
-
-        <items>
-
-           <label>Long Distance Prefix</label>
-
-           <name>reqLongDistPrefix</name>
-
-           <value>1</value>
-
-        </items>
-
-        <items>
-
-           <label>International Prefix</label>
-
-           <name>reqInternationalPrefix</name>
-
-           <value>01</value>
-
-        </items>
-
-        <label>Dialing Options</label>
-
-        <name>reqDialingOptions</name>
-
-      </sections>
-
-      <version>4</version>
-
-   </CallCenter>
-
-```
-
-[For information about the CallCenter definition file, see Call Center Definition Files.](https://developer.salesforce.com/docs/atlas.en-us.210.0.api_cti.meta/api_cti/sforce_api_cti_call_def_file.htm)
-
-### CallCenterRoutingMap
-
-Represents the mapping between a user or queue in a Salesforce org to a user or queue in an external system’s call center.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-Parent Type
-
-This type extends the Metadata metadata type and inherits its `fullName` field.
-
-File Suffix and Directory Location
-
-### CallCenterRoutingMap components have the suffix .callCenterRoutingMap and are stored in the
-
-`callCenterRoutingMaps` folder.
-
-Version
-
-### CallCenterRoutingMap components are available in API version 52.0 and later.
-
-Special Access Rules
-
-This type requires Contact Center Admin, Contact Center Admin (Partner Telephony), Contact Center Supervisor, or Manage Call Centers
-permission.
-
-
-Metadata Types CallCenterRoutingMap
-
-Fields
-
-**Field Name** **Description**
-
-```
-callCenter
-
-developerName
-
-externalId
-
-masterLabel
-
-quickConnect
-
-referenceRecord
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-Reference to a call center.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-The developer name is a combination of the Salesforce user ID or queue name, and
-the `callCenter` value, with an underscore between these two values.
-
-**•** `[SALESFORCE_USER_ID]_[CALL_CENTER]`
-
-**•** `[SALESFORCE_QUEUE_NAME]_[CALL_CENTER]`
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-Unique identifier for the external system’s user or queue.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-The master label of the CallCenterRoutingMap.
-
-**Field Type**
-string
-
-**Description**
-The Amazon Connect QuickConnectId ARN used to determine agent availability for
-Omni-Channel call transfers. Available in API version 56.0 and later.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-
-### Metadata Types CallCoachingMediaProvider
-
-**Field Name** **Description**
-
-Lookup field to a Salesforce user or queue.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a CallCenterRoutingMap component.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <CallCenterRoutingMap xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <callCenter>ExampleCallCenter</callCenter>
-
-   <developerName>User_001ABC00000FjYIIA0_04vZ6000000Cagl</developerName>
-
-   <externalId>arn:aws:connect:ap-northeast-1:484907484500:instance/examplestring-9c18-4aa5-b5fe-cda6f34d99a0/agent/a69f7afe-5b04-4aa8-b5ee-108a84d0f504</externalId>
-
-      <masterLabel>001ABC00000FjYIIA0</masterLabel>
-
-      <referenceRecord>example.d2b87b8182fa@salesforce.com</referenceRecord>
-
-   </CallCenterRoutingMap>
-
-```
-
-The following is an example `package.xml` that references the previous definition.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>User_001ABC00000FjYIIA0_04vZ6000000Cagl</members>
-
-        <name>CallCenterRoutingMap</name>
-
-      </types>
-
-      <version>64.0</version>
-
-   </Package>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### CallCoachingMediaProvider
-
-Represents the CallCoachingMediaProvider configuration. Use CallCoachingMediaProvider to configure which providers of voice recordings
-that Einstein Conversation Insights can use. For example, Sales Dialer can provide voice recordings. Einstein Conversation Insights then
-stores and analyzes call recordings to surface insights and trends in customer conversations.This type extends the Metadata metadata
-type and inherits its `fullName` field.
-
-File Suffix and Directory Location
-
-### CallCoachingMediaProvider components have the suffix .callCoachingMediaProvider and are stored in the CallCoachingMediaProvider folder.
-
-Version
-
-### CallCoachingMediaProvider components are available in API version 49.0 and later.
-
-
-### Metadata Types CampaignInfluenceModel
-
-Special Access Rules
-
-You must be a Sales Engagement customer to access this metadata type.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`isActive` boolean
-
-Indicates whether the media provider can upload voice recordings ( `true` ) or
-not ( `false` ).
-
-Default value is `false` .
-
-`providerDescription` string Description of the media provider.
-
-`providerName` string Name of the media provider.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a CallCoachingMediaProvider component.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<CallCoachingMediaProvider xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <isActive>true</isActive>
-
-   <providerDescription>Salesforce telephony provider</providerDescription>
-
-   <providerName>Dialer</providerName>
-
-</CallCoachingMediaProvider>
-
-```
-
-The following is an example `package.xml` that references the previous definition.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <types>
-
-     <members>*</members>
-
-     <name>CallCoachingMediaProvider</name>
-
-   </types>
-
-   <version>49.0</version>
-
-</Package>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### CampaignInfluenceModel
-
-Represents a campaign influence model used by Customizable Campaign Influence. You can’t configure Customizable Campaign
-Influence via the Metadata API, but you can add a campaign influence model.
-
-This type extends the Metadata metadata type and inherits its `fullName` field.
-
-
-Metadata Types CampaignInfluenceModel
-
-[Note: This information applies only to Customizable Campaign Influence and not to Campaign Influence 1.0 .](https://help.salesforce.com/s/articleView?id=sf.campaigns_influence_original.htm&language=en_US)
-
-File Suffix and Directory Location
-
-CampaignInfluenceModel values are stored in the `campaignInfluenceModels` directory of the corresponding package directory.
-The file name matches the model name, and the extension is `.campaignInfluenceModel` .
-
-Version
-
-CampaignInfluenceModel components are available in API version 38.0 and later.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`isActive` boolean Indicates whether the model is active. Active models can generate
-campaign influence records. Deactivating a model deletes its campaign
-
-influence records. Custom models are always active and this field is
-ignored. This field is available beginning with API version 40.0.
-
-`isDefaultModel` boolean Required. Indicates if the model is the default model or not. Only
-campaign influence records associated with the default model appear
-
-on campaigns and opportunities. You can only have one default model
-at a time. A model must be active to become the default model.
-
-Activating or deactivating custom models does not automatically
-generate or delete campaign influence records.
-
-`isModelLocked` boolean Required. Indicates if the model is locked or not. Campaign Influence
-records for locked models can be manipulated only via the API.
-
-`modelDescription` string A description of the influence model.
-
-`name` string Required. A unique name for the model.
-
-`recordPreference` picklist The value of this field determines when to create campaign influence
-records.
-
-**•** `AllRecords` : Creates records regardless of the revenue attribution
-percentage.
-
-**•** `RecordsWithAttribution` : Creates records only when the
-revenue attribution is greater than 0%.
-
-This field is available In API version 41.0 and later.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a CampaignInfluenceModel component that represents the default Salesforce campaign influence
-attribution model. The default `isDefaultModel` value of `true` can be changed if another model is created and set as the default
-
-
-### Metadata Types CaseSubjectParticle
-
-model. The `isModelLocked` value of `true` means that Campaign Influence records for this model can be seen in the UI, but not
-created, updated, or deleted.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <CampaignInfluenceModel xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <isActive>true</isActive>
-
-      <isDefaultModel>true</isDefaultModel>
-
-     <isModelLocked>true</isModelLocked> <recordPreference>AllRecords</recordPreference>
-
-      <modelDescription>Primary Campaign gets 100% of the revenue share</modelDescription>
-
-      <name>Salesforce Model</name>
-
-   </CampaignInfluenceModel>
-
-```
-
-The following is an example of a CampaignInfluenceModel component that creates an influence model called Last Touch, which will
-not be the default model.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <CampaignInfluenceModel xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <isActive>true</isActive>
-
-      <isDefaultModel>false</isDefaultModel>
-
-      <isModelLocked>true</isModelLocked>
-
-      <modelDescription>This model gives 100% influence attribution to the last campaign
-
-   that touched the contact.</modelDescription>
-
-      <name>Last Touch</name>
-
-      <recordPreference>RecordsWithAttribution</recordPreference>
-
-   </CampaignInfluenceModel>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### CaseSubjectParticle
-
-Represents the Social Business Rules custom format for the **Case Subject** field on cases created from inbound social posts.
-
-File Suffix and Directory Location
-
-### CaseSubjectParticle components have the suffix .CaseSubjectParticle and are stored in the CaseSubjectParticles
-
-folder.
-
-Version
-
-### CaseSubjectParticle is available in API version 41.0 and later.
-
-
-Metadata Types CaseSubjectParticle
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`index` int Required. The order in which the custom **Case Subject** is
-generated, meaning if the social network is 0 and the social
-
-message is 1, then the subject generates as `Twitter |`
-`Tweet` .
-
-`textField` string Specifies inbound social content added to **Case Subject** in
-case records.
-
-Required. Specifies the custom **Case Subject** format from
-which inbound social content appears in case records. Valid
-values are:
-
-**•** `ProvidedString`
-
-**•** `Source`
-
-**•** `MessageType`
-
-**•** `SocialHandle`
-
-**•** `SocialNetwork`
-
-**•** `Sentiment`
-
-**•** `RealName`
-
-**•** `Content`
-
-**•** `PipeSeparator`
-
-**•** `ColonSeparator`
-
-**•** `HyphenSeparator`
-
-```
-type
-
-```
-
-CaseSubjectParticleType
-(enumeration of type
-string)
-
-Declarative Metadata Sample Definition
-
-This is a sample of a `.CaseSubjectParticle` file.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<Package xmlns=http://soap.sforce.com/2006/04/metadata"">
-
-   <types>
-
-     <members>*</members>
-
-     <name>CaseSubjectParticle</name>
-
-   </types>
-
-   <version>41.0</version>
-
-</Package>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type doesn’t support the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about
-using the manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-
-### Metadata Types CareBenefitVerifySettings CareBenefitVerifySettings
-
-Represents the configuration settings for benefit verification requests.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-Parent Type
-
-[This type extends the Metadata metadata type and inherits its](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/metadata.htm) `fullName` field.
-
-File Suffix and Directory Location
-
-### CareBenefitVerifySettings components have the suffix .careBenefitVerifySettings and are stored in the
-
-`careBenefitVerifySettings` folder.
-
-Version
-
-### CareBenefitVerifySettings components are available in API version 52.0 and later.
-
-Fields
-
-**Field Name** **Description**
-
-```
-codeSetType
-
-defaultNpi
-
-generalPlanServiceTypeCode
-
-isDefault
-
-```
-
-**Field Type**
-string
-
-**Description**
-Specifies the code set type for the benefits verification service type codes.
-
-**Field Type**
-string
-
-**Description**
-Default National Provider Identifier to be used in the benefits verification request.
-
-**Field Type**
-string
-
-**Description**
-Service type code for the plan benefits as a whole.
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether this record is the default verification service `(true)` or not
-`(false)` .
-
-
-Metadata Types CareBenefitVerifySettings
-
-**Field Name** **Description**
-
-```
-masterLabel
-
-organizationName
-
-serviceApexClass
-
-serviceNamedCredential
-
-serviceTypeSourceSystem
-
-uriPath
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-Name of the benefits verification service.
-
-**Field Type**
-string
-
-**Description**
-Specifies the organization name for the benefits verification request service.
-
-**Field Type**
-string
-
-**Description**
-Apex class used to access the benefits verification service.
-
-**Field Type**
-string
-
-**Description**
-Credential used to access the benefits verification service.
-
-**Field Type**
-string
-
-**Description**
-Service type code for the plan benefits as a whole.
-
-**Field Type**
-string
-
-**Description**
-Link to payer endpoint.
-
-Declarative Metadata Sample Definition
-
-This is an example of a CareBenefitVerifySettings component.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<CareBenefitVerifySettings xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <generalPlanServiceTypeCode>abc</generalPlanServiceTypeCode>
-
-   <isDefault>true</isDefault>
-
-   <masterLabel>test</masterLabel>
-
-   <serviceApexClass>TestApexClass</serviceApexClass>
-
-   <serviceNamedCredential>test</serviceNamedCredential>
-
-   <uriPath>efgh</uriPath>
-
-```
-
-
-### Metadata Types CareLimitType
-
-```
-      <serviceTypeSourceSystem>Lorem ipsum dolor</serviceTypeSourceSystem>
-
-      <codeSetType>Code set</codeSetType>
-
-      <defaultNpi>Npi info</defaultNpi>
-
-      <organizationName>Organization name</organizationName>
-
-   </CareBenefitVerifySettings>
-
-```
-
-This is an example `package.xml` that references the previous definition.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>*</members>
-
-        <name>CareBenefitVerifySettings</name>
-
-      </types>
-
-      <types>
-
-        <members>*</members>
-
-        <name>ApexClass</name>
-
-      </types>
-
-      <types>
-
-        <members>*</members>
-
-        <name>NamedCredential</name>
-
-      </types>
-
-      <version>52.0</version>
-
-   </Package>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-[manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/file_based_zip_file.htm)
-
-### CareLimitType
-
-Defines the characteristics of limits on benefit provision.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-Parent Type
-
-[This type extends the Metadata metadata type and inherits its](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/metadata.htm) `fullName` field.
-
-File Suffix and Directory Location
-
-### CareLimitType components have the suffix .careLimitType and are stored in the careLimitTypes folder.
-
-Version
-
-### CareLimitType components are available in API version 52.0 and later.
-
-
-Metadata Types CareLimitType
-
-Fields
-
-**Field Name** **Description**
-
-```
-isProtected
-
-limitType
-
-masterLabel
-
-metricType
-
-```
-
-**Field Type**
-boolean
-
-**Description**
-An auto-generated value that doesn’t impact the behavior of the metadata type.
-
-**Field Type**
-string
-
-**Description**
-Source of limit on benefit provision, such as a co-insurance requirement.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-Name of the limit type.
-
-**Field Type**
-CareLimitTypeMetricType (enumeration of type string)
-
-**Description**
-Metric to be used for calculating and displaying the benefit limit, such as number of
-visits, amount spent, or percentage of allowed expenditure.
-
-Valid values are:
-
-**•** `Amount`
-
-**•** `Money`
-
-**•** `Percentage`
-
-**•** `Text`
-
-Declarative Metadata Sample Definition
-
-This is an example of a CareLimitType component.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<CareLimitType xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <limitType>test</limitType>
-
-   <masterLabel>test</masterLabel>
-
-   <metricType>Money</metricType>
-
-   <isProtected>false</isProtected>
-
-</CareLimitType>
-
-```
-
-
-### Metadata Types CareSystemFieldMapping
-
-This is an example `package.xml` that references the previous definition.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>*</members>
-
-        <name>CareLimitType</name>
-
-      </types>
-
-      <version>52.0</version>
-
-   </Package>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-[manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/file_based_zip_file.htm)
-
-### CareSystemFieldMapping
-
-Represents a mapping from source system fields to Salesforce objects and fields. This type extends the Metadata metadata type and
-inherits its `fullName` field.
-
-[other]: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-File Suffix and Directory Location
-
-### CareSystemFieldMapping components have the suffix .careSystemFieldMapping and are stored in the
-
-`careSystemFieldMappings` folder.
-
-Version
-
-### CareSystemFieldMapping components are available in API version 49.0 and later.
-
-Special Access Rules
-
-To use this metadata type, your Salesforce org must have the Health Cloud or Life Sciences Cloud license and the user must have the
-Health Cloud Foundation (for Health Cloud) or Health Cloud Starter (for Life Sciences Cloud) permission set.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`externalIdField` string The ID of the field in the external system.
-
-`isActive` boolean Indicates whether this field mapping is active ( `true` ) or not ( `false` ).
-The default value is False.
-
-
-Metadata Types CareSystemFieldMapping
-
-**Field Name** **Field Type** **Description**
-
-`isProtected` boolean An auto-generated value that doesn’t currently impact the behavior of
-the metadata type.
-
-`masterLabel` string Required. The name of the care system field mapping.
-
-```
-role
-
-```
-
-SourceSystemFieldRole Required. The role the field represents. Valid values are:
-(enumeration of
-
-**•** `Patient` —When the `role` field is set to `Patient`, the
-
-type string)
-
-Enrollment API uses the value of `externalIdField` as the
-patient ID. This role can be used when `targetObject` is set to
-`Account` .
-
-**•** `RemoteMonitoringDevice` —Indicates which
-`externalIdField` on the Asset object maps to the `Device`
-field in the CareObservation object. This role can be used when
-targetObject is set to Asset.
-
-**•** `RemoteMonitoringPatient` —Indicates which
-`externalIdField` on the Account object maps to the
-`ObservedSubject` field in the Care Observation object. This
-role is used when targetObject is set to Account.
-
-**•** `ServiceProvider` —The Enrollment API uses the value of
-`externalIdField` as the provider ID. This role is used when
-`targetObject` is set to `Account` .
-
-**•** `NotApplicable` —This role is used when `targetObject` is
-set to `CareProgram` or `Product`, which means that there is
-no applicable role.
-
-`sourceSystem` string The system where the record originated.
-
-`targetObject` string The name of the Salesforce object to which the external system field is
-mapped.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a CareSystemFieldMapping component.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<CareSystemFieldMapping xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <externalIdField>AccountNumber</externalIdField>
-
-   <isActive>true</isActive>
-
-   <isProtected>false</isProtected>
-
-   <masterLabel>Map1</masterLabel>
-
-   <role>Patient</role>
-
-   <sourceSystem>Epic</sourceSystem>
-
-   <targetObject>Account</targetObject>
-
-</CareSystemFieldMapping>
-
-```
-
-
-### Metadata Types CareProviderSearchConfig
-
-The following is an example `package.xml` that references the previous definition.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>patient</members>
-
-        <name>CareSystemFieldMapping</name>
-
-      </types>
-
-      <version>49.0</version>
-
-   </Package>
-
-### CareProviderSearchConfig
-
-```
-
-Represents the information about the fields that appear in care provider search results. This type extends the Metadata metadata type
-and inherits its `fullName` field.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-File Suffix and Directory Location
-
-### CareProviderSearchConfig components have the suffix .careProviderSearchConfig and are stored in the
-
-`careProviderSearchConfigs` folder.
-
-Version
-
-### CareProviderSearchConfig components are available in API version 48.0 and later.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`isActive` boolean Indicates whether this configuration is active ( `true` ) or not ( `false` ).
-
-`isProtected` boolean An auto-generated value that doesn’t currently impact the behavior of
-the metadata type.
-
-Required. Indicates mapped objects.
-
-Possible values are;
-
-**•** HealthCarePractitionerFacility
-
-**•** HealthCareProvider
-
-```
-mappedObject
-
-```
-
-ProviderSearch
-ObjectMapping
-(enumeration of
-type string)
-
-`masterLabel` string Required. Name of the care provider.
-
-`sourceField` string API name of the field that is copied to the target object.
-
-`targetField` string API name of the field to copy the data to.
-
-
-### Metadata Types CareRequestConfiguration
-
-Declarative Metadata Sample Definition
-
-The following is an example of a CareProviderSearchConfig component.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <CareProviderSearchConfig xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <sourceField>Test1__c</sourceField>
-
-      <targetField>Test1__c</targetField>
-
-      <mappedObject>HealthcareProvider</mappedObject>
-
-      <isProtected>false</isProtected>
-
-      <isActive>true</isActive>
-
-      <masterLabel>testlabel</masterLabel>
-
-   </CareProviderSearchConfig>
-
-```
-
-The following is an example `package.xml` that references the previous definition.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>HealthcareProvider.Test1__c</members>
-
-        <name>CustomField</name>
-
-      </types>
-
-      <types>
-
-        <members>CareProviderSearchableField.Test1__c</members>
-
-        <name>CustomField</name>
-
-      </types>
-
-      <types>
-
-        <members>Test</members>
-
-        <name>CareProviderSearchConfig</name>
-
-      </types>
-
-      <version>48.0</version>
-
-   </Package>
-
-### CareRequestConfiguration
-
-```
-
-Represents the details for a record type such as service request, drug request, or admission request. One or more record types can be
-associated with a care request.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-Parent Type
-
-[This type extends the Metadata metadata type and inherits its](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/metadata.htm) `fullName` field.
-
-File Suffix and Directory Location
-
-### CareRequestConfiguration components have the suffix .careRequestConfiguration and are stored in the
-
-`careRequestConfigurations` folder.
-
-
-Metadata Types CareRequestConfiguration
-
-Version
-
-CareRequestConfiguration components are available in API version 44.0 and later.
-
-Fields
-
-**Field Name** **Description**
-
-```
-careRequestRecordType
-
-careRequestRecords
-
-careRequestType
-
-isActive
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-The record type for the care request.
-
-**Field Type**
-
-CareRequestRecords[]
-
-**Description**
-The list of objects you can select to configure the care request.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-The type of care request. For example, an appeal, a service request, or an admission.
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether the care request is active ( `true` ) or not ( `false` ).
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether the record type of the care request is default ( `true` ) or not ( `false` ).
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-A user-friendly name for CareRequestConfiguration, which is defined when the
-CareRequestConfiguration is created.
-
-
-Metadata Types CareRequestConfiguration
-
-CareRequestRecords
-
-Displays a list of objects to customize the care request.
-
-**Field Name** **Description**
-
-```
-careRequestRecord
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-The object selected to configure the care request.
-
-Declarative Metadata Sample Definition
-
-This is an example of a CareRequestConfiguration component.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<CareRequestConfiguration xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <careRequestRecordType>DrugRequest</careRequestRecordType>
-
-   <careRequestRecords>
-
-     <careRequestRecord>CareRequestItem</careRequestRecord>
-
-   </careRequestRecords>
-
-   <careRequestRecords>
-
-     <careRequestRecord>CareRequestDrug</careRequestRecord>
-
-   </careRequestRecords>
-
-   <careRequestType>Drug Request</careRequestType>
-
-   <isActive>false</isActive>
-
-   <isDefaultRecordType>false</isDefaultRecordType>
-
-   <masterLabel>DrugRequest</masterLabel>
-
-</CareRequestConfiguration>
-
-```
-
-This is an example `package.xml` that references the previous definition.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <types>
-
-     <members>Case.DrugRequest</members>
-
-     <name>BusinessProcess</name>
-
-   </types>
-
-   <types>
-
-     <members>*</members>
-
-     <name>CareRequestConfiguration</name>
-
-   </types>
-
-   <types>
-
-     <members>CareRequest.DrugRequest</members>
-
-     <members>CareRequestDrug.DrugRequest</members>
-
-     <members>CareRequestItem.DrugRequest</members>
-
-     <members>Case.DrugRequest</members>
-
-     <name>RecordType</name>
-
-   </types>
-
-```
-
-
-### Metadata Types Certificate
-
-```
-      <version>44.0</version>
-
-   </Package>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-[manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/file_based_zip_file.htm)
-
-### Certificate
-
-Represents a certificate used for digital signatures that verify that requests are coming from your org. Certificates are used for either
-authenticated single sign-on with an external website, or when using your org as an identity provider. This type extends the Metadata
-With Content metadata type and inherits its `content` and `fullName` fields.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-File Suffix and Directory Location
-
-### Certificate components have the suffix .crt and are stored in the certs folder.
-
-Version
-
-### Certificate components are available in API version 36.0 and later.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`caSigned` boolean Required. Indicates whether this certificate is signed by the issuer (true)
-or not (false).
-
-`encryptedWithPlatformEncryption` boolean Indicates whether this certificate is encrypted with Platform Encryption.
-
-`expirationDate` dateTime The date that this certificate expires and is no longer usable. For
-self-signed certificates, if `keySize` is 2048 bits, the expiration date is
-
-automatically 1 year after you create the certificate. If `keySize` is 4096
-bits, the expiration date is automatically 2 years after you create the
-certificate. For CA-signed certificates, `expirationDate` is
-automatically updated to the signed certificate’s expiration date when
-a signed certificate chain is uploaded. The date format is YYYY-MM-DD.
-
-### keySize int Certificate keys can be either 2048 bits or 4096 bits. A certificate with
-
-4096-bit keys lasts 2 years, and a certificate with 2048-bit keys lasts 1
-
-year. Certificates with 2048-bit keys are faster than certificates with
-4096-bit keys. If `keySize` isn’t specified when you create a certificate,
-the key size defaults to 2048 bits.
-
-
-Metadata Types Certificate
-
-**Field Name** **Field Type** **Description**
-
-`masterLabel` string
-
-`privateKeyExportable` boolean
-
-Usage
-
-Required. A user-friendly name for the certificate that appears in the
-Salesforce user interface, such as in Certificate and Key Management.
-Limit: 64 characters.
-
-Indicates whether this certificate’s private key is exportable. If
-`privateKeyExportable` isn’t specified when you create a
-certificate, its default value is `true` .
-
-The Metadata API can be used to create a self-signed or a CA-signed certificate. The .crt file’s contents are the certificate chain, which
-can be updated when you renew or update the intermediate certificate chain of a CA-signed certificate. After creating a CA-signed
-[certificate, the .crt file contains a certificate signing request (CSR). For details, see About Salesforce Certificates and Keys in Salesforce](https://help.salesforce.com/apex/HTViewHelpDoc?id=security_keys_about.htm&language=en_US)
-Help.
-
-To copy an existing certificate’s X.509 parameter data to a new certificate, upload the existing certificate. You can also use this procedure
-to renew a certificate. A new private+public key pair is created with a new certificate. Salesforce doesn’t allow the import or export of
-the private key via the API.
-
-Using the Metadata API, you can download a CSR. After it’s CA-signed, you can upload it back to Salesforce.
-
-After the signed certificate chain is uploaded via the Metadata API, the CSR of that certificate can’t be downloaded via the API anymore.
-The content of the `.crt` file is the signed certificate chain. However, the CSR can still be downloaded via the UI.
-
-**•** Downloading a CSR—The CSR is downloadable after a CA-signed cert is created. If a signed certificate hasn’t been uploaded to that
-certificate, the content of the downloaded .crt file is the CSR.
-
-**•** Uploading a CA-Signed Certificate—To upload the signed certificate chain back to Salesforce, save the signed certificate chain as
-the content of the .crt file and update it via the Metadata API.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a Certificate component.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<Certificate xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <caSigned>true</caSigned>
-
-   <encryptedWithPlatformEncryption>true</encryptedWithPlatformEncryption>
-
-   <expirationDate>2017-03-19</expirationDate>
-
-   <keySize>4096</keySize>
-
-   <masterLabel>My Certificate Name</masterLabel>
-
-   <privateKeyExportable>true</privateKeyExportable>
-
-</Certificate>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-
-### Metadata Types ChatterExtension ChatterExtension
-
-Represents the metadata used to describe a Rich Publisher App that’s integrated with the Chatter publisher.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-Retrieving ChatterExtension
-
-Using an API tool, you can get extension information from `package.xml` using this code.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-    <types>
-
-     <members>xw1</members>
-
-     <name>ChatterExtension</name>
-
-    </types>
-
-    <version>41.0</version>
-
-   </Package>
-
-```
-
-Use the `<members>` tag to name a specific extension (in this example, _`xw1`_ ), or use the wildcard (*) symbol to retrieve all your
-extensions.
-
-Here’s an example of retrieved information.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <ChatterExtension xmlns="http://soap.sforce.com/2006/04/metadata">
-
-     <compositionComponent>xwComp</compositionComponent>
-
-     <description>des</description>
-
-     <extensionName>xw1</extensionName>
-
-     <headerText>h1</headerText>
-
-     <hoverText>h2</hoverText>
-
-     <icon>tiger</icon>
-
-     <masterLabel>primary</masterLabel>
-
-     <renderComponent>xwRend</renderComponent>
-
-     <type>Lightning</type>
-
-   </ChatterExtension>
-
-```
-
-Version
-
-### ChatterExtension is a new feature in API version 41.0.
-
-Fields
-
-**Field** **Field Type** **Description**
-
-`compositionComponent` string Required. The composition component of the Rich Publisher
-App that you provide. It’s comprised of the
-
-```
-                              lightning:availableForChatterExtensionComposer
-```
-
-interface.
-
-`description` string Required. The description of your custom Rich Publisher App.
-
-
-### Metadata Types ChoiceList
-
-**Field** **Field Type** **Description**
-
-`extensionName` string Required. The name of your extension. That is, your Rich
-Publisher App.
-
-`headerText` string
-
-`hoverText` string
-
-The text to show in the header of your app composer. Header
-text is required for Lightning type extensions. This text can be
-localized.
-
-The text to show when a user mouses over your extension’s
-icon. Mouse-over text is required for Lightning type extensions.
-This text can be localized.
-
-`icon` string Required. The icon to show in the Chatter publisher. Use an
-existing file asset id from your org.
-
-`isProtected` boolean An auto-generated value. It currently has no impact.
-
-`masterLabel` string Required. Label for the ChatterExtension object.
-
-`renderComponent` string Required. The rendering component of the Rich Publisher App
-that you provide. It’s comprised of the
-
-```
-                           lightning:availableForChatterExtensionRenderer
-```
-
-interface.
-
-`type` ChatterExtensionType
-(enumeration of type string)
-
-Wildcard Support in the Manifest File
-
-Required. Describes the type of the extension. Currently, the
-only value supported is _`Lightning`_ . Included to allow for
-other possible types in the future.
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-SEE ALSO:
-
-[Integrate Your Custom Apps into the Chatter Publisher](https://developer.salesforce.com/docs/atlas.en-us.260.0.lightning.meta/lightning/components_integrate_customapps_to_publisher.htm)
-
-### ChoiceList
-
-Represents the `Choicelist` dropdown field that’s used for pre-chat.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-Parent Type
-
-This type extends the Metadata metadata type and inherits its `fullName` field.
-
-
-Metadata Types ChoiceList
-
-File Suffix and Directory Location
-
-ChoiceList components have the suffix `.ChoiceList` and are stored in the `ChoiceList` folder.
-
-Version
-
-ChoiceList components are available in API version 62 and later.
-
-Special Access Rules
-
-There are no additional access requirements that are specific to this type.
-
-Fields
-
-**Field Name** **Description**
-
-```
-choiceListValue
-
-description
-
-masterLabel
-
-```
-
-ChoiceListValue
-
-**Field Type**
-
-ChoiceListValue[]
-
-**Description**
-A list of choices to display in the choice list.
-
-**Field Type**
-string
-
-**Description**
-A description of the choice list.
-
-**Field Type**
-string
-
-**Description**
-
-Required. The label for the choice list.
-
-Represents a choice list value in the pre-chat dropdown. ChoiceListValue is available in API version 62 or later.
-
-**Field Name** **Description**
-
-```
-embeddedServiceCustomLabels
-
-isDefaultValue
-
-```
-
-**Field Type**
-
-EmbeddedServiceCustomLabel[] on page 1003
-
-**Description**
-Custom labels for the choicelist value.
-
-**Field Type**
-boolean
-
-
-Metadata Types ChoiceList
-
-**Field Name** **Description**
-
-**Description**
-
-Required. Indicates whether the choicelist value should be selected by default.
-
-```
-order
-
-valueName
-
-```
-
-**Field Type**
-int
-
-**Description**
-
-Required. The order of the choicelist value in the choicelist dropdown field.
-
-**Field Type**
-string
-
-**Description**
-
-Required. The value of the choicelist.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a Choicelist component.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<ChoiceList xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <choiceListValue>
-
-     <embeddedServiceCustomLabels>
-
-<customLabel>EM_PreChat_ChoiceList_PrechatCustomFieldLabel_133xx0000004GG1_7741637</customLabel>
-
-        <labelKey>EM_PreChat_ChoiceList_PrechatCustomFieldLabel</labelKey>
-
-        <feature>EmbeddedMessaging</feature>
-
-     </embeddedServiceCustomLabels>
-
-     <isDefaultValue>true</isDefaultValue>
-
-     <order>0</order>
-
-     <valueName>Pizza</valueName>
-
-   </choiceListValue>
-
-   <choiceListValue>
-
-     <embeddedServiceCustomLabels>
-
-<customLabel>EM_PreChat_ChoiceList_PrechatCustomFieldLabel_133xx0000004GG2_5523047</customLabel>
-
-        <labelKey>EM_PreChat_ChoiceList_PrechatCustomFieldLabel</labelKey>
-
-        <feature>EmbeddedMessaging</feature>
-
-     </embeddedServiceCustomLabels>
-
-     <isDefaultValue>false</isDefaultValue>
-
-     <order>1</order>
-
-     <valueName>Burger</valueName>
-
-   </choiceListValue>
-
-   <masterLabel>Food</masterLabel>
-
-   <description>Food Choice List</description>
-
-</ChoiceList>
-
-```
-
-
-### Metadata Types ClaimFinancialSettings
-
-The following is an example `package.xml` that references the previous definition.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>*</members>
-
-        <name>ChoiceList</name>
-
-      </types>
-
-      <version>62.0</version>
-
-   </Package>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-[manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/file_based_zip_file.htm)
-
-### ClaimFinancialSettings
-
-Represents the configuration settings for Insurance Claim Financial Services.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-Parent Type
-
-This type extends the Metadata metadata type and inherits its `fullName` field.
-
-File Suffix and Directory Location
-
-### ClaimFinancialSettings components have the suffix claimFinancialSettings and are stored in the ClaimFinancialSettings folder.
-
-Version
-
-### ClaimFinancialSettings components are available in API version 57.0 and later.
-
-Special Access Rules
-
-To access this metadata type, you require access to either InsurancePolicyAdminAccess or InsuranceClaimMgmtAccess add-on license.
-
-Fields
-
-**Field Name** **Description**
-
-```
-claimCovPendingAuthStatus
-
-```
-
-**Field Type**
-string
-
-
-Metadata Types ClaimFinancialSettings
-
-**Field Name** **Description**
-
-**Description**
-
-Required.
-
-The status of pending financial authority for claim coverage.
-
-```
-claimPendingAuthorityStatus
-
-clmCovPymtDtlPendAuthSts
-
-masterLabel
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-The status of pending financial authority for claim.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-The status of pending financial authority for claim coverage payment detail.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-The unique label that identifies the claim financial settings throughout the Salesforce
-user interface.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a ClaimFinancialSettings component.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<ClaimFinancialSettings xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <claimCovPendingAuthStatus>Pending Authority</claimCovPendingAuthStatus>
-
-   <claimPendingAuthorityStatus>Pending Authority</claimPendingAuthorityStatus>
-
-   <clmCovPymtDtlPendAuthSts>Pending Authority</clmCovPymtDtlPendAuthSts>
-
-   <masterLabel>Claim Financial Settings</masterLabel>
-
-</ClaimFinancialSettings>
-
-```
-
-The following is an example `package.xml` that references the previous definition.
-
-```
-<?xml version="1.0" encoding="UTF-8"?><!-
-  ~ Copyright 2022 salesforce.com, inc.
-
-  ~ All Rights Reserved
-
-  ~ Company Confidential
-
-  -->
-
-<Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <types>
-
-```
-
-
-### Metadata Types ClauseCatgConfiguration
-
-```
-        <members>*</members>
-
-        <name>ClaimFinancialSettings</name>
-
-      </types>
-
-      <version>57.0</version>
-
-   </Package>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### ClauseCatgConfiguration
-
-Represents the configuration about the clause category that can be used to categorize your disclosure and compliance reports from
-standardized disclosure templates in a response document.
-
-Parent Type
-
-[This type extends the Metadata metadata type and inherits its](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/metadata.htm) `fullName` field.
-
-File Suffix and Directory Location
-
-### ClauseCatgConfiguration components have the suffix .clauseCatgConfiguration and are stored in the
-
-`clauseCatgConfigurations` folder.
-
-Version
-
-### ClauseCatgConfiguration components are available in API version 57.0 and later.
-
-Special Access Rules
-
-The ClauseManagementAddOn license is required to access this object along with user access for the Clause Designer User permission
-set license.
-
-Fields
-
-**Field Name** **Description**
-
-```
-description
-
-isProtected
-
-```
-
-**Field Type**
-string
-
-**Description**
-The description about the clause category configuration.
-
-**Field Type**
-boolean
-
-
-Metadata Types ClauseCatgConfiguration
-
-**Field Name** **Description**
-
-**Description**
-An auto-generated value that doesn’t impact the behavior of the metadata type. The
-default is `false` .
-
-```
-masterLabel
-
-usageType
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-A user-friendly name for ClauseCatgConfiguration, which is defined when the
-ClauseCatgConfiguration is created.
-
-**Field Type**
-ClmCategoryUsageType
-
-**Description**
-
-Required.
-
-The usage type of the clause category configuration.
-
-Possible values are:
-
-**•** `ContractClauseCategory`
-
-**•** `DisclosureCategory`
-
-Declarative Metadata Sample Definition
-
-The following is an example of a ClauseCatgConfiguration component.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<ClauseCatgConfiguration
-
- xmlns="http://soap.sforce.com/2006/04/metadata">
-
- <description>This is to add description for Contract Clause Category.</description>
-
- <usageType>ContractClauseCategory</usageType>
-
- <isProtected>false</isProtected>
-
- <masterLabel>Contract Clause Cat</masterLabel>
-
-</ClauseCatgConfiguration>
-
-```
-
-The following is an example `package.xml` that references the previous definition.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<Package
-
- xmlns="http://soap.sforce.com/2006/04/metadata">
-
- <fullName>Pkg</fullName>
-
- <types>
-
-  <name>ClauseCatgConfiguration</name>
-
- </types>
-
-```
-
-
-### Metadata Types CleanDataService
-
-```
-    <version>57.0</version>
-
-   </Package>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-[manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/file_based_zip_file.htm)
-
-### CleanDataService
-
-Represents a data service that adds and updates data in standard objects.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-This type extends the Metadata metadata type and inherits its `fullName` field.
-
-File Suffix and Directory Location
-
-### CleanDataService components have the .cleanDataService suffix and are stored in the cleanDataServices directory.
-
-The name of the component file is based on the name of the object associated with the data service. For example, the component file
-name `cleanDataServices/DataCloudCompanyMatch.cleanDataService` describes a data service component
-called DataCloudCompanyMatch that's associated with the company name in account objects.
-
-Version
-
-### CleanDataService components are available in API version 66.0 and later.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`cleanRules` CleanRule[] Required. A list of data integration rules
-
-`description` string Required. A description of the data service
-
-`masterLabel` string Required. Label for this data service. Although this value is displayed, it’s
-an internal label for the data service and isn’t translated.
-
-`matchEngine` string Required. A key that maps to the internal data service identifier.
-
-CleanRule
-
-Represents information that controls how the data service adds and updates data in an org.
-
-
-Metadata Types CleanDataService
-
-**Field Name** **Field Type** **Description**
-
-`bulkEnabled` boolean Required. If this field is set to `true`, Salesforce applies the data integration
-rule to existing records whenever the rule is updated or saved.
-
-`bypassTriggers` boolean Required. If this field is set to `true`, Salesforce bypasses triggers when it applies
-the rule; otherwise, it applies triggers after it applies the rule.
-
-`bypassWorkflow` boolean
-
-Required. If this field is set to `true`, Salesforce bypasses workflow rules when
-it applies the data integration rule; otherwise, it applies workflow rules after it
-applies the rule.
-
-`description` string Required. User-friendly text that describes the data integration rule.
-
-`developerName` string Required. This name can contain only underscores and alphanumeric characters,
-and must be unique in your org. It must begin with a letter, not include spaces,
-
-not end with an underscore, and not contain two consecutive underscores.
-This unique name prevents conflicts with rules from other packages that have
-the same `masterLabel` .
-
-Note: Only users with View DeveloperName OR View Setup and
-Configuration permission can view, group, sort, and filter this field.
-
-`fieldMappings` FieldMapping[] Required. A list of FieldMapping entries for the rule.
-
-`masterLabel` string Required. Label for this object. This display value is the internal label that is not
-translated.
-
-`matchRule` string Required. An internal label for a matching rule in the data service that’s
-associated with the CleanRule.
-
-`sourceSobjectType` string Required. A virtual object in the data service that is associated with the
-CleanRule. Specifying a non-existent object causes an error.
-
-`status` string Required. Status of the data integration rule. Valid values are `Active` and
-`Inactive` .
-
-`targetSobjectType` string
-
-FieldMapping
-
-Required. A standard object that’s the target of additions and updates specified
-by this CleanRule. Specifying an object that the data service does not support
-causes an error.
-
-Represents a mapping between fields in the data service and fields in an object in the org.
-
-**Field Name** **Field Type** **Description**
-
-`developerName` string Required. This name can contain only underscores and alphanumeric characters,
-and must be unique in your org. It must begin with a letter, not include spaces,
-
-not end with an underscore, and not contain two consecutive underscores.
-This unique name prevents conflicts with field mappings from other packages
-that have the same `masterLabel` .
-
-
-Metadata Types CleanDataService
-
-**Field Name** **Field Type** **Description**
-
-Note: Only users with View DeveloperName OR View Setup and
-Configuration permission can view, group, sort, and filter this field.
-
-`fieldMappingRows` FieldMappingRow[] Required. A list of FieldMappingRow entries. Each entry represents a field in a
-standard object that maps to a field in the data service.
-
-`masterLabel` string Required. Label for this object. This display value is the internal label that is not
-translated.
-
-`SObjectType` string Required. The standard object associated with this FieldMapping. Specifying
-an object that the data service does not support causes an error.
-
-FieldMappingRow
-
-Represents the status of a CleanRule.
-
-**Field Name** **Field Type** **Description**
-
-`fieldName` string The display name for the field represented by the FieldMappingRow.
-
-`fieldMappingFields` FieldMappingField[] Required. A list of FieldMappingField entries. Each entry is a field in a standard
-object that maps to a field in the data service.
-
-`mappingOperation` string The comparison operation the data service applies when it compares the value
-of this FieldMappingRow to the mapped field in the object specified in
-
-SObjectType. The value of this field is `AutoFill`, which indicates that the
-data service only adds data if the object field is blank.
-
-`SObjectType` string The standard object for the field mapped to the FieldMappingRow. Specifying
-an object that the data service does not support causes an error.
-
-FieldMappingField
-
-Represents a field in a standard object. A FieldMappingField maps to a FieldMappingRow entry in a data service.
-
-**Field Name** **Field Type** **Description**
-
-`dataServiceField` string Required. A field in the data service that is mapped to this field.
-
-`dataServiceObjectName` string
-
-Required. An object in the data service that contains the FieldMappingRow
-associated with this FieldMappingField. Specifying a non-existent object causes
-an error.
-
-`priority` int Required. Represents the priority that the data service uses when it updates
-the field, relative to other update rules for the same field. Valid values are 1-100.
-
-
-Metadata Types CleanDataService
-
-Declarative Metadata Sample Definition
-
-The following is an example of a CleanDataService component for the lead standard object.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <CleanDataService xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <cleanRules>
-
-        <bulkEnabled>false</bulkEnabled>
-
-        <bypassTriggers>false</bypassTriggers>
-
-        <bypassWorkflow>false</bypassWorkflow>
-
-        <description>Adds data info to leads</description>
-
-        <developerName>DataService_Leads_Enrichment</developerName>
-
-        <fieldMappings>
-
-           <SObjectType>DataServiceCompanyObject</SObjectType>
-
-           <developerName>DataService_Leads_Enrichment_InputMapping</developerName>
-
-           <fieldMappingRows>
-
-             <SObjectType>DataServiceCompanyObject</SObjectType>
-
-             <fieldMappingFields>
-
-               <dataServiceField>Email</dataServiceField>
-
-               <dataServiceObjectName>Lead</dataServiceObjectName>
-
-               <priority>1</priority>
-
-             </fieldMappingFields>
-
-             <fieldName>Email</fieldName>
-
-             <mappingOperation>Autofill</mappingOperation>
-
-           </fieldMappingRows>
-
-           <fieldMappingRows>
-
-             <SObjectType>DataServiceCompanyObject</SObjectType>
-
-             <fieldMappingFields>
-
-               <dataServiceField>Company</dataServiceField>
-
-               <dataServiceObjectName>Lead</dataServiceObjectName>
-
-               <priority>1</priority>
-
-             </fieldMappingFields>
-
-             <fieldName>Name</fieldName>
-
-             <mappingOperation>Autofill</mappingOperation>
-
-           </fieldMappingRows>
-
-           <masterLabel>DataServiceInputMapping</masterLabel>
-
-        </fieldMappings>
-
-        <fieldMappings>
-
-           <SObjectType>Lead</SObjectType>
-
-           <developerName>DataService_Leads_Enrichment_OutputMapping</developerName>
-
-           <fieldMappingRows>
-
-             <SObjectType>Lead</SObjectType>
-
-             <fieldMappingFields>
-
-               <dataServiceField>EmployeesTotal</dataServiceField>
-
-              <dataServiceObjectName>DataServiceCompanyObject</dataServiceObjectName>
-
-               <priority>1</priority>
-
-             </fieldMappingFields>
-
-             <fieldName>NumberOfEmployees</fieldName>
-
-             <mappingOperation>Autofill</mappingOperation>
-
-           </fieldMappingRows>
-
-           <fieldMappingRows>
-
-             <SObjectType>Lead</SObjectType>
-
-             <fieldMappingFields>
-
-               <dataServiceField>Revenue</dataServiceField>
-
-```
-
-
-Metadata Types CleanDataService
-
-```
-              <dataServiceObjectName>DataServiceCompanyObject</dataServiceObjectName>
-
-               <priority>1</priority>
-
-             </fieldMappingFields>
-
-             <fieldName>AnnualRevenue</fieldName>
-
-             <mappingOperation>Autofill</mappingOperation>
-
-           </fieldMappingRows>
-
-           <fieldMappingRows>
-
-             <SObjectType>Lead</SObjectType>
-
-             <fieldMappingFields>
-
-               <dataServiceField>Industry</dataServiceField>
-
-              <dataServiceObjectName>DataServiceCompanyObject</dataServiceObjectName>
-
-               <priority>1</priority>
-
-             </fieldMappingFields>
-
-             <fieldName>Industry</fieldName>
-
-             <mappingOperation>Autofill</mappingOperation>
-
-           </fieldMappingRows>
-
-           <masterLabel>DataServiceOutputMapping</masterLabel>
-
-        </fieldMappings>
-
-        <masterLabel>Data Service Company Info for Leads</masterLabel>
-
-        <matchRule>DataServiceLeadAppendMatchRule</matchRule>
-
-        <sourceSobjectType>DataServiceCompanyObject</sourceSobjectType>
-
-        <status>Active</status>
-
-        <targetSobjectType>Lead</targetSobjectType>
-
-      </cleanRules>
-
-      <description>Data Service Companies for Leads</description>
-
-      <masterLabel>Data Service Companies for Leads</masterLabel>
-
-      <matchEngine>LeadEnrichmentMatchEngine</matchEngine>
-
-   </CleanDataService>
-
-```
-
-The following is an example `package.xml` that references the previous definition.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>DataService_Leads_Enrichment</members>
-
-        <name>CleanDataService</name>
-
-      </types>
-
-      <version>38.0</version>
-
-   </Package>
-
-```
-
-Usage
-
-Use CleanDataService to retrieve all the metadata that describes a data enrichment service. To configure the service in a new org, deploy
-the metadata you retrieved. Avoid using CRUD-Based Calls with CleanDataService.
-
-To make small modifications to the CleanDataService component, use the Tooling API.
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-
-### Metadata Types CMSConnectSource CMSConnectSource
-
-Represents the connection information for external content management systems that feed content to Experience Builder sites. This
-type extends the Metadata metadata type and inherits its `fullName` field.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-Note: For use with Change Sets, CMSConnectSource is a dependent of **Network** and **Community** .
-
-File Suffix and Directory Location
-
-### CMSConnectSource components have the suffix .cmsConnectSource and are stored in the cmsConnectSource folder. In
-
-that folder, separate files exist for each network (for example, _`networkname`_ `.` _`sourcedevelopername`_ `.cmsConnectSource` ).
-Each file represents a CMS connection.
-
-Version
-
-### CMSConnectSource components are available in API version 43.0 and later.
-
-Special Access Rules
-
-The **CMS Connect org** permission must be enabled.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`cmsConnectAsset` CMSConnectAsset on Represents CSS or JavaScript defined for the connection.
-page 591[]
-
-**•** 0–10 for CSS
-
-**•** 0–10 for JavaScript
-
-`cmsConnectLanguage` CMSConnectLanguage 0 to more. Represents language mappings defined for the connection.
-on page 591[]
-
-`cmsConnectPersonalization` CMSConnectPersonalization[] 0 or 1. Represents personalization defined for the connection. Only
-on page 591 for use when `type` is `AEM` .
-
-`cmsConnectResourceType` CMSConnectResourceType 0–5. Represents JSON definitions defined for the connection.
-on page 592[]
-
-`connectionType` CMSSourceConnectionType(enumeration Required. Type of authentication being used with outside system.
-of type string) Valid values are:
-
-**•** `Public`
-
-**•** `Authenticated`
-
-`cssScope` string The class name used to prefix and scope the CSS rules.
-
-
-Metadata Types CMSConnectSource
-
-**Field Name** **Field Type** **Description**
-
-`developerName` string Required. API name of the CMSConnectSource entity.
-
-`languageEnabled` string Required. Valid values are:
-
-**•** `Y` to enable language mapping for connection.
-
-**•** `N` if no language mapping is needed.
-
-`masterLabel` string Required. Connection name
-
-`namedCredential` string
-
-Required when the `connectionType` is `Authenticated` .
-API name of `namedCredential` . Before deploying
-`namedCredential`, it must exist on the destination org.
-
-`personalizationEnabled` string Required. Valid values are:
-
-**•** `Y` to enable personalization mapping for connection.
-
-**•** Otherwise `N` .
-
-`rootPath` string Required. Root path.
-
-`sortOrder` int Required. Defines the load order of the connection when multiple
-connections defined on page. The load order begins with 1.
-
-`status` CMSConnectionStatus(enumeration Required. Status of connection. Valid values are:
-of type string)
-
-**•** `ACTIVE`
-
-**•** `INACTIVE`
-
-`type` CMSConnectionSourceType(enumeration Required. The identification of the source connection system. Valid
-of type string) values are:
-
-**•** `AEM`
-
-**•** `Drupal`
-
-**•** `WordPress`
-
-**•** `SDL`
-
-**•** `Sitecore`
-
-**•** `Other`
-
-`websiteUrl` string Required if `connectionType` is `Public`
-
-Note: Because there can be existing connections when a package comes in, there’s some INSERT or UPDATE logic to consider:
-
-**•** If you find `developerName` in the destination, then update the existing collection with all details form source.
-
-**•** `namedCredential` is handled through `developerName` . If you don’t find `namedCredential` with
-`developerName`, then an error is generated.
-
-**•** If the destination isn’t `sortOrder` from the source, then insert or update with the source `sortOrder` .
-
-**•** If `sortOrder` from the source is already in the destination, then increase the source `sortOrder` by 1 for connections
-such that the destination `sortOrder`     - `sortOrder` from the source.
-
-
-Metadata Types CMSConnectSource
-
-CMSConnectAsset
-
-CMSConnectAsset defines the location, types, and order of assets necessary to support the incoming content, such as JavaScript and
-CSS files.
-
-Note: Because there can be existing connections when a package comes in, there’s some INSERT or UPDATE logic to consider:
-
-**•** If `assetPath` exists in the destination, then update the existing record, else the new `assetPath` is inserted.
-
-**•** Always keep the `sortOrder` from the source and adjust the destination accordingly.
-
-**Field Name** **Field Type** **Description**
-
-`assetPath` string Relative path of the asset.
-
-`assetType` string
-
-When used in Apex, this value can be sent as an enum, otherwise, this field
-has a type of string.
-
-Allowed values as string
-
-**•** `CSS`
-
-**•** `Javascript`
-
-Allowed values as enum
-
-**•** `CSS`
-
-**•** `Javascript`
-
-`sortOrder` int Loading sequence on the page.
-
-CMSConnectLanguage
-
-CMSConnectLanguage components determine the presented language of the content.
-
-**Field Name** **Field Type** **Description**
-
-`cmsLanguage` string When a language placeholder is in the URL path, this value is used to replace
-it.
-
-`language` string
-
-CMSConnectPersonalization
-
-Salesforce supported language.
-
-For information see
-[https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_translations.htm](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_translations.htm)
-
-CMSConnectPersonalization is used only with Adobe Experience Manager (AEM).
-
-Note: Because there can be existing connections when a package comes in, there’s some INSERT or UPDATE logic to consider. If
-personalization isn’t enabled in the source system, but is enabled in the destination, the destination is disabled. The record for the
-connection is deleted from the table.
-
-
-Metadata Types CMSConnectSource
-
-**Field Name** **Field Type** **Description**
-
-`connectorPage` string The path to the JSP file that you created and installed in AEM.
-
-`connectorPageAsset` string The path to your Javascript file. Providing this path allows you to run scripts
-dynamically.
-
-CMSConnectResourceType
-
-CMSConnectResourceType is for use only to define JSON connections.
-
-Note: Because there can be existing connections when a package comes in, there’s some INSERT or UPDATE logic to consider. If
-you find the developer name in the destination, then update the existing record with all details from the source.
-
-**Field Name** **Field Type** **Description**
-
-`cmsConnectResourceDefinition` cmsConnectResourceDefinition 0–10 allowed per CMSConnectResourceType.
-on page 592[]
-
-`developerName` string API name of CMSConnectResourceType.
-
-`masterLabel` string Content type name.
-
-`resourceType` string The only allowed value is `JSON` .
-
-CMSConnectResourceDefinition
-
-cmsConnectResourceDefinition is used to define JSON connections.
-
-Note: Because there can be existing connections when a package comes in, there’s some INSERT or UPDATE logic to consider:
-
-**•** If you find developerName in the destination, then the existing record is updated with all details from the new source, else
-the new value is inserted.
-
-**•** If the current source is DETAIL and the destination has DETAIL with a different name, then the destination is updated to LIST
-and the source is inserted as DETAIL.
-
-**Field Name** **Field Type** **Description**
-
-`developerName` string Required. API name of CMSConnectResourceDefinition.
-
-`masterLabel` string Required. developerName of Content Item or Content List.
-
-`options` int
-
-Required. Identifies whether the content from the external source is a single
-item or a list.
-
-0 for Content List
-
-1 for Content Item
-
-`payloadType` string Required. The only valid value is `JSON` .
-
-`resourceIdPath` string Relative path to ID. Required for Content Item.
-
-`resourceNamePath` string Relative path to resource name. Required for Content Item.
-
-
-Metadata Types CMSConnectSource
-
-**Field Name** **Field Type** **Description**
-
-`resourcePath` string Required. JSON resource path.
-
-`rootNodePath` string Only for Content List and collection. Defines the initial starting path for a
-collection or list.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a CMSConnectSource definition.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <CMSConnectSource xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <cmsConnectAsset>
-
-        <assetPath>etc/designs/capricorn/app-prefixed.min.css</assetPath>
-
-        <assetType>CSS</assetType>
-
-        <sortOrder>1</sortOrder>
-
-      </cmsConnectAsset>
-
-      <cmsConnectAsset>
-
-        <assetPath>etc/designs/capricorn/w3data.js</assetPath>
-
-        <assetType>Javascript</assetType>
-
-        <sortOrder>1</sortOrder>
-
-      </cmsConnectAsset>
-
-      <cmsConnectLanguage>
-
-        <cmsLanguage>en</cmsLanguage>
-
-        <language>en_US</language>
-
-      </cmsConnectLanguage>
-
-      <cmsConnectLanguage>
-
-        <cmsLanguage>fr</cmsLanguage>
-
-        <language>fr</language>
-
-      </cmsConnectLanguage>
-
-      <cmsConnectPersonalization>
-
-        <connectorPage>content/salesforceConnector.js</connectorPage>
-
-        <connectorPageAsset>content/js/capricorn/assets.js</connectorPageAsset>
-
-      </cmsConnectPersonalization>
-
-      <cmsConnectResourceType>
-
-        <cmsConnectResourceDefinition>
-
-           <developerName>Details</developerName>
-
-           <masterLabel>Details</masterLabel>
-
-           <options>0</options>
-
-           <payloadType>JSON</payloadType>
-
-           <resourceIdPath>ID</resourceIdPath>
-
-           <resourceNamePath>title</resourceNamePath>
-
-   <resourcePath>rest/v1.1/sites/cmstry.wordpress.com/posts/{component}</resourcePath>
-
-        </cmsConnectResourceDefinition>
-
-        <cmsConnectResourceDefinition>
-
-           <developerName>List</developerName>
-
-           <masterLabel>List</masterLabel>
-
-           <options>1</options>
-
-           <payloadType>JSON</payloadType>
-
-   <resourcePath>rest/v1.1/sites/cmstry.blog.wordpress.com/posts?number={itemsPerPage}&amp;page={pageNumber}</resourcePath>
-
-```
-
-
-Metadata Types CMSConnectSource
-
-```
-        </cmsConnectResourceDefinition>
-
-        <developerName>Posts</developerName>
-
-        <masterLabel>Posts</masterLabel>
-
-        <resourceType>JSON</resourceType>
-
-      </cmsConnectResourceType>
-
-      <connectionType>Public</connectionType>
-
-      <cssScope>capricorn</cssScope>
-
-      <developerName>Capricorn</developerName>
-
-      <languageEnabled>Y</languageEnabled>
-
-      <masterLabel>Capricorn</masterLabel>
-
-      <personalizationEnabled>Y</personalizationEnabled>
-
-      <rootPath>content/capricorn/{language}</rootPath>
-
-      <sortOrder>11</sortOrder>
-
-      <status>ACTIVE</status>
-
-      <type>AEM</type>
-
-      <websiteUrl>https://public-api.wordpress.com</websiteUrl>
-
-   </CMSConnectSource>
-
-```
-
-The following is an example `package.xml` .
-
-```
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>NetworkA.*</members>
-
-        <name>CMSConnectSource</name>
-
-      </types>
-
-      <version>43.0</version>
-
-   </Package>
-
-```
-
-To retrieve a specific connection:
-
-```
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>NetworkA. DeveloperName </members>
-
-        <name>CMSConnectSource</name>
-
-      </types>
-
-      <version>43.0</version>
-
-   </Package>
-
-```
-
-Usage
-
-The INSERT or UPDATE logic for the incoming information is always UPSERT. If data isn’t in the entity, then it’s inserted, otherwise the
-current data is updated.
-
-Before doing upsert, the content from the package is validated against the maximum limits for the following:
-
-**•** CSS assets <= 10
-
-**•** JavaScript assets <= 10
-
-**•** Resource types < =5
-
-**•** Resource definitions for each type <=10
-
-For example
-
-**1.** The validation on a new connection totals only the elements in the incoming package.
-
-
-Metadata Types CMSConnectSource
-
-**2.** Validation of existing connections totals the existing assets and new elements to assess validity. For example, if a connection on the
-destination org already has six CSS definitions, and the incoming package has defined seven CSS definitions (four new + three
-existing), the new total is the six current from the database. The total ignores the three repeated in the package and adds four new
-definitions from the incoming package. This totals 10 definitions, which number is at or below the 10 asset threshold, and it passes
-validation.
-
-Refer to the following content for more details for how each entity how is handled while saving the details from package to destination
-org:
-
-
-### Metadata Types Community (Zone)
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-SEE ALSO:
-
-[Select Components for an Outbound Change Set](https://help.salesforce.com/articleView?id=changesets_outbound_components_select.htm&type=5&language=en_US)
-
-[View and Add Dependent Components to a Change Set](https://help.salesforce.com/articleView?id=changesets_outbound_dependencies.htm&type=5&language=en_US)
-
-[Developer Guide: Deploying and Retrieving Metadata](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/file_based.htm)
-
-[Salesforce Help: Use Personalized Content in CMS Connect](https://help.salesforce.com/articleView?id=communities_cms_connect_personalization.htm&type=5&language=en_US)
-
-[Developer Guide: Translations](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_translations.htm)
-
-### Community (Zone)
-
-Represents a zone that contains Ideas or Chatter Answers objects. Zones are shared by the Ideas, Answers, and Chatter Answers features,
-allowing you to view and create zones from those locations.This type extends the Metadata metadata type and inherits its `fullName`
-field.
-
-Note: Starting with the Summer ’13 release, Chatter Answers and Ideas “communities” have been renamed to “zones.” In API
-### version 28, the API object label has changed to Zone, but the API type is still Community .
-
-File Suffix and Directory Location
-
-Zones have the suffix `community` and are stored in the `communities` folder.
-
-Version
-
-### Community (Zone) components are available in API version 27.0 and later.
-
-Fields
-
-Note: When `enableChatterAnswers` is set to `false`, values specified for the following fields are ignored and not saved:
-`communityFeedPage`, `emailFooterDocument`, `emailHeaderDocument`, `enablePrivateQuestions`,
-`emailNotificationUrl`, and `site` .
-
-**Field Name** **Field Type** **Description**
-
-`active` boolean Indicates whether the zone is active ( `true` ) or not ( `false` ).
-
-`chatterAnswersFacebookSsoUrl` string (Read only) The Facebook sign-on URL, which is based on the Facebook
-authentication provider selected in your Chatter Answers settings. This
-
-field is available only if Chatter Answers and Facebook Single Sign-On
-for Chatter Answers are enabled.
-
-`communityFeedPage` string The Visualforce page that hosts the zone’s feeds. This field is available
-when Chatter Answers is enabled in the organization.
-
-
-Metadata Types Community (Zone)
-
-**Field Name** **Field Type** **Description**
-
-`description` string The description of the zone.
-
-`emailFooterDocument` string
-
-`emailHeaderDocument` string
-
-`emailNotificationUrl` string
-
-`enableChatterAnswers` boolean
-
-`enablePrivateQuestions` boolean
-
-The text or HTML file that incorporates your organization’s branding into
-the footer of email notifications. This field is available when Chatter
-Answers is enabled in the organization.
-
-The text or HTML file that incorporates your organization’s branding into
-the header of email notifications. This field is available when Chatter
-Answers is enabled in the organization.
-
-The URL that’s included in email notifications. This field is available when
-Chatter Answers is enabled in the organization. This field replaces
-`portalEmailNotificationUrl` in API version 28.0 and later.
-
-Indicates whether the zone has Chatter Answers enabled ( `true` ) or not
-( `false` ). This field is available when Chatter Answers is enabled in the
-organization.
-
-Indicates whether Chatter Answers questions can be escalated to cases
-( `true` ) or not ( `false` ). This field is available when Chatter Answers is
-enabled in the organization.
-
-`expertsGroup` string The name of the public group that act as experts in the zone. This field
-is available when eitherIdeas or Answers are enabled in the organization.
-
-`portal` string The name of the portal in which to display the zone.
-
-`portalEmailNotificationUrl` string
-
-The portal URL that’s included in email notifications. This field is available
-when Chatter Answers is enabled in the organization. This field has been
-replaced by `emailNotificationUrl` in API version 28.0 and later.
-
-`reputationLevels` ReputationLevels The fields that define the points and name of each reputation level you
-define. You can create up to 25 reputation levels per zone.
-
-`showInPortal` boolean Indicates whether the zone is available to all portals ( `true` ) or not
-available to any portals ( `false` ).
-
-`site` string The name of the site for the zone. This field is available when Chatter
-Answers is enabled in the organization.
-
-ReputationLevels
-
-Represents the points and reputation label that displays on hover over a user’s photo in the feed.
-
-**Field Name** **Field Type** **Description**
-
-`chatterAnswersReputationLevels` ChatterAnswersReputationLevel
-
-[]
-
-Contains the name and value pair that describes the
-reputation level for Chatter Answers. Available in API version
-28.0 and later.
-
-`ideaReputationLevels` IdeaReputationLevel Contains the name and value pair that describes the
-reputation for Ideas. Available in API version 28.0 and later.
-
-
-Metadata Types Community (Zone)
-
-ChatterAnswersReputationLevel
-
-Represents the reputation name and the number of points for that level for Chatter Answers.
-
-**Field Name** **Field Type** **Description**
-
-`name` string The name of the reputation level, for example, “Expert.”
-
-`value` int The minimum number of points for the reputation level.
-
-IdeaReputationLevel
-
-Represents the reputation name and the number of points for that level for Ideas. Available in API version 28.0 and later.
-
-**Field Name** **Field Type** **Description**
-
-`name` string The name of the reputation level, for example, “Expert.”
-
-`value` int The minimum number of points for the reputation level.
-
-Declarative Metadata Sample Definition
-
-The following is the definition of a community (zone) component:
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Community xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <active>true</active>
-
-      <communityFeedPage>communityWithHeaderAndFooter_main</communityFeedPage>
-
-      <description>Metadata Test</description>
-
-      <emailFooterDocument>sampleFolder/emailFooter.html</emailFooterDocument>
-
-      <emailHeaderDocument>sampleFolder/emailHeader.html</emailHeaderDocument>
-
-      <enableChatterAnswers>true</enableChatterAnswers>
-
-      <enablePrivateQuestions>true</enablePrivateQuestions>
-
-      <expertsGroup>CommunityExperts</expertsGroup>
-
-      <portal>Customer Portal</portal>
-
-      <emailNotificationUrl>http://yourURL</emailNotificationUrl>
-
-   <reputationLevels>
-
-        <chatterAnswersReputationLevels>
-
-           <name>Newbie</name>
-
-           <value>0</value>
-
-        </chatterAnswersReputationLevels>
-
-        <chatterAnswersReputationLevels>
-
-           <name>Smartie</name>
-
-           <value>500</value>
-
-        </chatterAnswersReputationLevels>
-
-        <chatterAnswersReputationLevels>
-
-           <name>Pro</name>
-
-           <value>2000</value>
-
-        </chatterAnswersReputationLevels>
-
-        <chatterAnswersReputationLevels>
-
-           <name>All Star</name>
-
-           <value>5000</value>
-
-```
-
-
-### Metadata Types CommerceSettings
-
-```
-        </chatterAnswersReputationLevels>
-
-        <ideaReputationLevels>
-
-           <name>Observer</name>
-
-           <value>0</value>
-
-        </ideaReputationLevels>
-
-        <ideaReputationLevels>
-
-           <name>Contributor</name>
-
-           <value>100</value>
-
-        </ideaReputationLevels>
-
-        <ideaReputationLevels>
-
-           <name>Influencer</name>
-
-           <value>400</value>
-
-        </ideaReputationLevels>
-
-        <ideaReputationLevels>
-
-           <name>Thought Leader</name>
-
-           <value>1500</value>
-
-        </ideaReputationLevels>
-
-      </reputationLevels>
-
-      <showInPortal>true</showInPortal>
-
-      <site>ChatterAnswersSite</site>
-
-   </Community>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### CommerceSettings
-
-Represents settings for various Commerce features.
-
-Parent Type and Manifest Access
-
-This type extends the Metadata metadata type and inherits its `fullName` field.
-
-In the package manifest, all the settings metadata types for the org are accessed using the “Settings” name. See Settings for more details.
-
-File Suffix and Directory Location
-
-### CommerceSettings values are stored in the Commerce.settings file in the settings folder. The .settings files are different
-
-from other named components, because there’s only one settings file for each settings component.
-
-Version
-
-Commerce Settings are available in API version 50.0 and later.
-
-Special Access Rules
-
-A B2B Commerce or D2C Commerce license and access to Commerce objects is required.
-
-
-Metadata Types CommerceSettings
-
-Fields
-
-**Field Name** **Description**
-
-```
-buyerGroupExtensibility
-
-commerceAnalyticsEnabled
-
-commerceAppEnabled
-
-commerceConciergeEnabled
-
-commerceCopilotEcomEnabled
-
-commerceDCSegmentEnabled
-
-commerceDiscoveryExpansion
-
-commerceEnabled
-
-```
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether Buyer Group Extensibility is enabled ( `true` ) or not ( `false` ).
-Available in API version 64.0 and later.
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether Commerce Analytics is enabled ( `true` ) or not ( `false` ).
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether Commerce App is enabled ( `true` ) or not ( `false` ).
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether Commerce Concierge bots are enabled ( `true` ) or not ( `false` ).
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether Commerce Copilot is enabled ( `true` ) or not ( `false` ).
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether the Data 360 segment integration is enabled ( `true` ) or not ( `false` ).
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether the Commerce Discovery Expansion service is enabled ( `true` ) or
-not ( `false` ).
-
-**Field Type**
-boolean
-
-
-Metadata Types CommerceSettings
-
-**Field Name** **Description**
-
-**Description**
-Indicates whether Commerce is enabled ( `true` ) or not ( `false` ).
-
-```
-commerceNGPEnabled
-
-commerceRLMSubs
-
-generateInvPerSubscription
-
-lowestUnitPriceTracking
-
-messagingEngagementDataKit
-
-```
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether NGP (“Salesforce”) Pricing is enabled ( `true` ) or not ( `false` ).
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether Commerce Revenue Lifecycle Management Subscriptions is enabled
-( `true` ) or not ( `false` ).
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether a separate invoice is generated per subscription ( `true` ) or not
-( `false` ). Available in API version 64.0 and later.
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether lowest unit price tracking (for EU customers) is enabled ( `true` ) or
-not ( `false` ).
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether Message Engagement data kit is enabled ( `true` ) or not ( `false` ).
-Message Engagement data kit is a Data 360 data model object (DMO) for a user’s
-engagement with a marketing message.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a CommerceSettings component.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<CommerceSettings xmlns="http://soap.sforce.com/2006/04/metadata">
-
- <buyerGroupExtensibility>false</buyerGroupExtensibility>
-
- <commerceAnalyticsEnabled>false</commerceAnalyticsEnabled>
-
- <commerceAppEnabled>false</commerceAppEnabled>
-
- <commerceConciergeEnabled>false</commerceConciergeEnabled>
-
- <commerceCopilotEcomEnabled>false</commerceCopilotEcomEnabled>
-
-```
-
-
-### Metadata Types CommunityTemplateDefinition
-
-```
-    <commerceDCSegmentEnabled>false</commerceDCSegmentEnabled>
-
-    <commerceDiscoveryExpansion>false</commerceDiscoveryExpansion>
-
-    <commerceEnabled>false</commerceEnabled>
-
-    <commerceNGPEnabled>false</commerceNGPEnabled>
-
-    <commerceRLMSubs>false</commerceRLMSubs>
-
-    <generateInvPerSubscription>false</generateInvPerSubscription>
-
-    <lowestUnitPriceTracking>false</lowestUnitPriceTracking>
-
-    <messagingEngagementDataKit>false</messagingEngagementDataKit>
-
-   </CommerceSettings>
-
-```
-
-The following is an example `package.xml` that references the previous definition.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>Commerce</members>
-
-        <name>Settings</name>
-
-      </types>
-
-      <version>64.0</version>
-
-   </Package>
-
-```
-
-Wildcard Support in the Manifest File
-
-The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The wildcard
-applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the manifest
-file, see Deploying and Retrieving Metadata with the Zip File.
-
-### CommunityTemplateDefinition
-
-Represents the definition of an Experience Builder site template. This type extends the Metadata metadata type and inherits its `fullName`
-field.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-File Suffix and Directory Location
-
-### CommunityTemplateDefinition components have the suffix .communityTemplateDefinition and are stored in the
-
-`communityTemplateDefinitions` folder.
-
-Version
-
-### CommunityTemplateDefinition components are available in API version 38.0 and later.
-
-Special Access Rules
-
-This type is available only if Salesforce Digital Experiences is enabled in your org.
-
-
-Metadata Types CommunityTemplateDefinition
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-Denotes that this CommunityTemplateDefinition was created in API
-version 41.0 or later. The only valid value is `c` . This field is available in
-API 41.0 and later.
-
-```
-baseTemplate
-
-```
-
-CommunityBase
-Template
-(enumeration of
-type string)
-
-`bundlesInfo` CommunityTemplateBundleInfo[] The list of preview images and feature highlights of this
-CommunityTemplateDefinition.
-
-```
-category
-
-```
-
-CommunityTemplate Required. The optimized use case of this CommunityTemplateDefinition.
-Category Valid values are:
-(enumeration of
-
-**•** `Commerce`
-
-type string)
-
-**•** `Commerce`
-
-**•** `IT`
-
-`defaultBrandingSet` string
-
-**•** `Marketing`
-
-**•** `Sales`
-
-**•** `Service`
-
-The set of branding properties associated with this
-CommunityTemplateDefinition, as defined in the Theme panel in
-Experience Builder. Available in API version 40.0 and later.
-
-In API version 44.0 and later, this field is read-only and can be
-implemented in CommunityThemeDefinition on page 608.
-
-`defaultThemeDefinition` string Required. The assigned theme definition for this
-CommunityTemplateDefinition.
-
-`description` string The optional description text of this CommunityTemplateDefinition.
-
-`enableExtendedCleanUp` boolean False by default. Determines if deleting this
-`OnDelete` CommunityTemplateDefinition attempts to delete other directly or
-indirectly referenced objects automatically, for example,
-CommunityThemeDefinition on page 608, Flexipage on page 1189, or
-StaticResource on page 2327. Values are true or false.
-
-`masterLabel` string Required. The label for this CommunityTemplateDefinition, which displays
-in Setup.
-
-`navigationLinkSet` NavigationLinkSet The navigation menu associated with this CommunityTemplateDefinition.
-A navigation menu consists of items that users can click to go to other
-
-parts of the site. Available in API versions 37.0 to 46.0. In API versions
-47.0 and later, use NavigationMenu.
-
-`pageSetting` CommunityTemplatePageSe **t** ing[] The list of FlexiPage of this CommunityTemplateDefinition.
-
-`publisher` string
-
-Defines the name of the publisher as seen in the Change Theme wizard.
-If no name is provided, the name of the org from which the package
-was originally exported is used.
-
-This field is available in API version 45.0 and later.
-
-
-Metadata Types CommunityTemplateDefinition
-
-CommunityTemplateBundleInfo
-
-**Field Name** **Field Type** **Description**
-
-`description` string The optional description text of its CommunityTemplateBundleInfo.
-
-`image` string Required only when the `type` is `PreviewImage`, otherwise this field is
-optional. A preview image for this CommunityTemplateDefinition.
-
-`order` int Required. An integer specifying the position of this
-CommunityTemplateBundleInfo relative to others of the same `type` within
-
-its CommunityTemplateDefinition. `1` is the first position, `3` is the maximum
-position for `PreviewImage` type, and `4` is the maximum position for the
-`Highlight` type.
-
-`title` string Required. The title of this CommunityTemplateBundleInfo to use in code.
-
-Required. Stores descriptive information about the template that’s included in
-the export. The template powers the interface of the Experience Creation
-Wizard. Valid values are:
-
-**•** `Highlight` —This CommunityTemplateBundleInfo is used as a
-highlighted feature. Up to 4 are supported.
-
-**•** `PreviewImage` —This CommunityTemplateBundleInfo is used as a
-preview image. Up to 3 are supported.
-
-```
-type
-
-```
-
-CommunityTemplate
-BundleInfoType
-(enumeration of type
-string)
-
-CommunityTemplatePageSetting
-
-**Field Name** **Field Type** **Description**
-
-`page` string Required. The list of FlexiPage of this CommunityTemplateDefinition.
-
-`themeLayout` string
-
-Required. The name of the FlexiPage for the theme layout.
-
-This field is available in API version 39.0 and later.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a CommunityTemplateDefinition component.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<CommunityTemplateDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <baseTemplate>c</baseTemplate>
-
-   <bundlesInfo>
-
-     <description>Feature Description</description>
-
-     <order>1</order>
-
-     <title>Feature Heading</title>
-
-     <type>Highlight</type>
-
-   </bundlesInfo>
-
-   <bundlesInfo>
-
-     <image>siteAsset_2dbe594eb6794173af78da264cd6a4a7</image>
-
-```
-
-
-Metadata Types CommunityTemplateDefinition
-
-```
-        <order>1</order>
-
-        <title>Preview Image</title>
-
-        <type>PreviewImage</type>
-
-      </bundlesInfo>
-
-      <category>Sales</category>
-
-      <defaultThemeDefinition>communityTemplate</defaultThemeDefinition>
-
-      <description>This is an Experience Builder template</description>
-
-      <enableExtendedCleanUpOnDelete>true</enableExtendedCleanUpOnDelete>
-
-      <masterLabel>communityTemplate</masterLabel>
-
-      <navigationLinkSet>
-
-        <navigationMenuItem>
-
-           <label>Topics</label>
-
-           <position>0</position>
-
-           <publiclyAvailable>true</publiclyAvailable>
-
-           <target>ShowMoreTopics</target>
-
-           <type>NavigationalTopic</type>
-
-        </navigationMenuItem>
-
-      </navigationLinkSet>
-
-      <pageSetting>
-
-        <page>communityTemplate_Report_List</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Topic_Catalog</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Check_Password</page>
-
-        <themeLayout>communityTemplate_themeLayout_Login</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Error</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_User_Settings</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Login</page>
-
-        <themeLayout>communityTemplate_themeLayout_Login</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Stream_List</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Sfdc_Page</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Group_Detail</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-```
-
-
-Metadata Types CommunityTemplateDefinition
-
-```
-      <pageSetting>
-
-        <page>communityTemplate_Report_Related_List</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Register</page>
-
-        <themeLayout>communityTemplate_themeLayout_Login</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_User_Profile</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Case_Detail</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Stream_Related_List</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Dashboard_Detail</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Group_List</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Canvasapp_Page</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Login_Error</page>
-
-        <themeLayout>communityTemplate_themeLayout_Login</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Create_Record</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Group_Related_List</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Search</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_File_Detail</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Case_List</page>
-
-```
-
-
-Metadata Types CommunityTemplateDefinition
-
-```
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_User_List</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_File_List</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Question_Detail</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Dashboard_List</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Related_Record_List</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_File_Related_List</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Record_List</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Forgot_Password</page>
-
-        <themeLayout>communityTemplate_themeLayout_Login</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Home</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Dashboard_Related_List</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Account_Management</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Case_Related_List</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_User_Related_List</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-```
-
-
-### Metadata Types CommunityThemeDefinition
-
-```
-      <pageSetting>
-
-        <page>communityTemplate_Stream_Detail</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Topic_Detail</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Messages</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Report_Detail</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Record_Detail</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Feed_Detail</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-      <pageSetting>
-
-        <page>communityTemplate_Contact_Support</page>
-
-        <themeLayout>communityTemplate_themeLayout_Default</themeLayout>
-
-      </pageSetting>
-
-   </CommunityTemplateDefinition>
-
-```
-
-The following is an example `package.xml` that references the previous definition.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>MyTemplate</members>
-
-        <name>CommunityTemplateDefinition</name>
-
-      </types>
-
-      <version>66.0</version>
-
-   </Package>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### CommunityThemeDefinition
-
-Represents the definition of a theme for an Experience Builder site. This type extends the Metadata metadata type and inherits its
-`fullName` field.
-
-
-Metadata Types CommunityThemeDefinition
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-File Suffix and Directory Location
-
-CommunityThemeDefinition components have the suffix `.communityThemeDefinition` and are stored in the
-`communityThemeDefinitions` folder.
-
-Version
-
-CommunityThemeDefinition components are available in API version 38.0 and later.
-
-Special Access Rules
-
-This type is available only if Salesforce Digital Experiences is enabled in your org.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`bundlesInfo` CommunityThemeBundleInfo[]
-
-If specified, at least one preview image and one highlight are required.
-Up to 3 preview images and 4 highlights are supported. Available in API
-version 44.0 and later
-
-`customThemeLayoutType` CommunityCustomThemeLayoutType[] The list of custom theme layout types available to the theme layout.
-
-`defaultBrandingSet` string
-
-The set of branding properties associated with this
-CommunityThemeDefinition, as defined in the Theme panel in Experience
-Builder. Available in API version 44.0 and later.
-
-`description` string The optional description text of this CommunityThemeDefinition.
-
-`enableExtendedCleanUp` boolean
-
-```
-OnDelete
-
-```
-
-False by default. Determines if deleting this CommunityThemeDefinition
-attempts to delete other directly or indirectly referenced objects
-automatically, for example, FlexiPage. Values are true or false.
-
-`masterLabel` string Required. The label for this CommunityThemeDefinition, which displays
-in Setup.
-
-`publisher` string
-
-Defines the name of the publisher as seen in the wizard for creating
-Experience Builder sites. If no name is provided, the name of the org
-from which the package was originally exported is used.
-
-This field is available in API version 45.0 and later.
-
-`themeRouteOverride` CommunityThemeRouteOve **r** ide[] List of theme layout type overrides for flexipages (currently only for
-home). Available in API version 44.0 and later.
-
-`themeSetting` CommunityTheme Required. The list of settings for this CommunityThemeDefinition.
-Setting []
-
-
-Metadata Types CommunityThemeDefinition
-
-CommunityThemeBundleInfo
-
-**Field Name** **Field Type** **Description**
-
-`description` string The optional description text of its CommunityThemeBundleInfo.
-
-`image` string Required only when the `type` is `PreviewImage`, otherwise this field is
-optional. A preview image for this CommunityThemeDefinition.
-
-`order` int Required. An integer specifying the position of this
-CommunityThemeBundleInfo relative to others of the same `type` within its
-
-CommunityThemeDefinition. `1` is the first position, `3` is the maximum position
-for `PreviewImage` type, and `4` is the maximum position for the
-`Highlight` type.
-
-`title` string Required. The title of this CommunityThemeBundleInfo to use in code.
-
-```
-type
-
-```
-
-CommunityTemplate Required. Stores descriptive information about the theme that is included in
-BundleInfoType the export. Valid values are:
-(enumeration of type
-
-**•** `Highlight` —This CommunityThemeBundleInfo is used as a highlighted
-
-string)
-
-feature. Up to 4 are supported.
-
-**•** `PreviewImage` —This CommunityThemeBundleInfo is used as a preview
-image. Up to 3 are supported.
-
-CommunityCustomThemeLayoutType
-
-**Field Name** **Field Type** **Description**
-
-`description` string The description of the custom theme layout type.
-
-`label` string Required. The name of the custom theme layout type. The values `Inner`,
-`Home`, and `Login` are reserved.
-
-CommunityThemeRouteOverride
-
-**Field Name** **Field Type** **Description**
-
-`customThemeLayoutType` string
-
-Required when `themeLayoutType` isn’t specified. Provides the custom
-theme layout type associated with the theme layout. This field and
-`themeLayoutType` are mutually exclusive; you can’t specify both.
-
-`pageAttributes` string Required. Specifies the attributes of the site page for which the default theme
-layout type is overridden. The only valid value is `{"PageName":"Home"}` .
-
-`pageType` string
-
-Required. Specifies the type of the site page for which the default theme layout
-type is overridden. The only valid value is `comm__standardPage` .
-
-
-Metadata Types CommunityThemeDefinition
-
-**Field Name** **Field Type** **Description**
-
-```
-themeLayoutType
-
-```
-
-CommunityTheme Required if `customThemeLayoutType` isn’t specified. Provides the default
-LayoutType theme layout type associated with the theme layout. Valid values are `Inner`,
-(enumeration of type `Home`, or `Login` . This field and `customThemeLayoutType` are mutually
-string) exclusive; you can’t specify both.
-
-CommunityTheme Setting
-
-**Field Name** **Field Type** **Description**
-
-`customThemeLayoutType` string
-
-Required when `themeLayoutType` isn’t specified. The custom theme
-layout type associated with the theme layout. This field and
-`themeLayoutType` are mutually exclusive; you can’t specify both.
-
-`themeLayout` string Required. The configuration and layout for this theme.
-
-```
-themeLayoutType
-
-```
-
-CommunityTheme Required when `customThemeLayoutType` isn’t specified. The default
-LayoutType theme layout type associated with the theme layout. Valid values are `Inner`,
-(enumeration of type `Home`, or `Login` . This field and `customThemeLayoutType` are mutually
-string) exclusive; you can’t specify both.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a CommunityThemeDefinition component.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<CommunityThemeDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <bundlesInfo>
-
-     <description>Batman Feature1 description</description>
-
-     <order>1</order>
-
-     <title>Batman Feature1</title>
-
-     <type>Highlight</type>
-
-   </bundlesInfo>
-
-   <bundlesInfo>
-
-     <image>siteAsset_d90e2d5ce4cf4d8899e233c051091246</image>
-
-     <order>1</order>
-
-     <title>siteAsset_d90e2d5ce4cf4d8899e233c051091246</title>
-
-     <type>PreviewImage</type>
-
-   </bundlesInfo>
-
-   <defaultBrandingSet>Batman</defaultBrandingSet>
-
-   <description>Batman theme</description>
-
-   <enableExtendedCleanUpOnDelete>true</enableExtendedCleanUpOnDelete>
-
-   <masterLabel>Batman</masterLabel>
-
-   <themeRouteOverride>
-
-     <pageAttributes>{&quot;PageName&quot;:&quot;Home&quot;}</pageAttributes>
-
-     <pageType>comm__standardPage</pageType>
-
-     <themeLayoutType>Home</themeLayoutType>
-
-   </themeRouteOverride>
-
-   <themeSetting>
-
-     <themeLayout>Batman_themeLayout_Login</themeLayout>
-
-```
-
-
-### Metadata Types ConnectedApp
-
-```
-        <themeLayoutType>Login</themeLayoutType>
-
-      </themeSetting>
-
-      <themeSetting>
-
-        <themeLayout>Batman_themeLayout_Home</themeLayout>
-
-        <themeLayoutType>Home</themeLayoutType>
-
-      </themeSetting>
-
-      <themeSetting>
-
-        <themeLayout>Batman_themeLayout_Default</themeLayout>
-
-        <themeLayoutType>Inner</themeLayoutType>
-
-      </themeSetting>
-
-   </CommunityThemeDefinition>
-
-```
-
-The following is an example `package.xml` that references the previous definition.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>Batman</members>
-
-        <name>BrandingSet</name>
-
-      </types>
-
-      <types>
-
-        <members>Batman</members>
-
-        <name>CommunityThemeDefinition</name>
-
-      </types>
-
-      <types>
-
-        <members>Batman_themeLayout_Default</members>
-
-        <members>Batman_themeLayout_Home</members>
-
-        <members>Batman_themeLayout_Login</members>
-
-        <name>FlexiPage</name>
-
-      </types>
-
-      <types>
-
-        <members>siteAsset_d90e2d5ce4cf4d8899e233c051091246</members>
-
-        <name>StaticResource</name>
-
-      </types>
-
-      <version>66.0</version>
-
-   </Package>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### ConnectedApp
-
-Represents a connected app configuration. A connected app enables an external application to integrate with Salesforce using APIs and
-standard protocols, such as SAML, OAuth, and OpenID Connect. Connected apps use these protocols to authenticate, authorize, and
-provide single sign-on (SSO) for external apps. The external apps that are integrated with Salesforce can run on the customer success
-platform, other platforms, devices, or SaaS subscriptions.
-
-This type extends the Metadata metadata type and inherits its `fullName` field.
-
-
-Metadata Types ConnectedApp
-
-Important: Connected apps creation is restricted as of Spring ‘26. You can use existing connected apps during and after Spring
-[‘26. However, we recommend using external client apps instead. If you must continue creating connected apps, contact Salesforce](https://help.salesforce.com/s/articleView?id=xcloud.external_client_apps.htm&language=en_US)
-Support.
-
-[See New connected apps can no longer be created in Spring ‘26 for more details.](https://help.salesforce.com/s/articleView?id=005228017&type=1&language=en_US)
-
-File Suffix and Directory Location
-
-ConnectedApp components have the suffix `.connectedApp` and are stored in the `connectedApps` folder.
-
-Version
-
-ConnectedApp components are available in API version 29.0 and later.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`attributes` `canvasConfig` A custom attribute of the connected app.
-
-AppCanvasConfig The configuration options of the connected app if it's exposed as a
-canvas app.
-
-`contactEmail` string Required. The email address that Salesforce uses to contact you or
-your support team.
-
-`contactPhone` string The phone number for Salesforce to use to contact you.
-
-`description` string An optional description for your app.
-
-`iconUrl` string Reserved for future use.
-
-`infoUrl` string An optional URL for a web page with more information about your
-app.
-
-`ipRanges` ConnectedAppIpRange[] Specifies the ranges of IP addresses that can access the app without
-requiring the user to authenticate with the connected app.
-
-`label` string Required. The name of the app.
-
-`logoUrl` string An optional logo for the app. The logo appears with the app’s entry
-in the list of apps and on the consent page the user sees when
-
-authenticating. The URL must use HTTPS, and the logo can't be larger
-than 125 pixels high or 200 pixels wide. The default logo is a cloud.
-
-`mobileStartUrl` string Users are directed to this URL after they've authenticated when the
-app is accessed from a mobile device. If you don't give a URL, the user
-
-is sent to the app’s default start page after authentication completes.
-If the connected app that you’re creating is a canvas app, then you
-can leave this field blank. The Canvas App URL field contains the URL
-that gets called for the connected app.
-
-`oauthConfig` connectedAppOauthConfig Specifies how your app communicates with Salesforce.
-
-
-Metadata Types ConnectedApp
-
-**Field Name** **Field Type** **Description**
-
-`oauthPolicy` ConnectedAppOauthPolicy Specifies OAuth access policies associated with your connected app.
-Available in API version 49.0 and later.
-
-`permissionSetName` string
-
-`plugin` string
-
-Specifies the permissions required to perform different functions with
-the connected app. Available in API version 46.0 and later.
-
-You can assign multiple permission sets to the connected app, but
-you must enter each permission set name on a separate line. You can’t
-
-enter the same permission set name more than one time for each
-connected app.
-
-You can also change a permission set by replacing the current
-permission set with a new permission set. Make sure that each
-permission set name assigned to the connected app is unique.
-
-You can delete individual permission sets or remove all permission
-sets from a connected app by entering an empty
-`permissionSetName` string on deployment of the connected
-app: ( `<permissionSetName></permissionSetName>` ).
-
-To use this field, the `isAdminApproved` field on the
-ConnectedAppOauthConfig subtype must be set to `true` .
-
-The name of a custom Apex class that extends
-`Auth.ConnectedAppPlugin` to customize the behavior of the
-app.
-
-`pluginExecutionUser` string Specifies the user to run the plugin as. If the user isn’t authorized to
-use the connected app, use the `authorize` method. See the
-
-`ConnectedAppPlugin` [class in the Apex Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_namespace_Auth.htm)
-Available in API version 46.0 and later.
-
-Enter a user that is part of your org. Otherwise, the user is removed
-from this field when you deploy the connected app. If you don’t want
-to specify a user, you can leave this field empty.
-
-To use this field in an org, the ConAppPluginExecuteAsUser setting
-must be enabled.
-
-`profileName` string[]
-
-Specifies the profile (base-level user permissions) required to perform
-different functions with the connected app. Available in API version
-46.0 and later.
-
-You can assign multiple profiles to the connected app, but you must
-enter each profile name on a separate line. You can’t enter the same
-profile name more than one time for each connected app.
-
-You can also change profiles by replacing the current profiles with
-new profiles. Make sure that each profile name assigned to the
-connected app is unique.
-
-You can also delete individual profiles or remove all profiles from a
-connected app by entering an empty `profileName` string on
-
-
-Metadata Types ConnectedApp
-
-**Field Name** **Field Type** **Description**
-
-deployment of the connected app:
-( `<profileName></profileName>` ).
-
-To use this field, the `isAdminApproved` field on the
-ConnectedAppOauthConfig subtype must be set to `true` .
-
-`samlConfig` ConnectedAppSamlConfig Controls how the app uses single sign-on.
-
-`sessionPolicy` ConnectedAppSessionPolicy Specifies a connected app’s session policies. Available in API version
-49.0 and later.
-
-`startUrl` string If the app isn’t accessed from a mobile device, users are directed to
-this URL after they've authenticated. If you don't give a URL, the user
-
-is sent to the app’s default start page after authentication completes.
-Whether you give a URL or not, the start URL can be updated later by
-managing the connected app. If the app is accessed from a mobile
-device, see `mobileStartUrl` . If the connected app that you’re
-creating is a canvas app, then you can leave this field empty. The
-Canvas App URL field contains the URL that gets called for the
-connected app.
-
-ConnectedAppAttribute
-
-Represents the field names that make up a custom attribute when using SAML with a ConnectedApp. Customize these values to a
-specific service provider.
-
-**Field Name** **Field Type** **Description**
-
-`formula` string Required. The value of the attribute.
-
-`key` string Required. The attribute's identifier.
-
-ConnectedAppCanvasConfig
-
-Represents the configuration options of the connected app if it's exposed as a canvas app.
-
-**Field Name** **Field Type** **Description**
-
-`accessMethod` AccessMethod (enumeration of Required. Indicates how the canvas app initiates the OAuth
-type string) authentication flow. The valid values are:
-
-**•** `Get` —OAuth authentication is used, and the user is prompted to
-allow the third-party application to access their information. When
-you use this access method, the canvas app must initiate the OAuth
-authentication flow.
-
-**•** `Post` —OAuth authentication is used, but when the administrator
-installs the canvas app, they implicitly allow access for users.
-Therefore, the user isn’t prompted to allow the third party to access
-
-
-Metadata Types ConnectedApp
-
-**Field Name** **Field Type** **Description**
-
-their user information. When you use this access method, the
-authentication is posted directly to the canvas app URL.
-
-`canvasUrl` string Required. The URL of the third-party app that's exposed as a canvas
-app.
-
-`lifecycleClass` string
-
-The name of the `Canvas.CanvasLifecycleHandler` Apex
-class, if you've implemented this class for custom parameters.
-
-Available in API version 31.0 and later.
-
-`locations` CanvasLocationOptions Indicates where the canvas app can appear to the user. The valid values
-(enumeration of type string)[] are:
-
-**•** `Aura` —The canvas app can appear in a custom Lightning
-component.
-
-**•** `AppLauncher` —Reserved for future use.
-
-**•** `Chatter` —The canvas app can appear in the app navigation
-list on the Chatter tab in Salesforce Classic.
-
-**•** `ChatterFeed` —The canvas app can appear as a Chatter feed
-item.
-
-**•** `MobileNav` —The canvas app can appear in a mobile card in
-the Salesforce mobile app. Available in API version 31.0 and later.
-
-**•** `None` —The canvas app can appear only in the Canvas App
-Previewer.
-
-**•** `OpenCTI` —The canvas app can appear in the call control tool
-in Salesforce Classic.
-
-**•** `PageLayout` —The canvas app can appear on a page layout.
-When viewed in the Salesforce mobile app, the canvas app appears
-in the record detail page. Available in API version 31.0 and later.
-
-**•** `Publisher` —The canvas app can appear as a global action.
-
-**•** `ServiceDesk` —The canvas app can appear in the footer or
-sidebars of a console in Salesforce Classic.
-
-**•** `UserProfile` —Reserved for future use.
-
-**•** `Visualforce` —The canvas app can appear on a Visualforce
-page.
-
-`options` CanvasOptions (enumeration of
-type string)[]
-
-Indicates whether to hide the **Share** button and header in the publisher
-for your canvas app and whether the app is a canvas personal app.
-Valid values are:
-
-**•** `HideShare` —The **Share** button is hidden in the publisher for
-the related canvas app. Available in API version 30.0 and later.
-
-**•** `HideHeader` —The header is hidden in the publisher for the
-related canvas app. Available in API version 30.0 and later.
-
-**•** `PersonalEnabled` —End users can install the app as a canvas
-personal app. Available in API version 32.0 and later.
-
-
-Metadata Types ConnectedApp
-
-**Field Name** **Field Type** **Description**
-
-`samlInitiationMethod` SamlInitiationMethod If you're using SAML single sign-on (SSO), indicates which provider
-(enumeration of type string) initiates the SSO flow.
-
-**•** `IdpInitiated` —Identity provider initiated. Salesforce makes
-the initial request to start the SSO flow.
-
-**•** `SpInitiated` —Service provider initiated. The canvas app starts
-the SSO flow after it's invoked.
-
-**•** `None` —The canvas app isn't using SAML SSO. Available in API
-version 31.0 and later.
-
-ConnectedAppIpRange
-
-Represents the list of IP addresses that can access the app without requiring the user to authenticate.
-
-**Field Name** **Field Type** **Description**
-
-`description` string Identifies the purpose of the range, such as which part of a network
-corresponds to this range. Available in API version 31.0 and later.
-
-`end` string Required. The last address in the IP range, inclusive.
-
-`start` string Required. The first address in the IP range, inclusive.
-
-ConnectedAppOauthConfig
-
-Represents the field names that configure how your connected app communicates with Salesforce.
-
-**Field Name** **Field Type** **Description**
-
-`assetTokenConfig` connectedAppOauthAssetToken The OAuth asset token configuration for the connected app OAuth
-settings. Available in API version 49.0 and later.
-
-`callbackUrl` string Required. The endpoint that Salesforce calls back to your connected
-app during OAuth. It’s the OAuth `redirect_uri` .
-
-`certificate` string The PEM-encoded certificate string, if the app uses a certificate.
-
-`consumerKey` string
-
-A value used by the consumer for identification to Salesforce. Referred
-to as `client_id` in OAuth 2.0.
-
-In API version 32.0 and later, you can set this field’s value only during
-creation. After you define and save the value, it can’t be edited. The
-
-value must be alphanumeric, can’t contain special characters or spaces,
-and must be between 8–256 characters. Consumer keys must be
-globally unique.
-
-`consumerSecret` string A value that is combined with the `consumerKey` and used by the
-consumer for identification to Salesforce. Referred to as
-
-`client_secret` in OAuth 2.0. Typically, Salesforce generates this
-
-
-Metadata Types ConnectedApp
-
-**Field Name** **Field Type** **Description**
-
-value when you create the connected app. However, you can customize
-the shared secret value during creation. After you save the value, it
-can’t be edited. When set, the value isn’t returned in Metadata API
-requests.
-
-The value must be alphanumeric (no special characters and no spaces)
-and a minimum of 8 characters (maximum of 256 characters). If you
-specify a secret already in use for another connected app in the
-organization, an error occurs.
-
-Available in API version 32.0 and later.
-
-`idTokenConfig` ConnectedAppOauthIdToken Specifies the ID token configuration for the connected app OAuth
-settings. Available in API version 43.0 and later.
-
-`isAdminApproved` boolean
-
-`isClientCredentialEnabled` boolean
-
-If set to `false` (default), anyone in the org can authorize the app.
-Users must approve the app the first time they access it.
-
-If set to `true`, only users with the appropriate profile or permission
-set can access the app. These users don’t have to approve the app
-
-before they can access it. Manage profiles for the app by editing each
-profile’s Connected App Access list. Manage permission sets for the
-app by editing each permission set’s Assigned Connected App list. This
-setting isn’t available in Group Edition. Available in API version 46.0
-and later.
-
-Connected app consumers can edit this setting when deploying a
-connected app in their org.
-
-If set to `true`, the connected app can use the OAuth 2.0 client
-credentials flow. To use the client credentials flow, you must also specify
-a user for `oauthClientCredentialUser` .
-
-If set to `false` (default), the connected app can’t use the client
-credentials flow.
-
-Available in API version 56.0 and later.
-
-`isCodeCredentialEnabled` boolean Determines whether the app can use the Authorization Code and
-Credentials Flow to provide identity services to headless, off-platform
-
-apps. The Authorization Code and Credentials Flow is the foundation
-of headless login, headless registration, headless passwordless login,
-and headless guest identity.
-
-If set to `true`, the connected app can use the Authorization Code and
-Credentials Flow and all associated Headless Identity features. The
-default value is `false` .
-
-This field is available in API version 57.0 and later.
-
-`isCodeCredentialPostOnly` boolean For the Authorization Code and Credentials Flow, determines whether
-the user’s credentials must be sent in the body of the initial HTTPS POST
-
-
-Metadata Types ConnectedApp
-
-**Field Name** **Field Type** **Description**
-
-request to the Salesforce authorization endpoint. Requiring the
-credentials in the POST body instead of in the header improves security.
-
-If set to `true`, the user’s credentials must be included in the POST
-body. The default value is `false` .
-
-This field is available in API version 57.0 and later.
-
-`isConsumerSecretOptional` boolean
-
-`isIntrospectAllTokens` boolean
-
-`isNamedUserJwtEnabled` boolean
-
-If set to `false` (default), the connected app’s client secret is required
-in exchange for an access token in the OAuth 2.0 web server flow.
-
-If the client app can’t keep the client secret confidential and it must
-use the web server flow, set to `true` . A client secret is still generated
-
-for the connected app, but this setting instructs the web server flow
-not to require the `client_secret` parameter in the access token
-request. We recommend the user agent flow as a more secure option
-than web server flow without the secret. Available in API version 49.0
-and later.
-
-If set to `true`, authorizes the connected app to introspect all access
-and refresh tokens within the entire org.
-
-If set to `false` (default), the connected app can introspect its own
-tokens. In addition, an OAuth client that directly registers OAuth 2.0
-
-connected apps through the dynamic client registration endpoint can
-check the tokens for itself and its registered apps. Available in API
-version 49.0 and later.
-
-If set to `true`, the connected app is enabled to issue JSON Web Token
-(JWT)-based access tokens.
-
-This field is generally available in API version 59.0 and later.
-
-`isPkceRequired` boolean Determines whether the Proof Key for Code Exchange (PKCE) extension
-is required for variations of the OAuth 2.0 authorization code flow
-
-configured for the connected app, including the web server flow and
-Authorization Code and Credentials Flow. For public client apps that
-can’t keep the consumer secret confidential, such as mobile apps, the
-PKCE extension helps ensure that the client that initiates an
-authorization flow is the same client that completes it. For this reason,
-we always recommend implementing PKCE for public clients. We also
-strongly recommend that you implement PKCE for private clients.
-
-If set to `true`, the PKCE extension is required and any authorization
-code flow variations that don’t implement it fail. If set to `false`, you
-can still implement PKCE but it isn’t required. The default value is
-`false` .
-
-This field is available in API version 59.0 and later.
-
-`isRefreshTokenRotationEnabled` boolean If set to `true`, the connected app issues a new refresh token each
-time the OAuth refresh token flow is invoked. The old refresh token is
-
-
-Metadata Types ConnectedApp
-
-**Field Name** **Field Type** **Description**
-
-automatically invalidated. If a user tries to use a previous refresh token
-that’s been invalidated, the current refresh token and its associated
-access tokens get deleted. If set to `false`, the refresh token can be
-used to obtain multiple access tokens.
-
-This field is available in API version 60.0 and later.
-
-`isSecretRequiredForRefreshToken` boolean If set to `true` (default), the app’s client secret is required in the
-authorization request of a refresh token and hybrid refresh token flow.
-
-If set to `false` and an app sends the client secret in the authorization
-request, Salesforce still validates it.
-
-Select this option for web-server based apps that can protect client
-secrets. For apps that can’t protect client secrets, such as mobile apps
-or apps installed on a user’s computer, we recommend against selecting
-this option. Available in API version 51.0 and later.
-
-`isSecretRequiredForTokenExchange` boolean If set to `true`, the connected app must include its consumer secret
-( `client_secret` ) in the token request during the OAuth 2.0 token
-
-exchange flow. For security, set this field to `true` only if your app has
-a private client backend where it can keep the secret safe. For public
-client apps, such as single-page apps and mobile apps, set this field to
-`false` and don’t include the consumer secret.
-
-This field is available in API version 60.0 and later.
-
-`isTokenExchangeEnabled` boolean
-
-`oauthClientCredentialUser` string
-
-If set to `true`, the connected app can use the OAuth 2.0 token
-exchange flow to exchange tokens from an external identity provider
-for Salesforce tokens.
-
-This field is available in API version 60.0 and later.
-
-The execution user for the OAuth 2.0 client credentials flow. Salesforce
-returns access tokens on behalf of this user. This user must have the
-API Only permission.
-
-To use this field, set `isClientCredentialEnabled` to `true`
-and specify a `consumerKey` .
-
-Available in API version 56.0 and later.
-
-`scopes` ConnectedAppOauthAccessScope The permissions given by the user running the connected app. When
-(enumeration of type string)[] deploying metadata, valid values are:
-
-**•** `Basic` —Allows access to your identity URL service (the same
-behavior as deploying `Address`, `Email`, `Phone`, and
-`Profile` ).
-
-**•** `Api` —Allows access to the logged-in user's account over the APIs.
-
-**•** `Web` —Allows use of the `access_token` on the web. This
-usage also includes `visualforce`, allowing access to Visualforce
-pages.
-
-
-Metadata Types ConnectedApp
-
-**Field Name** **Field Type** **Description**
-
-**•** `Full` —Allows access to all data accessible by the logged-in user.
-
-**•** `Chatter` —Allows access to only the Connect REST API resources.
-
-**•** `CustomApplications` —Provides access to custom
-applications, such as those using Visualforce.
-
-**•** `RefreshToken` —Allows a refresh token to be returned if you’re
-eligible to receive one (the same behavior as deploying
-`OfflineAccess` ).
-
-**•** `OpenID` —Allows access to the logged-in user's unique identifier
-for OpenID Connect apps.
-
-**•** `Profile` —Allows access to the logged-in user's profile (the
-same behavior as deploying `Basic` ).
-
-**•** `Email` —Allows access to the logged-in user's email address (the
-same behavior as deploying `Basic` ).
-
-**•** `Address` —Allows access to the logged-in user's street address
-(the same behavior as deploying `Basic` ).
-
-**•** `Phone` —Allows access to the logged-in user's phone number
-value (the same behavior as deploying `Basic` ).
-
-**•** `OfflineAccess` —Allows the app to interact with the user's
-data while the user is offline and get a refresh token (the same
-behavior as deploying `RefreshToken` ).
-
-**•** `CustomPermissions` —Allows access to the custom
-permissions in an organization associated with the connected app
-and shows whether the current user has each permission enabled.
-
-**•** `Wave` —Allows access to the Analytics REST API resources. Available
-in API version 35.0 and later.
-
-**•** `Eclair` —Allows access to the Analytics REST API Charts Geodata
-resource. Available in API version 35.0 and later.
-
-**•** `Pardot` —Allows access to Pardot API services on behalf of the
-user. The full extent of accessible services is managed by the Pardot
-account. Available in API version 49.0 and later.
-
-**•** `Lightning` —Allows hybrid apps to directly obtain Lightning
-child sessions through the OAuth 2.0 hybrid app token flow and
-hybrid app refresh token flow. Available in API version 51.0 and
-later.
-
-**•** `Content` —Allows hybrid apps to directly obtain content child
-sessions through the OAuth 2.0 hybrid app token flow and hybrid
-app refresh token flow. Available in API version 51.0 and later.
-
-**•** `CDPIngest` —Allows access to Data Cloud ingest API services.
-Customers use these API services to upload and maintain external
-datasets in the Data 360. Available in API version 52.0 and later.
-
-**•** `Chatbot` —Allows access to Einstein Bot API services. Available
-in API version 54.0 and later.
-
-
-Metadata Types ConnectedApp
-
-**Field Name** **Field Type** **Description**
-
-**•** `ForgotPassword` —Allows access to Headless Forgot Password
-API. Assign to an internal integration user to get an access token
-for authenticated requests to this API. Available in API version 57.0
-and later.
-
-**•** `UserRegistration` —Allows access to Headless Registration
-API. Assign to an internal integration user to get an access token
-for authenticated requests to this API. Available in API version 58.0
-and later.
-
-**•** `PwdlessLogin` —Allows access to Headless Passwordless Login
-API. Assign to an internal integration user to get an access token
-for authenticated requests to this API. Available in API version 59.0
-and later.
-
-When retrieving metadata, valid values are:
-
-**•** `Api` —Allows access to the logged-in user’s account over the APIs.
-
-**•** `Basic` —Allows access to the user’s identity URL service, and
-includes `Address`, `Email`, `Phone`, and `Profile` .
-
-**•** `Chatter` —Allows access to only the Connect REST API resources.
-
-**•** `CustomApplications` —Allows access to custom
-applications, such as those using Visualforce.
-
-**•** `Full` —Allows access to all data accessible by the logged-in user.
-
-**•** `OpenID` —Allows access to the logged-in user's unique identifier
-for OpenID Connect apps.
-
-**•** `CDPIngest` —Allows access to Data Cloud ingest API services.
-Customers use these API services to upload and maintain external
-datasets in the Data 360. Available in API version 52.0 and later.
-
-**•** `Pardot` —Allows access to Pardot API services on behalf of the
-user. The full extent of accessible services is managed by the Pardot
-account. Available in API version 49.0 and later.
-
-**•** `Lightning` —Allows hybrid apps to directly obtain Lightning
-child sessions through the OAuth 2.0 hybrid app token flow and
-hybrid app refresh token flow. Available in API version 51.0 and
-later.
-
-**•** `Content` —Allows hybrid apps to directly obtain content child
-sessions through the OAuth 2.0 hybrid app token flow and hybrid
-app refresh token flow. Available in API version 51.0 and later.
-
-**•** `RefreshToken` —Allows a refresh token to be returned if you’re
-eligible to receive one and is synonymous with allowing
-`OfflineAccess` .
-
-**•** `Wave` —Allows access to the Analytics REST API resources. Available
-in API version 35.0 and later.
-
-**•** `Eclair` —Allows access to the Analytics REST API Charts Geodata
-resource. Available in API version 35.0 and later.
-
-
-Metadata Types ConnectedApp
-
-**Field Name** **Field Type** **Description**
-
-**•** `Web` —Allows usage of the `access_token` on the web. This
-usage also includes `visualforce`, allowing access to Visualforce
-pages.
-
-**•** `Chatbot` —Allows access to Einstein Bot API services. Available
-in API version 54.0 and later.
-
-**•** `ForgotPassword` —Allows access to Headless Forgot Password
-API. Assign to an internal integration user to get an access token
-for authenticated requests to this API. Available in API version 57.0
-and later.
-
-**•** `UserRegistration` —Allows access to Headless Registration
-API. Assign to an internal integration user to get an access token
-for authenticated requests to this API. Available in API version 58.0
-and later.
-
-**•** `PwdlessLogin` —Allows access to Headless Passwordless Login
-API. Assign to an internal integration user to get an access token
-for authenticated requests to this API. Available in API version 59.0
-and later.
-
-`singleLogoutUrl` string The single logout endpoint. This URL is the endpoint where Salesforce
-sends a logout request when users log out of Salesforce.
-
-ConnectedAppOauthAssetToken
-
-Specifies an OAuth asset token configuration for the connected app OAuth settings. Available in API version 49.0 and later.
-
-**Field Name** **Field Type** **Description**
-
-`assetAudiences` string Required. The audience claim associated with the asset token payload.
-This claim identifies who the JWT is intended for. Value is an array of
-
-case-sensitive strings, each containing a `StringOrURI` value. An
-audience is specified for each intended consumer of the asset token.
-
-`assetIncludeAttributes` boolean
-
-`assetIncludeCustomPerms` boolean
-
-`assetSigningCertId` string
-
-`assetValidityPeriod` int
-
-Required. If set to `true` (default), custom attributes associated with
-the connected app are included in the asset token payload. If set to
-`false`, these attributes aren’t included.
-
-Required. If set to `true` (default), custom permissions associated with
-the connected app are included in the asset token payload. If set to
-`false`, these permissions aren’t included.
-
-Required. The ID of the JWT certificate’s signing secret. The certificate
-size can’t exceed 4 KB. If it does, try using a DER encoded file to reduce
-the size.
-
-Required. The asset token’s validity period. The validity must be the
-expiration time of the assertion within 3 minutes, expressed as the
-number of seconds from 1970-01-01T0:0:0Z measured in UTC.
-
-
-Metadata Types ConnectedApp
-
-ConnectedAppOauthIdToken
-
-Specifies the ID token configuration for the connected app OAuth settings. Available in API version 43.0 and later.
-
-**Field Name** **Field Type** **Description**
-
-`idTokenAudience` string The audiences that this ID token is intended for. The value is an array
-of case-sensitive strings. If no audiences are specified, the OAuth
-
-2.0 `client_id` of the relying party is returned as the default
-audience. Otherwise, the other audiences are returned with the
-`client_id` in the `aud` value.
-
-`idTokenIncludeAttributes` boolean Indicates whether attributes are included in the ID token.
-
-`idTokenIncludeCustomPerms` boolean Indicates whether custom permissions are included in the ID token.
-
-`idTokenIncludeStandardClaims` boolean Indicates whether standard claims about the authentication event are
-included in the ID token.
-
-`idTokenValidity` int The length of time that the ID token is valid for after it’s issued. The
-value can be from 1 to 720 minutes. The default is 2 minutes.
-
-ConnectedAppOauthPolicy
-
-Specifies OAuth access policies for the connected app. Available in API version 49.0 and later.
-
-**Field Name** **Field Type** **Description**
-
-`ipRelaxation` string Required. Specifies whether a user’s access to the connected app is
-restricted by IP ranges. Valid options are:
-
-**•** `ENFORCE` (default)—Enforces the IP restrictions configured for
-the org, such as the IP ranges assigned to a user profile.
-
-**•** `BYPASS_2FACTOR` —Allows a user running the app to bypass
-the org’s IP restrictions when either of these conditions is true.
-
-**–** The app has a list of allowed IP ranges and is using the web
-server OAuth authorization flow. Requests coming from only
-these IPs are allowed.
-
-**–** The app doesn’t have a list of allowed IP ranges, but it uses the
-web server authentication flow. And the user successfully
-completes identity verification if accessing Salesforce from a
-new browser or device.
-
-**•** `BYPASS` —Allows a user to run this app without org IP restrictions.
-
-**•** `ENFORCE_RELAXREFRESH` —Enforces the IP restrictions
-configured for the org, such as the IP ranges assigned to a user
-profile. However, this option bypasses these restrictions when the
-connected app uses refresh tokens to get access tokens.
-
-
-Metadata Types ConnectedApp
-
-**Field Name** **Field Type** **Description**
-
-`refreshTokenPolicy` string
-
-Required. Specifies how long a refresh token is valid for.
-
-If refresh tokens are provided, users can continue to access the
-OAuth-enabled connected app without having to reauthorize when
-
-the access token expires, as defined by the session timeout value. The
-connected app exchanges the refresh token with an access token to
-start a new session. The Refresh Token policy is evaluated only during
-usage of the issued refresh token and doesn’t affect a user’s current
-session. Refresh tokens are required only when a user’s session has
-expired or isn’t available. For example, you set a refresh token policy
-to expire the token after 1 hour. If a user uses the app for 2 hours, the
-user isn’t forced to reauthenticate after 1 hour. However, the user is
-required to authenticate again when the session expires and the client
-attempts to exchange its refresh token for a new session.
-
-Valid options are:
-
-**•** `zero` —The refresh token is invalid immediately. The user can use
-the current session (access token) already issued, but can’t obtain
-a new session when the access token expires.
-
-**•** `infinite` —The refresh token is used indefinitely, unless revoked
-by the user or Salesforce admin. Default setting.
-
-**•** `specific_lifetime:` _**`number`**_ `:` _**`HOURS, DAYS,`**_
-_**`MONTHS`**_ —The refresh token is valid for a fixed amount of time.
-For example, if the policy states
-`specific_lifetime:1:DAYS`, the user can obtain new
-sessions for only 24 hours.
-
-**•** `specific_inactivity:` _**`number`**_ `:` _**`HOURS, DAYS,`**_
-_**`MONTHS`**_ —The refresh token is valid as long as it’s been used
-within the specified amount of time. For example, if set to
-`specific_inactivity:7:DAYS`, and the refresh token
-isn’t exchanged for a new session within seven days, the next
-attempt to use the token fails. The expired token can’t generate
-new sessions. If the refresh token is exchanged within seven days,
-the token is valid for another seven days. The monitoring period
-of inactivity also resets.
-
-`singleLogoutUrl` string If single logout is enabled, specify the single logout URL. Salesforce
-sends logout requests to this URL when users log out of Salesforce.
-
-The single logout URL must be an absolute URL starting with
-`https://` .
-
-ConnectedAppSamlConfig
-
-Specifies how an app uses single sign-on.
-
-
-Metadata Types ConnectedApp
-
-**Field Name** **Field Type** **Description**
-
-`acsUrl` string Required. The assertion consumer service URL from the service provider.
-
-`certificate` string The PEM-encoded certificate string, if the app uses a certificate.
-
-`encryptionCertificate` string The name of the certificate to use for encrypting SAML assertions to
-the service provider. This certificate is saved in the organization's
-
-Certificate and Key Management list. Available in API version 30.0 and
-later.
-
-```
-encryptionType
-
-```
-
-When Salesforce is the identity provider, the SAML configuration can
-SamlEncryptionType
-specify the encryption method used for encrypting SAML assertions
-
-(enumeration of type string)
-
-to the service provider. The service provider detects the encryption
-method in the SAML assertion for decryption. Valid values are:
-
-**•** `AES_128` —128–bit key
-
-**•** `AES_256` —256–bit key
-
-Available in API version 30.0 and later.
-
-`entityUrl` string Required. The entity ID from your service provider.
-
-`issuer` string
-
-A URI that sends the SAML response. A service provider can use this
-URI to determine which identity provider sent the response. Available
-in API version 29.0 and later.
-
-`samlIdpSLOBindingEnum` SamlIdpSLOBinding (enumeration The SAML HTTP binding type from the service provider used for single
-of type string) logout. Available in API version 40.0 and later. Valid values are:
-
-**•** `PostBinding`
-
-**•** `RedirectBinding`
-
-`samlNameIdFormat` SamlNameIdFormatType
-(enumeration of type string)
-
-Indicates the format the service provider (SP) requires for the user's
-single sign-on identifier. Available in API version 29.0 and later. Valid
-values are:
-
-**•** `Unspecified` (default)—No format given.
-
-**•** `EmailAddress` —Used if the subject type is the user's name
-or a federation ID (an ID internal to the SP).
-
-**•** `Persistent` —Used with the user ID and persistent ID subject
-types.
-
-**•** `Transient` —Used when the subject type is a custom attribute
-and can change every time the user logs in.
-
-`samlSigningAlgoType` SamlSigningAlgoType Indicates the signing algorithm applied to SAML requests and responses
-(enumeration of type string) when Salesforce is the identity provider. The selected signing algorithm
-
-is applied to both single sign-on and single logout responses from your
-org. Available in API version 50.0 and later. Valid values are:
-
-**•** `SHA1`
-
-**•** `SHA256`
-
-
-Metadata Types ConnectedApp
-
-**Field Name** **Field Type** **Description**
-
-`samlSloUrl` string The SAML single-logout endpoint of the connected app service provider
-(SP). This endpoint is where SAML LogoutRequests and
-
-LogoutResponses are sent when users log out of Salesforce. The SP
-provides this endpoint. Available in API version 40.0 and later.
-
-`samlSubjectCustomAttr` string
-
-If the `samlSubjectType` is `CustomAttr`, include that custom
-value here; otherwise, leave empty. Available in API version 29.0 and
-later.
-
-`samlSubjectType` SamlSubjectType (enumeration of Required. The single sign-on identifier for the user. Valid values are:
-type string)
-
-**•** `Username` —The user's Salesforce name.
-
-**•** `FederationId` —The user's identifier at the service provider.
-Get this value from the service provider.
-
-**•** `UserId` —The user's 15-character Salesforce identifier.
-
-**•** `PersistentID` —A persistent opaque identifier that is specific
-to the identity provider and a service provider.
-
-**•** `CustomAttr` —The identifier is taken from a custom field value
-in `samlSubjectCustomAttr` .
-
-ConnectedAppSessionPolicy
-
-Specifies the configuration options for a connected app’s session policies. Use these policies to define how long a user’s session can last
-before reauthenticating, to block user access to the connected app, or to require multi-factor authentication (MFA) to access the app.
-Available in API version 49.0 and later.
-
-**Field Name** **Field Type** **Description**
-
-`policyAction` string If the High Assurance session security level is applied to the connected
-app, specify associated high assurance action. Valid values are:
-
-**•** `Block` —Makes the connected app inaccessible to your org’s
-users. Blocking an app ends all current user sessions with the
-connected app and prevents all new sessions.
-
-**•** `RaiseSessionLevel` —Requires users to verify their identity
-with multi-factor authentication when they log in to the connected
-app. This setting applies to authorization flows that include a user
-approval step for API logins. These flows are the OAuth 2.0 refresh
-token flow, web server flow, and user-agent flow. All other flows,
-such as the JSON Web Token (JWT) bearer token flow, don’t include
-a user approval step. For flows without a user approval step, API
-logins with the High Assurance session security level are blocked.
-
-`sessionLevel` string
-
-Applies the High Assurance session security level to the connected
-app. This session level requires users to verify their identity with
-multi-factor authentication when they log in to the connected app.
-
-
-Metadata Types ConnectedApp
-
-**Field Name** **Field Type** **Description**
-
-`sessionTimeout` int The length of time the connected app’s session lasts. If you don’t set
-a value, Salesforce uses the timeout value in the connected app user’s
-
-profile. If the user’s profile doesn’t specify a timeout value, Salesforce
-uses the timeout value in the org’s Session Settings.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a ConnectedApp component.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <attributes>
-
-        <formula>$Api.Enterprise_Server_URL_100</formula>
-
-        <key>test</key>
-
-      </attributes>
-
-      <attributes>
-
-        <formula>$Api.Partner_Server_URL_60</formula>
-
-        <key>test1</key>
-
-      </attributes>
-
-     <canvasConfig>
-
-        <accessMethod>Get</accessMethod>
-
-        <canvasUrl>https://salesforce.com</canvasUrl>
-
-        <lifecycleClass>MyCanvasListener</lifecycleClass>
-
-        <locations>Chatter</locations>
-
-        <locations>Visualforce</locations>
-
-        <locations>Aura</locations>
-
-        <locations>Publisher</locations>
-
-        <locations>ChatterFeed</locations>
-
-        <locations>OpenCTI</locations>
-
-        <locations>MobileNav</locations>
-
-        <locations>PageLayout</locations>
-
-        <options>HideShare</options>
-
-        <options>HideHeader</options>
-
-        <options>PersonalEnabled</options>
-
-        <samlInitiationMethod>None</samlInitiationMethod>
-
-      </canvasConfig>
-
-      <canvas>
-
-      <locationOptions>NONE</locationOptions>
-
-      <samlInitiationMethod>None</samlInitiationMethod>
-
-      <accessMethod>Get</accessMethod>
-
-      <canvasOptions>PE</canvasOptions>
-
-      <lifecycleClass>MyCanvasListener</lifecycleClass>
-
-      <canvasUrl>https://salesforce.com</canvasUrl>
-
-    </canvas>
-
-      <contactEmail>example@salesforce.com</contactEmail>
-
-      <contactPhone>1231231234</contactPhone>
-
-      <description>Test App</description>
-
-   <iconUrl>https://c1.sfdcstatic.com/content/dam/sfdc-docs/www/logos/salesforce-logo-cloud.png</iconUrl>
-
-```
-
-
-Metadata Types ConnectedApp
-
-```
-   <infoUrl>https://c1.sfdcstatic.com/content/dam/sfdc-docs/www/logos/salesforce-logo-cloud.png</infoUrl>
-
-      <startUrl>https://www.salesforce.com</startUrl>
-
-      <ipRanges>
-
-        <end>000.0.0.1</end>
-
-        <start>000.0.0.2</start>
-
-    <description>Test</description>
-
-      </ipRanges>
-
-      <ipRanges>
-
-        <end>000.0.0.1</end>
-
-        <start>000.0.0.2</start>
-
-    <description>Test1</description>
-
-      </ipRanges>
-
-      <label>TestApp</label>
-
-   <logoUrl>https://c1.sfdcstatic.com/content/dam/sfdc-docs/www/logos/salesforce-logo-cloud.png</logoUrl>
-
-      <profileName>Test</profileName>
-
-      <permissionSetName>TestPermission</permissionSetName>
-
-      <mobileStartUrl>http://www.mobile.com</mobileStartUrl>
-
-      <mobileAppConfig>
-
-        <applicationBinaryFile></applicationBinaryFile>
-
-        <applicationBinaryFileName>test</applicationBinaryFileName>
-
-        <applicationBundleIdentifier>testtest</applicationBundleIdentifier>
-
-        <applicationIconFileName>test</applicationIconFileName>
-
-    <applicationIconFile>test</applicationIconFile>
-
-    <applicationFileLength>5</applicationFileLength>
-
-        <applicationInstallUrl>https://salesforce.com</applicationInstallUrl>
-
-        <devicePlatform>ios</devicePlatform>
-
-        <deviceType>minitablet</deviceType>
-
-        <minimumOsVersion>2</minimumOsVersion>
-
-        <privateApp>true</privateApp>
-
-        <version>2</version>
-
-      </mobileAppConfig>
-
-      <oauthConfig>
-
-        <assetTokenConfig>
-
-           <assetAudiences>http://asset.audience.com</assetAudiences>
-
-           <assetIncludeAttributes>true</assetIncludeAttributes>
-
-           <assetIncludeCustomPerms>true</assetIncludeCustomPerms>
-
-           <assetSigningCertId>${cert.id}</assetSigningCertId>
-
-           <assetValidityPeriod>1440</assetValidityPeriod>
-
-        </assetTokenConfig>
-
-        <callbackUrl>https://www.callback.com</callbackUrl>
-
-        <!-- NOTE, TEST.orgId will get replaced with the org ID of the context org, so
-
-   we will have a unique consumer key in every scratch org. -->
-
-        <consumerKey>3MVG9AOp4kbriZOcnmoLmTrguy9ryzcLbBjoNY...${TEST.orgId}</consumerKey>
-
-     <consumerSecret>3MVG9AOp4k...</consumerSecret>
-
-     <certificate>3MVG9AOp4kbriZOInmoLmTrguy9ryzcLbBjoNY...</certificate>
-
-        <scopes>Basic</scopes>
-
-        <scopes>Chatter</scopes>
-
-        <scopes>OpenID</scopes>
-
-        <scopes>CustomPermissions</scopes>
-
-     <singleLogoutUrl>https://www.logout.com</singleLogoutUrl>
-
-```
-
-
-Metadata Types ConnectedApp
-
-```
-        <isAdminApproved>false</isAdminApproved>
-
-        <isConsumerSecretOptional>false</isConsumerSecretOptional>
-
-        <isIntrospectAllTokens>false</isIntrospectAllTokens>
-
-     <idTokenConfig>
-
-     <idTokenAudience>https://idtoken.audience.com</idTokenAudience>
-
-     <idTokenIncludeAttributes>true</idTokenIncludeAttributes>
-
-     <idTokenIncludeCustomPerms>true</idTokenIncludeCustomPerms>
-
-     <idTokenIncludeStandardClaims>true</idTokenIncludeStandardClaims>
-
-     <idTokenValidity>20</idTokenValidity>
-
-     </idTokenConfig>
-
-      </oauthConfig>
-
-      <oauthPolicy>
-
-        <ipRelaxation>ENFORCE</ipRelaxation>
-
-        <refreshTokenPolicy>infinite</refreshTokenPolicy>
-
-        <singleLogoutUrl>https://www.logout.com</singleLogoutUrl>
-
-      </oauthPolicy>
-
-      <plugin>ConnectedAppPluginTest</plugin>
-
-      <pluginExecutionUser>testuser@salesforce.com</pluginExecutionUser>
-
-      <samlConfig>
-
-        <acsUrl>http://www.acs.com</acsUrl>
-
-        <encryptionType>AES_128</encryptionType>
-
-    <encryptionCertificate>3MVG9AOp4kbriZOInmoLmTrguy9ryzcLbBjoNY...</encryptionCertificate>
-
-    <certificate>3MVG9AOp4kbriZOInmoLmTrguy9ryzcLbBjoNY...</certificate>
-
-    <samlSubjectCustomAttr>test</samlSubjectCustomAttr>
-
-        <entityUrl>http://www.entity.com</entityUrl>
-
-        <issuer>https://salesforce.com</issuer>
-
-        <samlIdpSLOBindingEnum>RedirectBinding</samlIdpSLOBindingEnum>
-
-        <samlNameIdFormat>Unspecified</samlNameIdFormat>
-
-        <samlSloUrl>https://www.salesforce.com</samlSloUrl>
-
-        <samlSubjectType>CustomAttribute</samlSubjectType>
-
-      </samlConfig>
-
-      <sessionPolicy>
-
-        <policyAction>RaiseSessionLevel</policyAction>
-
-        <sessionLevel>HIGH_ASSURANCE</sessionLevel>
-
-        <sessionTimeout>720</sessionTimeout>
-
-      </sessionPolicy>
-
-   </ConnectedApp>
-
-```
-
-You can enter multiple callback URL values. At run time, Salesforce validates the callback URL specified by the app by matching it with
-one of the values. You must separate each callback URL with line breaks. To enter a new line programmatically, use the `\r` line break
-character.
-
-Here's an example of a ConnectedApp component with multiple callback URLs.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
-
-    <contactEmail>example@salesforce.com</contactEmail>
-
-    <label>MyConnectedApp</label>
-
-    <oauthConfig>
-
-    <callbackUrl>https://example.com/callback1
-
-   https://example.com/callback2
-
-   https://example.com/callback3</callbackUrl>
-
-    <consumerKey>3MVG9AOp4kbriZOcnmoLmTrguy9ryzcLbBjoNY...</consumerKey>
-
-    <isAdminApproved>false</isAdminApproved>
-
-```
-
-
-### Metadata Types ContentAsset
-
-```
-    <isConsumerSecretOptional>false</isConsumerSecretOptional>
-
-    <isIntrospectAllTokens>false</isIntrospectAllTokens>
-
-    <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
-
-    <scopes>Full</scopes>
-
-    <scopes>RefreshToken</scopes>
-
-    </oauthConfig>
-
-    <oauthPolicy>
-
-    <ipRelaxation>ENFORCE</ipRelaxation>
-
-    <refreshTokenPolicy>infinite</refreshTokenPolicy>
-
-    </oauthPolicy>
-
-   </ConnectedApp>
-
-```
-
-The following is an example package manifest used to deploy or retrieve the ConnectedApp metadata for an organization.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>PortalTestApp</members>
-
-        <name>ConnectedApp</name>
-
-      </types>
-
-      <version>29.0</version>
-
-   </Package>
-
-```
-
-Usage
-
-If you're constructing a SAML-enabled connected app using Metadata API, and must set the `IdP-Initiated Login URL` for
-your service provider, you have two options:
-
-You can use the service provider app ID with the `app` parameter in the following format. This value is displayed in the Salesforce user
-interface. From Setup, enter _`Connected Apps`_ in the Quick Find box, then select **Connected Apps**, then click the name of the
-connected app to see its detail page.
-
-```
-   https:// <Salesforce_base_URL> /idp/login?app= <app_id>
-
-```
-
-Or, if you're configuring the connected app using Metadata API only, you can use the `apiName` parameter of the service provider app
-in the following format. The `apiName` parameter is the `fullName` inherited from the Metadata type.
-
-```
-   https:// <Salesforce_base_URL> /idp/login?apiName= <fullName>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### ContentAsset
-
-Represents the metadata for creating an asset file. Asset files enable a Salesforce file to be used for org setup and configuration purposes.
-This type extends the MetadataWithContent metadata type and inherits its `content` and `fullName` fields.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-
-Metadata Types ContentAsset
-
-File Suffix and Directory Location
-
-ContentAsset components have the suffix `.asset` and are stored in the `contentassets` folder.
-
-Version
-
-ContentAsset components are available in API version 38.0 and later.
-
-Special Access Rules
-
-The system prevents metadata retrieval if the total size of the asset’s file content exceeds 30 MB. All pre-existing limits for packaging
-apply to asset files.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-```
-format
-
-```
-
-ContentAssetFormat Describes the format of the asset file. Valid values are:
-(enumeration of
-
-**•** `Original` —A single asset file version.
-
-type string)
-
-**•** `Original` —A single asset file version.
-
-**•** `ZippedVersions` —Contains multiple versions of the asset file.
-
-`isVisibleByExternalUsers` boolean
-
-Indicates whether unauthenticated users can see the asset file ( `true` )
-or not ( `false` ). If not specified, the default value is `false` . This field
-is available in API version 44.0 and later.
-
-`language` string Required. The language of the asset file label.
-
-`masterLabel` string Required. The label for the asset file record, which displays in Setup.
-
-`originNetwork` string For deploys, the name of the Experience Cloud site the file is assigned
-upon creation. For retrievals, the name of the Experience Cloud site the
-
-file is assigned to appears in the field value. If `null`, the file wasn’t
-assigned to an Experience Cloud site.
-
-`relationships` ContentAssetRelationships The list of ContentAssetLinks that describe whether the asset file can be
-shared with the org.
-
-`versions` ContentAssetVersions Required. Captures basic information about the file version included the
-asset metadata. Typically the file has only one version.
-
-ContentAssetRelationships
-
-Represents the relationships between an asset file and the locations it's linked with.
-
-**Field Name** **Field Type** **Description**
-
-`emailTemplate` ContentAsset[] An array of email templates the content asset is related to. This field is available
-in API version 51.0 and later.
-
-
-Metadata Types ContentAsset
-
-**Field Name** **Field Type** **Description**
-
-`insightsApplication` ContentAsset[] An array of the insights applications that use the content asset. This field is
-available in API version 39.0 and later.
-
-`network` ContentAsset[] An array of networks that use the content asset. This field is available in API
-version 39.0 and later.
-
-`organization` ContentAsset[] Stores information about sharing the asset file with the org. Maps to
-ContentDocumentLink. This field is available in API version 39.0 and later.
-
-`workspace` ContentAsset[] An array of workspaces and libraries that own or share the content asset. This
-field is available in API version 39.0 and later.
-
-ContentAssetLink
-
-Represents a relationship link for an asset file, and includes details about the level of access for the link.
-
-**Field Name** **Field Type** **Description**
-
-```
-access
-
-```
-
-ContentAssetAccess Required. The permission granted to the user of the shared file, determined by
-(enumeration of type the permission the user already has. Valid values are:
-string)
-
-**•** `VIEWER`
-
-**•** `COLLABORATOR`
-
-**•** `INFERRED`
-
-`isManagingWorkspace` boolean
-
-Indicates whether the content asset resides in the workspace or not. When
-`true`, the content asset resides in the workspace. If not specified, the default
-value is `false` . This field is available in API version 39.0 and later.
-
-`name` string Reserved for future use.
-
-ContentAssetVersions
-
-Represents information about all file versions included in the asset metadata.
-
-**Field Name** **Field Type** **Description**
-
-`version` ContentAssetVersion[] A list of file versions for the asset.
-
-ContentAssetVersion
-
-Represents information about one file version included in the asset metadata.
-
-**Field Name** **Field Type** **Description**
-
-`number` string Required. The version number. This field is based on, or sets, the ContentVersion.
-
-
-Metadata Types ContentAsset
-
-**Field Name** **Field Type** **Description**
-
-`pathOnClient` string
-
-`zipEntry` string
-
-Required. Describes the original filename of the file. This field maps to
-ContentVersion.PathOnClient. It provides the data for the ContentVersion Title
-field.
-
-If the asset file has more than one version, `format` is `ZippedVersions` .
-In this case, `zipEntry` is the name of the file within the zip. If the asset file
-has only one version, this field is empty.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a ContentAsset component.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<ContentAsset xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <masterLabel>some asset</masterLabel>
-
-   <relationships>
-
-     <organization>
-
-        <access>VIEWER</access>
-
-     </organization>
-
-   </relationships>
-
-   <versions>
-
-     <version>
-
-        <number>1</number>
-
-        <pathOnClient>some asset.txt</pathOnClient>
-
-     </version>
-
-   </versions>
-
-</ContentAsset>
-
-```
-
-For assets that include just one version, the format field can be omitted or specified with the value as `Original` . File assets with more
-than one version have versions wrapped in a zip file.
-
-The following is an example `package.xml` that references the previous definition.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <types>
-
-     <members>MyAsset</members>
-
-     <name>ContentAsset</name>
-
-   </types>
-
-   <version>66.0</version>
-
-</Package>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-
-### Metadata Types ContentTypeBundle ContentTypeBundle
-
-Represents the definition of enhanced custom content types for use with enhanced CMS workspaces. When you create an enhanced
-custom content type, deploy this bundle to your org. Enhanced custom content types are displayed as forms with defined fields. When
-deployed, enhanced custom content types are available for use with enhanced LWR site channels. To use enhanced custom content
-types with Aura and non-enhanced LWR site channels, use enhanced CMS workspaces resources.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-Parent Type
-
-This type extends the Metadata type and inherits its `fullName` field.
-
-### ContentTypeBundle Structure and Directory Location ContentTypeBundle components are stored in the contentTypes folder. Here’s an example of how the folder is structured.
-
-```
-   +--myMetadataPackage
-
-      +--contentTypes (1)
-
-        +--bbHost (2)
-
-          +--schema.json (3)
-
-```
-
-**•** The contentTypes folder (1) contains a folder for each enhanced custom content type.
-
-**•** Each enhanced custom content type folder is named in the format _`contentTypeName`_ . In this example (2), the name is _`bbHost`_ .
-
-**•** Each contentTypeName folder contains a JSON file, `schema.json` (3), that defines the enhanced custom content type. The JSON
-file contains a title and one or more Lightning property types. Use this file to edit the properties of the enhanced custom content
-type on your local machine or scratch org and then deploy it.
-
-Version
-
-### ContentTypeBundle components are available in version 64.0 and later.
-
-Special Access Rules
-
-### ContentTypeBundle is available only when Salesforce CMS and digital experiences are enabled for your org.
-
-Fields
-
-**Name** **Description**
-
-```
-description
-
-```
-
-**Type**
-string
-
-**Description**
-Explanatory text about the content type.
-
-
-Metadata Types ContentTypeBundle
-
-**Name** **Description**
-
-```
-masterLabel
-
-resources
-
-```
-
-**Type**
-string
-
-**Description**
-Required.
-
-A name for ContentTypeBundle, which is defined when the ContentTypeBundle is
-created.
-
-**Type**
-
-ContentTypeBundleResource[]
-
-**Description**
-A list of source files in the ContentTypeBundle folder.
-
-ContentTypeBundleResource
-
-Represents the resource file inside the ContentTypeBundle.
-
-**Name** **Description**
-
-```
-fileName
-
-filePath
-
-source
-
-```
-
-**Type**
-string
-
-**Description**
-Required.
-
-The name of the resource file.
-
-**Type**
-string
-
-**Description**
-Required.
-
-The path to the resource.
-
-**Type**
-base64Binary
-
-**Description**
-Required.
-
-The content of the resource.
-
-
-Metadata Types ContentTypeBundle
-
-Declarative Metadata Sample Definition
-
-This `package.xml` retrieves all of the ContentTypeBundle components in an org.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>*</members>
-
-        <name>ContentTypeBundle</name>
-
-      </types>
-
-      <version>64.0</version>
-
-   </Package>
-
-```
-
-In the retrieved `.zip` file, each enhanced custom content type is nested under a contentTypes folder.
-
-This example shows the directory structure in the `.zip` file of an enhanced custom content type. The enhaced custom content type
-is named bbHost and in this example it represents the profile of a bed and breakfast host.
-
-```
-   contentTypes
-
-      bbHost
-
-        schema.json
-
-```
-
-Here are the example contents of the `schema.json` file in the contentTypes directory. The bbHost is a complex type that includes
-subproperties for `fullName`, `aboutMe`, `interests`, `profilePicture`, `dateOfBirth`, `lastModified`,
-`personalWebsite`, `hostIdentityVerified`, `hostingExperienceInYears`, `rating`, `residenceCountry`,
-and `preferredModeOfContact` . Each subproperty is a primitive type. The subproperty types included in the `schema.json`
-file are completely configurable and must include a `lightning:type` for each property.
-
-```
-   {
-
-     "title": "Bed & Breakfast Host",
-
-     "description": "Schema for capturing B&B host details",
-
-     "lightning:type": "lightning__objectType",
-
-     "lightning:mixinTypes": {
-
-      "sfdc_cms:metadataContent": {}
-
-     },
-
-     "properties": {
-
-      "fullName": {
-
-       "title": "Full Name",
-
-       "lightning:type": "lightning__textType",
-
-       "lightning:textIndexed": true,
-
-       "minLength": 5,
-
-       "maxLength": 50,
-
-       "lightning:uiOptions": {
-
-        "placeholderText": "Enter your full name (e.g., John Doe)"
-
-       },
-
-       "lightning:localizable": false
-
-      },
-
-      "aboutMe": {
-
-       "title": "About Me",
-
-       "lightning:type": "lightning__richTextType",
-
-       "minLength": 10,
-
-       "maxLength": 3000,
-
-       "lightning:textIndexed": false,
-
-       "lightning:uiOptions": {
-
-        "placeholderText": "Write something about yourself"
-
-```
-
-
-Metadata Types ContentTypeBundle
-
-```
-       },
-
-       "lightning:localizable": true
-
-      },
-
-      "interests": {
-
-       "title": "Interests and Hobbies",
-
-       "lightning:type": "lightning__multilineTextType",
-
-       "lightning:textIndexed": true,
-
-       "minLength": 10,
-
-       "maxLength": 500,
-
-       "lightning:uiOptions": {
-
-        "placeholderText": "Summarize your interests and hobbies in a few lines"
-
-       },
-
-       "lightning:localizable": true
-
-      },
-
-      "profilePicture": {
-
-       "title": "Profile Picture",
-
-       "lightning:type": "lightning__imageType",
-
-       "lightning:uiOptions": {
-
-        "placeholderText": "Upload a professional headshot"
-
-       },
-
-       "lightning:localizable": false
-
-      },
-
-      "dateOfBirth": {
-
-       "title": "Date of Birth",
-
-       "lightning:type": "lightning__dateType",
-
-       "lightning:localizable": true,
-
-       "lightning:uiOptions": {
-
-        "placeholderText": "Select your date of birth"
-
-       }
-
-      },
-
-      "lastModified": {
-
-       "title": "Last Profile Update",
-
-       "lightning:type": "lightning__dateTimeType",
-
-       "lightning:localizable": false,
-
-       "lightning:uiOptions": {
-
-        "placeholderText": "Auto-filled on profile update"
-
-       }
-
-      },
-
-      "personalWebsite": {
-
-       "title": "Personal Website",
-
-       "lightning:type": "lightning__urlType",
-
-       "lightning:localizable": false,
-
-       "lightning:uiOptions": {
-
-        "placeholderText": "https://yourwebsite.com"
-
-       }
-
-      },
-
-      "hostIdentityVerified": {
-
-       "title": "Host Identity Verified",
-
-       "lightning:type": "lightning__booleanType",
-
-       "lightning:uiOptions": {
-
-        "placeholderText": "Check if host identity is verified"
-
-       }
-
-      },
-
-      "hostingExperienceInYears": {
-
-```
-
-
-Metadata Types ContentTypeBundle
-
-```
-       "title": "Years of Experience hosting B&B",
-
-       "lightning:type": "lightning__integerType",
-
-       "minimum": 0,
-
-       "maximum": 50,
-
-       "lightning:localizable": false,
-
-       "lightning:uiOptions": {
-
-        "placeholderText": "Enter total years of experience being a B&B host"
-
-       }
-
-      },
-
-      "rating": {
-
-       "title": "Rating",
-
-       "lightning:type": "lightning__numberType",
-
-       "minimum": 0.0,
-
-       "maximum": 5.0,
-
-       "lightning:localizable": false,
-
-       "lightning:uiOptions": {
-
-        "placeholderText": "e.g., 4.5"
-
-       }
-
-      },
-
-      "residenceCountry": {
-
-       "title": "Country of Residence",
-
-       "lightning:type": "lightning__textType",
-
-       "const": ["India"]
-
-      },
-
-      "preferredModeOfContact": {
-
-       "title": "Preferred Mode of Contact",
-
-       "lightning:type": "lightning__textType",
-
-       "enum": ["email", "SMS", "phone"],
-
-       "lightning:uiOptions": {
-
-        "placeholderText": "Choose your preferred mode of contact"
-
-       }
-
-      }
-
-     },
-
-     "required": ["fullName", "hostIdentityVerified"]
-
-```
-
-Usage
-
-For each custom content type that you create, you must also create a CMS content page created in the enhanced LWR, LWR, or Aura
-[site that displays the content. Each content page serves as the detail page for all content of a single content type. See Create Custom](https://help.salesforce.com/articleView?id=community_builder_create_page.htm&language=en_US)
-[Site Pages with Experience Builder.](https://help.salesforce.com/articleView?id=community_builder_create_page.htm&language=en_US)
-
-To use enhanced custom content types with Aura and non-enhanced LWR site channels, use the enhanced CMS workspaces resources
-[for CMS Delivery Contents](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/connect_resources_cms_delivery_contents.htm) [and CMS Delivery Content.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/connect_resources_cms_delivery_content.htm)
-
-Wildcard Support in the Manifest
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving with the Zip .
-
-
-### Metadata Types ContextDefinition ContextDefinition
-
-Represents the details of a context definition that describe the relationship between the node structures within a context.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-Parent Type
-
-[This type extends the Metadata metadata type and inherits its](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/metadata.htm) `fullName` field.
-
-File Suffix and Directory Location
-
-### ContextDefinition components have the suffix .contextDefinition and are stored in the contextDefinitions folder.
-
-Version
-
-### ContextDefinition components are available in API version 59.0 and later.
-
-Special Access Rules
-
-Enable the organization preference ContextDefinitionsEnabled to access the ContextDefinition metadata type.
-
-Fields
-
-**Field Name** **Description**
-
-```
-canBeReferenceDefinition
-
-clonedFrom
-
-contextDefinitionReferences
-
-```
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether the context definition can be referred by other context definitions
-( `true` ) or not ( `false` ). Available in API version 63.0 and later.
-
-The default value is `false` .
-
-**Field Type**
-string
-
-**Description**
-The name of the context definition that's used to clone the current context definition.
-
-**Field Type**
-### ContextDefinitionReference[]
-
-**Description**
-References of the context definition.
-
-
-Metadata Types ContextDefinition
-
-**Field Name** **Description**
-
-```
-contextDefinitionVersions
-
-contextTtl
-
-description
-
-hasSystemTags
-
-inheritedFrom
-
-inheritedFromVersion
-
-isProtected
-
-```
-
-**Field Type**
-
-ContextDefinitionVersion[]
-
-**Description**
-Version of the context definition.
-
-**Field Type**
-int
-
-**Description**
-
-Duration to persist the data, which is loaded in the run-time context instances created
-by this context definition, in the cache.
-
-The default value is 10 minutes.
-
-**Field Type**
-string
-
-**Description**
-Description of the context definition.
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether the context definition has system tags ( `true` ) or not ( `false` ).
-Available in API version 63.0 and later.
-
-The default value is `false` .
-
-**Field Type**
-string
-
-**Description**
-Name of the parent context definition that's used to derive the current context
-definition.
-
-**Field Type**
-string
-
-**Description**
-Version number of the parent definition that's used to derive the current context
-definition.
-
-**Field Type**
-boolean
-
-**Description**
-Auto-generated value that doesn’t impact the behavior of the metadata type.
-
-
-Metadata Types ContextDefinition
-
-**Field Name** **Description**
-
-```
-masterLabel
-
-title
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-User-friendly name for the context definition, which is defined when the context
-definition is created.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-Name of the context definition.
-
-ContextDefinitionReference
-
-Represents details about the context definition reference.
-
-**Field Name** **Description**
-
-```
-inheritedFrom
-
-referenceContextDefinition
-
-```
-
-**Field Type**
-string
-
-**Description**
-ID of the parent context definition reference that's used to derive the current context
-definition reference.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-ID or name of the referred context definition.
-
-ContextDefinitionVersion
-
-Represents details about the context definition version. Only one version can be active at a time.
-
-**Field Name** **Description**
-
-```
-contextMappings
-
-```
-
-**Field Type**
-
-ContextMapping[]
-
-
-Metadata Types ContextDefinition
-
-**Field Name** **Description**
-
-**Description**
-Mapping of attributes and nodes to related objects.
-
-```
-contextNodes
-
-endDate
-
-isActive
-
-startDate
-
-versionNumber
-
-```
-
-ContextMapping
-
-**Field Type**
-
-ContextNode[]
-
-**Description**
-Details of the structure of the nodes within the context.
-
-**Field Type**
-string
-
-**Description**
-Date and time when the context definition version becomes inactive.
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether the context definition version is active ( `true` ) or not ( `false` ).
-
-The default value is `false` .
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-Date and time when the context definition version becomes active.
-
-**Field Type**
-int
-
-**Description**
-
-Required.
-
-Version number of the context definition.
-
-Represents the mapping of attributes and nodes to related objects.
-
-**Field Name** **Description**
-
-```
-contextMappingIntents
-
-```
-
-**Field Type**
-
-ContextMappingIntent[]
-
-**Description**
-Purpose associated to a context mapping.
-
-
-Metadata Types ContextDefinition
-
-**Field Name** **Description**
-
-```
-contextNodeMappings
-
-default
-
-description
-
-inheritedFrom
-
-title
-
-```
-
-ContextMappingIntent
-
-**Field Type**
-
-ContextNodeMapping[]
-
-**Description**
-Mapping of the node in the context and values in the input schema.
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether the mapping for a context definition version is default ( `true` ) or
-not ( `false` ).
-
-The default value is `false` .
-
-**Field Type**
-string
-
-**Description**
-Description of the context mapping.
-
-**Field Type**
-string
-
-**Description**
-Name of the parent mapping that's used to derive the current mapping.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-Name of the context mapping.
-
-Represents the purpose associated to a context mapping.
-
-**Field Name** **Description**
-
-```
-mappingIntent
-
-```
-
-**Field Type**
-ContextMappingIntentType (enumeration of type string)
-
-**Description**
-
-Required.
-
-Specifies the purpose that's used to identify the type of context mapping required.
-
-Valid values are:
-
-
-Metadata Types ContextDefinition
-
-**Field Name** **Description**
-
-**•** `hydration`
-
-**•** `association`
-
-**•** `persistence`
-
-**•** `translation`
-
-ContextNodeMapping
-
-Represents the relationship between the node in the context and values in the input schema.
-
-**Field Name** **Description**
-
-```
-contextAttributeMappings
-
-contextNode
-
-contextNodeAttrDictionaries
-
-inheritedFrom
-
-mappedContextDefinition
-
-object
-
-```
-
-**Field Type**
-
-ContextAttributeMapping[]
-
-**Description**
-Mapping of the attribute defined in the context and the values in the related objects.
-
-**Field Type**
-string
-
-**Description**
-Context node record associated with the context node mapping.
-
-**Field Type**
-
-ContextNodeAttrDictionary[]
-
-**Description**
-Facilitates relationships between context node mapping and context dictionary.
-Additionally, it records the relationship between context node and context dictionary.
-
-**Field Type**
-string
-
-**Description**
-Name of the parent context node mapping that's used to derive the current context
-node mapping.
-
-**Field Type**
-string
-
-**Description**
-API name of the context definition for existing context-to-context mappings.
-
-**Field Type**
-string
-
-**Description**
-Name of the object used for the mapping.
-
-
-Metadata Types ContextDefinition
-
-ContextAttributeMapping
-
-Represents the relationship between the attributes defined in the context and the values in the related objects.
-
-**Field Name** **Description**
-
-```
-contextAttrHydrationDetails
-
-contextAttribute
-
-contextInputAttributeName
-
-ctxAttrHydrationCtxs
-
-inheritedFrom
-
-```
-
-**Field Type**
-
-ContextAttrHydrationDetail[]
-
-**Description**
-Details of the SOQL (database) queries that fetch data for a chosen attribute from the
-input schema.
-
-**Field Type**
-string
-
-**Description**
-Context attribute record associated with the context attribute mapping.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-Name of the input attribute.
-
-**Field Type**
-
-CtxAttrHydrationCtx[]
-
-**Description**
-Query that fetches data for a chosen attribute from the input schema for
-context-to-context mapping.
-
-**Field Type**
-string
-
-**Description**
-Name of the parent context attribute mapping that's used to derive the current context
-attribute mapping.
-
-ContextAttrHydrationDetail
-
-Represents the SOQL (database) queries that fetch data for a chosen attribute from the input schema.
-
-**Field Name** **Description**
-
-```
-contextAttrHydrationDetails
-
-```
-
-**Field Type**
-
-ContextAttrHydrationDetail[]
-
-
-Metadata Types ContextDefinition
-
-**Field Name** **Description**
-
-**Description**
-Details of the query that fetches the data for the specific query attribute.
-
-```
-inheritedFrom
-
-objectName
-
-queryAttribute
-
-```
-
-CtxAttrHydrationCtx
-
-**Field Type**
-string
-
-**Description**
-Name of the parent context attribute hydration detail that's used to derive the current
-context attribute hydration detail.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-Name of the object used for the attribute hydration detail.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-The SOQL query that is the source of the hydration.
-
-Represents the queries that fetch data for a chosen attribute from the input schema for context-to-context mapping.
-
-**Field Name** **Description**
-
-```
-contextQueryAttribute
-
-inheritedFrom
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-Attribute in context definition that's the source of context hydration.
-
-**Field Type**
-string
-
-**Description**
-Name of the parent context attribute hydration detail that's used to derive the current
-context attribute.
-
-
-Metadata Types ContextDefinition
-
-ContextNodeAttrDictionary
-
-Represents the relationship between a context node and the context attribute dictionary.
-
-**Field Name** **Description**
-
-```
-contextAttrDictIdentifier
-
-contextNodeTagPrefix
-
-```
-
-ContextNode
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-Developer name of the context attribute dictionary.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-Tag prefix of the context node that's used to create the unique identifier of the parent
-context node.
-
-Represents details of the structure of the nodes within the context. Each node can have other nodes related to them and attributes to
-describe the object. You can also define a hierarchy for the nodes.
-
-**Field Name** **Description**
-
-```
-canonicalNode
-
-contextAttributes
-
-contextNodeAttrDictionaries
-
-contextTags
-
-```
-
-**Field Type**
-string
-
-**Description**
-Canonical node that's associated with the context node.
-
-**Field Type**
-
-ContextAttribute[]
-
-**Description**
-Details of the attribute used to describe the context node.
-
-**Field Type**
-
-ContextNodeAttrDictionary[]
-
-**Description**
-Facilitates relationships between context node and context dictionary. Additionally,
-it records the relationship between context node and context dictionary.
-
-**Field Type**
-
-ContextTag[]
-
-
-Metadata Types ContextDefinition
-
-**Field Name** **Description**
-
-**Description**
-Unique identifier of the attribute or node.
-
-```
-displayName
-
-inheritedFrom
-
-title
-
-transposable
-
-```
-
-ContextAttribute
-
-**Field Type**
-string
-
-**Description**
-Display name of the context node.
-
-**Field Type**
-string
-
-**Description**
-Name of the parent context node that's used to derive the current context node.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-Name of the context node.
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether the data in the Context Node record can be converted to field names
-( `true` ) or not ( `false` ).
-
-The default value is `false` .
-
-Represents details of an attribute used to describe a context node. Each node can have one or many associated attributes.
-
-**Field Name** **Description**
-
-```
-contextTags
-
-dataType
-
-```
-
-**Field Type**
-
-ContextTag[]
-
-**Description**
-Shortened name of the attribute or node.
-
-**Field Type**
-ContextAttributeDataType (enumeration of type string)
-
-**Description**
-
-Required.
-
-
-Metadata Types ContextDefinition
-
-**Field Name** **Description**
-
-Type of data that's stored in the context attribute.
-
-Valid values are:
-
-**•** `boolean`
-
-**•** `currency`
-
-**•** `date`
-
-**•** `datetime`
-
-**•** `number`
-
-**•** `percent`
-
-**•** `picklist`
-
-**•** `reference`
-
-**•** `string`
-
-**•** `selfreference` —Available in API version 63.0 and later.
-
-```
-description
-
-displayName
-
-domainSet
-
-fieldType
-
-```
-
-**Field Type**
-string
-
-**Description**
-Description of the context attribute.
-
-**Field Type**
-string
-
-**Description**
-Display name of the context attribute.
-
-**Field Type**
-string
-
-**Description**
-List of node references to show the parent-child relationship between the nodes in a
-definition.
-
-**Field Type**
-ContextAttributeFieldType (enumeration of type string)
-
-**Description**
-
-Required.
-
-List of node references to depict the parent-child relation between the nodes in a
-definition.
-
-Valid values are:
-
-**•** `aggregate`
-
-**•** `input`
-
-**•** `inputoutput`
-
-**•** `output`
-
-
-Metadata Types ContextDefinition
-
-**Field Name** **Description**
-
-```
-inheritedFrom
-
-key
-
-title
-
-transient
-
-value
-
-```
-
-ContextTag
-
-**Field Type**
-string
-
-**Description**
-Name of the parent attribute that's used to derive the current attribute.
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether the attribute is a key attribute in the node ( `true` ) or not ( `false` ).
-
-The default value is `false` .
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-Name of the context attribute.
-
-**Field Type**
-boolean
-
-**Description**
-Indicates if an attribute is skipped in context persistence ( `true` ) or not ( `false` ).
-Available in API version 63.0 and later.
-
-The default value is `false` .
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether the attribute identifies as a value in a node ( `true` ) or not ( `false` ).
-
-The default value is `false` .
-
-Represents a unique identifier of an attribute or node instead of a fully qualified tag structure name.
-
-**Field Name** **Description**
-
-```
-title
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-
-Metadata Types ContextDefinition
-
-**Field Name** **Description**
-
-Name of the context tag.
-
-```
-inheritedFrom
-
-```
-
-**Field Type**
-string
-
-**Description**
-Name of the parent context tag that's used to derive the current context tag.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a ContextDefinition component.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<ContextDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <fullName>Test</fullName>
-
-   <contextDefinitionVersions>
-
-     <contextMappings>
-
-        <contextNodeMappings>
-
-          <contextNodeAttrDictionaries>
-
-            <contextAttrDictIdentifier>Context Attribute Dictionary
-
-Name</contextAttrDictIdentifier>
-
-            <contextNodeTagPrefix>Context Node Tag Prefix</contextNodeTagPrefix>
-
-          </contextNodeAttrDictionaries>
-
-          <contextAttributeMappings>
-
-            <contextAttrHydrationDetails>
-
-               <objectName>CustomAccount__c</objectName>
-
-               <queryAttribute>Name</queryAttribute>
-
-<inheritedFrom>StandardDefinition/version/CustomAccountMapping/Praneeth/AccountName/hydrationInfo-1</inheritedFrom>
-
-            </contextAttrHydrationDetails>
-
-            <ctxAttrHydrationCtxs>
-
-               <contextQueryAttribute>StandardDefinition</contextQueryAttribute>
-
-<inheritedFrom>StandardDefinition/version/AccountMapping/Praneeth/AccountName/ctxToCtxhydrationInfo-1</inheritedFrom>
-
-            </ctxAttrHydrationCtxs>
-
-            <contextAttribute>AccountName</contextAttribute>
-
-            <contextInputAttributeName>AccountName</contextInputAttributeName>
-
-<inheritedFrom>StandardDefinition/version/CustomAccountMapping/Praneeth/AccountName</inheritedFrom>
-
-          </contextAttributeMappings>
-
-          <contextAttributeMappings>
-
-            <contextAttrHydrationDetails>
-
-               <objectName>CustomAccount__c</objectName>
-
-               <queryAttribute>CustomAccountName__c</queryAttribute>
-
-<inheritedFrom>StandardDefinition/version/CustomAccountMapping/Praneeth/CustomAccountName/hydrationInfo-1</inheritedFrom>
-
-```
-
-
-Metadata Types ContextDefinition
-
-```
-               </contextAttrHydrationDetails>
-
-               <ctxAttrHydrationCtxs>
-
-                  <contextQueryAttribute>StandardDefinition</contextQueryAttribute>
-
-   <inheritedFrom>StandardDefinition/version/AccountMapping/Praneeth/AccountName/ctxToCtxhydrationInfo-1</inheritedFrom>
-
-               </ctxAttrHydrationCtxs>
-
-               <contextAttribute>CustomAccountName</contextAttribute>
-
-             <contextInputAttributeName>CustomAccountName</contextInputAttributeName>
-
-   <inheritedFrom>StandardDefinition/version/CustomAccountMapping/Praneeth/CustomAccountName</inheritedFrom>
-
-             </contextAttributeMappings>
-
-             <contextNode>Praneeth</contextNode>
-
-             <object>CustomAccount__c</object>
-
-   <inheritedFrom>StandardDefinition/version/CustomAccountMapping/Praneeth</inheritedFrom>
-
-            <mappedContextDefinition>CustomContextDefinition</mappedContextDefinition>
-
-           </contextNodeMappings>
-
-           <contextMappingIntents>
-
-             <mappingIntent>hydration</mappingIntent>
-
-           </contextMappingIntents>
-
-           <default>true</default>
-
-           <title>CustomAccountMapping</title>
-
-          <inheritedFrom>StandardDefinition/version/CustomAccountMapping</inheritedFrom>
-
-        </contextMappings>
-
-        <contextMappings>
-
-           <contextNodeMappings>
-
-             <contextNodeAttrDictionaries>
-
-               <contextAttrDictIdentifier>Context Attribute Dictionary
-
-   Name</contextAttrDictIdentifier>
-
-               <contextNodeTagPrefix>Context Node Tag Prefix</contextNodeTagPrefix>
-
-             </contextNodeAttrDictionaries>
-
-             <contextAttributeMappings>
-
-               <contextAttrHydrationDetails>
-
-                  <objectName>Account</objectName>
-
-                  <queryAttribute>Name</queryAttribute>
-
-   <inheritedFrom>StandardDefinition/version/AccountMapping/Praneeth/CustomAccountName/AccountName/hydrationInfo-1</inheritedFrom>
-
-               </contextAttrHydrationDetails>
-
-               <ctxAttrHydrationCtxs>
-
-                  <contextQueryAttribute>StandardDefinition</contextQueryAttribute>
-
-   <inheritedFrom>StandardDefinition/version/AccountMapping/Praneeth/AccountName/ctxToCtxhydrationInfo-1</inheritedFrom>
-
-               </ctxAttrHydrationCtxs>
-
-               <contextAttribute>AccountName</contextAttribute>
-
-               <contextInputAttributeName>AccountName</contextInputAttributeName>
-
-```
-
-
-Metadata Types ContextDefinition
-
-```
-   <inheritedFrom>StandardDefinition/version/AccountMapping/Praneeth/CustomAccountName/AccountName</inheritedFrom>
-
-             </contextAttributeMappings>
-
-             <contextAttributeMappings>
-
-               <contextAttrHydrationDetails>
-
-                  <objectName>Account</objectName>
-
-                  <queryAttribute>CustomAccountName__c</queryAttribute>
-
-   <inheritedFrom>StandardDefinition/version/AccountMapping/Praneeth/CustomAccountName/hydrationInfo-1</inheritedFrom>
-
-               </contextAttrHydrationDetails>
-
-               <ctxAttrHydrationCtxs>
-
-                  <contextQueryAttribute>StandardDefinition</contextQueryAttribute>
-
-   <inheritedFrom>StandardDefinition/version/AccountMapping/Praneeth/AccountName/ctxToCtxhydrationInfo-1</inheritedFrom>
-
-               </ctxAttrHydrationCtxs>
-
-               <contextAttribute>CustomAccountName</contextAttribute>
-
-             <contextInputAttributeName>CustomAccountName</contextInputAttributeName>
-
-   <inheritedFrom>StandardDefinition/version/AccountMapping/Praneeth/CustomAccountName</inheritedFrom>
-
-             </contextAttributeMappings>
-
-             <contextNode>Praneeth</contextNode>
-
-             <object>Account</object>
-
-   <inheritedFrom>StandardDefinition/version/AccountMapping/Praneeth</inheritedFrom>
-
-            <mappedContextDefinition>CustomContextDefinition</mappedContextDefinition>
-
-           </contextNodeMappings>
-
-           <contextMappingIntents>
-
-             <mappingIntent>persistence</mappingIntent>
-
-           </contextMappingIntents>
-
-           <description>Account Mapping</description>
-
-           <default>false</default>
-
-           <title>AccountMapping</title>
-
-           <inheritedFrom>StandardDefinition/version/AccountMapping</inheritedFrom>
-
-        </contextMappings>
-
-        <contextNodes>
-
-           <contextNodeAttrDictionaries>
-
-             <contextAttrDictIdentifier>Context Attribute Dictionary
-
-   Name</contextAttrDictIdentifier>
-
-             <contextNodeTagPrefix>Context Node Tag Prefix</contextNodeTagPrefix>
-
-           </contextNodeAttrDictionaries>
-
-           <contextAttributes>
-
-             <contextTags>
-
-               <title>AccountName</title>
-
-   <inheritedFrom>StandardDefinition/version/Praneeth/AccountName/AccountName</inheritedFrom>
-
-             </contextTags>
-
-```
-
-
-Metadata Types ContextDefinition
-
-```
-             <dataType>string</dataType>
-
-             <fieldType>inputoutput</fieldType>
-
-             <key>false</key>
-
-             <title>AccountName</title>
-
-             <displayName>AccountName</displayName>
-
-             <description>Test Description</description>
-
-             <value>false</value>
-
-   <inheritedFrom>StandardDefinition/version/Praneeth/AccountName</inheritedFrom>
-
-           </contextAttributes>
-
-           <contextAttributes>
-
-             <dataType>string</dataType>
-
-             <fieldType>inputoutput</fieldType>
-
-             <key>false</key>
-
-             <title>CustomAccountName</title>
-
-             <value>false</value>
-
-             <displayName>CustomAccountName</displayName>
-
-             <description>Test Description</description>
-
-   <inheritedFrom>StandardDefinition/version/Praneeth/CustomAccountName</inheritedFrom>
-
-           </contextAttributes>
-
-           <contextTags>
-
-             <title>Praneeth</title>
-
-            <inheritedFrom>StandardDefinition/version/Praneeth/Praneeth</inheritedFrom>
-
-           </contextTags>
-
-           <title>Praneeth</title>
-
-           <transposable>false</transposable>
-
-           <inheritedFrom>StandardDefinition/version/Praneeth</inheritedFrom>
-
-           <canonicalNode></canonicalNode>
-
-           <displayName>Praneeth</displayName>
-
-        </contextNodes>
-
-        <endDate>2097-05-10 00:00:00</endDate>
-
-        <startDate>2023-05-10 00:00:00</startDate>
-
-        <versionNumber>1</versionNumber>
-
-        <isActive>true</isActive>
-
-      </contextDefinitionVersions>
-
-      <description>Test Description</description>
-
-      <contextTtl>10</contextTtl>
-
-      <inheritedFrom>StandardDefinition</inheritedFrom>
-
-      <inheritedFromVersion>1.0</inheritedFromVersion>
-
-      <clonedFrom>OriginalDefinition</clonedFrom>
-
-      <isProtected>false</isProtected>
-
-      <masterLabel>Test Label</masterLabel>
-
-      <title>TestTitle</title>
-
-      <displayName>TestTitle</displayName>
-
-   </ContextDefinition>
-
-```
-
-The following is an example `package.xml` that references the previous definition.
-
-```
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>Test</members>
-
-        <name>ContextDefinition</name>
-
-      </types>
-
-```
-
-
-### Metadata Types ConversationMessageDefinition
-
-```
-      <types>
-
-        <members>Account.CustomAccountName__c</members>
-
-        <name>CustomField</name>
-
-      </types>
-
-      <types>
-
-        <members>CustomAccount__c</members>
-
-        <name>CustomObject</name>
-
-      </types>
-
-      <version>64.0</version>
-
-   </Package>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-[manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/file_based_zip_file.htm)
-
-### ConversationMessageDefinition
-
-Represents a messaging component in an Enhanced Messaging channel or Messaging for In-App and Web session.
-
-Parent Type
-
-[This type extends the Metadata metadata type and inherits its](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/metadata.htm) `fullName` field.
-
-File Suffix and Directory Location
-
-### ConversationMessageDefinition components have the suffix .conversationMessageDefinition and are
-
-stored in the `conversationMessageDefinitions` folder.
-
-Version
-
-### ConversationMessageDefinition is supported for use in enhanced Messaging channels and Messaging for In-App and
-
-Web, and is available in API version 59.0 and later.
-
-Fields
-
-**Field Name** **Description**
-
-```
-constants
-
-description
-
-```
-
-**Field Type**
-
-ConversationMessageConstant[]
-
-**Description**
-An array of constants that defines the messaging components. Constants support
-multiple data types, including text, URL, and image.
-
-**Field Type**
-string
-
-
-Metadata Types ConversationMessageDefinition
-
-**Field Name** **Description**
-
-**Description**
-The description of the conversation message definition.
-
-```
-label
-
-language
-
-messageHandlers
-
-messageLayouts
-
-optionsParameter
-
-parameters
-
-type
-
-```
-
-**Field Type**
-string
-
-**Description**
-A user-friendly name for `ConversationMessageDefinition`, which is defined
-when `ConversationMessageDefinition` is created.
-
-**Field Type**
-string
-
-**Description**
-The language of the conversation message definition.
-
-**Field Type**
-
-ConversationMessageHandler[]
-
-**Description**
-An array of message handlers.
-
-**Field Type**
-
-ConversationMessageLayout[]
-
-**Description**
-An array of message layouts.
-
-**Field Type**
-
-ConversationMessageOptionsParameter[]
-
-**Description**
-An array of options parameter of the `ConversationMessageDefinition` .
-
-**Field Type**
-
-ConversationMessageParameter[]
-
-**Description**
-An array of parameters.
-
-**Field Type**
-ConversationMessageDefinitionType (enumeration of type string)
-
-**Description**
-
-Required. The type of the conversation message definition. Valid values are:
-
-**•** `Action`
-
-**•** `ApexForm`
-
-**•** `AuthenticationRequest`
-
-
-Metadata Types ConversationMessageDefinition
-
-**Field Name** **Description**
-
-**•** `AutoResponse`
-
-**•** `Link`
-
-**•** `Notification`
-
-**•** `PaymentRequest`
-
-**•** `Picklist`
-
-**•** `RecordPicker`
-
-**•** `RecordView`
-
-**•** `TimePicker`
-
-ConversationMessageConstant
-
-Represents a constant value on the messaging component. When a messaging component is created in the UI, the text and images
-entered during creation are saved as standard constants. Custom constants can also be added.
-
-**Field Name** **Description**
-
-```
-compositeValues
-
-constantType
-
-label
-
-name
-
-```
-
-**Field Type**
-
-ConversationMessageConstantCompositeValue[]
-
-**Description**
-An array of composite values of `ConversationMessageConstant` .
-
-**Field Type**
-ConversationMessageConstantType (enumeration of type string)
-
-**Description**
-
-Required. The conversation message constant type. Valid values are:
-
-**•** `Custom`
-
-**•** `Image`
-
-**•** `Options`
-
-**•** `SubTitle`
-
-**•** `Title`
-
-**•** `Url`
-
-**Field Type**
-string
-
-**Description**
-The UI label of the conversation message constant.
-
-**Field Type**
-string
-
-
-Metadata Types ConversationMessageDefinition
-
-**Field Name** **Description**
-
-**Description**
-The name of the conversation message constant.
-
-```
-primitiveValues
-
-valueType
-
-```
-
-**Field Type**
-
-ConversationMessageConstantPrimitiveValue (enumeration of type string)
-
-**Description**
-An array of primitive values of `ConversationMessageConstant` .
-
-**Field Type**
-ConversationMessageValueType (enumeration of type string)
-
-**Description**
-
-The type of the conversation message constant value. Valid values are:
-
-**•** `Boolean`
-
-**•** `Date`
-
-**•** `DateTime`
-
-**•** `Double`
-
-**•** `ImageId`
-
-**•** `Integer`
-
-**•** `RecordId`
-
-**•** `Text`
-
-**•** `Url`
-
-ConversationMessageConstantCompositeValue
-
-Represents the composite values of the ConversationMessageConstant.
-
-**Field Name** **Description**
-
-```
-constantItems
-
-identifier
-
-```
-
-**Field Type**
-
-ConversationMessageConstant[]
-
-**Description**
-An array of constant items.
-
-**Field Type**
-string
-
-**Description**
-Required. The client identifier.
-
-
-Metadata Types ConversationMessageDefinition
-
-ConversationMessageConstantPrimitiveValue
-
-Represents the primitive values of the ConversationMessageConstant.
-
-**Field Name** **Description**
-
-```
-contentAssetName
-
-textValue
-
-type
-
-urlValue
-
-```
-
-**Field Type**
-string
-
-**Description**
-Represents the value for type = ImageAsset
-
-**Field Type**
-string
-
-**Description**
-Represents the value for type = Text
-
-**Field Type**
-ConversationMessageConstantValueType (enumeration of type string)
-
-**Description**
-
-Required. The type of the conversation message constant primitive value. Valid values
-are:
-
-**•** `ImageAsset`
-
-**•** `Text`
-
-**•** `Url`
-
-**Field Type**
-string
-
-**Description**
-Represents the value for type = Url
-
-ConversationMessageHandler
-
-Represents the conversation message handler.
-
-**Field Name** **Description**
-
-```
-activeRequestDurationMinutes
-
-handlerName
-
-```
-
-**Field Type**
-int
-
-**Description**
-Required. The duration of an active request in minutes.
-
-**Field Type**
-string
-
-
-Metadata Types ConversationMessageDefinition
-
-**Field Name** **Description**
-
-**Description**
-Required. The name of the message handler.
-
-```
-handlerType
-
-```
-
-**Field Type**
-ConversationMessageHandlerType (enumeration of type string)
-
-**Description**
-
-Required. The type of message handler. Valid values are:
-
-**•** `ApexFormProvider` . Available in API version 65.0 and later.
-
-**•** `AuthProvider`
-
-**•** `PaymentProvider`
-
-**•** `QuickAction`
-
-**•** `Survey` . Available in API version 65.0 and later.
-
-ConversationMessageLayout
-
-Represents the conversation message layout.
-
-**Field Name** **Description**
-
-```
-externalTemplates
-
-formatType
-
-```
-
-**Field Type**
-
-ConvMsgExternalTemplateVersion[]
-
-**Description**
-The external template version of the `ConversationMessageLayout` .
-
-**Field Type**
-ConversationMessageFormatType (enumeration of type string)
-
-**Description**
-
-Required. The format type of the conversation message layout. Valid values are:
-
-**•** `Application`
-
-**•** `Buttons`
-
-**•** `Carousel`
-
-**•** `EncryptedOAuthToken`
-
-**•** `ExternalTemplate`
-
-**•** `Flow`
-
-**•** `Inputs`
-
-**•** `ListPicker`
-
-**•** `Media`
-
-**•** `Payment`
-
-**•** `QuickReplies`
-
-
-Metadata Types ConversationMessageDefinition
-
-**Field Name** **Description**
-
-**•** `RichLink`
-
-**•** `Text`
-
-**•** `TimePicker`
-
-**•** `WebView`
-
-```
-layoutItems
-
-messageType
-
-```
-
-**Field Type**
-
-ConversationMessageLayoutItem[]
-
-**Description**
-An array of layout items.
-
-**Field Type**
-ConversationMessageType (enumeration of type string)
-
-**Description**
-
-Required. The conversation message type. Valid values are:
-
-**•** `AuthenticationRequest`
-
-**•** `Choices`
-
-**•** `Form`
-
-**•** `PaymentRequest`
-
-**•** `StaticContent`
-
-ConvMsgExternalTemplateVersion
-
-Represents the external template version of the conversation message layout.
-
-**Field Name** **Description**
-
-```
-accountIdentifier
-
-accountName
-
-language
-
-```
-
-**Field Type**
-string
-
-**Description**
-Required. The account identifier. For WhatsApp channels, this is the WABA ID.
-
-**Field Type**
-string
-
-**Description**
-Required. The account name.
-
-**Field Type**
-string
-
-**Description**
-Required. The language of the conversation message external template.
-
-
-Metadata Types ConversationMessageDefinition
-
-**Field Name** **Description**
-
-```
-status
-
-templateName
-
-templateVersionIdentifier
-
-```
-
-**Field Type**
-ConvMsgExternalTemplateVersionStatus (enumeration of type string)
-
-**Description**
-
-Required. The status of the conversation message external template. Valid values are:
-
-**•** `Approved` . The template version is approved.
-
-**•** `Blocked` . The template version is blocked. Available in API version 65.0 and later.
-
-**•** `Deleted` . The template version is deleted. Available in API version 65.0 and later.
-
-**•** `Disabled` . The template version is disabled because of recurring negative
-customer feedback.
-
-**•** `InAppeal` . The rejected template version is being appealed. Available in API
-version 65.0 and later.
-
-**•** `LimitExceeded` . Available in API version 65.0 and later.
-
-**•** `OutOfSync` . The template versions in the messaging service and Salesforce are
-out of sync. Available in API version 65.0 and later.
-
-**•** `Paused` . The template version is paused because of recurring negative customer
-feedback or low read rates.
-
-**•** `Pending` . The template version awaits Meta's approval.
-
-**•** `PendingDeletion` . The template version is pending deletion. Available in
-API version 65.0 and later.
-
-**•** `Rejected` . The template version was rejected during Meta’s review process.
-
-**Field Type**
-string
-
-**Description**
-Required. The name of the conversation message external template.
-
-**Field Type**
-string
-
-**Description**
-Required. The template version identifier.
-
-ConversationMessageLayoutItem
-
-Represents the conversation message layout item.
-
-**Field Name** **Description**
-
-```
-collectionType
-
-```
-
-**Field Type**
-ConversationMessageCollectionType (enumeration of type string)
-
-
-Metadata Types ConversationMessageDefinition
-
-**Field Name** **Description**
-
-**Description**
-
-Required. The type of conversation message collection. Valid values are:
-
-**•** `DynamicList`
-
-**•** `None`
-
-**•** `StaticList`
-
-```
-compositeValues
-
-name
-
-primitiveValues
-
-```
-
-**Field Type**
-
-ConversationMessageLayoutCompositeValue[]
-
-**Description**
-An array of composite values of the `ConversationMessageLayoutItem` .
-
-**Field Type**
-string
-
-**Description**
-The name of the conversation message layout item.
-
-**Field Type**
-
-ConversationMessageLayoutPrimitiveValue[]
-
-**Description**
-An array of primitive values of the `ConversationMessageLayoutItem` .
-
-ConversationMessageLayoutCompositeValue
-
-Represents the composite value of the ConversationMessageLayoutItem.
-
-**Field Name** **Description**
-
-```
-compositeTypeName
-
-layoutItems
-
-valueSourceReference
-
-```
-
-**Field Type**
-string
-
-**Description**
-Required. The name of the conversation message layout composite value type.
-
-**Field Type**
-
-ConversationMessageLayoutItem[]
-
-**Description**
-An array of layout items.
-
-**Field Type**
-string
-
-**Description**
-The source of the conversation message layout composite value.
-
-
-Metadata Types ConversationMessageDefinition
-
-ConversationMessageLayoutPrimitiveValue
-
-Represents the primitive value of the ConversationMessageLayoutItem.
-
-**Field Name** **Description**
-
-```
-contentAssetName
-
-fieldName
-
-formulaTemplate
-
-literalValue
-
-mergeFields
-
-type
-
-```
-
-**Field Type**
-string
-
-**Description**
-The content asset name.
-
-**Field Type**
-string
-
-**Description**
-The name of the conversation message layout primitive value field.
-
-**Field Type**
-string
-
-**Description**
-The formula template defines the content for each entry in the list.
-
-**Field Type**
-string
-
-**Description**
-The literal primitive value of the conversation message layout.
-
-**Field Type**
-
-ConversationMessageMergeField[]
-
-**Description**
-Inserts multiple values to a list.
-
-**Field Type**
-ConversationMessageLayoutValueType (enumeration of type string)
-
-**Description**
-
-Required. The type of the conversation message layout primitive value. Valid values
-are:
-
-**•** `FormulaTemplate`
-
-**•** `Literal`
-
-**•** `MediaAsset`
-
-**•** `SourcePrimitiveValue`
-
-**•** `SourceSobjectField`
-
-**•** `SourceSobjectFieldValue`
-
-**•** `SourceSobjectFormula`
-
-
-Metadata Types ConversationMessageDefinition
-
-**Field Name** **Description**
-
-```
-valueFormula
-
-valueSourceReference
-
-```
-
-**Field Type**
-string
-
-**Description**
-The formula of the conversation message layout primitive value.
-
-**Field Type**
-string
-
-**Description**
-The source of the conversation message layout primitive value.
-
-ConversationMessageMergeField
-
-Merge field is used to insert multiple values to a list.
-
-**Field Name** **Description**
-
-```
-formulaTemplate
-
-mergeFieldType
-
-name
-
-valueSourceReference
-
-```
-
-**Field Type**
-string
-
-**Description**
-Required. The formula template of the conversation message merge field.
-
-**Field Type**
-ConversationMessageMergeFieldType (enumeration of type string)
-
-**Description**
-Required. The type of the conversation message merge field. Valid value is ListTemplate.
-
-**Field Type**
-string
-
-**Description**
-Required. The name of the conversation message merge field.
-
-**Field Type**
-string
-
-**Description**
-Required. The source of the conversation message merge field value.
-
-ConversationMessageOptionsParameter
-
-Represents a conversation message options parameter.
-
-
-Metadata Types ConversationMessageDefinition
-
-**Field Name** **Description**
-
-```
-compositeTypeDetails
-
-optionsParameterType
-
-primitiveTypeDetails
-
-```
-
-**Field Type**
-
-ConversationMessageParameterCompositeDetails[]
-
-**Description**
-An array of composite details of `ConversationMessageOptionsParameter` .
-
-**Field Type**
-ConversationMessageOptionsParameterType (enumeration of type string)
-
-**Description**
-
-Required. The type of conversation message options parameter. Valid values are:
-
-**•** `CustomCompositeOptions`
-
-**•** `CustomPrimitiveOptions`
-
-**•** `RecordIdOptions`
-
-**•** `TimeSlotOptions`
-
-**Field Type**
-ConversationMessageParameterPrimitiveDetails
-
-**Description**
-The primitive type details of conversation message options parameter.
-
-ConversationMessageParameterCompositeDetails
-
-Represents the composite details of a conversation message parameter.
-
-**Field Name** **Description**
-
-```
-compositeChildItems
-
-isList
-
-isRequired
-
-```
-
-**Field Type**
-ConversationMessageParameterCompositeDetails[]
-
-**Description**
-The composite child items of the conversation message parameter.
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether the conversation message parameter composite details field is a
-list item ( `true` ) or not ( `false` ). The default value is false.
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether the conversation message parameter is required ( `true` ) or not
-( `false` ). The default value is false.
-
-
-Metadata Types ConversationMessageDefinition
-
-**Field Name** **Description**
-
-```
-label
-
-maxListItems
-
-name
-
-primitiveChildItems
-
-```
-
-**Field Type**
-string
-
-**Description**
-The UI label of the conversation message parameter composite details field.
-
-**Field Type**
-int
-
-**Description**
-The maximum number of list items in the conversation message parameter composite
-details field.
-
-**Field Type**
-string
-
-**Description**
-The name of the conversation message parameter composite details field.
-
-**Field Type**
-
-ConversationMessageParameterPrimitiveDetails[]
-
-**Description**
-An array of primitive child items.
-
-ConversationMessageParameterPrimitiveDetails
-
-Represents the primitive details of the conversation message parameter.
-
-**Field Name** **Description**
-
-```
-isList
-
-isRequired
-
-label
-
-```
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether the conversation message parameter primitive details field is a list
-item ( `true` ) or not ( `false` ). The default value is false.
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether the conversation message parameter primitive details field is required
-( `true` ) or not ( `false` ). The default value is false.
-
-**Field Type**
-string
-
-
-Metadata Types ConversationMessageDefinition
-
-**Field Name** **Description**
-
-**Description**
-The UI label of the conversation message parameter primitive details field.
-
-```
-maxListItems
-
-name
-
-sobjectType
-
-valueType
-
-```
-
-**Field Type**
-int
-
-**Description**
-The maximum number of list items that are allowed in the conversation message
-parameter primitive details field.
-
-**Field Type**
-string
-
-**Description**
-The name of the conversation message parameter primitive details field.
-
-**Field Type**
-string
-
-**Description**
-The sObject type.
-
-**Field Type**
-ConversationMessageValueType (enumeration of type string)
-
-**Description**
-
-The type of the conversation message parameter value. Valid values are:
-
-**•** `Boolean`
-
-**•** `Date`
-
-**•** `DateTime`
-
-**•** `Double`
-
-**•** `ImageId`
-
-**•** `Integer`
-
-**•** `RecordId`
-
-**•** `Text`
-
-**•** `Url`
-
-ConversationMessageParameter
-
-Represents a conversation message parameter.
-
-**Field Name** **Description**
-
-```
-compositeTypeDetails
-
-```
-
-**Field Type**
-
-ConversationMessageParameterCompositeDetails
-
-
-Metadata Types ConversationMessageDefinition
-
-**Field Name** **Description**
-
-**Description**
-An array of composite type details.
-
-```
-parameterType
-
-primitiveTypeDetails
-
-```
-
-**Field Type**
-ConversationMessageParameterType (enumeration of type string)
-
-**Description**
-
-Required. The type of conversation message parameter. Valid values are:
-
-**•** `CustomComposite`
-
-**•** `CustomPrimitive`
-
-**•** `RecordIds`
-
-**Field Type**
-
-ConversationMessageParameterPrimitiveDetails
-
-**Description**
-An array of primitive type details.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a `ConversationMessageDefinition` component.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<ConversationMessageDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <constants>
-
-     <constantType>Custom</constantType>
-
-     <label>imageAsset</label>
-
-     <name>imageAsset</name>
-
-     <primitiveValues>
-
-        <contentAssetName>Screenshot_20240402_at_32437PM</contentAssetName>
-
-        <type>ImageAsset</type>
-
-     </primitiveValues>
-
-     <valueType>ImageId</valueType>
-
-   </constants>
-
-   <constants>
-
-     <constantType>Custom</constantType>
-
-     <label>message</label>
-
-     <name>message</name>
-
-     <primitiveValues>
-
-        <textValue>Favourite Season</textValue>
-
-        <type>Text</type>
-
-     </primitiveValues>
-
-     <valueType>Text</valueType>
-
-   </constants>
-
-   <constants>
-
-     <constantType>Custom</constantType>
-
-     <label>Prompt1</label>
-
-     <name>Prompt1</name>
-
-```
-
-
-Metadata Types ConversationMessageDefinition
-
-```
-        <primitiveValues>
-
-           <textValue>Choose one option</textValue>
-
-           <type>Text</type>
-
-        </primitiveValues>
-
-        <valueType>Text</valueType>
-
-      </constants>
-
-      <constants>
-
-        <compositeValues>
-
-           <constantItems>
-
-             <constantType>Image</constantType>
-
-             <primitiveValues>
-
-               <contentAssetName>Screenshot_20240321_at_53957PM3</contentAssetName>
-
-               <type>ImageAsset</type>
-
-             </primitiveValues>
-
-           </constantItems>
-
-           <constantItems>
-
-             <constantType>SubTitle</constantType>
-
-             <primitiveValues>
-
-               <textValue>January</textValue>
-
-               <type>Text</type>
-
-             </primitiveValues>
-
-           </constantItems>
-
-           <constantItems>
-
-             <constantType>Title</constantType>
-
-             <primitiveValues>
-
-               <textValue>Jan</textValue>
-
-               <type>Text</type>
-
-             </primitiveValues>
-
-           </constantItems>
-
-           <identifier>1c6f8c4d-7bce-1649-fa45-db587bcfbb29</identifier>
-
-        </compositeValues>
-
-        <compositeValues>
-
-           <constantItems>
-
-             <constantType>Image</constantType>
-
-             <primitiveValues>
-
-               <contentAssetName>Screenshot_20240321_at_53957PM4</contentAssetName>
-
-               <type>ImageAsset</type>
-
-             </primitiveValues>
-
-           </constantItems>
-
-           <constantItems>
-
-             <constantType>SubTitle</constantType>
-
-             <primitiveValues>
-
-               <textValue>December</textValue>
-
-               <type>Text</type>
-
-             </primitiveValues>
-
-           </constantItems>
-
-           <constantItems>
-
-             <constantType>Title</constantType>
-
-             <primitiveValues>
-
-               <textValue>Dec</textValue>
-
-               <type>Text</type>
-
-             </primitiveValues>
-
-           </constantItems>
-
-           <identifier>fb8bb328-7bc7-2830-6194-2ae7ece055ad</identifier>
-
-```
-
-
-Metadata Types ConversationMessageDefinition
-
-```
-        </compositeValues>
-
-        <compositeValues>
-
-           <constantItems>
-
-             <constantType>Image</constantType>
-
-             <primitiveValues>
-
-               <contentAssetName>Screenshot_20240321_at_53912PM1</contentAssetName>
-
-               <type>ImageAsset</type>
-
-             </primitiveValues>
-
-           </constantItems>
-
-           <constantItems>
-
-             <constantType>SubTitle</constantType>
-
-             <primitiveValues>
-
-               <textValue>March</textValue>
-
-               <type>Text</type>
-
-             </primitiveValues>
-
-           </constantItems>
-
-           <constantItems>
-
-             <constantType>Title</constantType>
-
-             <primitiveValues>
-
-               <textValue>March</textValue>
-
-               <type>Text</type>
-
-             </primitiveValues>
-
-           </constantItems>
-
-           <identifier>570baa88-fa4d-4b31-0e84-92f87b35af0a</identifier>
-
-        </compositeValues>
-
-        <constantType>Options</constantType>
-
-      </constants>
-
-      <constants>
-
-        <constantType>Title</constantType>
-
-        <primitiveValues>
-
-           <textValue>What is your favourite month?</textValue>
-
-           <type>Text</type>
-
-        </primitiveValues>
-
-      </constants>
-
-      <label>Favourite Month</label>
-
-      <language>en_US</language>
-
-      <messageLayouts>
-
-        <formatType>Buttons</formatType>
-
-        <layoutItems>
-
-           <collectionType>DynamicList</collectionType>
-
-           <compositeValues>
-
-             <compositeTypeName>TitleOptionItem</compositeTypeName>
-
-             <layoutItems>
-
-               <collectionType>None</collectionType>
-
-               <compositeValues>
-
-                  <compositeTypeName>TitleItem</compositeTypeName>
-
-                  <layoutItems>
-
-                    <collectionType>None</collectionType>
-
-                    <name>title</name>
-
-                    <primitiveValues>
-
-                       <type>SourcePrimitiveValue</type>
-
-   <valueSourceReference>Constants.Options.ListItem.SubTitle</valueSourceReference>
-
-                    </primitiveValues>
-
-```
-
-
-Metadata Types ConversationMessageDefinition
-
-```
-                  </layoutItems>
-
-               </compositeValues>
-
-               <name>titleItem</name>
-
-             </layoutItems>
-
-             <valueSourceReference>Constants.Options</valueSourceReference>
-
-           </compositeValues>
-
-           <name>optionItems</name>
-
-        </layoutItems>
-
-        <layoutItems>
-
-           <collectionType>None</collectionType>
-
-           <name>text</name>
-
-           <primitiveValues>
-
-             <type>SourcePrimitiveValue</type>
-
-             <valueSourceReference>Constants.Title</valueSourceReference>
-
-           </primitiveValues>
-
-        </layoutItems>
-
-        <messageType>Choices</messageType>
-
-      </messageLayouts>
-
-      <messageLayouts>
-
-        <formatType>ListPicker</formatType>
-
-        <layoutItems>
-
-           <collectionType>None</collectionType>
-
-           <compositeValues>
-
-             <compositeTypeName>TitleImageItem</compositeTypeName>
-
-             <layoutItems>
-
-               <collectionType>None</collectionType>
-
-               <name>imageId</name>
-
-               <primitiveValues>
-
-                  <type>SourcePrimitiveValue</type>
-
-                  <valueSourceReference>Constants.imageAsset</valueSourceReference>
-
-               </primitiveValues>
-
-             </layoutItems>
-
-             <layoutItems>
-
-               <collectionType>None</collectionType>
-
-               <name>title</name>
-
-               <primitiveValues>
-
-                  <type>SourcePrimitiveValue</type>
-
-                  <valueSourceReference>Constants.Title</valueSourceReference>
-
-               </primitiveValues>
-
-             </layoutItems>
-
-           </compositeValues>
-
-           <name>message</name>
-
-        </layoutItems>
-
-        <layoutItems>
-
-           <collectionType>DynamicList</collectionType>
-
-           <compositeValues>
-
-             <compositeTypeName>TitleOptionItem</compositeTypeName>
-
-             <layoutItems>
-
-               <collectionType>None</collectionType>
-
-               <compositeValues>
-
-                  <compositeTypeName>TitleImageItem</compositeTypeName>
-
-                  <layoutItems>
-
-                    <collectionType>None</collectionType>
-
-```
-
-
-Metadata Types ConversationMessageDefinition
-
-```
-                    <name>imageId</name>
-
-                    <primitiveValues>
-
-                       <type>SourcePrimitiveValue</type>
-
-   <valueSourceReference>Constants.Options.ListItem.Image</valueSourceReference>
-
-                    </primitiveValues>
-
-                  </layoutItems>
-
-                  <layoutItems>
-
-                    <collectionType>None</collectionType>
-
-                    <name>title</name>
-
-                    <primitiveValues>
-
-                       <type>SourcePrimitiveValue</type>
-
-   <valueSourceReference>Constants.Options.ListItem.Title</valueSourceReference>
-
-                    </primitiveValues>
-
-                  </layoutItems>
-
-               </compositeValues>
-
-               <name>titleItem</name>
-
-             </layoutItems>
-
-             <valueSourceReference>Constants.Options</valueSourceReference>
-
-           </compositeValues>
-
-           <name>optionItems</name>
-
-        </layoutItems>
-
-        <layoutItems>
-
-           <collectionType>None</collectionType>
-
-           <compositeValues>
-
-             <compositeTypeName>TitleImageItem</compositeTypeName>
-
-             <layoutItems>
-
-               <collectionType>None</collectionType>
-
-               <name>imageId</name>
-
-               <primitiveValues>
-
-                  <type>SourcePrimitiveValue</type>
-
-                  <valueSourceReference>Constants.imageAsset</valueSourceReference>
-
-               </primitiveValues>
-
-             </layoutItems>
-
-             <layoutItems>
-
-               <collectionType>None</collectionType>
-
-               <name>title</name>
-
-               <primitiveValues>
-
-                  <type>SourcePrimitiveValue</type>
-
-                  <valueSourceReference>Constants.message</valueSourceReference>
-
-               </primitiveValues>
-
-             </layoutItems>
-
-           </compositeValues>
-
-           <name>reply</name>
-
-        </layoutItems>
-
-        <layoutItems>
-
-           <collectionType>None</collectionType>
-
-           <name>title</name>
-
-           <primitiveValues>
-
-             <type>SourcePrimitiveValue</type>
-
-             <valueSourceReference>Constants.Title</valueSourceReference>
-
-           </primitiveValues>
-
-```
-
-
-Metadata Types ConversationMessageDefinition
-
-```
-        </layoutItems>
-
-        <messageType>Choices</messageType>
-
-      </messageLayouts>
-
-      <messageLayouts>
-
-        <formatType>Carousel</formatType>
-
-        <layoutItems>
-
-           <collectionType>DynamicList</collectionType>
-
-           <compositeValues>
-
-             <compositeTypeName>TitleItemWithInteractions</compositeTypeName>
-
-             <layoutItems>
-
-               <collectionType>StaticList</collectionType>
-
-               <compositeValues>
-
-                  <compositeTypeName>TitleOptionItem</compositeTypeName>
-
-                  <layoutItems>
-
-                    <collectionType>None</collectionType>
-
-                    <compositeValues>
-
-                       <compositeTypeName>TitleItem</compositeTypeName>
-
-                       <layoutItems>
-
-                         <collectionType>None</collectionType>
-
-                         <name>title</name>
-
-                         <primitiveValues>
-
-                           <literalValue>Select One</literalValue>
-
-                           <type>Literal</type>
-
-                         </primitiveValues>
-
-                       </layoutItems>
-
-                    </compositeValues>
-
-                    <name>titleItem</name>
-
-                  </layoutItems>
-
-               </compositeValues>
-
-               <name>interactionItems</name>
-
-             </layoutItems>
-
-             <layoutItems>
-
-               <collectionType>None</collectionType>
-
-               <compositeValues>
-
-                  <compositeTypeName>TitleImageItem</compositeTypeName>
-
-                  <layoutItems>
-
-                    <collectionType>None</collectionType>
-
-                    <name>imageId</name>
-
-                    <primitiveValues>
-
-                       <type>SourcePrimitiveValue</type>
-
-   <valueSourceReference>Constants.Options.ListItem.Image</valueSourceReference>
-
-                    </primitiveValues>
-
-                  </layoutItems>
-
-                  <layoutItems>
-
-                    <collectionType>None</collectionType>
-
-                    <name>subTitle</name>
-
-                    <primitiveValues>
-
-                       <type>SourcePrimitiveValue</type>
-
-   <valueSourceReference>Constants.Options.ListItem.SubTitle</valueSourceReference>
-
-                    </primitiveValues>
-
-                  </layoutItems>
-
-                  <layoutItems>
-
-```
-
-
-Metadata Types ConversationMessageDefinition
-
-```
-                    <collectionType>None</collectionType>
-
-                    <name>title</name>
-
-                    <primitiveValues>
-
-                       <type>SourcePrimitiveValue</type>
-
-                     <valueSourceReference>Constants.Title</valueSourceReference>
-
-                    </primitiveValues>
-
-                  </layoutItems>
-
-               </compositeValues>
-
-               <name>titleItem</name>
-
-             </layoutItems>
-
-             <valueSourceReference>Constants.Options</valueSourceReference>
-
-           </compositeValues>
-
-           <name>items</name>
-
-        </layoutItems>
-
-        <messageType>Choices</messageType>
-
-      </messageLayouts>
-
-      <messageLayouts>
-
-        <formatType>Text</formatType>
-
-        <layoutItems>
-
-           <collectionType>None</collectionType>
-
-           <name>text</name>
-
-           <primitiveValues>
-
-             <formulaTemplate>{!$Constants.Title}
-
-   {!$Constants.Prompt1}:
-
-   {!$ListTemplates.OptionsList}</formulaTemplate>
-
-             <mergeFields>
-
-               <formulaTemplate>{!$ListItem.Index}.
-
-   {!$ListItem.Value.Title}{!BR()}</formulaTemplate>
-
-               <mergeFieldType>ListTemplate</mergeFieldType>
-
-               <name>OptionsList</name>
-
-               <valueSourceReference>Constants.Options</valueSourceReference>
-
-             </mergeFields>
-
-             <type>FormulaTemplate</type>
-
-           </primitiveValues>
-
-        </layoutItems>
-
-        <messageType>StaticContent</messageType>
-
-      </messageLayouts>
-
-      <type>Picklist</type>
-
-   </ConversationMessageDefinition>
-
-```
-
-The following is an example `package.xml` that references the previous definition.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>Favourite_Month</members>
-
-        <name>ConversationMessageDefinition</name>
-
-      </types>
-
-      <version>61.0</version>
-
-   </Package>
-
-```
-
-
-### Metadata Types ConversationMessageDefinitionTranslation
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-[manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/file_based_zip_file.htm)
-
-### ConversationMessageDefinitionTranslation
-
-Represents translated labels and constant values for conversation message definitions in Enhanced Messaging and Messaging for In-App
-and Web.
-
-Note: This complex type is used as a nested element within the ConversationMessageDefinition metadata type and is not deployed
-as a standalone metadata component. It enables multilingual support by allowing constant values and labels to be translated into
-different languages for customer-facing messaging.
-
-Parent Type
-
-This type is used as a nested complex type within the ConversationMessageDefinition on page 656 metadata type.
-
-Version
-
-### ConversationMessageDefinitionTranslation is available in API version 61.0 and later.
-
-Fields
-
-
-Metadata Types ConversationMessageDefinitionTranslation
-
-ConversationMessageConstantValueTranslation
-
-Represents a translated constant value for conversation message definitions. Available in API version 61.0 and later.
-
-Usage Example
-
-This complex type is used within ConversationMessageDefinition to provide translations. Here's an example context:
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<ConversationMessageDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <fullName>Welcome_Message</fullName>
-
-   <label>Welcome Message</label>
-
-   <conversationMessageDefinitionTranslations>
-
-     <constantValueTranslations>
-
-        <name>greeting_text</name>
-
-        <value>Bienvenido</value>
-
-     </constantValueTranslations>
-
-     <label>Mensaje de Bienvenida</label>
-
-     <name>Welcome_Message</name>
-
-   </conversationMessageDefinitionTranslations>
-
-</ConversationMessageDefinition>
-
-```
-
-
-### Metadata Types ConversationVendorInfo ConversationVendorInfo
-
-Represents the connection between the partner vendor system and the Service Cloud feature. For example, for Service Cloud Voice, this
-type contains information about the partner telephony system or Contact Center as a Service (CCaaS) system. For Bring Your Own
-Channel for Messaging or Bring Your Own Channel for CCaaS, this type contains information about the partner messaging system or
-CCaaS system.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-Parent Type
-
-This type extends the Metadata metadata type and inherits its `fullName` field.
-
-File Suffix and Directory Location
-
-### ConversationVendorInfo components have the suffix .ConversationVendorInformation and are stored in the ConversationVendorInformation folder.
-
-Version
-
-### ConversationVendorInfo components are available in API version 52.0 and later.
-
-Special Access Rules
-
-This type requires an add-on license for Service Cloud Voice for Partner Telephony or Digital Engagement.
-
-Fields
-
-The fields in the ConversationVendorInfo type apply to all Service Cloud features unless otherwise stated in the field description. For
-example, if a field applies to just one Service Cloud Voice telephony model setup or is applied differently by different partner systems,
-this is stated in the field description.
-
-**Field Name** **Description**
-
-```
-agentSSOSupported
-
-```
-
-**Field Type**
-boolean
-
-**Description**
-If set to `true`, agents can single sign-on (SSO) into their contact center using Salesforce
-as the identity provider (IdP). Behind the scenes, Salesforce is used as the SAML IdP in
-the Single Sign-On connected app for the contact center. If set to `false`, an IdP other
-than Salesforce is used or an IdP isn’t used at all. The default value is `false` .
-
-If this value is set to `false` and you want to use Salesforce as the IdP for your contact
-center, set this value and the `namedCredentialSupported` value to `true`
-and configure the `service_cloud_voice.PartnerSSO` interface in your
-Apex integration class.
-
-
-Metadata Types ConversationVendorInfo
-
-**Field Name** **Description**
-
-Available in API version 53.0 and later.
-
-Applies to the following implementations:
-
-**•** Service Cloud Voice with Partner Telephony
-
-**•** Service Cloud Voice with Partner Telephony from Amazon Connect
-
-**•** Bring Your Own Channel for CCaaS
-
-```
-awsAccountKey
-
-awsRootEmail
-
-awsTenantVersion
-
-bridgeComponent
-
-```
-
-**Field Type**
-string
-
-**Description**
-The 12-digit AWS subaccount ID that’s automatically provisioned for you when Service
-Cloud Voice was turned on. Available in API version 55.0 and later.
-
-Applies to the following implementation:
-
-**•** Service Cloud Voice with Amazon Connect
-
-**Field Type**
-string
-
-**Description**
-The email address used by Salesforce to create the root user for the provisioned AWS
-subaccount when Service Cloud Voice was turned on. Available in API version 55.0
-and later.
-
-Applies to the following implementation:
-
-**•** Service Cloud Voice with Amazon Connect
-
-**Field Type**
-double
-
-**Description**
-The version number of the SVCTenantStack AWS CloudFormation stack that’s deployed.
-The stack is deployed in AWS region "us-east-1". Available in API version 55.0 and later.
-
-Applies to the following implementation:
-
-**•** Service Cloud Voice with Amazon Connect
-
-**Field Type**
-string
-
-**Description**
-The Lightning component used to communicate between the telephony or messaging
-system and other Lightning components.
-
-Applies to the following implementations:
-
-**•** Service Cloud Voice with Partner Telephony
-
-**•** Service Cloud Voice with Partner Telephony from Amazon Connect
-
-**•** Bring Your Own Channel for CCaaS
-
-
-Metadata Types ConversationVendorInfo
-
-**Field Name** **Description**
-
-```
-clientAuthMode
-
-connectorUrl
-
-customConfig
-
-customIcon
-
-```
-
-**Field Type**
-ClientAuthMode (enumeration of type string)
-
-**Description**
-The client authentication mode.
-
-Values are:
-
-**•** `Custom`
-
-**•** `Mixed`
-
-**•** `SSO`
-
-Applies to the following implementations:
-
-**•** Service Cloud Voice with Partner Telephony
-
-**•** Service Cloud Voice with Partner Telephony from Amazon Connect
-
-**Field Type**
-string
-
-**Description**
-The URL that hosts your Service Cloud Voice or Bring Your Own Channel for CCaaS
-connector. This value could be a Visualforce page or a public URL.
-
-Applies to the following implementations:
-
-**•** Service Cloud Voice with Partner Telephony
-
-**•** Service Cloud Voice with Partner Telephony from Amazon Connect
-
-**•** Bring Your Own Channel for CCaaS
-
-**Field Type**
-string
-
-**Description**
-The foreign key to the CustomEntityDefinition, which contains partner-specific custom
-settings. Available in API version 53.0 and later.
-
-Applies to the following implementations:
-
-**•** Service Cloud Voice with Partner Telephony
-
-**•** Service Cloud Voice with Partner Telephony from Amazon Connect
-
-**•** Bring Your Own Channel for CCaaS
-
-**Field Type**
-string
-
-**Description**
-ID of the static resource used to identify the contact center integration, such as a
-Contact Center as a Service (CCaaS) provider logo. The static resource must be in SVG
-format. This field is optional. Available in API version 62.0 and later.
-
-Applies to the following implementations:
-
-**•** Service Cloud Voice with Partner Telephony
-
-
-Metadata Types ConversationVendorInfo
-
-**Field Name** **Description**
-
-**•** Bring Your Own Channel for CCaaS
-
-```
-customLoginUrl
-
-developerName
-
-einsteinConversationInsightsSupported
-
-integrationClass
-
-integrationClassName
-
-```
-
-**Field Type**
-string
-
-**Description**
-The URL that hosts your telephony system or CCaaS system login page.
-
-Applies to the following implementations:
-
-**•** Service Cloud Voice with Partner Telephony
-
-**•** Service Cloud Voice with Partner Telephony from Amazon Connect
-
-**•** Bring Your Own Channel for CCaaS
-
-**Field Type**
-string
-
-**Description**
-The unique name of the type in the API.
-
-**Field Type**
-boolean
-
-**Description**
-If set to `true`, Einstein Conversation Insights is turned on. The default value is `false` .
-Available in API version 53.0 and later.
-
-Applies to the following implementations:
-
-**•** Service Cloud Voice with Partner Telephony
-
-**•** Service Cloud Voice with Partner Telephony from Amazon Connect
-
-**Field Type**
-string
-
-**Description**
-The foreign key to the partner Apex class implementing supported interfaces. Available
-in API version 53.0 and later.
-
-Applies to the following implementations:
-
-**•** Service Cloud Voice with Partner Telephony
-
-**•** Service Cloud Voice with Partner Telephony from Amazon Connect
-
-**•** Bring Your Own Channel for CCaaS
-
-**Field Type**
-string
-
-**Description**
-Deprecated in API version 53.0. Don't set this field. Instead, use
-`integrationClass` .
-
-Applies to the following implementations:
-
-
-Metadata Types ConversationVendorInfo
-
-**Field Name** **Description**
-
-**•** Service Cloud Voice with Partner Telephony
-
-**•** Service Cloud Voice with Partner Telephony from Amazon Connect
-
-```
-intelligenceSupported
-
-isTaxCompliant
-
-keyProvisioningSupported
-
-masterLabel
-
-```
-
-**Field Type**
-boolean
-
-**Description**
-If set to `true`, Salesforce ingests real-time signals sent from a partner telephony
-system. If set to `false`, Salesforce won't ingest real-time intelligence signals from a
-partner telephony system. The default value is `false` . Available in API version 59.0
-and later.
-
-Applies to the following implementations:
-
-**•** Service Cloud Voice with Partner Telephony
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether the Amazon tax settings for the AWS subaccount provisioned for
-Service Cloud Voice have been confirmed ( `true` ). The default value is `false` .
-Available in API version 55.0 and later.
-
-Applies to the following implementation:
-
-**•** Service Cloud Voice with Amazon Connect
-
-**Field Type**
-boolean
-
-**Description**
-If set to `true`, key provisioning and renewal are automated. The default value is
-`false` . Available in API version 54.0 and later.
-
-Applies to the following implementations:
-
-**•** Service Cloud Voice with Partner Telephony
-
-**•** Service Cloud Voice with Partner Telephony from Amazon Connect
-
-**Field Type**
-string
-
-**Description**
-The partner vendor's display name as it appears in the UI. This name appears in several
-places in the UI, so include the partner vendor name for easy identification. For Service
-Cloud Voice, this label also represents the telephony provider name in the contact
-center record.
-
-For Service Cloud Voice with Amazon Connect, this field is always set to `Service`
-`Cloud Voice` .
-
-
-Metadata Types ConversationVendorInfo
-
-**Field Name** **Description**
-
-```
-namedCredential
-
-namedCredentialSupported
-
-partnerContactCenterListSupported
-
-partnerPhoneNumbersSupported
-
-```
-
-**Field Type**
-string
-
-**Description**
-A sample-named credential that can be used for Apex callouts to the partner system.
-Available in API version 53.0 and later.
-
-Applies to the following implementations:
-
-**•** Service Cloud Voice with Partner Telephony
-
-**•** Service Cloud Voice with Partner Telephony from Amazon Connect
-
-**•** Bring Your Own Channel for CCaaS
-
-**Field Type**
-boolean
-
-**Description**
-A sample-named credential that can be used for Apex callouts to the partner system.
-Available in API version 53.0 and later.
-
-Applies to the following implementations:
-
-**•** Service Cloud Voice with Partner Telephony
-
-**•** Service Cloud Voice with Partner Telephony from Amazon Connect
-
-**•** Bring Your Own Channel for CCaaS
-
-**Field Type**
-boolean
-
-**Description**
-If set to `true`, enables the customer to select one contact center from a list of multiple
-contact centers to connect with Salesforce. The default value is `false` . Available in
-API version 53.0 and later.
-
-Applies to the following implementations:
-
-**•** Service Cloud Voice with Partner Telephony
-
-**•** Service Cloud Voice with Partner Telephony from Amazon Connect
-
-**•** Bring Your Own Channel for CCaaS
-
-**Field Type**
-boolean
-
-**Description**
-If set to `true`, displays a list of phone numbers used to create contact center channels.
-The default value is `false` . Available in API version 54.0 and later.
-
-Applies to the following implementations:
-
-**•** Service Cloud Voice with Partner Telephony
-
-**•** Service Cloud Voice with Partner Telephony from Amazon Connect
-
-
-Metadata Types ConversationVendorInfo
-
-**Field Name** **Description**
-
-```
-partnerTransferDestinationsSupported
-
-queueManagementSupported
-
-serverAuthMode
-
-telephonySettingsComponent
-
-```
-
-**Field Type**
-boolean
-
-**Description**
-If set to `true`, allows Salesforce to fetch contact center queues so that Salesforce and
-contact center queues can be mapped. The default value is `false` . Available in API
-version 53.0 and later.
-
-Applies to the following implementations:
-
-**•** Service Cloud Voice with Partner Telephony
-
-**•** Service Cloud Voice with Partner Telephony from Amazon Connect
-
-**•** Bring Your Own Channel for CCaaS
-
-**Field Type**
-boolean
-
-**Description**
-If set to `true`, support queue management. The default value is `false` . Available
-in API version 56.0 and later.
-
-Applies to the following implementations:
-
-**•** Service Cloud Voice with Partner Telephony
-
-**•** Service Cloud Voice with Partner Telephony from Amazon Connect
-
-**•** Bring Your Own Channel for CCaaS
-
-**Field Type**
-ServerAuthMode (enumeration of type string)
-
-**Description**
-Deprecated in API 53.0. Server authentication mode. Set this value to `None` .
-
-Values are:
-
-**•** `None`
-
-**•** `OAuth`
-
-Applies to the following implementations:
-
-**•** Service Cloud Voice with Partner Telephony
-
-**•** Service Cloud Voice with Partner Telephony from Amazon Connect
-
-**Field Type**
-string
-
-**Description**
-The name of the Lightning Web Component (LWC) that is used to display additional
-agent settings in the Omni-Channel widget. This value is in the format
-`mynamespace:componentName`, where `mynamespace` is the namespace
-associated with the Service Cloud Voice package that was created, and
-`componentName` is the FQDN of the Lightning component.
-
-
-Metadata Types ConversationVendorInfo
-
-**Field Name** **Description**
-
-Available in API version 54.0 and later.
-
-Applies to the following implementation:
-
-**•** Service Cloud Voice with Partner Telephony
-
-```
-unifiedRoutingSupported
-
-(Beta)
-
-universalCallRecordingAccessSupported
-
-userSyncingSupported
-
-vendorType
-
-```
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether unified routing is supported ( `true` ) or not supported ( `false` ) for
-voice calls in voice channels. The default value is `false` . Once this value is set to
-`true`, it can’t be changed to `false` .
-
-Available in API version 63.0 and later.
-
-Applies to the following implementation:
-
-**•** Service Cloud Voice with Partner Telephony
-
-**Field Type**
-boolean
-
-**Description**
-If set to `true`, Universal Call Recording Access is turned on. The default value is
-`false` .
-
-If this value is set to `false` and you want to turn on Universal Call Recording, set
-this value to `true` and configure the service_cloud_voice.RecordingMediaProvider
-interface in your Apex integration class.
-
-Available in API version 54.0 and later.
-
-Applies to the following implementations:
-
-**•** Service Cloud Voice with Partner Telephony
-
-**•** Service Cloud Voice with Partner Telephony from Amazon Connect
-
-**Field Type**
-boolean
-
-**Description**
-If set to `true`, supports automated user syncing whenever a user is added to or
-removed from a contact center. The default value is `false` . Available in API version
-53.0 and later.
-
-Applies to the following implementations:
-
-**•** Service Cloud Voice with Partner Telephony
-
-**•** Service Cloud Voice with Partner Telephony from Amazon Connect
-
-**•** Bring Your Own Channel for CCaaS
-
-**Field Type**
-ConversationVendorType (enumeration of type string)
-
-
-Metadata Types ConversationVendorInfo
-
-**Field Name** **Description**
-
-**Description**
-The Service Cloud feature the partner vendor supports.
-
-Possible values are:
-
-**•** `Amazon_Connect`                     - For Service Cloud Voice with Amazon Connect.
-
-**•** `BringYourOwnChannelPartner`                     - For Bring Your Own Channel for
-Messaging. Available in API version 60.0 and later.
-
-**•** `BringYourOwnContactCenter`                     - For Bring Your Own Channel for Contact
-Center as a Service (CCaaS). Available in API version 60.0 and later.
-
-**•** `ServiceCloudVoicePartner`                     - For Service Cloud Voice with Partner
-Telephony or Service Cloud Voice with Partner Telephony from Amazon Connect.
-
-Available in API version 53.0 and later.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a ConversationVendorInfo component.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <ConversationVendorInfo xmlns="http://soap.sforce.com/2006/04/metadata"
-
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-
-      <einsteinConversationInsightsSupported>true</einsteinConversationInsightsSupported>
-
-      <partnerContactCenterListSupported>true</partnerContactCenterListSupported>
-
-      <namedCredentialSupported>true</namedCredentialSupported>
-
-      <partnerTransferDestinationsSupported>true</partnerTransferDestinationsSupported>
-
-      <agentSSOSupported>true</agentSSOSupported>
-
-      <keyProvisioningSupported>true</keyProvisioningSupported>
-
-      <universalCallRecordingAccessSupported>true</universalCallRecordingAccessSupported>
-
-      <partnerPhoneNumbersSupported>true</partnerPhoneNumbersSupported>
-
-      <queueManagementSupported>true</queueManagementSupported>
-
-      <clientAuthMode>SSO</clientAuthMode>
-
-      <connectorUrl>https://exampleconnectorurl.com</connectorUrl>
-
-      <customConfig>exampleCustomConfig__c</customConfig>
-
-      <customLoginUrl>testurl</customLoginUrl>
-
-      <integrationClass>ExampleIntegrationImpl</integrationClass>
-
-      <masterLabel>Example Partner Name</masterLabel>
-
-      <developerName>exampledevname</developerName>
-
-      <namedCredential>exampleNamedCredential</namedCredential>
-
-      <userSyncingSupported>true</userSyncingSupported>
-
-      <vendorType>BringYourOwnContactCenter</vendorType>
-
-   </ConversationVendorInfo>
-
-```
-
-The following is an example `package.xml` that references the previous definition.
-
-```
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>*</members>
-
-        <name>ConversationVendorInfo</name>
-
-      </types>
-
-```
-
-
-### Metadata Types ConvIntelligenceSignalRule
-
-```
-      <version>59.0</version>
-
-   </Package>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### ConvIntelligenceSignalRule
-
-Represents the conversation intelligence signal rule. The rule triggers actions based on real-time intelligence signals from your telephony
-system or keywords mentioned by support reps or customers. The rule contains a set of conditions (subrules) and the filter logic used
-to evaluate those conditions to determine whether to trigger actions.
-
-Parent Type
-
-This type extends the Metadata metadata type and inherits its `fullName` field.
-
-File Suffix and Directory Location
-
-### ConvIntelligenceSignalRule components have the suffix .ConvIntelligenceSignalRule and are stored in the ConvIntelligenceSignalRule folder.
-
-Version
-
-### ConvIntelligenceSignalRule components are available in API version 62.0 and later.
-
-Special Access Rules
-
-This type requires an add-on license for Service Cloud Voice for Amazon Connect, Service Cloud Voice for Partner Telephony with Amazon
-Connect, Service Cloud Voice for Partner Telephony, or Digital Engagement.
-
-Fields
-
-**Field Name** **Description**
-
-```
-actionType
-
-```
-
-**Field Type**
-ConvIntelligenceActionType (enumeration of type string)
-
-**Description**
-
-Required. The conversation intelligence signal type. Values are:
-
-**•** `AlertSupervisor` –Sends an alert to the supervisor.
-
-**•** `AlertSupervisorAndAgent` –Sends an alert to the rep and supervisor.
-
-**•** `LaunchFlow` –Triggers an auto-launched flow. If set, also set `ActionValue` .
-
-
-Metadata Types ConvIntelligenceSignalRule
-
-**Field Name** **Description**
-
-**•** `LaunchNBA` –Recommends the next best action to the rep.
-
-```
-actionValue
-
-active
-
-channelAddressIdentifier
-
-channelType
-
-criteria
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-Action to perform based on the `actionType` specified.
-
-If `actionType` is set to LaunchFlow, this value is the `developerName` of the
-flow to be launched. For example, EmailAlert.
-
-For all other `actionType` values, don’t set this parameter.
-
-**Field Type**
-boolean
-
-**Description**
-Required. Indicates whether the conversation intelligence signal rule is active ( `true` )
-or inactive ( `false` ). The default value is `false` .
-
-**Field Type**
-string
-
-**Description**
-
-Required. ID ( `ChannelAddressIdentifier` ) of the Messaging channel or name
-( `InternalName` ) of the Voice channel.
-
-**Field Type**
-string
-
-**Description**
-
-Required. Channel type.
-
-For Messaging, possible values are:
-
-**•** `AppleBusinessChat` —Represents Apple Messages for Business.
-
-**•** `Custom` —Represents Bring Your Own Channel for Messaging or Bring Your Own
-Channel for CCaaS.
-
-**•** `EmbeddedMessaging` —Represents Messaging for In-App and Web.
-
-**•** `Facebook`
-
-**•** `Text`
-
-**•** `WhatsApp`
-
-For Voice, set this parameter to `Phone` .
-
-**Field Type**
-string
-
-
-Metadata Types ConvIntelligenceSignalRule
-
-**Field Name** **Description**
-
-**Description**
-Required. Filter logic applied to the rule conditions (subrules). For example, ((1 AND
-2) OR 3). The numbers in the formula are derived from the
-`ConvIntelligenceSignalSubRule.order` value plus 1. For example, filter
-logic (1 AND 2) is calculated by adding the first condition ( `order` =0) with the second
-condition ( `order` =1).
-
-```
-developerName
-
-participantRole
-
-ruleName
-
-service
-
-subrule
-
-```
-
-**Field Type**
-string
-
-**Description**
-Required. API name of the conversation intelligence signal rule.
-
-**Field Type**
-ConvParticipantRole (enumeration of type string)
-
-**Description**
-If `service` is set to KeywordMatch, this value determines whether the rule applies
-to utterances made by reps, customers, or both roles. Possible values are:
-
-Possible values are:
-
-**•** `Agent`
-
-**•** `AgentOrCustomer`
-
-**•** `Customer`
-
-If `Service` is not set to KeywordMatch, don’t set this parameter.
-
-**Field Type**
-string
-
-**Description**
-Required. Name of the conversation intelligence signal rule.
-
-**Field Type**
-ConvIntelligenceService (enumeration of type string)
-
-**Description**
-
-Required. Salesforce- or partner-provided intelligence source.
-
-For Salesforce-provided intelligence sources, set this parameter to `KeywordMatch` .
-
-For partner-provided intelligence sources, possible values are:
-
-**•** `KeywordMatch`
-
-**•** `AmazonConnectContactLens`
-
-If none of the options apply to you, contact your Salesforce representative for the
-service name.
-
-**Field Type**
-
-ConvIntelligenceSignalSubRule[]
-
-
-Metadata Types ConvIntelligenceSignalRule
-
-**Field Name** **Description**
-
-**Description**
-A set of intelligence rules used to measure an agent or customer’s sentiment during
-a voice call.
-
-ConvIntelligenceSignalSubRule
-
-Represents a condition (subrule) within a conversation intelligence signal rule.
-
-**Field Name** **Description**
-
-```
-operandValue
-
-operator
-
-order
-
-type
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-Required. Value of the signal type used to determine if the rule condition is met.
-
-**Field Type**
-ConvIntelligenceOperator (enumeration of type string)
-
-**Description**
-Required. Filter logic operator used to determine if the rule condition is met. Possible
-values are:
-
-**•** `Equals`
-
-**•** `GreaterThan`
-
-**•** `In`
-
-**•** `LessThan`
-
-**•** `NotEquals`
-
-**Field Type**
-int
-
-**Description**
-
-Required. Order the condition appears in relation to the other conditions in the list,
-with zero (0) being the first condition listed. If `type` is set to Keyword, the maximum
-value is 24. For all other `type` values, the maximum value is 4. This value is used when
-applying filter logic to the rule.
-
-**Field Type**
-ConvIntelligenceType (enumeration of type string)
-
-**Description**
-
-Required. Type of conversation intelligence signal used by the rule to determine
-whether to trigger an action. This value depends on the
-`ConvIntelligenceSignalRule.channelType` and
-`ConvIntelligenceSignalRule.service` values.
-
-
-Metadata Types ConvIntelligenceSignalRule
-
-**Field Name** **Description**
-
-If `service` is set to KeywordMatch, possible values are:
-
-**•** `Keyword` –A word or group of words spoken or typed.
-
-If `service` is set to `AmazonConnectContactLens`, possible values are:
-
-**•** `Category` –Category name defined in your telephony system.
-
-If `service` is set to another value, contact your Salesforce representative for the
-conversation intelligence signal types available for your intelligence source.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a ConvIntelligenceSignalRule component.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <ConvIntelligenceSignalRule xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <actionType>AlertSupervisor</actionType>
-
-      <active>true</active>
-
-   <channelAddressIdentifier>a12bc345-1303-44c2-866c-f30d546b58de</channelAddressIdentifier>
-
-      <channelType>Phone</channelType>
-
-      <criteria>1 OR 2</criteria>
-
-      <developerName>ConvIntelligenceRuleAPIName</developerName>
-
-      <participantRole>AgentOrCustomer</participantRole>
-
-      <ruleName>ConvIntelligenceRuleName</ruleName>
-
-      <service>KeywordMatch</service>
-
-      <subrule>
-
-        <operandValue>escalate_level_1</operandValue>
-
-        <operator>Equals</operator>
-
-        <order>0</order>
-
-        <type>Keyword</type>
-
-      </subrule>
-
-      <subrule>
-
-        <operandValue>escalate_level_2</operandValue>
-
-        <operator>Equals</operator>
-
-        <order>1</order>
-
-        <type>Keyword</type>
-
-      </subrule>
-
-   </ConvIntelligenceSignalRule>
-
-```
-
-The following is an example `package.xml` that references the previous definition.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>*</members>
-
-        <name>ConversationIntelligenceSignalRule</name>
-
-      </types>
-
-      <version>62.0</version>
-
-   </Package>
-
-```
-
-
-### Metadata Types CorsWhitelistOrigin
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### CorsWhitelistOrigin
-
-Represents an origin in the CORS allowlist.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. Because changing
-terms in our code can break current implementations, we maintained this metadata type’s name.
-
-File Suffix and Directory Location
-
-### CorsWhitelistOrigin components have the suffix .corswhitelistorigin and are stored in the corswhitelistorigins
-
-folder.
-
-Version
-
-### CorsWhitelistOrigin components are available in API version 32.0 and later.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`urlPattern` String
-
-A URL pattern for the origin.
-
-The origin URL pattern must include the HTTPS protocol and a domain
-name, and can include a port. The wildcard character (*) is supported
-
-and must be in front of a second-level domain name. For example,
-`https://*.example.com` adds all subdomains of
-`example.com` to the allowlist.
-
-Google Chrome [™] and Mozilla [®] Firefox [®] browser extensions are also
-allowed as resources in API version 53 and later. Chrome extensions
-must use the prefix `chrome-extension://` and 32 characters
-without digits or capital letters, for example
-`chrome-extension://abdkkegmcbiomijcbdaodaflgehfffed` .
-Firefox extensions must use the prefix `moz-extension://` and
-an 8-4-4-4-12 format of small alphanumeric characters, for example
-`moz-extension://1234ab56-78c9-1df2-3efg-4567891hi1j2` .
-
-The origin URL pattern can be an IP address. But an IP address and a
-domain that resolve to the same address aren’t the same origin, and
-you must add them to the CORS allowlist as separate entries.
-
-
-### Metadata Types CspTrustedSite
-
-Declarative Metadata Sample Definition
-
-Here’s an example package manifest used to deploy or retrieve the CorsWhitelistOrigin metadata for an organization.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>*</members>
-
-        <name>CorsWhitelistOrigin</name>
-
-      </types>
-
-      <version>32.0</version>
-
-   </Package>
-
-```
-
-Here’s an example of a CorsWhitelistOrigin component.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <CorsWhitelistOrigin xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <developerName>CorsWhitelistEntry1</developerName>
-
-      <urlPattern>https://*.example.com</urlPattern>
-
-   </CorsWhitelistOrigin>
-
-```
-
-Usage
-
-[CORS (cross-origin resource sharing) is a W3C recommendation that enables Web browsers to request resources from origins other than](http://www.w3.org/TR/cors/)
-their own. For example, using CORS, a JavaScript script at `https://www.example.com` could request a resource from
-`https://www.salesforce.com` .
-
-If a browser that supports CORS makes a request to an origin in your allowlist, Salesforce returns the origin in the
-`Access-Control-Allow-Origin` HTTP header, along with any additional CORS HTTP headers. If the origin isn’t allow listed,
-Salesforce returns HTTP status code 404.
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### CspTrustedSite
-
-Represents a trusted URL. For each CspTrustedSite component, you can specify Content Security Policy (CSP) directives and permissions
-policy directives. Each CSP directive allows Lightning components, third-party APIs, and WebSocket connections to access a resource
-type from the trusted URL. If the Permissions-Policy HTTP header is enabled, each permissions policy directive grants the trusted URL
-access to a browser feature. In API version 58.0 and earlier, CspTrustedSite components included only CSP directives and were referred
-to as CSP Trusted Sites.
-
-This type extends the Metadata metadata type and inherits its `fullName` field.
-
-Declarative Metadata File Suffix and Directory Location
-
-### CspTrustedSite components are stored in the cspTrustedSites directory of the corresponding package directory. The file name
-
-matches the unique name of the trusted site, and the extension is `.cspTrustedSite` .
-
-
-Metadata Types CspTrustedSite
-
-Version
-
-CspTrustedSite components are available in API version 39.0 and later.
-
-Fields
-
-**Field** **Field Type** **Description**
-
-`canAccessCamera` boolean
-
-`canAccessMicrophone` boolean
-
-Indicates whether this CspTrustedSite can access the user’s
-camera ( `true` ) or not ( `false` ). The default value is `false` .
-
-This field takes effect only when the
-`enablePermissionsPolicy` field equals `true` and
-
-the `grantCameraAccess` field equals `TrustedUrls`
-in the SecuritySettings metadata API type.
-
-This field is available in API version 59.0 and later.
-
-Indicates whether this CspTrustedSite can access the user’s
-microphone ( `true` ) or not ( `false` ). The default value is
-`false` .
-
-This field takes effect only when the
-`enablePermissionsPolicy` field equals `true` and
-
-the `grantMicrophoneAccess` field equals
-`TrustedUrls` in the SecuritySettings metadata API type.
-
-This field is available in API version 59.0 and later.
-
-`context` CspTrustedSiteContext Declares the scope of the CSP directives for this trusted URL.
-(enumeration of type string)
-
-**•** `All` —Apply the CSP directives to all supported context
-types.
-
-**•** `Communities` —Apply the CSP directives to Experience
-Builder sites only.
-
-**•** `FieldServiceMobileExtension` —Apply the CSP
-directives to the Field Service Mobile Extensions only. This
-value is available in API version 47.0 and later.
-
-**•** `LEX` —Apply the CSP directives to Lightning Experience
-pages only.
-
-**•** `LightningOut` —Reserved for future use. Available in
-API version 64.0 and later
-
-**•** `VisualForce` —Apply the CSP directives to custom
-Visualforce pages only. This value is available in API version
-55.0 and later.
-
-For custom Visualforce pages, content is restricted to trusted
-URLs only if the page’s `cspHeader` attribute is set to `true` .
-
-This field is available in API version 44.0 and later.
-
-`description` string The description of this trusted URL.
-
-
-Metadata Types CspTrustedSite
-
-**Field** **Field Type** **Description**
-
-`endpointUrl` string
-
-Required. The URL for this CspTrustedSite.
-
-This field must include a domain name and can include a port.
-For example, `https://example.com` or
-`https://example.com:8080` .
-
-To reduce repetition, you can use the wildcard character `*`
-(asterisk). For example, `*.example.com` . For a third-party
-API, the URL must begin with https://. For example,
-`https://example.com` . For a WebSocket connection,
-the URL must begin with wss://. For example,
-`wss://example.com` .
-
-Otherwise, the URL cannot be malformed. Examples of
-malformed URLs that fail a syntax check are
-`malformed^url.example.com`, and
-`https://{subdomain}.example.com` .
-
-To add an `EndpointUrl` based on parameters, build the
-URL before you add it to this Metadata Type.
-
-`isActive` boolean Required. Indicates whether this CspTrustedSite is active ( `true` )
-or not ( `false` ). The default value is `true` .
-
-`isApplicableToConnectSrc` boolean Indicates whether Lightning components, third-party APIs, and
-WebSocket connections can load URLs using script interfaces
-
-from this trusted URL ( `true` ) or not ( `false` ). This field has a
-default value of `false` .
-
-This field is available in API version 48.0 and later.
-
-`isApplicableToFontSrc` boolean
-
-Indicates whether Lightning components, third-party APIs, and
-WebSocket connections can load fonts from this trusted URL
-( `true` ) or not ( `false` ). This field has a default value of `false` .
-
-This field is available in API version 48.0 and later.
-
-`isApplicableToFrameSrc` boolean Indicates whether Lightning components, third-party APIs, and
-WebSocket connections can load resources contained in
-
-`<iframe>` elements from this trusted URL ( `true` ) or not
-( `false` ). This field has a default value of `false` .This field is
-available in API version 48.0 and later.
-
-`isApplicableToImgSrc` boolean Indicates whether Lightning components, third-party APIs, and
-WebSocket connections can load images from this trusted URL
-
-( `true` ) or not ( `false` ). This field has a default value of `false` .
-This field is available in API version 48.0 and later.
-
-`isApplicableToMediaSrc` boolean Indicates whether Lightning components, third-party APIs, and
-WebSocket connections can load audio and video from this
-
-trusted URL ( `true` ) or not ( `false` ). This field has a default
-value of `false` .
-
-
-Metadata Types CspTrustedSite
-
-**Field** **Field Type** **Description**
-
-In API version 59.0 and later, for each trusted URL, at least one
-CSPTrustedSite starting with `isApplicable` or
-`canAccess` must be set to `true.`
-
-In API version 50.0 to 58.0, if all `isApplicable` fields are
-`false`, the `isApplicableToImgSrc` field is set to
-`true` . In API version 49.0 and earlier, if all `isApplicable`
-fields are `false`, these fields all default to `true` .
-
-This field is available in API version 48.0 and later.
-
-`isApplicableToStyleSrc` boolean Indicates whether Lightning components, third-party APIs, and
-WebSocket connections can load style sheets from this trusted
-
-URL ( `true` ) or not ( `false` ). This field has a default value of
-`false` . This field is available in API version 48.0 and later.
-
-`mobileExtension` string Reserved for future use.
-
-Declarative Metadata Sample Definition
-
-A sample XML definition of a trusted site is shown below.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <CspTrustedSite xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <canAccessCamera>false</canAccessCamera>
-
-      <canAccessMicrophone>true</canAccessMicrophone>
-
-      <description>Used for Lightning component callout to mapping web service</description>
-
-      <context>LEX</context>
-
-      <endpointUrl>https://www.maptestsite.net/</endpointUrl>
-
-      <isActive>true</isActive>
-
-      <isApplicableToConnectSrc>true</isApplicableToConnectSrc>
-
-      <isApplicableToFontSrc>true</isApplicableToFontSrc>
-
-      <isApplicableToFrameSrc>false</isApplicableToFrameSrc>
-
-      <isApplicableToImgSrc>true</isApplicableToImgSrc>
-
-      <isApplicableToMediaSrc>false</isApplicableToMediaSrc>
-
-      <isApplicableToStyleSrc>true</isApplicableToStyleSrc>
-
-   </CspTrustedSite>
-
-```
-
-Usage
-
-For each CSPTrustedSite component, at least one field starting with `grantAccess` or `isApplicableTo` must be set to `true.`
-
-In API versions 50.0 to 58.0, if all `isApplicable` fields are `false`, the `isApplicableToImgSrc` field is set to `true` . In API
-version 49.0 and earlier, if all `isApplicable` fields are `false`, those fields all default to `true` .
-
-To ensure smooth integration across Salesforce products, Salesforce includes URLs in each of the CSP directives that correspond to the
-`isApplicable` fields, even though those URLs aren’t defined as CspTrustedSite components. Salesforce regularly updates those
-URLs based on the latest requirements.
-
-
-### Metadata Types CustomApplication
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### CustomApplication CustomApplication represents a custom or standard application. In API version 29.0 and earlier, CustomApplication represents only a
-
-custom application. An application is a list of tab references, with a description and a logo. This type extends the Metadata metadata
-type and inherits its `fullName` field.
-
-File Suffix and Directory Location
-
-Custom and standard applications have the suffix `.app` and are stored in the `applications` folder.
-
-Note: Retrieving a component of this metadata type in a project makes the component appear in any Profile and PermissionSet
-components that are retrieved in the same package.
-
-Version
-
-Custom applications are available in API version 10.0 and later. Standard applications are available in API version 30.0 and later.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`actionOverrides` AppActionOverride[]
-
-`brand` AppBrand
-
-`consoleConfig` ServiceCloudConsoleConfig
-
-Represents an action override for an application. Use it
-to create, update, edit, or delete action overrides.
-
-This field is available for Lightning Experience in API
-version 38.0 and later.
-
-The color scheme and logo used for the app.
-
-This field is available for Lightning Experience in API
-version 38.0 and later.
-
-Represents configuration settings for a Salesforce console
-app.
-
-This field is available in API version 42.0 and later.
-
-`defaultLandingTab` string The `fullName` of a standard tab or custom tab that
-opens when this application is selected.
-
-`description` string The optional description text of the application.
-
-
-Metadata Types CustomApplication
-
-**Field Name** **Field Type** **Description**
-
-`formFactors` FormFactor (enumeration of type Indicates the form factors for which the app is visible for
-string) Lightning Experience. Valid values are:
-
-**•** `Null` (no value)—For a desktop using Salesforce
-Classic
-
-**•** `Small` —For a mobile device using the Salesforce
-mobile app
-
-**•** `Medium` —Reserved for future use
-
-**•** `Large` —For a desktop using Lightning Experience
-
-This field is available in API version 38.0 and later.
-
-As of API version 38.0, `formFactors` is set to `Large`
-for existing Salesforce Classic apps, except for Salesforce
-Classic consoles. Salesforce Classic apps installed from
-packages created before API version 38.0 also have
-`formFactors` set to `Large` . For Salesforce Classic
-apps in packages created with API 38.0 or later, you must
-set `formFactors` to `Large` for Salesforce Classic
-apps to appear in the Lightning Experience desktop.
-
-As of API version 47.0, the `Small` value is supported
-for Lightning apps. The `formFactors` field can be
-set to `Small` or `Large` for Lightning apps, and it can
-be set to `Null` or `Large` for Salesforce Classic apps.
-
-`isNavAutoTempTabsDisabled` boolean Indicates whether the navigation automatically creates
-temporary tabs settings. Applies only to Lightning apps
-
-with standard navigation. Available in API version 43.0
-and later.
-
-`isNavPersonalizationDisabled` boolean
-
-Indicates whether navigation personalization is disabled.
-Applies only to Lightning apps. Available in API version
-43.0 and later.
-
-`isNavTabPersistenceDisabled` boolean Indicates whether workspace tabs are cleared for each
-new console session ( `true` ) or not ( `false` ). Applies
-
-only to Lightning apps with console navigation. Available
-in API version 54.0 and later.
-
-`isServiceCloudConsole` boolean
-
-Indicates if the application is a Salesforce Classic console
-app. For Lightning Experience console apps, this field is
-`null` and the `navType` field is set to `Console` .
-
-`label` string The name of the application.
-
-`logo` string The optional reference to the image document for a
-Salesforce app or Salesforce console app.
-
-`navType` NavType (enumeration of type string) Not updateable. Indicates the type of navigation the app
-uses. The value `Standard` is for a Lightning app with
-
-
-Metadata Types CustomApplication
-
-**Field Name** **Field Type** **Description**
-
-standard navigation. The value `Console` is for a
-Lightning app with console navigation.
-
-This field is available in API version 38.0 and later.
-
-`preferences` AppPreferences
-
-Represents the preferences for a Salesforce Classic
-console app. All of the AppPreferences fields are required.
-
-This field is available in API version 42.0 and later.
-
-`profileActionOverrides` AppProfileActionOverride[] A list of the Lightning Experience record page
-ProfileActionOverrides that are assigned to this custom
-
-app. When a user invokes the custom app, a matching
-ProfileActionOverride assignment takes precedence over
-existing overrides for the record page specified in
-ActionOverride. You can override a record page for the
-custom app by record type and profile.
-
-In API version 45.0 and later, you can override a home
-page for the custom app by profile.
-
-`setupExperience` string The type of Setup experience associated with the app.
-Valid values are:
-
-**•** `all` —Represents the full Setup tree.
-
-**•** `essentials` —Represents the Essentials Setup
-tree, which contains a subset of Setup items
-configured for Essentials edition.
-
-**•** `service` —Represents the Service Setup tree,
-which contains a subset of Setup items configured
-for Service Console.
-
-A `null` value is equivalent to `all` .
-
-Previous valid values `AllSetup`, `ServiceSetup`,
-and `EssentialsSetup` have been deprecated.
-
-This field is available in API version 39.0 and later.
-
-`subscriberTabs` string[]
-
-Represents the list of tabs appended by a subscriber to
-a Lightning app installed from a managed package.
-Records in a subscriber tab always open as primary tabs.
-
-This field is available in API version 41.0 and later.
-
-`tabs` string[] The list of tabs included in this application. In API version
-12.0, the `fullName` for built-in tabs like Home,
-
-Account, and Reports, is the name of the tab (Home, for
-example). In API version 13.0 and later, built-in tabs are
-prefixed with `standard-` . For example, to reference
-the Account tab you would use `standard-Account` .
-
-
-Metadata Types CustomApplication
-
-**Field Name** **Field Type** **Description**
-
-In API version 42.0, this field was renamed from `tab` to
-`tabs` .
-
-`uiType` UiType (enumeration of type string) Not updateable. Identifies the type of custom app. The
-value is:
-
-**•** `Aloha` for Salesforce Classic
-
-**•** `Lightning` for Lightning Experience
-
-This field is available in API version 38.0 and later.
-
-`utilityBar` string
-
-The developer name of the utility bar associated with
-this app.
-
-We recommend assigning a utility bar to only one
-Lightning App, because utility bars are shared. Sharing
-
-means that if you change the utility bar in one app, it
-automatically changes in all apps associated with it.
-
-This field is available in API version 38.0 and later.
-
-`workspaceConfig` AppWorkspaceConfig Represents how records open in a Salesforce console
-app. Required if `isServiceCloudConsole` is
-
-`true` . In API version 42.0, this field was renamed to
-`workspaceConfig` from `workspaceMappings` .
-
-AppActionOverride
-
-Represents an action override for an application. Use it to create, update, edit, or delete action overrides. AppActionOverride inherits
-from ActionOverride and extends it by one field, `pageOrSobjectType` . Available for Lightning Experience in API version 38.0 and
-later.
-
-**Field Name** **Field Type** **Description**
-
-`actionName` string The only valid value is `view` for API version 43.0 and earlier. The value
-`tab` is supported for API version 44.0 and later.
-
-`comment` string Any comments you want associated with the override.
-
-`content` string
-
-`formFactor` FormFactor(enumeration
-of type string)
-
-Set this field if `type` is set to `flexipage` . It refers to the name of the
-page to use as the override. To reference installed components, use the
-format of _**`Component_namespace`**_ `__` _**`Component_name`**_ .
-
-The size of the page being overridden.
-
-If the `type` field is set to `flexipage`, set this field to `Large` to
-override the View action with a Lightning page in Lightning Experience.
-
-The `Large` value represents the Lightning Experience desktop
-environment and is valid only for the `flexipage` and
-`lightningcomponent` types. The `Small` value represents the
-Salesforce mobile app on a phone or tablet. The `Medium` value is
-
-
-Metadata Types CustomApplication
-
-**Field Name** **Field Type** **Description**
-
-reserved for future use. The `null` value (which is the same as specifying
-no value) represents Salesforce Classic.
-
-This field is available in API version 37.0 and later and is part of the feature
-for creating and editing record pages in Lightning Experience.
-
-Lightning component overrides return different `FormFactor` values
-depending on the API version used.
-
-**•** In API version 41.0 and earlier, Lightning component overrides return
-only the `null` value (no value), representing the Salesforce Classic
-environment.
-
-**•** In API version 42.0, if you specify different Lightning component
-overrides for Lightning Experience and mobile, one component is
-selected randomly for both overrides and its `FormFactor` value
-is returned. If there’s a conflict between Lightning components, and
-a Visualforce page override is also specified for Salesforce Classic, the
-Visualforce page takes precedence.
-
-**•** In API version 43.0 and later, a Lightning component override for
-Lightning Experience returns the `Large` value and a Lightning
-component override for mobile returns the `Small` value, as
-expected.
-
-`pageOrSobjectType` string
-
-The name of the sObject type being overridden. Valid values are
-`standard` and `custom` .
-
-This value must be `standard-home` when actionName is `tab` .
-
-`skipRecordTypeSelect` boolean Set this field to `true` if you prefer that any new records created by this
-action override aren’t forwarded to the record type selection page. This
-
-field is only valid if the `actionName` is a “create” type (like `new` ), and
-`type` is set to `visualforce` .
-
-Required. Represents the type of action override. The valid values are
-`Flexipage` and `Default` .
-
-A `Flexipage` AppActionOverride set to App Default can’t be deleted
-via Metadata API. Instead, remove the override using the page assignment
-wizard in the Lightning App Builder UI.
-
-```
-type
-
-```
-
-AppBrand
-
-ActionOverrideType
-(enumeration of type
-string)
-
-The color scheme and logo used for the app. Available for Lightning apps in API version 38.0 and later.
-
-**Field Name** **Field Type** **Description**
-
-`footerColor` string Optional. Determines the footer color in the app. Specify the color with
-a hexadecimal code, such as #0000FF for blue.
-
-
-Metadata Types CustomApplication
-
-**Field Name** **Field Type** **Description**
-
-`headerColor` string Optional. Determines the header color in the app. Specify the color with
-a hexadecimal code, such as #0000FF for blue.
-
-`logo` string The optional reference to the image document for the application.
-
-`logoVersion` int An optional version number for the logo.
-
-`shouldOverrideOrgTheme` boolean Indicates whether to override the global theme for the org. When `true`,
-the color scheme and logo that the user has set are used. When `false`,
-
-the global theme for the org is used, even if the user has set a color
-scheme and logo.
-
-AppComponentList
-
-Represents custom console components (Visualforce pages) assigned to a Salesforce console app. In API version 42.0, this type was
-renamed from CustomApplicationComponents to AppComponentList.
-
-**Field Name** **Field Type** **Description**
-
-`alignment` string Required. Determines how custom console components are aligned in
-the footer of a Salesforce console app.
-
-`components` string[]
-
-AppPreferences
-
-The name of a custom console component assigned to a Salesforce
-console app. In API version 42.0, this field was renamed from
-`customApplicationComponent` to `components` .
-
-Represents the preferences for a Salesforce Classic console app. All of the AppPreferences fields are required. Available in API version
-42.0 and later.
-
-**Field Name** **Field Type** **Description**
-
-`enableCustomizeMyTabs` boolean
-
-Indicates if a Salesforce Classic console app has Customize My Tabs
-enabled. If enabled, users can hide, display, and organize items in the
-navigation tab.
-
-`enableKeyboardShortcuts` boolean Indicates if a Salesforce Classic console app has keyboard shortcuts
-enabled. Shortcuts let users perform actions by pressing a combination
-
-of keys instead of having to use a mouse. After keyboard shortcuts are
-enabled, several default shortcuts are available for customization. Before
-you can create custom shortcuts, a developer must define the shortcut’s
-action with the `addEventListener()` method in the Salesforce
-Console Integration Toolkit. You can’t create keyboard shortcuts for
-actions performed outside of the console. This field is required if
-`isServiceCloudConsole` is `true` .
-
-`enableListViewHover` boolean Indicates if a Salesforce Classic console app has list view hovers enabled.
-If set to `true`, summary information is displayed about a record in a
-
-
-Metadata Types CustomApplication
-
-**Field Name** **Field Type** **Description**
-
-responsive list when the user hovers over a record name. For cases, hover
-over the subject field.
-
-`enableListViewReskin` boolean Indicates if Salesforce Classic console apps use responsive list views
-instead of Salesforce Classic lists views.
-
-`enableMultiMonitorComponents` boolean Indicates if a Salesforce Classic console app has multi-monitor
-components enabled, which lets users move portions of a console from
-
-their browsers to locations on their screens. This field is required if
-`isServiceCloudConsole` is `true` .
-
-`enablePinTabs` boolean Indicates if a Salesforce Classic console app has pinned tabs enabled,
-which lets users pin primary tabs to the tab bar for quick access.
-
-`enableTabHover` boolean
-
-`enableTabLimits` boolean
-
-Indicates if a Salesforce Classic console app has tab hover enabled. If
-enabled, summary information is displayed about a record in an overlay
-when the user hovers over a tab.
-
-Indicates whether limits are enabled on the number of primary tabs and
-subtabs that can be opened in a Salesforce Classic console session. When
-`true`, values for `tabLimitConfig` are required
-
-`saveUserSessions` boolean Indicates if a Salesforce Classic console app saves user sessions
-automatically. If enabled, when console users close their browsers or log
-
-out of Salesforce, any previously open tabs display when users log in
-again. Required if `isServiceCloudConsole` is `true` .
-
-AppProfileActionOverride
-
-Represents a ProfileActionOverride for a custom app. This type inherits from ProfileActionOverride on page 1744 and extends it by one
-field, `profile` . Available for Lightning Experience in API version 39.0 and later. In API version 45.0 and later, you can override a home
-page for the custom app by profile.
-
-**Field Name** **Field Type** **Description**
-
-`actionName` string
-
-Required. The name of the action. The only valid values are `Tab` and
-`View` .
-
-If `pageOrSobjectType` is `record-home`, this field must be
-`View` . The `View` action is supported only when ProfileActionOverride
-is being specified as part of a CustomApplication.
-
-In API version 45.0 and later, this action is supported only when
-ProfileActionOverride is being specified as part of a CustomApplication,
-`pageOrSobjectType` is `standard-home`, and this field is `Tab` .
-
-`content` string Read-only. Represents the name of the Lightning page being used as
-the override.
-
-
-Metadata Types CustomApplication
-
-**Field Name** **Field Type** **Description**
-
-```
-formFactor
-
-```
-
-FormFactor Required. The size of the page being overridden. The `Large` value
-(enumeration of type represents the Lightning Experience desktop environment.
-string)
-
-`pageOrSobjectType` string
-
-Required. The name of the page being overridden. The only valid values
-are `record-home` and `standard-home` . If the `actionName`
-is `Tab`, this field must be `standard-home`
-
-`profile` string The profile associated with the ProfileActionOverride.
-
-`recordType` string
-
-The record type associated with the override.If `pageOrSobjectType`
-is `standard-home`, this field must be `null` . This field is required
-when `actionName` is set to `View` .
-
-```
-type
-
-```
-
-ActionOverrideType Required. Read-only. The type of action override. The only valid value is
-(enumeration of type `flexipage` .
-string)
-
-AppWorkspaceConfig
-
-Represents how records open in a Salesforce console app. Required if `isServiceCloudConsole` is `true` . Available for Salesforce
-Classic console apps in API version 25.0 and later. Available for Lightning console apps in API version 41.0 and later. In API version 42.0,
-this type was renamed from WorkspaceMappings to AppWorkspaceConfig.
-
-**Field Name** **Field Type** **Description**
-
-`mappings` WorkspaceMappingSingle[] Represents how records for a specific tab open in a Salesforce console
-app. Required for each tab specified in the CustomApplication. In API
-
-version 42.0, this field was renamed from `workspaceMapping` to
-`mappings` .
-
-WorkspaceMapping
-
-Represents how records for a specific tab open in a Salesforce console app. Required for each tab specified in the CustomApplication.
-Available in API version 25.0 and later for Salesforce Classic console apps. Available in API version 41.0 and later for Lightning console
-apps.
-
-**Field Name** **Field Type** **Description**
-
-`fieldName` string The name of the field that specifies the primary tab in which to display
-`tab` as a subtab. If not specified, `tab` opens as a primary tab.
-
-`tab` string Required. Name of the tab.
-
-
-Metadata Types CustomApplication
-
-CustomShortcut
-
-Represents custom keyboard shortcuts assigned to a Salesforce console app in Salesforce Classic. Before you can create custom shortcuts,
-a developer must define the shortcut’s action with the `addEventListener()` method in the Salesforce Console Integration Toolkit.
-You can’t create keyboard shortcuts for actions performed outside of the console. Available in API version 28.0 and later.
-
-**Field Name** **Field Type** **Description**
-
-`action` string Required. The action performed in the console when a user presses the
-keyboard shortcut.
-
-`active` boolean Required. Indicates whether the keyboard shortcut is active ( `true` ) or
-not ( `false` ).
-
-`keyCommand` string Required. The combination of keys a user presses to trigger the keyboard
-shortcut. Keyboard shortcuts aren’t case-sensitive, but they display as
-
-uppercase on setup pages in the Salesforce user interface so that they’re
-easier to read.
-
-Each key command can include up to four modifier keys followed by one
-non-modifier key. Modifier and non-modifier keys are separated by the
-`+` key. Modifier keys can occur in any order, but you must place
-non-modifier keys at the end of the key command sequence. For example,
-`SHIFT+CTRL+ALT+META +A` .
-
-Valid modifier keys are:
-
-**•** `SHIFT`
-
-**•** `CTRL`
-
-**•** `ALT`
-
-**•** `META` (represents the COMMAND key on Macs)
-
-Valid non-modifier keys are letters A through Z and numbers 0 through
-9. Other valid keys are:
-
-**•** `TAB`
-
-**•** `ENTER`
-
-**•** `PAUSE/BREAK`
-
-**•** `CAPS LOCK`
-
-**•** `ESC`
-
-**•** `SPACE`
-
-**•** `PAGE UP`
-
-**•** `PAGE DOWN`
-
-**•** `END`
-
-**•** `HOME`
-
-**•** `LEFT ARROW`
-
-**•** `UP ARROW`
-
-**•** `RIGHT ARROW`
-
-**•** `DOWN ARROW`
-
-
-Metadata Types CustomApplication
-
-**Field Name** **Field Type** **Description**
-
-**•** `PRINT SCREEN`
-
-**•** `INSERT`
-
-**•** `DELETE`
-
-**•** `RIGHT WINDOW`
-
-**•** `NUMPAD 0`
-
-**•** `NUMPAD 1`
-
-**•** `NUMPAD 2`
-
-**•** `NUMPAD 3`
-
-**•** `NUMPAD 4`
-
-**•** `NUMPAD 5`
-
-**•** `NUMPAD 6`
-
-**•** `NUMPAD 7`
-
-**•** `NUMPAD 8`
-
-**•** `NUMPAD 9`
-
-**•** `MULTIPLY`
-
-**•** `ADD`
-
-**•** `SUBTRACT`
-
-**•** `DECIMAL POINT`
-
-**•** `DIVIDE`
-
-**•** `F1`
-
-**•** `F2`
-
-**•** `F3`
-
-**•** `F4`
-
-**•** `F5`
-
-**•** `F6`
-
-**•** `F7`
-
-**•** `F8`
-
-**•** `F9`
-
-**•** `F10`
-
-**•** `F11`
-
-**•** `F12`
-
-**•** `NUM LOCK`
-
-**•** `SCROLL LOCK`
-
-**•** `;`
-
-**•** `=`
-
-**•** `,`
-
-**•** `—`
-
-**•** `.`
-
-
-Metadata Types CustomApplication
-
-**Field Name** **Field Type** **Description**
-
-**•** `/`
-
-**•** `‘`
-
-**•** `[`
-
-**•** `]`
-
-**•** `\`
-
-**•** `'`
-
-`description` string The optional description text for the keyboard shortcut.
-
-`eventName` string Required. Code available to developers who want to add custom shortcut
-functions to the console via the Salesforce Console Integration Toolkit.
-
-DefaultShortcut
-
-Represents default keyboard shortcuts assigned to a Salesforce console app. After you enable keyboard shortcuts for a console, several
-default shortcuts are available for customization. These include opening and closing tabs, moving between tabs, and saving records.
-Available in API version 28.0 and later.
-
-**Field Name** **Field Type** **Description**
-
-`action` string Required. The action performed in the console when a user presses the
-keyboard shortcut. Valid values are:
-
-**•** `FOCUS_CONSOLE`
-
-**•** `FOCUS_NAVIGATOR_TAB`
-
-**•** `FOCUS_DETAIL_VIEW`
-
-**•** `FOCUS_PRIMARY_TAB_PANEL`
-
-**•** `FOCUS_SUBTAB_PANEL`
-
-**•** `FOCUS_LIST_VIEW`
-
-**•** `FOCUS_FIRST_LIST_VIEW`
-
-**•** `FOCUS_SEARCH_INPUT`
-
-**•** `MOVE_LEFT`
-
-**•** `MOVE_RIGHT`
-
-**•** `UP_ARROW`
-
-**•** `DOWN_ARROW`
-
-**•** `OPEN_TAB_SCROLLER_MENU`
-
-**•** `OPEN_TAB`
-
-**•** `CLOSE_TAB`
-
-**•** `ENTER`
-
-**•** `EDIT`
-
-**•** `SAVE`
-
-
-Metadata Types CustomApplication
-
-**Field Name** **Field Type** **Description**
-
-`active` boolean Required. Indicates whether the keyboard shortcut is active ( `true` ) or
-not ( `false` ).
-
-`keyCommand` string Required. The combination of keys a user presses to trigger the keyboard
-shortcut. Keyboard shortcuts aren’t case-sensitive, but they display as
-
-uppercase on setup pages in the Salesforce user interface so that they’re
-easier to read.
-
-Each key command can include up to four modifier keys followed by one
-non-modifier key. Modifier and non-modifier keys are separated by the
-`+` key. Modifier keys can occur in any order, but you must place
-non-modifier keys at the end of the key command sequence. For example,
-`SHIFT+CTRL+ALT+META +A` .
-
-Valid modifier keys are:
-
-Valid non-modifier keys are letters A through Z and numbers 0 through
-9. Other valid keys are:
-
-KeyboardShortcuts
-
-Represents keyboard shortcuts assigned to a Salesforce console app. Required if `isServiceCloudConsole` is `true` . Available
-in API version 28.0 and later.
-
-**Field Name** **Field Type** **Description**
-
-`customShortcuts` CustomShortcut[] Represents custom keyboard shortcuts assigned to a Salesforce console
-app in Salesforce Classic. Before you can create custom shortcuts, a
-
-developer must define the shortcut’s action with the
-`addEventListener()` method in the Salesforce Console
-Integration Toolkit. You can’t create keyboard shortcuts for actions
-performed outside of the console.
-
-In API version 42.0, this field was renamed from `customShortcut`
-to `customShortcuts` .
-
-`defaultShortcuts` DefaultShortcut[] Represents default keyboard shortcuts assigned to a Salesforce console
-app. After you enable keyboard shortcuts for a console, several default
-
-shortcuts are available for customization. These include opening and
-closing tabs, moving between tabs, and saving records.
-
-In API version 42.0, this field was renamed from `defaultShortcut`
-to `defaultShortcuts` .
-
-ListPlacement
-
-Represents how lists display in a Salesforce console app. Required if `isServiceCloudConsole` is `true` . Available in API version
-25.0 and later.
-
-
-Metadata Types CustomApplication
-
-**Field Name** **Field Type** **Description**
-
-`height` int Height of the list in pixels or percentage. Required if `location` is top.
-
-`location` string Required. Location of the list on the screen. Valid values are:
-
-**•** full
-
-**•** top
-
-**•** left
-
-`units` string Required. Represents if `height` or `width` is in pixels or percentage.
-
-`width` int Width of the list in pixels or percentage. Required if `location` is left.
-
-LiveAgentConfig
-
-Represents your organization's settings for using Chat in the Salesforce Console.
-
-**Field Name** **Field Type** **Description**
-
-`enableLiveChat` boolean Specifies whether Chat is enabled in your organization ( `true` ) or not
-( `false` ).
-
-`openNewAccountSubtab` boolean
-
-Specifies whether to open a new Account subtab in a Salesforce console
-app automatically ( `true` ) or not ( `false` ) when an agent accepts a
-chat.
-
-`openNewCaseSubtab` boolean Specifies whether to open a new Case subtab in a Salesforce console app
-automatically ( `true` ) or not ( `false` ) when an agent accepts a chat.
-
-`openNewContactSubtab` boolean
-
-`openNewLeadSubtab` boolean
-
-`openNewVFPageSubtab` boolean
-
-`pageNamesToOpen` string [array of strings]
-
-Specifies whether to open a new Contact subtab in a Salesforce console
-app automatically ( `true` ) or not ( `false` ) when an agent accepts a
-chat.
-
-Specifies whether to open a new Lead subtab in a Salesforce console
-app automatically ( `true` ) or not ( `false` ) when an agent accepts a
-chat.
-
-Specifies whether to open a new Visualforce page as a subtab in a
-Salesforce console app automatically ( `true` ) or not ( `false` ) when an
-agent accepts a chat.
-
-Specifies the Visualforce pages to open in subtabs when an agent accepts
-a chat in a Salesforce console app.
-
-This field is available in API version 42.0 and later.
-
-`showKnowledgeArticles` boolean Specifies whether to display the Knowledge component while using
-Chat in a Salesforce console app ( `true` ) or not ( `false` ).
-
-
-Metadata Types CustomApplication
-
-PushNotification
-
-Represents a set of push notifications, which are visual indicators on lists and detail pages that show when a record or field has changed
-during a user’s session. Available for use if `isServiceCloudConsole` is `true` . Available in API version 28.0 and later.
-
-**Field Name** **Field Type** **Description**
-
-`fieldNames` string] The name of the field or fields that trigger push notifications for the
-selected object.
-
-`objectName` string Required. Name of the object that triggers push notifications.
-
-ServiceCloudConsoleConfig
-
-Represents configuration settings for a Salesforce console app. Available in API version 42.0 and later.
-
-**Field Name** **Field Type** **Description**
-
-`componentList` AppComponentList Represents custom console components (Visualforce pages) assigned to
-a Salesforce console app.
-
-`detailPageRefreshMethod` string Determines how detail pages refresh in a Salesforce console app. Required
-if `isServiceCloudConsole` is `true` . The valid values are:
-
-**•** `none`
-
-**•** `autoRefresh`
-
-**•** `flag`
-
-`footerColor` string Determines the footer color in a Salesforce console app.Specify the color
-with a hexadecimal code, such as #0000FF for blue.
-
-`headerColor` string Determines the header color in a Salesforce console app. Specify the
-color with a hexadecimal code, such as #0000FF for blue.
-
-`keyboardShortcuts` KeyboardShortcuts
-
-Represents the keyboard shortcuts for a Salesforce console app. Keyboard
-shortcuts let users perform actions by pressing a combination of keys
-instead of having to use a mouse.
-
-`listPlacement` ListPlacement Represents how lists display in a Salesforce console app. Required if
-`isServiceCloudConsole` is `true` .
-
-`listRefreshMethod` string Determines how lists refresh in a Salesforce console app. Required if
-`isServiceCloudConsole` is `true` . The valid values are:
-
-**•** `none`
-
-**•** `refreshList`
-
-**•** `refreshListRows`
-
-`liveAgentConfig` LiveAgentConfig Represents the configurations for using Chat in the Salesforce Console.
-
-`primaryTabColor` string Determines the primary tab color in a Salesforce console app.Specify the
-color with a hexadecimal code, such as #0000FF for blue.
-
-
-Metadata Types CustomApplication
-
-**Field Name** **Field Type** **Description**
-
-`pushNotifications` PushNotification[] Represents push notifications for a Salesforce console app. Push
-notifications are visual indicators on lists and detail pages that show when
-
-a record or field has changed during a user’s session. For example, assume
-that two support agents are working on the same case. If one agent
-changes the `Priority`, a push notification displays to the other agent
-so the agent notices the change and doesn’t duplicate the effort.
-
-`tabLimitConfig` TabLimitConfig
-
-Represents the maximum number of primary tabs and subtabs allowed
-in one Salesforce console session. Required if `enableTabLimits` is
-`true` .
-
-`whiteListedDomains` string[] Any external domains that users can access from within a Salesforce
-console app. For example, `www.yourdomain.com` .
-
-TabLimitConfig
-
-Represents the maximum number of primary tabs and subtabs allowed in one Salesforce console session. Required if
-`enableTabLimits` is `true` . Available in API version 36.0 and later.
-
-**Field Name** **Field Type** **Description**
-
-`maxNumberOfPrimaryTabs` string The maximum number of primary tabs allowed in one console session.
-Valid values are:
-
-**•** 5
-
-**•** 10
-
-**•** 20
-
-**•** 30
-
-`maxNumberOfSubTabs` string The maximum number of subtabs allowed in one console session. Valid
-values are:
-
-**•** 5
-
-**•** 10
-
-**•** 15
-
-Usage
-
-You can't delete custom app ProfileActionOverrides by deploying with `destructiveChange.xml` . To delete a ProfileActionOverride,
-retrieve the app. In the app definition file, find the `<profileActionOverrides>` section, and remove the `<content>` row.

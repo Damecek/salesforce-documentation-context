@@ -1,4 +1,4515 @@
+appear in the Assigned Resources related list on service appointments. This object is available in API version 38.0 and later.
+
+AssignmentRule
+Represents an assignment rule associated with a Case or Lead.
+
+AssociatedLocation
+Represents a link between an account and a location in Field Service. You can associate multiple accounts with one location. For
+example, a shopping center location may have multiple customer accounts.
+
+AsyncApexJob
+Represents an individual Apex sharing recalculation job, a batch Apex job, a method with the `future` annotation, or a job that
+implements `Queueable` or `Schedulable` . Use this object to query Apex batch jobs in your organization.
+
+AsyncOperationLog
+Represents an async operations log containing progress and status information about external synchronizations to the Omnichannel
+Inventory service. This object is available in API version 51.0 and later.
+
+AsyncOperationTracker
+Represents the status of an asynchronous request initiated from the Quote, Order, and CreditMemo objects. This object is available
+in API version 61.0 and later.
+
+AsyncOpSyndicationFeedFile
+Represents the sync status of file-related information shared with external channels such as Facebook and Instagram. This object is
+available in API version 64.0 and later.
+
+AttachedContentDocument
+This read-only object contains all `ContentDocument` objects associated with an object.
+
+AttachedContentNote
+This read-only object contains all ContentNote objects associated with an object.This object is available in API version 35.0 and later.
+
+Attachment
+Represents a file that a User has uploaded and attached to a parent object.
+
+AttachmentEventLog
+Attachment event logs contain information about attachments. This object is available in API version 65.0 and later.
+
+AttribModel
+Represents an attribution model used with Personalization, Attribution, and Campaign Influence, including model weights and
+touch type. This object is available in API version 62.0 and later.
+
+AttribModelStage
+Represents a funnel stage that’s used in a predefined or custom attribution configuration. Available in API version 62.0 and later.
+
+AttribModelStageMetric
+Represents the engagement signal metrics that you select when you configure a funnel stage for an attribution configuration.
+Available in API version 63.0 and later.
+
+AttributeDefinition
+Represents a product, asset, or object attribute, for example, a hardward specification or software detail. This object is available in
+API version 57.0 and later.
+
+
+Standard Objects
+
+AttributePicklist
+Represents a custom picklist for an asset attribute. This object is available in API version 57.0 and later.
+
+AttributePicklistValue
+Represents the values of an asset attribute picklist. This object is available in API version 57.0 and later.
+
+AsyncReportRunEventLog
+Async Report Run Event Log is used for reporting scheduled requests. This category includes dashboard refreshes, asynchronous
+reports, schedule reports, and analytics snapshots. This object is available in API version 61.0 and later.
+
+Audience
+Represents an audience that is defined by criteria and can be assigned and used for targeting in an Experience Cloud site. This object
+is available in API version 44.0 and later.
+
+AuraDefinition
+Represents an Aura component definition, such as component markup, a client-side controller, or an event. This object is available
+in API version 32.0 and later.
+
+AuraDefinitionBundle
+Represents a Lightning Aura component definition bundle, such as a component or application bundle. A bundle contains a Lightning
+Aura component definition and all its related resources. This object is available in API version 32.0 and later.
+
+AuraDefinitionBundleInfo
+For internal use only.
+
+AuraDefinitionInfo
+For internal use only.
+
+AuraRequestEventLog
+Aura Request Event Log contains details of requests to Apex methods from Aura and Lightning web components. This object is
+available in API version 61.0 and later.
+
+AuthConfig
+Represents authentication options for My Domain and Experience Cloud site login pages. This object is available in API version 32.0
+and later.
+
+AuthConfigProviders
+Represents an authentication provider that’s configured in an organization. AuthConfigProviders is a child of the AuthConfig object.
+This object is available in API version 32.0 and later.
+
+AuthorizationForm
+Represents the specific version and effective dates of a form that is associated with consent, such as a privacy policy or terms and
+conditions. This object is available in API version 46.0 and later.
+
+AuthorizationFormConsent
+Represents the date and way in which a user consented to an authorization form. This object is available in API version 46.0 and
+later.
+
+AuthorizationFormDataUse
+Represents the data use consented to in an authorization form. This object is available in API version 46.0 and later.
+
+AuthorizationFormText
+Represents an authorization form’s text and language settings. This object is available in API version 46.0 and later.
+
+AuthProvider
+Represents an authentication provider (auth provider). An auth provider lets users log in to your Salesforce org from an external
+service provider, such as Facebook, Google, or GitHub. This object is available in API version 27.0 and later.
+
+
+Standard Objects
+
+AuthProvParamFwdAllowlist
+Represents an allowlisted URL parameter that can be forwarded from authentication provider client configuration URLs to the
+authorization URL. Use this type to add custom functionality to authentication providers. For example, allowlist a `ui_locales`
+parameter and use it to send a user's language preference from Salesforce to the third-party provider's login page. This object is
+available in API version 62..0 and later.
+
+AuthSession
+The AuthSession object represents an individual user session in your organization. This object is available in versions 29.0 and later.
+
+AutomatedAction
+Represents the configuration of an automated action, such as a workflow rule. This object is available in API version 57.0 and later.
+
+AutomatedActionCondition
+Represents the logical operator details for evaluating conditions in an automated action. This object is available in API version 57.0
+and later.
+
+AutomatedActionOverride
+Represents a modified attribute of a shared automated action. For example, the modified attribute can contain customizations for
+your business. This object is available in API version 58.0 and later.
+
+AutomatedActionParameter
+Represents the values or field references evaluated by the automated action. This object is available in API version 57.0 and later.
+
+AutomatedActionReminder
+Represents a reminder to the end user to take an action in the future. This object is available in API version 58.0 and later.
+
+BackgroundOperation
+Represents a background operation in an asynchronous job queue. This object is available in API version 35.0 and later.
+
+BackgroundOperationResult
+Stores error messages generated when or importing data into big objects using Bulk API. This is a big object, available in API version
+37.0 and later.
+
+BatchApexErrorEvent
+[The documentation has moved to BatchApexErrorEvent in the](https://developer.salesforce.com/docs/atlas.en-us.262.0.platform_events.meta/platform_events/sforce_api_objects_batchapexerrorevent.htm) _Platform Events Developer Guide_ .
+
+BillingBatchScheduler
+Represents a scheduled processing job that triggers recurring invoice batch runs and payment batch runs in Subscription Management.
+This object is available in API version 55.0 and later.
+
+BillingPeriodItem
+Represents one payment period for a subscription. The billing period item is used to pass billing information to an invoice line item
+in Subscription Management. This object is available in API version 55.0 and later.
+
+BillingPolicy
+Represents a group of billing treatments, which define the rules for how to invoice a customer for an order item. This object is
+available in API version 55.0 and later.
+
+BillingSchedule
+Stores the order item information used in the invoicing process. This object is available in API version 55.0 and later.
+
+BillingScheduleGroup
+Represents a consolidated view of all billing schedules related to the order items generated from one asset, including new orders
+and amendment orders. This object is available in API version 55.0 and later.
+
+
+Standard Objects
+
+BillingTreatment
+Defines how Subscription Management bills an order item. The Exclude From Billing field controls whether the order item is invoiced.
+Child billing treatment items control how much of the order item's balance is invoiced for each invoice across the subscription's
+lifecycle. Billing treatments are assigned to order items based on the parent billing policy's Billing Treatment Selection field. This
+object is available in API version 55.0 and later.
+
+BillingTreatmentItem
+A billing treatment item defines how the order item's total amount is distributed into billing schedules over the course of the order
+item's lifecycle. In the Subscription Management pilot, billing treatments must have only one billing treatment item, so that the
+billing treatment item covers 100% of the order item's total value. This object is available in API version 55.0 and later.
+
+BlockedRedirectEventLog
+Blocked Redirect events capture information about blocked redirections from Salesforce to untrusted and malformed URLs. This
+object is available in API version 65.0 and later.
+
+Bookmark
+Represents a link between opportunities that share common information.
+
+BotDefinition
+Represents a top level object for Einstein Bots or Agentforce Agents. This object is available in API version 60.0 and later.
+
+BotVersion
+Represents a version of a bot or agent defined by a BotDefinition record. This object is available in API version 63.0 and later.
+
+BrandingSet
+Represents the definition of a set of branding properties for an Experience Builder site, as defined in the Theme panel in Experience
+Builder. This object is available in API version 40.0 and later.
+
+BrandTemplate
+Letterhead for HTML EmailTemplate.
+
+Brief
+Represents a marketing brief. A brief contains information that’s used for positioning and grounding a marketing campaign. Agentforce
+can help you create a campaign that best fits the goals and requirements in your brief. This object is available in API version 61.0
+and later.
+
+BriefcaseAssignment
+Represents the assignment of a briefcase definition to selected users and user groups. This object is available in API version 50.0 and
+later.
+
+BriefcaseDefinition
+Represents a briefcase definition. A briefcase makes selected records available for users to view when they’re offline in the Salesforce
+Field Service mobile app for iOS and Android. This object is available in API version 50.0 and later.
+
+BriefcaseRule
+Represents a rule that specifies records for a briefcase definition. This object is available in API version 50.0 and later.
+
+BriefcaseRuleFilter
+Represents a filter criteria for a briefcase rule. This object is available in API version 50.0 and later.
+
+BroadcastCommAudience
+Represents the audience that the broadcast communication is sent to. This object is available in API version 56.0 and later.
+
+BroadcastCommunication
+Represents a broadcast communication related to an incident. This object is available in API version 56.0 and later.
+
+
+Standard Objects
+
+BroadcastTopic
+Represents a definition of a broadcast topic. A broadcast topic is associated with a list of Experience Cloud network sites for Service
+Cloud and collaboration rooms for Sales Cloud. The topic is created for a specific user role. Collaboration rooms are linked to Slack
+channels. This object is available in API version 55.0 and later.
+
+BroadcastTopicGroup
+Represents a junction object that relates a group to an alert type broadcast topic. The broadcast sends the alert to this group. This
+object is available in API version 57.0 and later.
+
+BroadcastTopicNetwork
+Represents a link between a broadcast topic and the Experience Cloud network site for Service Cloud. This object is available in API
+version 56.0 and later.
+
+BrowserPolicyViolation
+Represents a violation that occurred within the last seven days related to the Trusted URLs and Trusted URLs for External Redirects
+allowlists. These violations include blocked resource requests based on your content security policy (CSP) and blocked redirections.
+This object is available in API version 61.0 and later.
+
+BulkApi2EventLog
+Bulk API 2 event logs contain details about Bulk API 2.0 requests. This object is available in API version 61.0 and later.
+
+BulkApiEventLog
+Bulk API event logs contain details about Bulk API requests. This object is available in API version 61.0 and later.
+
+BulkApiRequestEventLog
+The Bulk API request event captures when Bulk API requests are received to create a job, update a job, create a batch, update a batch,
+and when a job completes. This object is available in API version 65.0 and later.
+
+BusinessBrand
+Represents a unique brand for a business that belongs to a parent entity. This object is available in API version 53.0 and later.
+
+BusinessAlert
+Represents information about insight notifications that Einstein Relationship Insights explores, such as news mentions, job updates,
+and relationships. This object is available in API version 57.0 and later.
+
+BusinessAlertStatus
+Represents information about the read status of an insight alert. This object is available in API version 57.0 and later.
+
+BusinessHours
+Specifies the business hours of your support organization. Escalation rules are run only during these hours.
+
+Business Process
+Represents a business process. Business Processes track separate sales, lead, support, and solution lifecycles by displaying different
+picklist values according to each user’s profile.
+
+BusinessProcessDefinition
+Setup object that stores information about stages in a customer lifecycle map. The stages are associated with surveys and questions
+created using Salesforce Surveys. This object is reserved for internal use, and is available in API version 49.0 and later.
+
+BusinessProcessFeedback
+Setup object that stores information about the survey and the question associated with each stage in a customer lifecycle map.
+Customer lifecycle maps are used to track the scores provided by customers across their lifecycle using Salesforce Surveys. This object
+is reserved for internal use, and is available in API version 49.0 and later.
+
+
+Standard Objects
+
+BusinessProcessGroup
+Setup object that stores information about customer lifecycle maps. Customer lifecycle maps are used to track the scores provided
+by customers across their lifecycle using Salesforce Surveys. This object is reserved for internal use, and is available in API version
+49.0 and later.
+
+BuyerAccount
+Represents an account that is enabled as a buyer for Lightning B2B Commerce. This object is available in API version 48.0 and later.
+
+BuyerCriteria
+Represents the buyer context qualifier of locale for any buyer groups of type Market This object is available in API version 58.0 and
+later.
+
+BuyerGroup
+Associates group qualifiers (entitlements, price books, promotions, and shipping methods) with buyer members based on buyer
+account ID or on the localized language and currency of the market browsed in a webstore. This object is available in API version
+57.0; amended to support Market in version 58.0 and later.
+
+BuyerGroupBuyerCriteria
+Associates a buyer group that is enabled for webstores supporting multiple languages and currencies with BuyerCriteria that define
+those languages and currencies. This object is available in API version 58.0 and later.
+
+BuyerGroupMember
+Represents a member of a buyer group. This object is available in API version 55.0 and later.
+
+BuyerGroupPricebook
+Represents a buyer group price book used in Lightning B2B Commerce. This object is available in API version 48.0 and later.
+
+BuyerGroupRelatedObject
+Used to associate currencies and supported ship-to countries with a buyer group and its price books, promotions, and entitlements.
+Supports buyer experience when buyer group members shop in stores enabled for multiple locales. This object is available in API
+version 58.0 and later.
+
+CalcProcStepRelationship
+Defines a parent-child relationship between two Expression Set Steps in an Expression Set Version. The label for this object is
+Expression Set Step Relationship. This object is available in API version 53.0 and later.
+
+CalculatedInsightRangeBound
+Stores the information required to calculate a range-bound data insight. This object is available in API version 59.0 and later.
+
+CalculationMatrix
+Matches input values to a table row and returns the row's output values. The label for this object is Decision Matrix. This object is
+available in API version 53.0 and later.
+
+CalculationMatrixColumn
+Defines a column in a Decision Matrix. The label for this object is Decision Matrix Column. This object is available in API version 53.0
+and later.
+
+CalculationMatrixRow
+Defines a row in a Decision Matrix. The label for this object is Decision Matrix Row. This object is available in API version 53.0 and
+later.
+
+CalculationMatrixVersion
+Defines a version of a Decision Matrix. The label for this object is Decision Matrix Version. This object is available in API version 53.0
+and later.
+
+
+Standard Objects
+
+CalculationProcedure
+Performs a series of calculations using matrix lookups and user-defined variables and constants. The label for this object is Expression
+Set. This object is available in API version 53.0 and later.
+
+CalculationProcedureStep
+Defines a step in an Expression Set. The label for this object is Expression Set Step. This object is available in API version 53.0 and
+later.
+
+CalculationProcedureVariable
+Defines a variable in an Expression Set. The label for this object is Expression Set Variable. This object is available in API version 53.0
+and later.
+
+CalculationProcedureVersion
+Defines a version of an Expression Set. The label for this object is Expression Set Version. This object is available in API version 53.0
+and later.
+
+Calendar
+Represents a calendar. This can be a default user calendar, public calendar, resource calendar, or holiday calendar. This object is
+available in API version 45.0 and later.
+
+CalendarView
+These calendars can be created and assigned to users other than the creator. Available calendars include object, shared, public,
+resource, and user list calendars. Object calendars represent a calendar based on a Salesforce object, either standard or custom. This
+object is available in API version 51.0 and later.
+
+CallCenter
+Represents a call center, which is a logical representation of a single computer-telephony integration (CTI) system instance in an
+organization.
+
+CallCenterRoutingMap
+Stores a mapping between a user or queue in a Salesforce org to a user or queue in an external system’s call center. This object is
+available in API version 53.0 and later.
+
+CallCoachingMediaProvider
+Represents the media provider for call recordings. This object is available in API version 49.0 and later.
+
+CallCtrAgentFavTrfrDest
+Represents a transfer destination that has been marked (starred) as a favorite in the Omni-Channel softphone by a contact center
+agent for voice call transfers. This object is available in API version 55.0 and later.
+
+CallCtrAgentFavTrfrDestShare
+Represents a sharing entry on a favorite transfer destination in the Omni-Channel softphone for voice call transfers. This object is
+available in API version 55.0 and later.
+
+CallDisposition
+Represents a call result value that sales reps select when logging a call. This object is available in API version 47.0 and later.
+
+CallDispositionCategory
+Represents the call outcome of a phone call that is used in reports and branching criteria for cadences. This object is available in API
+version 47.0 and later.
+
+CallTemplate
+Represents a call script for users to read when making calls.
+
+Campaign
+Represents and tracks a marketing campaign, such as a direct mail promotion, webinar, or trade show.
+
+
+Standard Objects
+
+CampaignInfluence
+Represents the association between a campaign and an opportunity in Customizable Campaign Influence. This object is available
+in API version 37.0 and later.
+
+CampaignInfluenceModel
+This read-only object represents a campaign influence model in Customizable Campaign Influence. Use campaign influence models
+to group `CampaignInfluence` records created by a specific set of triggers and workflows that you define. The Primary Campaign
+Source influence model is the default model. This object is available in API version 37.0 and later.
+
+CampaignMember
+The CampaignMember object represents the relationship between a campaign and either a lead or a contact. If the Accounts as
+Campaign Members setting is enabled in an org, CampaignMember can also represent the relationship between a campaign and
+an account.
+
+CampaignMemberStatus
+One or more member status values defined for a campaign.
+
+CampaignOwnerSharingRule
+Represents the rules for sharing a campaign with User records other than the owner or anyone above the owner in the role hierarchy.
+
+CampaignShare
+Represents a sharing entry on a Campaign.
+
+CampaignTag
+Associates a word or short phrase with a Campaign.
+
+CardPaymentMethod
+Represents a credit card or debit card payment method, which implements the PaymentMethod object. This object is available in
+API version 48.0 and later.
+
+CartCheckoutSession
+Represents a checkout session used in Lightning B2B Commerce checkout. This object is available in API version 48.0 and later.
+
+CartDeliveryGroup
+Represents shipping information for the delivery of items in an order against a store built with B2B Commerce or D2C Commerce.
+This object is available in API version 49.0 and later.
+
+CartDeliveryGroupMethod
+Represents the selected delivery method for a cart delivery group used in Lightning B2B Commerce checkout. This object is available
+in API version 49.0 and later.
+
+CartDeliveryGroupMethodAdj
+Represents the shipping promotion discount for a shipping method. This object is available in API version 60.0 and later.
+
+CartItem
+Represents an item in a `WebCart` that’s active in a store built with B2B. Cart item can be of type `Product` or `Charge` . This
+object is available in API version 49.0 and later.
+
+CartItemAttribute
+Represents the attributes associated with a cart item, stored as key-value pairs. These attributes are derived from the product and
+carried forward to the order during checkout. This object is available in API version 66.0 and later.
+
+CartItemPriceAdjustment
+Price adjustment for a cart item. This object is available in API version 52.0 and later.
+
+
+Standard Objects
+
+CartTax
+Represents taxes for a line item in a `WebCart` that’s active in a store built with B2B Commerce or D2C Commerce. This object is
+available in API version 49.0 and later.
+
+CartValidationOutput
+Associate errors to cart entities, such as cart line items, delivery groups, and the like, in a store built with B2B Commerce or D2C
+Commerce. An example error is “Out of stock.” Available in API version 49.0 and later.
+
+Case
+Represents a case, which is a customer issue or problem.
+
+CaseArticle
+Represents the association between a Case and a KnowledgeArticle. This object is available in API version 20.0 and later.
+
+CaseComment
+Represents a comment that provides additional information about the associated Case.
+
+CaseContactRole
+Represents the role that a given Contact plays on a Case.
+
+CaseHistory
+Represents historical information about changes that have been made to the associated Case.
+
+CaseHistory2
+Represents historical information about owner and status changes that have been made to the associated Case. This object is available
+in API version 59.0 and later.
+
+CaseMilestone
+Represents a milestone (required step in a customer support process) on a Case. This object is available in API version 18.0 and later.
+
+CaseOwnerSharingRule
+Represents the rules for sharing a case with users other than the owner.
+
+CaseParticipant
+Represents a junction between a case, and an account or a contact. This object stores the details of the participant associated with
+a case. This participant could be the applicant, co-applicant, a household, or even a business account. This object is available in API
+version 54.0 and later.
+
+CaseRelatedIssue
+This object acts as a junction between a customer issue (Case) and the Incident or Problem that represents an associated service
+failure. This object is available in API version 53.0 and later.
+
+CaseShare
+Represents a sharing entry on a Case.
+
+CaseSolution
+Represents the association between a Case and a Solution.
+
+CaseStatus
+Represents the status of a Case, such as New, On Hold, or In Process.
+
+CaseSubjectParticle
+Represents the Social Business Rules custom format for the **Case Subject** field on cases created from inbound social posts. This
+object is available in API version 41.0 and later.
+
+CaseTag
+Associates a word or short phrase with a Case
+
+
+Standard Objects
+
+CaseTeamMember
+Represents a case team member, who works with a team of other users to help resolve a case.
+
+CaseTeamRole
+Represents a case team role. Every case team member has a role on a case, such as “Customer Contact” or “Case Manager.”
+
+CaseTeamTemplate
+Represents a predefined case team, which is a group of users that helps resolve a case.
+
+CaseTeamTemplateMember
+Represents a member on a predefined case team, which is a group of users that helps resolve cases.
+
+CaseTeamTemplateRecord
+The CaseTeamTemplateRecord object is a linking object between the Case and CaseTeamTemplate objects. To assign a predefined
+case team to a case (customer inquiry), create a CaseTeamTemplateRecord record and point the `ParentId` to the case and the
+`TeamTemplateId` to the predefined case team.
+
+CategoryData
+Represents a logical grouping of Solution records.
+
+CategoryNode
+Represents a tree of Solution categories.
+
+CategoryNodeLocalization
+When the Translation Workbench is enabled for your organization, the CategoryNodeLocalization object provides the translation of
+the label of a solution category.
+
+ChangeRequest
+Represents a decision to implement a formal request for a change (RFC). This object is available in API version 53.0 and later.
+
+ChangeRequestRelatedIssue
+Represents a junction object that relates a ChangeRequest to an Incident or Problem due to a service failure. This object is available
+in API version 53.0 and later.
+
+ChangeRequestRelatedItem
+Represents a junction object that relates a ChangeRequest to an Asset. This object is available in API version 53.0 and later.
+
+ChangeSetOperationEventLog
+Change Set Operation events contain information from change set migrations. This object is available in API version 65.0 and later.
+
+ChannelObjectLinkingRule
+Represents a rule for linking a channel interaction with an object (such as Lead or Contact). This object is available in API version
+47.0 and later.
+
+ChannelProgram
+Represents a channel program that vendors use to market and sell their products through channel partners. This object is available
+in API version 41.0 and later.
+
+ChannelProgramLevel
+Represents a level, based on member experience, in a channel program. This object is available in API version 41.0 and later.
+
+ChannelProgramMember
+Represents a partner who is a member of a channel program. This object is available in API version 41.0 and later.
+
+ChatterActivity
+ChatterActivity represents the number of posts and comments made by a user and the number of comments and likes on posts
+and comments received by the same user. This object is available in API version 23.0 and later.
+
+
+Standard Objects
+
+ChatterAnswersActivity
+Represents the reputation of a User in Chatter Answers zones.This object is available in API version 25.0 and later.
+
+ChatterAnswersReputationLevel
+Represents a reputation level within a Chatter Answers zone. This object is available in API version 26.0 and later.
+
+ChatterConversation
+Represents a private conversation in Chatter, consisting of messages that conversation members have sent or received. This object
+is available in API version 23.0 and later.
+
+ChatterConversationMember
+Represents a member of a private conversation in Chatter. A member has either sent messages to or received messages from other
+conversation participants. This object is available in API version 23.0 and later.
+
+ChatterExtension
+Represents a Rich Publisher App that’s integrated with the Chatter publisher. This object is available in API version 41.0 and later.
+
+ChatterExtensionConfig
+Configuration for the Chatter extension for Experience Cloud sites. This object is available in API version 41.0 and later.
+
+ChatterMessage
+Represents a message sent as part of a private conversation in Chatter. This object is available in API version 23.0 and later.
+
+ClientBrowser
+Represents a cookie added to the browser upon login, and also includes information about the browser application where the cookie
+was inserted. This object is available in version 28.0 and later.
+
+CollaborationGroup
+Represents a Chatter group. This object is available in API version 19.0 and later.
+
+CollaborationGroupMember
+Represents a member of a Chatter group. This object is available in API version 19.0 and later.
+
+CollaborationGroupMemberRequest
+Represents a request to join a private Chatter group. This object is available in API version 21.0 and later.
+
+CollaborationGroupRecord
+Represents the records associated with Chatter groups.
+
+CollaborationInvitation
+Represents an invitation to join Chatter, either directly or through a group. This object is available in API version 21.0 and later.
+
+CollaborationRoom
+Represents a collaboration room, which links Salesforce to a Slack channel used by applications with specific use cases, such as
+swarming or reporting. This object is available in API version 55.0 and later.
+
+CollabDocumentMetric
+Represents the engagement metrics for a Quip thread (document or spreadsheet) that’s linked to a Salesforce record. This object is
+available in API version 50.0 and later.
+
+CollabDocumentMetricRecord
+Represents an association between a CollabDocumentMetric and a Salesforce record.It tracks which Salesforce record, such as an
+Account or Contact, is linked to a Quip thread for which metrics were gathered using CollabDocumentMetric.
+CollabDocumentMetricRecord is available in API version 50.0 and later.
+
+CollabTemplateMetric
+Represents the engagement metrics for a Quip template.This object is available in API version 50.0 and later.
+
+
+Standard Objects
+
+CollabTemplateMetricRecord
+Represents an association between a CollabTemplateMetric and a Salesforce record.It tracks which Salesforce record, such as an
+Account or Contact, is linked to a Quip template for which metrics were gathered using CollabTemplateMetric.
+CollabTemplateMetricRecord is available in API version 50.0 and later.
+
+CollabUserEngagementMetric
+Represents the user engagement metrics for a Quip thread in a Quip template or document. This object is available in API version
+50.0 and later.
+
+CollabUserEngmtRecordLink
+Represents an association between a CollabUserEngagementMetric and a Salesforce record. It tracks which Salesforce record, such
+as an Account or Contact, is associated with the user engagement metric. This object is available in API version 50.0 and later.
+
+ColorDefinition
+Represents the color-related metadata for a custom tab. This object is available in API version 43.0 and later.
+
+ContCalloutSummaryEventLog
+Continuation Callout Summary events contain information about all of the asynchronous callouts performed during a transaction,
+their response status codes, execution times, and URL endpoint destinations. This object is available in API version 65.0 and later.
+
+CombinedAttachment
+This read-only object contains all notes, attachments, Google Docs, documents uploaded to libraries in Salesforce CRM content, and
+files added to Chatter that are associated with a record.
+
+CommerceEntitlementBuyerGroup
+Represents the entitlement policy for a buyer group. This object is available in API version 49.0 and later.
+
+CommerceEntitlementPolicy
+Represents an entitlement policy, which determines what products and prices a user can see. This object is available in API version
+49.0 and later.
+
+CommerceEntitlementPolicyShare
+Represents the entitlement rule for sharing products and prices with users other than the owner. This object is available in API version
+49.0 and later.
+
+CommerceEntitlementProduct
+Represents the entitlement policy for a product. This object is available in API version 49.0 and later.
+
+CommissionSchedule
+Represents a commission calculation and rate definition. Calculates commission values for a commissionable event.
+
+CommissionScheduleAssignment
+Represents the commission calculation applicable to a specific product or producer for one or multiple commissionable events.
+
+CommSubscription
+Represents the subscription options for a specific communication. This object is available in API version 48.0 and later.
+
+CommSubscriptionChannelType
+Represents the engagement channel through which you can reach a customer for a communication subscription. This object is
+available in API version 48.0 and later.
+
+CommSubscriptionConsent
+Represents a customer’s consent to a communication subscription. This object is available in API version 48.0 and later.
+
+CommSubscriptionTiming
+Represents a customer's timing preferences for receiving a communication subscription. This object is available in API version 48.0
+and later.
+
+
+Standard Objects
+
+Community (Zone)
+Represents a zone that contains Idea or Question objects.
+
+ConcurApexLimitEventLog
+Concurrent Apex Limit event logs contain information about long-running concurrent Apex requests in your org that Salesforce
+terminated after reaching your org’s concurrency limit. Requests with an established Apex context that execute for 5 seconds are
+counted towards your org’s limit of concurrent long-running requests. (Asynchronous requests don’t count towards the limit.) When
+the long-running requests exceed the org default limit, additional long-running requests are denied. This object is available in API
+version 61.0 and later.
+
+ConnectedApplication
+Represents a connected app and its details; all fields are read-only.
+
+ConferenceNumber
+Holds the telephone number for an external event shown in the Salesforce Today feature in the Salesforce mobile app. This object
+is available in API version 35.0 and later.
+
+Consumption Rate
+Consumption rates describe the billing rate for a range of usage within a consumption schedule. All consumption schedules require
+at least one consumption rate in order to rate usage on a usage product. This object is available in API version 45.0 and later.
+
+Consumption Schedule
+A consumption schedule organizes a set of consumption rates by which usage-based products are quoted and billed. This object
+is available in API version 45.0 and later.
+
+Contact
+Represents a contact, which is a person associated with an account.
+
+ContactCenterChannel
+Represents a junction object that relates a Bring Your Own Channel for Contact Center as a Service (CCaaS) messaging channel to
+a CallCenter object for Bring Your Own Channel for CCaaS. This object also represents the routing details for a voicemail configuration
+and routing information for callback requests. This object is available in API version 56.0 and later.
+
+ContactCleanInfo
+Stores the metadata Data.com Clean uses to determine a contact record’s clean status. Helps you automate the cleaning or related
+processing of contact records. ContactCleanInfo includes a number of bit vector fields. This object is removed in API version 67.0
+
+ContactDailyMetric
+Represents the daily engagement metrics for a contact. This object is available in API version 52.0 and later.
+
+ContactMonthlyMetric
+Represents the monthly engagement metrics for a contact. This object is available in API version 52.0 and later.
+
+ContactPointAddress
+Represents a contact’s billing or shipping address, which is associated with an individual or person account. This object is available
+in API version 49.0 and later.
+
+ContactPointConsent
+Represents a customer's consent to be contacted via a specific contact point, such as an email address or phone number. This object
+is available in API version 48.0 and later.
+
+ContactPointEmail
+Represents a contact’s email, which is associated with an individual or person account. This object is available in API version 48.0
+and later.
+
+
+Standard Objects
+
+ContactPointPhone
+Represents a contact’s phone number, which is associated with an individual or person account. This object is available in API version
+48.0 and later.
+
+ContactPointTypeConsent
+Represents consent for a contact point type, such as email or phone. This object is available in API version 45.0 and later.
+
+ContactOwnerSharingRule
+Represents the rules for sharing a contact with a User other than the owner.
+
+ContactRequest
+Represents a customer’s request for support to get back to them about an issue. This object is available in API version 45.0 and later.
+
+ContactRequestShare
+Represents a list of access levels to a ContactRequest with an explanation of the access level. This object is available in API version
+45.0 and later.
+
+ContactShare
+Represents a list of access levels to a Contact along with an explanation of the access level. For example, if you have access to a
+record because you own it, the `ContactAccessLevel` is `All` and `RowCause` is Owner.
+
+ContactSuggestionInsight
+Represents a suggestion for a new contact record. Available in API versions 45.0 and later.
+
+ContactTag
+Associates a word or short phrase with a Contact.
+
+ContentAsset
+Represents a Salesforce file that has been converted to an asset file in a custom app in Lightning Experience. Use asset files for org
+setup and configuration. Asset files can be packaged and referenced by other components. This object is available in API version
+38.0 and later.
+
+ContentBody
+Represents the body of a file in Salesforce CRM Content or Salesforce Files. This object is available in API version 40.0 and later.
+
+ContentDistribution
+Represents information about sharing a document externally. This object is available in API version 32.0 and later.
+
+ContentDistributionEventLog
+Content Distribution events contain information about content distributions and deliveries to users. This object is available in API
+version 65.0 and later.
+
+ContentDistributionView
+Represents information about views of a shared document. This read-only object is available in API version 32.0 and later.
+
+ContentDocument
+Represents a document that was uploaded to a library in Salesforce Files or Salesforce CRM content. This object is available in versions
+17.0 and later for Salesforce CRM.This object is available in API version 21.0 and later for Salesforce Files.
+
+ContentDocumentHistory
+Represents the history of a document. This object is available in versions 17.0 and later.
+
+ContentDocumentLink
+Represents the link between a Salesforce CRM Content document, Salesforce file, or ContentNote and where it's shared. A file can
+be shared with other users, groups, records, and Salesforce CRM Content libraries. This object is available in versions 21.0 and later
+for Salesforce CRM Content documents and Salesforce Files.
+
+
+Standard Objects
+
+ContentDocumentListViewMapping
+Represents an association between a ListView and a Quip ContentDocument. Applies to Quip file types only. Maintains the mapping
+between a list view and Quip document when the list view is exported to a newly created Quip document. This object is available
+in API version 44.0 and later.
+
+ContentDocumentSubscription
+Represents a subscription for a user following or commenting on a file in a library. This object is available in API version 42.0 and
+later.
+
+ContentDocLinkEventLog
+Content Document Link events contain sharing information for content documents. This object is available in API version 65.0 and
+later.
+
+ContentFolder
+Represents a folder in a content library for adding files. This object is available in API version 34.0 and later.
+
+ContentFolderItem
+Represents a file (ContentDocument) or folder (ContentFolder) that resides in a ContentFolder in a ContentWorkspace. This object
+is available in API version 35.0 and later.
+
+ContentFolderLink
+Defines the association between a library and its root folder. This object is available in API version 34.0 and later.
+
+ContentFolderMember
+Defines the association between a file and a folder. This object is available in API version 34.0 and later.
+
+ContentHubItem
+Represents a file or folder in a Files Connect external data source, such as Microsoft SharePoint or OneDrive for Business. This object
+is available in API version 33.0 and later.
+
+ContentHubRepository
+Represents a Files Connect external data source such as Microsoft SharePoint or OneDrive for Business. This object is available in API
+version 33.0 and later.
+
+ContentNote
+Represents a note created with the enhanced note-taking tool, released in Winter ’16. This object is available in API version 32.0 and
+later.
+
+ContentNotification
+Represents a notification for a file. This object is available in API version 42.0 and later.
+
+ContentTagSubscription
+Represents a subscription for a user following a tag on a file. This object is available in API version 42.0 and later.
+
+ContentTaxonomy
+Represents a content taxonomy, which is used to classify and organize Salesforce CMS content. To create a hierarchy of terms in a
+content taxonomy, use this object in addition to the ContentTaxonomyTerm, ContentTaxonomyRelatedTerm, and
+ContentTaxonomyTermRelatedTerm objects. This object is available in API version 63.0 and later.
+
+ContentTaxonomyRelatedTerm
+Represents the relationship between a term and the content taxonomy to which the term belongs. This object is available in API
+version 63.0 and later.
+
+ContentTaxonomyTerm
+Represents a term in a content taxonomy. Terms describe what content is or how it's used, and they’re organized in parent-child
+relationships in the taxonomy hierarchy. This object is available in API version 63.0 and later.
+
+
+Standard Objects
+
+ContentTaxonomyTermRelatedTerm
+Represents the relationship between two terms in a content taxonomy. This object is available in API version 63.0 and later.
+
+ContentTaxonomyTermRelationshipType
+Represents the type of relationship between two terms in a content taxonomy. This object is available in API version 63.0 and later.
+
+ContentTransferEventLog
+ContentTransferEventLog stores information about content transfer events, such as downloads, uploads, and previews. This information
+includes events performed on files and attachments to records. This object is available in API version 62.0 and later.
+
+ContentUserSubscription
+Represents a subscription for a user following another user. This object is available in API version 42.0 and later.
+
+ContentVersion
+Represents a specific version of a document in Salesforce CRM content or Salesforce Files. This object is available in versions 17.0
+and later for Salesforce CRM content documents. This object is available in versions 20.0 and later for Salesforce Files.
+
+ContentVersionComment
+Represents a comment on a version of a file. This object is available in API version 42.0 and later.
+
+ContentVersionHistory
+Represents the history of a specific version of a document. This object is available in version 17.0 and later.
+
+ContentVersionRating
+Represents a rating on a version of a file. This object is available in API version 42.0 and later.
+
+ContentWorkspace
+Represents a content library. This object is available in versions 17.0 and later.
+
+ContentWorkspaceDoc
+Represents a link between a document and a public library in Salesforce CRM Content. This object is available in versions 17.0 and
+later.
+
+ContentWorkspaceMember
+Represents a member of a content library. This object is available in API version 40.0 and later.
+
+ContentWorkspacePermission
+Represents a library permission. This object is available in API version 40.0 and later.
+
+ContentWorkspaceSubscription
+Represents a subscription for a user following a library. This object is available in API version 42.0 and later.
+
+ContextParamMap
+Represents optional context data for a Conversation or a ConversationParticipant. This object is available in API version 57.0 and
+later.
+
+Contract
+Represents a contract (a business agreement) associated with an Account.
+
+ContractContactRole
+Represents the role that a Contact plays on a Contract.
+
+ContractLineItem
+Represents a product covered by a service contract (customer support agreement). This object is available in API version 18.0 and
+later.
+
+
+Standard Objects
+
+ContractLineOutcome
+Represents information on a contract line outcome’s captured data and other related parameters that are used when capturing data.
+This object is available in API version 58.0 and later.
+
+ContractLineOutcomeData
+Represents the contract line outcome’s captured data. It stores the data that was captured between the contract line outcome’s
+start date and end date. This object is available in API version 58.0 and later.
+
+ContractStatus
+Represents the status of a Contract, such as Draft, InApproval, Activated, Terminated, or Expired.
+
+ContractTag
+Associates a word or short phrase with a Contract.
+
+ConvAnalysisSummary
+Represents the information stored for each run or refresh of Sales Signals. This object is available in API version 63.0 and later.
+
+ConvAnalysisTopic
+Represents a topic generated from the Sales Signals refresh or run. For example, a product experiencing issues due to high pricing
+could be a topic identified through the analysis of multiple calls. This object is available in API version 63.0 and later.
+
+ConvAnalysisTopicEntry
+Represents a single entry under the ConvAnalysisTopic object. An entry represents a segment of a video or voice call that is associated
+with a conversation analysis topic. This object is available in API version 63.0 and later.
+
+Conversation
+Represents a conversation between an end user and an agent. Available in API version 49.0 and later.
+
+ConversationApiLog
+Logs of an API operation on a specific conversation object done using the Conversation Service API. This object is available in API
+version 63.0 and later.
+
+ConversationContextEntry
+Represents the context of a message or an event in the chat history between an agent and a messaging user. This object is available
+in API version 47.0 and later.
+
+ConversationChannelDefinition
+Represents a configurable definition of a conversation channel that’s implemented for Interaction Service for Bring Your Own Channel
+for Messaging and Bring Your Own Channel for CCaaS messaging channels. This object is available in API version 60.0 and later.
+
+ConversationEntry
+Represents a message or event in a voice call or messaging session. The schema on this page only applies to conversation entries
+[for legacy chat. Refer to the ConversationEntry (Off-Core) schema in the Messaging Object Model guide to see the ConversationEntry](https://developer.salesforce.com/docs/service/messaging-object-model/guide/overview.html)
+schema for Enhanced Channels. This object is available in API version 43.0 and later.
+
+ConversationParticipant
+Represents an active participant in a conversation. A new ConversationParticipant record is created each time a participant joins a
+conversation. This object is available in API version 49.0 and later.
+
+ConvIntelligenceSignalRule
+Represents a conversation intelligence signal rule. The rule triggers actions based on real-time intelligence signals from your telephony
+system or keywords mentioned by support reps or customers. The rule contains a set of conditions (subrules) and the filter logic
+used to evaluate those conditions to determine whether to trigger actions. This object is available in API version 62.0 and later.
+
+ConvIntelligenceSignalSubRule
+Represents a condition (subrule) within a conversation intelligence signal rule. This object is available in API version 62.0 and later.
+
+
+Standard Objects
+
+ConvMessageSendRequest
+Represents a request to send a template-based messaging component to a series of messaging users in an enhanced messaging
+channel or Messaging for In-App. This object is available in API version 60.0 and later.
+
+ConversationVendorInfo
+This setup object connects the partner vendor system to the Service Cloud feature. For example, for Salesforce Voice with Telephony
+Providers, this object contains information about the partner telephony or Contact Center as a Service (CCaaS) partner system. For
+Bring Your Own Channel for Messaging this object contains information about the partner messaging system, and for Bring Your
+Own Channel for CCaaS, this object contains information about the CCaaS partner system. This object is available in API version 52.0
+and later.
+
+CorsWhitelistEntry
+Represents an entry in the cross-origin resource sharing (CORS) allowlist. Origins included in the allowlist can request REST resources
+from that Salesforce org.
+
+Coupon
+A coupon associated with a promotion. This object is available in API version 54.0 and later.
+
+CouponCodeRedemption
+Tracks each coupon code redemption. This object is available in API version 58.0 and later.
+
+CreditMemo
+Represents a document that is used to reduce the amount that a buyer owes a seller under the terms of an earlier invoice. This object
+is available in API version 48.0 and later.
+
+CreditMemoAddressGroup
+Stores the buyer's address information, which is used to determine the amount of tax to credit to a buyer when a credit memo is
+issued. This object is available in API version 55.0 and later.
+
+CreditMemoInvApplication
+Represents an amount applied from a credit memo to an invoice. This object is available in API version 48.0 and later.
+
+CreditMemoLine
+Represents product, service, adjustment, or tax line items that were included in a credit memo. This object is available in API version
+48.0 and later.
+
+Crisis
+Represents a major crisis event that affects an Employee in an InternalOrganizationUnit. This object is available in API version 48.0
+and later. In API version 49.0 and later, this object supports reports, criteria-based sharing rules, and history tracking, plus you can
+exclude individual fields from custom page layouts.
+
+CronJobDetail
+Contains details about the associated scheduled job, such as the job’s name and type. This object is available in API version 29.0 and
+later.
+
+CronTrigger
+Contains schedule information for a scheduled job. CronTrigger is similar to a cron job on UNIX systems. This object is available in
+API version 17.0 and later.
+
+CryptoProdCatgWalletGroup
+Specifies if CryptoWalletGroup is in the allowlist or airdrop for the ProductCategory. A custom object between ProductCategory and
+CryptoWalletGroup adding the CryptoWalletGroup to allowlist or airdrop. This object is available in API version 58.0 and later.
+
+
+Standard Objects
+
+CspTrustedSite
+Represents a trusted URL. For each CspTrustedSite, you can specify Content Security Policy (CSP) directives and permissions policy
+directives. Each CSP directive allows Lightning components, third-party APIs, and WebSocket connections to access a resource type
+from the trusted URL. If the Permissions-Policy HTTP header is enabled, each permissions policy directive grants the trusted URL
+access to a browser feature. In API version 58.0 and earlier, CspTrustedSite included only CSP directives and was referred to as CSP
+Trusted Sites in Salesforce Setup. Available in API version 39.0 and later.
+
+CspViolationEventLog
+CSP violation events capture details about blocked resource requests from Lightning Experience pages based on your content
+security policy (CSP). This object is available in API version 63.0 and later.
+
+CurrencyType
+Represents the currencies used by an organization for which the multicurrency feature is enabled.
+
+CustExpIntlTransfSetup
+Stores information for different data sources that are processed for customer insights. This object is available in API version 65.0 and
+later.
+
+CustomBrand
+Represents a custom branding and color scheme. This object is available in API version 28.0 and later.
+
+CustomBrandAsset
+Represents a branding element in a custom branding scheme. For example, a color, logo image, header image, or footer text. A
+CustomBrandAsset can apply to an Experience Cloud site or to an org using the Salesforce mobile app. This object is available in API
+version 28.0 and later.
+
+CustomFieldDisplayValue
+Stores variation details for the product attribute item view. This object is available in API version 63.0 and later.
+
+CustomHelpMenuItem
+Represents the items within a section of the Lightning Experience help menu that the admin added to display custom, org-specific
+help resources. This object is available in API version 44.0 and later.
+
+CustomHelpMenuSection
+Represents a section of the Lightning Experience help menu that the admin added to display custom, org-specific help resources.
+This object is available in API version 44.0 and later.
+
+CustomHttpHeader
+Represents a custom HTTP header that provides context information from Salesforce such as region, org details, or the role of the
+person viewing the external object. This object is available in API version 43.0 and later.
+
+CustomMsgChannel
+Represents a custom conversation channel and stores event-driven Messaging settings. Custom conversation channels are
+implemented for Bring Your Own Channel for Messaging and Bring Your Own Channel for CCaaS Messaging channels. This object
+is available in API version 63.0 and later.
+
+CustomNotificationType
+Stores information about custom notification types. This object is available in API version 47.0 and later.
+
+CustomPermission
+Represents a permission created to control access to a custom process or app, such as sending email. This object is available in API
+version 31.0 and later.
+
+CustomPermissionDependency
+Represents the dependency between two custom permissions when one custom permission requires that you enable another
+custom permission. This object is available in API version 32.0 and later.
+
+
+Standard Objects
+
+Customer
+Represents the customer role of an individual with respect to a particular company or organization. This object is available in API
+version 53.0 and later.
+
+DandBCompany
+Represents a Dun & Bradstreet [®] company record, which is associated with an account added from Data.com. This object is available
+in API version 25.0 and later.
+
+Dashboard
+Represents a dashboard, which shows data from custom reports as visual components. Access is read-only. This object is available
+in API version 20.0 and later.
+
+DashboardComponent
+Represents a dashboard component, which can be a chart, metric, table, or gauge on a dashboard. Access is read-only. This object
+is available in API version 21.0 and later.
+
+DashboardTag
+Associates a word or short phrase with a Dashboard. This object is available in API version 20.0 and later.
+
+DataAssessmentFieldMetric
+Represents summary statistics for matched, blank, and differing fields in account records of an org compared to records in Data.com.
+This object is available in API version 37.0 and later.
+
+DataAssessmentMetric
+Represents a summary of statistics for fields matched and unmatched in your account records with Data.com account records. This
+object is available in API version 37.0 and later.
+
+DataAssessmentValueMetric
+Summarizes the number of fields matched for your account records with Data.com account records.This object is available in API
+version 37.0 and later.
+
+DatabaseSaveEventLog
+Database Save events track when records are created,updated, or deleted This object is available in API version 64.0 and later.
+
+DatacloudCompany
+Represents the fields for Data.com company records. This object is available in API version 30.0 or later.
+
+DatacloudContact
+The fields and properties for Data.com contact records. This object is available in API version 30.0 or later.
+
+DatacloudDandBCompany
+Represents a set of read-only fields that are used to return D&B company data from Data.com API calls. This object is available in API
+version 30.0 or later.
+
+DatacloudOwnedEntity
+Represents fields in the DatacloudOwnedEntity object. The DatacloudOwnedEntity object tracks user-purchased records. This object
+is available in API version 30.0 or later.
+
+DatacloudPurchaseUsage
+Represents an object used to identify and track Data.com record purchases. This object is available in API version 30.0 or later.
+
+DataDetectJobObjectSession
+For internal use only. This object is available in API version 63.0 and later.
+
+DataDetectJobSession
+Represents a run of a DataDetect scan policy that's triggered manually. This object is available in API version 63.0 and later.
+
+
+Standard Objects
+
+DataDetectJobSessSummary
+For internal use only. This object is available in API version 66.0 and later.
+
+DataDetectPolicy
+Represents a set of parameters that specifies the types of sensitive data for search with in a data scan. DataDetect scan policies can
+also apply filters to a data scan, along with specific objects and fields for scanning. This object is available in API version 60.0 and
+later.
+
+DataDetectPolicyObject
+Represents an object of the DataDetect scan policy to be scanned. This object is available in API version 62.0 and later.
+
+DataDetectScanResult
+Represents the results of a DataDetect data policy scan. This object is available in API version 63.0 and later.
+
+DataDetectPolicyObjField
+Represents an object field of the DataDetect scan policy object to be scanned. This object is available in API version 64.0 and later.
+
+DataDetectPolicySnapshot
+For internal use only. This object is available in API version 64.0 and later.
+
+DataDetPlcyDataSrchExps
+Represents data search expressions for scanning DataDetect scan policies based on Java regex. This object is available in API version
+64.0 and later.
+
+DataDetPlcyMdatScanCrit
+Represents inclusion and exclusion criteria that filter what DataDetect scan policy object fields are to be scanned based on metadata
+tags. This object is available in API version 64.0 and later.
+
+DataDetPlcySstvDataCatg
+Represents the sensitive data categories that the DataDetect scan policy is required to scan. This object is available in API version
+64.0 and later.
+
+DataEncryptionKey
+The DataEncryptionKey object is part of the Bring Your Own Key (BYOK) feature, which allows users to upload a data encryption key
+(DEK) using a public key generated by the Salesforce Shield Key Management Service (KMS). Customers create their own DEKs and
+upload them to Salesforce. Users access this entity via the API to list DEK keys for auditing purposes. They can also programmatically
+use this object to create the certificate and to upload key material. This object is available in API version 63.0 and later.
+
+DataIntegrationRecordPurchasePermission
+Indicates Lightning Data purchase credits that a Salesforce admin has granted to users.
+
+DataKitDeployEvent
+Represents a data kit deployment event that notifies subscribers of the status of the data kit component deployment. This object is
+available in API version 61.0 or later.
+
+DataKitDeploymentLog
+Represents the log details of a data kit component deployment. This object is available in API version 61.0 or later.
+
+DatasetExport
+Represents a dataset exported from CRM Analytics. When a dataset is exported, the data is converted into a .csv file and the schema
+is stored in a separate JSON file. These files are stored in two objects: DatasetExport and DatasetExportPart. DatasetExport acts as
+the header and includes the JSON schema.
+
+DatasetExportPart
+Represents a dataset exported from CRM Analytics. When a dataset is exported, the data is converted into a .csv file and the schema
+is stored in a separate JSON file. These files are stored in two objects: DatasetExport and DatasetExportPart. DatasetExportPart contains
+parts of the .csv file.
+
+
+Standard Objects
+
+DataMaskCustomValueLibrary
+Represents a set of user-inputted values in a custom library in Data Mask. This object is available in API version 64.0 and later.
+
+DataStatistics
+For internal use only.
+
+DataUseLegalBasis
+Represents the legal basis for contacting a customer, such as billing or contract. This object is available in API version 45.0 and later.
+
+DataUsePurpose
+Represents the reason for contacting a prospect or customer, such as for billing, marketing, or surveys. This object is available in API
+version 45.0 and later.
+
+DataWeaveResource
+Represents the DataWeaveScriptResource class that is generated for all DataWeave scripts. This object is available in API version 58.0
+and later.
+
+DatedConversionRate
+Represents the dated exchange rates used by an organization for which the multicurrency and the effective dated currency features
+are enabled.
+
+DealIndirectPartner
+Represents an indirect partner’s involvement in a deal. This object is available in API version 63.0 and later.
+
+DeclinedEventRelation
+Represents event participants (invitees or attendees) with the status `Declined` for a given event. This object is available in API
+versions 29.0 and later.
+
+DelegatedAccount
+Represents the external managed account. This object is available in API version 49.0 and later.
+
+DeleteEvent
+Represents a record that has been soft deleted. Search on this object was available in API version 48.0, then removed in API version
+50.0.
+
+DeliveryEstimationSetup
+Shows the configuration options for the commerce delivery service offered through a web store or sales channel. Includes settings
+such as delivery location group, channel, fulfillment types, and default fulfillment time. This object is available in API version 61.0
+and later.
+
+DigitalSignature
+Represents a signature captured on a service report in field service.
+
+DigitalWallet
+Represents a customer’s digital wallet service. Salesforce Payments can use a digital wallet as a payment source when processing
+payments through a payment gateway. This object is available in API version 48.0 and later.
+
+DirectMessage
+Represents a direct message conversation between multiple users in Chatter. This object is available in API version 38.0 and later.
+
+Division
+A logical segment of your organization's data. For example, if your company is organized into different business units, you could
+create a division for each business unit, such as “North America,” “Healthcare,” or “Consulting.” Available only if the organization has
+the Division permission enabled.
+
+
+Standard Objects
+
+DivisionLocalization
+When the Translation Workbench is enabled for your organization, the DivisionLocalization object provides the translation of the
+label for a division.
+
+DocAtchDownloadEventLog
+Document Attachment Downloads events contain details of document and attachment downloads. This object is available in API
+version 65.0 and later.
+
+Document
+Represents a file that a user has uploaded. Unlike Attachment records, documents are not attached to a parent object.
+
+DocumentAttachmentMap
+Maps the relationship between an EmailTemplate and its attachment, which is stored as a Document.
+
+DocumentRecipient
+Connects a Service Report to a Digital Signature. This object is available in API version 55.0 and later.
+
+DocumentTag
+Associates a word or short phrase with a Document.
+
+Domain
+Read-only object that represents a custom Web address assigned to a site in your organization. This object is available in API version
+26.0 and later.
+
+DomainSite
+Read-only junction object that joins the Site and Domain objects. This object is available in API version 26.0 and later.
+
+DsarPolicy
+Represents a Data Subject Access Request (DSAR) policy created in the Privacy Center managed package. DSAR policies anonymize
+or transfer personal data from your org at your customer’s request. This object is available in API version 50.0 and later.
+
+DsarPolicyLog
+Represents the history of Data Subject Access Request (DSAR) policy execution requests. This log records the status and results of
+executed DSAR policies for a customer. This object is available in API version 50.0 and later.
+
+DuplicateJob
+Represents an instance of a job that identifies duplicates among existing records in the system.
+
+DuplicateJobDefinition
+Setup object defining a job that identifies duplicate record items globally.
+
+DuplicateJobMatchingRule
+Represents a MatchingRule to be used with a DuplicateJob sharing the corresponding DuplicateJobMatchingRuleDefinition.
+
+DuplicateJobMatchingRuleDefinition
+Setup object specifying a MatchingRule to use with DuplicateJob instances that share a DuplicateJobDefinition.
+
+DuplicateRecordItem
+Represents a record that’s been identified as a duplicate. DuplicateRecordItems are included in a DuplicateRecordSet, which are
+processed in duplicate jobs. Use this object to create custom report types for duplicates.
+
+DuplicateRecordSet
+Represents a group of records that have been identified as duplicates. Each duplicate record set contains one or more duplicate
+record items. Use this object to create custom report types and view the results of duplicate jobs.
+
+DuplicateRule
+Represents a duplicate rule for detecting duplicate records.
+
+
+Standard Objects
+
+DynamicDataCapture
+DynamicDataCapture is a junction object that adds a Form tab to Work Order Overview, and to the related list of a work order, work
+order line item, or service appointment in the Field Service mobile app. This object is available in API version 62.0 and later.
+
+ElectronicMediaGroup
+Represents the type of media that you can associate with a product or category.This object is available in API version 49.0 and later.
+
+ElectronicMediaUse
+Represents the usage of media. This object is available in API version 49.0 and later.
+
+EmailContent
+Represents a marketing email asset for use with Account Engagement. This object is available in API version 50.0 and later.
+
+EmailDomainFilter
+Represents a filter that determines whether an email relay is restricted to a specific list of domains. This object is available in API
+version 43.0 and later.
+
+EmailDomainKey
+Represents a domain key for an organization’s domain, used to authenticate outbound email that Salesforce sends on the organization’s
+behalf. This object is available in API version 28.0 and later.
+
+EmailInsight
+Represents an insight generated from an email interaction. EmailInsights acts as a central place to store various types of insights
+related to email messages. The insights stored include status, type, and time of generation. Only certain types of insights can be
+created based on a pre-configured list of insight types. This object is available in API version 63.0 and later.
+
+EmailInsightAction
+Represents the actions that have been taken, or could be taken, in relation to email insights. It logs different types of actions and
+associated metadata, helping to track and manage the activities and decisions made based on email insights. This object is available
+in API version 63.0 and later.
+
+EmailMessage
+Represents an email in Salesforce.
+
+EmailMessageMigration
+For internal use only.
+
+EmailMessageRelation
+Represents the relationship between an email and contacts, leads, and users. This object is available in API version 37.0 and later.
+
+EmailRelay
+Represents the configuration for sending an email relay. An email relay routes email sent from Salesforce through your company’s
+email servers. This object is available in API version 43.0 and later.
+
+EmailRoutingAddress
+An email address used for Email-to-Case. Email routing addresses store a unique email services address provided by Salesforce and
+configuration options for emails received by this address.
+
+EmailServicesAddress
+An email service address.
+
+EmailServicesFunction
+An email service.
+
+EmailStatus
+Represents the status of email sent.
+
+
+Standard Objects
+
+EmailTemplate
+Represents a template for an email, mass email, list email, or Sales Engagement email. Supported in first-generation managed
+packages only.
+
+EmailTemplateMonthlyMetric
+Represents the monthly engagement metrics for an email template. This object is available in API version 53.0 and later.
+
+EmbeddedServiceDetail
+Represents a metadata catalog object that exposes fields from the underlying Embedded Service setup objects defined in each
+EmbeddedServiceConfig deployment for guest users. Guest users don’t have direct access to the Embedded Service setup objects.
+Available in API version 39.0 and later.
+
+EmbeddedServiceLabel
+Represents a customized label in Embedded Chat or embedded Appointment Management.This object is available in API version
+44.0 and later.
+
+Employee
+Represents an employee within a company or organization. This object is available in API version 48.0 and later. In API version 49.0
+and later, this object supports reports, criteria-based sharing rules, and history tracking, plus you can exclude individual fields from
+custom page layouts.
+
+Employee2
+Represents an employee within a company or an organization. This object is available in API version 62.0 and later.
+
+EmployeeCrisisAssessment
+Represents a crisis assessment of an Employee. This object is available in API version 48.0 and later. In API version 49.0 and later, this
+object supports reports, criteria-based sharing rules, and history tracking, plus you can exclude individual fields from custom page
+layouts.
+
+EmpUserProvisioningProcess
+Represents an employee-user provisioning process. This object is available in API version 52.0 and later.
+
+EmpUserProvisionProcessErr
+Represents an employee-user provisioning process error. This object is available in API version 52.0 and later.
+
+EnablementMeasureDefinition
+Represents an Enablement measure, which specifies the job-related activity that a user performs to complete a milestone or outcome
+in an Enablement program. A measure identifies a source object and optional related objects, with optional field filters and filter
+logic, for tracking the activity. This object also represents Enablement measure information in Metadata API. This object is available
+in API version 56.0 and later.
+
+EnablementProgram
+Represents an Enablement program, which includes exercises and measurable milestones to help users such as sales reps achieve
+specific outcomes related to your company’s revenue goals. This object is available in API version 56.0 and later.
+
+EnablementProgramDefinition
+Represents Enablement program information in Metadata API. This object is available in API version 61.0 and later.
+
+EnblMeasureObjectDefinition
+Represents the criteria for an object that tracks the job-related activity for an Enablement measure in an Enablement program. A
+separate EnblMeasureObjectDefinition is used for a measure's source object and each optional related object. This object is available
+in API version 56.0 and later.
+
+EnblPgmTaskMeasureProgress
+Represents a user’s progress through the object and field requirements that an Enablement measure defines for an outcome or
+milestone in an Enablement program. This object is available in API version 61.0 and later.
+
+
+Standard Objects
+
+EnblProgramSection
+Represents an optional section in an Enablement program. A section can include other program items, such as milestones and
+exercises. This object is available in API version 60.0 and later.
+
+EnblProgramTaskDefinition
+Represents an outcome, a milestone, or an exercise in an Enablement program. A program task is also known as a program item.
+This object is available in API version 60.0 and later.
+
+EnblProgramTaskMeasure
+Represents the connection between an Enablement measure and a specific milestone or outcome in an Enablement program. This
+object is available in API version 61.0 and later.
+
+EnblProgramTaskProgress
+Represents a user’s progress towards completing an outcome, a milestone, or an exercise in an Enablement program. This object is
+available in API version 60.0 and later.
+
+EnblProgramTaskSubCategory
+Represents a custom exercise type that an Enablement admin adds to an Enablement program in Program Builder. A custom exercise
+type also requires a corresponding EnblProgramTaskDefinition record for Program Builder and corresponding LearningItem and
+LearningItemType records for when users take the exercise in the Guidance Center. This object is available in API version 62.0 and
+later.
+
+EngagementChannelType
+Represents a channel through which a customer can be reached for communication. This object is available in API version 48.0 and
+later.
+
+EngagementSignal
+Represents data about an individual’s engagement action, such as a web click, an email response, or a PDF download. This object
+is available in API version 62.0 and later.
+
+EngagementSignalCmpndMetric
+Represents a rate metric that measures the ratio between two engagement signal metrics, such as product orders and product views
+to calculate a conversion rate, or email clicks and email opens to determine a click-through rate. Use this object to create complex
+measurements for A/B testing and web experimentation. This object is available in API version 62.0 and later.
+
+EngagementSignalMetric
+Represents a measurable quantity that’s derived from an engagement signal, such as the sum of revenue or a count of clicks. Use
+this object to track user engagement for A/B tests, machine learning model training, and attribution configurations. This object is
+available in API version 62.0 and later.
+
+EnhancedLetterhead
+Represents an enhanced letterhead that can be associated with a Lightning email template that doesn’t use the Salesforce Merge
+Language (SML). This object is available in API version 46.0 and later.
+
+Entitlement
+Represents the customer support an account or contact is eligible to receive. This object is available in API version 18.0 and later.
+Entitlements may be based on an asset, product, or service contract.
+
+EntitlementContact
+Represents a Contact eligible to receive customer support via an Entitlement. This object is available in API version 18.0 and later.
+
+EntitlementTemplate
+Represents predefined terms of customer support for a product (Product2). This object is available in API version 18.0 and later.
+
+
+Standard Objects
+
+EntityHistory
+Represents historical information about an object’s changed field values. This object is only available to users with the “View All Data”
+[permission. This object is unavailable beginning with API version 8.0. Use the object-specific Historyobjects instead.](https://developer.salesforce.com/docs/atlas.en-us.262.0.object_reference.meta/object_reference/sforce_api_associated_objects_history.xml)
+
+EntityMilestone
+Represents a required step in a customer support process on a work order. The Salesforce user interface uses the term “object
+milestone. This object is available in API version 37.0 and later.
+
+EntitySubscription
+Represents a subscription for a user following a record or another user. This object is available in API version 34.0 and later.
+
+EnvironmentHubMember
+Represents a member organization in the Environment Hub. This object is available in API version 29.0 and later.
+
+Event
+Represents an event in the calendar. In the user interface, event and task records are collectively referred to as activities.
+
+EventLogFile
+Represents event log files for event monitoring. The event monitoring product gathers information about your Salesforce org’s
+operational events, which you can use to analyze usage trends and user behavior. This object is available in API version 32.0 and
+later. The `Interval` and `Sequence` fields are available only in API version 37.0 and later.
+
+EventRelation
+Represents a person (a user, lead, or contact) or a resource (such as a conference room) invited to an event. This object lets you add
+or remove invitees from an event and use the API to manage invitees’ responses to invitations. If Shared Activities is enabled,
+EventRelation can also represent other objects that are related to an event. EventRelation does not support triggers, workflow, or
+data validation rules.
+
+EventBusSubscriber
+Represents a trigger, process, or flow that’s subscribed to a platform event or a change data capture event. Doesn’t include CometD
+or Pub/Sub API subscribers.
+
+EventRelayConfig
+Represents the configuration of an event relay, which relays platform events and change data capture events from Salesforce to
+Amazon EventBridge. This object is available in API version 56.0 and later.
+
+EventRelayFeedback
+Represents execution state information about an event relay from Salesforce to Amazon EventBridge for platform events and change
+data capture events. Query this object to get information such as the event relay status and any error message. This object is available
+in API version 56.0 and later.
+
+EventStagedInviteeEmail
+Represents the relationship between an event and an email address invited to the event that doesn’t match to a user, contact, or
+lead record. Data about the unmatched email address is represented in StagedInviteeEmail. This object represents event-related
+details, such as the invitee's attendance response to the event. This object is available in API version 66.0 and later.
+
+EventTag
+Associates a word or short phrase with an Event.
+
+EventWhoRelation
+Represents the relationship between an event and a lead or contacts. This derived object is a filtered version of the EventRelation
+on page 2454 object; that is, IsParent is _`true`_ and IsWhat is _`false`_ . It doesn’t represent relationships to invitees or to accounts,
+opportunities, or other objects. This object is available in API versions 29.0 and later.
+
+
+Standard Objects
+
+Expense
+Represents an expense linked to a work order. Service resource technicians can log expenses, such as tools or travel costs. This object
+is available in API version 49.0 and later.
+
+ExpenseReport
+Represents a report that summarizes expenses. This object is available in API version 50.0 and later.
+
+ExpenseReportEntry
+Represents an entry in an expense report. This object is available in API version 50.0 and later.
+
+ExpressionFilter
+Represents a logical expression that’s used to control the execution of macro instructions. This object is available in API version 46.0
+and later.
+
+ExpressionFilterCriteria
+Represents a condition in an expression that’s used to control the execution of macro instructions. This object is available in API
+version 46.0 and later.
+
+ExpressionSetConstraintObj
+Represents the association between a Product object and the constraint model tags defined in a given constraint model. This object
+is available in API version 63.0 and later.
+
+ExtConvParticipantIntegDef
+Represents the integration configuration for external conversation participants, used for communication between Salesforce and
+external messaging platforms. This object is available in API version 66.0 and later.
+
+ExtDataShare
+Represents a data share, which is a collection of Data Cloud objects that can be shared with other Data Cloud orgs or third-party
+partners. This object is available in API version 56.0 and later.
+
+ExternalAccountHierarchy
+Represents the external account hierarchy, which works like a role-based hierarchy. Use ExternalAccountHierarchy to allow partner
+and customer users to share data with other external accounts in their hierarchy.This object is available in API version 49.0 and later.
+
+ExternalAccountHierarchyHistory
+Represents the history of changes to values in the fields of an external account hierarchy. This object is available in API version 50.0
+and later.
+
+ExternalClientApplication
+For internal use only.
+
+ExternalDataSource
+Represents an external data source, which defines connection details for integration with data and content that are stored outside
+the Salesforce org. This object is available in API version 27.0 and later.
+
+ExternalDataUserAuth
+Stores authentication settings for a Salesforce user to access an external system. The external system must be defined in an external
+data source or a named credential that’s configured to use per-user authentication. This object is available in API version 27.0 and
+later.
+
+ExternalEncryptionRootKey
+Represents metadata about root keys stored in third-party key stores that are used to generate and secure keys that encrypt Salesforce
+data. This object is available in API version 58.0 and later.
+
+ExternalEvent
+Holds native iOS or Android calendar event details for the Salesforce Today feature in the Salesforce mobile app. This object is available
+in API version 35.0 and later.
+
+
+Standard Objects
+
+ExternalEventMapping
+Holds native iOS or Android calendar event details for the Salesforce Today feature in the Salesforce mobile app. This object is available
+in API version 35.0 and later.
+
+ExternalSocialAccount
+Represents a managed social media account on a social network such as Facebook or Twitter. This object is available in API version
+29.0 and later.
+
+ExtKnowledgeConnector
+Represents a connector to a third-party knowledge source for Unified Knowledge. This object is available in API version 60.0 and
+later.
+
+ExtlClntAppOauthPlcyCnfg
+For internal use only.
+
+ExtlClntAppOauthSettings
+For internal use only.
+
+ExtlClntAppPlcyCnfg
+For internal use only.
+
+ExtlIntrIdMapping
+Represents a mapping between a Salesforce record and its corresponding record in an external system, such as Workday. This object
+is available in API version 66.0 and later.
+
+ExtlRecShrCnct
+Represents authentication data to make outbound calls to and inbound calls from an external system to publish events for Partner
+Connect. This object is available in API version 62.0 and later.
+
+ExtlRecShrCnctAccnt
+Represents an association between an account and an external record share connection for Partner Connect. This object is available
+in API version 62.0 and later.
+
+ExtlRecShrField
+Represents an imported, exported, or updated external record share field for Partner Connect. This object is available in API version
+63.0 and later.
+
+ExtlRecShrFieldMap
+Represents the external record share field mapping between the sender and receiver for Partner Connect. This object is available in
+API version 62.0 and later.
+
+ExtlRecShrLead
+Represents the Lead record of a vendor org if you’re a partner. If you’re a vendor for Partner Connect, this object represents a partner
+org. This object is available in API version 62.0 and later.
+
+ExtlRecShrObject
+Represents a shared object for Partner Connect. This object is available in API version 62.0 and later.
+
+ExtlRecShrOpportunity
+Represents the opportunity for Partner Connect in the vendor org if you’re a partner and the partner org if you’re the vendor. This
+object is available in API version 62.0 and later.
+
+ExtlRecShrPcklstOptn
+Represents a picklist option of an external record share picklist field shared between a partner and vendor for Partner Connect. This
+object is available in API version 62.0 and later.
+
+
+Standard Objects
+
+ExtlRecShrPicklistMap
+Represents the external record share picklist field mapping between the partner and vendor system for Partner Connect. This object
+is available in API version 62.0 and later.
+
+ExtlRecShrRecordMap
+Represents the lead or opportunity being mapped between a partner and vendor for Partner Connect. This object is available in API
+version 62.0 and later.
+
+FeedAttachment
+Represents an attachment to a feed item, such as a file attachment or a link. Use FeedAttachment to add various attachments to
+one feed item. This object is available in API version 36.0 and later.
+
+FeedComment
+Represents a comment added to a feed by a user. This object is available in API version 18.0 and later.
+
+FeedItem
+FeedItem represents an entry in the feed, such as changes in a record feed, including text posts, link posts, and content posts. This
+object is available in API version 21.0 and later. This object replaces FeedPost.
+
+FeedLike
+Indicates that a user has liked a feed item. This object is available in API version 21.0 and later.
+
+FeedPollChoice
+Shows the choices for a poll posted in the feed. This object is available in API version 29.0 and later.
+
+FeedPollVote
+Shows how users voted on a poll posted in the feed. This object is available in API version 29.0 and later.
+
+FeedPost
+FeedPost represents the following types of changes in a record feed, such as AccountFeed: text posts, link posts, and content posts.
+This object is available in API version 18.0 through 21.0. FeedPost is no longer available in later versions. Starting with API version
+21.0, use FeedItem to represent text posts, link posts, and content posts in feeds.
+
+FeedRevision
+Holds the revision history of a specific feed item or comment, including a list of attributes that changed for each revision. This object
+is available in API version 34.0 and later.
+
+feedSignal
+Attach feed signals, like `UpDownVote`, `UserVerified`, and `Verified`, to a feed post or comment. This object is available
+in API version 41.0 and later.
+
+FeedTrackedChange
+Represents an individual field change or set of field changes. A FeedTrackedChange is a child object of a record feed, such as
+AccountFeed. This object is available in API version 18.0 and later.
+
+FieldHistoryArchive
+Represents field history values for all objects that retain field history. `FieldHistoryArchive` is a big object, available only to
+users with the “Retain Field History” permission. This object is available in API version 29.0 and later.
+
+FieldChangeSnapshot
+Use this virtual object to learn which opportunities' close dates changed during the specified time period. This object is available in
+API version 52.0 and later.
+
+FieldPermissions
+Represents the enabled field permissions for the parent PermissionSet. This object is available in API version 24.0 and later.
+
+
+Standard Objects
+
+FieldSecurityClassification
+Represents a field’s data sensitivity value selected from the SecurityClassification picklist. This object is available in API version 46.0
+and later.
+
+FieldServiceMobileSettings
+Represents a configuration of settings that control the Field Service iOS and Android mobile app experience. This object is available
+in API version 38.0 and later.
+
+FieldServiceOrgSettings
+Represents the org settings for Field Service, such as Appointment Assistant settings. If Field Service is enabled, the org contains one
+read-only record of this object. This object is available in API version 51.0 and later.
+
+FileSearchActivity
+Represents search activity on a file. This object is available in API version 38.0 and later.
+
+FiscalYearSettings
+Settings to define a custom or standard fiscal year for your organization. This object has a parent-child relationship with the Period
+object.
+
+FldSvcObjChg
+Represents a change made to one of a service appointment’s tracked fields. This object is available in API version 63.0 and later.
+
+FldSvcObjChgDtl
+Represents the details of a change made to one of a service appointment’s tracked fields. This object is available in API version 63.0
+and later.
+
+FlexQueueItem
+Represents an asynchronous Apex job in the Apex flex queue. Provides information about the job type and flex queue position of
+the AsyncApexJob. This object is available in API version 36.0 and later.
+
+FlowDefinitionView
+Represents the description of a flow definition. This object is available in API version 46.0 and later.
+
+FlowInterview
+Represents a flow interview. A _flow interview_ is a running instance of a flow. This object is available in API version 32.0 and later.
+
+FlowInterviewLog
+Represents the logs of a screen flow interview. An _interview_ is an instance of a running or previously run flow.This object is available
+in API version 49.0 and later.
+
+FlowInterviewLogEntry
+Represents the log of a specific element that’s executed by a screen flow interview. An _interview_ is an instance of a running or
+previously run flow. This object is available in API version 49.0 and later.
+
+FlowInterviewLogOwnerSharingRule
+Represents the rules for sharing a FlowInterviewLog with users other than the owner.This object is available in API version 49.0 and
+later.
+
+FlowInterviewOwnerSharingRule
+Represents the rules for sharing a FlowInterview with users other than the owner. This object is available in API version 33.0 and
+later.
+
+FlowInterviewShare
+Represents a sharing entry on a FlowInterview. This object is available in API version 33.0 and later.
+
+
+Standard Objects
+
+FlowNavMetricEventLog
+Flow Navigation Metric event logs contain metric data for flow interviews such as total execution time, number of interviews, and
+number of errors. This object is available in API version 61.0 and later.
+
+FlowOrchestration
+Represents the details of an orchestration definition. This object is available in API version 62.0 and later.
+
+FlowOrchestrationInstance
+Represents a run-time instance of an orchestration. This object is available in API version 53.0 and later.
+
+FlowOrchestrationLog
+Represents logging data for a FlowOrchestrationInstance. This object is available in API version 54.0 and later.
+
+FlowOrchestrationStageInstance
+Represents a run-time instance of a stage in a run-time instance of an orchestration. This read-only object is available in API version
+53.0 and later.
+
+FlowOrchestrationStepInstance
+Represents a run-time instance of a step in a run-time instance of a stage of a run-time instance of an orchestration. This read-only
+object is available in API version 53.0 and later.
+
+FlowOrchestrationVersion
+Represents the version of an orchestration. This object is available in API version 62.0 and later.
+
+FlowOrchestrationWorkItem
+Represents a work item associated with a run-time instance of an interactive step in a run-time instance of an orchestration. This
+object is available in API version 54.0 and later.
+
+FlowRecord
+Represents the details of a flow. This object is available in API version 58.0 and later.
+
+FlowRecordElement
+Represents a single element within a flow version. This object is available in API version 58.0 and later.
+
+FlowRecordElementOccurrence
+Represents the execution metrics for a single element within a flow version. This object is available in API version 62.0 and later.
+
+FlowRecordRelation
+Represents a relationship between a record and a flow interview. When a flow interview is paused, Salesforce uses the
+$Flow.CurrentRecord global variable in the flow to associate the interview with a record. Available in API version 42.0 and later.
+
+FlowRecordVersion
+Represents the version of a flow. This object is available in API version 58.0 and later.
+
+FlowRecordVersionOccurrence
+Represents an instance of a recurring flow that runs on a schedule. For example, a flow that runs weekly on Wednesdays creates an
+occurrence each time it runs. This object is available in API version 60.0 and later.
+
+FlowTestResult
+Represents the results for a flow test associated with a flow version. This object is available in API version 55.0 and later.
+
+FlowTestView
+Represents the description of a flow test associated with a flow definition. This object is available in API version 55.0 and later.
+
+FlowStageRelation
+Represents a relationship between a paused flow interview and its stages. When a flow interview is paused, Salesforce creates a
+FlowStageRelation record for each stage that’s set to the `$Flow.CurrentStage` or `$Flow.ActiveStages` global variable.
+Available in API version 43.0 and later.
+
+
+Standard Objects
+
+FlowVariableView
+Represents a variable within the flow version. This object is available in API version 46.0 and later.
+
+FlowVersionView
+Represents the version of a flow definition. This object is available in API version 46.0 and later.
+
+Folder
+Represents a repository for a Dashboard, Document, EmailTemplate, Macro, QuickText, or Report. Only one type of item can be
+contained in a folder.
+
+FolderedContentDocument
+Represents the relationship between a parent and child ContentFolderItem in a ContentWorkspace.
+
+ForecastingAdjustment
+This object represents an individual forecast manager’s adjustment for a subordinate’s or child territory’s forecast via a ForecastingItem.
+Available in API versions 26.0 and later. This object is different from the ForecastingOwnerAdjustment object, which represents
+forecast users’ adjustments of their _own_ forecasts, including territory forecasts they own.
+
+ForecastingColumnDefinition
+Represents a custom calculated column or a custom reference data column in a forecast type. This object is available in API version
+56.0 and later.
+
+ForecastingColumnDefinitionLocalization
+Represents the translated value of a custom calculated column or custom reference data column label when the Translation
+Workbench is enabled for your organization. This object is available in API version 56.0 and later.
+
+ForecastingCustomCategory
+Represents a custom forecasting category used for forecast rollups. This object is available in API version 62.0 and later.
+
+ForecastingCustomData
+Represents forecast data from external sources to display in the forecasts page. For example, risk or last year’s revenue. This object
+is available in API version 58.0 and later.
+
+ForecastingDisplayedFamily
+Represents the table in Forecasts Settings where an admin selects the product families that users can forecast on in Lightning
+Experience. This object is available in API version 40.0 and later.
+
+ForecastingFact
+This object is read-only and links a ForecastingItem with its opportunities, such as opportunities that share the same owner or forecast
+category and have a closing date within the period of the forecasting item. Available in API versions 26 and greater.
+
+ForecastingFilter
+Represents the custom filter for including or excluding data from opportunity forecasts. This object is available in API version 54.0
+and later.
+
+ForecastingFilterCondition
+Represents the custom filter condition logic for including or excluding data from opportunity forecasts. This object is available in
+API version 54.0 and later.
+
+ForecastingGroup
+Represents groups used to roll up forecast totals on the forecasts page. For example, group forecasts by industry or sales type. This
+object is available in API version 60.0 and later.
+
+ForecastingGroupItem
+Represents the value within the picklist that is specified as the forecasting group for a forecast type. For example, if you have a
+forecasting group that identifies the industry an opportunity is part of, this object represents the value in the the industry picklist
+that’s chosen to be part of the group. This object is available in API version 60.0 and later.
+
+
+Standard Objects
+
+ForecastingItem
+This object is read-only used for individual forecast amounts. Users see amounts based on their perspectives and forecast roles. The
+amounts users see include one of these values when forecasting in revenue: `AmountWithoutAdjustments`,
+`AmountWithoutManagerAdjustment`, `ForecastAmount`, `OwnerOnlyAmount` . The amounts users see include
+one of these values when forecasting in quantity: `QuantityWithoutAdjustments`,
+`QuantityWithoutManagerAdjustment`, `ForecastQuantity`, `OwnerOnlyQuantity` . Available in API version
+26.0 and later.
+
+ForecastingOwnerAdjustment
+This object represents an individual forecast user’s adjustment of their _own_ forecast, including territory forecasts they own, via a
+ForecastingItem. Available in API versions 33.0 and later. This object is different from the ForecastingAdjustment object, which
+represents managers’ adjustments of _subordinates’_ and child territories’ forecasts.
+
+ForecastingQuota
+This object represents an individual user’s or territory’s quota for a specified time period. The Managed Quotas user permission is
+required for creating, updating, or deleting quotas. (Users can only edit their subordinates’ or child territories’ quotas, not their own.)
+The View All Forecasts permission is required to view any user's forecast, regardless of the forecast hierarchy. Available in API versions
+25.0 and later. Forecast managers can view the forecasts of subordinates and territories below them in the forecast hierarchy.
+
+ForecastingShare
+Represents forecasts shared between a forecast manager and a user. Available in API version 44.0 and later.
+
+ForecastingSourceDefinition
+Represents the object, measure, date type, and hierarchy that a forecast uses to project sales. This object is available in API version
+52.0 and later.
+
+ForecastingSrcRecJudgment
+Represents forecast managers’ judgment of whether they consider an opportunity-related deal to be certain to close. This object is
+available in API version 59.0 and later.
+
+ForecastingSubmission
+Represents a submitted forecast. This object is available in API version 62.0 and later.
+
+ForecastingSubmissionItem
+Represents the values for each forecast category in a submitted forecast. This object is available in API version 62.0 and later.
+
+ForecastingType
+Used to identify the forecast type associated with `ForecastingAdjustment`, `ForecastingOwnerAdjustment`,
+`ForecastingQuota`, `ForecastingFact`, and `ForecastingItem` objects. Available in API version 30.0 and greater.
+
+ForecastingTypeSource
+Maps a forecasting source definition to a forecast type. This object is available in API version 52.0 and later.
+
+ForecastingUserPreference
+Represents the forecasting selections that a user has made, such as display options, date range, forecasting type, and currency.
+
+FormulaFunction
+Represents a function used when building a formula, including examples and uses. This object is available in API version 47.0 and
+later.
+
+FormulaFunctionAllowedType
+Represents the functions that are supported in the given formula context. This object is available in API version 48.0 and later.
+
+FormulaFunctionCategory
+Represents the category to which a formula belongs when building a formula. This object is available in API version 47.0 and later.
+
+
+Standard Objects
+
+FrcstCustmCatgRampRateSrc
+Represents the total contract value used for custom bulk adjustments. This object is available in API version 63.0 and later.
+
+FrcstCustmzAdjustment
+Represents an individual forecast manager’s adjustment of a subordinate’s consumption forecast. Available in API version 63.0 and
+later. This object is different from the ForecastingAdjustment object, which represents managers’ adjustments of subordinates’
+pipeline forecasts.
+
+FrcstCustmzOwnerAdjustment
+Represents an individual forecast user’s adjustment of their own consumption forecast. Available in API version 63.0 and later. This
+object is different from the ForecastingOwnerAdjustment object, which represents users’ adjustments of their pipeline forecasts.
+
+FulfillmentOrder
+Represents a group of products, fees, and delivery charges on a single order that share the same fulfillment location, delivery method,
+and recipient. The FulfillmentOrderLineItems belonging to a FulfillmentOrder are associated with OrderItemSummary objects
+belonging to a single OrderSummary. This object is available in API version 48.0 and later.
+
+FulfillmentOrderItemAdjustment
+Represents a price adjustment on a FulfillmentOrderLineItem. Corresponds to an OrderItemAdjustmentLineSummary associated
+with the corresponding OrderItemSummary. This object is available in API version 48.0 and later.
+
+FulfillmentOrderItemTax
+Represents the tax on a FulfillmentOrderLineItem or FulfillmentOrderItemAdjustment. Corresponds to an
+OrderItemTaxLineItemSummary. This object is available in API version 48.0 and later.
+
+FulfillmentOrderLineItem
+Represents a product or delivery charge belonging to a FulfillmentOrder. Corresponds to an OrderItemSummary. This object is
+available in API version 48.0 and later.
+
+FunctionConnection
+Represents a connection between an org and Salesforce Functions. This object is available in API version 52.0 and later.
+
+FunctionInvocationRequest
+Represents invocation information for a Salesforce Function. This object is available in API version 51.0 and later.
+
+FunctionReference
+Represents a deployed Salesforce Function associated with an org. This object is available in API version 52.0 and later.
+
+GenAIConversationSummary
+Represents a generated summary of a voice or video call. This object is available in API version 60.0 and later.
+
+GenAiFunctionDefinition
+Represents an agent action. This object is available in API version 60.0 and later.
+
+GenAiPlannerDefinition
+Represents an agent planner service that uses a large language model (LLM) and a reasoning strategy to decompose a given task
+into smaller subtasks, identify the most suitable actions for each subtask, and invoke them. This object is available in API version 60.0
+and later.
+
+GenAiPlannerFunctionDef
+Represents a relationship between the agent planner service and agent actions. This object is available in API version 60.0 and later.
+
+GenAiPluginDefinition
+Represents an agent topic, which is a category of actions related to a particular job to be done by AI agents. This object is available
+in API version 62.0 and later.
+
+
+Standard Objects
+
+GenOpPlanRequest
+Represents a request to generate a service plan. This object is available in API version 67.0 and later.
+
+GeoCountry
+Represents a country. This object is available in API version 56.0 and later.
+
+GeolocationBasedAction
+Represents a geolocation-based action, which is an action that’s triggered when a user enters, exits, or is within the area of the
+associated object. Available in API version 61.0 and later.
+
+GeoState
+Represents a state. This object is available in API version 57.0 and later.
+
+GtwyProvPaymentMethodType
+The gateway provider payment method type allows integrators and payment providers to choose an active payment to receive an
+order's payment data rather than allowing the Salesforce Order Management platform to select a default payment method. This
+object is available in API version 50.0 and later.
+
+Goal
+The Goal object represents the components of a goal such as its name, description, and status.
+
+GoalLink
+Represents the relationship between two goals. This is a many-to-many relationship, meaning that each goal can link to many other
+goals.
+
+GoogleDoc
+Represents a link to a Google Document. This object is available in API version 14.0 and later.
+
+Group
+A set of User records.
+
+GroupMember
+Represents a User or Group that is a member of a public group.
+
+GroupMembershipEventLog
+Group Membership events capture details about changes to public group and queue membership, such as when members are
+added to or removed from the public group or queue. This object is available in API version 64.0 and later.
+
+GuestBuyerProfile
+Represents a store's guest buyer profile, which allows unauthenticated buyers to browse the store. This object is available in API
+version 51.0 and later.
+
+HashtagDefinition
+HashtagDefinition represents hashtag (#) topics in public Chatter posts and comments. Public posts and comments include those
+on profiles and in public groups, but not those on records or in private groups. This object is available in API version 26.0 and later.
+
+HealthCareDiagnosis
+Represents information related to industry-standard healthcare diagnosis codes. Before the Spring ’21 release, the Healthcare
+Procedure and Healthcare Diagnosis objects stored codes specifically related to procedures and diagnoses. These codes were used
+for prior-authorization requests and approval processes. Since the Spring’21 release, Health Cloud uses the Code Set and Code Set
+Bundle objects for this purpose instead.
+
+HealthCareProcedure
+Represents information related to industry-standard healthcare procedure codes. Before the Spring ’21 release, the Healthcare
+Procedure and Healthcare Diagnosis objects stored codes specifically related to procedures and diagnoses. These codes were used
+for prior-authorization requests and approval processes. Since the Spring’21 release, Health Cloud uses the Code Set and Code Set
+Bundle objects for this purpose instead.
+
+
+Standard Objects
+
+Holiday
+Represents a period of time during which your customer support team is unavailable. Business hours and escalation rules associated
+with business hours are suspended during any holidays with which they are affiliated.
+
+IconDefinition
+Represents the icon-related metadata for a custom tab. This object is available in API version 43.0 and later.
+
+Idea
+Represents an idea on which users are allowed to comment and vote, for example, a suggestion for an enhancement to an existing
+product or process. This object is available in API version 12 and later.
+
+IdeaComment
+Represents a comment that a user has submitted in response to an idea.
+
+IdeaReputation
+Represents a collection of statistics and scores derived from a user’s activity within an Ideas zone or internal organization. This object
+is available in API version 28.0 and later.
+
+IdeaReputationLevel
+Represents a reputation level within an Ideas zone or internal organization and is used by the system to calculate reputation. You
+can create up to 25 levels per zone or internal organization. This object is available in API version 28.0 and later.
+
+IdeaTheme
+Represents an invitation to zone members to submit ideas that are focused on a specific topic. This object is available in API version
+26 and later.
+
+IdpEventLog
+Represents the Identity Provider Event Log. This log records both problems and successes with inbound SAML or OpenID Connect
+authentication requests from another app provider. It also records outbound SAML responses when Salesforce is acting as an identity
+provider. This object is available in API version 39.0 and later.
+
+IframeWhiteListUrl
+Represents a list of trusted external domains that you allow to frame your Embedded Service, Surveys, and Visualforce pages. This
+object is available in API version 45.0 and later.
+
+Image
+Represents the details of an image. This object is available in API version 47.0 and later.
+
+Incident
+An Incident is any unplanned business interruption that has wide-sweeping impacts and requires an urgent fix. This object contains
+the details of the incident, documenting the history of the incident from registration to closure. This object is available in API version
+53.0 and later.
+
+IncidentRelatedItem
+Represents a junction object that relates an Incident to an Asset or Product. This object is available in API version 53.0 and later.
+
+Individual
+Represents a customer’s data privacy and protection preferences. Data privacy records based on the Individual object store your
+customers’ preferences. Data privacy records are associated with related leads, contacts, person accounts, and users. This object is
+available in API version 42.0 and later.
+
+IndividualApplicationItem
+Captures individual application input data that is used during run-time. This object is available in API version 58.0 and later.
+
+IndividualHistory
+Represents the history of changes to values in the fields of a data privacy record, based on the Individual object. This object is available
+in versions 42.0 and later.
+
+
+Standard Objects
+
+IndividualShare
+Represents a list of access levels to a data privacy record along with an explanation of the access level. For example, if you have
+access to a record because you own it, the `IndividualAccessLevel` is `All` and `RowCause` is Owner. This object is
+available in API version 42.0 and later.
+
+InsufficientAccessEventLog
+Insufficient Access event logs contain details about errors relating to insufficient account, case, contact, and opportunity record
+access. This object is available in API version 61.0 and later.
+
+InternalOrganizationUnit
+Represents an organization that an Employee belongs to. This object is available in API version 48.0 and later. In API version 49.0 and
+later, this object supports reports, criteria-based sharing rules, and history tracking, plus you can exclude individual fields from custom
+page layouts.
+
+InventoryItemReservation
+Used to store inventory item reservation information for a specific product and location. This object is available in API version 60.0
+and later.
+
+InventoryReservation
+Stores information about the status of cart inventory reservations in B2B and D2C Commerce. This object is available in API version
+60.0 and later.
+
+InvocableActionEventLog
+Invocable Action events capture the calls to Salesforce Invocable Actions. This is particularly useful to monitor actions invoked during
+Agentforce flows. This object is available in API version 64.0 and later.
+
+Invoice
+Represents a financial document describing the total amount a buyer must pay for goods or services provided. This object is available
+in API version 48.0 and later.
+
+InvoiceAddressGroup
+Stores the buyer's address information. This object is available in API version 50.0 and later.
+
+InvoiceBatchRun
+Represents a batch processing job in Subscription Management or Billing (Revenue Cloud). During an invoice batch run, all billing
+schedules that meet the specified criteria are processed, resulting in the generation of invoices. This object is available in API version
+55.0 and later.
+
+InvoiceBatchRunCriteria
+Represents a batch processing job and its required criteria in Subscription Management. During an invoice batch run, all billing
+schedules that meet the specified criteria are processed, resulting in the generation of invoices. This object is available in API version
+55.0 and later.
+
+InvoiceBatchRunRecovery
+Provides information about an invoice batch run recovery procedure. This object is available in API version 57.0 and later.
+
+InvoiceDocument
+Tracks and displays the status of documents generated for invoices. Invoice documents are available in the related lists of invoice
+entity records. This object is available in API version 61.0 and later.
+
+InvoiceLine
+Represents the amount that a buyer must pay for a product, service, or fee. Invoice lines are created based on the amount of an
+order line. This object is available in API version 48.0 and later.
+
+JobProfile
+Represents a job profile used for shift scheduling. This object is available in API versions 47.0 and later.
+
+
+Standard Objects
+
+JobProfileQueueGroup
+JobProfileQueueGroup defines the mapping between Queue and JobProfile and configurations for capacity plans in Workforce
+Engagement. This object is available in API version 53.0 and later.
+
+Knowledge__Feed
+Represents the feed for a knowledge article. This object is available in API version 39.0 and later.
+
+Knowledge__ka
+Provides access to the concrete object that represents a Knowledge article, the parent object for article versions. This object is
+available in API version 39.0 and later.
+
+Knowledge__kav
+Provides access to the concrete object that represents a Knowledge article version. This object is available in API version 39.0 and
+later.
+
+Knowledge__DataCategorySelection
+Represents a data category that classifies an article. This object is available in API version 39.0 and later.
+
+KnowledgeableUser
+Represents a user identified as knowledgeable about a specific topic, and ranks them relative to other knowledgeable users. This
+object is available in API version 31.0 and later.
+
+KnowledgeArticle
+Provides read-only access to an article and the ability to delete the primary article. This object is available in API version 19.0 and
+later.
+
+KnowledgeArticleEventLog
+Knowledge Article View event logs contain user activity with your knowledge base. This object is available in API version 61.0 and
+later.
+
+KnowledgeArticleFeedback
+Represents information about feedback from users on Knowledge articles and details about assignment of feedback to the article
+owner or team to take action. This object is available in API version 64.0 and later.
+
+KnowledgeArticleVersion
+Provides a global view of standard article fields across all types of articles depending on their version. This object is available in API
+version 18.0 and later.
+
+KnowledgeArticleVersionHistory
+Enables read-only access to the full history of an article. This object is available in API version 25.0 and later.
+
+KnowledgeArticleViewStat
+Provides certain statistics related to the number of views for the specified article across all article types. The view count statistics are
+for published and archived articles only. View counts for draft articles aren’t tracked. This object is read-only and available in API
+version 20.0 and later.
+
+KnowledgeArticleVoteStat
+Provides the weighted rating for the specified article on a scale of 1 to 5 across all article types. This object is read-only and available
+in API version 20.0 and later.
+
+LandingPage
+Represents an Account Engagement landing page. A landing page is a web page that a visitor reaches after clicking a link or
+advertisement. Landing pages can be created in Account Engagement and synced to Salesforce or created on the Landing Page
+object in Account Engagement Lightning App. This object is available in API version 42.0 and later.
+
+Lead
+Represents a prospect or lead.
+
+
+Standard Objects
+
+LeadCleanInfo
+Stores the metadata Data.com Clean uses to determine a lead record’s clean status. Helps you automate the cleaning or related
+processing of lead records.
+
+LeadDailyMetric
+Represents the daily engagement metrics for a lead. This object is available in API version 52.0 and later.
+
+LeadMonthlyMetric
+Represents the monthly engagement metrics for a lead. This object is available in API version 52.0 and later.
+
+LeadOwnerSharingRule
+Represents the rules for sharing a lead with users other than the owner.
+
+LeadShare
+Represents a sharing entry on a Lead.
+
+LeadStatus
+Represents the status of a Lead record, such as Open, Qualified, or Converted.
+
+LeadTag
+Associates a word or short phrase with a Lead.
+
+LearningContent
+Represents a Trailhead or enablement site (myTrailhead) module assigned to a user in Workforce Engagement or Learning Paths.
+This object also represents a Trailhead module or video in an Enablement program exercise. This object is available in API version
+54.0 and later.
+
+LearningItem
+Represents an item that requires users to take action, including a Learning Paths entry, an Enablement program, or an exercise with
+linked content in an Enablement program. For Learning Paths, users are assigned a learning item to complete. For Enablement
+programs and exercises, users are assigned a program or can self-enroll in shared programs. This object is available in API version
+58.0 and later.
+
+LearningItemAssignment
+Represents the assignment of a Learning Paths entry to users or groups or the enrollment of an Enablement program for a specific
+user. This object is available in API version 58.0 and later.
+
+LearningItemProgress
+Represents the progress that a user has made towards completing an assigned learning item, such as a Learning Paths entry or
+Enablement program. This object is available in API version 60.0 and later.
+
+LearningItemSubmission
+Represents a link to a resource, such as a video recording, that a user submits as part of a Feedback Request exercise in an Enablement
+program. For peer and manager feedback, this resource can be a recording of a user’s sales patch. For Einstein Coach feedback, this
+resource can be a video call, and Einstein generates feedback from the call’s transcription. This object is available in API version 59.0
+and later, but Einstein Coach is available only in API version 61.0 and later.
+
+LearningItemType
+Represents a custom exercise type that an Enablement user takes in an Enablement program in the Guidance Center. A custom
+exercise type also requires a corresponding LearningItem record for the Guidance Center and corresponding EnblProgramTaskDefinition
+and EnblProgramTaskSubCategory records for when admins create a program in Program Builder. This object is available in API
+version 62.0 and later.
+
+
+Standard Objects
+
+LearningPractice
+Represents a Feedback Request exercise in an Enablement program. Users can submit a sample of their work and request feedback
+from their peers and managers. Or, users can submit a video call and Einstein Coach generates feedback from the call’s transcription.
+This object is available in API version 59.0 and later, but Einstein Coach feedback is available only in API version 61.0 and later.
+
+LegalEntity
+Represents the way an organization is structured. An organization can be a single legal entity or it can comprise more than one legal
+entity. This object is available in API version 48.0 and later.
+
+LicenseDefinitionCustomPermission (Developer Preview)
+Represents a licensed custom permission that controls access to a license's features when included in a custom permission set license
+definition. This object is available in API version 54.0 and later.
+
+LightningErrorEventLog
+Lightning Error events represent errors that occurred during user interactions with Lightning Experience and the Salesforce mobile
+app. This object is available in API version 64.0 and later.
+
+LightningExperienceTheme
+Represents information for a theme in Lightning Experience. This object is available in API Version 42.0 and later.
+
+LightningLoggerEventLog
+Lightning Logger Event Log provides information from observed Lightning component logs. This object is available in API version
+61.0 and later.
+
+LightningOnboardingConfig
+Represents the feedback provided when users switch from Lightning Experience to Salesforce Classic. Admins can customize the
+question, how frequently the form appears, and where the feedback is stored in Chatter from the Adoption Assistance page in
+Lightning Experience Setup. Available in API version 47.0 and later.
+
+LightningPageViewEventLog
+Lightning Page View event logs represent information about the page on which the event occurred in Lightning Experience and
+the Salesforce mobile app. A Lightning Page View event log tracks the page a user visited, how long the user spent on the page,
+and the load time for the page. This object is available in API version 61.0 and later.
+
+LightningPrfmEventLog
+Lightning Performance events track trends in Lightning Experience and Salesforce mobile app performance. This object is available
+in API version 65.0 and later.
+
+LightningToggleMetrics
+Represents users who switched from Lightning Experience back to Salesforce Classic. This object is available in API version 43.0 and
+later.
+
+LightningUsageByAppTypeMetrics
+Represents number of users on Lightning Experience and Salesforce Mobile. This object is available in API version 43.0 and later.
+
+LightningUsageByBrowserMetrics
+Represents Lightning Experience usage grouped by user’s browser. This object is available in API version 43.0 and later.
+
+LightningUsageByPageMetrics
+Represents standard pages users viewed most frequently in Lightning Experience. This object is available in API version 43.0 and
+later.
+
+LightningUsageByFlexiPageMetrics
+Represents custom pages users viewed most frequently in Lightning Experience. This object is available in API version 43.0 and later.
+
+
+Standard Objects
+
+LightningExitByPageMetrics
+Represents frequency metrics about the standard pages within which users switched from Lightning Experience to Salesforce Classic.
+This object is available in API version 44.0 and later.
+
+LinkedArticle
+Represents a knowledge article that is attached to a work order, work order line item, or work type. This object is available in API
+version 37.0 and later.
+
+LinkedArticleFeed
+Represents the comment feed on a linked article. This object is available in API version 39.0 and later.
+
+LinkedArticleHistory
+Represents the history of changes made to tracked fields on a linked article. This object is available in API version 37.0 and later.
+
+ListEmail
+Represents a list email sent from Salesforce, or sent from Account Engagement and synced to Salesforce. When the list email is sent,
+the recipients are generated by combining recipients in ListEmailIndividualRecipients and ListEmailRecipientSource. Duplicate and
+other invalid recipients are removed. The result is the recipients sent any given list email. ListEmail has a one-to-many relationship
+with ListEmailRecipientSource and ListEmailIndividualRecipient. This object is available in API version 41.0 and later.
+
+ListEmailIndividualRecipient
+For a list email in Salesforce, represents a recipient. Each record represents a link from a list email to exactly one recipient for that list
+email. Recipients can be contacts, leads, or campaign members. Has a one-to-many relationship with ListEmail. This object is available
+in API version 44.0 and later.
+
+ListEmailSentResult
+Represents the results of a list email sent from Salesforce, or sent from Account Engagement and synced to Salesforce. It contains
+transport headers and information specific to the associated send action. This object is available in API version 67.0 and later.
+
+ListEmailMonthlyMetric
+Represents the monthly engagement metrics for a single list email. This object is available in API version 49.0 and later.
+
+ListEmailRecipientSource
+For a list email in Salesforce, represents the dynamically defined sources of recipient email addresses. Each record represents a link
+to a single list view or campaign that is examined when the list email is sent. Has a one-to-many relationship with ListEmail. This
+object is available in API version 41.0 and later.
+
+ListView
+Represents a list view. A list view shows a set of records for an object, based on specific criteria. This object is available in API version
+32.0 and later.
+
+ListViewChart
+Represents a graphical chart that’s displayed on Salesforce for Android, iOS, and mobile web list views. The chart aggregates data
+that is filtered based on the list view that’s currently displayed. This object is available in API version 33.0 and later and is accessible
+by portal users.
+
+ListViewChartInstance
+Retrieves metadata for all standard and custom charts for a given entity in context of a given list view. This object is available in API
+versions 34.0 and later.
+
+LiveAgentSession
+This object is automatically created for each Chat session and stores information about the session. This object is available in API
+versions 28.0 and later.
+
+
+Standard Objects
+
+LiveAgentSessionHistory
+This object is automatically created for each Chat session and stores information about changes made to the session. This object is
+available in API versions 28.0 and later.
+
+LiveAgentSessionShare
+This object is automatically created for each Chat session and stores information about the session. This object is available in API
+versions 28.0 and later.
+
+LiveChatBlockingRule
+Represents a rule for blocking chat visitors’ IP addresses from starting new chats with agents. This object is available in API version
+34.0 and later.
+
+LiveChatObjectAccessConfig
+Represents the action you can perform on a specified object by the Chat API. This object is available in API version 53.0 and later.
+
+LiveChatObjectAccessDefinition
+Represents the parent record for one or more LiveChatObjectAccessConfig objects. This object is available in API version 53.0 and
+later.
+
+LiveChatButton
+Represents a button that allows visitors to request chats with Chat users. This object is available in API version 24.0 and later.
+
+LiveChatButtonDeployment
+Associates an automated chat invitation with a specific deployment. This object is available in API versions 28.0 and later.
+
+LiveChatButtonSkill
+Represents all the skills available to a LiveChatButton except the one currently assigned. To retrieve the skill currently assigned, query
+LiveChatButton. This object is available in API version 25.0 and later.
+
+LiveChatDeployment
+Represents the general settings for deploying Live Agent on a website. This object is available in API version 24.0 and later.
+
+LiveChatSensitiveDataRule
+Represents a rule for masking or deleting data of a specified pattern. Written as a regular expression (regex). This object is available
+in API version 35.0 and later.
+
+LiveChatTranscript
+This object is automatically created for each Live Agent chat session and stores information about the session. This object is available
+in API version 24.0 and later.
+
+LiveChatTranscriptEvent
+Captures specific events that occur over the lifetime of a chat. This object is available in API version 24.0 and later.
+
+LiveChatTranscriptShare
+Represents a sharing entry on a LiveChatTranscript object. This object is available in API version 24.0 and later.
+
+LiveChatTranscriptSkill
+Represents a join between LiveChatTranscript and Skill. This object is available in API version 25.0 and later.
+
+LiveChatUserConfig
+Represents a setting that controls the console settings for Chat users. This object is available in API version 24.0 and later.
+
+LiveChatUserConfigProfile
+Represents a join between LiveChatUserConfig and Profile. This object is available in API version 24.0 and later.
+
+LiveChatUserConfigUser
+Represents a join between Live Chat User Config and User. This object is available in API version 24.0 and later.
+
+
+Standard Objects
+
+LiveChatVisitor
+Represents a website visitor who has started or tried to start a chat session. This object is available in API version 24.0 and later.
+
+Location
+Represents a warehouse, service vehicle, work site, or other element of the region where your team performs field service work. In
+API version 49.0 and later, you can associate activities with specific locations. Activities, such as the tasks and events related to a
+location, appear in the activities timeline when you view the location detail page. Also in API version 49.0 and later, Work.com users
+can view Employees as a related list on Location records. In API version 51.0 and later, this object is available for Omnichannel
+Inventory and represents physical locations where inventory is available for fulfilling orders.
+
+LocationGroup
+Represents a group of Omnichannel Inventory locations, providing an aggregate view of inventory availability across those locations.
+Omnichannel Inventory can create an inventory reservation for an order at the location group level, then assign the reservation to
+one or more locations in the group as needed. This object is available in API version 51.0 and later.
+
+LocationGroupAssignment
+Represents the assignment of a location to a location group. This object is available in API version 51.0 and later.
+
+LocationShippingCarrierMethod
+The available shipping carrier services associated with a location or location group. Allows the assignment of different shipping
+methods to a specific location and enables flexibility and customization in the shipping process. This object is available in API version
+61.0 and later.
+
+LocationTrustMeasure
+Represents the COVID safety protocols that your business follows. For example, enforcement of masks, social distancing, cleanliness,
+and capacity limits. This object is available in API version 50.0 and later.
+
+LocWaitlistMsgTemplate
+Represents a junction object connecting LocationWaitlist to MessagingTemplate. This object is available in API version 50.0 and later.
+
+LocationWaitlist
+Represents a queue created for a specific location. Multiple queues can be created for a single location. For example, you can have
+a queue for each sales agent or a standard queue and a queue for vulnerable groups. The specific party of people in a queue is
+represented by LocationWaitlistedParty. This object is available in API version 50.0 and later.
+
+LocationWaitlistedParty
+Represents a specific party of people waiting in a queue. This object is available in API version 50.0 and later.
+
+LoginAsEventLog
+LoginAsEventLog contains details about when a user logs in as another user in your org. This object is available in API version 61.0
+and later.
+
+LoginEvent
+[The documentation has moved to LoginEvent in the](https://developer.salesforce.com/docs/atlas.en-us.262.0.platform_events.meta/platform_events/sforce_api_objects_loginevent.htm) _Platform Events Developer Guide_ .
+
+LoginEventLog
+Login event logs contain details about your Salesforce org's user login history. This object is available in API version 61.0 and later.
+
+LoginGeo
+Represents the geographic location of the user’s IP address for a login event. Due to the nature of geolocation technology, the
+accuracy of geolocation fields (for example, country, city, postal code) may vary. This object is available in API version 34.0 and later.
+
+LoginHistory
+Represents the login history for all successful and failed login attempts for organizations and enabled portals. This object is available
+in API version 21.0 and later.
+
+
+Standard Objects
+
+LoginIp
+Represents a validated IP address. This object is available in version 28.0 and later.
+
+LogoutEventLog
+Contains details of user sessions ending or being revoked. This object is available in API version 65.0 and later.
+
+LogoutEventStream
+[The documentation has moved to LogoutEventStream in the](https://developer.salesforce.com/docs/atlas.en-us.262.0.platform_events.meta/platform_events/sforce_api_objects_logouteventstream.htm) _Platform Events Developer Guide_ .
+
+LookedUpFromActivity
+This read-only object is displayed as a related list on an activity record (an event or a task); the list contains records that have custom
+lookup relationships from the activity to another object. This object is not queryable.
+
+Macro
+Represents a macro, which is a set of instructions that tells the system to perform one or more tasks. This object is available in API
+version 32.0 and later.
+
+MacroInstruction
+Represents an instruction in a macro. An instruction can specify the object that the macro interacts with, the context or publisher
+that the macro works within, the operation or action that the macro performs, and the target of the macro’s actions.
+
+MacroUsage
+Represents macro usage on a record, including which macro was used, who used it, and how they used it. This object is available
+in API version 47.0 and later.
+
+MailmergeTemplate
+Represents a mail merge template (a Microsoft Word document) used for performing mail merges for your organization.
+
+MaintenanceAsset
+Represents an asset covered by a maintenance plan in field service. Assets can be associated with multiple maintenance plans.
+
+MaintenancePlan
+Represents a preventive maintenance schedule for one or more assets in field service.
+
+MaintenanceWorkRule
+Represents the recurrence pattern for a maintenance record. This object is available in API version 49.0 and later.
+
+ManagedContent
+Represents managed content in a Salesforce CMS workspace for use in an Experience Cloud site or a channel. The ManagedContent
+object represents the complete instance of a managed content record. It provides a consistent identifier for the managed content
+so that variants of the content item can be created over time. This object is available in API version 56.0 and later.
+
+ManagedContentChannel
+Represents the details of a CMS channel. CMS channels correspond to managed content publishing endpoints. They deliver published
+content from your Salesforce CMS workspaces to an audience. This object is available in API version 55.0 and later.
+
+ManagedContentInfo
+Allows the creation of relationship to Product using ProductMedia. This object is available in API version 49.0 to 57.0. In API version
+58.0 and later, use the ManagedContent object.
+
+ManagedContentSpace
+Represents the complete instance of a Salesforce CMS workspace that stores managed content. Users and groups with designated
+permissions can access and manage the content in a CMS workspace. This object is available in API version 56.0 and later.
+
+ManagedContentVariant
+Represents a variant of a managed content item. This object is available in API version 56.0 and later.
+
+
+Standard Objects
+
+MarketingForm
+Represents an Account Engagement marketing form that has been synched to Salesforce. Use forms on your website and landing
+pages to collect information about visitors and turn anonymous visitors into identified prospects. This object is available in API version
+42.0 and later.
+
+MarketingLink
+Represents an Account Engagement marketing link record, either a custom redirect or a file, that has been synced to Salesforce. This
+object is available in API version 42.0 and later.
+
+MatchingRule
+Represents a matching rule that is used to identify duplicate records. This object is available in API version 33.0 and later.
+
+MatchingRuleItem
+Represents criteria used by a matching rule to identify duplicate records. This object is available in API version 33.0 and later.
+
+MerchAccPaymentMethodSet
+Defines an ordered list of payment methods that are available to a merchant's cudstomer during checkout. You can configure
+multiple payment method sets, each designated for a specific locale, payment region, or sale channel. This object is available in API
+version 58.0 and later.
+
+MerchAccPaymentMethodType
+Refers to a payment method that is in a payment method set, which is defined by the `MerchAccPaymentMethodSet` object.
+This object is available in API version 58.0 and later.
+
+MerchantAccount
+A type of bank account that lets a merchant accept payments from a variety of payment methods, including credit or debit cards,
+or digital wallets. A Salesforce Payments merchant account is linked to an underlying payment gateway to process payments This
+object is available in API version 56.0 and later.
+
+MerchantAccountEvent
+Represents a merchant account platform event. Subscribe to these events so you can listen and respond to them when they’re
+published. For example, create a Salesforce Flow that is triggered when one of these events is published. This object is available in
+API version 59.0 and later.
+
+MessagingChannel
+Represents a communication channel that an end user can use to send a message to an agent. A communication channel can be
+an SMS number, a Facebook page, or another supported messaging channel. This object is available in API version 40.0 and later.
+
+MessagingChannelSkill
+Junction object that represents an association between MessagingChannel and Skill. This object is available in API version 45.0 and
+later.
+
+MessagingChannelUsage
+Represents the status of an enhanced Messaging channel or of an application in a Unified Messaging channel. This object is available
+in API version 60.0 and later.
+
+MessagingConfiguration
+Represents the details for a Messaging configuration. This object is available in API version 47.0 and later.
+
+MessagingDeliveryError
+Represents a log of triggered outbound failures to verify when a triggered outbound has failed. This object is available in API version
+44.0 and later.
+
+MessagingEndUser
+Represents a single address—such as a phone number or Facebook page—communicating with a single Messaging channel. This
+object is available in API version 40.0 and later.
+
+
+Standard Objects
+
+MessagingLink
+Represents the link between a Messaging Channel and where it's shared. This object is available in API version 47.0 and later.
+
+MessagingSession
+Represents a session on a Messaging channel. This object is available in API version 47.0 and later.
+
+MessagingSessionMetrics
+Represents a metric gathered about a specific enhanced messaging session, such as average agent response time. This object is
+available starting in October 2024 in API version 62.0 and later.
+
+MessagingTemplate
+Represents a Messaging template used to send pre-formatted messages. This object is available in API version 47.0 and later.
+
+MetadataApiOpEventLog
+MetadataApiOpEventLog stores details of Metadata API retrieval and deployment requests. This object is available in API version
+62.0 and later.
+
+MetadataPackage
+Represents a package that has been developed in the org you’re logged in to. Applies to unlocked, unmanaged, first-generation,
+and second-generation managed packages.
+
+MetadataPackageVersion
+Represents a package version (managed or unmanaged) that has been uploaded from the org you’re logged in to.
+
+Metric
+The Metric object represents the components of a goal metric such as its name, metric type, and current value.
+
+MetricDataLink
+The link between the metric and the data source, such as a report.
+
+MigratedEmail
+For internal use only.
+
+MilestoneType
+Represents a milestone (required step in a customer support process). This object is available in API version 18.0 and later.
+
+MktJourneyDcsnSetup
+Represents a collection of Marketing Cloud Engagement journeys that you can interact with by using Salesforce Flow in Marketing
+Cloud. This object is available in API version 65.0 and later.
+
+MLField
+Represents a single field in a data definition. This object is available in API version 50.0 and later.
+
+MlIntentUtteranceSuggestion
+Represents a customer input, used for training purposes in the feedback loop process of a conversation. Admins can add these inputs
+to the intent training model. This object is available in API version 51.0 and later.
+
+MLPredictionDefinition
+Represents a prediction definition that specifies details about the prediction. This object is available in API version 50.0 and later.
+
+MLModel
+Represents an AI model that can be used in Einstein Prediction Builder, Einstein Recommendation Builder, and other Einstein features.
+This object is available in API version 53.0 and later.
+
+MLModelFactor
+Represents a field value that has a positive or negative effect on the model’s score. This object is available in API version 53.0 and
+later.
+
+
+Standard Objects
+
+MLModelFactorComponent
+Represents information about the related MLModelFactor. For example, this object can represent a field value or a field range such
+as “Title = CEO” or “Annual Revenue >10000000”. This object is available in API version 53.0 and later.
+
+MLModelMetric
+Represents a metric or statistic about the related model, such as accuracy, precision, or RSquared. Use a model’s metrics to learn
+about its performance and to compare it with other models. This object is available in API version 53.0 and later.
+
+MLRecommendationDefinition
+For internal use only.
+
+MobileDeviceAppRegistration
+Represents the details provided in a mobile device registration event from an app that uses the Engagement Mobile SDK. This object
+is available in API version 65.0 and later.
+
+MobileSecurityAssignment
+Represents the assignment of mobile security policies to a profile. The policies apply to the Salesforce mobile app with Enhanced
+Mobile App Security enabled. This object is available in API version 54.0 and later.
+
+MobileSecurityPolicy
+Enables mobile security policies on the Salesforce mobile app with Enhanced Mobile Security. This object is available in API version
+50.0 and later.
+
+MobileSecurityUserMetric
+Represents the metrics for users who have Enhanced Mobile Security policies enforced. This object is available in API version 51.0
+and later.
+
+MobileSettingsAssignment
+Represents the assignment of a particular field service mobile settings configuration to a user profile. This object is available in API
+version 41.0 and later.
+
+MobSecurityCertPinConfig
+Configuration of mobile security certificate pinning on the Salesforce mobile app with Enhanced Mobile Security. This object is
+available in API version 53.0 and later.
+
+MobSecurityCertPinEvent
+The event of mobile security certificate pinning on the Salesforce mobile app with Enhanced Mobile Security. This object is available
+in API version 53.0 and later.
+
+MsgChannelLanguageKeyword
+Represents the consent configuration for a Messaging channel. This object is available in API version 48.0 and later.
+
+MsgChannelUsageExternalOrg
+Represents the Enterprise ID (EID) and Business Unit (MID) for Marketing Cloud connections in a Unified Messaging channel. This
+object is available in API version 60.0 and later.
+
+MyDomainDiscoverableLogin
+Represents configuration settings when the My Domain login page type is Discovery. Login Discovery provides an identity-first login
+experience, where the login page contains the identifier field only. Based on the identifier entered, a handler determines how to
+authenticate the user. This object is available in API version 45.0 and later.
+
+MutingPermissionSet
+Represents a set of disabled permissions and is used in conjunction with PermissionSetGroup. This object is available in API version
+46.0 and later.
+
+Name
+Non-queryable object that provides information about foreign key traversals when the foreign key has more than one parent.
+
+
+Standard Objects
+
+NamedCredential
+Represents a named credential, which specifies the URL of a callout endpoint and its required authentication parameters in one
+definition. A named credential can be specified as an endpoint to simplify the setup of authenticated callouts. This object is available
+in API version 33.0 and later.
+
+NamedCredentialEventLog
+The Named Credential event type captures information about Apex callouts that use named credentials as their endpoints. Use this
+event type to audit the installed managed packages that use named credentials. If you don’t recognize the package namespace in
+the named credential event log file, then you can investigate whether a security breach has occurred. This object is available in API
+version 65.0 and later.
+
+NamespaceRegistry
+Represents a namespace that you can link to scratch orgs that were created from your org’s Dev Hub. You use the namespace when
+developing, packaging, and releasing an app. You can’t create this object with the API. Use the **Link Namespace** action in the Dev
+Hub graphical interface to insert a `NamespaceRegistry` record. This object is available in API version 41.0 and later.
+
+NavigationLinkSet
+Represents the navigation menu in an Experience Cloud site. A navigation menu consists of items that users can click to go to other
+parts of the site. This object is available in API version 35.0 and later.
+
+NavigationMenuItem
+Represents a single menu item in a NavigationLinkSet. Use this object to create, delete, or update menu items in your Experience
+Cloud site’s navigation menu. This object is available in API version 35.0 and later.
+
+NavigationMenuItemLocalization
+Represents the translated value of a navigation menu item in an Experience Cloud site. This object is available in API version 36.0
+and later.
+
+Network
+Represents an Experience Cloud site. Salesforce Experience Cloud lets you create branded spaces for your employees, customers,
+and partners. You can customize and create experiences, whether they’re communities, sites, or portals, to meet your business needs,
+then transition seamlessly between them. Experience Cloud sites let you share information, records, and files with coworkers and
+stakeholders all in one place. This object is available in API version 26.0 and later.
+
+NetworkActivityAudit
+Represents an audit trail of moderation actions in Experience Cloud sites. This object is available in API version 30.0 and later.
+
+NetworkAffinity
+Represents a junction object that associates a user profile with a Network object, that is, with an Experience Cloud site. Use
+NetworkAffinity to assign a default Experience Cloud site to a user profile. This object is available in API version 41.0 and later.
+
+NetworkAuthApiSettings
+Represents the settings that control enablement, access, and security for the Headless Registration Flow, Headless Forgot Password
+Flow, Headless Passwordless Login Flow, and their associated APIs. This object is available in API version 58.0 and later.
+
+NetworkDataCategory
+Represents data categories in Lightning Web Runtime (LWR) Experience Cloud Sites. This object is available in API version 59.0 and
+later.
+
+NetworkDiscoverableLogin
+Represents the Login Discoverable page from where customers and partners log in to an Experience Cloud site. Customers and
+partners are users with an External Identity license or any communities license for Experience Cloud. This object is available in API
+version 44.0 and later.
+
+
+Standard Objects
+
+NetworkEmailTmplAllowlist
+Represents an allowlist for the one-time password (OTP) email templates that are sent to end users during the Headless Registration
+Flow, the Headless Passwordless Login Flow, and the Headless Forgot Password Flow. This object is available in API version 60.0 and
+later.
+
+NetworkFeedResponseMetric
+Represents an object that stores the date and time values of question posts. It captures information for question creation, answer
+creation, and when an answer is marked as best answer This object is available in API version 51.0 and later.
+
+NetworkMember
+Represents a member of an Experience Cloud site. Members can be either users in your company or external users with portal profiles.
+This object is available in API version 26.0 and later.
+
+NetworkMemberGroup
+Represents a group of members in an Experience Cloud site. Members can be either users in your internal org or external users
+assigned portal profiles. An administrator adds members to an Experience Cloud site by adding a profile or a permission set, and
+any user with the profile or permission set becomes a member of the site. This object is available in API version 26.0 and later.
+
+NetworkModeration
+Represents a flag on an item in a community. This object is available in API version 30.0 and later.
+
+NetworkPageOverride
+Represents information about custom pages used to override the default pages in Experience Cloud sites. You can create Experience
+Builder or Visualforce pages and override the default pages in a site. Using custom pages allows you to create a more personalized
+experience for your users. This object is available in API version 34.0 and later.
+
+NetworkSelfRegistration
+Represents the account that self-registering Experience Cloud users are associated with by default. Self-registering users in an
+Experience Cloud site are required to be associated with an account, which the admin must specify while setting up self-registration
+for the site. If an account isn’t specified, Salesforce creates person accounts (when enabled) for self-registering users. This object is
+available in API version 34.0 and later.
+
+NetworkUserHistoryRecent
+Represents an Experience Cloud site user’s history of accessed records. This object is available in API version 42.0 and later.
+
+Note
+Represents a note, which is text associated with a custom object or a standard object, such as a Contact, Contract, or Opportunity.
+
+NoteAndAttachment
+This read-only object contains all notes and attachments associated with an object.
+
+NoteTag
+Associates a word or short phrase with a Note.
+
+OauthCustomScope
+Represents a permission defining the protected data that a connected app can access from an external entity when Salesforce is
+the OAuth authorization provider.
+
+OauthCustomScopeApp
+Represents the name of the connected app to which the custom scope is assigned. This object is available in API version 49.0 and
+later.
+
+OauthToken
+Represents an OAuth access token for connected app authentication. Use this object to create a user interface for token management.
+This object is available in API version 32.0 and later.
+
+
+Standard Objects
+
+OauthTokenExchangeHandler
+Represents a token exchange handler. The token exchange handler also consists of an Apex class. During the OAuth 2.0 token
+exchange flow, the token exchange handler is used to validate tokens from an external identity provider and to map users to
+Salesforce. This object is available in API version 60.0 and later.
+
+OauthTokenExchHandlerApp
+Represents the enablement settings for a specific Salesforce connected app or external client app that’s enabled for the token
+exchange handler. A handler can be enabled for multiple apps. This object is available in API version 60.0 and later.
+
+ObjectDataImport
+Represents the data import status of one or more object records. This object is available in API version 57.0 and later.
+
+ObjectDataImportReference
+Represents the relationships to the associated reference objects showing the source from which the data is imported. This object is
+available in API version 57.0 and later.
+
+ObjectMetadataTag
+Represents a meta tag for a store page. Meta tags in HTML documents provide structured data used by search engines for ranking
+and to show content in search results. This object is available in API version 60.0 and later.
+
+ObjectPermissions
+Represents the enabled object permissions for the parent PermissionSet. This object is available in API version 24.0 and later.
+
+ObjectRelatedUrl
+Represents a URL slug for a Product or Category page on a B2B Commerce or D2C Commerce LWR site, or a custom object, account,
+or contact page on an enhanced LWR Experience Cloud site. This object is available in API version 57.0 and later.
+
+ObjectTerritory2AssignmentRule
+Represents a territory assignment rule that’s associated with an object, such as Account. ObjectTerritory2AssignmentRuleItem can
+be created or deleted if the BooleanFilter field on its corresponding ObjectTerritory2AssignmentRule is `null` . Available if Sales
+Territories has been enabled.
+
+ObjectTerritory2AssignmentRuleItem
+A single row of selection criteria for an ObjectTerritory2AssignmentRule object. ObjectTerritory2AssignmentRuleItem can only be
+created or deleted if the `BooleanFilter` field on its corresponding ObjectTerritory2AssignmentRule object is a `null` value.
+Available if Sales Territories has been enabled.
+
+ObjectTerritory2Association
+Represents an association (by assignment) between a territory and an object record such as an account or a lead.
+
+ObjectUserTerritory2View
+Represents a user and object, such as an account or lead, assigned to a territory. This object is available in API version 58.0 and later.
+
+OmniSupervisorConfig
+Represents the Command Center for Service configuration for an assigned group of supervisors. This object is available in API version
+41.0 and later.
+
+OmniSupervisorConfigAction
+Represents the actions available to the supervisors of a Command Center for Service configuration. This object is available in API
+version 56.0 and later.
+
+OmniSupervisorConfigGroup
+Represents the group of reps who are visible to the supervisors of a Command Center for Service configuration. The group, if visible,
+appears in the Agents tab of Command Center for Service. This object is available in API version 41.0 and later.
+
+
+Standard Objects
+
+OmniSupervisorConfigProfile
+Represents the supervisor profiles to which a Command Center for Service configuration applies. User-level configurations override
+profile-level configurations. This object is available in API version 41.0 and later.
+
+OmniSupervisorConfigQueue
+Represents the queues that are visible to the supervisors of a Command Center for Service configuration. The queue, if visible, appears
+in the Queues Backlog and Assigned Work tabs of Command Center for Service. This object is available in API version 53.0 and later.
+
+OmniSupervisorConfigSkill
+Represents the skills that are visible to the supervisors of a Command Center for Service configuration. These skills, if visible, appear
+in the Skills Backlog tab of Command Center for Service. This object is available in API version 53.0 and later.
+
+OmniSupervisorConfigTab
+Represents the visible tabs specified in a Command Center for Service configuration. This object is available in API version 60.0 and
+later.
+
+OmniSupervisorConfigUser
+Represents the users to whom a Command Center for Service configuration applies. User-level configurations override profile-level
+configurations. This object is available in API version 41.0 and later.
+
+OpenActivity
+This read-only object is displayed in a related list of open activities—future events and open tasks—related to an object. It includes
+activities for all contacts related to the object. OpenActivity fields for phone calls are only available if your organization uses Salesforce
+CRM Call Center.
+
+OperatingHours
+Represents the hours in which a service territory, service resource, or account is available for work. OperatingHours is used by Field
+Service, Salesforce Scheduler, Salesforce Meetings, Sales Engagement, and Workforce Engagement. This object is available in API
+version 38.0 and later.
+
+OperatingHoursHistory
+Represents the history of changes made to tracked fields on an operating hours record. This object is available in API version 38.0
+and later.
+
+OperatingHoursHoliday
+Represents the day or hours for which a service territory and service resources exclusive to the service territory are unavailable in
+Salesforce Scheduler. This object is available in API version 54.0 and later.
+
+Opportunity
+Represents an opportunity, which is a sale or pending deal.
+
+OpportunityCompetitor
+Represents a competitor on an Opportunity.
+
+OpportunityContactRole
+Represents the role that a Contact plays on an Opportunity.
+
+OpportunityContactRoleSuggestionInsight
+Represents a suggestion for a new opportunity contact role. Available in API versions 45.0 and later.
+
+OpportunityFieldHistory
+Represents the history of changes to the values in the fields of an opportunity. This object is available in versions 13.0 and later.
+
+OpportunityHistory
+Represents the stage history of an opportunity.
+
+
+Standard Objects
+
+OpportunityInsight
+Represents an individual insight (deal prediction, follow-up reminder, or key moment) related to an opportunity record.
+
+OpportunityLineItem
+Represents an opportunity line item, which is a member of the list of Product2 products associated with an Opportunity.
+
+OpportunityLineItemSchedule
+Represents information about the quantity, revenue distribution, and delivery dates for a particular `OpportunityLineItem` .
+
+OpportunityLineItemSplit
+Represents information about an opportunity product split, including percentages, amounts, and owner. This object is available in
+API version 58.0 and later.
+
+OpportunityOwnerSharingRule
+Represents a rule for sharing an opportunity with users other than the owner.
+
+OpportunityPartner
+This object represents a partner relationship between an Account and an Opportunity. An OpportunityPartner record is created
+automatically when a Partner record is created for a partner relationship between an account and an opportunity.
+
+OpportunityRelatedDeleteLog
+Represents an audit log of the deletion of opportunity-related child records, such as opportunity team members, product splits, or
+opportunity splits. This object is available in API version 59.0 and later.
+
+OpportunityShare
+Represents a sharing entry on an Opportunity.
+
+OpportunitySplit
+OpportunitySplit credits one or more opportunity team members with a portion of the opportunity amount. This object is available
+in API version 16.0 and later for pilot customers, and version 28.0 and later for others.
+
+OpportunitySplitType
+OpportunitySplitType provides unique labels and behavior for each split type. This object is available in API version 28.0 and later.
+
+OpportunityStage
+Represents the stage of an Opportunity in the sales pipeline, such as New Lead, Negotiating, Pending, Closed, and so on.
+
+OpportunityTag
+Associates a word or short phrase with an Opportunity.
+
+OpportunityTeamMember
+Represents a User on the opportunity team of an Opportunity.
+
+OpptyLineItemSplitType
+Represents an opportunity product split type. This object is available in API version 58.0 and later.
+
+Order
+Represents an order associated with a contract or an account.
+
+OrderAction
+Indicates the type of order, such as a new sale or a cancellation. This object is available in API version 55.0 and later.
+
+OrderAdjustmentGroup
+Group containing a set of adjustments applied to an order. This object is available in API version 48.0 and later.
+
+
+Standard Objects
+
+OrderAdjustmentGroupSummary
+Represents the current properties and state of a group of related price adjustments. Associated with a set of
+OrderItemAdjustmentLineSummaries that apply to OrderItemSummaries belonging to one OrderSummary. Corresponds to one or
+more order adjustment group objects, consisting of an original object and any change objects applicable to it. This object is available
+in API version 48.0 and later.
+
+OrderChangeLog
+Represents a log record of all change requests made to an order post activation. A log record is always one-to-one to change an
+order request. This object is available in API version 48.0 and later.
+
+OrderChgReasonCategMap
+The mapping between an order change reason and a service flow category. This object is available in API version 65.0 and later.
+
+OrderDeliveryGroup
+A group of order items that share a delivery method and address. The delivery method and address are used during the fulfillment
+process, such as shipping as a gift, downloading, picking up in store, or shipping to a standard address This object is available in API
+version 48.0 and later.
+
+OrderDeliveryGroupSummary
+Represents the current properties and state of a group of OrderItemSummaries, belonging to one OrderSummary, to be fulfilled
+using the same delivery method and delivered to the same address. A single shipment can include them all, but that isn’t guaranteed.
+Corresponds to one or more order delivery group objects, consisting of an original object and any change objects applicable to it.
+This object is available in API version 48.0 and later.
+
+OrderDeliveryMethod
+Shows the customizations and options that a buyer selected for their delivery method. This object is available in API version 48.0
+and later.
+
+OrderHistory
+Represents historical information about changes that have been made to the standard fields of the associated order, or to any custom
+fields with history tracking enabled.
+
+OrderItem
+Represents an order product that your organization sells.
+
+OrderItemAdjustmentLineItem
+An adjustment that has been made to an order item. This object is available in API version 48.0 and later.
+
+OrderItemAdjustmentLineSummary
+Represents the current properties and state of price adjustments on an OrderItemSummary. Corresponds to one or more order item
+adjustment line item objects, consisting of an original object and any change objects applicable to it. This object is available in API
+version 48.0 and later.
+
+OrderItemGroup
+Stores the group information for line items in an order. It also stores the aggregated line field information (subtotal). It contains a
+parent-child relationship to order. This object is available in API version 62.0 and later.
+
+OrderItemRecipient
+Represents a site, employee, or other entity for which services are being ordered. This includes essential details such as the recipient's
+name, contact information, and the specific site or location where the services will be provided. This object is available in API version
+62.0 and later.
+
+OrderItemRelationship
+Describes a relationship between order products. This object is available in API version 58.0 and later.
+
+
+Standard Objects
+
+OrderItemSummary
+Represents the current properties and state of a product or charge on an OrderSummary. Corresponds to one or more order item
+objects, consisting of an original object and any change objects applicable to it. This object is available in API version 48.0 and later.
+
+OrderItemSummaryChange
+Represents a change to an OrderItemSummary, usually a reduction in quantity due to a cancel or return. Corresponds to a change
+order item. This object is available in API version 48.0 and later.
+
+OrderItemSummaryRelationship
+Junction object used to track how an original order summary (created before any exchanges have occurred) relates to other order
+summary objects in a chain of exchange orders. This object is available in API version 60.0 and later. An exchange order is an
+OrderSummary object whose SourceProcess property is set to Exchange. An original order summary can have an exchange order,
+which in turn can have yet another exchange order, and so on. The OrderSummaryRelationship object maintains this relationship
+between OrderSummary objects.
+
+OrderItemTaxLineItem
+The tax amount that has been applied to an order item. This object is available in API version 48.0 and later.
+
+OrderItemTaxLineItemSummary
+Represents the current tax on an OrderItemSummary or OrderItemAdjustmentLineSummary. Corresponds to one or more order
+item tax line items, consisting of an original object and any change objects applicable to it. This object is available in API version 48.0
+and later.
+
+OrderItemType
+Shows whether the order product is a product line or charge line. This object is available in API version 48.0 and later.
+
+OrderOwnerSharingRule
+Represents a rule which determines order sharing access for the order’s owners.
+
+OrderPaymentSummary
+Represents the current properties and state of payments using a single payment method that are applied to one OrderSummary.
+This object is available in API version 48.0 and later.
+
+OrderPaymentSummaryReference
+OrderPaymentSummaryReference is a junction object that allows an order payment summary to be shared with another order
+summary. This object is available in API version 60.0 and later.
+
+OrderShare
+Represents a sharing entry on an Order. This object is available in API version 48.0 and later.
+
+OrderStatus
+Represents the status of the order entity. This object is available in API version 48.0 and later.
+
+OrderSummary
+Represents the current properties and state of an order. Corresponds to one or more order objects, consisting of an original object
+and any change objects applicable to it. This object is available in API version 48.0 and later.
+
+OrderSummaryAdditionalInfo
+Stores information related to OrderSummary including context around the order, such as inventory reservation details, order
+origination, and other values that Einstein uses to perform order analysis. Only reservation details can be stored in this object. This
+object is available in API version 58.0 and later.
+
+OrderSummaryRelationship
+Junction object used to track how an original order summary (created before any exchanges have occurred) relates to other order
+summary objects in a chain of exchange orders. This object is available in API version 60.0 and later.
+
+
+Standard Objects
+
+OrderSummaryRoutingSchedule
+Represents an attempt to route an order summary to one or more inventory locations for fulfillment. You can use it to schedule
+future attempts and to record completed attempts. This object is available in API version 51.0 and later.
+
+Organization
+Represents key configuration information for an organization.
+
+OrgDeleteRequest
+Represents a request to delete a developer edition (DE) org. This object is available in API version 42.0 and later. It is available only
+in Developer and Database.com editions.
+
+OrgEmailAddressSecurity
+Defines the assignment of a user profile to an org-wide email address. This object is available in API version 58.0 and later.
+
+OrgMetric
+Represents a feature or metric that Salesforce Optimizer evaluates. This object is available in API version 47.0 and later.
+
+OrgMetricScanResult
+Represents data or an item associated with a feature’s results in a Salesforce Optimizer evaluation. For example, for the Custom Field
+Limit feature, an OrgMetricScanResult object represents an object flagged for approaching the custom field limit. This object is
+available in API version 47.0 and later.
+
+OrgMetricScanSummary
+Represents the results summary for a specific feature in a Salesforce Optimizer evaluation. This object is available in API version 47.0
+and later.
+
+OrgSnapshot
+Represents a snapshot of a scratch org. Snapshots capture the state of a scratch org so that you can use it to quickly spin up new
+scratch orgs using its configuration. This object is available in API version 61.0 and later.
+
+OrgWideEmailAddress
+Represents an organization-wide email address for user profiles.
+
+OSAsyncChgCompletedEvent
+An event that allows the processing of the credit memo, invoices, and other entities after a bulk action has successfully completed.
+The event provides all of the values that would exist on the synchronous APIs. This object is available in API version 63.0 and later.
+
+OutOfOffice
+Represents a user-set value on a profile that shows when the user intends to be out of the office. This object is available in API version
+41.0 and later.
+
+OutgoingEmail
+For internal use only.
+
+OutgoingEmailRelation
+For internal use only.
+
+OwnedContentDocument
+Represents a file owned by a user. This object is available in version 30.0 and later.
+
+OwnerChangeOptionInfo
+Represents default and optional actions that can be performed when a record’s owner is changed. Available in API version 35.0 and
+later, but to query for change owner metadata, use the OwnerChangeOptionInfo object in Tooling API instead. For more information,
+[see OwnerChangeOptionInfo in the Tooling API.](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_tooling.meta/api_tooling/tooling_api_objects_ownerchangeoptioninfo.htm)
+
+
+Standard Objects
+
+PackageInstallEventLog
+PackageInstallEventLog stores details about package installation in the organization. This object is available in API version 62.0 and
+later.
+
+PackageLicense
+Represents a license for an installed managed package. This object is available in API version 31.0 and later.
+
+PackagePushError
+Represents an error encountered during a push request. The number of PackagePushError records created depends on the number
+of push jobs in the request that result in an error.
+
+PackagePushJob
+Represents an individual push job for upgrading a package in an org from one version to another version. There can be multiple
+push jobs created for one push request. For example, if you want to upgrade five orgs as part of one push, you have one
+PackagePushRequest record and five PackagePushJob records.
+
+PackagePushRequest
+Represents the push request for upgrading a package in one or many orgs from one version to another version.
+
+PackageSubscriber
+Represents an installation of a package in an org. This object contains installation information for managed or unlocked packages
+developed in the org you’re logged in to.
+
+Participant
+Represents a participant in a ConversationParticipant. An existing or new Participant is referenced each time a new
+ConversationParticipant is created. This object is available in API version 57.0 and later.
+
+Partner
+Represents a partner relationship between two Account records or between an Opportunity record and an Account record.
+
+PartnerFundAllocation
+Represents allocated funds from a partner marketing budget for channel partners. This object is available in API version 41.0 and
+later.
+
+PartnerFundClaim
+Represents a claim of funds from the partner marketing budget by a channel partner. This object is available in API version 41.0 and
+later.
+
+PartnerFundRequest
+Represents a request for funds from the partner marketing budget by a channel partner. This object is available in API version 41.0
+and later.
+
+PartnerMarketingBudget
+Represents a budget that provides funds to channel partners for selling and marketing products and services. This object is available
+in API version 41.0 and later.
+
+PartnerNetworkConnection
+Represents a Salesforce to Salesforce connection between Salesforce organizations.
+
+PartnerNetworkRecordConnection
+Represents a record shared between Salesforce organizations using Salesforce to Salesforce.
+
+PartnerNetworkSyncLog
+Represents the Org Sync Log tab in Salesforce, where Salesforce administrators can track the replication of record inserts and updates
+being performed in Organization Sync. The Connection Detail page for the replication connection also displays the Org Sync Log’s
+twenty most recent entries, and provides a link to the log.
+
+
+Standard Objects
+
+PartnerRole
+Represents a role for an account Partner, such as consultant, supplier, and so on.
+
+PartyConsent
+Represents consent preferences for an individual. This object is available in API version 48.0 and later.
+
+Payment
+Represents a single event when a shopper makes a payment. For credit cards, this event is a payment capture or payment sale, but
+it doesn't appear on the shopper's credit card statement. This object is available in API version 48.0 and later.
+
+PaymentAuthAdjustment
+Shows information about an adjustment made to an authorized transaction. This object is available in API version 51.0 and later.
+
+PaymentAuthorization
+Represents a single payment authorization event where users can capture or reverse a payment against a reserve of funds. This
+object is available in API version 48.0 and later.
+
+PaymentCredit
+Tracks the amount of money returned to the customer. The return can be a store credit, a gift card, or another type of credit. It's
+linked to the original payment record and includes the total credit amount issued. This object is available in API version 65.0 and
+later.
+
+PaymentCreditLinePayment
+A payment credit line payment. This object is available in API version 65.0 and later.
+
+PaymentCreditTransaction
+A payment credit transaction. This object is available in API version 65.0 and later.
+
+PaymentGateway
+Platform object that represents the connection to an external payment gateway. This object is available in API version 48.0 and later.
+
+PaymentGatewayLog
+Stores information exchanged between the Salesforce payments platform and external payment gateways. Gateway logs can also
+record payloads from external payment entities. This object is available in API version 48.0 and later.
+
+PaymentGatewayProvider
+Setup entity for payment gateways. Defines the connection to a payment gateway Apex adapter. This object is available in API
+version 48.0 and later.
+
+PaymentGroup
+Top-level object that groups all payment transactions that are processed for an order or invoice. PaymentGroup is a standalone
+object, so it isn’t required for users to execute payment transactions (authorizations, captures, refunds, and sales). This object is
+available in API version 48.0 and later.
+
+PaymentInitiationSource
+Represents the originating source of a payment. This information helps other Salesforce products integrate with Salesforce Payments.
+This object is available in API version 63.0 and later.
+
+PaymentIntent
+Represents data temporarily stored during a transaction’s lifecycle that can identify the buyer, the merchant, and the amount the
+buyer is sending to the merchant. Data such as timestamp and amount returned can also be stored in PaymentIntent. This object
+is available in API version 58.0 and later.
+
+PaymentIntentEvent
+Represents a payment intent platform event. Subscribe to these events so you can listen and respond to them when they’re published.
+For example, create a Salesforce Flow that is triggered when one of these events is published. This object is available in API version
+59.0 and later.
+
+
+Standard Objects
+
+PaymentLineInvoice
+Represents a payment allocated to or unallocated from an invoice. This object is available in API version 48.0 and later.
+
+PaymentLink
+A link that a merchant can share with customers to collect payments for products and services. The payment link, which you can
+embed into a Salesforce app or send directly to a customer, directs the customer to a Pay Now payment page. The page can show
+a total amount owed or an itemized list or products, shipping and tax charges, and a total amount owed. The customer enters their
+contact and payment details, and submits their payment. The amounts are shown in the store's currency. This object is available in
+API version 58.0 and later.
+
+PaymentLinkEvent
+Represents a payment link platform event. Subscribe to these events so you can listen and respond to them when they’re published.
+For example, create a Salesforce Flow that is triggered when one of these events is published. This object is available in API version
+59.0 and later.
+
+PaymentMethod
+Represents the method that a buyer uses to compensate the seller of a good or service. Common payment methods include cash,
+checks, credit or debit cards, money orders, bank transfers, and online payment services. This object is available in API version 48.0
+and later.
+
+PymtSchdDistributionMethod
+Indicates how the total payment is divided into partial payments. This object is available in API version 56.0 and later.
+
+PaymentScheduleTreatmentDtl
+Contains configuration information for the payment schedule treatment detail. This object is available in API version 56.0 and later.
+
+PaymentTerm
+Defines your company's method and expectations for receiving payment. This object is available in API version 55.0 and later.
+
+PaymentTermItem
+Defines the attributes of a payment term that your company uses. The PaymentTermItem is used to determine the due date on
+invoices. This object is available in API version 55.0 and later.
+
+PaymentSchedule
+The payment schedule represents a collection of payments that a customer wants to collect at different times for a certain record.
+A schedule contains one or more payment schedule items, where each item represents one payment to be processed. Each of a
+schedule’s items can have different payment configuration fields, such as payment methods, payment dates, and payment accounts.
+When a payment scheduler launches a payment run, the run evaluates active payment schedule items, and picks them up for
+payment processing if they align with the scheduler’s payment criteria. This object is available in API version 55.0 and later.
+
+PaymentScheduleItem
+A payment schedule contains one or more payment schedule items, where each item represents one payment to be processed.
+Each of a schedule’s items can have different payment configuration fields, such as payment methods, payment dates, and payment
+accounts. When a payment scheduler launches a payment run, the run evaluates active payment schedule items, and picks them
+up for payment processing if they align with the scheduler’s payment criteria. This object is available in API version 55.0 and later.
+
+PaymentSchedulePolicy
+Contains configuration information for the payment schedule policy. This object is available in API version 56.0 and later.
+
+PaymentScheduleTreatment
+Contains configuration information for the payment schedule. This object is available in API version 56.0 and later.
+
+PendingOrderSummary
+Object representing a B2C Commerce order ingested via High Scale Orders before an OrderSummary is created for it. Optimized for
+online transaction processing (OLTP). This object is available in API version 55.0 and later.
+
+
+Standard Objects
+
+PendingServiceRouting
+Represents the routing details of a work item that’s waiting to be routed or assigned. This object is available in API version 40.0 and
+later.
+
+PendingServiceRoutingInteractionInfo
+Represents PendingServiceRouting interaction information that’s used when work is routed to an agent. For a screen pop, it specifies
+which records to open when work is routed to an agent from a specific channel. PendingServiceRoutingInteractionInfo is read-only.
+This object is available in API version 53.0 and later.
+
+Period
+Represents a fiscal period defined in FiscalYearSettings.
+
+PermissionSet
+Represents a set of permissions that’s used to grant more access to one or more users without changing their profile or reassigning
+profiles. This object is available in API version 22.0 and later.
+
+PermissionSetAssignment
+Represents a user’s assignment to a permission set or permission set group. This object is available in API version 22.0 and later.
+
+PermissionSetGroup
+Represents a group of permission sets and the permissions within them. Use permission set groups to organize permissions based
+on job functions or tasks. Then, you can package the groups as needed. This object is available in API version 45.0 and later.
+
+PermissionSetGroupComponent
+A junction object that relates the PermissionSetGroup and PermissionSet objects via their respective IDs; enables permission set
+group recalculation to determine the aggregated permissions for the group. This object is available in API version 45.0 and later.
+
+PermissionSetLicense
+Represents a license that’s used to enable one or more users to receive a specified permission without changing their profile or
+reassigning profiles. You can use permission set licenses to grant access, but not to deny access. This object is available in API version
+29.0 and later.
+
+PermissionSetLicenseAssign
+Represents the association between a User and a PermissionSetLicense. This object is available in API version 29.0 and later.
+
+PermissionSetLicenseDefinition (Developer Preview)
+Represents the definition of a custom permission set license, which entitles specified features in a package. This object is available
+in API version 54.0 and later.
+
+PermissionSetTabSetting
+Represents a permission set tab setting. Requires the View Setup permission. Use this object to query all tab settings of the permission
+set. This object is available in API version 45.0 and later.
+
+PersnlBatchDecision
+Represents a batch personalization that delivers personalization decisions (content or recommendations) to a customer segment.
+Available in API version 64.0 and later.
+
+PersonAccountOwnerPowerUser
+Represents a user who can own more than 50,000 customer or partner portal accounts. Person account owner power users can own
+a large number of either customer or partner users. Their role can’t be changed and they must be at the root of the role hierarchy.
+Person account owner power user objects can't be created if deferred sharing is turned on for your org. Person account owner power
+user objects can be created while deferred sharing is turned off for an org. Deferred sharing can be turned back on after person
+account owner power user objects have been created. This object is available in API version 57.0 and later.
+
+PersonalOrgInfo
+Represents the information for a Tableau Next personal org. This object is available in API version 64.0 and later.
+
+
+Standard Objects
+
+PersonalizationDecision
+Represents a set of targeting rules within a personalization point that determine an individual's eligibility to receive personalized
+content and the content to deliver. Available in API version 62.0 and later.
+
+PersonalizationObjective
+Represents a specific business outcome that you want to achieve when creating a recommender. Available in API version 62.0 and
+later.
+
+PersonalizationPoint
+Represents a specific touch point in an experience where a personalization decision can be made. It connects a data space, profile
+data graph, personalization type, and response template to deliver personalized content at that time in a customer journey. Available
+in API version 62.0 and later.
+
+PersonalizationSchema
+Represents a personalization response template that’s used when you build a personalization decision. Available in API version 62.0
+and later.
+
+PersonalizationTargetInfo
+Represents a target for an audience. This object is available in API version 47.0 and later.
+
+PermissionUpdateEventLog
+Permission update events represent changes to object, field, and user permissions and setup entity access that occur in profiles and
+permission sets. The event type also tracks if you clone profiles or change whether session activation is required in permission sets
+or permission set groups. This object is available in API version 65.0 and later.
+
+PersonTraining
+Represents an assignment of a learning module in Workforce Engagement. This object is available in API version 54.0 and later.
+
+PicklistValueInfo
+Represents the active picklist values for a given picklist field. This object is available in API version 40.0 and later.
+
+PickTicket
+A PickTicket represents quantities of one or more products to be picked for fulfillment at a location. It can include products belonging
+to one or more fulfillment orders. This object is available in API version 57.0 and later.
+
+PickTicketAssignment
+Represents the association of a FulfillmentOrder with a PickTicket. A PickTicket has one PickTicketAssignment for each FulfillmentOrder
+containing products to be picked as part of that PickTicket. This object is available in API version 57.0 and later.
+
+PickTicketProduct
+Represents a quantity of a product to be picked as part of a PickTicket. It can include quantities for multiple FulfillmentOrders. This
+object is available in API version 57.0 and later.
+
+PipelineInspectionListView
+Represents a pipeline view, an intelligence view, or a saved filter. A pipeline view shows a set of opportunity records, based on specific
+criteria. An intelligence view shows a set of account, lead, or contact records, based on specific criteria. This object is available in API
+version 53.0 and later.
+
+PipelineInspectionSumField
+Use this object to learn which field from the opportunity object is used to aggregate Pipeline Inspection metrics on a pipeline view.
+This object is available in API version 56.0 and later.
+
+PipelineInspMetricConfig
+Represents the configuration of a forecast category metric that appears in the Pipeline Inspection view. This object is available in
+API version 55.0 and later.
+
+
+Standard Objects
+
+PipelineInspMetricConfigLocalization
+Represents the translated label of a Pipeline Inspection metric. This object is available in API version 55.0 and later.
+
+PlatformAction
+PlatformAction is a virtual read-only object. It enables you to query for actions displayed in the UI, given a user, a context, device
+format, and a record ID. Examples include standard and custom buttons, quick actions, and productivity actions.
+
+PlatformEventUsageMetric
+Contains usage data for event publishing and delivery to CometD and Pub/Sub API clients, `empApi` Lightning components, and
+event relays. If Enhanced Usage Metrics isn't enabled, usage data is available for the last 24 hours, ending at the last hour, and for
+historical daily usage. In API 58.0 and later, you can enable Enhanced Usage Metrics to get usage data by event name and client for
+granular time intervals. PlatformEventUsageMetric contains separate usage metrics for platform events and change data capture
+events. This object is available in API version 50.0 and later.
+
+PlatformStatusAlertEvent
+[The documentation has moved to PlatformStatusAlertEvent in the](https://developer.salesforce.com/docs/atlas.en-us.262.0.platform_events.meta/platform_events/sforce_api_objects_platformstatusalertevent.htm) _Platform Events Developer Guide_ .
+
+PortalDelegablePermissionSet
+PortalDelegablePermissionSet is a base platform object used to store permission sets that can be assigned by a delegated
+portal/external user admin (DPUA) to portal users. This object is available in API version 47.0 and later.
+
+PplnInspListViewCalcClmn
+Represents a column configuration for a pipeline inspection list view. Determines which calculated columns appear in a pipeline or
+intelligence view and their display order. This object is available in API version 66.0 and later.
+
+PresenceConfigDeclineReason
+Represents the settings for a decline reason that a presence user provides when declining work. This object is available in API version
+37.0 and later.
+
+PresenceDeclineReason
+Represents an Omni-Channel decline reason that agents can select when declining work requests. This object is available in API
+version 37.0 and later.
+
+PresenceUserConfig
+Represents a configuration that determines a presence user’s settings. This object is available in API version 32.0 and later.
+
+PresenceUserConfigProfile
+Represents a configuration that determines the settings that are assigned to presence users who are assigned to a specific profile.
+User-level configurations override profile-level configurations. This object is available in API version 32.0 and later.
+
+PresenceUserConfigUser
+Represents a configuration that determines the settings that are assigned to a presence user. These user-level configurations override
+profile-level configurations. This object is available in API version 32.0 and later.
+
+PriceAdjustmentGroupShape
+Defines the business logic for a top-level price adjustment, for example, a discount applied to an entire order. This object is available
+in API version 57.0 and later.
+
+PriceAdjustmentItemShape
+Defines the business logic for an item-level price adjustment, for example, a discount on an order item. This object is available in API
+version 57.0 and later.
+
+PriceAdjustmentSchedule
+Represents a series of discounts offered depending on your product's configuration, quantity, and when they’re purchased in
+combination with other products. This object is available in API version 47.0 and later.
+
+
+Standard Objects
+
+PriceAdjustmentTier
+Represents a discount tier in a price adjustment schedule. This object is available in API version 47.0 and later.
+
+Pricebook2
+Represents a price book that contains the list of products that your org sells.
+
+Pricebook2History
+Represents historical information about changes that have been made to the standard fields of the associated Pricebook2, or to any
+custom fields with history tracking enabled. This object is available in API version 66.0 and later.
+
+PricebookEntry
+Represents a product entry (an association between a Pricebook2 and Product2) in a price book.
+
+PricebookEntryAdjustment
+Read-only junction object created when you associate a price adjustment schedule with a price book entry. This object is available
+in API version 47.0 and later.
+
+PriceProtectionExecution
+Represents an instance of running the price protection process, capturing execution time, status, and the effective date of price
+changes. This object is available in API version 63.0 and later.
+
+PriceProtectExecLineItem
+Represents a line item created as part of a Price Protection Execution. This object is available in API version 63.0 and later.
+
+PriceProtectionTerm
+Represents a configuration record that defines the rules, types, and eligible conditions for price protection. This object is available
+in API version 63.0 and later.
+
+PrivacyHold
+Represents a Privacy Hold that indicates that a record should be preserved from masking or deletion by Data Management policies
+in Privacy Center. This object is available in API version 59.0 and later.
+
+PrivacyHoldReason
+Represents the business or legal purpose for why a record has a Privacy Hold. This object is available in API version 59.0 and later.
+
+PrivacyJobSession
+Represents the status of past, ongoing, and scheduled policy jobs in Privacy Center. This object is available in API version 59.0 and
+later.
+
+PrivacyObjectSession
+Represents the status of each object being processed in past, ongoing, and scheduled policy jobs in Privacy Center. This object is
+available in API version 59.0 and later.
+
+PrivacyRequest
+See details and monitor the status of Data Subject Access Requests made in Privacy Center. This object is available in API version
+54.0 and later.
+
+PrivacyRTBFRequest
+Represents a Right to Be Forgotten Request made in Privacy Center. This object is available in API version 59.0 and later.
+
+PrivacySessionRecordFailure
+Represents error messages encountered during policy job executions in Privacy Center. This object is available in API version 59.0
+and later.
+
+Problem
+Problems represent the root cause data of one or more incidents. This object contains all the details of a problem, documenting the
+history of the problem from detection to closure. This object is available in API version 53.0 and later.
+
+
+Standard Objects
+
+ProblemIncident
+Represents a junction object that relates a Problem to an Incident. This object is available in API version 53.0 and later.
+
+ProblemRelatedItem
+Represents a junction object that relates a Problem to an Asset. This object is available in API version 53.0 and later.
+
+ProcessDefinition
+Represents the definition of a single approval process.
+
+ProcessException
+Represents a business exception, such as a processing failure on an order summary. A separate process is required to resolve the
+failure that caused the process exception before processing can continue. This object is available in API version 50.0 and later.
+
+ProcessFlowMigration
+Represents a process's migrated criteria and the resulting migrated flow. This object is available in API version 58.0 and later.
+
+ProcessInstance
+Represents an instance of a single, end-to-end approval process. Use this and the node, step, and workitem process instance objects
+to create approval history reports.
+
+ProcessInstanceHistory
+This read-only object shows all steps and pending approval requests associated with an approval process (ProcessInstance).
+
+ProcessInstanceNode
+Represents a step in an instance of an approval process. Compare to ProcessNode, which describes the step in a process definition.
+Use this object to retrieve approval history.
+
+ProcessInstanceStep
+Represents one work item in an approval process (ProcessInstance).
+
+ProcessInstanceWorkitem
+Represents a user’s pending approval request.
+
+ProcessNode
+Describes a step in a process definition. Compare to ProcessInstanceNode, which describes a step in a running process. This object
+is available in API version 31.0 and later.
+
+ProducerCommission
+Represents a producer's commission for an insurance policy. The commission can be calculated from the commissionable transactions
+or can be populated from an external system. This object is available in API version 51.0 and later.
+
+Product2
+Represents a product that your company sells.
+
+Product2DataTranslation
+Represents the translated values of the data stored within a Product2 record’s fields. This object is available in API version 45.0 and
+later.
+
+ProductAttribute
+Represents the attributes that can be associated with a product. This object is available in API version 50.0 and later.
+
+ProductAttributeSet
+Represents a group of attributes that can be associated with a product. This object is available in API version 50.0 and later.
+
+ProductAttributeSetItem
+Represents a set of attributes that can be associated with a product. This object is available in API version 50.0 and later.
+
+
+Standard Objects
+
+ProductAttributeSetProduct
+Represents the product associated with a set of attributes. This object is available in API version 50.0 and later.
+
+ProductCatalog
+The container that holds a Product Category hierarchy. This object is available in API version 55.0 and later.
+
+ProductCategory
+Represents the category that products are organized in.This object is available in API version 49.0 and later.
+
+ProductCategoryProduct
+Holds the relation between product and product category to assign products to a category. This object is available in API version
+55.0 and later.
+
+ProductCategoryDataTranslation
+Represents the translated values for the data stored within a ProductCategory record’s fields. This object is available in API version
+46.0 and later.
+
+ProductComponentGroup
+Represents the logical grouping of associated products in a bundle and the products’ arrangement policy (group cardinality). This
+object is available in API version 58.0 and later.
+
+ProductConsumed
+Represents an item from your inventory that was used to complete a work order or work order line item in field service.
+
+ProductDetectedPriceChange
+Represents a detected change in price for a product associated with a partner account. This object is available in API version 63.0
+and later.
+
+ProductEntitlementTemplate
+Represents predefined terms of customer support (Entitlement) that users can add to products (Product2).
+
+ProductFeaturedProduct
+Represents the user-defined collection of featured products that are meant to cross-sell or upsell with your product. This object is
+available in API version 64.0 and later.
+
+ProductItem
+Represents the stock of a particular product at a particular location in field service, such as all bolts stored in your main warehouse.
+
+ProductItemTransaction
+Represents an action taken on a product item in field service. Product item transactions are auto-generated records that help you
+track when a product item is replenished, consumed, or adjusted.
+
+ProductMedia
+Represents the rich media, including images and attachments, that can be added to products.This object is available in API version
+49.0 and later.
+
+ProgramProduct
+Represents a junction between Program and Product2. This will hold Product2 values related to a Program. This object is available
+in API version 58.0 and later.
+
+ProductQuantityRule
+Represents the relationship between a quantity rule and a product. This object assigns quantity rules to a product. This object is
+available in API version 51.0 and later.
+
+ProductRelatedComponent
+Represents a product that is included in a product bundle, a set, or a product and an add-on. This object is available in API version
+57.0 and later.
+
+
+Standard Objects
+
+ProductRelationshipType
+Defines the relationship between two sales transaction items. For example, defines a relationship between a bundle and a bundle
+component. This object is available in API version 57.0 and later.
+
+ProductRequest
+Represents an order for a part or parts in field service.
+
+ProductRequestLineItem
+Represents a request for a part in field service. Product request line items are components of product requests.
+
+ProductRequired
+Represents a product that is needed to complete a work order or work order line item in field service.
+
+ProductSellingModel
+Defines one method by which a product can be sold; for example, as a one-time sale, an evergreen subscription, or a term-defined
+subscription. If the product is sold on subscription, this object defines the subscription’s term. A product can have multiple product
+selling models. This object is available in API version 55.0 and later.
+
+ProductSellingModelOption
+A junction object between Product Selling Model and Product2. This object is available in API version 55.0 and later.
+
+ProductServiceCampaign
+Represents a set of activities to be performed on a product service campaign asset, such as a product recall for safety issues or product
+defects. This object is available in API version 51.0 and later.
+
+ProductServiceCampaignItem
+Represents a product service campaign's asset. This object is available in API version 51.0 and later.
+
+ProductServiceCampaignItemStatus
+Represents a status for a product service campaign item in field service. This object is available in API version 51.0 and later.
+
+ProductServiceCampaignStatus
+Represents a status for a product service campaign in field service. This object is available in API version 51.0 and later.
+
+ProductTransfer
+Represents the transfer of inventory between locations in field service.
+
+ProductWarrantyTerm
+Defines the relationship between a product or product family and warranty term. This object is available in API version 50.0 and
+later.
+
+Profile
+Represents a profile, which defines a set of permissions to perform different operations. Operations can include creating a custom
+profile or querying, adding, updating, or deleting information.
+
+ProfileSkill
+Represents a profile skill, which describes a user’s professional knowledge. This is a global record for the organization, and users are
+associated through the ProfileSkillUser object.
+
+ProfileSkillEndorsement
+Represents a detail relationship of ProfileSkillUser. An endorsement of a profile skill shows approval and support of another user’s
+publicly declared skill.
+
+ProfileSkillShare
+Represents a sharing entry on a ProfileSkill.
+
+ProfileSkillUser
+Represents a detail relationship of User. The object connects profile skills with users.
+
+
+Standard Objects
+
+ProgramRebateType
+Represents a rebate structure associated with a Rebate Program. This object is available in API version 63.0 and later.
+
+Promotion
+Represents a promotion for B2B or D2C stores. This object is available in API version 52.0 and later.
+
+PromotionLineItemRule
+Lists compound conditions about a promotion. This object is available in API version 59.0 and later.
+
+PromotionMarketSegment
+Represents a market segment within B2B Commerce that promotions can be assigned to. This object is available in API version 52.0
+and later.
+
+PromotionQualifier
+Represents the product, product category, or order that you want to target with your promotion qualifier in a B2B or D2C store. This
+object is available in API version 52.0 and later.
+
+PromotionSegment
+Represents a promotion segment, which you can assign to different stores or buyer groups, allowing them to access the promotion.
+This object is available in API version 52.0 and later.
+
+PromotionSegmentBuyerGroup
+Represents a promotion segment, associated with a buyer group, and used for B2B Commerce. This object is available in API version
+52.0 and later.
+
+PromotionSegmentSalesStore
+Represents a promotion segment, associated with a store, and used for B2B Commerce. This object is available in API version 52.0
+and later.
+
+PromotionTarget
+Represents the product, product category, or order that you want to target with your promotion in a B2B Store or D2C store. This
+object is available in API version 52.0 and later.
+
+PromotionTier
+Represents a tier of a promotion that includes multiple tiers. A promotion can have up to 10 tiers. This object is available in API
+version 57.0 and later.
+
+Prompt
+Represents record details about an in-app guidance prompt or walkthrough. Available in API version 46.0 and later.
+
+PromptAction
+Represents how the user interacted with the in-app guidance prompt or walkthrough. Available in API version 46.0 and later.
+
+PromptError
+Represents the error or warning associated with the PromptAction. Available in API version 52.0 and later.
+
+PromptActionOwnerSharingRule
+Represents a rule which determines `PromptAction` sharing access for the owners. Available in API version 46.0 and later.
+
+PromptActionShare
+Represents a sharing entry on a prompt action record. Available in API version 46.0 and later.
+
+PromptLocalization
+Represents the translated value of a label for record details about in-app guidance when the Translation Workbench is enabled for
+your org. Available in API version 48.0 and later.
+
+PromptVersion
+Represents an in-app guidance prompt or walkthrough. Available in API version 46.0 and later.
+
+
+Standard Objects
+
+PromptVersionLocalization
+Represents the translated value of a label for-app guidance when the Translation Workbench is enabled for your org. Available in
+API version 48.0 and later.
+
+Prospect
+Represents a prospect. A prospect is an individual who has shared contact information, but isn't yet qualified. This object is available
+in API version 63.0 and later.
+
+ProspectingAgentDataSource
+For internal use only.
+
+ProspectingAgentRcmdTarget
+Represents prospecting information suggested by generative AI. This object is available in API version 66.0 and later.
+
+ProspectingAgentSpec
+For internal use only.
+
+ProspectingAgentSpecParm
+For internal use only.
+
+ProspectingAgentUserSpec
+For internal use only.
+
+ProrationPolicy
+Defines how the price of a subscription is divided into time periods and how the price is calculated for each time period. This object
+is available in API version 55.0 and later.
+
+PublicComplaint
+Represents the complaints submitted by public users. This object is available in API version 49.0 and later.
+
+PurchaseQuantityRule
+Represents a rule that restricts the quantity of a product that can be purchased. The rule can be an increment, minimum, or maximum
+rule. This object is available in API version 52.0 and later.
+
+PushTopic
+Represents a query that is the basis for notifying Streaming API clients of changes to records in an org. This object is available in API
+version 21.0 and later.
+
+PushUpgradeCustomization
+Customized push upgrades allow a package subscriber to block push upgrades to their org. Package developers control which
+subscribers can opt into customized push upgrades. Each push upgrade customization maps to a specific package and to a specific
+subscriber org. This object is available in API version 60.0 and later.
+
+QueuedExecutionEventLog
+Queued Execution events contain details about queued executions—for example, batch Apex. This object is available in API version
+65.0 and later.
+
+QueueRoutingConfig
+Represents the settings that determine how work items are routed to agents. This object is available in API version 32.0 and later.
+
+Question
+Represents a question in a zone that users can view and reply to.
+
+QuestionDataCategorySelection
+A data category selection represents a data category that classifies a question.
+
+QuestionReportAbuse
+Represents a user-reported abuse on a Question in a Chatter Answers zone. This object is available in API version 24.0 and later.
+
+
+Standard Objects
+
+QuestionSubscription
+Represents a subscription for a user following a Question. This object is available in API version 24.0 and later.
+
+QueueSobject
+Represents the mapping between a queue Group and the types associated with the queue, including custom objects.
+
+QuickText
+This object stores a snippet of text that allows users to send a quick response to a customer. Use quick text to create greetings,
+answers to common questions, short notes, and more. This object is available in API version 24.0 and later.
+
+QuickTextUsage
+Represents the usage of quick text on a record, including which quick text was used, who used it, and how they used it. Quick text
+is a snippet of text that allows users to send a quick response to a customer. This object is available in API version 47.0 and later.
+
+Quote
+Represents a quote, which is a record showing proposed prices for products and services. Available in API version 18.0 and later.
+
+QuoteAction
+Indicates the type of sales transaction that’s being quoted; for example, a renewal sale. This object is available in API version 59.0
+and later.
+
+QuoteAdjustmentGroup
+Group containing a set of adjustments applied to a quote. This object is available in API version 58.0 and later.
+
+QuoteDocument
+Represents a quote in document format. Available in API version 18.0 and later.
+
+QuoteLineGroup
+Stores the group information for line items in a quote. It also stores the aggregated line field information (subtotal). It contains a
+parent-child relationship to quote. This object is available in API version 61.0 and later.
+
+QuoteLineItem
+Represents a quote line item, which is a member of the list of Product2 products associated with a quote, along with other information
+about those line items on that quote. Available in API version 18.0 and later.
+
+QuoteLineItemRecipient
+Represents a site, employee, or other entity for which services are being quoted. This could include details such as the recipient's
+name, contact information, associated site or location, and any specific requirements or preferences for the quoted services. This
+object is available in API version 62.0 and later.
+
+QuoteLinePriceAdjustment
+Indicates the calculated price adjustment that is applied to the quote line, for example, a calculated volume discount or the prorated
+value of a manual discount. Use the quote line price adjustment to inform potential customers about the type, value, and total
+amount of their discounts. This object is available in API version 56.0 and later.
+
+QuoteLineRelationship
+Describes the relationship between quote line items, such as items in a bundle. When you create a QuoteLineRelationship object,
+it’s immutable: it can’t be edited or removed. This object is available in API version 58.0 and later.
+
+QuoteItemTaxItem
+The tax that is applied to a quote line item. This object is available in API version 55.0 and later.
+
+QuoteLineWorkSource
+Represents an association between a quote and work sources, such as assets, quote line items, order products, or work type groups.
+This object is available in API version 63.0 and later.
+
+
+Standard Objects
+
+QuoteRecipientGroup
+Represents a recipient group for which offers or products with the same configuration are being added. This also includes reusing
+these groups to add or remove recipients. This object is available in API version 64.0 and later.
+
+QuoteRecipientGroupMember
+Represents a junction between a quote line item recipient and a quote recipient group. This object is available in API version 64.0
+and later.
+
+RecentFieldChange
+Use this virtual object to see how an opportunity has changed in the past seven days. Learn the previous value of a field, who made
+the change, and when the change was made. This object is available in API version 52.0 and later.
+
+RecentlyViewed
+Represents records or list views that the current user has recently viewed or referenced (by viewing a related record). List views are
+available in API version 29.0 and later.
+
+Recommendation
+Represents the recommendations surfaced as offers and actions for Einstein Next Best Action. This object is available in API version
+45.0 and later.
+
+RecommendationResponse
+Represents the user responses to a presented offer or recommendation for Einstein Next Best Action. This object is available in API
+version 51.0 and later.
+
+RecordAction
+Represents a relationship between a record and an action, such as a flow. Create a RecordAction for every action that you want to
+associate with a particular record. Available in API version 42.0 and later.
+
+RecordActionHistory
+Represents the lifecycle of a RecordAction as it goes through different states. Available in API version 44.0 and later.
+
+RecordsetFilterCriteria
+Represents a set of filters that can be used to match service appointments or assets based on your criteria fields. For example, you
+can create recordset filter criteria so that only service appointments that satisfy the filter criteria are matched to the filtered shifts,
+and likewise only maintenance work rules that satisfy your criteria are matched to assets. This object is available in API version 50.0
+and later. Assets and maintenance work rules are available in API version 52.0 and later.
+
+RecordsetFilterCriteriaRule
+Represents a rule using fields from the designated source object to create filters on the filtered, or target, object.
+RecordsetFilterCriteriaRule is associated with the RecordsetFilterCriteria object. This object is available in API version 50.0 and later.
+
+RecordsetFltrCritMonitor
+Monitors whether the value of an asset attribute is within the threshold of a recordset filter criteria (RFC). You can monitor one or
+more RFCs for an Asset. This object is available in API version 57.0 and later.
+
+RecordType
+Represents a record type.
+
+RecordTypeLocalization
+Represents the translated value of a label for a record type when the Translation Workbench is enabled for your organization.
+
+RecordVisibility (Pilot)
+Represents the visibility attributes that determine a record’s read access. This object is read only and is available in API version 46.0
+and later.
+
+
+Standard Objects
+
+RedirectWhitelistUrl
+Represents a trusted URL for external user redirections. Redirections to a different Salesforce org, including its publicly served pages
+and content, are allowed from your Salesforce org only when the URL is a RedirectWhitelistUrl. For non-Salesforce URLs, a session
+setting controls whether redirections from pages and components built in Salesforce Classic are restricted to RedirectWhitelistUrl
+objects. Except for cross-org redirections, you can’t restrict redirections that originate from pages and components built with Lightning
+Experience. This object is available in API version 48.0 and later.
+
+Refund
+Represents a refund made against a payment. This object is available in API version 48.0 and later.
+
+RefundLinePayment
+A refund line that has been applied to a payment. This object is available in API version 48.0 and later.
+
+RegisteredExternalService
+Represents a registered external service used for checkout integrations by data integrators. This object is available in API version 49.0
+and later.
+
+RelatedListColumnDefinition
+Represents information about a column in a related list. A related list specifies a set of records for a related object, based on specific
+criteria. This object is available in API version 55.0 and later.
+
+RelatedListDefinition
+Represents information about a related list. A related list specifies a set of records for a related object, based on specific criteria. This
+object is available in API version 55.0 and later.
+
+RemoteKeyCalloutEvent
+[The documentation has moved to RemoteKeyCalloutEvent in the](https://developer.salesforce.com/docs/atlas.en-us.262.0.platform_events.meta/platform_events/sforce_api_objects_remotekeycalloutevent.htm) _Platform Events Developer Guide_ .
+
+Reply
+Represents a reply that a user has submitted to a question in an answers zone.
+
+ReplyEmailSettings
+Represents a reply mail management configuration, which is used to configure emails that are received by an email sending domain.
+This object is available in API version 62.0 and later.
+
+ReplyReportAbuse
+Represents a user-reported abuse on a Reply in a Chatter Answers zone. This object is available in API version 24.0 and later.
+
+ReplyText
+A text reply generated by Einstein Reply Recommendations that is based on closed chat transcripts. Admins review replies and
+publish them to quick text, editing them as needed. Einstein recommends relevant published replies to support agents in the
+Lightning Service Console, and agents can insert replies into chats or messaging sessions. This object is available in API version 49.0
+and later.
+
+Report
+Represents a report, a set of data that meets certain criteria, displayed in an organized way. Access is read-only. This object is available
+in API version 20.0 and later.
+
+ReportEventLog
+Report event logs contain information about what happened when a user ran a report. This event type includes all activity that's in
+the Report Export event type, and additional information. For example, it has user activity for reports exported as both Formatted
+Report and Details Only output. This object is available in API version 61.0 and later.
+
+
+Standard Objects
+
+ReportExportEventLog
+Report Export events contain details about reports that a user exported. For example, this event type captures when a user exports
+a report as Details Only output. But it doesn’t capture reports that users export as Formatted Report or XLSX Detail output. For that
+data, see the Report event type. This object is available in API version 65.0 and later.
+
+ReportTag
+Associates a word or short phrase with a Report. This object is available in API version 20.0 and later.
+
+ReputationLevel
+Represents a reputation level defined for an Experience Cloud site. This object is available in API version 32.0 and later.
+
+ReputationLevelLocalization
+Represents the translated value of a reputation level. Reputation level localization only applies for reputation levels in Experience
+Cloud sites. This object is available in API version 35.0 and later.
+
+ReputationPointsRule
+Represents the reputation point rules for an Experience Cloud site. Each rule specifies an action that members can earn points from
+and the points associated with those actions in a particular site. This object is available in API version 32.0 and later.
+
+ResourceAbsence
+Represents a time period in which a service resource is unavailable to work in Field Service, Salesforce Scheduler, or Workforce
+Engagement. This object is available in API version 38.0 and later.
+
+ResourcePreference
+Represents an account’s preference for a specified service resource on field service work.
+
+RestApiEventLog
+REST API event logs contain details about REST-specific requests. This object is available in API version 61.0 and later.
+
+RetentionStoreUsage
+Represents the total usage of the org's retention store measured at specific points in time. This object is available in API version 66.0
+and later.
+
+ReturnOrder
+Represents the return or repair of inventory or products in Field Service, or the return of order products in Order Management. This
+object is available in API version 42.0 and later.
+
+ReturnOrderItemAdjustment
+Represents a price adjustment on a return order line item. This object is available in API version 50.0 and later.
+
+ReturnOrderItemTax
+Represents the tax on a return order line item or return order item adjustment. This object is available in API version 50.0 and later.
+
+ReturnOrderLineItem
+Represents a specific product that is returned or repaired as part of a return order in Field service, or a specific order item that is
+returned as part of a return order in Order Management. This object is available in API version 42.0 and later.
+
+ReturnOrderOwnerSharingRule
+Represents the rules for sharing a return order with user records other than the owner or anyone above the owner in the role hierarchy.
+This object is available in API version 42.0 and later.
+
+RevenueAsyncOperation
+Represents the status of an asynchronous process initiated by a REST request in Subscription Management. This object is available
+in API versions 57.0 to 59.0. Use AsyncOperationTracker instead of RevenueSyncOperation in API version 59.0 and later.
+
+
+Standard Objects
+
+RevenueTransactionErrorLog
+Contains information about errors that occurred while processing a request. The error record persists until another error with the
+same category, primary record, and (optionally) related record occurs. This object is available in API version 55.0 and later.
+
+RpaFlowResultEvent
+Reserved for future use.
+
+RpaRobot
+Reserved for future use.
+
+RpaRobotAsgnMaintWindow
+Reserved for future use.
+
+RpaRobotAsgnSessionInf
+Reserved for future use.
+
+RpaRobotDefinition
+Reserved for future use.
+
+RpaRobotMaintWindow
+Reserved for future use.
+
+RpaRobotMaintWindowDef
+Reserved for future use.
+
+RpaRobotPool
+Reserved for future use.
+
+RpaRobotPoolAsgnRobot
+Reserved for future use.
+
+RpaRobotPoolDefinition
+Reserved for future use.
+
+RpaRobotPoolFlowAsgn
+Reserved for future use.
+
+RpaRobotSessionInfo
+Reserved for future use.
+
+RpaRobotSessionInfoDef
+Reserved for future use.
+
+RuleTerritory2Association
+Represents a record-assignment rule and its association to an object, such as Account. Available if Sales Territories has been enabled.
+
+SalesAIScoreCycle
+Represents the cycle type and ID used to score records. This object is available in API version 47.0 and later.
+
+SalesAIScoreModelFactor
+Represents the factors that Sales Cloud Einstein uses to build a scoring model. Scoring models are used by features, such as Opportunity
+Scoring, to score individual records. This object is available in API version 47.0 and later.
+
+SalesforceLoginAsEventLog
+Salesforce LoginAs Event provides details about the Salesforce User's login into Customer Org as Customer's authorized user. This
+object is available in API version 65.0 and later.
+
+
+Standard Objects
+
+SalesChannel
+Represents the origin of an order. For example, a web storefront, physical store, marketplace, or mobile app. If you integrate Salesforce
+Order Management with Salesforce B2C Commerce, set up a SalesChannel corresponding to each Site in your B2C Commerce
+implementation. This object is available in API version 48.0 and later.
+
+SalesforceContract
+Read-only virtual object used in the Your Account App. Represents contract information related to your organization’s Salesforce
+subscription.
+
+SalesforceInvoice
+Read-only virtual object used in the Your Account App. Represents information about your organization’s invoices with Salesforce.
+
+SalesforcePayment
+Read-only virtual object used in the Your Account App. Represents information about payments related to your organization’s
+Salesforce invoice.
+
+SalesforceQuote
+Read-only virtual object used in the Your Account App. Represents information about your organization’s quotes with Salesforce.
+
+SalesStoreCatalog
+Represents the catalog associated with a store. This object is available in API version 49.0 and later.
+
+SalesTransactionItemShape
+Defines the business logic for a sales transaction shape item, for example, an item in an order. This object is available in API version
+57.0 and later.
+
+SalesTransactionShape
+Defines the business logic for a sales transaction; for example, an order, a quote, or a cart. This object is available in API version 57.0
+and later.
+
+SalesTransactionType
+Represents the type of sales transaction, such as an initial, renewal, or amendment sale, and its related pricing configuration.. This
+object is available in API version 61.0 and later.
+
+SalesTrxnItemRelationShape
+Describes the relationship between sales transaction shape items; for example, a bundle or set. This object is available in API version
+57.0 and later.
+
+SalesWorkQueueSettings
+Represents settings used to customize work queue options for third-party scoring. Third-party scoring enables custom number fields
+on person accounts, contacts, and leads. You must be a Sales Engagement customer to update this object. Previously, you could
+only use the Einstein Intelligence Score for third-party scoring. Available starting in Version 47.0.
+
+SandboxStatusEventLog
+SandboxStatusEventLog stores details about Sandbox copies. This object is available in API version 62.0 and later.
+
+SamlSsoConfig
+Represents a SAML Single Sign-On configuration.This object is available in API version 32.0 and later.
+
+SavedPaymentMethod
+Represents a payment method saved by an authenticated customer. This object is available in API version 58.0 and later
+
+SavedPaymentMethodEvent
+Represents a saved payment method platform event. Subscribe to these events so you can listen and respond to them when they’re
+published. For example, create a Salesforce Flow that is triggered when one of these events is published. This object is available in
+API version 59.0 and later.
+
+
+Standard Objects
+
+SchedulingAdherenceDetail
+Represents the breakdown of daily shift adherence data by agent status. This object is available in API version 54.0 and later.
+
+SchedulingAdherenceSummary
+Represents daily shift adherence data for a service resource in a service territory and job profile on a specific date. This object is
+available in API version 54.0 and later.
+
+SchedulingConstraint
+Represents scheduling constraints on each service resource. This object is available in API version 50.0 and later.
+
+SchedulingObjective
+Represents business goals that the scheduling tools consider. This object is available in API version 53.0 and later.
+
+SchedulingRule
+Represents scheduling rules that are hard constraints in the scheduling logic engine. This object is available in API version 52.0 and
+later.
+
+SchedulingRuleParameter
+Represents scheduling rule parameters associated with a scheduling rule. This object is available in API version 52.0 and later.
+
+Scontrol
+A custom s-control, which is custom content that is hosted by the system but executed by the client application.
+
+ScontrolLocalization
+The translated value of the field label for an s-control.
+
+Scorecard
+Use scorecards to measure partner performance and establish benchmarks for channel programs within Experience Cloud. Display
+any report summary results that your channel account manager or executive team wants to see. This object is available in API version
+40.0 and later.
+
+ScorecardAssociation
+Represents a connection between a specific scorecard and the associated account, channel program, or channel program level. This
+object is available in API version 41.0 and later.
+
+ScorecardMetric
+Stores information about a Salesforce report that is run and summarized to get a single value. The stored value is added as a metric
+to the related Scorecard object. This object is available in API version 40.0 and later.
+
+ScoreIntelligence
+For internal use only.
+
+ScratchOrgInfo
+Represents a scratch org and its audit log. Use this object to create a scratch org and keep a log of its creation and deletion. This
+object is available in API version 41.0 and later.
+
+SearchActivity
+Represents search activity on a Knowledge article. Also known as KnowledgeSearchActivity. This object is available in API version
+38.0 and later.
+
+SearchClickEventLog
+Search Click Event Log contains details about the user’s interaction with the search results. This object is available in API version 61.0
+and later.
+
+SearchEventLog
+Search Event Log provides details about the user’s search query. This object is available in API version 61.0 and later.
+
+
+Standard Objects
+
+SearchLayout
+Represents a search layout defined for an object. This object is available in API version 35.0 and later.
+
+SearchPromotionRule
+Represents a promoted search term, which is one or more keywords that you associate with a Salesforce Knowledge article. When
+a user’s search query includes these keywords, the associated article is returned first in search results. This object is available in API
+version 31.0 and later.
+
+SecurityCustomBaseline
+Provides the ability to read, create, and delete user-defined custom security baselines, which define an org’s security standards. This
+object is available in API version 39.0 and later.
+
+SelfServiceUser
+Represents a Contact who has been enabled to use your organization’s Self-Service portal, where he or she can obtain online support.
+
+Seller
+Represents the seller role of an individual with respect to a particular company or organization. This object is available in API version
+53.0 and later.
+
+SenderEmailAddress
+Represents a From address in a marketing email. This object is available in API version 63.0 and later.
+
+ServiceAppointment
+Represents an appointment to complete work for a customer in Field Service, Lightning Scheduler,Intelligent Appointment
+Management, and Virtual Care.This object is available in API version 38.0 and later.
+
+ServiceAppointmentStatus
+Represents a possible status of a service appointment in field service.
+
+ServiceChannel
+Represents a channel of work items that are received from your organization—for example, cases, chats, or leads. This object is
+available in API version 32.0 and later.
+
+ServiceChannelFieldPriority
+Represents a secondary routing priority field-value mapping. This object is available in API version 47.0 and later.
+
+ServiceChannelStatus
+Represents the status that’s associated with a specific service channel. This object is available in API version 32.0 and later.
+
+ServiceChannelStatusField
+Represents the values that you use to indicate completed and in-progress work item status for the status field in the Status-Based
+Capacity routing model. This object is available in API version 49.0 and later.
+
+ServiceContract
+Represents a customer support contract (business agreement). This object is available in API version 18.0 and later.
+
+ServiceContractOwnerSharingRule
+Represents the rules for sharing a ServiceContract (customer service agreement) with users other than the owner. This object is
+available in API version 18.0 and later.
+
+ServiceCrew
+Represents a group of service resources who can be assigned to service appointments as a unit.
+
+ServiceCrewMember
 Represents a technician service resource that belongs to a service crew.
+
+
+Standard Objects
 
 ServiceCrewOwnerSharingRule
 Represents the rules for sharing a service crew with user records other than the owner or anyone above the owner in the role
@@ -39,9 +4550,6 @@ ServiceResourceOwnerSharingRule
 Represents the rules for sharing a service resource with user records other than the owner or anyone above the owner in the role
 hierarchy. This object is available in API version 38.0 and later.
 
-
-Standard Objects
-
 ServiceResourcePreference
 Represents the service resource scheduling preferences that are considered as a business objective in the scheduling logic engine.
 This object is available in API version 52.0 and later.
@@ -60,6 +4568,9 @@ Engagement. This object is available in API version 38.0 and later.
 ServiceTerritoryDataTranslation
 Represents the translated values of the data stored within a ServiceTerritory record’s fields. This object is available in API version 54.0
 and later.
+
+
+Standard Objects
 
 ServiceTerritoryLocation
 Represents a location associated with a particular service territory in field service.
@@ -98,9 +4609,6 @@ Represents a collection of records. This object is available in API version 51.0
 SharingRecordCollectionItem
 Represents a single record in a collection of records. This object is available in API version 51.0 and later.
 
-
-Standard Objects
-
 SharingRecordCollectionMember
 Represents a user with access to a collection of records. This object is available in API version 51.0 and later.
 
@@ -122,6 +4630,9 @@ ShiftPatternEntry links a shift template to a shift pattern. This object is avai
 
 ShiftSegment
 Represents a scheduled activity within a shift. This object is available in API version 55.0 and later.
+
+
+Standard Objects
 
 ShiftSegmentType
 Represents a type of activity scheduled within a shift. This object is available in API version 55.0 and later.
@@ -161,9 +4672,6 @@ A designated geographical area that’s available for shipping. This object is a
 ShippingRateGroup
 Available shipping rates based on shipping destination. This object is available in API version 59.0 and later.
 
-
-Standard Objects
-
 SignupRequest
 Represents a request for a new sign-up. SignupRequest isn’t supported in sandbox instances and will result in an error. This object
 is available in API version 27.0 and later.
@@ -182,6 +4690,9 @@ instead.
 SiteEventLog
 SiteEventLog stores details of Site.com requests. Requests can originate from the browser (UI). This object is available in API version
 62.0 and later.
+
+
+Standard Objects
 
 SiteHistory
 Represents the history of changes to the values in the fields of a site. This object is generally available in API version 18.0 and later.
@@ -221,9 +4732,6 @@ SlackChannelRelatedRecord
 Represents the related record mapping between a Slack channel and a Salesforce record that’s made when you create a Salesforce
 channel. This object is available in API version 65.0 and later.
 
-
-Standard Objects
-
 SlaProcess
 Represents an entitlement process associated with an Entitlement. This object is available in API version 19.0 and later.
 
@@ -242,6 +4750,9 @@ SOAP API events contain details about your org's SOAP API request activity. This
 SocialPersona
 Represents a snapshot of a contact's profile on a social network such as Facebook or Twitter. This object is available in API version
 22.0 and later.
+
+
+Standard Objects
 
 SocialPost
 Represents a snapshot of a post on a social network such as a Facebook or Twitter. This object is available in API version 23.0 and
@@ -281,9 +4792,6 @@ lead record. These addresses are only stored temporarily. Related to StagedUnmtc
 the email message or calendar event activity associated with an unmatched email. This object is available in API version 66.0 and
 later.
 
-
-Standard Objects
-
 StagedUnmtchdEmailAddrRela
 Represents data about the message or event activity associated with an email address that Einstein Activity Capture can’t match
 with an existing user, contact, or lead record. Related to StagedUnmtchdEmailAddr, which represents data about the unmatched
@@ -301,6 +4809,9 @@ object is available in API version 60.0 and later.
 
 StandardShippingRate
 Standard shipping rate for a store. This object is available in API version 59.0 and later.
+
+
+Standard Objects
 
 StaticResource
 Represents a static resource that can be used in Visualforce markup.
@@ -340,9 +4851,6 @@ Represents an answer choice that a participant can select for a survey question.
 SurveyQuestionResponse
 Represents a participant’s answer to a specific question.
 
-
-Standard Objects
-
 SurveyQuestionScore
 Represents the aggregate of responses for the following question types: date, multiple choice, picklist, radio, ranking, rating, scoring,
 [slider, and Net Promoter Score](https://www.salesforce.com/content/dam/web/en_us/www/documents/legal/Agreements/product-specific-terms/net-promoter-and-nps.pdf) [®] (NPS [®] ).
@@ -363,6 +4871,9 @@ is available in API version 49.0 and later.
 
 SvcCatalogCategory
 Represents a group of Service Catalog items by functional area. This object is available in API version 58.0 and later.
+
+
+Standard Objects
 
 SvcCatalogCategoryItem
 Represents an association between a Service Catalog item and category. Service catalog items can be grouped into categories. This
@@ -401,9 +4912,6 @@ Task
 Represents a business activity such as making a phone call or other to-do items. In the user interface, Task and Event records are
 collectively referred to as activities.
 
-
-Standard Objects
-
 TaskPriority
 Represents the importance or urgency of a task, such as High, Normal, or Low.
 
@@ -419,6 +4927,9 @@ Associates a word or short phrase with a task .
 
 TaskWhoRelation
 Represents the relationship between a task and a lead or contacts. This object is available in API version 29.0 and later.
+
+
+Standard Objects
 
 TaxEngine
 A tax engine represents both an instance of a tax engine provider as well as the merchant credentials for that specific instance. When
@@ -455,11 +4966,12 @@ product code are sent via API to the external tax calculation service. When you 
 invoice line inherits the tax treatment from the order item’s related billing schedule. The invoice line’s TaxCode field is populated
 based on the code that the tax engine used for calculation. This object is available in API version 55.0 and later.
 
+TenantConsumptionAlert
+Stores a record each time a utilization signal is reached for your org's consumption-based products. Each record captures the signal
+type, the resource that triggered it, and the condition that was met. This object is available in API version 67.0 and later.
+
 TenantScrAIPrmptInjection
 Stores generative AI prompt injection data. This object is available in API version 65.0 and later.
-
-
-Standard Objects
 
 TenantSecret
 This object stores an encrypted organization-specific key fragment that’s used with the primary secret (KDF seed) to produce
@@ -475,6 +4987,9 @@ Stores information about a Security Center alert rule for tenants. This object i
 TenantSecurityApiAnomaly
 [Stores detected anomalies in how users typically make API calls. Fore more information, see Threat Detection. This object is available](https://help.salesforce.com/s/articleView?language=en_US&type=5&id=sf.real_time_em_threat_detection.htm)
 to Security Center subscribers in API version 53.0 and later.
+
+
+Standard Objects
 
 TenantSecurityCertificate
 Stores metric details related to public key certificate information. The certificate binds the public key to the identity of an entity. This
@@ -518,9 +5033,6 @@ Stores metric details related to Health Check baseline settings. The Health Chec
 settings for all your tenants in one place. Use this object to get details about which metrics are collected and for which tenants, and
 changes made to the Health Check baseline. This object is available to Security Center subscribers in API version 54.0 and later.
 
-
-Standard Objects
-
 TenantSecurityHealthCheckDetail
 Stores the details of Health Check scores for a connected tenant. The Health Check detail page in Security Center displays scores and
 settings for all your tenants in one place. Use this object to get settings and risks per tenant on a selected date. This object is available
@@ -534,6 +5046,9 @@ and later.
 
 TenantSecurityLicense
 Stores license usage information within Security Center. This object is available in API version 59.0 and later.
+
+
+Standard Objects
 
 TenantSecurityLogin
 Stores the login details of a single user to a tenant, grouped by date and type. You can query this object to find out how many times
@@ -576,9 +5091,6 @@ TenantSecurityPolicyDeployment
 [Stores the status of deployments of a Security Center policy on a tenant. For more information, see Define and Deploy Security](https://help.salesforce.com/s/articleView?id=xcloud.security_center_deploy_policies.htm&type=5&language=en_US)
 [Policies. This object is available to Security Center subscribers in API version 54.0 and later.](https://help.salesforce.com/s/articleView?id=xcloud.security_center_deploy_policies.htm&type=5&language=en_US)
 
-
-Standard Objects
-
 TenantSecurityPolicySelectedTenant
 [Stores the list of tenants selected for a Security Center policy. For more information, see Define and Deploy Security Policies. This](https://help.salesforce.com/s/articleView?id=xcloud.security_center_deploy_policies.htm&type=5&language=en_US)
 object is available to Security Center subscribers in API version 54.0 and later.
@@ -593,6 +5105,9 @@ Stores information about session hijacking events as detected by Threat Detectio
 
 TenantSecurityTenantInfo
 Stores information on changes related to the tenant history. This object is available in API version 56.0 and later.
+
+
+Standard Objects
 
 TenantSecurityTransactionPolicyTrend
 Stores changes to the count of Transaction Security Policies for a connected tenant within Security Center. This object is available
@@ -620,7 +5135,8 @@ object is available in API version 28.0 and later.
 
 Territory
 Represents a flexible collection of accounts and users where the users have at least read access to the accounts, regardless of who
-owns the accounts. Available if Sales Territories has been enabled.
+owns the accounts. Available if Sales Territories has been enabled. This object is available in API versions 7.0 to 52.0. Use Territory2
+instead of Territory in API version 52.0 and later.
 
 TerritoryMgmtObjectConfig
 Represents territory management settings and defaults for a particular object. This object is available in API version 56.0 and later.
@@ -637,9 +5153,6 @@ Represents a territory model. Available if Sales Territories has been enabled.
 Territory2ModelHistory
 Represents the history of changes to the values in the fields on a territory model. Available if Sales Territories has been enabled.
 
-
-Standard Objects
-
 Territory2ObjectExclusion
 Represents the objects that aren’t included in territory assignment rule runs, even when they meet assignment rule criteria. This
 object is available in API version 54.0 and later.
@@ -650,6 +5163,9 @@ Represents the sharing access level of objects assigned to a particular territor
 Territory2Type
 Represents a category for territories (Territory2). Every Territory2 must have a Territory2Type. Available only if Sales Territories has
 been enabled for your organization.
+
+
+Standard Objects
 
 TerritoryAdminAssignment
 Represents designated team members who can administer specific territories and their descendants. This object is available in API
@@ -695,9 +5211,6 @@ TopicLocalization
 Represents the translated version of a topic name. Topic localization applies only to navigational and featured topics in Experience
 Cloud sites. This object is available in API version 33.0 and later.
 
-
-Standard Objects
-
 TopicUserEvent
 Represents an action (such as comment, post, like, or share) made by a user on a topic. This object is available in API version 42.0
 and later.
@@ -711,6 +5224,9 @@ Represents a transaction security policy definition.
 TransactionSecurityEventLog
 Transaction Security event logs contain details about policy execution. Legacy transaction security policy details are supported in
 API version 38.0 and later. Enhanced transaction security policy details are supported in API version 61.0 and later.
+
+
+Standard Objects
 
 Translation
 The Translation object represents the languages enabled for translation in your Salesforce org. This object is available in API version
@@ -747,15 +5263,12 @@ is available in API version 47.0 and later.
 
 UiTelemetryNavTmEventLog
 UI Telemetry Navigation Timing events capture network performance metrics related to page navigation. The event extends from
-[the UI Telemetry Resource Timing Event on page 2413 and includes requests initiated with either the Fetch API or the XMLHttpRequest](https://fetch.spec.whatwg.org/)
+[the UI Telemetry Resource Timing Event on page 2414 and includes requests initiated with either the Fetch API or the XMLHttpRequest](https://fetch.spec.whatwg.org/)
 [API. This object is available in API version 64.0 and later.](https://xhr.spec.whatwg.org/)
 
 UiTelemetryRsrcTmEventLog
 UI Telemetry Resource Timing events capture network performance metrics related to loading an application’s resources. The event
 [includes requests initiated with either the Fetch API or the XMLHttpRequest API. This object is available in API version 64.0 and later.](https://fetch.spec.whatwg.org/)
-
-
-Standard Objects
 
 UndecidedEventRelation
 Represents event participants (invitees or attendees) with the status `Not Responded` for a given event. This object is available
@@ -769,6 +5282,9 @@ VoiceCall, VideoCall, and so on. This object is available for reports and dashbo
 UnifiedActivityInsight
 Represents an insight related to a unified activity. This object is available for reports and dashboards in the Winter ’24 release and
 later.
+
+
+Standard Objects
 
 UnifiedActivityParticipant
 Represents a participant in an activity. For example, a participant in a voice call is someone who initiated the call or someone who
@@ -814,9 +5330,6 @@ UnifiedVoiceCall
 Represents a voice call that is captured or synced from a VoiceCall or Task record. This object is available for reports and dashboards
 in the Winter ’24 release and later.
 
-
-Standard Objects
-
 UnifiedVoiceCallParticipant
 Represents a participant in a voice call. This object is available for reports and dashboards in the Winter ’24 release and later.
 
@@ -830,6 +5343,9 @@ URI events contain details about user interaction with the web browser UI. This 
 UsageImpactFactor
 Represents a collection of fields to set up the Usage Impact Factors used across jurisdictions and programs.This object is available
 in API version 58.0 and later.
+
+
+Standard Objects
 
 UsageImpactGroup
 Represents a collection of fields to set up the Usage Impact Groups used across jurisdictions and programs. This object is available
@@ -874,9 +5390,6 @@ UserAuthCertificate
 Represents a user authentication certificate in your org. A user certificate is a unique PEM-encoded X.509 digital certificate to
 authenticate individual users to your org. This object is available in API version 45.0 and later.
 
-
-Standard Objects
-
 UserConfigTransferButton
 Represents the association between a Chat configuration and a live chat button. This association allows users associated with a
 specific configuration to transfer chats to a button queue.
@@ -890,6 +5403,9 @@ Represents a custom badge for a user. This object is available in API version 38
 
 UserCustomBadgeLocalization
 Represents the translated version of a custom badge for a user. This object is available in API version 38.0 and later.
+
+
+Standard Objects
 
 UserDailyMetric
 Represents the daily engagement metrics for a user. This object is available in API version 52.0 and later.
@@ -935,9 +5451,6 @@ UserListViewCriterion
 Represents the criterion for a user’s customized list view. The criterion consists of the filters or sort order a user added to a list view
 for the Salesforce Mobile app. This object is available in API version 32.0 and later.
 
-
-Standard Objects
-
 UserLocationAssignment
 Represents the assignment between a location and a user. This object is available in API version 57.0 and later.
 
@@ -952,6 +5465,9 @@ on roles, portal roles, public groups, or territories. This object is available 
 
 UserMonthlyMetric
 Represents the monthly engagement metrics for a user. This object is available in API version 52.0 and later.
+
+
+Standard Objects
 
 UserMonthlyMetricOwnerSharingRule
 Represents the rules for sharing the user monthly metric with users other than the owner.
@@ -996,9 +5512,6 @@ UserProvisioningRequest
 Represents an individual provisioning request to create, update, or delete a single user account in a third-party service system (or
 another Salesforce organization). This object is available in API version 33.0 and later.
 
-
-Standard Objects
-
 UserRecordAccess
 Represents a user’s access to a set of records. This object is read only and is available in API version 24.0 and later. This object doesn’t
 consider whether a user’s access is blocked by a restriction rule.
@@ -1012,6 +5525,9 @@ Represents a user role in your organization.
 
 UserServicePresence
 Represents a presence user’s real-time presence status. This object is available in API version 32.0 and later.
+
+
+Standard Objects
 
 UserSetupEntityAccess
 Represents the enabled custom permissions of the running user. This object is available in API version 48.0 and later.
@@ -1057,19 +5573,21 @@ Represents the past six months of your org users’ attempts to verify their ide
 VisualforceAccessMetrics
 Represents summary statistics for Visualforce pages.
 
-
-Standard Objects
-
 VisualforceRequestEventLog
 Visualforce Request events contain details of Visualforce requests. Requests can originate from the browser (UI). This object is available
 in API version 61.0 and later.
 
 VideoCall
-Represents a video call.
+Represents a video call. One `VideoCall` record can be related to several `VideoCallRecording` records — for example, a
+video call can have several video recordings and a transcript. As well, one video call record can be associated with several video call
+participant records. This object is available in API version 51.0 and later.
 
 VideoCallInsight
 Represents the video call insight data associated with a video call. Each record represents the call insight of a specific recording or
 transcript within a call. This object is available in API version 66.0 and later.
+
+
+Standard Objects
 
 VideoCallInsightAction
 Represents a suggested follow-up action derived from a video call insight. VideoCallInsightAction manages recommended steps—such
@@ -1093,8 +5611,8 @@ Represents the structure of a video call recording, having relation to a video c
 offset. This object is available in API version 65.0 and later.
 
 VoiceCall
-Represents a call in Service Cloud Voice, Sales Dialer, or other supported voice connectors. For Service Cloud Voice, this can be a
-phone or Voice over Internet Protocol (VoIP) call. This object is available in API version 40.0 and later.
+Represents a call in Salesforce Voice, Sales Dialer, or other supported voice connectors. For Salesforce Voice, this can be a phone or
+Voice over Internet Protocol (VoIP) call. This object is available in API version 40.0 and later.
 
 VoiceCallInsight
 Represents the voice call insight data associated with a voice call. Each record represents the call insight of a specific recording or
@@ -1118,19 +5636,19 @@ Represents a prioritized list of numbers to call.
 VoiceCallListItem
 Represents a single phone number in a prioritized call list.
 
-
-Standard Objects
-
 VoiceCallQualityFeedback
 Represents feedback given by a Sales Dialer user about the quality of a VoiceCall .
 
 VoiceCallRecording
-Represents a call recording in Service Cloud Voice and Sales Dialer. Call recordings for Service Cloud Voice with Amazon Connect
-and for Service Cloud Voice with Partner Telephony from Amazon Connect are stored in S3 buckets on your Amazon Web Services
-(AWS) account and can be accessed via AWS. Call recordings for Sales Dialer are saved as files in Salesforce.
+Represents a call recording in Salesforce Voice and Sales Dialer. Call recordings for Salesforce Voice with Amazon Connect and for
+Salesforce Voice with Partner Telephony from Amazon Connect are stored in S3 buckets on your Amazon Web Services (AWS)
+account and can be accessed via AWS. Call recordings for Sales Dialer are saved as files in Salesforce.
 
 VoiceCoaching
 Represents a call that is using call monitoring.
+
+
+Standard Objects
 
 VoiceLocalPresenceNumber
 Represents a phone number with the same area code as the person who’s being called.
@@ -1140,6 +5658,14 @@ Represents a voicemail message left by a caller to the context user.
 
 VoiceMailGreeting
 Represents a custom greeting message that plays upon reaching a user’s voicemail. This object is available in API version 41.0 and
+later.
+
+VoiceMailGreeting2
+Represents information about a voicemail message that reps can drop during outbound customer calls, or set to play when they're
+unable to take calls from customers. This object is available in API version 67.0 and later.
+
+VoiceMailGreeting2Rep
+Represents information about the voicemail message and its associated service rep. This object is available in API version 67.0 and
 later.
 
 VoiceMailMessage
@@ -1155,7 +5681,7 @@ VoiceUserPreferences
 Represents the number the user displays when making outbound calls. This object is available in API version 41.0 and later.
 
 VoiceVendorInfo
-Represents information about the Service Cloud Voice or Sales Dialer provider’s vendor.
+Represents information about the Salesforce Voice or Sales Dialer provider’s vendor.
 
 VoiceVendorLine
 Represents a user’s phone number reserved with the vendor.
@@ -1176,13 +5702,13 @@ WebCart
 Represents an online shopping cart for a store built with B2B Commerce or D2C Commerce, with total amounts for products, shipping
 and handling, and taxes. This object is available in API version 49.0 and later.
 
-
-Standard Objects
-
 WebCartAdjustmentBasis
 Coupons that trigger promotions for the cart. When a customer tries to add a coupon to the cart, the store looks for promotions
 associated with the coupon. If a promotion results in a price adjustment, a WebCartAdjusmentBasis record is created. This object is
 available in API version 54.0 and later.
+
+
+Standard Objects
 
 WebCartAdjustmentGroup
 Group of price adjustments for a cart. This object is available in API version 52.0 and later.
@@ -1236,15 +5762,15 @@ Represents an item on a `Wishlist` in a store built with B2B Commerce for Lightn
 WorkAccess
 Used to grant or restrict user access to give badge definitions. Each badge definition record must have one WorkAccess record.
 
-
-Standard Objects
-
 WorkAccessShare
 Used to control Givers of WorkBadgeDefinition records.
 
 WorkBadge
 Represents information about who the badge was given to and which badge was given. A WorkBadge record is created for each
 recipient of a WorkBadgeDefinition.
+
+
+Standard Objects
 
 WorkBadgeDefinition
 Represents the attributes of a badge including the badge name, description, and image. Each WorkBadge record must have a lookup
@@ -1297,15 +5823,15 @@ WorkGoal
 Represents the components of a goal, such as its description and associated metrics. This object has been deprecated as of API
 version 35.0. Use the Goal object to query information about WDC goals.
 
-
-Standard Objects
-
 WorkGoalCollaborator
 Represents collaborators on a WorkGoal object. This doesn’t include WorkGoal followers, which is handled by Chatter Feed Follow
 functionality. This object has been deprecated as of API version 35.0. Use the Goal object to query information about WDC goals.
 
 WorkGoalCollaboratorHistory
 Represents the history of changes to the values in the fields in a WorkGoalCollaborator object. Access is read-only.
+
+
+Standard Objects
 
 WorkGoalHistory
 Represents the history of changes to the values in the fields of a WorkGoal. Access is read-only. This object has been deprecated as
@@ -1359,15 +5885,15 @@ WorkPlanSelectionRule
 Represents a rule that selects a work plan for a work order or work order line item. This object is available in API version 52.0 and
 later.
 
-
-### Standard Objects AbnExperiment
-
 WorkPlanTemplate
 Represents a template for a work plan. This object is available in API version 52.0 and later.
 
 WorkPlanTemplateEntry
 Represents an object that associates a work step template with a work plan template. This object is available in API version 52.0 and
 later.
+
+
+### Standard Objects AbnExperiment
 
 WorkReward
 Used to store reward codes tied to a Reward Fund. Reward Funds must have at least one WorkReward record.
@@ -1411,23 +5937,12 @@ Supported Calls
 
 `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
 
-
-Standard Objects AbnExperiment
-
 Fields
 
 **Field** **Details**
 
 ```
 DataSpaceId
-
-Description
-
-DeveloperName
-
-LastAnalyzed
-
-LastReferencedDate
 
 ```
 
@@ -1436,6 +5951,11 @@ reference
 
 **Properties**
 Filter, Group, Sort
+
+
+Standard Objects AbnExperiment
+
+**Field** **Details**
 
 **Description**
 Unique identifier that refers to the data space where an experiment's resources originate.
@@ -1448,6 +5968,19 @@ DataSpace
 
 **Refers To**
 DataSpace
+
+```
+Description
+
+DeveloperName
+
+LastAnalyzed
+
+LastReferencedDate
+
+LastViewedDate
+
+```
 
 **Type**
 string
@@ -1482,24 +6015,8 @@ dateTime
 **Properties**
 Filter, Nillable, Sort
 
-
-Standard Objects AbnExperiment
-
-**Field** **Details**
-
 **Description**
 Timestamp that indicates the last time an experiment was referenced by another resource.
-
-```
-LastViewedDate
-
-Name
-
-PersonalizationSchemaEnum
-
-PersonalizationSchemaId
-
-```
 
 **Type**
 dateTime
@@ -1507,8 +6024,24 @@ dateTime
 **Properties**
 Filter, Nillable, Sort
 
+
+Standard Objects AbnExperiment
+
+**Field** **Details**
+
 **Description**
 Timestamp that indicates the last time a user viewed the experiment.
+
+```
+Name
+
+PersonalizationSchemaEnum
+
+PersonalizationSchemaId
+
+PrimaryMetricId
+
+```
 
 **Type**
 string
@@ -1554,22 +6087,6 @@ PersonalizationSchema
 **Refers To**
 PersonalizationSchema
 
-
-Standard Objects AbnExperiment
-
-**Field** **Details**
-
-```
-PrimaryMetricId
-
-ProfileDataGraphId
-
-ScheduleFrequencyInMinutes
-
-Source
-
-```
-
 **Type**
 reference
 
@@ -1580,6 +6097,11 @@ Filter, Group, Nillable, Sort
 Unique identifier that refers to engagement signal metrics, which are used to measure an
 experiment.
 
+
+Standard Objects AbnExperiment
+
+**Field** **Details**
+
 This field is a polymorphic relationship field.
 
 **Relationship Name**
@@ -1587,6 +6109,17 @@ PrimaryMetric
 
 **Refers To**
 EngagementSignalCmpndMetric, EngagementSignalMetric
+
+```
+ProfileDataGraphId
+
+ScheduleFrequencyInMinutes
+
+Source
+
+SourceRecordId
+
+```
 
 **Type**
 reference
@@ -1627,33 +6160,22 @@ Possible values are:
 
 **•** `BlockBuilder` —CMS content editors
 
-
-Standard Objects AbnExperiment
-
-**Field** **Details**
-
 **•** `ExperienceBuilder` —Experience Site Builder
 
 **•** `FlowBuilder`
 
 **•** `PersonalizationApp`
 
-```
-SourceRecordId
-
-StartedDate
-
-State
-
-Status
-
-```
-
 **Type**
 reference
 
 **Properties**
 Filter, Group, Nillable, Sort
+
+
+Standard Objects AbnExperiment
+
+**Field** **Details**
 
 **Description**
 Unique identifier that refers to the specific record that contains the experiment.
@@ -1665,6 +6187,15 @@ SourceRecord
 
 **Refers To**
 FlowRecordElement, ManagedContent
+
+```
+StartedDate
+
+State
+
+Status
+
+```
 
 **Type**
 dateTime
@@ -1702,11 +6233,6 @@ picklist
 **Properties**
 Defaulted on create, Filter, Group, Restricted picklist, Sort
 
-
-Standard Objects AbnExperiment
-
-**Field** **Details**
-
 **Description**
 Picklist value that indicates the current status of the experiment while an action is being
 performed.
@@ -1720,6 +6246,11 @@ Possible values are:
 **•** `DeleteError`
 
 **•** `Deleting`
+
+
+### Standard Objects AbnExperimentCohort
+
+**Field** **Details**
 
 **•** `EditError`
 
@@ -1772,9 +6303,6 @@ Feed tracking is available for the object.
 **AbnExperimentHistory on page 63**
 History is available for tracked fields of the object.
 
-
-### Standard Objects AbnExperimentCohort
-
 **AbnExperimentOwnerSharingRule on page 65**
 Sharing rules are available for the object.
 
@@ -1784,6 +6312,9 @@ Sharing is available for the object.
 ### AbnExperimentCohort
 
 Represents the specified audience that's participating in an A/B/n experiment. This object is available in API version 63.0 and later.
+
+
+Standard Objects AbnExperimentCohort
 
 Supported Calls
 
@@ -1800,6 +6331,8 @@ AllocationWeight
 
 CurrencyIsoCode
 
+DataSpaceId
+
 ```
 
 **Type**
@@ -1814,7 +6347,7 @@ Unique identifier that refers to a related experiment.
 This field is a relationship field.
 
 **Relationship Name**
-### AbnExperiment
+AbnExperiment
 
 **Relationship Type**
 Parent-detail
@@ -1837,11 +6370,6 @@ picklist
 **Properties**
 Defaulted on create, Filter, Group, Restricted picklist, Sort
 
-
-Standard Objects AbnExperimentCohort
-
-**Field** **Details**
-
 **Description**
 Three letter ISO currency codes for supported currencies. Optional.
 
@@ -1849,22 +6377,16 @@ Possible values are:
 
 **•** `USD` —U.S. Dollar
 
-```
-DataSpaceId
-
-Description
-
-DeveloperName
-
-IsControl
-
-```
-
 **Type**
 reference
 
 **Properties**
 Filter, Group, Nillable, Sort
+
+
+Standard Objects AbnExperimentCohort
+
+**Field** **Details**
 
 **Description**
 Unique identifier that refers to the data space where an experiment cohort's resources
@@ -1878,6 +6400,17 @@ DataSpace
 **Refers To**
 DataSpace
 
+```
+Description
+
+DeveloperName
+
+IsControl
+
+IsFallThrough
+
+```
+
 **Type**
 string
 
@@ -1885,7 +6418,7 @@ string
 Filter, Group, Nillable, Sort
 
 **Description**
-Text description of the experiment. Optional.
+Text description of the experiment.
 
 **Type**
 string
@@ -1906,6 +6439,17 @@ Defaulted on create, Filter, Group, Sort
 Whether the cohort is used as the control group that performance is checked against.
 
 The default value is `false` .
+
+**Type**
+boolean
+
+**Properties**
+Defaulted on create, Filter, Group, Sort
+
+**Description**
+Indicates whether this cohort captures users who don't meet the criteria for other cohorts
+in the experiment. When `true`, this cohort serves as the fallback option. When `false`,
+users must explicitly qualify for this cohort. The default value is `false` .
 
 
 Standard Objects AbnExperimentCohort
@@ -2396,15 +6940,48 @@ Standard Objects Account
 **•** `Skipped`
 
 ```
+CommerceCustomerReference
+
+CommerceGroupReference
+
+CommerceOrganizationReference
+
 ConnectionReceivedId
 
-ConnectionSentId
-
-Description
-
-DunsNumber
-
 ```
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The external Commerce ID of the individual. To update or create field values, you need the
+Manage Shopper Profile Sync System Fields user permission. Available in API version 67.0
+and later.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The external name of the Commerce customer group. To update or create field values, you
+need the Manage Shopper Profile Sync System Fields user permission. Available in API version
+67.0 and later.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The external organization ID of the Commerce instance. To update or create field values, you
+need the Manage Shopper Profile Sync System Fields user permission. Available in API version
+67.0 and later.
 
 **Type**
 reference
@@ -2415,6 +6992,24 @@ Filter, Group, Nillable, Sort
 **Description**
 ID of the PartnerNetworkConnection that shared this record with your organization. This
 field is available if you enabled Salesforce to Salesforce.
+
+
+Standard Objects Account
+
+**Field Name** **Details**
+
+```
+ConnectionSentId
+
+Description
+
+DunsNumber
+
+Fax
+
+Industry
+
+```
 
 **Type**
 reference
@@ -2447,28 +7042,11 @@ Create, Filter, Group, Nillable, Sort, Update
 The Data Universal Numbering System (D-U-N-S) number is a unique, nine-digit number
 assigned to every business location in the Dun & Bradstreet database that has a unique,
 separate, and distinct operation. D-U-N-S numbers are used by industries and organizations
-
-
-Standard Objects Account
-
-**Field Name** **Details**
-
 around the world as a global standard for business identification and tracking. Maximum
 size is 9 characters. This field is available on business accounts, not person accounts.
 
 Note: This field is only available to organizations that use Data.com Prospector or
 Data.com Clean.
-
-```
-Fax
-
-Industry
-
-IsBuyer
-
-IsCustomerPortal
-
-```
 
 **Type**
 phone
@@ -2485,9 +7063,23 @@ picklist
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
+
+Standard Objects Account
+
+**Field Name** **Details**
+
 **Description**
 An industry associated with this account. For example, `Biotechnology` . Maximum size
 is 40 characters.
+
+```
+IsBuyer
+
+IsCustomerPortal
+
+IsPartner
+
+```
 
 **Type**
 boolean
@@ -2516,11 +7108,6 @@ Portal is enabled OR digital experiences is enabled.
 If your org is enabled to use Content Security Policy (CSP) features, then this field is visible
 on the Account object even if those features are later disabled.
 
-
-Standard Objects Account
-
-**Field Name** **Details**
-
 If you change this field's value from `true` to `false`, you can disable up to 100 Experience
 Cloud site or Customer Portal users associated with the account and permanently delete all
 of the account's site roles and groups. You can't restore deleted site roles and groups.
@@ -2533,15 +7120,6 @@ Tip: We recommend that you update up to 50 contacts simultaneously when
 changing the accounts on contacts enabled for an Experience Cloud site. We also
 recommend that you make this update after business hours.
 
-```
-IsPartner
-
-IsPersonAccount
-
-IsPriorityRecord
-
-```
-
 **Type**
 boolean
 
@@ -2551,6 +7129,12 @@ Defaulted on create, Filter, Group, Sort, Update
 **Description**
 Indicates whether the account has at least one contact enabled to use the org's partner
 portal ( `true` ) or not ( `false` ). This field is available if partner relationship management
+
+
+Standard Objects Account
+
+**Field Name** **Details**
+
 (partner portal) is enabled OR digital experiences is enabled and you have partner portal
 licenses.
 
@@ -2572,6 +7156,15 @@ Tip: We recommend that you update up to 50 contacts simultaneously when
 changing the accounts on contacts enabled for an Experience Cloud site. We also
 recommend that you make this update after business hours.
 
+```
+IsPersonAccount
+
+IsPriorityRecord
+
+Jigsaw
+
+```
+
 **Type**
 boolean
 
@@ -2585,28 +7178,12 @@ Person Account ( `true` ) or not ( `false` ).
 **Type**
 boolean
 
-
-Standard Objects Account
-
-**Field Name** **Details**
-
 **Properties**
 Defaulted on create, Group
 
 **Description**
 Shows whether the user has marked the account as important ( _`True`_ ) or not ( _`False`_ ). The
 default value is `false` . Available in API version 60.0 and later.
-
-```
-Jigsaw
-
-JigsawCompanyId
-
-LastActivityDate
-
-LastReferencedDate
-
-```
 
 **Type**
 string
@@ -2621,9 +7198,27 @@ not imported from Data.com. Maximum size is 20 characters. Available in API vers
 and later. Label is **Data.com Key** . This field is available on business accounts, not person
 accounts.
 
+
+Standard Objects Account
+
+**Field Name** **Details**
+
 Important: The `Jigsaw` field is exposed in the API to support troubleshooting for
 import errors and reimporting of corrected data. Do not modify the value in the
 `Jigsaw` field.
+
+```
+JigsawCompanyId
+
+LastActivityDate
+
+LastReferencedDate
+
+LastViewedDate
+
+MasterRecordId
+
+```
 
 **Type**
 string
@@ -2654,26 +7249,12 @@ Value is one of the following, whichever is the most recent:
 **Type**
 datetime
 
-
-Standard Objects Account
-
-**Field Name** **Details**
-
 **Properties**
 Filter, Nillable, Sort
 
 **Description**
 The timestamp when the current user last accessed this record indirectly, for example,
 through a list view or related record.
-
-```
-LastViewedDate
-
-MasterRecordId
-
-NaicsCode
-
-```
 
 **Type**
 datetime
@@ -2688,6 +7269,11 @@ not viewed it.
 
 **Type**
 reference
+
+
+Standard Objects Account
+
+**Field Name** **Details**
 
 **Properties**
 Filter, Group, Nillable, Sort
@@ -2708,6 +7294,15 @@ Lookup
 **Refers To**
 Account
 
+```
+NaicsCode
+
+NaicsDesc
+
+Name
+
+```
+
 **Type**
 string
 
@@ -2721,24 +7316,8 @@ according to their economic activity for the purpose of collecting, analyzing, a
 statistical data related to the U.S. business economy. Maximum size is 8 characters. This field
 is available on business accounts, not person accounts.
 
-
-Standard Objects Account
-
-**Field Name** **Details**
-
 Note: This field is only available to organizations that use Data.com Prospector or
 Data.com Clean.
-
-```
-NaicsDesc
-
-Name
-
-NumberOfEmployees
-
-OperatingHoursId
-
-```
 
 **Type**
 string
@@ -2759,6 +7338,11 @@ string
 **Properties**
 Create, Filter, Group, Sort, Update
 
+
+Standard Objects Account
+
+**Field Name** **Details**
+
 **Description**
 Required. Label is **Account Name** . Name of the account. Maximum size is 255 characters.
 If the account has a record type of Person Account:
@@ -2767,6 +7351,15 @@ If the account has a record type of Person Account:
 `Suffix` of the associated person contact.
 
 **•** You can't modify this value.
+
+```
+NumberOfEmployees
+
+OperatingHoursId
+
+OwnerId
+
+```
 
 **Type**
 int
@@ -2792,25 +7385,11 @@ This is a relationship field.
 **Relationship Name**
 OperatingHours
 
-
-Standard Objects Account
-
-**Field Name** **Details**
-
 **Relationship Type**
 Lookup
 
 **Refers To**
 OperatingHours
-
-```
-OwnerId
-
-Ownership
-
-ParentId
-
-```
 
 **Type**
 reference
@@ -2829,6 +7408,11 @@ depending on your version of the API:
 
 **•** For API version before 12.0, sharing records are deleted.
 
+
+Standard Objects Account
+
+**Field Name** **Details**
+
 **•** For API version 16.0 and later, users must have the “Transfer Record” permission in order
 to update (transfer) account ownership using this field.
 
@@ -2842,6 +7426,15 @@ Lookup
 
 **Refers To**
 User
+
+```
+Ownership
+
+ParentId
+
+PersonActionCadenceAssigneeId
+
+```
 
 **Type**
 picklist
@@ -2863,11 +7456,6 @@ ID of the parent object, if any.
 
 This is a relationship field.
 
-
-Standard Objects Account
-
-**Field Name** **Details**
-
 **Relationship Name**
 Parent
 
@@ -2876,15 +7464,6 @@ Lookup
 
 **Refers To**
 Account
-
-```
-PersonActionCadenceAssigneeId
-
-PersonActionCadenceId
-
-PersonActionCadenceState
-
-```
 
 **Type**
 reference
@@ -2900,11 +7479,25 @@ Cadence Creator user permission set.
 
 This field is a polymorphic relationship field.
 
+
+Standard Objects Account
+
+**Field Name** **Details**
+
 **Relationship Name**
 PersonActionCadenceAssignee
 
 **Refers To**
 Group, User
+
+```
+PersonActionCadenceId
+
+PersonActionCadenceState
+
+PersonIndividualId
+
+```
 
 **Type**
 reference
@@ -2931,11 +7524,6 @@ picklist
 **Properties**
 Filter, Group, Nillable, Restricted picklist, Sort
 
-
-Standard Objects Account
-
-**Field Name** **Details**
-
 **Description**
 The state of the current action cadence tracker. This field is available in API version 50.0 and
 later when the Sales Engagement license is enabled. To see this field, the user also needs
@@ -2956,28 +7544,33 @@ Possible values are:
 
 **•** `Running`
 
-```
-PersonIndividualId
-
-PersonScheduledResumeDateTime
-
-Phone
-
-PhotoUrl
-
-```
-
 **Type**
 reference
 
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
+
+Standard Objects Account
+
+**Field Name** **Details**
+
 **Description**
 ID of the data privacy record associated with this person’s account. This field is available if
 you enabled Data Protection and Privacy in Setup.
 
 Available in API version 42.0 and later.
+
+```
+PersonScheduledResumeDateTime
+
+Phone
+
+PhotoUrl
+
+Rating
+
+```
 
 **Type**
 dateTime
@@ -3003,11 +7596,6 @@ Phone number for this account. Maximum size is 40 characters.
 **Type**
 url
 
-
-Standard Objects Account
-
-**Field Name** **Details**
-
 **Properties**
 Filter, Group, Nillable, Sort
 
@@ -3021,19 +7609,6 @@ profile image associated with the account. Generated URL returns an HTTP redirec
 Blank if Social Accounts and Contacts isn't enabled for the org or if Social Accounts and
 Contacts is disabled for the requesting user.
 
-```
-Rating
-
-RecordTypeId
-
-Salutation
-
-ShippingAddress
-
-ShippingCity
-
-```
-
 **Type**
 picklist
 
@@ -3042,6 +7617,26 @@ Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 The account’s prospect rating, for example Hot, Warm, or Cold.
+
+
+Standard Objects Account
+
+**Field Name** **Details**
+
+```
+RecordTypeId
+
+Salutation
+
+ShippingAddress
+
+ShippingCity
+
+ShippingCountry
+
+ShippingCountryCode
+
+```
 
 **Type**
 reference
@@ -3074,29 +7669,11 @@ details on compound address fields.
 **Type**
 string
 
-
-Standard Objects Account
-
-**Field Name** **Details**
-
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 Details of the shipping address for this account. City maximum size is 40 characters
-
-```
-ShippingCountry
-
-ShippingCountryCode
-
-ShippingGeocodeAccuracy
-
-ShippingLatitude
-
-ShippingLongitude
-
-```
 
 **Type**
 string
@@ -3113,8 +7690,26 @@ picklist
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
+
+Standard Objects Account
+
+**Field Name** **Details**
+
 **Description**
 The ISO country code for the account’s shipping address.
+
+```
+ShippingGeocodeAccuracy
+
+ShippingLatitude
+
+ShippingLongitude
+
+ShippingPostalCode
+
+ShippingState
+
+```
 
 **Type**
 picklist
@@ -3143,28 +7738,10 @@ double
 **Properties**
 Create, Filter, Nillable, Sort, Update
 
-
-Standard Objects Account
-
-**Field Name** **Details**
-
 **Description**
 Used with `ShippingLatitude` to specify the precise geolocation of an address.
 Acceptable values are numbers between –180 and 180 with up to 15 decimal places. For
 details on geolocation compound fields, see Compound Field Considerations and Limitations.
-
-```
-ShippingPostalCode
-
-ShippingState
-
-ShippingStateCode
-
-ShippingStreet
-
-Sic
-
-```
 
 **Type**
 string
@@ -3183,6 +7760,26 @@ Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 Details of the shipping address for this account. State maximum size is 80 characters.
+
+
+Standard Objects Account
+
+**Field Name** **Details**
+
+```
+ShippingStateCode
+
+ShippingStreet
+
+Sic
+
+SicDesc
+
+Site
+
+TickerSymbol
+
+```
 
 **Type**
 picklist
@@ -3213,24 +7810,6 @@ Standard Industrial Classification code of the company’s main business categor
 example, 57340 for Electronics. Maximum of 20 characters. This field is available on business
 accounts, not person accounts.
 
-
-Standard Objects Account
-
-**Field Name** **Details**
-
-```
-SicDesc
-
-Site
-
-TickerSymbol
-
-Tradestyle
-
-Type
-
-```
-
 **Type**
 string
 
@@ -3254,12 +7833,28 @@ Name of the account’s location, for example `Headquarters` or `London` . Label
 **Type**
 string
 
+
+Standard Objects Account
+
+**Field Name** **Details**
+
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 The stock market symbol for this account. Maximum of 20 characters. This field is available
 on business accounts, not person accounts.
+
+```
+Tradestyle
+
+Type
+
+Website
+
+YearStarted
+
+```
 
 **Type**
 string
@@ -3284,18 +7879,6 @@ Create, Filter, Group, Nillable, Sort, Update
 **Description**
 Type of account, for example, Customer, Competitor, or Partner.
 
-
-Standard Objects Account
-
-**Field Name** **Details**
-
-```
-Website
-
-YearStarted
-
-```
-
 **Type**
 url
 
@@ -3318,6 +7901,9 @@ available on business accounts, not person accounts.
 Note: This field is only available to organizations that use Data.com Prospector or
 Data.com Clean.
 
+
+Standard Objects Account
+
 IsPersonAccount Fields
 
 These fields are the subset of person account fields that are contained in the child person contact record of each person account. If the
@@ -3332,6 +7918,12 @@ Person account fields only show when person accounts are enabled. Person account
 FirstName
 
 LastName
+
+MiddleName
+
+PersonAssistantName
+
+PersonAssistantPhone
 
 ```
 
@@ -3353,24 +7945,6 @@ Create, Filter, Group, Nillable, Sort, Update
 **Description**
 Last name of the person for a person account. Required if the record type is a person account
 record type. Maximum size is 80 characters.
-
-
-Standard Objects Account
-
-**Field Name** **Details**
-
-```
-MiddleName
-
-PersonAssistantName
-
-PersonAssistantPhone
-
-PersonBirthDate
-
-PersonContactId
-
-```
 
 **Type**
 string
@@ -3398,6 +7972,24 @@ Create, Filter, Nillable, Update
 
 **Description**
 The person account’s assistant phone. Label is **Asst. Phone** . Maximum size is 40 characters.
+
+
+Standard Objects Account
+
+**Field Name** **Details**
+
+```
+PersonBirthDate
+
+PersonContactId
+
+PersonDepartment
+
+PersonEmail
+
+PersonEmailBouncedDate
+
+```
 
 **Type**
 date
@@ -3429,26 +8021,6 @@ Filter, Nillable, Update
 **Description**
 The ID for the contact associated with this person account. Label is **Contact ID** .
 
-
-Standard Objects Account
-
-**Field Name** **Details**
-
-```
-PersonDepartment
-
-PersonEmail
-
-PersonEmailBouncedDate
-
-PersonEmailBouncedReason
-
-PersonGenderIdentity
-
-PersonHasOptedOutOfEmail
-
-```
-
 **Type**
 string
 
@@ -3477,6 +8049,26 @@ Create, Filter, Nillable, Update
 If bounce management is activated and an email sent to the person account bounces, the
 date and time the bounce occurred.
 
+
+Standard Objects Account
+
+**Field Name** **Details**
+
+```
+PersonEmailBouncedReason
+
+PersonGenderIdentity
+
+PersonHasOptedOutOfEmail
+
+PersonHomePhone
+
+PersonLeadSource
+
+PersonMailingAddress
+
+```
+
 **Type**
 string
 
@@ -3503,23 +8095,9 @@ boolean
 **Properties**
 Create, Filter, Nillable, Update
 
-
-Standard Objects Account
-
-**Field Name** **Details**
-
 **Description**
 Indicates whether the person account has opted out of email ( `true` ) or not ( `false` ). Label
 is **Email Opt Out** .
-
-```
-PersonHomePhone
-
-PersonLeadSource
-
-PersonMailingAddress
-
-```
 
 **Type**
 phone
@@ -3545,6 +8123,11 @@ address
 **Properties**
 Filter, Nillable
 
+
+Standard Objects Account
+
+**Field Name** **Details**
+
 **Description**
 The compound form of the person account mailing address. Read-only. For details on
 compound address fields, see Address Compound Fields.
@@ -3569,14 +8152,6 @@ Maximum size for postal code and state is 20 characters.
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
-**Description**
-The ISO country or state code for the mailing address of the person account.
-
-
-Standard Objects Account
-
-**Field Name** **Details**
-
 ```
 PersonMailingGeocodeAccuracy
 
@@ -3584,11 +8159,10 @@ PersonMailingLatitude
 
 PersonMailingLongitude
 
-PersonMailingStreet
-
-PersonMobilePhone
-
 ```
+
+**Description**
+The ISO country or state code for the mailing address of the person account.
 
 **Type**
 picklist
@@ -3618,11 +8192,23 @@ double
 **Properties**
 Create, Filter, Nillable, Sort, Update
 
+
+Standard Objects Account
+
+**Field Name** **Details**
+
 **Description**
 Used with `PersonMailingLatitude` to specify the precise geolocation of a person
 account’s mailing address. Acceptable values are numbers between –180 and 180 with up
 to 15 decimal places. For details on geolocation compound fields, see Compound Field
 Considerations and Limitations on page 19.
+
+```
+PersonMailingStreet
+
+PersonMobilePhone
+
+```
 
 **Type**
 textarea
@@ -3642,11 +8228,6 @@ Create, Filter, Nillable, Update
 
 **Description**
 The mobile phone number for this person account. Label is **Mobile** .
-
-
-Standard Objects Account
-
-**Field Name** **Details**
 
 **•** `PersonOtherCity` **Type**
 string
@@ -3670,10 +8251,6 @@ Create, Filter, Group, Nillable, Sort, Update
 ```
 PersonOtherLatitude
 
-PersonOtherLongitude
-
-PersonOtherPhone
-
 ```
 
 **Description**
@@ -3685,11 +8262,27 @@ double
 **Properties**
 Create, Filter, Nillable, Sort, Update
 
+
+Standard Objects Account
+
+**Field Name** **Details**
+
 **Description**
 Used with `PersonOtherLongitude` to specify the precise geolocation of a person
 account’s alternate address. Acceptable values are numbers between –90 and 90 with up
 to 15 decimal places. For details on geolocation compound fields, see Compound Field
 Considerations and Limitations.
+
+```
+PersonOtherLongitude
+
+PersonOtherPhone
+
+PersonOtherStreet
+
+PersonPronouns
+
+```
 
 **Type**
 double
@@ -3711,20 +8304,6 @@ Create, Filter, Nillable, Update
 
 **Description**
 The alternate phone number for this person account. Label is **Other Phone** .
-
-
-Standard Objects Account
-
-**Field Name** **Details**
-
-```
-PersonOtherStreet
-
-PersonPronouns
-
-PersonReportsToId
-
-```
 
 **Type**
 textarea
@@ -3754,11 +8333,25 @@ Possible values are:
 
 **•** `Not Listed`
 
+
+Standard Objects Account
+
+**Field Name** **Details**
+
 **•** `She/Her`
 
 **•** `She/They`
 
 **•** `They/Them`
+
+```
+PersonReportsToId
+
+PersonTitle
+
+Suffix
+
+```
 
 **Type**
 reference
@@ -3785,18 +8378,6 @@ Lookup
 **Refers To**
 Contact
 
-
-Standard Objects Account
-
-**Field Name** **Details**
-
-```
-PersonTitle
-
-Suffix
-
-```
-
 **Type**
 string
 
@@ -3820,6 +8401,9 @@ Name suffix of the person for a person account. Maximum size is 40 characters.
 Note: When importing account data, users need the Set Audit Fields upon Record Creation permission to assign values to audit
 fields such as `CreatedDate` . Audit fields are automatically updated during API operations unless you set these fields yourself.
 
+
+### Standard Objects AccountBrand
+
 Usage
 
 Use this object to query and manage accounts in your org. Client applications can create, update, delete, or query Attachment records
@@ -3834,23 +8418,20 @@ Associated Objects
 This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
 Otherwise, they’re available in the specified API version and later.
 
-**[AccountChangeEvent (API version 44.0)](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_change_event.htm)**
+**[AccountChangeEvent (API version 44.0)](https://developer.salesforce.com/docs/atlas.en-us.262.0.object_reference.meta/object_reference/sforce_api_associated_objects_change_event.htm)**
 Change events are available for the object.
 
-**[AccountFeed (API version 18.0)](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_feed.htm)**
+**[AccountFeed (API version 18.0)](https://developer.salesforce.com/docs/atlas.en-us.262.0.object_reference.meta/object_reference/sforce_api_associated_objects_feed.htm)**
 Feed tracking is available for the object.
 
-**[AccountHistory (API version 11.0)](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_history.htm)**
+**[AccountHistory (API version 11.0)](https://developer.salesforce.com/docs/atlas.en-us.262.0.object_reference.meta/object_reference/sforce_api_associated_objects_history.htm)**
 History is available for tracked fields of the object.
 
-**[AccountOwnerSharingRule](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_accountownersharingrule.htm)**
+**[AccountOwnerSharingRule](https://developer.salesforce.com/docs/atlas.en-us.262.0.object_reference.meta/object_reference/sforce_api_objects_accountownersharingrule.htm)**
 
 Sharing rules are available for the object.
 
-
-### Standard Objects AccountBrand
-
-**[AccountShare](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_accountshare.htm)**
+**[AccountShare](https://developer.salesforce.com/docs/atlas.en-us.262.0.object_reference.meta/object_reference/sforce_api_objects_accountshare.htm)**
 
 Sharing is available for the object.
 
@@ -3860,7 +8441,7 @@ AccountShare
 
 AccountTeamMember
 
-_SOAP API Developer Guide_ [: Person Account Record Types](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_guidelines_personaccounts.htm)
+_SOAP API Developer Guide_ [: Person Account Record Types](https://developer.salesforce.com/docs/atlas.en-us.262.0.api.meta/api/sforce_api_guidelines_personaccounts.htm)
 
 ### AccountBrand
 
@@ -3876,6 +8457,9 @@ Special Access Rules
 This object is available only if digital experiences is enabled in your org and it has a Partner Community or Customer Community Plus
 license.
 
+
+Standard Objects AccountBrand
+
 Fields
 
 **Field** **Details**
@@ -3886,6 +8470,12 @@ AccountId
 Address
 
 City
+
+CompanyName
+
+Country
+
+Email
 
 ```
 
@@ -3910,31 +8500,11 @@ The street address.
 **Type**
 string
 
-
-Standard Objects AccountBrand
-
-**Field** **Details**
-
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 The city.
-
-```
-CompanyName
-
-Country
-
-Email
-
-GeocodeAccuracy
-
-LastReferencedDate
-
-LastViewedDate
-
-```
 
 **Type**
 string
@@ -3960,8 +8530,28 @@ reference
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
+
+Standard Objects AccountBrand
+
+**Field** **Details**
+
 **Description**
 Email address associated with the account.
+
+```
+GeocodeAccuracy
+
+LastReferencedDate
+
+LastViewedDate
+
+Latitude
+
+LogoId
+
+LogoUrl
+
+```
 
 **Type**
 picklist
@@ -3984,31 +8574,11 @@ Most recent date referenced.
 **Type**
 dateTime
 
-
-Standard Objects AccountBrand
-
-**Field** **Details**
-
 **Properties**
 Filter, Nillable, Sort
 
 **Description**
 Most recent date viewed.
-
-```
-Latitude
-
-LogoId
-
-LogoUrl
-
-Longitude
-
-Name
-
-OwnerId
-
-```
 
 **Type**
 double
@@ -4034,8 +8604,28 @@ url
 **Properties**
 Nillable,
 
+
+Standard Objects AccountBrand
+
+**Field** **Details**
+
 **Description**
 URL of the logo. This field is available in API version 44.0 and later.
+
+```
+Longitude
+
+Name
+
+OwnerId
+
+Phone
+
+PostalCode
+
+State
+
+```
 
 **Type**
 double
@@ -4058,29 +8648,11 @@ Required. Name of the account.
 **Type**
 reference
 
-
-Standard Objects AccountBrand
-
-**Field** **Details**
-
 **Properties**
 Create, Defaulted on create, Filter, Group, Sort, Update
 
 **Description**
 Required. ID of the Owner.
-
-```
-Phone
-
-PostalCode
-
-State
-
-Street
-
-Website
-
-```
 
 **Type**
 phone
@@ -4106,8 +8678,22 @@ string
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
+
+### Standard Objects AccountContactRelation
+
+**Field** **Details**
+
 **Description**
 The address state.
+
+```
+Street
+
+Website
+
+```
+
+Associated Objects
 
 **Type**
 textarea
@@ -4126,11 +8712,6 @@ Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 Website for the Account Brand.
-
-
-### Standard Objects AccountContactRelation
-
-Associated Objects
 
 This object has the following associated objects. Unless noted, they are available in the same API version as this object.
 
@@ -4155,16 +8736,23 @@ Supported Calls
 `create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
 `retrieve()`, `update()`, `upsert()`
 
+
+Standard Objects AccountContactRelation
+
 Fields
 
 **Field Name** **Details**
 
-### `AccountContactRelationshipCurrency`
-
 ```
+AccountContactRelationshipCurrency
+
 AccountId
 
 ContactId
+
+EndDate
+
+IsActive
 
 ```
 
@@ -4194,27 +8782,9 @@ reference
 **Properties**
 Create, Filter, Group, Sort
 
-
-Standard Objects AccountContactRelation
-
-**Field Name** **Details**
-
 **Description**
 ID of the contact that is related to the account. Field can't be modified when
 updating existing account-contact relationship records.
-
-```
-EndDate
-
-IsActive
-
-IsDirect
-
-Roles
-
-StartDate
-
-```
 
 **Type**
 date
@@ -4234,6 +8804,22 @@ Create, Defaulted on create, Filter, Group, Sort, Update
 
 **Description**
 Indicates whether relationship is active ( `true` ) or not ( `false` ).
+
+
+Standard Objects AccountContactRelation
+
+**Field Name** **Details**
+
+```
+IsDirect
+
+Roles
+
+StartDate
+
+```
+
+Usage
 
 **Type**
 boolean
@@ -4263,16 +8849,9 @@ date
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
-
-### Standard Objects AccountCleanInfo
-
-**Field Name** **Details**
-
 **Description**
 The date a relationship between a contact and account began. Use with the `End`
 `Date` to keep a history of the relationship.
-
-Usage
 
 Use this object to associate a single contact record to multiple account records so you can easily track the relationships between the
 people and businesses they work with.
@@ -4280,7 +8859,7 @@ people and businesses they work with.
 When you insert a non-private contact in your org that associates a contact to multiple accounts, an AccountContactRelation is created
 and its validation rules, database insertion, and triggers are executed immediately after the contact is saved to the database. When you
 change a contact's primary account, an AccountContactRelation may be created or edited, and the AccountContactRelation validation
-[rules, database changes, and triggers are executed immediately after the contact is saved to the database. See Order of Execution.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_triggers_order_of_execution.htm)
+[rules, database changes, and triggers are executed immediately after the contact is saved to the database. See Order of Execution.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/apex_triggers_order_of_execution.htm)
 
 Associated Objects
 
@@ -4290,10 +8869,11 @@ they’re available in the specified API version and later.
 **AccountContactRelationChangeEvent on page 68 (API version 59.0)**
 Change events are available for the object.
 
-### AccountCleanInfo
+
+### Standard Objects AccountCleanInfo AccountCleanInfo
 
 Stores the metadata Data.com Clean uses to determine an account record’s clean status. AccountCleanInfo helps you automate the
-cleaning or related processing of account records.
+cleaning or related processing of account records. This object is removed in API version 67.0
 
 Note: When your Data.com Prospector or Data.com Clean contract expires, Data.com features, objects, and fields will be removed
 from your org.
@@ -4320,9 +8900,6 @@ matched Data.com record.
 
 **•** `IsFlaggedWrong` indicates whether or not a field on the account record has a value that is flagged as wrong to Data.com.
 
-
-Standard Objects AccountCleanInfo
-
 **•** `IsReviewed` indicates whether or not a field on the account record is in a `Reviewed` state, which means that the value was
 reviewed but not accepted.
 
@@ -4341,12 +8918,6 @@ AccountId
 
 AccountSite
 
-Address
-
-AnnualRevenue
-
-City
-
 ```
 
 **Type**
@@ -4361,12 +8932,30 @@ The unique, system-generated ID assigned when the account record was created.
 **Type**
 string
 
+
+Standard Objects AccountCleanInfo
+
+**Field Name** **Details**
+
 **Properties**
 Filter, Group, Nillable, Sort
 
 **Description**
 Information about the account’s location, such as single location, headquarters,
 or branch.
+
+```
+Address
+
+AnnualRevenue
+
+City
+
+CleanedByJob
+
+CleanedByUser
+
+```
 
 **Type**
 address
@@ -4390,29 +8979,11 @@ Estimated annual revenue of the account.
 **Type**
 string
 
-
-Standard Objects AccountCleanInfo
-
-**Field Name** **Details**
-
 **Properties**
 Filter, Group, Nillable, Sort
 
 **Description**
 Details for the billing address of the account.
-
-```
-CleanedByJob
-
-CleanedByUser
-
-CompanyName
-
-CompanyStatusDataDotCom
-
-Country
-
-```
 
 **Type**
 boolean
@@ -4430,9 +9001,27 @@ boolean
 **Properties**
 Filter
 
+
+Standard Objects AccountCleanInfo
+
+**Field Name** **Details**
+
 **Description**
 Indicates whether the account record was cleaned by a Salesforce user ( `true` )
 or not ( `false` ).
+
+```
+CompanyName
+
+CompanyStatusDataDotCom
+
+Country
+
+DandBCompanyDunsNumber
+
+DataDotComId
+
+```
 
 **Type**
 string
@@ -4464,26 +9053,8 @@ string
 **Properties**
 Filter, Group, Nillable, Sort
 
-
-Standard Objects AccountCleanInfo
-
-**Field Name** **Details**
-
 **Description**
 Details for the billing address of the account.
-
-```
-DandBCompanyDunsNumber
-
-DataDotComId
-
-Description
-
-DunsNumber
-
-DunsRightMatchConfidence
-
-```
 
 **Type**
 string
@@ -4503,6 +9074,26 @@ Filter, Group, Nillable, Sort
 
 **Description**
 The ID Data.com maintains for the company.
+
+
+Standard Objects AccountCleanInfo
+
+**Field Name** **Details**
+
+```
+Description
+
+DunsNumber
+
+DunsRightMatchConfidence
+
+DunsRightMatchGrade
+
+Fax
+
+Industry
+
+```
 
 **Type**
 textarea
@@ -4535,26 +9126,6 @@ Filter, Group, Nillable, Sort
 **Description**
 The account’s DUNSRight confidence code.
 
-
-Standard Objects AccountCleanInfo
-
-**Field Name** **Details**
-
-```
-DunsRightMatchGrade
-
-Fax
-
-Industry
-
-IsDifferentAccountSite
-
-IsDifferentAnnualRevenue
-
-IsDifferentCity
-
-```
-
 **Type**
 string
 
@@ -4576,11 +9147,29 @@ The account’s fax number.
 **Type**
 picklist
 
+
+Standard Objects AccountCleanInfo
+
+**Field Name** **Details**
+
 **Properties**
 Filter, Group, Nillable, Sort
 
 **Description**
 The industry the account belongs to.
+
+```
+IsDifferentAccountSite
+
+IsDifferentAnnualRevenue
+
+IsDifferentCity
+
+IsDifferentCompanyName
+
+IsDifferentCountry
+
+```
 
 **Type**
 boolean
@@ -4608,27 +9197,9 @@ boolean
 **Properties**
 Filter
 
-
-Standard Objects AccountCleanInfo
-
-**Field Name** **Details**
-
 **Description**
 Indicates whether the account’s `City` field value is different from the
 corresponding value on its matched Data.com record ( `true` ) or not ( `false` ).
-
-```
-IsDifferentCompanyName
-
-IsDifferentCountry
-
-IsDifferentCountryCode
-
-IsDifferentDandBCompanyDunsNumber
-
-IsDifferentDescription
-
-```
 
 **Type**
 boolean
@@ -4646,9 +9217,27 @@ boolean
 **Properties**
 Filter
 
+
+Standard Objects AccountCleanInfo
+
+**Field Name** **Details**
+
 **Description**
 Indicates whether the account’s `Country` field value is different from the
 corresponding value on its matched Data.com record ( `true` ) or not ( `false` ).
+
+```
+IsDifferentCountryCode
+
+IsDifferentDandBCompanyDunsNumber
+
+IsDifferentDescription
+
+IsDifferentDunsNumber
+
+IsDifferentFax
+
+```
 
 **Type**
 boolean
@@ -4677,27 +9266,9 @@ boolean
 **Properties**
 Filter
 
-
-Standard Objects AccountCleanInfo
-
-**Field Name** **Details**
-
 **Description**
 Indicates whether the account’s `Description` field value is different from
 the corresponding value on its matched Data.com record ( `true` ) or not ( `false` ).
-
-```
-IsDifferentDunsNumber
-
-IsDifferentFax
-
-IsDifferentIndustry
-
-IsDifferentNaicsCode
-
-IsDifferentNaicsDescription
-
-```
 
 **Type**
 boolean
@@ -4715,9 +9286,27 @@ boolean
 **Properties**
 Filter
 
+
+Standard Objects AccountCleanInfo
+
+**Field Name** **Details**
+
 **Description**
 Indicates whether the account’s `Fax` field value is different from the
 corresponding value on its matched Data.com record ( `true` ) or not ( `false` ).
+
+```
+IsDifferentIndustry
+
+IsDifferentNaicsCode
+
+IsDifferentNaicsDescription
+
+IsDifferentNumberOfEmployees
+
+IsDifferentOwnership
+
+```
 
 **Type**
 boolean
@@ -4745,28 +9334,10 @@ boolean
 **Properties**
 Filter
 
-
-Standard Objects AccountCleanInfo
-
-**Field Name** **Details**
-
 **Description**
 Indicates whether the account’s `NaicsDescription` field value is different
 from the corresponding value on its matched Data.com record ( `true` ) or not
 ( `false` ).
-
-```
-IsDifferentNumberOfEmployees
-
-IsDifferentOwnership
-
-IsDifferentPhone
-
-IsDifferentPostalCode
-
-IsDifferentSic
-
-```
 
 **Type**
 boolean
@@ -4785,9 +9356,27 @@ boolean
 **Properties**
 Filter
 
+
+Standard Objects AccountCleanInfo
+
+**Field Name** **Details**
+
 **Description**
 Indicates whether the account’s `Ownership` field value is different from the
 corresponding value on its matched Data.com record ( `true` ) or not ( `false` ).
+
+```
+IsDifferentPhone
+
+IsDifferentPostalCode
+
+IsDifferentSic
+
+IsDifferentSicDescription
+
+IsDifferentState
+
+```
 
 **Type**
 boolean
@@ -4815,27 +9404,9 @@ boolean
 **Properties**
 Filter
 
-
-Standard Objects AccountCleanInfo
-
-**Field Name** **Details**
-
 **Description**
 Indicates whether the account’s `Sic` field value is different from the
 corresponding value on its matched Data.com record ( `true` ) or not ( `false` ).
-
-```
-IsDifferentSicDescription
-
-IsDifferentState
-
-IsDifferentStateCode
-
-IsDifferentStreet
-
-IsDifferentTickerSymbol
-
-```
 
 **Type**
 boolean
@@ -4854,9 +9425,27 @@ boolean
 **Properties**
 Filter
 
+
+Standard Objects AccountCleanInfo
+
+**Field Name** **Details**
+
 **Description**
 Indicates whether the account’s `State` field value is different from the
 corresponding value on its matched Data.com record ( `true` ) or not ( `false` ).
+
+```
+IsDifferentStateCode
+
+IsDifferentStreet
+
+IsDifferentTickerSymbol
+
+IsDifferentTradestyle
+
+IsDifferentWebsite
+
+```
 
 **Type**
 boolean
@@ -4884,27 +9473,9 @@ boolean
 **Properties**
 Filter
 
-
-Standard Objects AccountCleanInfo
-
-**Field Name** **Details**
-
 **Description**
 Indicates whether the account’s `TickerSymbol` field value is different from
 the corresponding value on its matched Data.com record ( `true` ) or not ( `false` ).
-
-```
-IsDifferentTradestyle
-
-IsDifferentWebsite
-
-IsDifferentYearStarted
-
-IsFlaggedWrongAccountSite
-
-IsFlaggedWrongAddress
-
-```
 
 **Type**
 boolean
@@ -4922,9 +9493,27 @@ boolean
 **Properties**
 Filter
 
+
+Standard Objects AccountCleanInfo
+
+**Field Name** **Details**
+
 **Description**
 Indicates whether the account’s `Website` field value is different from the
 corresponding value on its matched Data.com record ( `true` ) or not ( `false` ).
+
+```
+IsDifferentYearStarted
+
+IsFlaggedWrongAccountSite
+
+IsFlaggedWrongAddress
+
+IsFlaggedWrongAnnualRevenue
+
+IsFlaggedWrongCompanyName
+
+```
 
 **Type**
 boolean
@@ -4952,27 +9541,9 @@ boolean
 **Properties**
 Filter, Update
 
-
-Standard Objects AccountCleanInfo
-
-**Field Name** **Details**
-
 **Description**
 Indicates whether the account’s `Address` field value is flagged as wrong to
 Data.com ( `true` ) or not ( `false` ).
-
-```
-IsFlaggedWrongAnnualRevenue
-
-IsFlaggedWrongCompanyName
-
-IsFlaggedWrongDescription
-
-IsFlaggedWrongDunsNumber
-
-IsFlaggedWrongFax
-
-```
 
 **Type**
 boolean
@@ -4990,9 +9561,27 @@ boolean
 **Properties**
 Filter, Update
 
+
+Standard Objects AccountCleanInfo
+
+**Field Name** **Details**
+
 **Description**
 Indicates whether the account’s `CompanyName` field value is flagged as wrong
 to Data.com ( `true` ) or not ( `false` ).
+
+```
+IsFlaggedWrongDescription
+
+IsFlaggedWrongDunsNumber
+
+IsFlaggedWrongFax
+
+IsFlaggedWrongIndustry
+
+IsFlaggedWrongNaicsCode
+
+```
 
 **Type**
 boolean
@@ -5020,27 +9609,9 @@ boolean
 **Properties**
 Filter, Update
 
-
-Standard Objects AccountCleanInfo
-
-**Field Name** **Details**
-
 **Description**
 Indicates whether the account’s `Fax` field value is flagged as wrong to Data.com
 ( `true` ) or not ( `false` ).
-
-```
-IsFlaggedWrongIndustry
-
-IsFlaggedWrongNaicsCode
-
-IsFlaggedWrongNaicsDescription
-
-IsFlaggedWrongNumberOfEmployees
-
-IsFlaggedWrongOwnership
-
-```
 
 **Type**
 boolean
@@ -5058,9 +9629,27 @@ boolean
 **Properties**
 Filter, Update
 
+
+Standard Objects AccountCleanInfo
+
+**Field Name** **Details**
+
 **Description**
 Indicates whether the account’s `NaicsCode` field value is flagged as wrong
 to Data.com ( `true` ) or not ( `false` ).
+
+```
+IsFlaggedWrongNaicsDescription
+
+IsFlaggedWrongNumberOfEmployees
+
+IsFlaggedWrongOwnership
+
+IsFlaggedWrongPhone
+
+IsFlaggedWrongSic
+
+```
 
 **Type**
 boolean
@@ -5088,27 +9677,9 @@ boolean
 **Properties**
 Filter, Update
 
-
-Standard Objects AccountCleanInfo
-
-**Field Name** **Details**
-
 **Description**
 Indicates whether the account’s `Ownership` field value is flagged as wrong
 to Data.com ( `true` ) or not ( `false` ).
-
-```
-IsFlaggedWrongPhone
-
-IsFlaggedWrongSic
-
-IsFlaggedWrongSicDescription
-
-IsFlaggedWrongTickerSymbol
-
-IsFlaggedWrongTradestyle
-
-```
 
 **Type**
 boolean
@@ -5126,9 +9697,27 @@ boolean
 **Properties**
 Filter, Update
 
+
+Standard Objects AccountCleanInfo
+
+**Field Name** **Details**
+
 **Description**
 Indicates whether the account’s `Sic` field value is flagged as wrong to Data.com
 ( `true` ) or not ( `false` ).
+
+```
+IsFlaggedWrongSicDescription
+
+IsFlaggedWrongTickerSymbol
+
+IsFlaggedWrongTradestyle
+
+IsFlaggedWrongWebsite
+
+IsFlaggedWrongYearStarted
+
+```
 
 **Type**
 boolean
@@ -5156,27 +9745,9 @@ boolean
 **Properties**
 Filter, Update
 
-
-Standard Objects AccountCleanInfo
-
-**Field Name** **Details**
-
 **Description**
 Indicates whether the account’s `Tradestyle` field value is flagged as wrong
 to Data.com ( `true` ) or not ( `false` ).
-
-```
-IsFlaggedWrongWebsite
-
-IsFlaggedWrongYearStarted
-
-IsInactive
-
-IsReviewedAccountSite
-
-IsReviewedAddress
-
-```
 
 **Type**
 boolean
@@ -5194,9 +9765,27 @@ boolean
 **Properties**
 Filter, Update
 
+
+Standard Objects AccountCleanInfo
+
+**Field Name** **Details**
+
 **Description**
 Indicates whether the account’s `YearStarted` field value is flagged as wrong
 to Data.com ( `true` ) or not ( `false` ).
+
+```
+IsInactive
+
+IsReviewedAccountSite
+
+IsReviewedAddress
+
+IsReviewedAnnualRevenue
+
+IsReviewedCompanyName
+
+```
 
 **Type**
 boolean
@@ -5224,27 +9813,9 @@ boolean
 **Properties**
 Filter, Update
 
-
-Standard Objects AccountCleanInfo
-
-**Field Name** **Details**
-
 **Description**
 Indicates whether the account’s `Address` field value is in a `Reviewed` state
 ( `true` ) or not ( `false` ).
-
-```
-IsReviewedAnnualRevenue
-
-IsReviewedCompanyName
-
-IsReviewedDandBCompanyDunsNumber
-
-IsReviewedDescription
-
-IsReviewedDunsNumber
-
-```
 
 **Type**
 boolean
@@ -5262,9 +9833,27 @@ boolean
 **Properties**
 Filter, Update
 
+
+Standard Objects AccountCleanInfo
+
+**Field Name** **Details**
+
 **Description**
 Indicates whether the account’s `CompanyName` field value is in a `Reviewed`
 state ( `true` ) or not ( `false` ).
+
+```
+IsReviewedDandBCompanyDunsNumber
+
+IsReviewedDescription
+
+IsReviewedDunsNumber
+
+IsReviewedFax
+
+IsReviewedIndustry
+
+```
 
 **Type**
 boolean
@@ -5292,27 +9881,9 @@ boolean
 **Properties**
 Filter, Update
 
-
-Standard Objects AccountCleanInfo
-
-**Field Name** **Details**
-
 **Description**
 Indicates whether the account’s `DunsNumber` field value is in a `Reviewed`
 state ( `true` ) or not ( `false` ).
-
-```
-IsReviewedFax
-
-IsReviewedIndustry
-
-IsReviewedNaicsCode
-
-IsReviewedNaicsDescription
-
-IsReviewedNumberOfEmployees
-
-```
 
 **Type**
 boolean
@@ -5330,9 +9901,27 @@ boolean
 **Properties**
 Filter, Update
 
+
+Standard Objects AccountCleanInfo
+
+**Field Name** **Details**
+
 **Description**
 Indicates whether the account’s `Industry` field value is in a `Reviewed`
 state ( `true` ) or not ( `false` ).
+
+```
+IsReviewedNaicsCode
+
+IsReviewedNaicsDescription
+
+IsReviewedNumberOfEmployees
+
+IsReviewedOwnership
+
+IsReviewedPhone
+
+```
 
 **Type**
 boolean
@@ -5360,27 +9949,9 @@ boolean
 **Properties**
 Filter, Update
 
-
-Standard Objects AccountCleanInfo
-
-**Field Name** **Details**
-
 **Description**
 Indicates whether the account’s `NumberOfEmployees` field value is in a
 `Reviewed` state ( `true` ) or not ( `false` ).
-
-```
-IsReviewedOwnership
-
-IsReviewedPhone
-
-IsReviewedSic
-
-IsReviewedSicDescription
-
-IsReviewedTickerSymbol
-
-```
 
 **Type**
 boolean
@@ -5398,9 +9969,27 @@ boolean
 **Properties**
 Filter, Update
 
+
+Standard Objects AccountCleanInfo
+
+**Field Name** **Details**
+
 **Description**
 Indicates whether the account’s `Phone` field value is in a `Reviewed` state
 ( `true` ) or not ( `false` ).
+
+```
+IsReviewedSic
+
+IsReviewedSicDescription
+
+IsReviewedTickerSymbol
+
+IsReviewedTradestyle
+
+IsReviewedWebsite
+
+```
 
 **Type**
 boolean
@@ -5428,27 +10017,9 @@ boolean
 **Properties**
 Filter, Update
 
-
-Standard Objects AccountCleanInfo
-
-**Field Name** **Details**
-
 **Description**
 Indicates whether the account’s `TickerSymbol` field value is in a `Reviewed`
 state ( `true` ) or not ( `false` ).
-
-```
-IsReviewedTradestyle
-
-IsReviewedWebsite
-
-IsReviewedYearStarted
-
-LastMatchedDate
-
-LastStatusChangedById
-
-```
 
 **Type**
 boolean
@@ -5466,9 +10037,27 @@ boolean
 **Properties**
 Filter, Update
 
+
+Standard Objects AccountCleanInfo
+
+**Field Name** **Details**
+
 **Description**
 Indicates whether the account’s `Website` field value is in a `Reviewed` state
 ( `true` ) or not ( `false` ).
+
+```
+IsReviewedYearStarted
+
+LastMatchedDate
+
+LastStatusChangedById
+
+LastStatusChangedDate
+
+Latitude
+
+```
 
 **Type**
 boolean
@@ -5499,26 +10088,6 @@ Filter, Group, Nillable, Sort
 The ID of who or what last changed the record’s `Clean Status` field value:
 a Salesforce user or a Clean job.
 
-
-Standard Objects AccountCleanInfo
-
-**Field Name** **Details**
-
-```
-LastStatusChangedDate
-
-Latitude
-
-Longitude
-
-NaicsCode
-
-NaicsDescription
-
-Name
-
-```
-
 **Type**
 dateTime
 
@@ -5537,6 +10106,26 @@ Filter, Nillable, Sort
 **Description**
 Used with `Longitude` to specify the precise geolocation of a billing address.
 Data not currently provided.
+
+
+Standard Objects AccountCleanInfo
+
+**Field Name** **Details**
+
+```
+Longitude
+
+NaicsCode
+
+NaicsDescription
+
+Name
+
+NumberOfEmployees
+
+Ownership
+
+```
 
 **Type**
 double
@@ -5572,30 +10161,12 @@ A brief description of an organization’s line of business, based on its NAICS 
 **Type**
 string
 
-
-Standard Objects AccountCleanInfo
-
-**Field Name** **Details**
-
 **Properties**
 Filter, Group, Sort, Update
 
 **Description**
 Field label is **Account Clean Info Name** . The name of the account. Maximum
 size is 255 characters.
-
-```
-NumberOfEmployees
-
-Ownership
-
-Phone
-
-PostalCode
-
-Sic
-
-```
 
 **Type**
 int
@@ -5609,11 +10180,29 @@ The number of employees working at the account.
 **Type**
 picklist
 
+
+Standard Objects AccountCleanInfo
+
+**Field Name** **Details**
+
 **Properties**
 Filter, Group, Nillable, Sort
 
 **Description**
 Ownership type for the account, for example Private, Public, or Subsidiary.
+
+```
+Phone
+
+PostalCode
+
+Sic
+
+SicDescription
+
+State
+
+```
 
 **Type**
 phone
@@ -5643,26 +10232,6 @@ Filter, Group, Nillable, Sort
 Standard Industrial Classification code of the company’s main business
 categorization, for example, 57340 for Electronics.
 
-
-Standard Objects AccountCleanInfo
-
-**Field Name** **Details**
-
-```
-SicDescription
-
-State
-
-Street
-
-TickerSymbol
-
-Tradestyle
-
-Website
-
-```
-
 **Type**
 string
 
@@ -5680,6 +10249,26 @@ Filter, Group, Nillable, Sort
 
 **Description**
 Details for the billing address of the account.
+
+
+Standard Objects AccountCleanInfo
+
+**Field Name** **Details**
+
+```
+Street
+
+TickerSymbol
+
+Tradestyle
+
+Website
+
+YearStarted
+
+```
+
+Usage
 
 **Type**
 textarea
@@ -5715,20 +10304,8 @@ url
 **Properties**
 Filter, Group, Nillable, Sort
 
-
-Standard Objects AccountCleanInfo
-
-**Field Name** **Details**
-
 **Description**
 The website of the account.
-
-```
-YearStarted
-
-```
-
-Usage
 
 **Type**
 string
@@ -5742,6 +10319,9 @@ management assumed control of the company.
 
 Administrators can modify a limited set of AccountCleanInfo fields from the Account Clean Info page.
 
+
+### Standard Objects AccountContactRole
+
 Developers can create triggers that read the Account Clean Info fields to help automate the cleaning or related processing of account
 records. For example, you might create a trigger that reads the `Clean Status` field on the Account object. If an account record’s
 `Clean Status` field value is `Different` but the record has no `Billing Street` value, the trigger could update the record’s
@@ -5753,53 +10333,50 @@ Create triggers that read AccountCleanInfo fields to help automate the cleaning 
 _`353-8000`_ on the account record versus _`415 353 8000`_ on the matched Data.com record).
 
 ```
-  trigger AccountPhoneTrigger on Account (before update) {
+     trigger AccountPhoneTrigger on Account (before update) {
 
-    for (Account account: Trigger.new) {
+       for (Account account: Trigger.new) {
 
-      Account oldAccount = Trigger.oldMap.get(account.ID);
+         Account oldAccount = Trigger.oldMap.get(account.ID);
 
-      if (account.CleanStatus == 'Different') {
+         if (account.CleanStatus == 'Different') {
 
-         List <AccountCleanInfo> cleanInfo = [Select Id, IsDifferentPhone,
+            List <AccountCleanInfo> cleanInfo = [Select Id, IsDifferentPhone,
 
-  IsReviewedPhone, Phone from AccountCleanInfo where AccountId = :account.Id];
+     IsReviewedPhone, Phone from AccountCleanInfo where AccountId = :account.Id];
 
-         if (cleanInfo.size() > 0 && cleanInfo[0].IsDifferentPhone &&
+            if (cleanInfo.size() > 0 && cleanInfo[0].IsDifferentPhone &&
 
-  cleanInfo[0].Phone.StartsWith('+')) {
+     cleanInfo[0].Phone.StartsWith('+')) {
 
-           // if Data.com phone number is marked Different but starts with ‘+’,
+              // if Data.com phone number is marked Different but starts with ‘+’,
 
-  ignore this
+     ignore this
 
-           // and set the status to “Reviewed”
+              // and set the status to “Reviewed”
 
-           AccountCleanInfo cleanInfoToUpdate = new AccountCleanInfo();
+              AccountCleanInfo cleanInfoToUpdate = new AccountCleanInfo();
 
-           cleanInfoToUpdate.Id = cleanInfo[0].Id;
+              cleanInfoToUpdate.Id = cleanInfo[0].Id;
 
-           cleanInfoToUpdate.IsReviewedPhone = true;
+              cleanInfoToUpdate.IsReviewedPhone = true;
 
-           update cleanInfoToUpdate;
+              update cleanInfoToUpdate;
 
-           account.CleanStatus = 'Reviewed';
+              account.CleanStatus = 'Reviewed';
+
+            }
 
          }
 
-      }
+       }
 
-    }
-
-  }
+     }
 
 ```
 
 **•** Create a customized set of `Industry` field values for accounts. Use triggers to map values from fields on imported or cleaned
 records onto a standard set of values.
-
-
-### Standard Objects AccountContactRole
 
 **•** Read the `CleanStatus` field value on the Account object. If that value is `Different`, but a Salesforce record has no street
 address value, update the record’s status to `Not Compared` .
@@ -5815,6 +10392,9 @@ Change events are available for the object.
 ### AccountContactRole
 
 Represents the role that a Contact plays on an Account.
+
+
+Standard Objects AccountContactRole
 
 Supported Calls
 
@@ -5838,6 +10418,8 @@ AccountId
 
 ContactId
 
+IsDeleted
+
 ```
 
 **Type**
@@ -5852,21 +10434,16 @@ Required. ID of the Account.
 This is a relationship field.
 
 **Relationship Name**
-### Account
+Account
 
 **Relationship Type**
 Lookup
 
 **Refers To**
-### Account
+Account
 
 **Type**
 reference
-
-
-Standard Objects AccountContactRole
-
-**Field** **Details**
 
 **Properties**
 Create, Filter, Group, Sort, Update
@@ -5885,17 +10462,13 @@ Lookup
 **Refers To**
 Contact
 
-```
-IsDeleted
-
-IsPrimary
-
-Role
-
-```
-
 **Type**
 boolean
+
+
+Standard Objects AccountContactRole
+
+**Field** **Details**
 
 **Properties**
 Defaulted on create, Filter
@@ -5903,6 +10476,15 @@ Defaulted on create, Filter
 **Description**
 Indicates whether the object has been moved to the Recycle Bin ( `true` ) or not ( `false` ).
 Label is **Deleted** .
+
+```
+ IsPrimary
+
+ Role
+
+```
+
+Usage
 
 **Type**
 boolean
@@ -5927,11 +10509,6 @@ Buyer, and so on. Must be unique—there can't be multiple records in which the
 `AccountId`, `ContactId`, and `Role` values are identical. Different contacts can play
 the same role on the same account. A contact can play different roles on the same account.
 
-
-### Standard Objects AccountInsight
-
-Usage
-
 Use this object to define the role that a Contact plays on a given Account within the context of a specific Opportunity.
 
 Associated Objects
@@ -5944,11 +10521,12 @@ Change events are available for the object.
 
 SEE ALSO:
 
-### Account
+Account
 
 Contact
 
-### AccountInsight
+
+### Standard Objects AccountInsight AccountInsight
 
 Represents an individual insight (a key business development) related to an account record.
 
@@ -5970,6 +10548,10 @@ AccountId
 
 ActualHeardWithinDays
 
+CompetitorName
+
+ContactName
+
 ```
 
 **Type**
@@ -5987,28 +10569,8 @@ int
 **Properties**
 Filter, Group, Nillable, Sort
 
-
-Standard Objects AccountInsight
-
-**Field Name** **Details**
-
 **Description**
 Reserved for future use.
-
-```
-CompetitorName
-
-ContactName
-
-ContactTitle
-
-CurrencyIsoCode
-
-Division
-
-ExpectedHeardWithinDays
-
-```
 
 **Type**
 string
@@ -6025,8 +10587,28 @@ string
 **Properties**
 Filter, Group, Nillable, Sort
 
+
+Standard Objects AccountInsight
+
+**Field Name** **Details**
+
 **Description**
 This field is not in use as of API version 46.0.
+
+```
+ContactTitle
+
+CurrencyIsoCode
+
+Division
+
+ExpectedHeardWithinDays
+
+LastHeard
+
+LastReferencedDate
+
+```
 
 **Type**
 string
@@ -6059,29 +10641,11 @@ The division of the related record.
 **Type**
 int
 
-
-Standard Objects AccountInsight
-
-**Field Name** **Details**
-
 **Properties**
 Filter, Group, Nillable, Sort
 
 **Description**
 Reserved for future use.
-
-```
-LastHeard
-
-LastReferencedDate
-
-LastViewedDate
-
-NumberOfNewsArticles
-
-Rationale
-
-```
 
 **Type**
 dateTime
@@ -6094,6 +10658,11 @@ Reserved for future use.
 
 **Type**
 dateTime
+
+
+Standard Objects AccountInsight
+
+**Field Name** **Details**
 
 **Properties**
 Filter, Nillable, Sort
@@ -6101,6 +10670,19 @@ Filter, Nillable, Sort
 **Description**
 The timestamp when the current user last accessed this record, a record related
 to this record, or a list view.
+
+```
+LastViewedDate
+
+NumberOfNewsArticles
+
+Rationale
+
+Title
+
+TrendType
+
+```
 
 **Type**
 dateTime
@@ -6129,25 +10711,9 @@ string
 **Properties**
 Filter, Group, Nillable
 
-
-### Standard Objects AccountOwnerSharingRule
-
-**Field Name** **Details**
-
 **Description**
 The explanation for an insight, providing more background information and
 details that are specific to the org.
-
-```
-Title
-
-TrendType
-
-Type
-
-```
-
-Usage
 
 **Type**
 string
@@ -6164,6 +10730,11 @@ picklist
 **Properties**
 Filter, Group, Restricted picklist, Sort
 
+
+### Standard Objects AccountOwnerSharingRule
+
+**Field Name** **Details**
+
 **Description**
 The trend type of the insight. Possible values include:
 
@@ -6172,6 +10743,13 @@ The trend type of the insight. Possible values include:
 **•** Positive
 
 **•** Informational
+
+```
+Type
+
+```
+
+Usage
 
 **Type**
 picklist
@@ -6197,21 +10775,21 @@ Represents the rules for sharing an account with a User other than the owner.
 Note: To programmatically update owner sharing rules, we recommend that you use Metadata API. Contact Salesforce customer
 support to enable access to this object for your org.
 
-
-Standard Objects AccountOwnerSharingRule
-
 Supported Calls
 
 `create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`, `update()`,
 
 ```
-   upsert()
+upsert()
 
 ```
 
 Special Access Rules
 
 Customer Portal users can't access this object.
+
+
+Standard Objects AccountOwnerSharingRule
 
 Fields
 
@@ -6223,6 +10801,8 @@ AccountAccessLevel
 CaseAccessLevel
 
 ContactAccessLevel
+
+Description
 
 ```
 
@@ -6271,26 +10851,10 @@ any associated contacts. The possible values are:
 
 **•** `Read`
 
-
-Standard Objects AccountOwnerSharingRule
-
-**Field** **Details**
-
 **•** `Edit`
 
 Note: When `DefaultContactAccess` is set to `Controlled by Parent`,
 you can’t create or update this field.
-
-```
-Description
-
-DeveloperName
-
-GroupId
-
-OpportunityAccessLevel
-
-```
 
 **Type**
 textarea
@@ -6298,9 +10862,25 @@ textarea
 **Properties**
 Create, Filter, Nillable, Sort, Update
 
+
+Standard Objects AccountOwnerSharingRule
+
+**Field** **Details**
+
 **Description**
 A description of the sharing rule. Maximum size is 1000 characters. This field is available in
 API version 29.0 and later.
+
+```
+DeveloperName
+
+GroupId
+
+OpportunityAccessLevel
+
+Name
+
+```
 
 **Type**
 string
@@ -6338,11 +10918,6 @@ picklist
 **Properties**
 Create, Filter, Group, Restricted picklist, Sort, Update
 
-
-Standard Objects AccountOwnerSharingRule
-
-**Field** **Details**
-
 **Description**
 A value that represents the type of access granted to the target Group for any associated
 Opportunity. The possible values are:
@@ -6353,17 +10928,13 @@ Opportunity. The possible values are:
 
 **•** `Edit`
 
-```
-Name
-
- UserOrGroupId
-
-```
-
-Usage
-
 **Type**
 string
+
+
+### Standard Objects AccountPartner
+
+**Field** **Details**
 
 **Properties**
 Create, Filter, Group, Sort, Update
@@ -6371,6 +10942,13 @@ Create, Filter, Group, Sort, Update
 **Description**
 Label of the sharing rule as it appears in the user interface. Limited to 80 characters.
 Corresponds to **Label** on the user interface.
+
+```
+ UserOrGroupId
+
+```
+
+Usage
 
 **Type**
 reference
@@ -6405,9 +10983,6 @@ connection.create(rule);
 
 ```
 
-
-### Standard Objects AccountPartner
-
 [Note: The original territory management feature is now unavailable. For more information, see The Original Territory Management](https://help.salesforce.com/articleView?id=The-original-Territory-Management-module-will-be-retired-in-the-Summer-20-release&language=en_US&type=1)
 [Module Will Be Retired in the Summer ’21 Release. The information in this topic applies to the original territory management](https://help.salesforce.com/articleView?id=The-original-Territory-Management-module-will-be-retired-in-the-Summer-20-release&language=en_US&type=1)
 feature only, and not to Enterprise Territory Management.
@@ -6418,7 +10993,7 @@ SEE ALSO:
 
 AccountShare
 
-_[Metadata API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_sharingrules.htm)_ : SharingRules
+_[Metadata API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.262.0.api_meta.meta/api_meta/meta_sharingrules.htm)_ : SharingRules
 
 ### AccountPartner
 
@@ -6427,6 +11002,9 @@ Partner record is created for a partner relationship between two accounts. An Ac
 between an account and an opportunity’s account when a Partner record is created between an account and an opportunity.
 
 Note: This object is completely distinct from and independent of Account records that have been enabled for the partner portal.
+
+
+Standard Objects AccountPartner
 
 Supported Calls
 
@@ -6442,6 +11020,10 @@ Fields
 
 ```
 AccountFromId
+
+AccountToId
+
+IsPrimary
 
 ```
 
@@ -6463,23 +11045,7 @@ AccountFrom
 Lookup
 
 **Refers To**
-### Account
-
-
-Standard Objects AccountPartner
-
-**Field** **Details**
-
-```
-AccountToId
-
-IsPrimary
-
-OpportunityId
-
-ReversePartnerId
-
-```
+Account
 
 **Type**
 reference
@@ -6504,12 +11070,26 @@ Account
 **Type**
 boolean
 
+
+Standard Objects AccountPartner
+
+**Field** **Details**
+
 **Properties**
 Create, Defaulted on create, Filter, Group, Sort
 
 **Description**
 Indicates whether the AccountPartner is the primary partner of an opportunity ( `true` ).
 When there are no corresponding Opportunity Partner records, the value is `false` .
+
+```
+OpportunityId
+
+ReversePartnerId
+
+Role
+
+```
 
 **Type**
 reference
@@ -6537,18 +11117,8 @@ reference
 **Properties**
 Filter, Group, Nillable, Sort
 
-
-### Standard Objects AccountPlan
-
-**Field** **Details**
-
 **Description**
 ID of the reciprocal AccountPartner record in a partner relationship.
-
-```
-Role
-
-```
 
 **Type**
 picklist
@@ -6566,6 +11136,9 @@ When you create a partner relationship between two accounts (when you create a P
 the API automatically creates two AccountPartner records, one for the forward relationship and one for the reverse. For example, if you
 create a Partner relationship with “Acme, Inc.” as the `AccountFromId` and “Acme Consulting” as the `AccountToId`, the API
 automatically creates two AccountPartner records:
+
+
+### Standard Objects AccountPlan
 
 **•** The forward relationship AccountPartner with “Acme, Inc.” as the `AccountFromId` and “Acme Consulting” as the `AccountToId` .
 
@@ -6596,9 +11169,6 @@ Special Access Rules
 
 This object is available if sales account plans are turned on.
 
-
-Standard Objects AccountPlan
-
 Fields
 
 **Field** **Details**
@@ -6607,12 +11177,6 @@ Fields
 AccountChallenges
 
 AccountCmptvWeaknesses
-
-AccountCompetitiveStrengths
-
-AccountCompetitors
-
-AccountId
 
 ```
 
@@ -6633,6 +11197,24 @@ Create, Nillable, Update
 
 **Description**
 The shortcomings that hinder the account’s ability to outperform competitors in the market.
+
+
+Standard Objects AccountPlan
+
+**Field** **Details**
+
+```
+AccountCompetitiveStrengths
+
+AccountCompetitors
+
+AccountId
+
+AccountIndustryTrends
+
+AccountInternalRiskRating
+
+```
 
 **Type**
 textarea
@@ -6667,28 +11249,8 @@ This field is a relationship field.
 **Relationship Name**
 Account
 
-
-Standard Objects AccountPlan
-
-**Field** **Details**
-
 **Refers To**
 Account
-
-```
-AccountIndustryTrends
-
-AccountInternalRiskRating
-
-AccountPrfmIndicators
-
-AccountStrategicPriorities
-
-AccountVision
-
-CallingStrategy
-
-```
 
 **Type**
 textarea
@@ -6708,6 +11270,26 @@ Create, Filter, Group, Nillable, Sort, Update
 **Description**
 The rating that’s assigned to assess the risk level of the account. To access this field, you must
 have an FSC Sales or a Financial Services Cloud Extension license.
+
+
+Standard Objects AccountPlan
+
+**Field** **Details**
+
+```
+AccountPrfmIndicators
+
+AccountStrategicPriorities
+
+AccountVision
+
+CallingStrategy
+
+CallingStrategyNotes
+
+EndDate
+
+```
 
 **Type**
 textarea
@@ -6740,30 +11322,12 @@ The long-term value statement of the account.
 **Type**
 textarea
 
-
-Standard Objects AccountPlan
-
-**Field** **Details**
-
 **Properties**
 Create, Nillable, Update
 
 **Description**
 How frequently the relationship team meets with the account. To access this field, you must
 have an FSC Sales or a Financial Services Cloud Extension license.
-
-```
-CallingStrategyNotes
-
-EndDate
-
-FlexCard
-
-LastReferencedDate
-
-LastViewedDate
-
-```
 
 **Type**
 textarea
@@ -6781,8 +11345,26 @@ date
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
+
+Standard Objects AccountPlan
+
+**Field** **Details**
+
 **Description**
 The end date of the account plan.
+
+```
+FlexCard
+
+LastReferencedDate
+
+LastViewedDate
+
+Name
+
+Notes
+
+```
 
 **Type**
 string
@@ -6810,27 +11392,9 @@ dateTime
 **Properties**
 Filter, Nillable, Sort
 
-
-Standard Objects AccountPlan
-
-**Field** **Details**
-
 **Description**
 The timestamp when the current user last viewed this record or list view. If this value is null,
 and `LastReferenceDate` isn’t null, the user accessed this record or list view indirectly.
-
-```
-Name
-
-Notes
-
-OwnerId
-
-RelationshipOpportunities
-
-RelationshipStrengths
-
-```
 
 **Type**
 string
@@ -6849,6 +11413,24 @@ Create, Nillable, Update
 
 **Description**
 The notes or observations for the account plan.
+
+
+Standard Objects AccountPlan
+
+**Field** **Details**
+
+```
+OwnerId
+
+RelationshipOpportunities
+
+RelationshipStrengths
+
+RelationshipSummary
+
+RelationshipThreats
+
+```
 
 **Type**
 reference
@@ -6882,26 +11464,8 @@ textarea
 **Properties**
 Create, Nillable, Update
 
-
-Standard Objects AccountPlan
-
-**Field** **Details**
-
 **Description**
 The strengths in the relationship with the account.
-
-```
-RelationshipSummary
-
-RelationshipThreats
-
-RelationshipWeaknesses
-
-StartDate
-
-Status
-
-```
 
 **Type**
 textarea
@@ -6921,6 +11485,22 @@ Create, Nillable, Update
 
 **Description**
 The possible concerns in the relationship with the account.
+
+
+Standard Objects AccountPlan
+
+**Field** **Details**
+
+```
+RelationshipWeaknesses
+
+StartDate
+
+Status
+
+```
+
+Associated Objects
 
 **Type**
 textarea
@@ -6955,37 +11535,31 @@ Possible values are:
 
 **•** `Inactive`
 
-
-### Standard Objects AccountPlanObjective
-
-**Field** **Details**
-
 **•** `Not Started`
 
 The default value is `Not Started` .
 
-Associated Objects
-
 This object has these associated objects. If the API version isn’t specified, they’re available in the same API versions as this object. Otherwise,
 they’re available in the specified API version and later.
 
-**[AccountPlanChangeEvent](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_change_event.htm)**
+**[AccountPlanChangeEvent](https://developer.salesforce.com/docs/atlas.en-us.262.0.object_reference.meta/object_reference/sforce_api_associated_objects_change_event.htm)**
 
 Change events are available for the object.
 
-**[AccountPlanHistory](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_history.htm)**
+**[AccountPlanHistory](https://developer.salesforce.com/docs/atlas.en-us.262.0.object_reference.meta/object_reference/sforce_api_associated_objects_history.htm)**
 
 History is available for tracked fields of the object.
 
-**[AccountPlanOwnerSharingRule](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_accountownersharingrule.htm)**
+**[AccountPlanOwnerSharingRule](https://developer.salesforce.com/docs/atlas.en-us.262.0.object_reference.meta/object_reference/sforce_api_objects_accountownersharingrule.htm)**
 
 Sharing rules are available for the object.
 
-**[AccountPlanShare](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_accountshare.htm)**
+**[AccountPlanShare](https://developer.salesforce.com/docs/atlas.en-us.262.0.object_reference.meta/object_reference/sforce_api_objects_accountshare.htm)**
 
 Sharing is available for the object.
 
-### AccountPlanObjective
+
+### Standard Objects AccountPlanObjective AccountPlanObjective
 
 Represents strategic objectives or initiatives pursued by a relationship team with a customer to enhance customer engagement and
 satisfaction. This object is available in API version 62.0 and later.
@@ -7006,6 +11580,8 @@ Fields
 ```
 AccountPlanId
 
+AccountPlanObjCategoryId
+
 ```
 
 **Type**
@@ -7019,30 +11595,14 @@ The account plan associated with the objective.
 
 This field is a relationship field.
 
-
-Standard Objects AccountPlanObjective
-
-**Field** **Details**
-
 **Relationship Name**
-AccountPlan
+### AccountPlan
 
 **Relationship Type**
 Master-detail
 
 **Refers To**
-AccountPlan
-
-```
-AccountPlanObjCategoryId
-
-Description
-
-EndDate
-
-ExternalStakeholderId
-
-```
+### AccountPlan
 
 **Type**
 reference
@@ -7059,8 +11619,26 @@ This field is a relationship field.
 **Relationship Name**
 AccountPlanObjCategory
 
+
+Standard Objects AccountPlanObjective
+
+**Field** **Details**
+
 **Refers To**
 AccountPlanObjectiveCategory
+
+```
+Description
+
+EndDate
+
+ExternalStakeholderId
+
+LastInteractionSumGenDate
+
+LastReferencedDate
+
+```
 
 **Type**
 textarea
@@ -7086,11 +11664,6 @@ reference
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
-
-Standard Objects AccountPlanObjective
-
-**Field** **Details**
-
 **Description**
 The customer stakeholder contact associated with the account plan objective. The relationship
 team collaborates with the customer stakeholder to achieve a specific objective. To access
@@ -7103,17 +11676,6 @@ ExternalStakeholder
 
 **Refers To**
 Contact
-
-```
-LastInteractionSumGenDate
-
-LastReferencedDate
-
-LastViewedDate
-
-Name
-
-```
 
 **Type**
 dateTime
@@ -7129,11 +11691,27 @@ license.
 **Type**
 dateTime
 
+
+Standard Objects AccountPlanObjective
+
+**Field** **Details**
+
 **Properties**
 Filter, Nillable, Sort
 
 **Description**
 The timestamp for when the current user last viewed a record related to this record.
+
+```
+LastViewedDate
+
+Name
+
+ObjectiveInteractionSummary
+
+ObjectiveOwnerId
+
+```
 
 **Type**
 dateTime
@@ -7153,22 +11731,6 @@ Create, Filter, Group, idLookup, Sort, Update
 
 **Description**
 The name of the account plan objective.
-
-
-Standard Objects AccountPlanObjective
-
-**Field** **Details**
-
-```
-ObjectiveInteractionSummary
-
-ObjectiveOwnerId
-
-OwnerId
-
-Priority
-
-```
 
 **Type**
 textarea
@@ -7198,6 +11760,22 @@ ObjectiveOwner
 **Refers To**
 User
 
+
+Standard Objects AccountPlanObjective
+
+**Field** **Details**
+
+```
+OwnerId
+
+Priority
+
+StartDate
+
+Status
+
+```
+
 **Type**
 reference
 
@@ -7226,11 +11804,6 @@ Specifies the level of importance placed on achieving the objective associated w
 account plan. To access this field, you must have an FSC Sales or a Financial Services Cloud
 Extension license.
 
-
-### Standard Objects AccountPlanObjectiveMeasure
-
-**Field** **Details**
-
 Possible values are:
 
 **•** `High`
@@ -7238,15 +11811,6 @@ Possible values are:
 **•** `Low`
 
 **•** `Medium`
-
-```
-StartDate
-
-Status
-
-```
-
-Associated Objects
 
 **Type**
 date
@@ -7270,9 +11834,16 @@ Possible values are:
 
 **•** `Closed`
 
+
+### Standard Objects AccountPlanObjectiveMeasure
+
+**Field** **Details**
+
 **•** `In Progress`
 
 **•** `New`
+
+Associated Objects
 
 This object has these associated objects. If the API version isn’t specified, they’re available in the same API versions as this object. Otherwise,
 they’re available in the specified API version and later.
@@ -7294,9 +11865,6 @@ Sharing is available for the object.
 Represents the performance of target metrics for an objective associated with the account plan. This object is available in API version
 62.0 and later.
 
-
-Standard Objects AccountPlanObjectiveMeasure
-
 Supported Calls
 
 `create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
@@ -7312,13 +11880,6 @@ Fields
 
 AccountPlanObjMeasCalcDefId
 
-```
-AccountPlanObjectiveId
-
-CurrentCurrencyValue
-
-```
-
 **Type**
 reference
 
@@ -7330,11 +11891,27 @@ The account plan objective calculation definition associated with the measure.
 
 This field is a relationship field. Available in API version 63.0 and later.
 
+
+Standard Objects AccountPlanObjectiveMeasure
+
+**Field** **Details**
+
 **Relationship Name**
 AccountPlanObjMeasCalcDef
 
 **Refers To**
 AccountPlanObjMeasCalcDef
+
+```
+AccountPlanObjectiveId
+
+CurrentCurrencyValue
+
+CurrentNumberValue
+
+CurrentPercentValue
+
+```
 
 **Type**
 reference
@@ -7362,31 +11939,8 @@ currency
 **Properties**
 Filter, Nillable, Sort
 
-
-Standard Objects AccountPlanObjectiveMeasure
-
-**Field** **Details**
-
 **Description**
 The current value in currency for a measure associated with the account plan objective.
-
-```
-CurrentNumberValue
-
-CurrentPercentValue
-
-CurrentValue
-
-```
-
-CurrentValueTimestamp
-
-```
-LastReferencedDate
-
-LastViewedDate
-
-```
 
 **Type**
 double
@@ -7405,6 +11959,29 @@ Filter, Nillable, Sort
 
 **Description**
 The current value in percentage for a measure associated with the account plan objective.
+
+
+Standard Objects AccountPlanObjectiveMeasure
+
+**Field** **Details**
+
+```
+CurrentValue
+
+```
+
+CurrentValueTimestamp
+
+```
+LastReferencedDate
+
+LastViewedDate
+
+Name
+
+TargetCurrencyValue
+
+```
 
 **Type**
 string
@@ -7437,30 +12014,12 @@ The timestamp when the current user last viewed a record related to this record.
 **Type**
 dateTime
 
-
-Standard Objects AccountPlanObjectiveMeasure
-
-**Field** **Details**
-
 **Properties**
 Filter, Nillable, Sort
 
 **Description**
 The timestamp when the current user last viewed this record. If this value is null, it’s possible
 that this record was referenced (LastReferencedDate) and not viewed.
-
-```
-Name
-
-TargetCurrencyValue
-
-TargetNumberValue
-
-TargetPercentValue
-
-TargetValue
-
-```
 
 **Type**
 string
@@ -7477,8 +12036,26 @@ currency
 **Properties**
 Filter, Nillable, Sort
 
+
+Standard Objects AccountPlanObjectiveMeasure
+
+**Field** **Details**
+
 **Description**
 The target value in currency for a measure associated with the account plan objective.
+
+```
+TargetNumberValue
+
+TargetPercentValue
+
+TargetValue
+
+ValueType
+
+```
+
+Associated Objects
 
 **Type**
 double
@@ -7507,18 +12084,6 @@ Create, Filter, Group, Nillable, Sort, Update
 **Description**
 The target value for a measure associated with the account plan objective.
 
-
-### Standard Objects AccountPlanObjMeasCalcCond
-
-**Field** **Details**
-
-```
-ValueType
-
-```
-
-Associated Objects
-
 **Type**
 picklist
 
@@ -7538,6 +12103,9 @@ Possible values are:
 
 This object has these associated objects. If the API version isn’t specified, they’re available in the same API versions as this object. Otherwise,
 they’re available in the specified API version and later.
+
+
+### Standard Objects AccountPlanObjMeasCalcCond
 
 **AccountPlanObjectiveMeasureChangeEvent on page 68**
 Change events are available for the object.
@@ -7565,15 +12133,12 @@ Fields
 ```
 AccountPlanObjMeasCalcDefId
 
+FieldName
+
 ```
 
 **Type**
 reference
-
-
-Standard Objects AccountPlanObjMeasCalcCond
-
-**Field** **Details**
 
 **Properties**
 Create, Filter, Group, Sort
@@ -7592,15 +12157,6 @@ Master-detail
 **Refers To**
 AccountPlanObjMeasCalcDef
 
-```
-FieldName
-
-Operation
-
-Value
-
-```
-
 **Type**
 picklist
 
@@ -7610,6 +12166,20 @@ Create, Filter, Group, Restricted picklist, Sort, Update
 **Description**
 A field on the calculation definition’s `TargetObject` that you want to filter by. Fields on
 the Campaign, Case, Contact, or Opportunity objects are supported.
+
+
+### Standard Objects AccountPlanObjMeasCalcDef
+
+**Field** **Details**
+
+```
+Operation
+
+Value
+
+```
+
+Usage
 
 **Type**
 picklist
@@ -7643,18 +12213,11 @@ Possible values are:
 **Type**
 string
 
-
-### Standard Objects AccountPlanObjMeasCalcDef
-
-**Field** **Details**
-
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 The value to match for the specified field.
-
-Usage
 
 Let’s say that a calculation definition tracks the currency amount on Closed Won opportunities. The calculation definition’s
 `TargetObject` is `Opportunity`, and the condition further specifies these values.
@@ -7669,6 +12232,9 @@ Let’s say that a calculation definition tracks the currency amount on Closed W
 
 Represents the definition of a target object, rollup field, and logic for calculating the current value of a sales account plan objective
 measure. This object is available in API version 63.0 and later.
+
+
+Standard Objects AccountPlanObjMeasCalcDef
 
 Supported Calls
 
@@ -7687,6 +12253,10 @@ Description
 
 DeveloperName
 
+Language
+
+MasterLabel
+
 ```
 
 **Type**
@@ -7701,11 +12271,6 @@ for an account plan objective measure.
 
 **Type**
 string
-
-
-Standard Objects AccountPlanObjMeasCalcDef
-
-**Field** **Details**
 
 **Properties**
 Create, Filter, Group, Sort, Update
@@ -7725,15 +12290,6 @@ The unique name of the object in the API. The name:
 
 **•** can’t contain 2 consecutive underscores
 
-```
-Language
-
-MasterLabel
-
-NamespacePrefix
-
-```
-
 **Type**
 picklist
 
@@ -7747,12 +12303,26 @@ definition.
 **Type**
 string
 
+
+Standard Objects AccountPlanObjMeasCalcDef
+
+**Field** **Details**
+
 **Properties**
 Create, Filter, Group, Sort, Update
 
 **Description**
 Label for this calculation definition. This display value is the internal label that doesn't get
 translated.
+
+```
+NamespacePrefix
+
+RollupType
+
+Status
+
+```
 
 **Type**
 string
@@ -7771,27 +12341,12 @@ The namespace prefix can have one of these values.
 **•** In Developer Edition orgs, `NamespacePrefix` is set to the namespace prefix of the
 org for all objects that support it, unless an object is in an installed managed package.
 In that case, the object has the namespace prefix of the installed managed package. This
-
-
-Standard Objects AccountPlanObjMeasCalcDef
-
-**Field** **Details**
-
 field’s value is the namespace prefix of the Developer Edition org of the package
 developer.
 
 **•** In orgs that aren’t Developer Edition orgs, `NamespacePrefix` is set only for objects
 that are part of an installed managed package. All other objects have no namespace
 prefix.
-
-```
-RollupType
-
-Status
-
-TargetField
-
-```
 
 **Type**
 picklist
@@ -7818,6 +12373,11 @@ In Setup, this field’s label is Calculation Type.
 **Type**
 picklist
 
+
+Standard Objects AccountPlanObjMeasCalcDef
+
+**Field** **Details**
+
 **Properties**
 Create, Filter, Group, Restricted picklist, Sort, Update
 
@@ -7833,6 +12393,15 @@ Possible values are:
 Only active calculation definitions are available for users to select when they specify an
 account plan objective measure.
 
+```
+TargetField
+
+TargetObject
+
+ValueType
+
+```
+
 **Type**
 picklist
 
@@ -7845,20 +12414,6 @@ current value. Rollup fields on the Campaign, Case, Contact, or Opportunity obje
 supported.
 
 In Setup, this field’s label is Rollup Field.
-
-
-### Standard Objects AccountPlanObjMeasCalcDefLocalization
-
-**Field** **Details**
-
-```
-TargetObject
-
-ValueType
-
-```
-
-Usage
 
 **Type**
 picklist
@@ -7892,9 +12447,16 @@ Possible values are:
 
 **•** `Currency`
 
+
+### Standard Objects AccountPlanObjMeasCalcDefLocalization
+
+**Field** **Details**
+
 **•** `Number`
 
 **•** `Percent`
+
+Usage
 
 Let’s say that a calculation definition tracks the currency amount on opportunities. The calculation definition’s `TargetObject` is
 `Opportunity`, `TargetField` is `Amount`, and `RollupType` is `Sum` .
@@ -7909,12 +12471,9 @@ Supported Calls
 `create()`, `delete()`, `describeSObjects()`, `getDeleted()getUpdated()query()`, `retrieve()`, `update()`,
 
 ```
-upsert()
+   upsert()
 
 ```
-
-
-Standard Objects AccountPlanObjMeasCalcDefLocalization
 
 Special Access Rules
 
@@ -7936,8 +12495,6 @@ Language
 ```
 NamespacePrefix
 
-ParentId
-
 ```
 
 **Type**
@@ -7954,6 +12511,11 @@ string
 
 **Properties**
 Filter, Group, Nillable, Sort
+
+
+### Standard Objects AccountPlanObjMeasRela
+
+**Field** **Details**
 
 **Description**
 The namespace prefix that is associated with this object. Each Developer Edition org that
@@ -7973,27 +12535,24 @@ developer.
 that are part of an installed managed package. All other objects have no namespace
 prefix.
 
+```
+ ParentId
+
+Value
+
+```
+
+Usage
+
 **Type**
 reference
 
 **Properties**
 Create, Filter, Group, Sort
 
-
-### Standard Objects AccountPlanObjMeasRela
-
-**Field** **Details**
-
 **Description**
 The ID of the related account plan objective measure calculation definition. This field is a
 relationship field.
-
-```
-Value
-
-```
-
-Usage
 
 **Type**
 textarea
@@ -8011,6 +12570,9 @@ Translate the labels of your account plan objective measure calculation definiti
 Represents a junction between an account plan objective measure and the related objects. This object is available in API version 62.0
 and later.
 
+
+Standard Objects AccountPlanObjMeasRela
+
 Supported Calls
 
 `create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
@@ -8022,6 +12584,12 @@ Fields
 
 ```
 AccountPlanObjectiveMeasureId
+
+LastReferencedDate
+
+LastViewedDate
+
+Name
 
 ```
 
@@ -8042,26 +12610,8 @@ AccountPlanObjectiveMeasure
 **Relationship Type**
 Master-detail
 
-
-Standard Objects AccountPlanObjMeasRela
-
-**Field** **Details**
-
 **Refers To**
 AccountPlanObjectiveMeasure (the master object)
-
-```
-LastReferencedDate
-
-LastViewedDate
-
-Name
-
-ReferenceRecordId
-
-```
-
-Associated Objects
 
 **Type**
 dateTime
@@ -8088,8 +12638,20 @@ string
 **Properties**
 Autonumber, Defaulted on create, Filter, idLookup, Sort
 
+
+### Standard Objects AccountRelationship
+
+**Field** **Details**
+
 **Description**
 The name of the account plan objective measure relation record.
+
+```
+ReferenceRecordId
+
+```
+
+Associated Objects
 
 **Type**
 reference
@@ -8111,9 +12673,6 @@ Case, FinancialDeal, Opportunity
 This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
 Otherwise, they’re available in the specified API version and later.
 
-
-### Standard Objects AccountRelationship
-
 **AccountPlanObjMeasRelaChangeEvent on page 68**
 Change events are available for the object.
 
@@ -8133,6 +12692,9 @@ Special Access Rules
 
 In Digital Experience Settings, turn on the Enable Account Relationships org preference, which is off by default.
 
+
+Standard Objects AccountRelationship
+
 Fields
 
 **Field** **Details**
@@ -8143,6 +12705,12 @@ AccountFromID
 AccountToId
 
 LastReferencedDate
+
+LastViewedDate
+
+Name
+
+OwnerId
 
 ```
 
@@ -8174,22 +12742,6 @@ Filter, Nillable, Sort
 The timestamp when the current user last accessed this record, a record related to this record,
 or a list view.
 
-
-Standard Objects AccountRelationship
-
-**Field** **Details**
-
-```
-LastViewedDate
-
-Name
-
-OwnerId
-
-Type
-
-```
-
 **Type**
 dateTime
 
@@ -8212,11 +12764,23 @@ The name of the account relationship.
 **Type**
 reference
 
+
+Standard Objects AccountRelationship
+
+**Field** **Details**
+
 **Properties**
 Create, Defaulted on create, Filter, Group, Sort, Update
 
 **Description**
 ID of the user who created the account relationship.
+
+```
+Type
+
+```
+
+Associated Objects
 
 **Type**
 picklist
@@ -8250,11 +12814,6 @@ Standard values are:
 
 **•** Contractor
 
-
-### Standard Objects AccountRelationshipShareRule
-
-**Field** **Details**
-
 **•** Dealer
 
 **•** Consultant
@@ -8273,13 +12832,14 @@ Standard values are:
 
 Picklist items can be updated with your own values.
 
-Associated Objects
-
 This object has the following associated objects. Unless noted, they’re available in the same API version as this object.
 
 **AccountRelationshipFeed**
 
 Feed tracking is available for the object.
+
+
+### Standard Objects AccountRelationshipShareRule
 
 **AccountRelationshipHistory**
 
@@ -8309,6 +12869,8 @@ Fields
 ```
 AccessLevel
 
+AccountToCriteriaField
+
 ```
 
 **Type**
@@ -8317,22 +12879,12 @@ picklist
 **Properties**
 Create, Filter, Group, Restricted picklist, Sort, Update
 
-
-Standard Objects AccountRelationshipShareRule
-
-**Field** **Details**
-
 **Description**
 Type of access granted by the share rule. Valid values are:
 
 **•** `Read` (Read Only)
 
 **•** `Edit` (Read/Write)
-
-```
-AccountToCriteriaField
-
-```
 
 **Type**
 picklist
@@ -8356,6 +12908,11 @@ Possible values are:
 **•** `Case.OwnerId`
 
 **•** `Contact.AccountId`
+
+
+Standard Objects AccountRelationshipShareRule
+
+**Field** **Details**
 
 **•** `Contact.OwnerId`
 
@@ -8397,17 +12954,10 @@ Possible values are:
 
 **•** `PartnerMarketingBudget.OwnerId`
 
-
-Standard Objects AccountRelationshipShareRule
-
-**Field** **Details**
-
 ```
 Description
 
 DeveloperName
-
-EntityType
 
 ```
 
@@ -8433,12 +12983,28 @@ include spaces, not end with an underscore, and not contain two consecutive unde
 This field is automatically generated but you can supply your own value if you create the
 record using the API.
 
+
+Standard Objects AccountRelationshipShareRule
+
+**Field** **Details**
+
 Note: When creating large sets of data, always specify a unique `DeveloperName`
 for each record. If no `DeveloperName` is specified, performance may slow while
 Salesforce generates one for each record.
 
 Note: Only users with View DeveloperName OR View Setup and Configuration
 permission can view, group, sort, and filter this field.
+
+```
+EntityType
+
+Language
+
+MasterLabel
+
+NamespacePrefix
+
+```
 
 **Type**
 picklist
@@ -8469,22 +13035,6 @@ The type of data shared by this rule. Values are:
 
 **•** `PartnerMarketingBudget`
 
-
-Standard Objects AccountRelationshipShareRule
-
-**Field** **Details**
-
-```
-Language
-
-MasterLabel
-
-NamespacePrefix
-
-StaticFormulaCriteria
-
-```
-
 **Type**
 picklist
 
@@ -8505,6 +13055,11 @@ The label assigned to the sharing rule to identify it.
 
 **Type**
 string
+
+
+### Standard Objects AccountShare
+
+**Field** **Details**
 
 **Properties**
 Filter, Group, Nillable, Sort
@@ -8527,6 +13082,15 @@ developer.
 that are part of an installed managed package. All other objects have no namespace
 prefix.
 
+```
+StaticFormulaCriteria
+
+Type
+
+### AccountShare
+
+```
+
 **Type**
 string
 
@@ -8536,18 +13100,6 @@ Create, Filter, Nillable, Sort, Update
 **Description**
 A way to further filter what data gets shared. This must be a deterministic formula and
 spanning is not allowed.
-
-
-### Standard Objects AccountShare
-
-**Field** **Details**
-
-```
-Type
-
-### AccountShare
-
-```
 
 **Type**
 picklist
@@ -8564,6 +13116,9 @@ Represents a sharing entry on an account.
 You can only create, edit, and delete sharing entries for standard objects whose `RowCause` field is set to `Manual` . Sharing entries
 for standard objects with different `RowCause` values are created as a result of your Salesforce org’s sharing configuration and are
 read-only. For some sharing mechanisms, such as sharing sets, sharing entries aren’t stored at all.
+
+
+Standard Objects AccountShare
 
 Note: While Salesforce currently maintains read-only sharing entries for multiple sharing mechanisms, it’s possible that we’ll stop
 storing certain share records to improve performance. As a best practice, don’t create customizations that rely on the availability
@@ -8588,6 +13143,8 @@ settings of such fields.
 ```
 AccountAccessLevel
 
+AccountId
+
 ```
 
 **Type**
@@ -8601,11 +13158,6 @@ Level of access that the User or Group has to the Account. The possible values a
 
 **•** `Read`
 
-
-Standard Objects AccountShare
-
-**Field** **Details**
-
 **•** `Edit`
 
 **•** `All` (This value isn't valid for create or update calls.)
@@ -8614,15 +13166,6 @@ This field must be set to an access level that is at least equal to the organiza
 Account access level. In addition, either this field, the `OpportunityAccessLevel`
 field, or the `CaseAccessLevel` field must be set higher than the organization’s default
 access level.
-
-```
-AccountId
-
-CaseAccessLevel
-
-ContactAccessLevel
-
-```
 
 **Type**
 reference
@@ -8638,11 +13181,25 @@ This is a relationship field.
 **Relationship Name**
 Account
 
+
+Standard Objects AccountShare
+
+**Field** **Details**
+
 **Relationship Type**
 Lookup
 
 **Refers To**
 Account
+
+```
+CaseAccessLevel
+
+ContactAccessLevel
+
+OpportunityAccessLevel
+
+```
 
 **Type**
 picklist
@@ -8672,11 +13229,6 @@ picklist
 **Properties**
 Filter, Group, Nillable, Restricted picklist, Sort
 
-
-Standard Objects AccountShare
-
-**Field** **Details**
-
 **Description**
 Level of access that the User or Group has to contacts associated with the account. The
 possible values are:
@@ -8693,18 +13245,16 @@ This field must be set to an access level that is at least equal to the organiza
 for the associated account owner using the API. You must update the account owner’s
 `ContactAccessLevel` via the Salesforce user interface.
 
-```
-OpportunityAccessLevel
-
-RowCause
-
-```
-
 **Type**
 picklist
 
 **Properties**
 Create, Defaulted on create, Filter, Group, Restricted picklist, Sort, Update
+
+
+Standard Objects AccountShare
+
+**Field** **Details**
 
 **Description**
 Level of access that the User or Group has to opportunities associated with the Account. The
@@ -8721,6 +13271,11 @@ opportunity access level. This field can’t be updated via the API if the
 `AccountAccessLevel` field is set to `All` . You can't use the API to update this field
 for the associated Account owner. You must update the Account owner’s
 opportunityAccessLevel via the Salesforce user interface.
+
+```
+RowCause
+
+```
 
 **Type**
 picklist
@@ -8741,11 +13296,6 @@ shared the Account with the user or group.
 **•** `Owner` —The User is the owner of the Account
 
 **•** `Team` —The User or Group has team access (is an AccountTeamMember).
-
-
-Standard Objects AccountShare
-
-**Field** **Details**
 
 **•** `Rule` —The User or Group has access via an Account sharing rule.
 
@@ -8770,6 +13320,11 @@ Cloud site users via a share group.
 **•** `ARImplicit` —The User, who belongs to a partner or customer account, has access
 to the Account via an account relationship data sharing rule.
 
+
+Standard Objects AccountShare
+
+**Field** **Details**
+
 **•** `Territory2AssociationManual` —With Sales Territories in API version 44.0
 and earlier, the `TerritoryManual` reason code was written to AccountShare records
 when you manually assigned an account to a territory. In API version 45.0 and later,
@@ -8787,6 +13342,8 @@ territory.
 UserOrGroupId
 
 ```
+
+Usage
 
 **Type**
 reference
@@ -8808,11 +13365,6 @@ Lookup
 **Refers To**
 Group, User
 
-
-### Standard Objects AccountTag
-
-Usage
-
 This object allows you to determine which users and groups can view or edit Account records owned by other users.
 
 If you attempt to create an AccountShare record that matches an existing record, the request updates any modified fields and returns
@@ -8821,30 +13373,36 @@ the existing record.
 For example, the following code finds all accounts owned by a user and manually shares them to a portal user.
 
 ```
-   QueryResult result = conn.query("SELECT Id FROM Account WHERE OwnerId = '005D0000001LPFB'");
+QueryResult result = conn.query("SELECT Id FROM Account WHERE OwnerId = '005D0000001LPFB'");
 
-   // Create a new AccountShare object
+// Create a new AccountShare object
 
-   List<AccountShare> shares = new ArrayList<AccountShare>();
+List<AccountShare> shares = new ArrayList<AccountShare>();
 
-   for (SObject rec : result.getRecords()) {
+for (SObject rec : result.getRecords()) {
 
-      AccountShare share = new AccountShare();
+   AccountShare share = new AccountShare();
 
-      share.setAccountId(rec.getId());
+   share.setAccountId(rec.getId());
 
-      //Set the portal user Id to share the accounts with
+   //Set the portal user Id to share the accounts with
 
-      share.setUserOrGroupId("003D000000QA8Tl");
+   share.setUserOrGroupId("003D000000QA8Tl");
 
-      share.setAccountAccessLevel("Edit");
+   share.setAccountAccessLevel("Edit");
 
-      share.setOpportunityAccessLevel("Read");
+   share.setOpportunityAccessLevel("Read");
 
-      share.setCaseAccessLevel("Edit");
+   share.setCaseAccessLevel("Edit");
 
-      shares.add(share);
+   shares.add(share);
 
+```
+
+
+### Standard Objects AccountTag
+
+```
    }
 
    conn.create(shares.toArray(new AccountShare[shares.size()]));
@@ -8882,9 +13440,6 @@ Supported Calls
 
 `create()`, `delete()`, `describeSObjects()`, `query()`, `retrieve()`
 
-
-Standard Objects AccountTag
-
 Fields
 
 **Field Name** **Details**
@@ -8894,13 +13449,7 @@ ItemId
 
 Name
 
-TagDefinitionId
-
-Type
-
 ```
-
-Usage
 
 **Type**
 reference
@@ -8917,10 +13466,24 @@ string
 **Properties**
 Create, Filter
 
+
+### Standard Objects AccountTeamMember
+
+**Field Name** **Details**
+
 **Description**
 Name of the tag. If this value does not already exist, a new TagDefinition is created and
 becomes the parent of this Tag object. Otherwise, a TagDefinition with the same name
 becomes the parent of this Tag object. Parent relationships are created automatically.
+
+```
+TagDefinitionId
+
+Type
+
+```
+
+Usage
 
 **Type**
 reference
@@ -8950,9 +13513,6 @@ Valid values:
 AccountTag stores the relationship between its parent TagDefinition and the Account being tagged. Tag objects act as metadata,
 allowing users to describe and organize their data.
 
-
-### Standard Objects AccountTeamMember
-
 When a tag is deleted, its parent TagDefinition will also be deleted if the name is not being used; otherwise, the parent remains. Deleting
 a TagDefinition sends it to the Recycle Bin, along with any associated tag entries.
 
@@ -8966,6 +13526,9 @@ Supported Calls
 
 `create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
 `retrieve()`, `update()`, `upsert()`
+
+
+Standard Objects AccountTeamMember
 
 Special Access Rules
 
@@ -8981,6 +13544,8 @@ Fields
 AccountAccessLevel
 
 AccountId
+
+CaseAccessLevel
 
 ```
 
@@ -9014,20 +13579,6 @@ Create, Filter, Group, Sort
 Required. ID of the Account to which this user is a team member. Must be a valid account
 ID.
 
-
-Standard Objects AccountTeamMember
-
-**Field Name** **Details**
-
-```
-CaseAccessLevel
-
-ContactAccessLevel
-
-CurrencyIsoCode
-
-```
-
 **Type**
 picklist
 
@@ -9046,9 +13597,24 @@ are:
 
 This field must be set to an access level that is at least equal to the organization’s default
 case access level. In addition, the users’s `AccountAccessLevel`,
+
+
+Standard Objects AccountTeamMember
+
+**Field Name** **Details**
+
 `ContactAccessLevel`, `OpportunityAccessLevel`, or `CaseAccessLevel`
 field must be set higher than the organization’s default access level. This field is available in
 API version 37.0 and later.
+
+```
+ContactAccessLevel
+
+CurrencyIsoCode
+
+IsDeleted
+
+```
 
 **Type**
 picklist
@@ -9085,22 +13651,6 @@ Filter, Restricted picklist
 Available only for orgs with the multicurrency feature enabled. Contains the ISO code for
 any currency allowed by the org.
 
-
-Standard Objects AccountTeamMember
-
-**Field Name** **Details**
-
-```
-IsDeleted
-
-OpportunityAccessLevel
-
-PhotoURL
-
-TeamMemberRole
-
-```
-
 **Type**
 boolean
 
@@ -9117,8 +13667,24 @@ cascade-deleted when deleting a related Account. For directly deleted
 AccountTeamMember records, don’t use the isDeleted field to detect deleted records in
 SOQL queries or `queryAll()` calls.
 
+
+Standard Objects AccountTeamMember
+
+**Field Name** **Details**
+
 The `getDeleted()` call also doesn’t show deleted account team members unless
 the record was deleted from an account related list or the Developer Console.
+
+```
+OpportunityAccessLevel
+
+PhotoURL
+
+TeamMemberRole
+
+Title
+
+```
 
 **Type**
 picklist
@@ -9155,26 +13721,12 @@ and later.
 **Type**
 picklist
 
-
-### Standard Objects AccountTerritoryAssignmentRule
-
-**Field Name** **Details**
-
 **Properties**
 Create, Filter, Nillable, Update
 
 **Description**
 Role associated with this team member. One of the valid team member roles defined for
 your organization. Label is **Team Role** .
-
-```
-Title
-
- UserId
-
-```
-
-Usage
 
 **Type**
 string
@@ -9184,6 +13736,18 @@ Filter, Nillable, Sort, Group
 
 **Description**
 Read only. Retrieves the user’s title. This field is available in API version 37.0 and later.
+
+
+### Standard Objects AccountTerritoryAssignmentRule
+
+**Field Name** **Details**
+
+```
+ UserId
+
+```
+
+Usage
 
 **Type**
 reference
@@ -9200,8 +13764,15 @@ If team members are added by a user with group-based access, those members are r
 applies even if the **Keep account team** option is selected. A Salesforce admin, the account owner, or someone higher in the role
 hierarchy should add team members to keep team members related to the account.
 
-[If you use SOQL statements to query all records in an organization, the ALL ROWS keywords don’t query deleted account team member](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/langCon_apex_SOQL_query_all_rows.htm)
+[If you use SOQL statements to query all records in an organization, the ALL ROWS keywords don’t query deleted account team member](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/langCon_apex_SOQL_query_all_rows.htm)
 records.
+
+Associated Objects
+
+This object has the following associated objects. If the API version isn't specified, they're available in the same API versions as this object.
+
+**[AccountTeamMemberChangeEvent (API version 66.0)](https://developer.salesforce.com/docs/atlas.en-us.262.0.object_reference.meta/object_reference/sforce_api_associated_objects_change_event.htm)**
+Change events are available for the object.
 
 SEE ALSO:
 
@@ -9218,13 +13789,13 @@ upsert()
 
 ```
 
-
-Standard Objects AccountTerritoryAssignmentRule
-
 Special Access Rules
 
 Users with the View Setup and Configuration permission can access this object. Users with the Manage Territories permission can edit
 this object.
+
+
+Standard Objects AccountTerritoryAssignmentRule
 
 Fields
 
@@ -9238,6 +13809,8 @@ IsActive
 IsInherited
 
 Name
+
+TerritoryId
 
 ```
 
@@ -9283,18 +13856,6 @@ Create, Filter, Update
 **Description**
 A name for the rule. Limit is 80 characters.
 
-
-### Standard Objects AccountTerritoryAssignmentRuleItem
-
-**Field** **Details**
-
-```
- TerritoryId
-
-```
-
-Usage
-
 **Type**
 reference
 
@@ -9303,6 +13864,11 @@ Create, Filter, Update
 
 **Description**
 ID of the territory where accounts that satisfy this rule are assigned.
+
+
+### Standard Objects AccountTerritoryAssignmentRuleItem
+
+Usage
 
 A territory will not have any accounts (with the exception of manually assigned accounts) unless at least one account assignment rule
 is active for the territory.
@@ -9328,7 +13894,7 @@ Supported Calls
 `create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`, `update()`,
 
 ```
-upsert()
+   upsert()
 
 ```
 
@@ -9344,6 +13910,8 @@ Fields
 ```
 Field
 
+Operation
+
 ```
 
 **Type**
@@ -9352,26 +13920,8 @@ picklist
 **Properties**
 Create, Filter, Group, Sort, Update
 
-
-Standard Objects AccountTerritoryAssignmentRuleItem
-
-**Field** **Details**
-
 **Description**
 The standard or custom account field to use as a criteria.
-
-```
- Operation
-
- RuleID
-
- SortOrder
-
- Value
-
-```
-
-Usage
 
 **Type**
 picklist
@@ -9381,6 +13931,22 @@ Create, Filter, Group, Sort, Update
 
 **Description**
 The criteria to apply, such as “equals” or “starts with.”
+
+
+### Standard Objects AccountTerritorySharingRule
+
+**Field** **Details**
+
+```
+ RuleID
+
+ SortOrder
+
+ Value
+
+```
+
+Usage
 
 **Type**
 reference
@@ -9413,9 +13979,6 @@ The field value(s) to evaluate, such as `94105` if the Field is `Billing Zip/Pos
 
 **•** Both standard and custom account fields can be used as criteria for account assignment rules.
 
-
-### Standard Objects AccountTerritorySharingRule
-
 **•** A territory will not have any accounts (with the exception of manually assigned accounts) unless at least one account assignment
 rule is active for the territory.
 
@@ -9430,6 +13993,9 @@ UserTerritory
 ### AccountTerritorySharingRule
 
 Represents the rules for sharing an Account within a territory.
+
+
+Standard Objects AccountTerritorySharingRule
 
 Supported Calls
 
@@ -9452,6 +14018,8 @@ Fields
 AccountAccessLevel
 
 CaseAccessLevel
+
+ContactAccessLevel
 
 ```
 
@@ -9482,25 +14050,9 @@ the account. The possible values are:
 
 **•** `None`
 
-
-Standard Objects AccountTerritorySharingRule
-
-**Field** **Details**
-
 **•** `Read`
 
 **•** `Edit`
-
-```
-ContactAccessLevel
-
-Description
-
-DeveloperName
-
-GroupId
-
-```
 
 **Type**
 picklist
@@ -9516,9 +14068,25 @@ on the account. The possible values are:
 
 **•** `Read`
 
+
+Standard Objects AccountTerritorySharingRule
+
+**Field** **Details**
+
 **•** `Edit`
 
 Note: This field is read only.
+
+```
+Description
+
+DeveloperName
+
+GroupId
+
+Name
+
+```
 
 **Type**
 textarea
@@ -9553,28 +14121,12 @@ Salesforce generates one for each record.
 **Type**
 reference
 
-
-Standard Objects AccountTerritorySharingRule
-
-**Field** **Details**
-
 **Properties**
 Create, Filter, Group, Sort
 
 **Description**
 The ID representing the source group. Accounts owned by users in the source territory trigger
 the rule to give access.
-
-```
-Name
-
-OpportunityAccessLevel
-
-UserOrGroupId
-
-```
-
-Usage
 
 **Type**
 string
@@ -9585,6 +14137,20 @@ Create, Filter, Group, Sort, Update
 **Description**
 Label of the sharing rule as it appears in the user interface. Limited to 80 characters.
 Corresponds to **Label** on the user interface.
+
+
+### Standard Objects AccountUserTerritory2View
+
+**Field** **Details**
+
+```
+OpportunityAccessLevel
+
+UserOrGroupId
+
+```
+
+Usage
 
 **Type**
 picklist
@@ -9616,12 +14182,11 @@ Use this object to manage the sharing rules for a particular object. General sha
 
 SEE ALSO:
 
-Account
+### Account
 
 AccountShare
 
-
-### Standard Objects AccountUserTerritory2View AccountUserTerritory2View
+### AccountUserTerritory2View
 
 Represents the view of the Users in Assigned Territories related list in Lightning Experience for Sales Territories. Available in API version
 42.0 and later.
@@ -9633,6 +14198,9 @@ Supported Calls
 Special Access Rules
 
 Standard and partner users can access this object.
+
+
+### Standard Objects ActionCadence
 
 Fields
 
@@ -9648,6 +14216,8 @@ Territory2Id
 UserId
 
 ```
+
+Usage
 
 **Type**
 reference
@@ -9683,15 +14253,8 @@ reference
 **Properties**
 Filter, Group, Nillable, Sort
 
-
-### Standard Objects ActionCadence
-
-**Field Name** **Details**
-
 **Description**
 Unique identifier for each user in the Users in Assigned Territories related list.
-
-Usage
 
 Use this object to show the users who are assigned to the territories assigned to an account.
 
@@ -9702,6 +14265,9 @@ A filter criterion with one `AccountId` is required when you execute a SOQL quer
 Represents the definition of a cadence. This object is available in API version 45.0 and later.
 
 Use ActionCadence and its related objects to learn about an action cadence, including:
+
+
+Standard Objects ActionCadence
 
 **•** The current state of the action cadence.
 
@@ -9741,15 +14307,12 @@ Fields
 ```
 ActivatedDate
 
+ActiveTargets
+
 ```
 
 **Type**
 date
-
-
-Standard Objects ActionCadence
-
-**Field** **Details**
 
 **Properties**
 Filter, Group, Nillable, Sort
@@ -9757,17 +14320,6 @@ Filter, Group, Nillable, Sort
 **Description**
 The date that the user activated the action cadence. ActionCadence objects are created in
 a draft state and must be manually activated before they’re used.
-
-```
-ActiveTargets
-
-Description
-
-ErrorMessage
-
-FolderId
-
-```
 
 **Type**
 int
@@ -9778,6 +14330,24 @@ Filter, Group, Nillable, Sort
 **Description**
 The total number of active targets that are currently assigned with this cadence. Available
 in API version 58.0 and later.
+
+
+Standard Objects ActionCadence
+
+**Field** **Details**
+
+```
+Description
+
+ErrorMessage
+
+FolderId
+
+FolderName
+
+IsWaitAllowedBeforeDaisyChain
+
+```
 
 **Type**
 textarea
@@ -9817,26 +14387,6 @@ Lookup
 **Refers To**
 Folder, Organization, User
 
-
-Standard Objects ActionCadence
-
-**Field** **Details**
-
-```
-FolderName
-
-IsWaitAllowedBeforeDaisyChain
-
-LastEditedDateTime
-
-LastReferencedDate
-
-LastViewedDate
-
-Name
-
-```
-
 **Type**
 string
 
@@ -9853,11 +14403,29 @@ boolean
 **Properties**
 Defaulted on create, Filter, Group, Sort
 
+
+Standard Objects ActionCadence
+
+**Field** **Details**
+
 **Description**
 Whether the cadence is allowed to have a wait step before a daisy chain step ( `true` ) or not
 ( `false` ).
 
 The default value is `false` .
+
+```
+LastEditedDateTime
+
+LastReferencedDate
+
+LastViewedDate
+
+Name
+
+OwnerId
+
+```
 
 **Type**
 dateTime
@@ -9889,23 +14457,11 @@ The date this action cadence was last viewed in the Sales Engagement app.
 **Type**
 string
 
-
-Standard Objects ActionCadence
-
-**Field** **Details**
-
 **Properties**
 Create, Filter, Group, idLookup, Sort, Update
 
 **Description**
 The name of this action cadence. Every action cadence in an org must have a unique name.
-
-```
-OwnerId
-
-State
-
-```
 
 **Type**
 reference
@@ -9919,6 +14475,11 @@ The ID of the owner of the action cadence (typically the user who created it).
 Note: To change the owner of an action cadence, the new owner must have read
 access to action cadences enabled in their user profile.
 
+
+Standard Objects ActionCadence
+
+**Field** **Details**
+
 This field is a relationship field.
 
 **Relationship Name**
@@ -9929,6 +14490,13 @@ Lookup
 
 **Refers To**
 User
+
+```
+State
+
+SuccessfulCompletions
+
+```
 
 **Type**
 picklist
@@ -9959,28 +14527,12 @@ ActionCadence can’t be assigned to any prospect.
 
 **•** `Error`
 
-
-Standard Objects ActionCadence
-
-**Field** **Details**
-
 An error occurred while trying to activate the action cadence.
 
 **•** `Inactive`
 
 The user deactivated the action cadence. New targets can’t be added to the action
 cadence. Existing targets continue in the action cadence until completion.
-
-```
-SuccessfulCompletions
-
-TotalSteps
-
-TotalTargets
-
-Type
-
-```
 
 **Type**
 int
@@ -9991,6 +14543,22 @@ Filter, Group, Nillable, Sort
 **Description**
 The total number of successful dispositions this cadence has upon completion. For example,
 customer engaged or customer connected. Available in API version 58.0 and later.
+
+
+Standard Objects ActionCadence
+
+**Field** **Details**
+
+```
+TotalSteps
+
+TotalTargets
+
+Type
+
+```
+
+Usage
 
 **Type**
 int
@@ -10030,29 +14598,29 @@ in the Cadence Builder.
 
 **•** `Quick`
 
-
-### Standard Objects ActionCadenceRule
-
-**Field** **Details**
-
 Quick cadences can contain only one step, are built by reps for their personal use, and
 don't require the Cadence Builder.
 
-Usage
+**•** `SDR`
+
+SDR cadences are built for Sales Development Representative workflows.
 
 Use ActionCadence to learn how many action cadences are currently active:
 
 ```
-   select COUNT() from ActionCadence where State="Active"
+select COUNT() from ActionCadence where State="Active"
 
 ```
 
 Retrieve all ActionCadence records that have "West Coast" in their name:
 
 ```
-   SELECT ActionCadenceId FROM ActionCadence WHERE NAME LIKE '[West Coast Cadence]%'
+SELECT ActionCadenceId FROM ActionCadence WHERE NAME LIKE '[West Coast Cadence]%'
 
 ```
+
+
+### Standard Objects ActionCadenceRule
 
 Retrieve all ActionCadence records owned by a specific user:
 
@@ -10099,19 +14667,12 @@ Supported Calls
 
 ```
 
-
-Standard Objects ActionCadenceRule
-
 Fields
 
 **Field** **Details**
 
 ```
 ActionCadenceStepId
-
-ConditionLogic
-
-GlobalEventType
 
 ```
 
@@ -10126,6 +14687,11 @@ The ActionCadenceStep that this rule is associated with.
 
 This field is a relationship field.
 
+
+Standard Objects ActionCadenceRule
+
+**Field** **Details**
+
 **Relationship Name**
 ActionCadenceStep
 
@@ -10134,6 +14700,15 @@ Lookup
 
 **Refers To**
 ActionCadenceStep
+
+```
+ConditionLogic
+
+GlobalEventType
+
+GraphState
+
+```
 
 **Type**
 string
@@ -10173,33 +14748,22 @@ Possible values are:
 
 **•** `CallUnqualified`
 
-
-Standard Objects ActionCadenceRule
-
-**Field** **Details**
-
 **•** `CallLeftVoicemail`
 
 **•** `CallCallBackLater`
 
 This field is available in API version 49.0 and later.
 
-```
-GraphState
-
-OutcomeNextStepName
-
-ParentRuleName
-
-RuleName
-
-```
-
 **Type**
 picklist
 
 **Properties**
 Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort, Update
+
+
+Standard Objects ActionCadenceRule
+
+**Field** **Details**
 
 **Description**
 Represents the state of the `ActionCadenceRule` within the step graph, or
@@ -10218,6 +14782,17 @@ graph. Pending step rules can be added to the step graph in the future.
 **•** `Retired` —This step rule was previously part of an active action cadence step
 graph and was removed during an edit after activation. Retired step rules can have
 associated step trackers.
+
+```
+OutcomeNextStepName
+
+ParentRuleName
+
+RuleName
+
+RuleType
+
+```
 
 **Type**
 string
@@ -10245,23704 +14820,21 @@ This field is available in API version 49.0 and later.
 **Type**
 string
 
-
-### Standard Objects ActionCadenceRuleCondition
-
-**Field** **Details**
-
 **Properties**
 Create, Filter, Group, Sort, Update
 
 **Description**
 The name given to the rule. Every rule in an action cadence must have a unique name.
 
-```
-RuleType
-
-```
-
-Usage
-
 **Type**
 picklist
 
 **Properties**
 Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort, Update
 
-**Description**
-The type of step that this rule applies to. Possible values are:
-
-**•** `BranchStep`  - The rule evaluates the condition of a branch step. A branch step
-is an ActionCadenceStep record with the field `type` equal to `Branch` .
-
-**•** `RepeatedStep`  - The rule evaluates the repeat steps for quick cadence. Available
-in API version 58.0 and later.
-
-**•** `RootStep`  - The rule evaluates a global exit condition.
-
-**•** `SubRootStep` —Available in API version 58.0 and later.
-
-This field is available in API version 49.0 and later.
-
-Use ActionCadenceRule to see all the rules associated with a branch step:
-
-```
-select RuleName from ActionCadenceRule where ActionCadenceStep.ActionCadence.Name = "High
-
- Priority CFO"
-
-```
-
-SEE ALSO:
-
-### ActionCadence ActionCadenceRuleCondition
-
-ActionCadenceStep
-
-ActionCadenceStepTracker
-
-### ActionCadenceRuleCondition
-
-Represents the logic for a branch step. This object is available in API version 48.0 and later.
-
-Supported Calls
-
-`describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
-
-
-Standard Objects ActionCadenceRuleCondition
-
-Fields
-
-**Field** **Details**
-
-```
-ActionCadenceRuleId
-
-Operator
-
-Resource
-
-RuleConditionName
-
-Value
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-The ID of the ActionCadenceRule that this condition is associated with.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-**Description**
-The conditional operator for this rule. Possible values are:
-
-**•** `Equal`
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The field to evaluate. Possible values are:
-
-**•** `CallDispositionCategory`
-
-Use by branch steps.
-
-**•** `EmailEngagement`
-
-Used by ListenerBranch steps.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-The name of the rule condition. Every rule condition in a cadence must have a unique name.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-
-### Standard Objects ActionCadenceStep
-
-**Field** **Details**
-
-**Description**
-The event that your cadence rule condition listens for to decide when the event is complete.
-
-Possible values for emails are:
-
-**•** `EmailOpen`
-
-**•** `EmailLinkClick`
-
-Possible values for calls are:
-
-**•** `CallMeaningfulConnect`
-
-**•** `CallUnqualified`
-
-**•** `CallLeftVoicemail`
-
-**•** `CallNotInterested`
-
-**•** `CallCallBackLater`
-
-Usage
-
-Use ActionCadenceRuleContion to see all the rule conditions associated with a branch step:
-
-```
-   select RuleConditionName from ActionCadenceRuleCondition where ActionCadenceStepId= <ID
-
-   of a branch step>
-
-```
-
-SEE ALSO:
-
-### ActionCadence
-
-ActionCadenceRule
-
-### ActionCadenceStep ActionCadenceStepTracker ActionCadenceStep
-
-Represents a step in a cadence. Use ActionCadenceStep to learn which steps belong to a cadence, and how the steps are connected to
-each other. This object is available in API version 48.0 and later.
-
-An ActionCadenceStep record is created to represent a step. If the step is a branch step, then corresponding ActionCadenceRule and
-ActionCadenceRuleCondition records are also created.
-
-Note: An ActionCadenceStep with `IsOrphan` equal to `true` can be part of a cadence but is never executed. To retrieve the
-steps that can be executed by the cadence, query for ActionCadenceStep records with `IsOrphan` equal to `false` .
-### ActionCadenceStep records with IsOrphan equal to true are deleted.
-
-Supported Calls
-
-`create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`, `update()`,
-
-```
-   upsert()
-
-```
-
-
-Standard Objects ActionCadenceStep
-
-Fields
-
-**Field** **Details**
-
-```
-ActionCadenceId
-
-AllCallsCallBackLater
-
-AllCallsLeftVoicemail
-
-AllCallsMeaningfulConnect
-
-AllCallsNotInterested
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-The ID of the ActionCadence that this step belongs to.
-
-This field is a relationship field.
-
-**Relationship Name**
-ActionCadence
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-ActionCadence
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of calls having the call outcome **Call Back Later** .
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of calls having the call outcome **Left Voicemail** .
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of calls having the call outcome **Meaningful Connect** .
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-
-Standard Objects ActionCadenceStep
-
-**Field** **Details**
-
-**Description**
-The number of calls having the call outcome **Not Interested** .
-
-```
-AllCallsUncategorized
-
-AllCallsUnqualified
-
-AllEmailsBouncedCount
-
-AllEmailsDeliveredCount
-
-AllEmailsHardBouncedCount
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of calls where the call outcome isn’t categorized.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of calls having the call outcome **Unqualified** .
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of emails that weren’t delivered successfully.
-
-This field is a calculated field.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of emails delivered.
-
-This field is a calculated field.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of emails returned for a permanent reason — for example, the email address
-doesn’t exist. This field is available in API version 50.0 and later.
-
-
-Standard Objects ActionCadenceStep
-
-**Field** **Details**
-
-```
-AllEmailsLinkClickedCount
-
-AllEmailsOpenedCount
-
-AllEmailsOutOfOfficeCount
-
-AllEmailsRepliedCount
-
-AllEmailsSentCount
-
-AllEmailsSoftBouncedCount
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of links inside an email that the target clicked during this step. Multiple clicks
-on the same link count towards this total. This field is available in API version 50.0 and later.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of emails that the target opened while working on this step. Multiple opens of
-the same email count towards this total.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of emails that were returned because the recipient set an out-of-office responder.
-Multiple replies count towards this total. This field is available in API version 50.0 and later.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of emails that targets replied to as part of this step. Multiple replies to the same
-email count towards this total, This field is available in API version 50.0 and later.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of sent emails.
-
-**Type**
-int
-
-
-Standard Objects ActionCadenceStep
-
-**Field** **Details**
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of emails that were returned for temporary reasons — for example, the email
-is too large. This field is available in API version 50.0 and later.
-
-```
-AllEmailsTrackedSentCount
-
-AllEmailsUntrackedSentCount
-
-AllManuallyCompletedCount
-
-AllOnTimeCompletedCount
-
-AllOverdueCompletedCount
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of emails sent by this user with engagement tracking enabled.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of emails sent by this user without engagement tracking.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of steps manually completed.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of steps completed on time.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of overdue steps that were completed.
-
-
-Standard Objects ActionCadenceStep
-
-**Field** **Details**
-
-```
-AllSkippedCount
-
-AllTotalCallsCount
-
-BranchDefaultStepName
-
-ChainedCadenceId
-
-GoToStepIntervalInMinutes
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of steps skipped.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of calls that the sales rep made during this step.
-
-This field is a calculated field.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The name of the default step.
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The ID of the ActionCadence for the linked action cadence. Available only if the step type is
-`DaisyChain` (meaning that another action cadence is connected to this action cadence).
-
-This field is a relationship field.
-
-**Relationship Name**
-ChainedCadence
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-ActionCadence
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-
-Standard Objects ActionCadenceStep
-
-**Field** **Details**
-
-**Description**
-Contains information about when the step should be repeated next, in minutes. Available
-in API version 58.0 and later.
-
-```
-GoToStepIterationLimit
-
-GoToStepName
-
-GraphState
-
-HasVariant
-
-```
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-Contains the maximum number of repeat (goto) step iterations allowed. Available in API
-version 58.0 and later.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-If this step’s original next step was removed during an edit after activation, this field specifies
-the updated next step.
-
-**Type**
-picklist
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-**Description**
-Represents the state of the `ActionCadenceStep` within the step graph, or sequence,
-of the action cadence.
-
-Possible values are:
-
-**•** `Included` —This step is part of the step graph.
-
-**•** `Orphaned` —This step was removed from the step graph before the action cadence
-was activated. Orphaned steps are deleted upon activation.
-
-**•** `Pending` —This step has been created but hasn’t been added to the step graph.
-Pending steps can be added to the step graph in the future.
-
-**•** `Retired` —This step was previously part of an active action cadence step graph and
-was removed during an edit after activation. Retired steps can have associated step
-trackers.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-
-Standard Objects ActionCadenceStep
-
-**Field** **Details**
-
-**Description**
-This field is valid for email and call step types. If `true`, the step has email or call template
-variants. The template variants are defined in ActionCadenceStepVariant records. Available
-in API version 53.0 and later.
-
-The default value is `false` .
-
-```
-IsImmediateWakeUp
-
-IsOrphan
-
-IsScheduledDueDateLocked
-
-IsScreenFlowActive
-
-```
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Indicates whether a listener branch is immediate wake up ( `true` ) or not ( `false` ).
-
-The default value is `false` .
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-If `true`, this step isn’t executed by the action cadence and will be deleted. Steps with
-`IsOrphan` equal to `true` have `ParentStepName` equal to `null` .
-
-Note: To retrieve the active steps in an action cadence, include `IsOrphan=false`
-in your query.
-
-The default value is `false` .
-
-This field is available in API version 49.0 and later.
-
-This field is a calculated field.
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Indicates whether assignees can change the due date ( `true` ) or not ( `false` ). Available in
-API version 58.0 and later.
-
-The default value is `false` .
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-
-Standard Objects ActionCadenceStep
-
-**Field** **Details**
-
-**Description**
-Indicates whether the flow is active and can be executed ( `true` ) or not ( `false` ).
-
-The default value is `false` .
-
-```
-IsStepAutomationActive
-
-IsThreaded
-
-ParentStepName
-
-RootStepId
-
-```
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-If true, the flow referenced in the StepAutmationReference field is active. If false, the flow
-isn’t active. Only active flows can be executed. The default value is `false` . This field is
-available in API version 56.0 and later.
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-This field is valid for email steps. Email steps have ActionCadence.StepType equal to
-`SendAnEmail` . If `true`, the email for this email step is sent as a reply to the email
-conversation from the previous email step. By sending the email as a reply to a previous
-email, customers see a "conversation" view of the emails. Only emails from the same action
-cadence are grouped as conversations.
-
-This field can’t be true for the first email step in an action cadence, because the first email
-from an action cadence must start a new conversation with the prospect.
-
-The default value is `false` . This field is available in API version 49.0 and later.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The step name ( `ActionCadenceStep.StepName` ) of the previous step in the action
-cadence. Must contain a valid step name value unless this step is the root step. `null` if this
-step is a parent step.
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-
-Standard Objects ActionCadenceStep
-
-**Field** **Details**
-
-**Description**
-The ID of the root step for this action cadence. Every action cadence has exactly one root
-step (so that the Salesforce API can find all the steps for this cadence).
-
-This field is a relationship field.
-
-**Relationship Name**
-RootStep
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-ActionCadenceStep
-
-```
-ScheduledDaysUntilDue
-
-ScheduledDaysUntilStart
-
-ScheduledStartDelayInMinutes
-
-ScheduledStartTimeInMinutes
-
-```
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The number of days after which this current step is due. Available in API version 58.0 and
-later.
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The number of days when this step starts after the previous step completes. For delays of
-greater than one day from `ScheduledStartTimeInMinutes` . Available in API version
-58.0 and later.
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-Any hard waits in minutes is captured in this field. Waits greater than 1 day need to set
-`ScheduledDaysUntilStart` . Available in API version 58.0 and later.
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-
-Standard Objects ActionCadenceStep
-
-**Field** **Details**
-
-**Description**
-The specific time of day when the step starts. The time represents minutes after 00:00.
-Available in API version 58.0 and later.
-
-```
-ScreenFlowReference
-
-StepAutomationReference
-
-StepComments
-
-StepName
-
-StepTitle
-
-```
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort
-
-**Description**
-The `namespace__fullname` of the screen flow. Used to describe flow objects and
-launch flows client side.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The name of the flow that the step uses. Cadence steps can launch a cadence step flow as
-the step or as a cadence autolaunched flow when a rep completes the step. The format is
-`namespace__fullName` . This field is available in API version 56.0 and later.
-
-**Type**
-textarea
-
-**Properties**
-Create, Nillable, Update
-
-**Description**
-A comment that provides additional information about this step.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-Unique identifier for this step. Generated by Salesforce.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The title given to the step when it was created.
-
-
-Standard Objects ActionCadenceStep
-
-**Field** **Details**
-
-```
-TemplateId
-
-Type
-
-TypeDetail
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-If a template was added to this step, this field contains the template's ID. For example, if this
-step is a call step it can contain a template for a call script. Or, if this step is an email step, it
-can contain a template for an email.
-
-This field is a polymorphic relationship field.
-
-**Relationship Name**
-Template
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-CallTemplate, EmailTemplate
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-The type of step. Possible values are:
-
-**•** `AutoSendAnEmail`  - Salesforce automatically sends the specified email.
-
-**•** `Branch`  - A branch step in the action cadence.
-
-**•** `CreateTask`  - Used for custom steps.
-
-**•** `DaisyChain`  - A daisy chain step. A daisy chain step connects this action cadence
-to another action cadence. It must be the last step in the path.
-
-**•** `LinkedInConnection`
-
-**•** `LinkedInMail`
-
-**•** `ListenerBranch`  - A branch step for emails.
-
-**•** `MakeACall`  - The sales rep must call the prospect at this step.
-
-**•** `PlatformScreenFlow`
-
-**•** `Root`  - This step is the root step for the action cadence.
-
-**•** `SendAnEmail`  - The sales rep must send the prospect an email at this step.
-
-**•** `Wait`  - A wait step tells the sales rep not to do anything at this point in the action
-cadence.
-
-**Type**
-string
-
-
-Standard Objects ActionCadenceStep
-
-**Field** **Details**
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-More detail about the step type. If the step is a cadence step flow, this field contains the flow
-name. Otherwise, this field contains the same value as the Type field. This field is available
-in API version 56.0 and later.
-
-```
-UniqueEmailsLinkClickedCount
-
-UniqueEmailsOpenedCount
-
-UniqueEmailsRepliedCount
-
-WaitTimeInSeconds
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of links inside an email that the target clicked during this step. Multiple clicks
-on the same link aren’t counted. This field is available in API version 50.0 and later.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of emails that the target opened as part of this step. Multiple openings of the
-same email aren’t counted. This field is available in API version 50.0 and later.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of emails that targets replied to as part of this step. Multiple replies to the same
-email aren’t counted. This field is available in API version 50.0 and later.
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-Required if the step type is `Wait` . The time in seconds for this step to wait.
-
-
-### Standard Objects ActionCadenceStepTracker
-
-Usage
-
-Use ActionCadenceStep to see what steps your action cadence has:
-
-```
-   select StepTitle from ActionCadenceStep where ActionCadence.ID= <the id of an action
-
-   cadence> and IsOrphan=false
-
-```
-
-Associated Objects
-
-This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
-Otherwise, they’re available in the specified API version and later.
-
-**ActionCadenceStepChangeEvent (API version 48.0)**
-Change events are available for the object.
-
-SEE ALSO:
-
-### ActionCadence
-
-ActionCadenceRule
-
-ActionCadenceRuleCondition
-
-### ActionCadenceStepTracker ActionCadenceStepTracker
-
-Represents a step in an active cadence for a specific cadence target. This object is available in API version 48.0 and later.
-
-An ActionCadenceStepTracker record is created when a target moves to a new step in a cadence. Use ActionCadenceStepTracker to
-find information such as the step's current state, the reason it completed, and its type.
-
-Supported Calls
-
-`describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
-
-Fields
-
-**Field** **Details**
-
-```
-ActionCadenceId
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the ActionCadence that is related to the ActionCadenceStep.
-
-This field is a relationship field.
-
-**Relationship Name**
-### ActionCadence
-
-
-Standard Objects ActionCadenceStepTracker
-
-**Field** **Details**
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-ActionCadence
-
-```
-ActionCadenceName
-
-ActionCadenceStepId
-
-ActionCadenceTrackerId
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The name of the related ActionCadence object.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-ActionCadenceStepTracker is the runtime version of an ActionCadenceStep. This field contains
-the ID of the related ActionCadenceStep.
-
-This field is a relationship field.
-
-**Relationship Name**
-ActionCadenceStep
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-ActionCadenceStep
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The ID of the related ActionCadenceTracker.
-
-This field is a relationship field.
-
-**Relationship Name**
-ActionCadenceTracker
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-ActionCadenceTracker
-
-
-Standard Objects ActionCadenceStepTracker
-
-**Field** **Details**
-
-```
-ActionTakenDateTime
-
-CompletedById
-
-CompletionDate
-
-CompletionReason
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The date and time that the action described in this step was taken.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The user ID of the sales rep who completed this step. A step can be assigned to several users
-before it’s completed. This field is available in API version 50.0 and later.
-
-This field is a relationship field.
-
-**Relationship Name**
-CompletedBy
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-User
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The date this step completed. A step is completed either when the action is taken, or the
-step is skipped.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The reason that this step completed: Possible values are:
-
-**•** `AutomaticallyCompleted`  - The sales rep successfully completed this step
-and moved to the next one. Salesforce automatically marks this step as completed.
-
-**•** `AutomaticallyExited`  - The step exited because a global exit condition
-occurred. This value is available in API version 49.0 and later.
-
-**•** `ManuallyCompleted`  - The sales rep manually marked this step as completed.
-
-
-Standard Objects ActionCadenceStepTracker
-
-**Field** **Details**
-
-**•** `ManuallySkipped`                   - The sales rep skipped this step.
-
-```
-DueDateTime
-
-ErrorCode
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Some steps have a due date to indicate when they must be completed. If this step has been
-assigned a due date, this field contains the date and time it is due.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-Possible values are:
-
-**•** `AUTO_EMAIL_DAILY_LIMIT_REACHED`
-
-**•** `AUTO_EMAIL_ORG_SETTING_OFF`
-
-**•** `AUTO_LIST_MQ_MAX_RETRIES_FAILED`
-
-**•** `BCC_NOT_ALLOWED_IF_BCC_COMPLIANCE_ENABLED`
-
-**•** `EAC_GLOBAL_DATA_SOURCE_ERROR` —EAC data source error
-
-**•** `EMAIL_ORG_SETTING_OFF`
-
-**•** `EXCHANGE_MAX_MAILBOX_SIZE` —Max Exchange mailbox size reached
-
-**•** `EXCHANGE_SEND_AS_DENIED`
-
-**•** `FIX_WITH_RECONNECT` —Data connection failed
-
-**•** `GOOGLE_MAIL_SERVICE_NOT_ENABLED` —Gmail service not enabled
-
-**•** `INVALID_DRAFT` —Invalid email draft
-
-**•** `INVALID_TARGET_EMAIL`
-
-**•** `INVALID_TEMPLATE_ID`
-
-**•** `INVALID_USER_EMAIL`
-
-**•** `MAIL_PROVIDER_RATE_LIMIT_REACHED` —Email provider rate limit reached
-
-**•** `NON_EMAIL_UNKNOWN_ERROR` —Unknown error
-
-**•** `NO_ATTACHMENT_ACCESS`
-
-**•** `NO_CONTENT_VERSION_ACCESS`
-
-**•** `NO_LIST_EMAIL_PERMISSION`
-
-**•** `NO_TARGET_ACCESS`
-
-**•** `ORG_WIDE_AUTO_EMAIL_LIMIT_REACHED`
-
-**•** `ORG_WIDE_DAILY_EMAIL_LIMIT_REACHED`
-
-**•** `OTHER_REQ_FIELD_MISSING` —Other required field missing
-
-
-Standard Objects ActionCadenceStepTracker
-
-**Field** **Details**
-
-**•** `PARDOT_MERGE_FIELD_RENDERING_ERROR`
-
-**•** `POST_SEND_EXCEPTION`
-
-**•** `RETRIES_MAX_EXCEEDED` —Maximum retries exceeded
-
-**•** `RETRY_LATER`
-
-**•** `SCHEDULED_EMAIL_FAILED` —Unknown error
-
-**•** `SENDER_MAILBOX_NOT_FOUND`
-
-**•** `TARGET_DO_NOT_CONTACT_ON` —Target has Do Not Contact on
-
-**•** `TARGET_EMAIL_BOUNCED`
-
-**•** `TARGET_EMAIL_EMPTY`
-
-**•** `TEMPLATE_DELETED`
-
-**•** `TEMPLATE_EMPTY` —Email subject or body missing
-
-**•** `TEMPLATE_HAS_INVALID_MERGE_FIELD`
-
-**•** `TEMPLATE_MERGE_FIELD_RENDERING_ERROR`
-
-**•** `TEMPLATE_NOT_PUBLIC` —No access to template
-
-**•** `TEMPLATE_TOO_LARGE`
-
-**•** `UNKNOWN` —Email unknown error
-
-**•** `USER_HAS_LOST_HVS_ACCESS`
-
-**•** `USER_IS_INACTIVE`
-
-```
-GoToStepIterationCount
-
-IsActionTaken
-
-ScheduledStartDateTime
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of times the action cadence step tracker was created for the same step in a
-cadence. Available in API version 58.0 and later.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-`true` if the sales rep completed an action during this step, such as making a phone call,
-otherwise `false` .
-
-The default value is `false` .
-
-This field is a calculated field.
-
-**Type**
-dateTime
-
-
-Standard Objects ActionCadenceStepTracker
-
-**Field** **Details**
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The date and time when the step starts. Available in API version 58.0 and later.
-
-```
-SecondsOverdue
-
-State
-
-StepTitle
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-If this step has a due date that has passed, this field contains the number of seconds that
-has elapsed since the due date. Once a sales rep takes action on the cadence step, the value
-of this field is the number of seconds elapsed between the due date and the time the action
-was taken.
-
-This field is a calculated field.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The current state of this step. Possible values are:
-
-Possible values are:
-
-**•** `Active`  - The current step that the sales rep is performing. There can only be one
-active step for a given target.
-
-**•** `Cancelled`  - The sales rep canceled the step. Salesforce doesn’t run any canceled
-steps.
-
-**•** `Completed`  - This step is finished. Either the work in the step completed, or the step
-was skipped.
-
-**•** `Error`  - An error occurred while executing this step.
-
-**•** `InProgress`  - The sales rep has started the step, but it isn’t yet completed.
-
-**•** `Paused` —The sales rep paused the step.
-
-**•** `Queued`  - Used for automated email steps. The email step has started but the email
-is waiting in the queue to be sent.
-
-**•** `Scheduled`  - Used for email steps. An email can be scheduled to be sent later.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-
-Standard Objects ActionCadenceStepTracker
-
-**Field** **Details**
-
-**Description**
-The name of the related step.
-
-```
-StepType
-
-TargetId
-
-WasEverPaused
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The type of step to execute. Possible values are:
-
-**•** `AutoSendAnEmail`
-
-**•** `Branch`
-
-**•** `CreateTask`
-
-**•** `DaisyChain`
-
-**•** `LinkedInConnection`
-
-**•** `LinkedInMail`
-
-**•** `ListenerBranch`
-
-**•** `MakeACall`
-
-**•** `PlatformScreenFlow`
-
-**•** `Root`
-
-**•** `SendAnEmail`
-
-**•** `SubRoot`
-
-**•** `Wait`
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the prospect that is assigned to this cadence.
-
-This field is a polymorphic relationship field.
-
-**Relationship Name**
-Target
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-Contact, Lead
-
-**Type**
-boolean
-
-
-### Standard Objects ActionCadenceStepVariant
-
-**Field** **Details**
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether the sales rep had ever paused this step ( `true` ), or not ( `false` ). This field
-is available in API version 50.0 and later.
-
-Usage
-
-List all the steps that this prospect has completed in a given cadence:
-
-```
-   select StepTitle from ActionCadenceStepTracker where TargetID = <target ID>
-
-         and ActionCadenceId=<action cadence id> and StepType="Completed"
-
-```
-
-Associated Objects
-
-This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
-Otherwise, they’re available in the specified API version and later.
-
-**ActionCadenceStepTrackerChangeEvent (API version 48.0)**
-Change events are available for the object.
-
-SEE ALSO:
-
-### ActionCadence
-
-ActionCadenceRule
-
-### ActionCadenceStep
-
-ActionCadenceRuleCondition
-
-### ActionCadenceStepVariant
-
-Represents an email template or call script variant associated with an action cadence step. Email and call steps can have up to 3 variants
-associated so sales teams can compare the engagement results. This object is available in API version 53.0 and later.
-
-Supported Calls
-
-`create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`,
-`update()`, `upsert()`
-
-Special Access Rules
-
-Sales Engagement and Allow Email Template and Call Script Variant Testing must be enabled.
-
-
-Standard Objects ActionCadenceStepVariant
-
-Fields
-
-**Field** **Details**
-
-```
-ActionCadenceStepId
-
-SplitPercentage
-
-TemplateId
-
-Type
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-The ID of the related action cadence step.
-
-This is a relationship field.
-
-**Relationship Name**
-ActionCadenceStep
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-ActionCadenceStep
-
-**Type**
-percent
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-The percentage of emails to send or calls to make using this email template or call script
-variant. The total for all variants must be 100%.
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The ID of the associated email template or call script.
-
-This is a polymorphic relationship field.
-
-**Relationship Name**
-Template
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-CallTemplate, EmailTemplate
-
-**Type**
-picklist
-
-
-### Standard Objects ActionCadenceTracker
-
-**Field** **Details**
-
-**Properties**
-Create, Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The type of the associated action cadence step.
-
-Possible values are:
-
-**•** `AutoSendAnEmail`
-
-**•** `Branch`
-
-**•** `CreateTask`
-
-**•** `DaisyChain`
-
-**•** `LinkedInConnection`
-
-**•** `LinkedInMail`
-
-**•** `ListenerBranch`
-
-**•** `MakeACall`
-
-**•** `PlatformScreenFlow` —Available in version 55.0 and later.
-
-**•** `Root`
-
-**•** `SendAnEmail`
-
-**•** `Wait`
-
-Only email and call steps can have an associated action cadence step variant.
-
-Usage
-
-Use ActionCadenceStepVariant to retrieve the email template or call script for an action cadence step:
-
-```
-   SELECT SplitPercentage, TemplateId FROM ActionCadenceStepVariant WHERE
-
-   ActionCadenceStepId=:[idValue]
-
-```
-
-Use ActionCadenceStepVariant to retrieve the call scripts from all call steps:
-
-```
-   SELECT SplitPercentage, TemplateId, ActionCadenceStepId FROM ActionCadenceStepVariant WHERE
-
-    Type='MakeACall'
-
-### ActionCadenceTracker
-
-```
-
-Represents an active cadence target. This object is available in API version 45.0 and later.
-
-An ActionCadenceTracker record is created when you add a target to a cadence. Use ActionCadenceTracker to learn about a running
-cadence target, including its state, current step, assigned prospect, and reason for completion.
-
-Supported Calls
-
-`delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
-
-
-Standard Objects ActionCadenceTracker
-
-Fields
-
-**Field** **Details**
-
-```
-ActionCadenceId
-
-CompletionDisposition
-
-CompletionReason
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the related ActionCadence.
-
-**Relationship Name**
-ActionCadence
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-ActionCadence
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The target’s disposition when it exited the action cadence. This field contains a value if the
-target’s `State` is `Complete` . Sales reps can set this value when removing a target from
-a cadence. This field is available in API version 51.0 and later. Possible values are:
-
-**•** `Bad Data`  - some of the target’s data is incorrect or invalid.
-
-**•** `Contact Later`  - the target asked to be contacted at a later date.
-
-**•** `Customer Connected`  - the sales rep contacted the target.
-
-**•** `Customer Engaged`  - the target engaged with an email.
-
-**•** `Disqualified`  - a sales rep determined that the target isn’t qualified.
-
-**•** `Duplicate`  - the target has a duplicate lead, contact, or person account record.
-
-**•** `No Response`  - the target didn’t reply to any outreach.
-
-**•** `Not Interested`  - the target stated a lack of interest.
-
-**•** `Success`  - the cadence outreach was successful.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The reason that the target completed the cadence. This field contains a value if the target’s
-`State` is `Complete` . Possible values are:
-
-
-Standard Objects ActionCadenceTracker
-
-**Field** **Details**
-
-**•** `AutomaticallyExited`                   - the target completed because a global exit condition
-occurred. This value is available in API version 49.0 and later.
-
-**•** `AutomaticallyExitedDeletedStep`
-
-**•** `AutomaticallyExitedInvalidParentStep`
-
-**•** `DaisyChained`                   - the target completed because it’s connected to another action
-cadence.
-
-**•** `LeadConverted`                   - the target completed because the lead converted.
-
-**•** `ManuallyRemoved`                   - the target completed because the sales rep removed it from
-the cadence.
-
-**•** `ManuallyRemovedNoAccess`                   - reserved for future use.
-
-**•** `NoMoreSteps`                   - the target completed the action cadence because all the action
-cadence steps were completed.
-
-```
-CurrentStepId
-
-DaisyChainIteration
-
-ErrorMessage
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the current ActionCadenceStepTracker.
-
-**Relationship Name**
-CurrentStep
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-ActionCadenceStepTracker
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of this action cadence in a sequence of linked action cadences followed by this
-target. This value starts at 1 with the initial action cadence. A target can follow a sequence
-of up to 10 linked action cadences. Available in API version 53.0 and later.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-If an error occurs while this target is being completed, this field contains the error message.
-
-
-Standard Objects ActionCadenceTracker
-
-**Field** **Details**
-
-```
-ExitGlobalRuleId
-
-IsTrackerActive
-
-LastCompletedStepId
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-If a global exit condition occurs, a target completes. One example of a global exit condition
-is an email returned because of an invalid address. If the target completed because a global
-exit condition occurred, this field contains the ID of the ActionCadenceRule record that
-evaluated as `true` .
-
-This field is available in API version 49.0 and later.
-
-**Relationship Name**
-ExitGlobalRule
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-ActionCadenceRule
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether the action cadence target is active `(true)` or not `(false)` . The
-default value is `false` . An action cadence target is active if the state is `Running`, `Paused`,
-`Processing`, or `Initializing` . Only active targets count against the org limit of
-150,000 trackers.
-
-This field is available in API version 50.0 and later.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the last completed ActionCadenceStepTracker.
-
-**Relationship Name**
-LastCompletedStep
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-ActionCadenceStepTracker
-
-
-Standard Objects ActionCadenceTracker
-
-**Field** **Details**
-
-```
-OwnerId
-
-RelatedToAttributionType
-
-RelatedToId
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The ID of the user who is assigned to complete the cadence steps for the target.
-
-**Relationship Name**
-Owner
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-Group, User
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-Defines when the cadence is related to an opportunity or invoice. Available in API version
-51.0 and later.
-
-Possible values are:
-
-**•** `Activation` —Attribute the opportunity to the cadence when the opportunity is
-created.
-
-**•** `Collected` —Attribute the value to the cadence after payment for the invoice is
-collected.
-
-**•** `Collection Advancement` —Attribute the value to the cadence when the invoice
-is out for collection.
-
-**•** `Maturation` —Attribute the opportunity to the cadence only when the opportunity
-stage advances.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the related opportunity if there’s one. Available in API version 51.0 and later.
-
-This is a polymorphic relationship field.
-
-**Relationship Name**
-RelatedTo
-
-**Relationship Type**
-Lookup
-
-
-Standard Objects ActionCadenceTracker
-
-**Field** **Details**
-
-**Refers To**
-Opportunity, Invoice
-
-```
-ScheduledResumeDateTime
-
-State
-
-TargetId
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The date and time when the action cadence tracker is going to resume after it’s paused or
-on a wait step. Available in API version 53.0 and later.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort
-
-**Description**
-The state of the current action cadence tracker. Possible values are:
-
-**•** `Complete`
-
-**•** `Error`
-
-**•** `Initializing`
-
-**•** `Paused`
-
-**•** `Processing` —Salesforce is working on changing the state of this action cadence
-tracker. We recommend that you filter out steps that have this state from your dashboards.
-
-**•** `Running`
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the target that is assigned to this action cadence.
-
-**Relationship Name**
-Target
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-Contact, Lead
-
-
-### Standard Objects ActionCdncStpMonthlyMetric
-
-Usage
-
-Use ActionCadenceTracker to see what targets are currently assigned to an active action cadence.
-
-```
-   select TargetId from ActionCadenceTracker where ActionCadenceId=<Id of the action cadence>
-
-    and State= "Running"
-
-```
-
-Associated Objects
-
-This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
-Otherwise, they’re available in the specified API version and later.
-
-**ActionCadenceTrackerChangeEvent (API version 48.0)**
-Change events are available for the object.
-
-**ActionCadenceTrackerOwnerSharingRule on page 65**
-Sharing rules are available for the object.
-
-**ActionCadenceTrackerShare on page 67**
-Sharing is available for the object.
-
-### ActionCdncStpMonthlyMetric
-
-Represents the monthly engagement metrics for an action cadence step. This object is available in API version 49.0 and later.
-
-Supported Calls
-
-`describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
-
-Special Access Rules
-
-Sales Engagement must be enabled.
-
-Fields
-
-**Field** **Details**
-
-```
-ActionCadenceStepId
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The ID of the related action cadence step.
-
-This is a relationship field.
-
-**Relationship Name**
-ActionCadenceStep
-
-
-Standard Objects ActionCdncStpMonthlyMetric
-
-**Field** **Details**
-
-**Relationship Type**
-This is an overview-detail relationship field, where ActionCadenceStep is the master object.
-
-**Refers To**
-ActionCadenceStep
-
-```
-AllCallsCallBackLater
-
-AllCallsLeftVoicemail
-
-AllCallsMeaningfulConnect
-
-AllCallsNotInterested
-
-AllCallsUncategorized
-
-AllCallsUnqualified
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of calls in the month for this step with the call result Call Back Later.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of calls in the month for this step with the call result Left Voicemail.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of calls in the month for this step with the call result Meaningful Connect.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of calls in the month for this step with the call result Not Interested.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of calls in the month for this step with no call result specified.
-
-**Type**
-int
-
-
-Standard Objects ActionCdncStpMonthlyMetric
-
-**Field** **Details**
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of calls in the month for this step with the call result Unqualified.
-
-```
-AllEmailsBouncedCount
-
-AllEmailsDeliveredCount
-
-AllEmailsHardBouncedCount
-
-AllEmailsLinkClickedCount
-
-AllEmailsNotDeliveredCount
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The total of hard and soft bounced emails for this step in the month.
-
-This is a calculated field.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of successfully delivered emails for this step in the month.
-
-This is a calculated field.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of hard bounced emails for this step in the month.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of emails containing a link clicked by the recipient for this step in the month.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-
-Standard Objects ActionCdncStpMonthlyMetric
-
-**Field** **Details**
-
-**Description**
-The number of sent emails that were bounced for all recipients on the email. Bounced emails
-aren’t marked as delivered. Available in API version 54.0 and later.
-
-```
-AllEmailsOpenedCount
-
-AllEmailsOutOfOfficeCount
-
-AllEmailsRepliedCount
-
-AllEmailsSentCount
-
-AllEmailsSoftBouncedCount
-
-AllEmailsTrackedSentCount
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of emails opened by the recipient for this step in the month.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of emails that triggered an out-of-office reply for this step in the month.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of emails replied to for this step in the month.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of emails sent for this step in the month.
-
-This is a calculated field.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of emails soft bounced for this step in the month.
-
-**Type**
-int
-
-
-Standard Objects ActionCdncStpMonthlyMetric
-
-**Field** **Details**
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of emails sent with engagement tracking enabled for this step in the month.
-Available in API version 51.0 and later.
-
-```
-AllEmailsUntrackedSentCount
-
-AllTotalCallsCount
-
-DeliveredRecipientCount
-
-DeliveredRecipientRate
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of emails sent without engagement tracking for this step in the month. Available
-in API version 51.0 and later.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The total number of calls with all call results for this step in the month.
-
-This is a calculated field.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of recipients that were successfully delivered an email. Available in API version
-54.0 and later.
-
-This field is a calculated field.
-
-**Type**
-percent
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The percentage of unique recipients that received an email you sent. Available in API version
-54.0 and later.
-
-This field is a calculated field.
-
-
-Standard Objects ActionCdncStpMonthlyMetric
-
-**Field** **Details**
-
-```
-HardBounceTrackableSends
-
-HasTemplateAssigned
-
-HrdBncTrackableRecipientSends
-
-IsCompoundMetric
-
-LinkClickTrackableSends
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of emails sent with hard bounce tracking. Available in API version 54.0 and later.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether this step has an associated email template or call script. Available in API
-version 52.0 and later.
-
-The default value is 'false'.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of recipients who received an email with hard bounce tracking. Available in API
-version 54.0 and later.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-When true, indicates that this metric represents engagement for a combination of the action
-cadence step and a single email template. The value is true for all action cadence steps
-created in Summer ’21 and later.
-
-When false, indicates that the metric represents engagement for the action cadence step
-and all email templates used on the step. The value is false for all action cadence steps created
-in Spring ’21 and earlier. The default value is 'false'.
-
-Available in API version 52.0 and later.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-
-Standard Objects ActionCdncStpMonthlyMetric
-
-**Field** **Details**
-
-**Description**
-The number of emails sent with link click tracking. Available in API version 54.0 and later.
-
-```
-LinkClkTrackableRecipientSends
-
-Month
-
-MonthInt
-
-OooTrackableRecipientSends
-
-OpenTrackableRecipientSends
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of recipients who received an email with link tracking. Available in API version
-54.0 and later.
-
-**Type**
-date
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The month in which the engagement occurred.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, idLookup, Sort
-
-**Description**
-The month in which the engagement occurred, in `yyyymm` format.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of recipients who received an email with out-of-office tracking. Out-of-office
-tracking requires Inbox. Available in API version 54.0 and later.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of recipients who received an email with open tracking. Available in API version
-54.0 and later.
-
-
-Standard Objects ActionCdncStpMonthlyMetric
-
-**Field** **Details**
-
-```
-OpenTrackableSends
-
-OutOfOfficeTrackableSends
-
-RecipientReplies
-
-RecipientSends
-
-RecipientsHardBounced
-
-RecipientsOutOfOffice
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of emails sent with open tracking. Available in API version 54.0 and later.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of emails sent with out-of-office tracking. Available in API version 54.0 and later.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of unique recipients who replied to an email. Available in API version 54.0 and
-later.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of unique email recipients. Available in API version 54.0 and later.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of recipients that hard-bounced an email. Hard bounces can mean that the
-recipient's email address doesn't exist or is misspelled. Available in API version 54.0 and later.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-
-Standard Objects ActionCdncStpMonthlyMetric
-
-**Field** **Details**
-
-**Description**
-The number of recipients that responded with an out-of-office reply. Available in API version
-54.0 and later.
-
-```
-RecipientsSoftBounced
-
-ReplyTrackableRecipientSends
-
-ReplyTrackableSends
-
-SftBncTrackableRecipientSends
-
-SoftBounceTrackableSends
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of recipients that soft-bounced an email. A soft bounce often indicates a
-temporary issue with the recipient's email server, such as a full inbox. Available in API version
-54.0 and later.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of recipients who received an email with reply tracking. Available in API version
-54.0 and later.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of emails sent with reply tracking. Available in API version 54.0 and later.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of recipients who received an email with soft bounce tracking. Available in API
-version 53.0 and later.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of emails sent with soft bounce tracking. Available in API version 54.0 and later.
-
-
-Standard Objects ActionCdncStpMonthlyMetric
-
-**Field** **Details**
-
-```
-SomeEmailsDeliveredCount
-
-SomeEmailsDeliveredRate
-
-TemplateId
-
-TrackableRecipientSendHrdBncRt
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of sent emails that were successfully delivered to at least one of its recipients.
-Available in API version 54.0 and later.
-
-This field is a calculated field.
-
-**Type**
-percent
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The percentage of sent and tracked emails that were successfully delivered to at least one
-of their recipients. Available in API version 54.0 and later.
-
-This field is a calculated field.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the email template or call script associated with this step. Available in API version
-52.0 and later.
-
-This is a polymorphic relationship field.
-
-**Relationship Name**
-Template
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-CallTemplate, EmailTemplate
-
-**Type**
-percent
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The percentage of emails sent to unique recipients with hard bounce tracking that hard
-bounced. Available in API version 54.0 and later.
-
-This field is a calculated field.
-
-
-Standard Objects ActionCdncStpMonthlyMetric
-
-**Field** **Details**
-
-```
-TrackableRecipientSendOooRate
-
-TrackableRecipientSendReplyRt
-
-TrackableRecipientSendSftBncRt
-
-TrackableSendHardBounceRate
-
-TrackableSendLinkClickRate
-
-```
-
-**Type**
-percent
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The percentage of emails sent with out-of-office tracking that received out-of-office replies
-from unique recipients. Available in API version 54.0 and later.
-
-This field is a calculated field.
-
-**Type**
-percent
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The percentage of emails sent with reply tracking that received replies from unique recipients.
-Available in API version 54.0 and later.
-
-This field is a calculated field.
-
-**Type**
-percent
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The percentage of emails sent to unique recipients with soft bounce tracking that
-soft-bounced. Available in API version 54.0 and later.
-
-This field is a calculated field.
-
-**Type**
-percent
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The percentage of emails sent with hard bounce tracking that hard bounced. Available in
-API version 54.0 and later.
-
-This field is a calculated field.
-
-**Type**
-percent
-
-**Properties**
-Filter, Nillable, Sort
-
-
-Standard Objects ActionCdncStpMonthlyMetric
-
-**Field** **Details**
-
-**Description**
-The percentage of emails sent with link tracking that had link clicks. Available in API version
-54.0 and later.
-
-This field is a calculated field.
-
-```
-TrackableSendOpenRate
-
-TrackableSendOutOfOfficeRate
-
-TrackableSendReplyRate
-
-TrackableSendSoftBounceRate
-
-```
-
-**Type**
-percent
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The percentage of emails sent with open tracking that were opened by the recipient. Available
-in API version 54.0 and later.
-
-This field is a calculated field.
-
-**Type**
-percent
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The percentage of emails sent with out-of-office tracking that received out-of-office replies.
-Available in API version 54.0 and later.
-
-This field is a calculated field.
-
-**Type**
-percent
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The percentage of emails sent with reply tracking that received replies. Available in API
-version 54.0 and later.
-
-This field is a calculated field.
-
-**Type**
-percent
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The percentage of emails sent with soft bounce tracking that soft bounced. Available in API
-version 54.0 and later.
-
-This field is a calculated field.
-
-
-### Standard Objects ActionLinkGroupTemplate
-
-**Field** **Details**
-
-```
-UniqueEmailsLinkClickedCount
-
-UniqueEmailsOpenedCount
-
-UniqueEmailsRepliedCount
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of unique recipients who clicked a link in an email for this step in the month.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of unique recipients who opened an email for this step in the month.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of unique recipients who replied to an email for this step in the month.
-
-### ActionLinkGroupTemplate
-
-Action link templates let you reuse action link definitions and package and distribute action links. An action link is a button on a feed
-element. Clicking on an action link can take a user to another Web page, initiate a file download, or invoke an API call to an external
-server or Salesforce. Use action links to integrate Salesforce and third-party services into the feed. Every action link belongs to an action
-link group and action links within the group are mutually exclusive. This object is available in API version 33.0 and later.
-
-Supported Calls
-
-`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
-
-Special Access Rules
-
-Only users with the “Customize Application” permission can modify or delete this object.
-
-
-Standard Objects ActionLinkGroupTemplate
-
-Fields
-
-**Field Name** **Details**
-
-```
-Category
-
-DeveloperName
-
-ExecutionsAllowed
-
-HoursUntilExpiration
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-The location of the action link group within the feed element. Values are:
-
-**•** `Primary` —The action link group is displayed in the body of the feed
-element.
-
-**•** `Overflow` —The action link group is displayed in the overflow menu of
-the feed element.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-The name of the action link group template to use in code.
-
-Note: Only users with View DeveloperName OR View Setup and
-Configuration permission can view, group, sort, and filter this field.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-The number of times an action link can be executed. Values are:
-
-**•** `Once` —An action link can be executed only once across all users.
-
-**•** `OncePerUser` —An action link can be executed only once for each user.
-
-**•** `Unlimited` —An action link can be executed an unlimited number of
-times by each user. If the action link’s `actionType` is `Api` or `ApiAsync`,
-you can’t use this value.
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-
-Standard Objects ActionLinkGroupTemplate
-
-**Field Name** **Details**
-
-**Description**
-The number of hours from when the action link group is created until it's removed
-from associated feed elements and can no longer be executed. The maximum
-value is 8,760.
-
-```
-IsPublished
-
-Language
-
-MasterLabel
-
-NamespacePrefix
-
-```
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-If `true`, the action link group template is published. Action link group templates
-shouldn’t be published until at least one ActionLinkTemplate is associated with
-it. Once set to `true`, this can’t be set back to `false` .
-
-**Type**
-picklist
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-**Description**
-The language of the `MasterLabel` .
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-The name of the action link group template.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The namespace prefix that is associated with this object. Each Developer Edition
-org that creates a managed package has a unique namespace prefix. Limit: 15
-characters. You can refer to a component in a managed package by using the
-_**`namespacePrefix`**_ `__` _**`componentName`**_ notation.
-
-The namespace prefix can have one of the following values.
-
-**•** In Developer Edition orgs, `NamespacePrefix` is set to the namespace
-prefix of the org for all objects that support it, unless an object is in an installed
-managed package. In that case, the object has the namespace prefix of the
-
-
-### Standard Objects ActionLinkTemplate
-
-**Field Name** **Details**
-
-installed managed package. This field’s value is the namespace prefix of the
-Developer Edition org of the package developer.
-
-**•** In orgs that are not Developer Edition orgs, `NamespacePrefix` is set
-only for objects that are part of an installed managed package. All other
-objects have no namespace prefix.
-
-Usage
-
-Define action link templates in Setup and use `ConnectApi` in Apex or Connect REST API to instantiate action links from the templates
-and to post feed elements with the action links.
-
-If you delete a published action link group template, you delete all related action link information which includes deleting all action links
-that were instantiated using the template from feed items.
-
-### ActionLinkTemplate
-
-Action link templates let you reuse action link definitions and package and distribute action links. An action link is a button on a feed
-element. Clicking an action link can take a user to another Web page, initiate a file download, or invoke an API call to an external server
-or Salesforce. Use action links to integrate Salesforce and third-party services into the feed. This object is available in API version 33.0
-and later.
-
-Supported Calls
-
-`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
-
-Special Access Rules
-
-Only users with the “Customize Application” permission can modify or delete this object.
-
-Fields
-
-**Field Name** **Details**
-
-```
-ActionLinkGroupTemplateId
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-ID of the ActionLinkGroupTemplate with which this action link template is
-associated.
-
-This is a relationship field.
-
-
-Standard Objects ActionLinkTemplate
-
-**Field Name** **Details**
-
-**Relationship Name**
-ActionLinkGroupTemplate
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-ActionLinkGroupTemplate
-
-```
-ActionUrl
-
-Headers
-
-IsConfirmationRequired
-
-```
-
-**Type**
-textarea
-
-**Properties**
-Create, Update
-
-**Description**
-The action link URL. For example, a `Ui` action link URL is a Web page. A
-`Download` action link URL is a link to the file to download. `Ui` and `Download`
-action link URLs are provided to clients. An `Api` or `ApiAsync` action link URL
-is a REST resource. `Api` and `ApiAsync` action link URLs aren’t provided to
-clients. Links to Salesforce can be relative. All other links must be absolute and
-start with `https://` .
-
-Links to resources hosted on Salesforce servers can be relative, starting with a
-`/` . All other links must be absolute and start with `https://` . This field can
-contain context variables and binding variables in the form
-`{!Bindings.` _**`key`**_ `}`, for example,
-`https://www.example.com/{!Bindings.itemId}` . Set the binding
-variable’s value when you instantiate the action link group from the template.
-
-**Type**
-textarea
-
-**Properties**
-Create, Nillable, Update
-
-**Description**
-Template for the HTTP headers sent when corresponding action links are invoked.
-This field can be used only for `Api` and `ApiAsync` action links. This field can
-contain context variables and binding variables in the form
-`{!Bindings.` _**`key`**_ `}` .
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-If `true`, a confirmation dialog appears before the action is executed.
-
-
-Standard Objects ActionLinkTemplate
-
-**Field Name** **Details**
-
-```
-IsGroupDefault
-
-Label
-
-LabelKey
-
-LinkType
-
-```
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-If `true`, action links derived from this template are the default or primary action
-in their action groups. There can be only one default action per action group.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-A custom label to display on the action link button. If none of the `LabelKey`
-values make sense for an action link, use a custom label. Set the `LabelKey`
-field to `None` and enter a label name in the `Label` field.
-
-Action links have four states: new, pending, success, and failed. These strings are
-appended to the label for each state:
-
-**•** _Label_
-
-**•** _Label_ Pending
-
-**•** _Label_ Success
-
-**•** _Label_ Failed
-
-For example, if the value of `Label` is “Call Home,” the values of the four action
-link states are: Call Home, Call Home Pending, Call Home Success, and Call Home
-Failed.
-
-If `LabelKey` has any value other than `None`, the `Label` field is empty.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-Key for the set of labels to display for these action link states: new, pending,
-success, failed. For example, the Approve set contains these labels: Approve,
-[Pending, Approved, Failed. For a complete list of keys and labels, see Action Link](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/connect_appendices_action_links_labels.htm)
-[Labels in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/connect_appendices_action_links_labels.htm) _Connect REST API Developer Guide_ .
-
-If none of the label key values make sense for an action link, set this field to `None`
-and enter a custom label name in the `Label` field.
-
-**Type**
-picklist
-
-
-Standard Objects ActionLinkTemplate
-
-**Field Name** **Details**
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-The type of action link. One of these values:
-
-**•** `Api` —The action link calls a synchronous API at the action URL. Salesforce
-sets the status to `SuccessfulStatus` or `FailedStatus` based on
-the HTTP status code returned by your server.
-
-**•** `ApiAsync` —The action link calls an asynchronous API at the action URL.
-The action remains in a `PendingStatus` state until a third party makes
-a request to `/connect/action-links/` _**`actionLinkId`**_ to set the
-status to `SuccessfulStatus` or `FailedStatus` when the
-asynchronous operation is complete.
-
-**•** `Download` —The action link downloads a file from the action URL.
-
-**•** `Ui` —The action link takes the user to a web page at the action URL.
-
-```
-Method
-
-Position
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-HTTP method for the action URL. One of these values:
-
-**•** `HttpDelete` —Returns HTTP 204 on success. Response body or output
-class is empty.
-
-**•** `HttpGet` —Returns HTTP 200 on success.
-
-**•** `HttpHead` —Returns HTTP 200 on success. Response body or output class
-is empty.
-
-**•** `HttpPatch` —Returns HTTP 200 on success or HTTP 204 if the response
-body or output class is empty.
-
-**•** `HttpPost` —Returns HTTP 201 on success or HTTP 204 if the response
-body or output class is empty. Exceptions are the batch posting resources
-and methods, which return HTTP 200 on success.
-
-**•** `HttpPut` —Return HTTP 200 on success or HTTP 204 if the response body
-or output class is empty.
-
-`Ui` and `Download` action links must use `HttpGet` .
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-An integer specifying the position of the action link template relative to other
-action links in the group. 0 is the first position.
-
-
-Standard Objects ActionLinkTemplate
-
-**Field Name** **Details**
-
-```
-RequestBody
-
-UserAlias
-
-UserVisibility
-
-```
-
-Usage
-
-**Type**
-textarea
-
-**Properties**
-Create, Nillable, Update
-
-**Description**
-Template for the HTTP request body sent when corresponding action links are
-invoked. This field can be used only for `Api` and `ApiAsync` action links. This
-field can contain context variables and binding variables in the form
-`{!Bindings.` _**`key`**_ `}` .
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-If you selected `CustomUser` or `CustomExcludedUser` for
-`UserVisibility`, this field is the alias for the custom user. Use the alias in
-a template binding to specify the custom user when an action link group is
-created using the template.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-Who can see the action link. This value is set per action link, not per action link
-group. One of these values:
-
-**•** `Creator` —Only the creator of the action link can see the action link.
-
-**•** `Everyone` —Everyone can see the action link.
-
-**•** `EveryoneButCreator` —Everyone but the creator of the action link
-can see the action link.
-
-**•** `Manager` —Only the manager of the creator of the action link can see the
-action link.
-
-**•** `CustomUser` —Only the custom user can see the action link.
-
-**•** `CustomExcludedUser` —Everyone but the custom user can see the
-action link.
-
-Create action link templates in Setup. Use Apex classes in the `ConnectApi` namespace or Connect REST API to instantiate action
-links from templates and to post feed elements with the action links.
-
-
-### Standard Objects ActionPlan
-
-[For information about action links, see Working with Action Links in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/pages/connectapi_features_action_links.htm?search_text=working%20with%20action%20links) _Apex Developer Guide_ or the _Connect REST API Developer Guide_ .
-
-### ActionPlan
-
-Represents the instance of an action plan, a set of tasks created from an action plan template. This object is available in API version 44.0
-and later.
-
-Supported Calls
-
-```
-   create()delete()describeLayout()describeSObjects()getDeleted()getUpdated()query()retrieve()undelete()update()upsert()
-
-```
-
-Fields
-
-**Field Name** **Details**
-
-### `ActionPlanState` `ActionPlanTemplateVersionId` `ActionPlanType`
-
-**Type**
-picklist
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-
-The status of work being done for the action plan.
-
-Possible values are:
-
-**•** `Canceled`
-
-**•** `Complete`
-
-**•** `In Progress`
-
-**•** `Not Started`
-
-The default value is `Not Started` .
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-
-The ID of the version of the action plan template used to create this action plan.
-At creation, the referenced action plan template must be in the published state.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort
-
-**Description**
-
-The action plan’s type.
-
-
-Standard Objects ActionPlan
-
-**Field Name** **Details**
-
-Possible values are:
-
-**•** `Industries`
-
-**•** `Sales` —This value is available in API version 63.0 and later with the Sales
-Action Plans add-on license and the Sales Action Plans default permission
-set.
-
-**•** `Service`
-
-```
-IsLocked
-
-IsUsingHolidayHours
-
-LastReferencedDate
-
-LastViewedDate
-
-MayEdit
-
-```
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-
-Indicates whether the action plan is locked or not.
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort
-
-**Description**
-
-Indicates whether task completion dates have been calculated by incrementing
-the task offset for each non-work day, excluding recurring holidays.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nllable, Sort
-
-**Description**
-
-The most recent date on which a user referenced this record.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-
-The most recent date on which a user viewed this record.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-
-Standard Objects ActionPlan
-
-**Field Name** **Details**
-
-**Description**
-
-Indicates whether the action plan can be edited or not.
-
-```
-Name
-
-OwnerId
-
-StartDate
-
-TargetId
-
-```
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, idLookup, Sort, Update
-
-**Description**
-
-The name of the action plan.
-
-**Type**
-reference
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-
-The ID of the user who owns this record.
-
-**Type**
-date
-
-**Properties**
-Create, Default on create, Filter, Group, Sort
-
-**Description**
-
-The start date of the action plan.
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort
-
-**Description**
-
-The ID of the parent object record that relates to this action plan.
-
-For API version 63.0 and later, supported parent objects are Account,
-AccountPlanObjective, Applicant, ApplicationForm, ApplicationFormProduct,
-Asset, BusinessLicense, BusinessMilestone, Campaign, Case, ChangeRequest,
-Claim, Contact, Contract, FinancialGoal, Incident, InsurancePolicy,
-InsurancePolicyCoverage, Lead, Opportunity, PersonLifeEvent, Problem,
-ResidentialLoanApplication, WorkOrder, and WorkOrderLineItem.
-
-For API version 62.0 and later, supported parent objects are
-ApplicationFormEvaluation and VettingEvaluation.
-
-For API version 48.0 and later, supported parent objects are Account,
-AssetsAndLiabilities, BusinessMilestone, Campaign, Card, Case, Claim, Contact,
-
-
-### Standard Objects ActionPlanItem
-
-**Field Name** **Details**
-
-Contract, Financial Account, Financial Goal, Financial Holding, InsurancePolicy,
-InsurancePolicyCoverage, Lead, Opportunity, PersonLifeEvent,
-ResidentialLoanApplication, and Visit as well as custom objects with activities
-enabled.
-
-For API version 47.0 and later, supported parent objects are Account,
-BusinessMilestone, Campaign, Case, Claim, Contact, Contract, InsurancePolicy,
-InsurancePolicyCoverage, Lead, Opportunity, PersonLifeEvent, and Visit as well
-as custom objects with activities enabled.
-
-For API version 46.0 and later, supported parent objects are Account, Campaign,
-Case, Contact, Contract, Lead, and Opportunity as well as custom objects with
-activities enabled.
-
-For API version 45.0 and earlier, the only supported parent object is Account.
-
-Associated Objects
-
-This object has the following associated objects. Unless noted, they are available in the same API version as this object.
-
-**[ActionPlanChangeEvent](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_change_event.htm)**
-
-Change events are available for the object.
-
-**[ActionPlanFeed](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_feed.htm)**
-
-Feed tracking is available for the object.
-
-**[ActionPlanHistory](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_history.htm)**
-
-History is available for tracked fields of the object.
-
-**[ActionPlanOwnerSharingRule](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_ownersharingrule.htm)**
-
-Sharing rules are available for the object.
-
-**[ActionPlanShare](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_share.htm)**
-
-Sharing is available for the object.
-
-### ActionPlanItem
-
-Represents the instance of an action plan item.This object is available in API version 44.0 and later.
-
-Supported Calls
-
-```
-   create()delete()describeLayout()describeSObjects()getDeleted()getUpdated()query()retrieve()undelete()update()upsert()
-
-```
-
-Fields
-
-**Field Name** **Details**
-
-```
-ActionPlanId
-
-```
-
-**Type**
-reference
-
-
-Standard Objects ActionPlanItem
-
-**Field Name** **Details**
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-
-The ID of the action plan that this item belongs to.
-
-```
-ActionPlanTemplateItemId
-
-IsLocked
-
-IsRequired
-
-ItemEntityType
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort
-
-**Description**
-
-The ID of the action plan template item this item was created from.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-
-Indicates whether this action plan item is locked or not. The default value is
-`false` .
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort
-
-**Description**
-
-Indicates whether this action plan item is required or not.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-
-The type of object used with the item. This field is available in API version 61.0
-and later.
-
-Possible values are:
-
-**•** `AssessmentTask` —Assessment Task
-
-**•** `DocumentChecklistItem` —Document Checklist Item
-
-**•** `Event` -Available only with sales action plans in API version 63.0 and later
-with the Sales Action Plans add-on license and the Sales Action Plans default
-permission set.
-
-
-Standard Objects ActionPlanItem
-
-**Field Name** **Details**
-
-**•** `GenericVisitTask` —Generic Visit Task
-
-**•** `OtherComponentTask` —Other Component Task
-
-**•** `RecordAction`
-
-**•** `SignatureTask` —Signature Task
-
-**•** `Task`
-
-```
-ItemId
-
-ItemState
-
-Name
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort
-
-**Description**
-
-The ID of the record created by this action plan item. This field is a polymorphic
-relationship field.
-
-**Relationship Name**
-Item
-
-**Refers To**
-DocumentChecklistItem, Event, RecordAction, Task
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-
-The action plan item’s work state.
-
-Possible values are:
-
-**•** `Canceled`
-
-**•** `Completed`
-
-**•** `Deleted`
-
-**•** `In Progress`
-
-**•** `Pending`
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, idLookup, Sort, Update
-
-**Description**
-
-The name of this action plan item.
-
-
-### Standard Objects ActionPlanTemplate
-
-Associated Objects
-
-This object has the following associated objects. Unless noted, they are available in the same API version as this object.
-
-**[ActionPlanItemChangeEvent](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_change_event.htm)**
-
-Change events are available for the object.
-
-**[ActionPlanItemFeed](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_feed.htm)**
-
-Feed tracking is available for the object.
-
-**[ActionPlanItemHistory](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_history.htm)**
-
-History is available for tracked fields of the object.
-
-**[ActionPlanItemOwnerSharingRule](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_ownersharingrule.htm)**
-
-Sharing rules are available for the object.
-
-**[ActionPlanItemShare](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_share.htm)**
-
-Sharing is available for the object.
-
-### ActionPlanTemplate
-
-Represents the instance of an action plan template. This object is available in API version 44.0 and later.
-
-Supported Calls
-
-`create()delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`, `search()`, `undelete()`, `update()`, `upsert()`,
-
-Fields
-
-**Field Name** **Details**
-
-```
-ActionPlanType
-
-Category
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Restricted picklist, Sort
-
-**Description**
-
-This action plan template’s type. Possible values are:
-
-**•** `Industries`
-
-**•** `Sales` —This value is available in API version 63.0 and later with the Sales
-Action Plans add-on license and the Sales Action Plans default permission
-set.
-
-**•** Service
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-
-Standard Objects ActionPlanTemplate
-
-**Field Name** **Details**
-
-**Description**
-Specifies the category that the action plan template belongs to.
-
-Available in API version 64.0 and later.
-
-Possible values are:
-
-**•** `Onboarding`
-
-**•** `Application`
-
-```
-Description
-
-EstimatedCompletionDays
-
-FileBasedTemplatePath
-
-IsAdHocItemCreationEnabled
-
-IsLocked
-
-```
-
-**Type**
-textarea
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-
-The description of this action plan template.
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The estimated number of days to complete the action plan.
-
-Available in API version 64.0 and later.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The path of the file based template using which the action plan template is
-created.
-
-Available in API version 64.0 and later.
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Indicates whether users can add tasks or other items to generated action plans
-( `true` ) or not ( `false` ).
-
-**Type**
-boolean
-
-
-Standard Objects ActionPlanTemplate
-
-**Field Name** **Details**
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-
-Indicates whether this action plan template is locked or not. The default value is
-`false` .
-
-```
-LastReferencedDate
-
-LastViewedDate
-
-MayEdit
-
-Name
-
-OwnerId
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-
-The most recent date on which a user referenced this record.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-
-The most recent date on which a user viewed this record.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-
-Indicates whether this action plan template can be edited or not. The default
-value is `false` .
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, idLookup, Sort, Update
-
-**Description**
-
-The name of this action plan template.
-
-**Type**
-reference
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-
-Standard Objects ActionPlanTemplate
-
-**Field Name** **Details**
-
-**Description**
-
-The ID of the user who owns this action plan template. This field is a polymorphic
-relationship field.
-
-**Relationship Name**
-Owner
-
-**Refers To**
-Group, User
-
-```
-SourceType
-
-Status
-
-Subcategory
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-**Description**
-Specifies the source type to which the action plan template belongs to.
-
-Available in API version 64.0 and later.
-
-Possible values are:
-
-**•** `CRM`
-
-**•** `MigratedFromSandbox`
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-
-The status of this action plan template.
-
-Possible values are:
-
-**•** `Draft`
-
-**•** `Final—Published`
-
-**•** `Obsolete`
-
-**•** `ReadOnly`
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-**Description**
-The subcategory to which the action plan template belongs.
-
-Available in API version 64.0 and later.
-
-Possible values are:
-
-
-Standard Objects ActionPlanTemplate
-
-**Field Name** **Details**
-
-**•** `Product Onboarding`
-
-**•** `Customer Onboarding`
-
-```
-TargetEntityType
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Create, Defaulted on create, Group, Restricted picklist, Sort
-
-**Description**
-
-The parent object this action plan template relates to.
-
-Possible values are organized by the API version in which they were introduced.
-Values are available in all versions after introduction unless noted otherwise.
-
-API Version 62.0 and later with Financial Services:
-
-**•** `AccountPlanObjective`
-
-**•** `FinancialDeal`
-
-**•** `PartyProfile`
-
-API Version 62.0 and later with Public Sector Solutions:
-
-**•** `ApplicationFormEvaluation`
-
-**•** `VettingEvaluation`
-
-API version 60.0 and later with Education Cloud
-
-**•** `ProgramEnrollment`
-
-API version 58.0 and later with Health Cloud
-
-**•** `CareBarrier`
-
-API version 58.0 and later with Nonprofit Cloud:
-
-**•** `Benefit`
-
-**•** `Program`
-
-API Version 58.0 and later with Public Sector Solution and Education Cloud:
-
-**•** `ApplicationDecision`
-
-**•** `ApplicationReview`
-
-**•** `Benefit`
-
-**•** `Program`
-
-API Version 56.0 and later with Automotive Cloud:
-
-**•** `Account`
-
-**•** `Asset`
-
-**•** `Asset Account Participant`
-
-**•** `Asset Contact Participant`
-
-**•** `Asset Milestone`
-
-**•** `Fleet`
-
-
-Standard Objects ActionPlanTemplate
-
-**Field Name** **Details**
-
-**•** `Lead`
-
-**•** `Opportunity`
-
-**•** `Record Alert`
-
-**•** `Vehicle`
-
-**•** `Case`
-
-**•** `Claim`
-
-**•** `Contact`
-
-API Version 58.0 and later with Grantmaking:
-
-**•** `ApplicationDecision`
-
-**•** `ApplicationReview`
-
-**•** `Benefit`
-
-**•** `Budget`
-
-**•** `BudgetAllocation`
-
-**•** `CareBarrier`
-
-**•** `FundingAward`
-
-**•** `FundingAwardAmendment`
-
-**•** `FundingAwardRequirement`
-
-**•** `FundingDisbursement`
-
-**•** `FundingOpportunity`
-
-**•** `Program`
-
-API Version 52.0 and later:
-
-**•** `BusinessLicenseApplication`
-
-**•** `IndividualApplication`
-
-**•** `PublicComplaint`
-
-**•** `RegulatoryCodeViolation`
-
-**•** `ViolationEnforcementAction`
-
-API Version 47.0 and later:
-
-**•** `BusinessMilestone`
-
-**•** `Claim`
-
-**•** `InsurancePolicy`
-
-**•** `InsurancePolicyCoverage`
-
-**•** `PersonLifeEvent`
-
-**•** `Visit`
-
-API Version 46.0 and later:
-
-**•** `Campaign` —Unsupported for Grantmaking.
-
-**•** `Case`
-
-**•** `Contact`
-
-
-### Standard Objects ActionPlanTemplateItem
-
-**Field Name** **Details**
-
-**•** `Contract`
-
-**•** `Lead`
-
-**•** `Opportunity`
-
-**•** `Custom objects with activities enabled`
-
-API Version 44.0 and later:
-
-Account
-
-```
-UniqueName
-
-```
-
-Associated Objects
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-The unique name for this action plan template. This field is unique within your
-organization.
-
-This object has the following associated objects. Unless noted, they are available in the same API version as this object.
-
-**[ActionPlanTemplateChangeEvent](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_change_event.htm)**
-
-Change events are available for the object.
-
-**[ActionPlanTemplateFeed](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_feed.htm)**
-
-Feed tracking is available for the object.
-
-**[ActionPlanTemplateHistory](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_history.htm)**
-
-History is available for tracked fields of the object.
-
-**[ActionPlanTemplateOwnerSharingRule](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_ownersharingrule.htm)**
-
-Sharing rules are available for the object.
-
-**[ActionPlanTemplateShare](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_share.htm)**
-
-Sharing is available for the object.
-
-### ActionPlanTemplateItem
-
-Represents the instance of an item on an action plan template version. This object is available in API version 44.0 and later.
-
-Supported Calls
-
-```
-create()delete()describeLayout()describeSObjects()getDeleted()getUpdated()query()retrieve()search()undelete()update()upsert()
-
-```
-
-
-Standard Objects ActionPlanTemplateItem
-
-Fields
-
-**Field Name** **Details**
-
-```
-ActionPlanTemplateVersionId
-
-DisplayOrder
-
-IsActive
-
-IsLocked
-
-IsRequired
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort,
-
-**Description**
-
-The version of the action plan template this item is for.
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-
-The order in which this item is displayed within the action plan template version.
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-
-Indicates whether the task created from this template item is active. The default
-value is `false` .
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-
-Indicates whether this action plan template item is locked or not. The default
-value is `false` .
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-
-Indicates whether the task created from this template item is required. The default
-value is `false` .
-
-
-Standard Objects ActionPlanTemplateItem
-
-**Field Name** **Details**
-
-```
-ItemEntityType
-
-LastReferencedDate
-
-LastViewedDate
-
-MayEdit
-
-Name
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-
-The type of action plan template item entity..
-
-Possible values are:
-
-**•** `Document Checklist Item`
-
-**•** `Event` —This value is available in API version 63.0.
-
-**•** `RecordAction`
-
-**•** `Task`
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-
-The most recent date on which a user referenced this record.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-
-The most recent date on which a user viewed this record.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-
-Indicates whether this action plan template item can be edited or not. The default
-value is `false` .
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort, idLookup, Update
-
-
-### Standard Objects ActionPlanTemplateItemValue
-
-**Field Name** **Details**
-
-**Description**
-
-The unique identifier for this action plan template item record.
-
-```
-UniqueName
-
-```
-
-Associated Objects
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-The unique name for this action plan template item. This field is unique within
-your organization.
-
-This object has the following associated objects. Unless noted, they are available in the same API version as this object.
-
-**[ActionPlanTemplateItemChangeEvent](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_change_event.htm)**
-
-Change events are available for the object.
-
-**[ActionPlanTemplateItemFeed](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_feed.htm)**
-
-Feed tracking is available for the object.
-
-**[ActionPlanTemplateItemHistory](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_history.htm)**
-
-History is available for tracked fields of the object.
-
-**[ActionPlanTemplateItemOwnerSharingRule](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_ownersharingrule.htm)**
-
-Sharing rules are available for the object.
-
-**[ActionPlanTemplateItemShare](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_share.htm)**
-
-Sharing is available for the object.
-
-### ActionPlanTemplateItemValue
-
-Represents the value associated with an action plan template item. This object is available in API version 44.0 and later.
-
-Supported Calls
-
-```
-create()delete()describeLayout()describeSObjects()getDeleted()getUpdated()query()retrieve()search()undelete()update()upsert()
-
-```
-
-Fields
-
-**Field Name** **Details**
-
-```
-ActionPlanTemplateItemId
-
-```
-
-**Type**
-reference
-
-
-Standard Objects ActionPlanTemplateItemValue
-
-**Field Name** **Details**
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-
-The ID of the action plan template item that this value relates to.
-
-**Relationship Name**
-ActionPlanTemplateItem
-
-**Relationship Type**
-Master-detail
-
-**Refers To**
-ActionPlanTemplateItem (the master object)
-
-```
-IsActive
-
-IsLocked
-
-ItemEntityFieldName
-
-```
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-
-Indicates whether the task created from this template item is active. The default
-value is `false` .
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-
-Indicates whether this action plan template item value is locked or not. The
-default value is `false` .
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-
-The name of the field on the action plan template item that this value is for.
-Available fields include:
-
-**•** `AssessmentTask.AssessmentTaskDefinitionId` —Assessment
-Task Definition ID
-
-**•** `AssessmentTask.AssignedToId` —AssignedTo ID
-
-**•** `AssessmentTask.Description` —Description
-
-**•** `AssessmentTask.EndTime` —End Time
-
-**•** `AssessmentTask.IsRequired` —Required
-
-
-Standard Objects ActionPlanTemplateItemValue
-
-**Field Name** **Details**
-
-**•** `AssessmentTask.Name` —Name
-
-**•** `AssessmentTask.OwnerId` —Owner ID
-
-**•** `AssessmentTask.ParentId` —Visit ID
-
-**•** `AssessmentTask.ReferenceRecordId` —ReferenceRecord ID
-
-**•** `AssessmentTask.SequenceNumber` —Sequence
-
-**•** `AssessmentTask.StartTime` —Start Time
-
-**•** `AssessmentTask.Status` —Status
-
-**•** `AssessmentTask.TaskDefinitionId` —TaskDefinition ID
-
-**•** `AssessmentTask.TaskType` —Task Type
-
-**•** `DocumentChecklistItem.Comments` —Comments
-
-**•** `DocumentChecklistItem.DocumentCategoryId` —Document
-Category ID
-
-**•** `DocumentChecklistItem.DocumentTypeId` —Document Type
-ID
-
-**•** `DocumentChecklistItem.Instruction` —Instructions
-
-**•** `DocumentChecklistItem.IsAccepted` —Accepted
-
-**•** `DocumentChecklistItem.IsFrozen` —Frozen
-
-**•** `DocumentChecklistItem.IsRequired` —Required
-
-**•** `DocumentChecklistItem.Name` —Name
-
-**•** `DocumentChecklistItem.OwnerId` —Owner ID
-
-**•** `DocumentChecklistItem.ParentRecordId` —Parent Record ID
-
-**•** `DocumentChecklistItem.ReceivedDocumentId` —Received
-Document ID
-
-**•** `DocumentChecklistItem.Status` —Status
-
-**•** `DocumentChecklistItem.ValidatedById` —User ID
-
-**•** `DocumentChecklistItem.ValidationDateTime` —Validation
-Date Time
-
-**•** `DocumentChecklistItem.WhoId` —Who ID
-
-**•** `Event.ActivityDate` —Due Date Only
-
-**•** `Event.ActivityDateTime` —Due Date Time
-
-**•** `Event.Description` —Description
-
-**•** `Event.DurationInMinutes` —Duration
-
-**•** `Event.EndDateTime` —End Date Time
-
-**•** `Event.EventSubtype` —Event Subtype
-
-**•** `Event.IsAllDayEvent` —All-Day Event
-
-**•** `Event.IsPrivate` —Private
-
-**•** `Event.IsRecurrence` —Create Recurring Series of Events
-
-**•** `Event.IsReminderSet` —Reminder Set
-
-**•** `Event.Location` —Location
-
-
-Standard Objects ActionPlanTemplateItemValue
-
-**Field Name** **Details**
-
-**•** `Event.OwnerId` —Assigned To ID
-
-**•** `Event.Recurrence2PatternText` —Recurrence Pattern
-
-**•** `Event.RecurrenceDayOfMonth` —Recurrence Day of Month
-
-**•** `Event.RecurrenceDayOfWeekMask` —Recurrence Day of Week
-Mask
-
-**•** `Event.RecurrenceEndDateOnly` —Recurrence End
-
-**•** `Event.RecurrenceInstance` —Recurrence Instance
-
-**•** `Event.RecurrenceInterval` —Recurrence Interval
-
-**•** `Event.RecurrenceMonthOfYear` —Recurrence Month of Year
-
-**•** `Event.RecurrenceStartDateTime` —Recurrence Start
-
-**•** `Event.RecurrenceTimeZoneSidKey` —Recurrence Time Zone
-
-**•** `Event.RecurrenceType` —Recurrence Type
-
-**•** `Event.ReminderDateTime` —Reminder Date/Time
-
-**•** `Event.ShowAs` —Show Time As
-
-**•** `Event.StartDateTime` —Start Date Time
-
-**•** `Event.Subject` —Subject
-
-**•** `Event.Type` —Type
-
-**•** `Event.WhatId` —Related To ID
-
-**•** `Event.WhoId` —Name ID
-
-**•** `GenericVisitTask.DefinitionReferenceId` —Generic Visit
-Task ID
-
-**•** `GenericVisitTask.Description` —Description
-
-**•** `GenericVisitTask.EndDateTime` —End Date Time
-
-**•** `GenericVisitTask.IsRequired` —Required
-
-**•** `GenericVisitTask.Name` —Name
-
-**•** `GenericVisitTask.OwnerId` —Owner ID
-
-**•** `GenericVisitTask.Sequence` —Sequence
-
-**•** `GenericVisitTask.StartDateTime` —Start Date Time
-
-**•** `GenericVisitTask.Status` —Status
-
-**•** `GenericVisitTask.VisitId` —Visit ID
-
-**•** `OtherComponentTask.Description` —Description
-
-**•** `OtherComponentTask.FullyQualifiedName` —Fully Qualified
-Name
-
-**•** `OtherComponentTask.Name` —Name
-
-**•** `OtherComponentTask.OwnerId` —Owner ID
-
-**•** `OtherComponentTask.ParentTaskId` —Assessment Task ID
-
-**•** `OtherComponentTask.ParticipantRoleId` —ParticipantRole
-ID
-
-**•** `RecordAction.ActionDefinition` —Action Definition
-
-
-Standard Objects ActionPlanTemplateItemValue
-
-**Field Name** **Details**
-
-**•** `RecordAction.ActionType` —Action Type
-
-**•** `RecordAction.FlowDefinition` —Interaction Definition ID
-
-**•** `RecordAction.FlowInterviewId` —FlowInterview ID
-
-**•** `RecordAction.IsMandatory` —Is Mandatory
-
-**•** `RecordAction.IsUiRemoveHidden` —Hide Remove Action in UI
-
-**•** `RecordAction.Order` —Order
-
-**•** `RecordAction.ParticipantRoleId` —ParticipantRole ID
-
-**•** `RecordAction.Pinned` —Pinned
-
-**•** `RecordAction.RecordId` —Parent Record ID
-
-**•** `RecordAction.Status` —Status
-
-**•** `SignatureTask.Description` —Description
-
-**•** `SignatureTask.Name` —Name
-
-**•** `SignatureTask.ParentTaskId` —Assessment Task ID
-
-**•** `Task.APT_Custom_Text_1_c__c` —APT Custom Text - 1
-
-**•** `Task.ActivityDate` —Due Date Only
-
-**•** `Task.Boolean_Test__c` —Boolean Test
-
-**•** `Task.CallDisposition` —Call Result
-
-**•** `Task.CallDurationInSeconds` —Call Duration
-
-**•** `Task.CallObject` —Call Object Identifier
-
-**•** `Task.CallType` —Call Type
-
-**•** `Task.Custom_Picklist__c` —Custom Picklist
-
-**•** `Task.Description` —TEstActivityDEs
-
-**•** `Task.IsRecurrence` —Create Recurring Series of Tasks
-
-**•** `Task.IsReminderSet` —Reminder Set
-
-**•** `Task.OwnerId` —Assigned To ID
-
-**•** `Task.Priority` —Priority
-
-**•** `Task.RecurrenceDayOfMonth` —Recurrence Day of Month
-
-**•** `Task.RecurrenceDayOfWeekMask` —Recurrence Day of Week Mask
-
-**•** `Task.RecurrenceEndDateOnly` —Recurrence End
-
-**•** `Task.RecurrenceInstance` —Recurrence Instance
-
-**•** `Task.RecurrenceInterval` —Recurrence Interval
-
-**•** `Task.RecurrenceMonthOfYear` —Recurrence Month of Year
-
-**•** `Task.RecurrenceRegeneratedType` —Repeat This Task
-
-**•** `Task.RecurrenceStartDateOnly` —Recurrence Start
-
-**•** `Task.RecurrenceTimeZoneSidKey` —Recurrence Time Zone
-
-**•** `Task.RecurrenceType` —Recurrence Type
-
-**•** `Task.ReminderDateTime` —Reminder Date/Time
-
-**•** `Task.Status` —Status
-
-
-Standard Objects ActionPlanTemplateItemValue
-
-**Field Name** **Details**
-
-**•** `Task.Subject` —Subject
-
-**•** `Task.TaskSubtype` —Task Subtype
-
-**•** `Task.Type` —Type
-
-**•** `Task.WhatId` —Related To ID
-
-**•** `Task.WhoId` —Name ID
-
-**•** `Task.test__c` —test
-
-**•** `Task.text_3__c` —text 3
-
-```
-ItemEntityType
-
-LastReferencedDate
-
-LastViewedDate
-
-MayEdit
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-
-The type of action plan template item.
-
-Possible values are:
-
-**•** `Document Checklist Item`
-
-**•** `Event` —Available in API version 63.0 and later with the Sales Action Plans
-add-on license and the Sales Action Plans default permission set.
-
-**•** `RecordAction`
-
-**•** `Task`
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-
-The most recent date on which a user referenced this record.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-
-The most recent date on which a user viewed this record.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-
-Standard Objects ActionPlanTemplateItemValue
-
-**Field Name** **Details**
-
-**Description**
-
-Indicates whether this action plan template item value can be edited or not. The
-default value is `false` .
-
-```
-Name
-
-ValueFormula
-
-ValueLiteral
-
-```
-
-Associated Objects
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, idLookup, Sort, Update
-
-**Description**
-
-The unique identifier for this record.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-
-A formula used to calculate the value for this action plan template item.
-
-**Type**
-textarea
-
-**Properties**
-Create, Filter, Nillable, Update
-
-**Description**
-
-The value for this action plan template item.
-
-This object has the following associated objects. If the API version isn't specified, they're available in the same API versions as this object.
-Otherwise, they're available in the specified API version and later.
-
-**[ActionPlanTemplateItemValueChangeEvent](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_change_event.htm)**
-
-Change events are available for the object.
-
-**[ActionPlanTemplateItemValueFeed](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_feed.htm)**
-
-Feed tracking is available for the object.
-
-**[ActionPlanTemplateItemValueHistory](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_history.htm)**
-
-History is available for tracked fields of the object.
-
-**[ActionPlanTemplateItemValueOwnerSharingRule](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_ownersharingrule.htm)**
-
-Sharing rules are available for the object.
-
-**[ActionPlanTemplateItemValueShare](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_share.htm)**
-
-Sharing is available for the object.
-
-
-### Standard Objects ActionPlanTemplateVersion ActionPlanTemplateVersion
-
-Represents the version of an action plan template. This object is available in API version 44.0 and later.
-
-Supported Calls
-
-```
-   create()delete()describeLayout()describeSObjects()getDeleted()getUpdated()query()retrieve()search
-
-   ( )undelete()update()upsert()
-
-```
-
-Fields
-
-**Field Name** **Details**
-
-```
-ActionPlanTemplateId
-
-ActivationDateTime
-
-InactivationDateTime
-
-IsLocked
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort, Filter, Group, Sort
-
-**Description**
-
-The ID of the action plan template this version represents.
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Nillable, Sort,
-
-**Description**
-
-The date and time at which this version became active.
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Nillable, Sort
-
-**Description**
-
-The date and time at which this version became inactive.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-
-Indicates whether this action plan template version is locked or not. The default
-value is `false` .
-
-
-Standard Objects ActionPlanTemplateVersion
-
-**Field Name** **Details**
-
-```
-LastReferencedDate
-
-LastViewedDate
-
-MayEdit
-
-Name
-
-Status
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort,, Sort
-
-**Description**
-
-The most recent date on which a user referenced this record.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-
-The most recent date on which a user viewed this record.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-
-Indicates whether this action plan template version can be edited. The default
-value is `false` .
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, idLookup, Sort, Update,
-
-**Description**
-
-The name of this version item.
-
-**Type**
-picklist
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-
-The action plan template version’s state. Possible values are:
-
-**•** `Draft`
-
-**•** `Final – Published`
-
-**•** `Obsolete`
-
-**•** `ReadOnly`
-
-
-### Standard Objects ActiveFeatureLicenseMetric
-
-**Field Name** **Details**
-
-```
-Version
-
-```
-
-Associated Objects
-
-**Type**
-int
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort
-
-**Description**
-
-The index number of this action plan template version.
-
-This object has the following associated objects. Unless noted, they are available in the same API version as this object.
-
-**[ActionPlanTemplateVersionChangeEvent](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_change_event.htm)**
-
-Change events are available for the object.
-
-**[ActionPlanTemplateVersionFeed](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_feed.htm)**
-
-Feed tracking is available for the object.
-
-**[ActionPlanTemplateVersionHistory](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_history.htm)**
-
-History is available for tracked fields of the object.
-
-**[ActionPlanTemplateVersionOwnerSharingRule](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_ownersharingrule.htm)**
-
-Sharing rules are available for the object.
-
-**[ActionPlanTemplateVersionShare](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_share.htm)**
-
-Sharing is available for the object.
-
-### ActiveFeatureLicenseMetric
-
-Represents the number of active, assigned, and purchased feature licenses in the org. This object is available in API version 52.0 and
-later.
-
-Supported Calls
-
-`describeSObjects()`, `query()`, `retrieve()`
-
-Fields
-
-**Field** **Details**
-
-```
-ActiveUserCount
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Number of users assigned this feature license who have logged in within the last 30 days.
-
-
-Standard Objects ActiveFeatureLicenseMetric
-
-**Field** **Details**
-
-```
-AssignedUserCount
-
-FeatureType
-
-MetricsDate
-
-TotalLicenseCount
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Number of users assigned this feature license.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort
-
-**Description**
-Type of feature license.
-
-Possible values are:
-
-**•** `AvantgoUser` —AvantGo User
-
-**•** `ChatterAnswersUser` —Chatter Answers User
-
-**•** `InteractionUser` —Flow User
-
-**•** `JigsawProspectingUser` —Data.com User
-
-**•** `KnowledgeUser` —Knowledge User
-
-**•** `LiveAgentUser` —Chat User
-
-**•** `MarketingUser` —Marketing User
-
-**•** `MobileUser` —Apex Mobile User
-
-**•** `OfflineUser` —Offline User
-
-**•** `SFContentUser` —Salesforce CRM Content User
-
-**•** `SiteforceContributorUser` —Site.com Contributor User
-
-**•** `SiteforcePublisherUser` —Site.com Publisher User
-
-**•** `SupportUser` —Service Cloud User
-
-**•** `WirelessUser` —Wireless User
-
-**•** `WorkDotComUserFeature` —WDC User
-
-**Type**
-date
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-Date that feature license metrics were collected.
-
-**Type**
-int
-
-
-### Standard Objects ActivePermSetLicenseMetric
-
-**Field** **Details**
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of feature licenses in the organization.
-
-### ActivePermSetLicenseMetric
-
-Represents the number of active, assigned, and purchased permission set licenses in the org. This object is available in API version 52.0
-and later.
-
-Supported Calls
-
-`describeSObjects()`, `query()`, `retrieve()`
-
-Fields
-
-**Field** **Details**
-
-```
-ActiveUserCount
-
-AssignedUserCount
-
-DeveloperName
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Number of users assigned this permission set license who have logged in within the last 30
-days.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Number of users assigned this permission set license.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The unique name of this permission set license object in the API. This name can contain only
-underscores and alphanumeric characters, and must be unique in your org. It must begin
-
-
-Standard Objects ActivePermSetLicenseMetric
-
-**Field** **Details**
-
-with a letter, not include spaces, not end with an underscore, and not contain two consecutive
-underscores.
-
-```
-MasterLabel
-
-MetricsDate
-
-PermissionSetLicenseId
-
-TotalLicenses
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The label of the permission set license.
-
-**Type**
-date
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-Date that permission set license metrics were collected.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The ID of the permission set license.
-
-This is a relationship field.
-
-**Relationship Name**
-PermissionSetLicense
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-PermissionSetLicense
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The total number of this permission set licenses that are available to your org.
-
-
-### Standard Objects ActiveProfileMetric ActiveProfileMetric
-
-Represents the profile associated with the active, assigned, and purchased user licenses. This object is available in API version 52.0 and
-later.
-
-Supported Calls
-
-`describeSObjects()`, `query()`, `retrieve()`
-
-Fields
-
-**Field** **Details**
-
-```
-ActiveUserCount
-
-AssignedUserCount
-
-MetricsDate
-
-ProfileId
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Number of users assigned this profile who have logged in within the last 30 days.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Number of users assigned this profile.
-
-**Type**
-date
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-Date that profile metrics were collected.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the profile.
-
-This is a relationship field.
-
-**Relationship Name**
-Profile
-
-
-### Standard Objects ActiveScratchOrg
-
-**Field** **Details**
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-Profile
-
-```
-UserLicenseId
-
-### ActiveScratchOrg
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The ID of the user license.
-
-This is a relationship field.
-
-**Relationship Name**
-UserLicense
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-UserLicense
-
-Represents an active scratch org. This object is available in API version 41.0 and later.
-
-Supported Calls
-
-`delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`,
-
-```
-update()
-
-```
-
-Fields
-
-**Field Name** **Details**
-
-```
-Description
-
-```
-
-**Type**
-textarea
-
-**Properties**
-Create, Nillable, Update
-
-**Description**
-A description of this scratch org.
-
-
-Standard Objects ActiveScratchOrg
-
-**Field Name** **Details**
-
-```
-Edition
-
-ExpirationDate
-
-Features
-
-HasSampleData
-
-LastLoginDate
-
-LastReferencedDate
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The org edition of this scratch org. Possible values are `Group`, `Developer`,
-`Enterprise`, and `Professional` . This field is read only.
-
-**Type**
-date
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Date when the scratch org expires. This field is read only.
-
-**Type**
-textarea
-
-**Properties**
-Nillable
-
-**Description**
-The features enabled in this scratch org, such as `MultiCurrency` . See the
-_Salesforce DX Developer Guide_ for the full list of valid features. This field is read
-only.
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort
-
-**Description**
-Specifies whether the scratch org contains sample data. If set to `true`, the
-sample data is similar to the data in a Salesforce free trial org.
-
-**Type**
-date
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The date of the last user login to the scratch org. This field is read only.
-
-**Type**
-dateTime
-
-
-Standard Objects ActiveScratchOrg
-
-**Field Name** **Details**
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The timestamp when the current user last accessed this record indirectly, for
-example, through a list view or related record. This field is read only.
-
-```
-LastViewedDate
-
-Name
-
-Namespace
-
-OrgName
-
-OwnerId
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The timestamp when the current user last viewed this record or list view. If this
-value is null, and `LastReferenceDate` isn’t null, the user accessed this
-record or list view indirectly. This field is read only.
-
-**Type**
-string
-
-**Properties**
-Autonumber, Defaulted on create, Filter, Sort
-
-**Description**
-The auto-generated ID of this scratch org. This field is read only.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The namespace associated with this scratch org. This field is read only.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The name of the scratch org. This field is read only.
-
-**Type**
-reference
-
-**Properties**
-Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-The ID of the user who owns this scratch org. This field is read only.
-
-
-Standard Objects ActiveScratchOrg
-
-**Field Name** **Details**
-
-```
-ScratchOrg
-
-ScratchOrgInfoId
-
-SignupEmail
-
-SignupInstance
-
-SignupTrialDays
-
-SignupUsername
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The org ID of the scratch org. This field is read only.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort, Update
-
-**Description**
-The id of the associated `ScratchOrgInfo` object. This field is read only.
-
-**Type**
-email
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The email address of the Administration user. This field is read only.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The Salesforce instance on which this scratch org resides. This field is read only.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of days between the scratch org's creation and expiration. This field
-is read only.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-
-Standard Objects ActiveScratchOrg
-
-**Field Name** **Details**
-
-**Description**
-The username of the Administration user of the scratch org. This field is read only.
-
-```
-Snapshot
-
-```
-
-Usage
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-If this scratch org was created from a scratch org snapshot, then this field contains
-either the name or ID of the snapshot. Specifically, the name corresponds to the
-`Name` field of the snapshot’s record in the OrgSnapshot standard object; the ID
-corresponds to the record ID.
-
-If this scratch org wasn’t created from a snapshot, this field is empty. This field is
-read only.
-
-This field is available in API version 61.0 and later.
-
-Salesforce automatically creates an instance of this object after a `ScratchOrgInfo` record moves to the Active state. The new
-`ActiveScratchOrg` gets many of its field values from the `ScratchOrgInfo` object with which it’s associated.
-
-When you delete an `ActiveScratchOrg` record, its associated scratch org is deleted and its associated `ScratchOrgInfo`
-record is moved to the Deleted state.
-
-Associated Objects
-
-This object has the following associated objects. Unless noted, they’re available in the same API version as this object.
-
-**ActiveScratchOrgFeed**
-
-Feed tracking is available for the object.
-
-**ActiveScratchOrgHistory**
-
-History is available for tracked fields of the object.
-
-**ActiveScratchOrgShare**
-
-Sharing is available for the object.
-
-SEE ALSO:
-
-ScratchOrgInfo
-
-NamespaceRegistry
-
-_[Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev)_
-
-
-### Standard Objects ActivityFieldHistory ActivityFieldHistory
-
-Represents a change in a field value for a tracked object or field. This object is a big object. This object is available in API version 55.0 and
-later.
-
-Supported Calls
-
-`delete()describeSObjects()`, `query()`, `retrieve()`
-
-Special Access Rules
-
-To see this object, users must have ViewAllData permissions.
-
-Fields
-
-**Field** **Details**
-
-```
-ActivityId
-
-ChangedById
-
-ChangedDate
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Sort
-
-**Description**
-The ID of the task or event that changed.
-
-This field is a polymorphic relationship field.
-
-**Relationship Name**
-### Activity
-
-**Refers To**
-Event, Task
-
-**Type**
-reference
-
-**Properties**
-Filter, Sort
-
-**Description**
-The ID of the user who made the change.
-
-This field is a relationship field.
-
-**Relationship Name**
-ChangedBy
-
-**Refers To**
-User
-
-**Type**
-dateTime
-
-
-Standard Objects ActivityFieldHistory
-
-**Field** **Details**
-
-**Properties**
-Filter, Sort
-
-**Description**
-The date the field value changed.
-
-```
-DataType
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Restricted picklist
-
-**Description**
-The type of the field with the changed value.
-
-Possible values are:
-
-**•** `Address`
-
-**•** `AnyType`
-
-**•** `AutoNumber`
-
-**•** `Base64`
-
-**•** `BitVector`
-
-**•** `Boolean`
-
-**•** `Content`
-
-**•** `Currency`
-
-**•** `DataCategoryGroupReference`
-
-**•** `DateOnly`
-
-**•** `DateTime`
-
-**•** `Division`
-
-**•** `Double`
-
-**•** `DynamicEnum`
-
-**•** `Email`
-
-**•** `EncryptedBase64`
-
-**•** `EncryptedText`
-
-**•** `EntityId`
-
-**•** `EnumOrId`
-
-**•** `ExternalId`
-
-**•** `Fax`
-
-**•** `File`
-
-**•** `HtmlMultiLineText`
-
-**•** `HtmlStringPlusClob`
-
-**•** `InetAddress`
-
-**•** `Json`
-
-
-Standard Objects ActivityFieldHistory
-
-**Field** **Details**
-
-**•** `Location`
-
-**•** `MultiEnum`
-
-**•** `MultiLineText`
-
-**•** `Namespace`
-
-**•** `Percent`
-
-**•** `PersonName`
-
-**•** `Phone`
-
-**•** `Raw`
-
-**•** `RecordType`
-
-**•** `SfdcEncryptedText`
-
-**•** `SimpleNamespace`
-
-**•** `StringPlusClob`
-
-**•** `Switchable_PersonName`
-
-**•** `Text`
-
-**•** `TimeOnly`
-
-**•** `Url`
-
-**•** `YearQuarter`
-
-```
-FieldName
-
-IsDataAvailable
-
-NewValueDateTime
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Sort
-
-**Description**
-The name of the field changed.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create
-
-**Description**
-Indicates whether valid data is available in the old and new value fields. This field is `false`
-if, for example, the fields are encrypted or the changed values are too large, such as for
-Description field types.
-
-The default value is `false` .
-
-**Type**
-dateTime
-
-**Properties**
-Nillable
-
-
-Standard Objects ActivityFieldHistory
-
-**Field** **Details**
-
-**Description**
-The new value for date type fields.
-
-```
-NewValueNumber
-
-NewValueText
-
-OldValueDateTime
-
-OldValueNumber
-
-OldValueText
-
-Operation
-
-```
-
-**Type**
-double
-
-**Properties**
-Nillable
-
-**Description**
-The new value for number type fields.
-
-**Type**
-string
-
-**Properties**
-Nillable
-
-**Description**
-The new value for all other field types that are not a date or number type.
-
-**Type**
-dateTime
-
-**Properties**
-Nillable
-
-**Description**
-Old value for date type fields.
-
-**Type**
-double
-
-**Properties**
-Nillable
-
-**Description**
-Old value for number type fields.
-
-**Type**
-string
-
-**Properties**
-Nillable
-
-**Description**
-The old value for all other field types that are not a date or number type.
-
-**Type**
-picklist
-
-**Properties**
-Restricted picklist
-
-
-### Standard Objects ActivityHistory
-
-**Field** **Details**
-
-**Description**
-The operation of the field value change.
-
-Possible values are:
-
-**•** `delete`
-
-**•** `update`
-
-Indexed Fields
-
-When you're querying ActivityFieldHistory with SOQL, you must specify indexed fields in the `WHERE` clause filter starting from the first
-field defined in the index. If you specify a partial list of indexed fields, don't leave any gaps between indexed fields after the first field.
-Here are the indexed fields for ActivityFieldHistory, listed from first to last in the index order.
-
-1. `ActivityId`
-
-2. `ChangedDate`
-
-3. `ChangedById`
-
-4. `FieldName`
-
-5. `ActivityFieldChange`
-
-For example, this SOQL query succeeds because the first three indexed fields are in the `WHERE` clause.
-
-```
-   SELECT ActivityId, OldValueText, NewValueText, FieldName, ChangedDate
-
-   FROM ActivityFieldHistory
-
-   WHERE ActivityId = 'SomeId' AND ChangedDate >= :startDate AND ChangedDate <= :endDate
-
-   ORDER BY ChangedDate
-
-```
-
-If you remove the `ActivityId` field from the `WHERE` clause, the query fails.
-
-```
-   SELECT ActivityId, OldValueText, NewValueText, FieldName, ChangedDate
-
-   FROM ActivityFieldHistory
-
-   WHERE ChangedDate >= :startDate AND ChangedDate <= :endDate
-
-   ORDER BY ChangedDate
-
-```
-
-SEE ALSO:
-
-[Big Objects Implementation Guide: SOQL with Big Objects](https://developer.salesforce.com/docs/atlas.en-us.260.0.bigobjects.meta/bigobjects/big_object_querying.htm)
-
-[Big Objects Implementation Guide: Big Objects](https://developer.salesforce.com/docs/atlas.en-us.254.0.bigobjects.meta/bigobjects/big_object.htm)
-
-### ActivityHistory
-
-This read-only object is displayed in a related list of closed activities—past events and closed tasks—related to an object. It includes
-activities for all contacts related to the object. ActivityHistory fields for phone calls are only available if your organization uses Salesforce
-CRM Call Center.
-
-
-Standard Objects ActivityHistory
-
-Supported Calls
-
-```
-   describeSObjects()
-
-```
-
-You can also enable `delete()` [in API version 42.0 and later. See Enable delete of Field History and Field History Archive.](https://help.salesforce.com/articleView?id=000321814&type=1&mode=1&language=en_US)
-
-Fields
-
-**Field** **Details**
-
-```
-AccountId
-
-ActivityDate
-
-ActivityDateTime
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Indicates the ID of the related account, which is determined as follows:
-
-**•** The account associated with the `WhatId`, if it exists; or
-
-**•** The account associated with the `WhoId`, if it exists; otherwise
-
-**•** `null`
-
-For information on IDs, see ID Field Type.
-
-This is a relationship field.
-
-**Relationship Name**
-Account
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-Account
-
-**Type**
-date
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Indicates one of the following:
-
-**•** The due date of a task
-
-**•** The due date of an event if `IsAllDayEvent` is set to `true`
-
-This field has a time stamp that is always set to midnight in the Universal Time Coordinated
-(UTC) time zone. The time stamp doesn’t represent the time of the activity; don’t attempt
-to alter it to accommodate time zone differences. Label is `Date` .
-
-**Type**
-dateTime
-
-
-Standard Objects ActivityHistory
-
-**Field** **Details**
-
-**Properties**
-Aggregate, Filter, Nillable, Sort
-
-**Description**
-Contains the event’s due date if the `IsAllDayEvent` flag is set to `false` . The time
-portion of this field is always transferred in the Coordinated Universal Time (UTC) time zone.
-Translate the time portion to or from a local time zone for the user or the application, as
-appropriate. Label is **Due Date Time** .
-
-The value for this field and `StartDateTime` must match, or one of them must be `null` .
-
-```
-ActivitySubtype
-
-ActivityType
-
-AlternateDetailId
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-Provides standard subtypes to facilitate creating and searching for specific activity subtypes.
-This field isn’t updateable.
-
-Possible values are:
-
-**•** Task
-
-**•** Email
-
-**•** Call
-
-**•** Event
-
-**•** LinkedIn —Available in API version 56.0 and later.
-
-**•** List Email
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-
-Represents one of the following values: `Call`, `Email`, `Meeting`, or `Other` . Label is
-`Type` . These are default values, and can be changed.
-
-`ActivityType` is the union of `TaskType` and `EventType` . If the same activity appears
-in both dynamic picklists, duplicate activities appear.
-
-`TaskType` and `EventType` can each have a `Call` type. Internally, they are distinct from
-each other.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-
-Standard Objects ActivityHistory
-
-**Field** **Details**
-
-**Description**
-The ID of a record the activity is related to which contains more details about the activity.
-For example, an activity can be related to an EmailMessage record.
-
-This is a relationship field.
-
-**Relationship Name**
-AlternateDetail
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-EmailMessage
-
-```
-CallDisposition
-
-CallDurationInSeconds
-
-CallObject
-
-CallType
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-
-Represents the result of a given call, for example, “we'll call back,” or “call unsuccessful.” Limit
-is 255 characters.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-
-Duration of the call in seconds.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-
-Name of a call center. Limit is 255 characters.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-
-The type of call being answered: Inbound, Internal, or Outbound.
-
-
-Standard Objects ActivityHistory
-
-**Field** **Details**
-
-```
-CompletedDateTime
-
-ConnectionReceivedId
-
-ConnectionSentId
-
-Description
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The date and time the task was saved with a Closed status.
-
-**•** For insert, if the task is saved with a Closed status the field is set. If the task is saved with
-an Open status the field is set to NULL.
-
-**•** For update, if the task is saved with a new Closed status, the field is reset.
-
-If the task is saved with a new non-closed status, the field is reset to NULL.
-
-If the task is saved with the same closed status (that is, unchanged) there is no change
-to the field.
-
-Note: The status is a dynamic enum. If the Closed mapping is changed it won’t cause
-an update of existing tasks. Only new insert/update operations are affected.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Indicates the ID of the PartnerNetworkConnection that shared this record with your
-organization. This field is available only if your organization has enabled Salesforce to
-Salesforce and only in API versions 28.0 and later.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Indicates the ID of the PartnerNetworkConnection that your organization shared this record
-with. This field is available only if your organization has enabled Salesforce to Salesforce, and
-only in API versions 28.0 and later. The value is always `null` . You can use the
-PartnerNetworkRecordConnection object to forward records to connections.
-
-**Type**
-textarea
-
-**Properties**
-Nillable
-
-**Description**
-
-Contains a description of the event or task. Limit is 32 KB.
-
-
-Standard Objects ActivityHistory
-
-**Field** **Details**
-
-```
-Division
-
-DurationInMinutes
-
-EndDateTime
-
-IsAllDayEvent
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Defaulted on create, Filter, Group, Restricted picklist, Sort
-
-**Description**
-A logical segment of your organization's data. For example, if your company is organized
-into different business units, you could create a division for each business unit, such as “North
-America,” “Healthcare,” or “Consulting.” Available only if the organization has the Division
-permission enabled.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-
-Indicates the duration of the event or task.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Indicates the end date and time of the event or task. Available in versions 27.0 and later. This
-field is optional, depending on the following:
-
-**•** If `IsAllDayEvent` is true, you can supply a value for either `DurationInMinutes`
-or `EndDateTime` . Supplying values in both fields is allowed if the values add up to
-the same amount of time. If both fields are `null`, the duration defaults to one day.
-
-**•** If `IsAllDayEvent` is false, a value must be supplied for either
-`DurationInMinutes` or `EndDateTime` . Supplying values in both fields is allowed
-if the values add up to the same amount of time.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-If the value of this field is set to `true`, then the activity is an event spanning a full day, and
-the `ActivityDate` defines the date of the event. If the value of this field is set to `false`,
-then the activity may be an event spanning less than a full day, or it may be a task. The default
-value of this field is `false` . Label is `All-Day Event` .
-
-
-Standard Objects ActivityHistory
-
-**Field** **Details**
-
-```
-IsClosed
-
-IsDeleted
-
-IsHighPriority
-
-IsOnlineMeeting
-
-IsReminderSet
-
-```
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether a task is closed ( `true` ) or not closed ( `false` ). The default value of this
-field is `false` . This field is set indirectly by setting the `Status` field on the task—each
-picklist value has a corresponding `IsClosed` value. Label is `Closed` .
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-
-Indicates whether the activity has been moved to the Recycle Bin ( `true` ) or not ( `false` ).
-Label is `Deleted` .
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates a high-priority task. This field is derived from the `Priority` field. The default
-value of this field is `false` .
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter
-
-**Description**
-
-Indicates whether the activity represents an online meeting ( `true` ) or not ( `false` ).
-
-Note: This field is not available in API version 16.0 or later.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether a reminder is set for an activity ( `true` ) or not ( `false` ).The default value
-of this field is `false` .
-
-
-Standard Objects ActivityHistory
-
-**Field** **Details**
-
-```
-IsTask
-
-IsVisibleInSelfService
-
-Location
-
-OwnerId
-
-PrimaryAccountId
-
-```
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-
-If the value of this field is set to `true`, then the activity is a task. If the value is set to `false`,
-then the activity is an event. The default value of this field is `false` . Label is `Task` .
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-
-If the value of this field is set to `true`, then the activity can be viewed in the self-service
-portal. The default value of this field is `false` . Label is `Visible in Self-Service` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-
-If the activity is an event, then this field contains the location of the event. If the activity is a
-task, then the value is `null` .
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-
-Indicates the ID of the user or group who owns the activity.
-
-This is a polymorphic relationship field.
-
-**Relationship Name**
-Owner
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-Calendar, Group, User
-
-**Type**
-reference
-
-
-Standard Objects ActivityHistory
-
-**Field** **Details**
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Contains the `AccountId` value from the activity record. Available in API versions 30.0 and
-later to organizations that use Shared Activities.
-
-```
-PrimaryWhoId
-
-Priority
-
-ReminderDateTime
-
-StartDateTime
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Contains the `WhoId` value from the activity record. Available in API versions 30.0 and later
-to organizations that have enabled Shared Activities.
-
-**Type**
-picklist
-
-**Properties**
-Defaulted on create, Filter, Group, Nillable, Sort
-
-**Description**
-Indicates the priority of a task, such as high, normal, or low. The default value of this field is
-`Normal` .
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Represents the time when the reminder is scheduled to fire, if `IsReminderSet` is set to
-`true` . If `IsReminderSet` is set to `false`, then the user may have deselected the
-reminder checkbox in the Salesforce user interface, or the reminder has already fired at the
-time indicated by the value.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-
-Indicates the start date and time of the event.
-
-Available in versions 29.0 and later.
-
-If the event’s `IsAllDayEvent` flag is set to true (indicating an all-day event), then the
-time stamp in `StartDateTime` is always set to midnight in the Coordinated Universal
-Time (UTC) time zone.
-
-
-Standard Objects ActivityHistory
-
-**Field** **Details**
-
-Note: Don’t attempt to alter the time stamp to account for any time zone differences.
-
-If the event’s `IsAllDayEvent` flag is set to false, then you must translate the time portion
-of the time stamp in `StartDateTime` to or from a local time zone for the user or the
-application, as appropriate. The translation must be in the Coordinated Universal Time (UTC)
-time zone.
-
-If this field has a value, then `ActivityDate` and `ActivityDateTime` either must
-be null or must match the value of this field.
-
-If the activity is a task, `StartDateTime` is null
-
-```
-Status
-
-Subject
-
-WhatId
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Defaulted on create, Filter, Group, Nillable, Sort
-
-**Description**
-
-Indicates the current status of a task,. The default value of this field is `Not Started` . Each
-predefined status field sets a value for `IsClosed` . To obtain picklist values, query TaskStatus.
-
-Possible values are:
-
-**•** Completed
-
-**•** Deferred
-
-**•** In Progress
-
-**•** Not Started
-
-**•** Waiting on someone else
-
-**Type**
-combobox
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-
-Contains the subject of the task or event.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-
-The `WhatId` represents nonhuman objects such as accounts, opportunities, campaigns,
-cases, or custom objects. `WhatId` s are polymorphic. Polymorphic means a `WhatId` is
-equivalent to the ID of a related object. The label is `Related To ID` .
-
-This is a polymorphic relationship field.
-
-
-Standard Objects ActivityHistory
-
-**Field** **Details**
-
-**Relationship Name**
-What
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-Account, Accreditation, AssessmentIndicatorDefinition, AssessmentTask,
-AssessmentTaskContentDocument, AssessmentTaskDefinition, AssessmentTaskOrder, Asset,
-AssetRelationship, AssignedResource, Award, BoardCertification, BusinessLicense,
-BusinessMilestone, BusinessProfile, Campaign, CareBarrier, CareBarrierDeterminant,
-CareBarrierType, CareDeterminant, CareDeterminantType, CareDiagnosis,
-CareInterventionType, CareMetricTarget, CareObservation, CareObservationComponent,
-CarePgmProvHealthcareProvider, CarePreauth, CarePreauthItem, CareProgram,
-CareProgramCampaign, CareProgramEligibilityRule, CareProgramEnrollee,
-CareProgramEnrolleeProduct, CareProgramEnrollmentCard, CareProgramGoal,
-CareProgramProduct, CareProgramProvider, CareProgramTeamMember,
-CareProviderAdverseAction, CareProviderFacilitySpecialty, CareProviderSearchableField,
-CareRegisteredDevice, CareRequest, CareRequestDrug, CareRequestExtension,
-CareRequestItem, CareSpecialty, CareSpecialtyTaxonomy, CareTaxonomy, Case,
-CommSubscriptionConsent, ContactEncounter, ContactEncounterParticipant, ContactRequest,
-Contract, CoverageBenefit, CoverageBenefitItem, CreditMemo, DelegatedAccount,
-DocumentChecklistItem, EnrollmentEligibilityCriteria, HealthcareFacility,
-HealthcareFacilityNetwork, HealthcarePayerNetwork, HealthcarePractitionerFacility,
-HealthcareProvider, HealthcareProviderNpi, HealthcareProviderSpecialty,
-HealthcareProviderTaxonomy, IdentityDocument, Image, IndividualApplication, Invoice,
-ListEmail, Location, MemberPlan, Opportunity, Order, OtherComponentTask, PartyConsent,
-PersonLifeEvent, PlanBenefit, PlanBenefitItem, ProcessException, Product2, ProductItem,
-ProductRequest, ProductRequestLineItem, ProductTransfer, PurchaserPlan,
-ReceivedDocument, ResourceAbsence, ReturnOrder, ReturnOrderLineItem,
-ServiceAppointment, ServiceResource, Shift, Shipment, ShipmentItem, Solution, Visit,
-VisitedParty, VolunteerProject, WorkOrder, WorkOrderLineItem
-
-```
-WhoId
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-
-The WhoId represents a human such as a lead or a contact. WhoIds are polymorphic.
-Polymorphic means a WhoId is equivalent to a contact’s ID or a lead’s ID. The label is `Name`
-`ID` .
-
-If Shared Activities is enabled, the value of this field is the ID of the related lead or primary
-contact. If you add, update, or remove the WhoId field, you might encounter problems with
-triggers, workflows, and data validation rules that are associated with the record. The label
-is `Name ID` .
-
-
-Standard Objects ActivityHistory
-
-**Field** **Details**
-
-If your organization uses Shared Activities, when you query activities in API version 30.0 or
-later, the returned value of the `WhoId` field matches the value in the queried object, not
-necessarily in the activity record itself.
-
-If Shared Activities is enabled, the value of this field is not populated and the field
-`PrimaryWhoId` should be queried instead.
-
-This is a polymorphic relationship field.
-
-**Relationship Name**
-Who
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-Contact, Lead
-
-Usage
-
-**Query activities that are related to an object**
-
-**1.** Optionally, issue a describe call against the object whose activities you wish to query, to get a suggestion of the correct SOQL
-to use.
-
-**2.** Issue a SOQL relationship query with a main clause that references the object, and an inner clause that references the activity
-history; for example:
-
-```
-       SELECT
-
-        (SELECT ActivityDate, Description
-
-         FROM ActivityHistories)
-
-       FROM Account
-
-       WHERE Name Like 'XYZ%'
-
-```
-
-The user interface enforces sharing rules, filtering out related-list items that a user doesn’t have permission to see.
-
-The following constraints on users who don’t have the “View All Data” permission help prevent performance issues.
-
-**•** In the main clause of the relationship query, you can reference only one record. For example, you can’t filter on all records where
-the account name starts with “A.” Instead, you must reference a single account record.
-
-```
-       SELECT
-
-        (SELECT ActivityDate, Description
-
-         FROM ActivityHistories
-
-         ORDER BY ActivityDate DESC NULLS LAST, LastModifiedDate DESC
-
-         LIMIT 500)
-
-       FROM Account
-
-       WHERE Name = 'Acme'
-
-       LIMIT 1
-
-```
-
-**•** In the inner clause of the query, you can’t use `WHERE` .
-
-**•** In the inner clause of the query, you must specify a limit of 500 or fewer on the number of rows that are returned in the list.
-
-
-### Standard Objects ActivityMetric
-
-**•** In the inner clause of the query, you must sort on `ActivityDate` in descending order and `LastModifiedDate` in
-descending order. You can optionally display nulls last. For example: `ORDER BY ActivityDate DESC NULLS LAST,`
-`LastModifiedDate DESC` .
-
-SEE ALSO:
-
-Task
-
-### ActivityMetric
-
-Represents activities that were added to Salesforce automatically by Einstein Activity Capture and manually by users.
-
-This object is available in API version 45.0.
-
-Supported Calls
-
-`create()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
-
-Special Access Rules
-
-Unless otherwise noted, Einstein Activity Capture and Activity Metrics must be enabled.
-
-Fields
-
-**Field** **Details**
-
-```
-BaseId
-
-BaseType
-
-FirstCallDateTime
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Defaulted on create, Filter, Group, idLookup, Sort
-
-**Description**
-The ID of the record that the activities apply to.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The entity that corresponds to the BaseId
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-
-Standard Objects ActivityMetric
-
-**Field** **Details**
-
-**Description**
-Indicates the date when the first call was made. This field is available only to Sales Engagement
-users. Einstein Activity Capture and Activity Metrics aren’t required.
-
-```
-FirstEmailDateTime
-
-InactiveDays
-
-LastActivityDateLastModDate
-
-LastActivityDateTime
-
-LastCallDateLastModDate
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-Indicates the date when the first email was sent. This field is available only to Sales
-Engagement users. Einstein Activity Capture and Activity Metrics aren’t required.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Indicates the number of days since the most recent activity was completed. This field is
-derived from the Last Activity Date field.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Indicates when the LastActivityDateTime field was last modified.
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-Indicates the date when the most recent activity was completed.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Indicates when the LastCallDateTime field was last modified.
-
-
-Standard Objects ActivityMetric
-
-**Field** **Details**
-
-```
-LastCallDateTime
-
-LastEmailDateLastModDate
-
-LastEmailDateTime
-
-LastEmailReceivedDateTime
-
-LastEmailSentDateTime
-
-LastEventDateLastModDate
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-Indicates the date when the most recent call was made through Sales Dialer or Inbox.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Indicates when the LastEmailDateTime field was last modified.
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-Indicates the date when the most recent email was sent or received.
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-Indicates the date when the most recent email was received.
-
-Available in API version 54.0 and later.
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-Indicates the date when the most recent email was sent.
-
-Available in API version 54.0 and later.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-
-Standard Objects ActivityMetric
-
-**Field** **Details**
-
-**Description**
-Indicates when the LastEventDateTime field was last modified.
-
-```
-LastEventDateTime
-
-LastTaskDateLastModDate
-
-LastTaskDateTime
-
-NextActivityDateLastModDate
-
-NextActivityDateTime
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-Indicates the date when the most recent event was completed.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Indicates when the LastTaskDateTime field was last modified.
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-Indicates the date when the last task was completed.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Indicates when the NextActivityDateTime field was last modified.
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-Indicates the date of the next scheduled task or event. Only open tasks in the future are
-included.
-
-
-### Standard Objects ActivityUsrConnectionStatus
-
-Usage
-
-Use this object to see data about sales activities that were added to Salesforce manually and by Einstein Activity Capture. Activity Metric
-fields are derived from your activity data. For example, the Inactive Days field indicates the number of days since the most recent activity
-was completed. Create a trigger that notifies a user when there isn’t any activity on an account for a certain amount of time.
-
-### ActivityUsrConnectionStatus
-
-Represents the status of the email connections for Einstein Activity Capture users. You can also see whether users accepted the required
-terms of service to capture emails. This object is available in API version 54.0 and later.
-
-Supported Calls
-
-`describeSObjects()`, `query()`
-
-Special Access Rules
-
-To access this object, enable Einstein Activity Capture in your org.
-
-Fields
-
-**Field** **Details**
-
-```
-ConfigurationName
-
-ConnectivityStatus
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The name of the Einstein Activity Capture configuration that the user is assigned to.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The status of the user’s email connection.
-
-Possible values are:
-
-**•** `ACTIVE`
-
-**•** `DISABLED`
-
-**•** `INITIALIZING`
-
-**•** `NEEDSATTENTION`
-
-**•** `NEEDSATTENTIONGLOBAL` (used when an org-level connection isn’t working)
-
-
-Standard Objects ActivityUsrConnectionStatus
-
-**Field** **Details**
-
-**•** `NEEDSATTENTIONHYBRID` (used when both org-level and user-level connections
-aren’t working)
-
-**•** `PENDING`
-
-**•** `PROCESSING`
-
-```
-ContactsSynced
-
-EmailAddress
-
-EventsSynced
-
-ExternalId
-
-GlobalOauthTermsState
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of contacts synced after midnight between Salesforce and the user’s Microsoft
-or Google email account. This field is available in API version 59.0 and later.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The email address that’s used to capture and sync data between Salesforce and the user’s
-Microsoft or Google account.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of events synced after midnight between Salesforce and the user’s Microsoft
-or Google email account. This field is available in API version 59.0 and later.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-This field is reserved for future use.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-
-Standard Objects ActivityUsrConnectionStatus
-
-**Field** **Details**
-
-**Description**
-Indicates the user’s terms of service status. When emails are enabled for Einstein Activity
-Capture, each user must accept the terms of service.
-
-Possible values are:
-
-**•** `ACCEPTED`
-
-**•** `DECLINED`
-
-**•** `PENDING`
-
-This field is available only if you use an org-level OAuth 2.0 or a service account authentication
-method. In connection report CSV files downloaded from Einstein Activity Capture Status &
-Metrics, this field is labeled Global Auth User Email Consent Status.
-
-```
-IsTermsOfServiceAccepted
-
-RecommendedActionDescription
-
-RecommendedActionTitle
-
-UserId
-
-```
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether the user has accepted the Einstein Activity Capture terms of service or
-not. When emails are enabled for Einstein Activity Capture, each user must accept the terms
-of service.
-
-The default value is `false` .
-
-This field is available only if you use a user-level authentication method. In connection report
-CSV files downloaded from Einstein Activity Capture Status & Metrics, this field is labeled
-User Auth Terms of Service Accepted.
-
-**Type**
-string
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Recommended action to take when the user’s `ConnectivityStatus` is
-`NEEDSATTENTION` . Available in API version 58.0 and later.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Reason for the user's `ConnectivityStatus` when the status is `NEEDSATTENTION` .
-Available in API version 58.0 and later.
-
-**Type**
-string
-
-
-### Standard Objects AdditionalNumber
-
-**Field** **Details**
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-ID of the user.
-
-```
-UserName
-
-UserOnboardingStatus
-
-### AdditionalNumber
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The username of the Einstein Activity Capture user.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The initial sync status when the user connects Salesforce with their external email account
-and syncs data for the first time. This field is available in API version 59.0 and later.
-
-Possible values are:
-
-**•** `NOT_STARTED`
-
-**•** `IN_PROGRESS`
-
-**•** `NOT_CONFIGURED`
-
-**•** `COMPLETE`
-
-**•** `FAILED`
-
-Represents an optional additional number for a call center. This additional number is visible in the call center's phone directory.
-
-Supported Calls
-
-`create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`,
-`undelete()`, `update()`, `upsert()`
-
-Special Access Rules
-
-Customer Portal users can't access this object.
-
-
-Standard Objects AdditionalNumber
-
-Fields
-
-**Field** **Details**
-
-```
-CallCenterId
-
-Description
-
-Name
-
-Phone
-
-```
-
-Usage
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-System field that contains the ID of the user who created the call center associated with this
-additional number. If value is null, this additional number is displayed in every call center's
-phone directory.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-Description of the additional number, such as Conference Room B.
-
-Limit: 255 characters.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, idLookup, Sort, Update
-
-**Description**
-The name of the additional number.
-
-Limit: 80 characters.
-
-**Type**
-phone
-
-**Properties**
-Create, Filter, Nillable, Group, Sort, Update
-
-**Description**
-The phone number that corresponds to this additional number.
-
-Create an additional number for a call center directory. Use this object if the number is not easily categorized as a User, Contact, Lead,
-Account, or the other object. Examples include phone queues or conference rooms.
-
-
-### Standard Objects Address Address
-
-Represents a mailing, billing, or home address.
-
-Supported Calls
-
-`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
-`retrieve()`, `search()`, `undelete()`, `update()`, `upsert()`
-
-Special Access Rules
-
-The following access checks must be enabled:
-
-**•** Industries Insurance
-
-**•** Retail Execution
-
-**•** Industries Visit
-
-**•** Field Service
-
-**•** Order Management
-
-**–** Perms: FulfillmentOrder, OrderSummary,AdvancedOrderManagement, OrderCCS
-
-**–** Prefs: OrdersEnabled, EnhancedCommerceOrders
-
-**•** Public Sector
-
-**•** Employee Experience
-
-**•** Contact Tracing For Employees
-
-You can create an address only when creating a location.
-
-Fields
-
-**Field Name** **Details**
-
-### `Address` `AddressType`
-
-**Type**
-address
-
-**Properties**
-Filter, Nillable
-
-**Description**
-The full address.
-
-**Type**
-picklist
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-Picklist of address types. The values are:
-
-**•** Mailing
-
-
-Standard Objects Address
-
-**Field Name** **Details**
-
-**•** Shipping
-
-**•** Billing
-
-**•** Home
-
-```
-City
-
-Country
-
-Description
-
-DrivingDirections
-
-GeocodeAccuracy
-
-```
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The address city.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The address country.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-A brief description of the address.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-Directions to the address.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-**Description**
-The level of accuracy of a location’s geographical coordinates compared with its
-physical address. A geocoding service typically provides this value based on the
-address’s latitude and longitude coordinates.
-
-
-Standard Objects Address
-
-**Field Name** **Details**
-
-```
-LastReferencedDate
-
-LastViewedDate
-
-Latitude
-
-LocationType
-
-Longitude
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The most recent date on which a user referenced this record.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The most recent date on which a user viewed this record.
-
-**Type**
-double
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-Used with `Longitude` to specify the precise geolocation of the address.
-Acceptable values are numbers between –90 and 90 with up to 15 decimal
-places.
-
-**Type**
-picklist
-
-**Properties**
-Create, Defaulted on create, Filter, Filter, Group, Sort, Update
-
-**Description**
-Picklist of location types. The available values are:
-
-**•** Warehouse (default)
-
-**•** Site
-
-**•** Van
-
-**•** Plant
-
-**Type**
-double
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-
-Standard Objects Address
-
-**Field Name** **Details**
-
-**Description**
-Used with `Latitude` to specify the precise geolocation of the address.
-Acceptable values are numbers between –180 and 180 with up to 15 decimal
-places.
-
-```
-Name
-
-ParentId
-
-PostalCode
-
-State
-
-```
-
-**Type**
-string
-
-**Properties**
-Autonumber, Defaulted on create, Filter, idLookup, Sort
-
-**Description**
-Name of the address.
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-A lookup field to the parent location.
-
-This is a relationship field.
-
-**Relationship Name**
-Parent
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-Location
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The address postal code.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The address state.
-
-
-### Standard Objects AgentWork
-
-**Field Name** **Details**
-
-```
-Street
-
-TimeZone
-
-```
-
-Usage
-
-**Type**
-textarea
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The address street.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-**Description**
-Picklist of available time zones.
-
-Important: “Address” in Salesforce can also refer to the Address compound field found on many standard objects. When referencing
-the Address object in your Apex code, always use `Schema.Address` instead of `Address` to prevent confusion with the
-standard Address compound field. If referencing both the address object and the Address field in the same snippet, you can
-differentiate between the two by using `System.Address` for the field and `Schema.Address` for the object.
-
-Associated Object
-
-This object has the following associated object. If the API version isn’t specified, they’re available in the same API versions as this object.
-Otherwise, they’re available in the specified API version and later.
-
-**AddressHistory (API version 62.0)**
-History is available for tracked fields of the object.
-
-### AgentWork
-
-Represents a work assignment that’s been routed to an agent. If the work is transferred to another agent, a new AgentWork record is
-created. This object is available in API version 32.0 and later.
-
-Supported Calls
-
-`create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`,
-`undelete()`, `update()`, `upsert()`
-
-Special Access Rules
-
-[To access this object, Omni-Channel must be enabled.](https://help.salesforce.com/articleView?id=omnichannel_intro.htm&type=5&language=en_US)
-
-
-Standard Objects AgentWork
-
-Fields
-
-**Field** **Details**
-
-```
-AcceptDateTime
-
-ActiveTime
-
-AcwExtensionCount
-
-AcwExtensionDuration
-
-AfterConversationActualTime
-
-```
-
-**TypedateTime**
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Indicates when the work item was accepted.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The amount of time an agent is actively working on a work item in their console. Active time
-is tracked only for tasks routed using the tab-based capacity model. It's tracked only when
-the work tab is open and in focus in the console. If the agent switches console tabs, the time
-spent on the other tabs isn't counted. Active time continues to count if you switch to a new
-browser tab or window. Active time stops when the agent closes the work item or the after
-conversation work time ends, whichever happens first.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of times that an agent extended the After Conversation Work (ACW) timer. This
-field is available in API version 55.0 and later.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The length of time (in seconds) that the After Conversation Work (ACW) timer was extended
-each time that the agent extended the timer. This field is available in API version 55.0 and
-later.
-
-To find the total extension duration, multiply this field by `AcwExtensionCount` or use
-`AfterConversationActualTime` .
-
-**Type**
-int
-
-
-Standard Objects AgentWork
-
-**Field** **Details**
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of seconds an agent spent on After Conversation Work (ACW) after customer
-contact ended. This field is available in API version 52.0 and later.
-
-```
-AgentCapacityWhenDeclined
-
-AssignedDateTime
-
-BotId
-
-BotType
-
-```
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The agent’s capacity when declining work, either explicitly or through push timeout.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Indicates when the work item was assigned to an agent
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the Enhanced Einstein Bot or AI agent that performed the work. This is a relationship
-field. This field is available in API version 52.0 and later.
-
-**Relationship Name**
-Bot
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-BotDefinition
-
-**Type**
-picklist
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-Indicates the type of bot. Valid values are:
-
-**•** Bot. Refers to an Einstein bot.
-
-
-Standard Objects AgentWork
-
-**Field** **Details**
-
-**•** ExternalCopilot. Refers to an AI agent with whom your customers can interact.
-
-The default value is Bot. This field is available in API version 63.0 and later.
-
-```
-CancelDateTime
-
-CapacityModel
-
-CapacityPercentage
-
-CapacityWeight
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Indicates when the work item was canceled.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-Indicates the capacity model used to determine agent capacity. Valid values are
-`StatusBased` and `TabBased` . This field is available in API version 50.0 and later.
-
-A work item consumes agent capacity only if it was first assigned to the agent by Omni-Channel
-using queues or skills.
-
-**Type**
-percent
-
-**Properties**
-Create, Filter, Nillable, Sort
-
-**Description**
-The percentage of an agent’s capacity that’s consumed when this work item is in progress.
-Valid values are from 0 to 100.
-
-The agent can receive a new work item only if they have enough available capacity for the
-item. Voice calls must have a capacity percentage of _`100`_, so an agent on a call doesn’t
-receive new work items until the call ends.
-
-**Type**
-double
-
-**Properties**
-Create, Filter, Nillable, Sort
-
-**Description**
-The amount of an agent’s capacity that’s consumed when this work item is in progress.
-
-For example, if cases are assigned a capacity weight of _`2`_, an agent with a capacity of _`6`_ can
-accept up to 3 cases before the agent is at capacity and can’t receive new work items.
-
-Voice calls must use the entire capacity weight.
-
-
-Standard Objects AgentWork
-
-**Field** **Details**
-
-```
-CloseDateTime
-
-DeclineDateTime
-
-DeclineReason
-
-ExternalBotId
-
-HandleTime
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Indicates when the work item was closed.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Date and time when the agent declined this record.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The provided reason for why an agent declined the work request.
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the third-party bot that handles the work item. This is a relationship field. This field
-is available in API version 64.0 and later.
-
-**Relationship Name**
-ExternalBot
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-ExternalConversationBotDef
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-
-Standard Objects AgentWork
-
-**Field** **Details**
-
-**Description**
-The amount of time an agent had the work item open, calculated by `CloseDateTime`
-
-                          - `AcceptedDateTime` . Handle time stops when the agent closes the work item or the
-after conversation work time ends, whichever happens first.
-
-```
-IsConference
-
-IsInterruptible
-
-IsOwnerChangeInitiated
-
-IsPreferredUserRequired
-
-IsStatusChangeInitiated
-
-```
-
-**Type**
-boolean
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-Indicates whether the agent was conferenced on the work item by another agent ( `true` )
-or not ( `false` ). The default value is `false` . Available in API version 44.0 and later. This
-field is accessible in Reports, but not via the API.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether a work item consumes interruptible or primary capacity. The default value
-is false. Available in API version 57.0 and later when the Interruptible Capacity feature is
-enabled.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether a work item owner change triggered the direct assignment of the work
-item to the agent. The default value is `false` . Status-Based Capacity Model has to be turned
-on to use this field. This field is available in API version 50.0 and later.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether a work item stays with the preferred user even when the user isn’t available.
-The default value is false. This field is available in API version 50.0 and later.
-
-**Type**
-boolean
-
-
-Standard Objects AgentWork
-
-**Field** **Details**
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether a work item status change triggered the direct assignment of the work
-item to the agent. The default value is false. Status-Based Capacity Model has to be turned
-on to use this field. This field is available in API version 50.0 and later.
-
-```
-IsTransfer
-
-Name
-
-OriginalGroupId
-
-OriginalQueueId
-
-```
-
-**Type**
-boolean
-
-**Properties**
-Filter,Group, Sort
-
-**Description**
-Indicates whether the agent received the work item through transfer from another agent
-( `true` ) or not ( `false` ). The default value is `false` . Available in API version 38.0 and later.
-This field is accesible in Reports, but not via the API.
-
-**Type**
-string
-
-**Properties**
-Autonumber, Defaulted on create, Filter, idLookup, Sort
-
-**Description**
-An automatically generated ID number that identifies the record.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the queue that the work assignment was originally routed to. This field is a
-relationship field.
-
-**Relationship Name**
-OriginalGroup
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-Group
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-
-Standard Objects AgentWork
-
-**Field** **Details**
-
-**Description**
-The ID of the queue that the work assignment was originally routed to. Due to API changes,
-`OriginalQueueId` is no longer recommended. Use `OriginalGroupId` instead.
-
-```
-OwnerId
-
-PausedCapacityPercentage
-
-PausedCapacityWeight
-
-PendingServiceRoutingId
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-The ID of the owner of the AgentWork. This field is a polymorphic relationship field. This field
-is available in API version 50.0 and later.
-
-**Relationship Name**
-Owner
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-Group, User
-
-**Type**
-percent
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-The percentage of an agent’s capacity that’s consumed when this work item is paused. The
-paused capacity feature is available with status-based capacity and Enhanced Omni-Channel
-only. This field is available in API version 62.0 and later.
-
-**Type**
-double
-
-**Properties**
-Create, Defaulted on create, Filter, Nillable, Sort, Update
-
-**Description**
-The amount of an agent’s capacity that’s consumed when this work item is paused. The
-paused capacity feature is available with status-based capacity and Enhanced Omni-Channel
-only. This field is available in API version 62.0 and later.
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort
-
-
-Standard Objects AgentWork
-
-**Field** **Details**
-
-**Description**
-The ID of the PendingServiceRouting on page 4102 from which the AgentWork was created.
-This field is a relationship field. This field is available in API version 50.0 and later.
-
-**Relationship Name**
-PendingServiceRouting
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-PendingServiceRouting
-
-```
-PreferredUserId
-
-PushTimeout
-
-PushTimeoutDateTime
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the preferred user to handle the work. This field is a relationship field. This field is
-available in API v46.0 and later.
-
-**Relationship Name**
-PreferredUser
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-User
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The time limit set for an agent to respond to an item before it’s pushed to another agent.
-The time limit is measured in seconds. This field is available in API version 36.0 and later.
-
-Effective API version 57.0, for inbound Voice calls, this field represents the time limit set for
-an agent to respond to a call before it’s declined. The value must be between 0 and 20. The
-value is capped at 20, so any number greater than that is treated as 20 seconds. This applies
-to the following telephony models:
-
-**•** Service Cloud Voice with Amazon Connect
-
-**•** Service Cloud Voice with Partner Telephony from Amazon Connect
-
-**Type**
-dateTime
-
-
-Standard Objects AgentWork
-
-**Field** **Details**
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The date and time (in UTC) when the push timeout event occurred. This field is available in
-API version 36.0 and later.
-
-```
-RequestDateTime
-
-RoutingModel
-
-RoutingPriority
-
-RoutingType
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Indicates when the work was requested.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-Determines how incoming work items are routed to agents assigned to a service channel.
-Possible values are:
-
-**•** `ExternalRouting`
-
-**•** `LeastActive`
-
-**•** `MostAvailable`
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The order in which work items from the queue that are associated with the routing
-configuration are routed to agents.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The type of Omni-Channel routing. Possible values are:
-
-**•** `QueueBased`
-
-**•** `SkillsBased`
-
-
-Standard Objects AgentWork
-
-**Field** **Details**
-
-```
-SecondaryRoutingPriority
-
-ServiceChannelId
-
-ShouldSkipCapacityCheck
-
-SpeedToAnswer
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Indicates the secondary routing priority.
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-The ID of the service channel that’s associated with the work assignment. This field is a
-relationship field.
-
-**Relationship Name**
-ServiceChannel
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-ServiceChannel
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether to skip checking an agent’s available capacity ( `true` ) or not ( `false` )
-when an externally routed work item is created. This field is used when agents can
-simultaneously handle work from both Omni-Channel queues and queues using external
-routing.
-
-When `true`, the receiving agent can exceed their set capacity to accept the item, but they
-don’t receive more Omni-Channel routed work. When `false`, the receiving agent can’t
-exceed their set capacity and must have enough open capacity to accept the item.
-
-The default value is `false` .
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The amount of time between when the work was requested and when an agent accepted
-it.
-
-
-Standard Objects AgentWork
-
-**Field** **Details**
-
-```
-Status
-
-TargetAcceptDateTime
-
-TransferRequesterId
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort
-
-**Description**
-The working status of the work item. Valid values are:
-
-**•** `Assigned`  - The item is assigned to the agent but hasn’t been opened.
-
-**•** `Canceled`  - The item no longer needs to be routed. For example: a chat visitor cancels
-their Omni-Channel routed chat request before it reaches an agent.
-
-**•** `Closed`  - The item is closed.
-
-**•** `Declined`  - The item was assigned to the agent but the agent explicitly declined it.
-
-**•** `DeclinedOnPushTimeout`  - The item was declined because push time-out is
-enabled and the item request timed out with the agent.
-
-**•** `Opened`  - The agent opened the item.
-
-**•** `Transferred` –The item was transferred from an agent to another agent, queue, or
-skill.
-
-**•** `Unavailable`  - The item was assigned to the agent but the agent became unavailable
-(went offline or lost connection).
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort, Update
-
-**Description**
-The date and time by when a rep must accept a work item. Influences backlog ordering by
-prioritizing work items with earlier target acceptance deadlines. The field can be dynamically
-set using Flow for each work item during the routing process. This allows for flexible
-prioritization based on case urgency, customer tier, or other business rules. Available in API
-version 65.0 and later.
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The user ID of the rep who reassigned the work using the Reassign action. This field is
-populated in reassigned AgentWork records only, not the original AgentWork record. This
-is a relationship field. This field is available in API version 63.0 and later.
-
-**Relationship Name**
-TransferRequester
-
-**Relationship Type**
-Lookup
-
-
-Standard Objects AgentWork
-
-**Field** **Details**
-
-**Refers To**
-User
-
-```
-UserId
-
-WorkItemId
-
-```
-
-Usage
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-The ID of the user that the work item was assigned to. This field is a relationship field.
-
-**Relationship Name**
-User
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-User
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-The ID of the object that’s routed to the agent through Omni-Channel.
-
-This field is a polymorphic relationship field.
-
-**Relationship Name**
-WorkItem
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-Custom objects and these standard objects: Account, Activity, Case, Claim, ClaimCoverage,
-ClaimRecovery, Contact, ContactRequest, CustomEntityData, Incident, Lead,
-LiveChatTranscript, MessagingSession, Opportunity, Orchestration Work Items, Order,
-PaymentRequest, PersonTraining,Referral, SocialPost, SwarmMember, and VoiceCall.
-WorkOrder is available in version 58.0 and later.
-
-`AgentWork` records can only be deleted if they have the status Closed, Declined, or Unavailable. They can’t be deleted if their status
-is Assigned or Opened because they’re active in Omni-Channel.
-
-When `AgentWork` records are created, they have the status Assigned. After a record is created, it’s automatically pushed to the
-assigned agent.
-
-
-### Standard Objects AgentWorkConversationalData While the metadata for AgentWork indicates support for upsert() and update(), these calls aren’t used with AgentWork
-
-because none of its fields can be updated.
-
-### Apex triggers are supported with AgentWork .
-
-Associated Objects
-
-This object has the following associated objects. Unless noted, they’re available in the same API version as this object.
-
-**AgentWorkChangeEvent (API version 63.0)**
-Change events are available for the object.
-
-**AgentWorkOwnerSharingRule**
-
-Sharing rules are available for the object.
-
-**AgentWorkShare**
-
-Sharing is available for the object.
-
-SEE ALSO:
-
-_Salesforce Help_ [: Understand the Details of the Routing Lifecycle](https://help.salesforce.com/s/articleView?id=service.omnichannel_psr_lifecycle.htm&type=5&language=en_US)
-
-### AgentWorkConversationalData
-
-Stores conversation data for agent work sessions, such as agent interactions, transfer information, and operational metrics. This object
-is available in API version 66.0 and later.
-
-Supported Calls
-
-`describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
-
-Special Access Rules
-
-You must have the Agentforce Contact Center Admin (Salesforce Voice) permission set enabled in your org.
-
-Fields
-
-**Field** **Details**
-
-```
-AgentChannelRecordingId
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Identifier for the recording associated with the agent channel conversation.
-
-This field is a relationship field.
-
-**Relationship Name**
-AgentChannelRecording
-
-
-Standard Objects AgentWorkConversationalData
-
-**Field** **Details**
-
-**Refers To**
-VoiceCallRecording
-
-```
-AgentConnectDateTime
-
-AgentCustomerMergeTime
-
-AgentDisconnectDateTime
-
-AgentId
-
-AgentType
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Timestamp for when the agent connected to the conversation.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Timestamp when the service rep and customer conversations are merged after consultation.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Timestamp for when the agent disconnected from the conversation.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-ID of an agent or a rep involved in the conversation.
-
-This field is a polymorphic relationship field.
-
-**Relationship Name**
-Agent
-
-**Refers To**
-BotDefinition, ExternalConversationBotDef, User
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-
-Standard Objects AgentWorkConversationalData
-
-**Field** **Details**
-
-**Description**
-Type of agent handling the conversation.
-
-Possible values are:
-
-**•** `ExternalBot`
-
-**•** `Human`
-
-**•** `InternalBot`
-
-```
-AgentWorkId
-
-ChannelSessionRecordId
-
-LongestPauseDuration
-
-Name
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-ID of the `AgentWork` record associated with the conversational data.
-
-This field is a relationship field.
-
-**Relationship Name**
-AgentWork
-
-**Refers To**
-AgentWork
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Identifier of the channel session for the conversation.
-
-This field is a relationship field.
-
-**Relationship Name**
-ChannelSessionRecord
-
-**Refers To**
-VoiceCall
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Duration of the longest pause during the conversation, measured in seconds.
-
-**Type**
-string
-
-
-Standard Objects AgentWorkConversationalData
-
-**Field** **Details**
-
-**Properties**
-Autonumber, Defaulted on create, Filter, idLookup, Sort
-
-**Description**
-Name of the agent work conversational data record.
-
-```
-NextAgentWorkConvId
-
-OwnerId
-
-OwnershipEndDateTime
-
-OwnershipStartDateTime
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-ID of the next record in a sequence of conversations.
-
-This field is a relationship field.
-
-**Relationship Name**
-NextAgentWorkConv
-
-**Refers To**
-AgentWorkConversationalData
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-ID of the owner of the conversational data record.
-
-This field is a polymorphic relationship field.
-
-**Relationship Name**
-Owner
-
-**Refers To**
-Group, User
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Timestamp for when ownership of the conversation ended.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-
-Standard Objects AgentWorkConversationalData
-
-**Field** **Details**
-
-**Description**
-Timestamp for when ownership of this conversation started.
-
-```
-PauseCount
-
-PrevAgentWorkConvId
-
-QualityScore
-
-TotalPauseDuration
-
-TransferType
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Total number of times the conversation was paused.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-ID of the previous record in a sequence of conversations.
-
-This field is a relationship field.
-
-**Relationship Name**
-PrevAgentWorkConv
-
-**Refers To**
-AgentWorkConversationalData
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Value of the Mean Opinion Score (MOS) that measures voice call quality.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Total duration of all pauses during the conversation, measured in seconds.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-
-### Standard Objects AgentWorkSkill
-
-**Field** **Details**
-
-**Description**
-Type of transfer for the conversation.
-
-Possible values are:
-
-**•** `Cold`
-
-**•** `Warm`
-
-### AgentWorkSkill
-
-Represents a skill used to route a work assignment to an agent. AgentWorkSkill is used for reporting and represents the result of a routing
-decision. This object is available in API version 42.0 and later.
-
-Supported Calls
-
-`delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`, `undelete()`
-
-Special Access Rules
-
-[To access this object, Omni-Channel must be enabled.](https://help.salesforce.com/articleView?id=omnichannel_intro.htm&type=5&language=en_US)
-
-Fields
-
-**Field** **Details**
-
-```
-AgentWorkId
-
-IsAdditionalSkill
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The AgentWork object associated with this skill.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-After a designated timeout period, a skill marked as additional is dropped from Omni-Channel
-routing. The case is then routed to the best-matched agent, even if the agent doesn’t have
-all the skills. The default value is false. Available in API version 48.0 and later.
-
-
-Standard Objects AgentWorkSkill
-
-**Field** **Details**
-
-```
-Name
-
-SkillId
-
-SkillLevel
-
-SkillPriority
-
-WasDropped
-
-```
-
-**Type**
-string
-
-**Properties**
-Autonumber, Defaulted on create, Filter, idLookup, Sort
-
-**Description**
-An automatically generated ID number that identifies the record.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The skill that is required or additional.
-
-**Type**
-double
-
-**Properties**
-Filter, Sort
-
-**Description**
-The level of the required or additional skill. Skill levels can range from 1 to 10. Depending on
-your business needs, you might want the skill level to reflect years of experience, certification
-levels, or license classes.
-
-**Type**
-int
-
-**Properties**
-Aggregatable, Filter, Group, Nillable, Sort
-
-**Description**
-For additional skills, specifies the order in which skills are dropped if after the specified timeout
-no agent with that skill is available. Higher priority-value skills are dropped first. Lower
-priority-value skills, for example 0, are dropped last. Skills with the same priority value are
-dropped as a group. You can set skill priority using attribute setup for skills-based routing or
-Apex code.
-
-**Type**
-boolean
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-For skills marked as additional, indicates if the skill was dropped from Omni-Channel routing
-because an agent with this skill was not available. The default value is false. Available in API
-version 48.0 and later.
-
-
-### Standard Objects AIApplication
-
-Associated Objects
-
-This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
-Otherwise, they’re available in the specified API version and later.
-
-**AgentWorkSkillChangeEvent (API version 62.0)**
-Change events are available for the object.
-
-### AIApplication
-
-Represents an AI application such as Einstein Prediction Builder. This object is available in API version 50.0 and later.
-
-Supported Calls
-
-`describeSObjects()`, `query()`, `retrieve()`
-
-Fields
-
-**Field** **Details**
-
-```
-DeveloperName
-
-Language
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The unique name of the object in the API. This name can contain only underscores and
-alphanumeric characters, and must be unique in your org. It must begin with a letter, not
-include spaces, not end with an underscore, and not contain two consecutive underscores.
-In managed packages, this field prevents naming conflicts on package installations. With
-this field, a developer can change the object’s name in a managed package and the changes
-are reflected in a subscriber’s organization.
-
-Note: Only users with View DeveloperName OR View Setup and Configuration
-permission can view, group, sort, and filter this field.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort
-
-**Description**
-The language of the application. Possible values are:
-
-**•** `da` —Danish
-
-**•** `de` —German
-
-**•** `en_US` —English
-
-**•** `es` —Spanish
-
-
-Standard Objects AIApplication
-
-**Field** **Details**
-
-**•** `es_MX` —Spanish (Mexico)
-
-**•** `fi` —Finnish
-
-**•** `fr` —French
-
-**•** `it` —Italian
-
-**•** `ja` —Japanese
-
-**•** `ko` —Korean
-
-**•** `nl_NL` —Dutch
-
-**•** `no` —Norwegian
-
-**•** `pt_BR` —Portuguese (Brazil)
-
-**•** `ru` —Russian
-
-**•** `sv` —Swedish
-
-**•** `th` —Thai
-
-**•** `zh_CN` —Chinese (Simplified)
-
-**•** `zh_TW` —Chinese (Traditional)
-
-```
-MasterLabel
-
-NamespacePrefix
-
-Status
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-Label that identifies the AI application throughout the Salesforce user interface.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Specifies the namespace of the application if installed with a managed package.
-
-**Type**
-picklist
-
-**Properties**
-Defaulted on create, Filter, Group, Restricted picklist, Sort
-
-**Description**
-Status of the AI application. Possible values are:
-
-**•** `Disabled`
-
-**•** `Enabled`
-
-**•** `Migrated`
-
-
-### Standard Objects AIApplicationConfig
-
-**Field** **Details**
-
-```
-Type
-
-### AIApplicationConfig
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort
-
-**Description**
-The type of application. Possible values are:
-
-**•** `PredictionBuilder`
-
-Additional prediction information related to an AI application. This object is available in API version 50.0 and later.
-
-Supported Calls
-
-`delete()`, `describeSObjects()`, `query()`, `retrieve()`
-
-Fields
-
-**Field** **Details**
-
-```
-DeveloperName
-
-Language
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The unique name of the object in the API. This name can contain only underscores and
-alphanumeric characters, and must be unique in your org. It must begin with a letter, not
-include spaces, not end with an underscore, and not contain two consecutive underscores.
-In managed packages, this field prevents naming conflicts on package installations. With
-this field, a developer can change the object’s name in a managed package and the changes
-are reflected in a subscriber’s organization.
-
-Note: Only users with View DeveloperName OR View Setup and Configuration
-permission can view, group, sort, and filter this field.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort
-
-**Description**
-The language of the application. Possible values are:
-
-
-### Standard Objects AiGenActionItem
-
-**Field** **Details**
-
-**•** `da` —Danish
-
-**•** `de` —German
-
-**•** `en_US` —English
-
-**•** `es` —Spanish
-
-**•** `es_MX` —Spanish (Mexico)
-
-**•** `fi` —Finnish
-
-**•** `fr` —French
-
-**•** `it` —Italian
-
-**•** `ja` —Japanese
-
-**•** `ko` —Korean
-
-**•** `nl_NL` —Dutch
-
-**•** `no` —Norwegian
-
-**•** `pt_BR` —Portuguese (Brazil)
-
-**•** `ru` —Russian
-
-**•** `sv` —Swedish
-
-**•** `th` —Thai
-
-**•** `zh_CN` —Chinese (Simplified)
-
-**•** `zh_TW` —Chinese (Traditional)
-
-```
-MasterLabel
-
-NamespacePrefix
-
-### AiGenActionItem
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-Label that identifies the AI application throughout the Salesforce user interface.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Specifies the namespace of the application config, if installed with a managed package.
-
-Represents business actions suggested by generative AI. AI-generated action items are sent to either agents for automatic execution or
-human users for review, depending on org preference and if there are any errors in the process. This object is available in API version
-64.0 and later.
-
-
-Standard Objects AiGenActionItem
-
-Supported Calls
-
-`delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`, `search()`,
-`undelete()`, `update()`
-
-Special Access Rules
-
-Agentforce Pipeline Management must be enabled. Only the agent user can create AiGenActionItem records.
-
-Fields
-
-**Field** **Details**
-
-```
-ActionItemOwnerId
-
-ActionResult
-
-AgentType
-
-```
-
-BotDefinitionId
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The ID associated with the owner of the AI-generated action item. The owner can be an
-agent or human user, and can change during the review and execution process. By default,
-the owner is an agent or queue.
-
-This field is a polymorphic relationship field.
-
-**Relationship Name**
-ActionItemOwner
-
-**Refers To**
-Group, User
-
-**Type**
-textarea
-
-**Properties**
-Create, Nillable, Update
-
-**Description**
-The result generated when the agent action is executed.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-The specific agent that processes the AI-generated action item.
-
-**Type**
-reference
-
-
-Standard Objects AiGenActionItem
-
-**Field** **Details**
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The bot record with a template name that matches the value in the Sales Management agent
-template.
-
-This field is a relationship field.
-
-**Relationship Name**
-BotDefinition
-
-**Refers To**
-BotDefinition
-
-BotVersionId
-
-```
-Description
-
-ExpirationDate
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The bot version from the bot record with an ID that matches the ID of the Sales Management
-agent bot record.
-
-This field is a relationship field.
-
-**Relationship Name**
-BotVersion
-
-**Refers To**
-BotVersion
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-The explanation of why the action item has been suggested. The description provides
-additional context to guide human users and agents in their decision-making.
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Sort, Update
-
-**Description**
-The date that the action item expires and is deleted. AI-generated action items are no longer
-visible to users after 14 days and removed from records after 30 days.
-
-
-Standard Objects AiGenActionItem
-
-**Field** **Details**
-
-```
-GeneratedResponseIdRef
-
-OwnerId
-
-Status
-
-Subject
-
-Type
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of generated result in the GenAIGeneration DMO. This field can be used by human
-users to provide feedback on the AI-generated action item.
-
-**Type**
-reference
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-The ID of the owner of this object.
-
-This field is a polymorphic relationship field.
-
-**Relationship Name**
-Owner
-
-**Refers To**
-Group, User
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-The status of the AI-generated action item.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The subject line that displays to users indicating what the action item is.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The category that the action item falls under. This field can be used to search for specific
-action items, such as field updates or follow-up sales emails.
-
-
-### Standard Objects AIInsightAction
-
-**Field** **Details**
-
-```
-UnmodActionItemOutput
-
-WhatId
-
-### AIInsightAction
-
-```
-
-**Type**
-textarea
-
-**Properties**
-Nillable
-
-**Description**
-The unmodified output for the action item produced by AI, whether from a prompt template
-or other generation method.
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-The record that the AI-generated action item is for.
-
-This field is a polymorphic relationship field.
-
-**Relationship Name**
-What
-
-**Refers To**
-Account, Opportunity
-
-Represents an Einstein prediction insight action. This object is available in API version 47.0 and later.
-
-An Einstein insight is created every time an Einstein feature, such as Prediction Builder, makes a prediction. An insight is represented by
-a root AIRecordInsight and the following child objects: AIInsightAction, AIInsightFeedback, AIInsightReason, and AIInsightValue.
-
-### AIInsightAction is a one-to-many child of AIRecordInsight. AIInsightAction contains information about predicted actions for this particular
-
-insight. AIInsightAction has one or more AIInsightValue children which contain predicted values for the action. For example, an
-### AIInsightAction could represent a quick action, and have a child AIInsightValue with the recommended value used by the quick action.
-
-Supported Calls
-
-`describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
-
-Special Access Rules
-
-Prediction insight objects are only available in orgs that have Einstein features, such as Prediction Builder or Case Classification, enabled.
-
-
-Standard Objects AIInsightAction
-
-Fields
-
-**Field** **Details**
-
-```
-ActionId
-
-ActionName
-
-AiRecordInsightId
-
-Confidence
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The unique ID of the associated action, such as the ID of a Macro.
-
-This is a polymorphic relationship field.
-
-**Relationship Name**
-Action
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-ApexClass, AuraDefinitionBundle
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The ID of the action. For example, a value of “Case.SendEmail” indicates a send email quick
-action on Case.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The unique ID of the associated AIRecordInsight.
-
-This is a relationship field.
-
-**Relationship Name**
-AiRecordInsight
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-AIRecordInsight
-
-**Type**
-double
-
-
-Standard Objects AIInsightAction
-
-**Field** **Details**
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Relative confidence strength of the generated prediction insight. Higher values (near 1.0)
-indicate stronger confidence.
-
-```
- Name
-
- Type
-
-```
-
-Usage
-
-**Type**
-string
-
-**Properties**
-Autonumber, Defaulted on create, Filter, idLookup, Sort
-
-**Description**
-The name of the AIInsightAction.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort
-
-**Description**
-The type of action. Possible values are:
-
-**•** `InvocableAction` —Invocable Action
-
-**•** `Macro` —Macro
-
-**•** `QuickAction` —Quick action.
-
-**•** `StandardAction` —Standard Action. An example standard action would be to
-update a record.
-
-When an Einstein feature makes a prediction and saves the results, the following events happen in a single atomic operation:
-
-**•** An AIRecordInsight record is created and populated with information about the prediction insight. AIInsightAction, AIInsightReason,
-and AIInsightValue records are also created and made children of the AIRecordInsight record.
-
-**•** If the Einstein feature uses AI prediction fields, prediction result values are written to the target AI prediction field.
-
-**•** An AIPredictionEvent platform event is created, and any subscriber to AIPredictionEvent is notified.
-
-When Einstein writes prediction results back to AI prediction fields, record save custom logic, such as Apex triggers, workflow rules, and
-assignment rules, aren’t run. To add custom logic based on Einstein prediction results, use a platform event subscriber, such as Process
-Builder, to get notifications for AIPredictionEvents that contain references to Einstein insight objects.
-
-Custom fields can’t be added to Einstein insight objects.
-
-Einstein insights contain information about target fields and predicted value. Your org may have created Einstein predictions that are
-associated with target fields with field-level security restrictions. To control how users access Einstein insights records, use Salesforce
-data access features such as user profiles and permission sets.
-
-
-### Standard Objects AIInsightFeedback AIInsightFeedback
-
-Represents an Einstein prediction insight feedback. This object is available in API version 47.0 and later.
-
-An Einstein insight is created every time an Einstein feature, such as Prediction Builder, makes a prediction. An insight is represented by
-a root AIRecordInsight and the following child objects: AIInsightAction, AIInsightFeedback, AIInsightReason, and AIInsightValue.
-
-### AIInsightFeedback is a one-to-many child of AIRecordInsight. AIInsightFeedback contains information about explicit and implicit feedback
-
-collected from users for a particular insight.
-
-Supported Calls
-
-`describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
-
-Special Access Rules
-
-Prediction insight objects are only available in orgs that have Einstein features, such as Prediction Builder or Case Classification, enabled.
-
-Fields
-
-**Field** **Details**
-
-```
-ActualValue
-
-AiFeedback
-
-AiInsightFeedbackType
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The raw feedback value. This field is null when no recommendation is selected.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort
-
-**Description**
-The feedback user sentiment. Possible values are:
-
-**•** `Negative` —Negative feedback
-
-**•** `Neutral` —Neutral feedback
-
-**•** `Positive` —Positive feedback
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort
-
-**Description**
-The nature of the feedback. Possible values are:
-
-
-Standard Objects AIInsightFeedback
-
-**Field** **Details**
-
-**•** `Explicit` —Explicit feedback. For example, a user applies and saves an Einstein
-recommendation on a case.
-
-**•** `Implicit` —Implicit feedback. For example, a user edits or updates a case field without
-viewing or applying field recommendations from Einstein.
-
-```
-AiRecordInsightId
-
-Name
-
-Rank
-
-ValueId
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The unique ID of the associated AIRecordInsight.
-
-This is a relationship field.
-
-**Relationship Name**
-AiRecordInsight
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-AIRecordInsight
-
-**Type**
-string
-
-**Properties**
-Autonumber, Defaulted on create, Filter, idLookup, Sort
-
-**Description**
-The name of the AIInsightFeedback.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The feedback score.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The unique ID of the associated AIInsightValue.
-
-This is a polymorphic relationship field.
-
-
-### Standard Objects AIInsightReason
-
-**Field** **Details**
-
-**Relationship Name**
-Value
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-AIInsightAction, AIInsightValue
-
-Usage
-
-Salesforce creates AIInsightFeedback records based on user responses to predictions after the prediction has been created. User feedback,
-such as a thumbs up/down response or accepting a recommended value, results in the creation of a feedback record in which the
-feedback type is explicit. An implicit feedback record is created when Einstein makes a recommendation but the field is updated in
-another way, for example, by a process. Once the AIInsightFeedback record has been created, it’s immutable.
-
-Custom fields can’t be added to Einstein insight objects.
-
-### AIInsightReason
-
-Represents an Einstein prediction insight reason. This object is available in API version 47.0 and later.
-
-An Einstein insight is created every time an Einstein feature, such as Prediction Builder, makes a prediction. An insight is represented by
-a root AIRecordInsight and the following child objects: AIInsightAction, AIInsightFeedback, AIInsightReason, and AIInsightValue.
-
-### AIInsightReason is a one-to-many child of AIInsightValue. AIInsightReason contains details about how Einstein predicted an insight value.
-
-Supported Calls
-
-`describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
-
-Special Access Rules
-
-Prediction insight objects are only available in orgs that have Einstein features, such as Prediction Builder or Case Classification, enabled.
-
-Fields
-
-**Field** **Details**
-
-```
-AiInsightValueId
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The unique ID of the associated AIInsightValue.
-
-
-Standard Objects AIInsightReason
-
-**Field** **Details**
-
-This is a relationship field.
-
-**Relationship Name**
-AiInsightValue
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-AIInsightValue
-
-```
-Contribution
-
-FeatureType
-
-FeatureValue
-
-FieldName
-
-FieldValue
-
-```
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The contribution weight for this insight reason.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The type of the feature, such as BOOL.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The value of the feature, such as TRUE or FALSE.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The name of the field the insight uses for its evaluation.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-
-Standard Objects AIInsightReason
-
-**Field** **Details**
-
-**Description**
-The value for the field the insight uses for its evaluation.
-
-```
-Intensity
-
-Name
-
-Operator
-
-ReasonLabelKey (Beta)
-
-RelatedInsightReasonId
-
-(Beta)
-
-```
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The intensity weight for this insight reason.
-
-**Type**
-string
-
-**Properties**
-Autonumber, Defaulted on create, Filter, idLookup, Sort
-
-**Description**
-The name of the AIInsightReason.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The logical operator the insight uses to compare the field value with the expression value.
-For example, if the prediction evaluates whether the fieldValue for the field `bonus__c` is
-greater than $5,000, the logical operator is `greater than` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The key used to map an Einstein Key Accounts Identification (Beta) insight phrase or phrases
-to the correct messaging template.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID used to relate multiple insights to a single model reason in the Einstein Key Accounts
-Identification (Beta) feature.
-
-This is a relationship field.
-
-
-### Standard Objects AIInsightValue
-
-**Field** **Details**
-
-**Relationship Name**
-RelatedInsightReason
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-AIInsightReason
-
-```
-SortOrder (Beta)
-
- Variance
-
-```
-
-Usage
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-A number value used to organize the phrases in the model’s insights message in the Einstein
-Key Accounts Identification (Beta) feature.
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The variance weight for this insight reason.
-
-When an Einstein feature makes a prediction and saves the results, the following events happen in a single atomic operation:
-
-**•** An AIRecordInsight record is created and populated with information about the prediction insight. AIInsightAction, AIInsightReason,
-and AIInsightValue records are also created and made children of the AIRecordInsight record.
-
-**•** If the Einstein feature uses AI prediction fields, prediction result values are written to the target AI prediction field.
-
-**•** An AIPredictionEvent platform event is created, and any subscriber to AIPredictionEvent is notified.
-
-When Einstein writes prediction results back to AI prediction fields, record save custom logic, such as Apex triggers, workflow rules, and
-assignment rules, aren’t run. To add custom logic based on Einstein prediction results, use a platform event subscriber, such as Process
-Builder, to get notifications for AIPredictionEvents that contain references to Einstein insight objects.
-
-Custom fields can’t be added to Einstein insight objects.
-
-Einstein insights contain information about target fields and predicted value. Your org may have created Einstein predictions that are
-associated with target fields with field-level security restrictions. To control how users access Einstein insights records, use Salesforce
-data access features such as user profiles and permission sets.
-
-### AIInsightValue
-
-Represents an Einstein prediction insight value. This object is available in API version 47.0 and later.
-
-
-Standard Objects AIInsightValue
-
-An Einstein insight is created every time an Einstein feature, such as Prediction Builder, makes a prediction. An insight is represented by
-a root AIRecordInsight and the following child objects: AIInsightAction, AIInsightFeedback, AIInsightReason, and AIInsightValue.
-
-AIInsightValue is a one-to-many child of AIRecordInsight. AIInsightValue represents a predicted value of a predicted insight.
-
-Supported Calls
-
-`describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
-
-Special Access Rules
-
-Available when Einstein features such as Prediction Builder or Case Classification are enabled. To access an AIInsightValue record, you
-must have access to the related AIRecordInsight record. To grant a user the right to create an AIInsightValue record, you can use the
-AICreateInsightObjects or the CreateAIInsights permission.
-
-Fields
-
-**Field** **Details**
-
-```
-AiInsightActionId
-
-AiRecordInsightId
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The unique ID of the associated AIInsightAction.
-
-This is a relationship field.
-
-**Relationship Name**
-AiInsightAction
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-AIInsightAction
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The unique ID of the associated AIRecordInsight.
-
-This is a relationship field.
-
-**Relationship Name**
-AiRecordInsight
-
-**Relationship Type**
-Lookup
-
-
-Standard Objects AIInsightValue
-
-**Field** **Details**
-
-**Refers To**
-AIRecordInsight
-
-```
-Confidence
-
-Field
-
-FieldValueLowerBound
-
-FieldValueUpperBound
-
-Name
-
-SobjectLookupValueId
-
-```
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Relative confidence strength of the generated prediction insight. Higher values (near 1.0)
-indicate stronger confidence.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The name of the target field Einstein is making predictions for, such as “AnnualRevenue”.
-
-**Type**
-textarea
-
-**Properties**
-Nillable
-
-**Description**
-The lower bound value.
-
-**Type**
-textarea
-
-**Properties**
-Nillable
-
-**Description**
-The upper bound value.
-
-**Type**
-string
-
-**Properties**
-Autonumber, Defaulted on create, Filter, idLookup, Sort
-
-**Description**
-The name of the AIInsightValue.
-
-**Type**
-reference
-
-
-Standard Objects AIInsightValue
-
-**Field** **Details**
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The unique ID of the value object, if this insight value references an object.
-
-This is a relationship field.
-
-**Relationship Name**
-SobjectLookupValue
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-Account, Accreditation, ActivationTarget, Address, AlternativePaymentMethod,
-ApiAnomalyEventStore, AssessmentIndicatorDefinition, AssessmentTask,
-AssessmentTaskContentDocument, AssessmentTaskDefinition, AssessmentTaskIndDefinition,
-AssessmentTaskOrder, Asset, AssetRelationship, AssignedResource, AssociatedLocation,
-AuthorizationForm, AuthorizationFormConsent, AuthorizationFormDataUse,
-AuthorizationFormText, Award, BoardCertification, BusinessLicense, BusinessMilestone,
-BusinessProfile, Campaign, CampaignMember, CardPaymentMethod, CareBarrier,
-CareBarrierDeterminant, CareBarrierType, CareDeterminant, CareDeterminantType,
-CareDiagnosis, CareInterventionType, CareMetricTarget, CareObservation,
-CareObservationComponent, CarePgmProvHealthcareProvider, CarePreauth, CarePreauthItem,
-CareProgram, CareProgramCampaign, CareProgramEligibilityRule, CareProgramEnrollee,
-CareProgramEnrolleeProduct, CareProgramEnrollmentCard, CareProgramGoal,
-CareProgramProduct, CareProgramProvider, CareProgramTeamMember,
-CareProviderAdverseAction, CareProviderFacilitySpecialty, CareProviderSearchableField,
-CareRegisteredDevice, CareRequest, CareRequestDrug, CareRequestExtension,
-CareRequestItem, CareSpecialty, CareSpecialtyTaxonomy, CareTaxonomy, Case, CodeSet,
-CodeSetBundle, CommSubscription, CommSubscriptionChannelType,
-CommSubscriptionConsent, CommSubscriptionTiming, ConsumptionRate,
-ConsumptionSchedule, Contact, ContactEncounter, ContactEncounterParticipant,
-ContactPointAddress, ContactPointConsent, ContactPointEmail, ContactPointPhone,
-ContactPointTypeConsent, ContactRequest, ContentVersion, Contract, CoverageBenefit,
-CoverageBenefitItem, CredentialStuffingEventStore, CreditMemo, CreditMemoLine,
-DataUseLegalBasis, DataUsePurpose, DelegatedAccount, DigitalWallet,
-DocumentChecklistItem, DuplicateRecordItem, DuplicateRecordSet, EmailMessage,
-EngagementChannelType, EnrollmentEligibilityCriteria, Event, HealthCareDiagnosis,
-HealthCareProcedure, HealthcareFacility, HealthcareFacilityNetwork, HealthcarePayerNetwork,
-HealthcarePractitionerFacility, HealthcareProvider, HealthcareProviderNpi,
-HealthcareProviderSpecialty, HealthcareProviderTaxonomy, Idea, Identifier, IdentityDocument,
-Image, Individual, IndividualApplication, Invoice, InvoiceLine, Lead, Location,
-LocationTrustMeasure, MemberPlan, MessagingEndUser, OperatingHours, Opportunity,
-OpportunityContactRole, OpportunityLineItem, Order, OrderItem, OtherComponentTask,
-PartyConsent, Payment, PaymentAuthAdjustment, PaymentAuthorization, PaymentGateway,
-PaymentGroup, PaymentLineInvoice, PersonEducation, PersonLanguage, PersonLifeEvent,
-PersonName, PlanBenefit, PlanBenefitItem, Pricebook2, PricebookEntry, ProcessException,
-Product2, ProductConsumptionSchedule, ProductFulfillmentLocation, ProductItem,
-
-
-Standard Objects AIInsightValue
-
-**Field** **Details**
-
-ProductItemTransaction, ProductRequest, ProductRequestLineItem, ProductRequired,
-ProductTransfer, ProfileSkill, ProfileSkillEndorsement, ProfileSkillUser, PurchaserPlan,
-PurchaserPlanAssn, QuickText, ReceivedDocument, Recommendation, Refund,
-RefundLinePayment, ReportAnomalyEventStore, ResourceAbsence, ResourcePreference,
-ReturnOrder, ReturnOrderItemAdjustment, ReturnOrderItemTax, ReturnOrderLineItem,
-ServiceAppointment, ServiceResource, ServiceResourceSkill, ServiceTerritory,
-ServiceTerritoryMember, ServiceTerritoryWorkType, SessionHijackingEventStore,
-SharingRecordCollection, Shift, Shipment, ShipmentItem, SkillRequirement, SocialPersona,
-SocialPost, Solution, Task, TimeSlot, UnitOfMeasure, UserProvisioningRequest, VideoCall, Visit,
-VisitedParty, Visitor, VoiceCall, VolunteerProject, WorkBadge, WorkBadgeDefinition, WorkOrder,
-WorkOrderLineItem, WorkThanks, WorkType, WorkTypeGroup, WorkTypeGroupMember
-
-```
-SobjectType
-
-Value
-
-ValueType
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The type of the value object, such as Account or Case, if this insight value references an
-object.
-
-**Type**
-textarea
-
-**Properties**
-Nillable
-
-**Description**
-The prediction result insight value.
-
-**Type**
-picklist
-
-**Properties**
-Defaulted on create, Filter, Group, Restricted picklist, Sort
-
-**Description**
-The data type of the prediction result insight value. Possible values are:
-
-**•** `Boolean` —Boolean
-
-**•** `Currency` —Currency
-
-**•** `DateTime` —DateTime
-
-**•** `Enum` —Enum
-
-**•** `Lookup` —Lookup
-
-**•** `Number` —Number
-
-**•** `String` —String
-
-
-### Standard Objects AiJobRun
-
-Usage
-
-When an Einstein feature makes a prediction and saves the results, the following events happen in a single atomic operation:
-
-**•** An AIRecordInsight record is created and populated with information about the prediction insight. AIInsightAction, AIInsightReason,
-and AIInsightValue records are also created and made children of the AIRecordInsight record.
-
-**•** If the Einstein feature uses AI prediction fields, prediction result values are written to the target AI prediction field.
-
-**•** An AIPredictionEvent platform event is created, and any subscriber to AIPredictionEvent is notified.
-
-When Einstein writes prediction results back to AI prediction fields, record save custom logic, such as Apex triggers, workflow rules, and
-assignment rules, aren’t run. To add custom logic based on Einstein prediction results, use a platform event subscriber, such as Process
-Builder, to get notifications for AIPredictionEvents that contain references to Einstein insight objects.
-
-Custom fields can’t be added to Einstein insight objects.
-
-Einstein insights contain information about target fields and predicted value. Your org may have created Einstein predictions that are
-associated with target fields with field-level security restrictions. To control how users access Einstein insights records, use Salesforce
-data access features such as user profiles and permission sets.
-
-### AiJobRun
-
-Represents an execution instance of an AI job. This object tracks the overall status and manages the lifecycle of the job from initiation
-to completion. This object is available in API version 63.0 and later.
-
-Supported Calls
-
-`create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`,
-`undelete()`, `update()`, `upsert()`
-
-Fields
-
-**Field** **Details**
-
-```
-EndTime
-
-ErrorCode
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-The time when the job run ends.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-If the job run fails, this field indicates the specific error that occurred.
-
-
-Standard Objects AiJobRun
-
-**Field** **Details**
-
-```
-ErrorMessage
-
-JobType
-
-Label
-
-Name
-
-OwnerId
-
-```
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-Contains a detailed, human-readable message that explains the reason for the job run failure.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-**Description**
-Defines the job's logic.
-
-Possible values are:
-
-**•** `PromptTemplate`
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-A user-defined name or label for the job run, which can be used for identification and tracking.
-
-**Type**
-string
-
-**Properties**
-Autonumber, Defaulted on create, Filter, idLookup, Sort
-
-**Description**
-A unique, system-generated identifier for the `AiJobRun` record.
-
-**Type**
-reference
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-The user group that owns the `AiJobRun` record.
-
-This field is a polymorphic relationship field.
-
-**Relationship Name**
-Owner
-
-**Refers To**
-Group, User
-
-
-### Standard Objects AiJobRunItem
-
-**Field** **Details**
-
-```
-StartTime
-
-Status
-
-Target
-
-### AiJobRunItem
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-The time when the job run's status changes to `InProgress` .
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-Tracks the lifecycle of the job run. Valid values are:
-
-**•** `New` : The job run has been created.
-
-**•** `ReadyToStart` : The job run is ready for the user to initiate processing.
-
-**•** `Queued` : The job run is queued to start.
-
-**•** `InProgress` : The job run is currently processing.
-
-**•** `Completed` : The job run completed.
-
-**•** `Failed` : The job run failed.
-
-**•** `Aborted` : The job run was aborted by the user.
-
-**•** `Archived` : The job run was archived by the user.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-A metadata field used to specify job-specific details, such as a `PromptTemplateId`,
-`PromptTemplateName`, or `ModelId` . This provides further context for the job
-execution.
-
-Stores an individual item associated with a parent AiJobRun, including the inputs and resulting response. This object is available in API
-version 63.0 and later.
-
-Supported Calls
-
-`create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`,
-`undelete()`, `update()`, `upsert()`
-
-
-Standard Objects AiJobRunItem
-
-Fields
-
-**Field** **Details**
-
-```
-AiJobRunId
-
-ErrorCode
-
-ErrorMessage
-
-Input
-
-Name
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-A required reference to the parent AiJobRun record that this item belongs to.
-
-This field is a relationship field.
-
-**Relationship Name**
-AiJobRun
-
-**Refers To**
-AiJobRun
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-If processing for this item fails, this field contains a numeric code indicating the error.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-Contains a detailed, human-readable message that explains the reason for the job run item
-failure.
-
-**Type**
-textarea
-
-**Properties**
-Create, Update
-
-**Description**
-Contains the input data for a single item within the job run. For example, in a PromptTemplate
-job, this is the JSON input for the prompt template.
-
-**Type**
-string
-
-**Properties**
-Autonumber, Defaulted on create, Filter, idLookup, Sort
-
-
-Standard Objects AiJobRunItem
-
-**Field** **Details**
-
-**Description**
-A unique, system-generated identifier for the AiJobRunItem record.
-
-```
-OwnerId
-
-PreprocessedInput
-
-Response
-
-Status
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-The user or group that owns the AiJobRunItem record.
-
-This field is a polymorphic relationship field.
-
-**Relationship Name**
-Owner
-
-**Refers To**
-Group, User
-
-**Type**
-textarea
-
-**Properties**
-Create, Nillable, Update
-
-**Description**
-Stores an intermediate version of the input data after the preprocessing step. For example,
-this field could be a hydrated JSON prompt.
-
-**Type**
-textarea
-
-**Properties**
-Create, Nillable, Update
-
-**Description**
-Contains the generated response for the job item after processing is complete.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-Tracks the status of the individual job item. Valid values are:
-
-**•** `Ready` : The default value. The job run item is ready to start processing.
-
-**•** `Completed` : Processing for the job run item is complete.
-
-**•** `Failed` : Processing for the job run item failed.
-
-
-### Standard Objects AiModelLanguage AiModelLanguage
-
-An object that stores language related information that is generated for each AI model. This object is available in API version 55.0 and
-later.
-
-Supported Calls
-
-`describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`, `update()`
-
-Special Access Rules
-
-For Einstein Reply Recommendations:
-
-Requires the Einstein Reply Recommendations org permissions, Einstein Reply Recommendations org pref, and Admin user or user with
-Einstein Reply Manager permissions.
-
-Fields
-
-**Field** **Details**
-
-```
-ApplicationType
-
-ExternalAiModelId
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort
-
-**Description**
-Type of application using the AI model.
-
-Possible values are:
-
-**•** `ARTICLE_RECOMMENDATION`
-
-**•** `EAR_FOR_CONVERSATION`
-
-**•** `EAR_FOR_VOICE`
-
-**•** `FAQ`
-
-**•** `REPLY_RECOMMENDATION`
-
-**•** `USE_CASE_EXPLORER`
-
-**•** `UTTERANCE_RECOMMENDATION`
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-ID of the AI model used to generate predictions.
-
-This field is a relationship field.
-
-
-Standard Objects AiModelLanguage
-
-**Field** **Details**
-
-**Relationship Name**
-ExternalAiModel
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-ExternalAIModel
-
-```
-Language
-
-Name
-
-ServingStatus
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort
-
-**Description**
-Languages supported by this AI model.
-
-Possible values are:
-
-**•** `Arabic`
-
-**•** `Chinese-simplified`
-
-**•** `Chinese-traditional`
-
-**•** `Dutch`
-
-**•** `English`
-
-**•** `French`
-
-**•** `German`
-
-**•** `Italian`
-
-**•** `Japanese`
-
-**•** `Korean`
-
-**•** `Polish`
-
-**•** `Portuguese`
-
-**•** `Russian`
-
-**•** `Spanish`
-
-**•** `Thai`
-
-**•** `Turkish`
-
-**Type**
-string
-
-**Properties**
-Autonumber, Defaulted on create, Filter, idLookup, Sort
-
-**Description**
-AI model name.
-
-**Type**
-picklist
-
-
-### Standard Objects AIRecordInsight
-
-**Field** **Details**
-
-**Properties**
-Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-Determines if the language is enabled or disabled for this AI model.
-
-```
-TranscriptCount
-
-### AIRecordInsight
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-Transcript count detected for each language.
-
-Represents an Einstein prediction insight. This object is available in API version 47.0 and later.
-
-An Einstein insight is created every time an Einstein feature, such as Prediction Builder, makes a prediction. An insight is represented by
-a root AIRecordInsight and the following child objects: AIInsightAction, AIInsightFeedback, AIInsightReason, and AIInsightValue.
-
-### AIRecordInsight contains information on the Einstein prediction, the AI prediction field where results were written, and other details
-
-such as the type of prediction.
-
-Supported Calls
-
-`delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`, `undelete()`
-
-Special Access Rules
-
-Prediction insight objects are available in orgs that have Einstein features, such as Prediction Builder or Case Classification, enabled.
-
-Fields
-
-**Field** **Details**
-
-```
-AiApplicationId
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The unique ID of the AiApplication that generated this prediction.
-
-This is a relationship field.
-
-
-Standard Objects AIRecordInsight
-
-**Field** **Details**
-
-**Relationship Name**
-AiApplication
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-AIApplication
-
-```
-Confidence
-
-MlPredictionDefinitionId
-
-ModelId
-
-```
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Relative confidence strength of the generated prediction insight, from 0.0 to 1.0. Higher
-values (near 1.0) indicate stronger confidence.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-This field is a relationship field.
-
-**Relationship Name**
-MlPredictionDefinition
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-MLPredictionDefinition
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the model to use when generating the insight.
-
-This field is a polymorphic relationship field.
-
-**Relationship Name**
-Model
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-MLModel
-
-
-Standard Objects AIRecordInsight
-
-**Field** **Details**
-
-```
-Name
-
-PredictionField
-
-RunGuid
-
-RunStartTime
-
-Status
-
-```
-
-**Type**
-string
-
-**Properties**
-Autonumber, Defaulted on create, Filter, idLookup, Sort
-
-**Description**
-The name of the AIRecordInsight.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The label of the field that Einstein is making predictions for, such as “Case.IsEscalated”.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-A unique identifier for the Einstein process that made the prediction.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The date and time the Einstein prediction process was started.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The status of this insight. Possible values are:
-
-**•** `Defunct` —The insight has been consumed by the Einstein feature that owns the
-prediction. For example, Case Classification marks an insight as defunct if a predicted
-recommendation was presented to a user and the user either accepted or ignored the
-recommendation. This behavior ensures that the same recommendation isn’t presented
-multiple times to the user.
-
-**•** `New` —The insight hasn’t been consumed by the Einstein feature.
-
-
-Standard Objects AIRecordInsight
-
-**Field** **Details**
-
-```
-TargetField
-
-TargetId
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The field to which prediction results are written. Case Classification doesn’t use this field.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The unique ID of the record Einstein is making predictions for.
-
-This is a relationship field.
-
-**Relationship Name**
-Target
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-Account, Accreditation, ActivationTarget, Address, AlternativePaymentMethod,
-ApiAnomalyEventStore, AssessmentIndicatorDefinition, AssessmentTask,
-AssessmentTaskContentDocument, AssessmentTaskDefinition, AssessmentTaskIndDefinition,
-AssessmentTaskOrder, Asset, AssetRelationship, AssignedResource, AssociatedLocation,
-AuthorizationForm, AuthorizationFormConsent, AuthorizationFormDataUse,
-AuthorizationFormText, Award, BoardCertification, BusinessLicense, BusinessMilestone,
-BusinessProfile, Campaign, CampaignMember, CardPaymentMethod, CareBarrier,
-CareBarrierDeterminant, CareBarrierType, CareDeterminant, CareDeterminantType,
-CareDiagnosis, CareInterventionType, CareMetricTarget, CareObservation,
-CareObservationComponent, CarePgmProvHealthcareProvider, CarePreauth, CarePreauthItem,
-CareProgram, CareProgramCampaign, CareProgramEligibilityRule, CareProgramEnrollee,
-CareProgramEnrolleeProduct, CareProgramEnrollmentCard, CareProgramGoal,
-CareProgramProduct, CareProgramProvider, CareProgramTeamMember,
-CareProviderAdverseAction, CareProviderFacilitySpecialty, CareProviderSearchableField,
-CareRegisteredDevice, CareRequest, CareRequestDrug, CareRequestExtension,
-CareRequestItem, CareSpecialty, CareSpecialtyTaxonomy, CareTaxonomy, Case, CodeSet,
-CodeSetBundle, CommSubscription, CommSubscriptionChannelType,
-CommSubscriptionConsent, CommSubscriptionTiming, ConsumptionRate,
-ConsumptionSchedule, Contact, ContactEncounter, ContactEncounterParticipant,
-ContactPointAddress, ContactPointConsent, ContactPointEmail, ContactPointPhone,
-ContactPointTypeConsent, ContactRequest, ContentVersion, Contract, CoverageBenefit,
-CoverageBenefitItem, CredentialStuffingEventStore, CreditMemo, CreditMemoLine,
-DataUseLegalBasis, DataUsePurpose, DelegatedAccount, DigitalWallet,
-DocumentChecklistItem, DuplicateRecordItem, DuplicateRecordSet, EmailMessage,
-EngagementChannelType, EnrollmentEligibilityCriteria, Event, HealthCareDiagnosis,
-
-
-Standard Objects AIRecordInsight
-
-**Field** **Details**
-
-HealthCareProcedure, HealthcareFacility, HealthcareFacilityNetwork, HealthcarePayerNetwork,
-HealthcarePractitionerFacility, HealthcareProvider, HealthcareProviderNpi,
-HealthcareProviderSpecialty, HealthcareProviderTaxonomy, Idea, Identifier, IdentityDocument,
-Image, Individual, IndividualApplication, Invoice, InvoiceLine, Lead, Location,
-LocationTrustMeasure, MemberPlan, MessagingEndUser, OperatingHours, Opportunity,
-OpportunityContactRole, OpportunityLineItem, Order, OrderItem, OtherComponentTask,
-PartyConsent, Payment, PaymentAuthAdjustment, PaymentAuthorization, PaymentGateway,
-PaymentGroup, PaymentLineInvoice, PersonEducation, PersonLanguage, PersonLifeEvent,
-PersonName, PlanBenefit, PlanBenefitItem, Pricebook2, PricebookEntry, ProcessException,
-Product2, ProductConsumptionSchedule, ProductFulfillmentLocation, ProductItem,
-ProductItemTransaction, ProductRequest, ProductRequestLineItem, ProductRequired,
-ProductTransfer, ProfileSkill, ProfileSkillEndorsement, ProfileSkillUser, PurchaserPlan,
-PurchaserPlanAssn, QuickText, ReceivedDocument, Recommendation, Refund,
-RefundLinePayment, ReportAnomalyEventStore, ResourceAbsence, ResourcePreference,
-ReturnOrder, ReturnOrderItemAdjustment, ReturnOrderItemTax, ReturnOrderLineItem,
-ServiceAppointment, ServiceResource, ServiceResourceSkill, ServiceTerritory,
-ServiceTerritoryMember, ServiceTerritoryWorkType, SessionHijackingEventStore,
-SharingRecordCollection, Shift, Shipment, ShipmentItem, SkillRequirement, SocialPersona,
-SocialPost, Solution, Task, TimeSlot, UnitOfMeasure, UserProvisioningRequest, VideoCall, Visit,
-VisitedParty, Visitor, VoiceCall, VolunteerProject, WorkBadge, WorkBadgeDefinition, WorkOrder,
-WorkOrderLineItem, WorkThanks, WorkType, WorkTypeGroup, WorkTypeGroupMember
-
-```
-TargetSobjectType
-
-Type
-
-ValidUntil
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort
-
-**Description**
-The type of the target object, such as Account or Case.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort
-
-**Description**
-The type of insight. Possible values are:
-
-**•** `Action` —An insight that indicates a suggested action, such as sending an email.
-
-**•** `Lookup` —An insight that indicates a related value not directly related to the target
-object and field.
-
-**•** `MultiValue` —An insight with multiple values, such as a multi-class classification.
-
-**•** `SimilarRecord` —An insight that indicates similar or duplicate records.
-
-**•** `SingleValue` —A single value insight, such as a regression number or a score.
-
-**Type**
-dateTime
-
-
-### Standard Objects AIResearchPromptResult
-
-**Field** **Details**
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The day and time this insight is valid until. After this day and time, the insight might no longer
-be valid due to new prediction results from new or changed data. If this field is `null`, this
-insight never expires.
-
-Usage
-
-When an Einstein feature makes a prediction and saves the results, the following events happen in a single atomic operation:
-
-**•** An AIRecordInsight record is created and populated with information about the prediction insight. AIInsightAction, AIInsightReason,
-and AIInsightValue records are also created and made children of the AIRecordInsight record.
-
-**•** If the Einstein feature uses AI prediction fields, prediction result values are written to the target AI prediction field.
-
-**•** An AIPredictionEvent platform event is created, and any subscriber to AIPredictionEvent is notified.
-
-When Einstein writes prediction results back to AI prediction fields, record save custom logic, such as Apex triggers, workflow rules, and
-assignment rules, aren’t run. To add custom logic based on Einstein prediction results, use a platform event subscriber, such as Process
-Builder, to get notifications for AIPredictionEvents that contain references to Einstein insight objects.
-
-Custom fields can’t be added to Einstein insight objects.
-
-Einstein insights contain information about target fields and predicted value. Your org may have created Einstein predictions that are
-associated with target fields with field-level security restrictions. To control how users access Einstein insights records, use Salesforce
-data access features such as user profiles and permission sets.
-
-Considerations for Case Classification
-
-To generate reports on the effectiveness of Einstein Case Classification predictions, use the root AIRecordInsight object and its child
-[objects, AIInsightFeedback and AIInsightValue. For example, you can determine how many cases received predictions, or how often](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_aiinsightfeedback.htm)
-agents accepted or rejected them.
-
-**•** To determine how many cases received recommendations, the AIRecordInsight table identifies the case and contains a row for each
-field and each recommendation. In AIRecordInsight, the TargetId field contains the case ID. The PredictionField indicates which case
-field is being predicted. Each field value recommendation is contained in a separate AIInsightValue object with AIRecordInsight as
-the parent. For a picklist field, Einstein creates AIInsightValue objects with up to 10 field value recommendations. However, just the
-top three predictions appear to agents in the Einstein Field Recommendations component.
-
-**•** To learn whether agents acted on any of the top three predictions, use the AIInsightFeedback object. When an agent updates fields
-after viewing Einstein’s recommendations, or when Einstein applies a recommendation automatically, the object’s
-AiInsightFeedbackType field contains Explicit. If the agent updates fields without viewing the predictions, such as on the case details
-tab, AiInsightFeedbackType is set to Implicit. When the agent applies the recommended value, the object’s AiFeedback field is set
-to Positive; if the agent applies a different value, AiFeedback is Negative.
-
-### AIResearchPromptResult
-
-Represents the research result generated by Agentforce or by Einstein from a standard or custom prompt template. This object is
-available in API version 64.0 and later.
-
-
-Standard Objects AIResearchPromptResult
-
-When an Agentforce or an Einstein feature researches a record and saves the results, an AIResearchPromptResult record is created and
-populated with information about the researched record.
-
-Supported Calls
-
-`create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`,
-`search()`, `undelete()`, `update()`, `upsert()`
-
-Special Access Rules
-
-Research results are only available in orgs that have Einstein features with Einstein generative AI enabled.
-
-Fields
-
-**Field** **Details**
-
-AiGenActionItemId
-
-IsToxicityDetected
-
-```
-LatestErrorMessage
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The business action suggested by generative AI.
-
-This field is a polymorphic relationship field.
-
-**Relationship Name**
-AiGenActionItem
-
-**Refers To**
-AiGenActionItem
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Specifies whether the generated response contains toxic language ( `true` ) or not ( `false` ).
-The default value is `false` .
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The error message that displays if the result can't be generated.
-
-
-Standard Objects AIResearchPromptResult
-
-**Field** **Details**
-
-```
-LatestGenResponseIdRef
-
-LatestGenerationDate
-
-LatestResult
-
-LatestSafetyScore
-
-LatestStatus
-
-```
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The ID of the most recently generated result in the GenAIGeneration object. The object is
-derived from the Data Cloud data model object (DMO).
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-The date and time that the result was most recently generated.
-
-**Type**
-textarea
-
-**Properties**
-Create, Nillable, Update
-
-**Description**
-The AI-generated result.
-
-**Type**
-double
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-Overall safety score for the generated research. A higher value means the generated response
-is more likely to be safe. Minimum value of 0.0. Maximum value of 1.0.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-The status of the generated result.
-
-Possible values are:
-
-**•** `Generating`
-
-**•** `Success`
-
-**•** `Failed`
-
-
-Standard Objects AIResearchPromptResult
-
-**Field** **Details**
-
-```
-OwnerId
-
-ReferenceRecordId
-
-StandardPromptTemplate
-
-```
-
-Version
-
-**Type**
-reference
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-The owner of the generated research result.
-
-This field is a polymorphic relationship field.
-
-**Relationship Name**
-Owner
-
-**Refers To**
-Group, User
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-The record ID that the research result was generated for.
-
-This field is a polymorphic relationship field.
-
-**Relationship Name**
-ReferenceRecord
-
-**Refers To**
-Account, Lead, Opportunity
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The standard prompt template used to generate the result.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The prompt template version number.
-
-
-### Standard Objects AllowedEmailDomain
-
-Associated Objects
-
-This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
-Otherwise, they’re available in the specified API version and later.
-
-**AIResearchPromptResultFeed on page 55**
-Feed tracking is available for the object.
-
-**AIResearchPromptResultHistory on page 63**
-History is available for tracked fields of the object.
-
-**AIResearchPromptResultOwnerSharingRule on page 65**
-Sharing rules are available for the object.
-
-**AIResearchPromptResultShare on page 67**
-Sharing is available for the object.
-
-### AllowedEmailDomain
-
-Represents an allowed email domain for users in your organization. You can define an allowlist to restrict the email domains allowed in
-a user’s `Email` field. This object is available in API version 29.0 and later.
-
-Supported Calls
-
-`create()`, `delete()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
-
-Special Access Rules
-
-You must have the “Manage Internal Users” user permission to use this object.
-
-Note: If you don't see this object, contact your Salesforce representative to enable it.
-
-Fields
-
-**Field** **Details**
-
-```
-Domain
-
-```
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, idLookup, Sort, Update
-
-**Description**
-An allowed email domain for users.
-
-
-### Standard Objects AlternativePaymentMethod AlternativePaymentMethod
-
-Represents a payment method that isn’t cash, a debit card, or a credit card. This object defines methods that aren’t defined by the
-CardPaymentMethod or DigitalWallet objects. Examples of alternative payment methods include CashOnDeliver, Klarna, and Direct
-### Debit. AlternativePaymentMethod functions the same as any other type of payment method for processing transactions
-
-through a payment gateway. This object is available in API version 51.0 and later.
-
-Supported Calls
-
-`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
-`retrieve()`, `undelete()`, `update()`, `upsert()`
-
-Special Access Rules
-
-To access Salesforce Payments objects with the API, your org must have one or more of these licenses: Salesforce Payments, Salesforce
-Order Management, B2B Commerce, or D2C Commerce. Salesforce Payments objects are available only in Lightning Experience.
-
-Fields
-
-**Field** **Details**
-
-```
-AccountId
-
-### `AlternativePaymentMethod`
-
-Number
-
-AuditEmail
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The account for the alternative payment method.
-
-This field is a relationship field.
-
-**Relationship Name**
-Account
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-Account
-
-**Type**
-string
-
-**Properties**
-Autonumber, Defaulted on create, Filter, idLookup, Sort
-
-**Description**
-Salesforce ID number for the alternative payment method.
-
-**Type**
-email
-
-
-Standard Objects AlternativePaymentMethod
-
-**Field** **Details**
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The email address of the payment owner where audit information about payments is sent.
-
-```
-BankAccountHolderType
-
-BankAccountType
-
-BillingFirstName
-
-BillingLastName
-
-BillingName
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-Determines if the bank account is held by a business or an individual.
-
-Possible values are:
-
-**•** `Business`
-
-**•** `Individual`
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Type of bank account such as a checking or savings account.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The first name of the payment method owner, based on their billing address details.
-
-This field is available in API version 58.0 and later.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The last name of the payment method owner, based on their billing address details.
-
-This field is available in API version 58.0 and later.
-
-**Type**
-string
-
-
-Standard Objects AlternativePaymentMethod
-
-**Field** **Details**
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The first and last name of the payment method owner, based on their billing address details.
-
-This field is available in API version 58.0 and later.
-
-```
-Comments
-
-CompanyName
-
-Email
-
-```
-
-ExtendedPaymentMethodType
-
-```
-GatewayToken
-
-```
-
-**Type**
-textarea
-
-**Properties**
-Create, Nillable, Update
-
-**Description**
-Users can add comments to provide additional details about a record. Maximum of 1000
-characters.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-Company name for this payment method. Part of the payment method’s address.
-
-**Type**
-email
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-Email address of the payment method holder.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-Other alternative payment methods used for the transaction. This field is available in API
-version 66.0 and later.
-
-**Type**
-encryptedstring
-
-**Properties**
-Create, Nillable, Update
-
-
-Standard Objects AlternativePaymentMethod
-
-**Field** **Details**
-
-**Description**
-Tokenized form of the alternative payment method, returned by the gateway. Stored as
-encrypted text.
-
-```
-GatewayTokenDetails
-
-IpAddress
-
-IsAutoPayEnabled
-
-LastReferencedDate
-
-LastViewedDate
-
-```
-
-**Type**
-textarea
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-A unique tokenized ID generated by the payment gateway when this payment method first
-interacts with the gateway. Used to identify the payment method during future transactions.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-IP address for the payment method owner.
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Indicates whether the payment method can be used for recurring payments (True) or not
-(False). The default value is False.
-
-This field is available in API v55.0 and later. For orgs that upgraded from v54.0, you must add
-this field to the Alternative Payment Method page layout in the UI. It isn't automatically
-added.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The timestamp when the current user last accessed this record, a record related to this record,
-or a list view.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-
-Standard Objects AlternativePaymentMethod
-
-**Field** **Details**
-
-**Description**
-The timestamp when the current user last viewed this record or list view. If this value is null,
-it's possible the user only accessed this record or list view (LastReferencedDate) but not
-viewed it.
-
-```
-MacAddress
-
-NickName
-
-OwnerId
-
-PaymentGatewayId
-
-```
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-Mac Address of the payment method holder.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-User-defined nickname for this payment method.
-
-**Type**
-reference
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-The user who owns the alternative payment method.
-
-This field is a polymorphic relationship field.
-
-**Relationship Name**
-Owner
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-Group, User
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort
-
-**Description**
-ID of the payment gateway entity used to handle transactions from this payment method.
-
-This field is a relationship field.
-
-
-Standard Objects AlternativePaymentMethod
-
-**Field** **Details**
-
-**Relationship Name**
-PaymentGateway
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-PaymentGateway
-
-```
-PaymentMethodAddress
-
-PaymentMethodCity
-
-PaymentMethodCountry
-
-PaymentMethodDetails
-
-PaymentMethodGeocode
-
-Accuracy
-
-```
-
-**Type**
-address
-
-**Properties**
-Filter, Nillable
-
-**Description**
-Full address associated with the alternative payment method. For more information about
-address fields, see Address Compound Fields.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-Payment method address details.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-Payment method address details.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort
-
-**Description**
-Optional information about the payment method type. This field is available in API version
-57.0 and later.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-
-Standard Objects AlternativePaymentMethod
-
-**Field** **Details**
-
-**Description**
-Accuracy level of the geocode for the payment method address. An accuracy level contains
-information about the location of a latitude and longitude. For more information about
-geolocation fields, see Geolocation Compound Field.
-
-Possible values are:
-
-**•** `Address`
-
-**•** `Block`
-
-**•** `City`
-
-**•** `County`
-
-**•** `ExtendedZip`
-
-**•** `NearAddress`
-
-**•** `Neighborhood`
-
-**•** `State`
-
-**•** `Street`
-
-**•** `Unknown`
-
-**•** `Zip`
-
-```
-PaymentMethodLatitude
-
-PaymentMethodLongitude
-
-PaymentMethodPostalCode
-
-```
-
-**Type**
-double
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-Latitude of the payment method address. Used with the PaymentMethodLongitude to
-specify the precise geolocation of the address. For details about geolocation compound
-fields, see Compound Field Considerations and Limitations.
-
-**Type**
-double
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-Longitude of the payment method address. Used with the PaymentMethodLatitude to
-specify the precise geolocation of the address. For details about geolocation compound
-fields, see Compound Field Considerations and Limitations.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-Details of the address for this payment method.
-
-
-Standard Objects AlternativePaymentMethod
-
-**Field** **Details**
-
-```
-PaymentMethodState
-
-PaymentMethodStreet
-
-PaymentMethodSubType
-
-PaymentMethodType
-
-Phone
-
-ProcessingMode
-
-```
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-Details of the address for this payment method.
-
-**Type**
-textarea
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-Details of the address for this payment method.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort
-
-**Description**
-More information about the payment method. For example, if the PaymentMethodType is
-Visa, this field can be a digital wallet. This field is available in API version 57.0 and later.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-**Description**
-Payment method used for the transaction, such as Visa, Mastercard, EPS, SepaDebit, and
-Klarna. This field is available in API version 57.0 and later.
-
-**Type**
-phone
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-Phone number of the payment method's owner.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort
-
-
-Standard Objects AlternativePaymentMethod
-
-**Field** **Details**
-
-**Description**
-Indicates whether the payment method was created in Salesforce or externally. Required.
-
-Possible values are:
-
-**•** `External` : Select this value if you create the alternative payment method record
-through any method other than the Salesforce Payments Connect API.
-
-**•** `Salesforce` : Select this value if you use Salesforce Payments Connect API to create
-the alternative payment method record.
-
-```
-SavedPaymentMethodId
-
-StandardEntryClassCode
-
-Status
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The ID of the saved payment method record.
-
-**Relationship Name**
-SavedPaymentMethod
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-SavedPaymentMethod
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort
-
-**Description**
-A three-letter code that indicates how a customer or a business initiated and authorized an
-ACH payment.
-
-Possible values are:
-
-**•** `CCD` —Corporate credit or debit entry
-
-**•** `PPD` —Pre-arranged payment and deposit entry
-
-**•** `TEL` —Telephone-initiated entry
-
-**•** `WEB` —Internet or mobile-initiated entry
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-The state of the payment method. Required.
-
-
-### Standard Objects AnalyticsChangeEventLog
-
-**Field** **Details**
-
-Possible values are:
-
-**•** `Active` —The Payments platform can use the alternative payment method to make
-payments. Active alternative payment methods can't be deleted.
-
-**•** `Canceled` —The Payments platform can no longer use the payment method to make
-payments. A value of `Canceled` can't be changed back to `Active` or `Inactive`
-
-**•** `InActive` —The Payment platform currently can't use the payment method to make
-payments. Admins can change this value to `Active` or `Canceled` when needed.
-
-### AnalyticsChangeEventLog
-
-Analytics Change Event Logs represent route or page changes made in the CRM Analytics. This object is available in API version 61.0 and
-later.
-
-[Note: This object stores event data that's queryable from platform APIs. For event data stored in event log files, see EventLogFile.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_eventlogfile.htm)
-
-Supported Calls
-
-`describeSObjects()`, `query()`
-
-Special Access Rules
-
-To access this object, you must have the View Event Log Object Data user permission.
-
-Fields
-
-**Field** **Details**
-
-```
-AnalyticsMode
-
-AnalyticsSessionIdentifier
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The location where the dashboard is displayed. In the Salesforce mobile app, embedded
-dashboards are logged as embedded first.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-
-Standard Objects AnalyticsChangeEventLog
-
-**Field** **Details**
-
-**Description**
-The ID of a particular session of CRM Analytics. Use this field to determine which log lines
-originated from a particular session.
-
-```
-AnalyticsTimestamp
-
-ClientIp
-
-CpuTime
-
-IsMobile
-
-IsNew
-
-```
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The time when this log line was generated.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The IP address of the client that’s using Salesforce services. A Salesforce internal IP (such as
-a login from AppExchange) is shown as “Salesforce.com IP”. For example: `96.43.144.26` .
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The CPU time in milliseconds used to complete the request. This field indicates the amount
-of activity taking place in the app server layer.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates that the dashboard is displayed in mobile (true) or not (false).
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-The field indicates that this action opens a new tab ( `true` ) or goes back to a previously
-opened tab ( `false` ).
-
-The default value is `false` .
-
-
-Standard Objects AnalyticsChangeEventLog
-
-**Field** **Details**
-
-```
-LoginKey
-
-PageContext
-
-PageIdentifier
-
-RecordIdentifier
-
-ReopenCount
-
-RequestIdentifier
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The string that ties together all events in a given user’s login session. It starts with a login
-event and ends with either a logout event or the user session expiring. For example:
-`GeJCsym5eyvtEK2I` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The name of the component hosting the main content of the page. For example:
-clients:cardsContainer.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the CRM Analytics dashboard page.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The Salesforce ID of the CRM Analytics object.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-If `IsNew` is `false`, the number of times that an existing page opens.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-
-Standard Objects AnalyticsChangeEventLog
-
-**Field** **Details**
-
-**Description**
-The unique ID of a single transaction. A transaction can contain one or more events. Each
-event in a given transaction has the same `RequestIdentifier.` For example:
-3nWgxWbDKWWDIk0FKfF5DV.
-
-```
-RunTime
-
-SavedViewIdentifier
-
-SessionKey
-
-TabIdentifier
-
-Timestamp
-
-```
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The amount of time that the request took in milliseconds.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the CRM Analytics dashboard saved view.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The user’s unique session ID. You can use this value to identify all user events within a session.
-When a user logs out and logs in again, a new session is started. For example:
-`d7DEq/ANa7nNZZVD` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the particular Analytics tab in the user interface.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The access time of Salesforce services in GMT. For example,
-`2020-01-20T19:12:26.965Z` . Milliseconds are the most granular setting.
-
-
-### Standard Objects AnalyticsDashboard
-
-**Field** **Details**
-
-```
-Type
-
-Uri
-
-UserIdentifier
-
-ViewMode
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The type of Apex callout. For example: REST or AJAX.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The URI of the page that’s receiving the request. For example: `/home/home.jsp` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The 15-character Identifier of the user who’s using Salesforce services through the UI or the
-API. For example: `00530000009M943` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The view mode for the CRM Analytics asset. Possible values include `view`
-
-**•** `edit`
-
-**•** `present`
-
-**•** `JSON`
-
-**•** `print`
-
-### AnalyticsDashboard
-
-Represents a Tableau Next dashboard. This object is available in API version 64.0 and later.
-
-Supported Calls
-
-`describeSObjects()`, `query()`, `retrieve()`, `search()`
-
-
-Standard Objects AnalyticsDashboard
-
-Special Access Rules
-
-To access this object, you must have Tableau Next enabled in your org and a Tableau Next permission set.
-
-Fields
-
-**Field** **Details**
-
-```
-AnalyticsWorkspaceId
-
-Description
-
-DeveloperName
-
-Language
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The ID of the Tableau Next workspace the dashboard is associated with.
-
-This field is a relationship field.
-
-**Relationship Name**
-AnalyticsWorkspace
-
-**Refers To**
-AnalyticsWorkspace
-
-**Type**
-textarea
-
-**Properties**
-Nillable
-
-**Description**
-The description of the dashboard.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The API name of the dashboard.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort
-
-**Description**
-The supported languages for the visualization. There are over 50+ supported language and
-dialect values.
-
-
-Standard Objects AnalyticsDashboard
-
-**Field** **Details**
-
-```
-LastDraftModifiedDate
-
-LastPublishedDate
-
-MasterLabel
-
-NamespacePrefix
-
-OwnerId
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The last modified date for the dashboard in draft mode.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The last published date for the dashboard.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, idLookup, Sort
-
-**Description**
-The label for the dashboard.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The namespace prefix for the dashboard.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The user ID of the user who created the dashboard.
-
-This field is a relationship field.
-
-**Relationship Name**
-Owner
-
-**Refers To**
-User
-
-
-### Standard Objects AnalyticsDownloadEventLog
-
-**Field** **Details**
-
-```
-Style
-
-TemplateAssetSourceName
-
-TemplateSource
-
-Version
-
-```
-
-**Type**
-textarea
-
-**Properties**
-Nillable
-
-**Description**
-The widget style for the dashboard, represented as a JSON string. For example,
-
-```
-  {"widgetStyle":{"backgroundColor":"#ffffff","borderEdges":[],"borderColor":"#cccccc","borderWidth":1,"borderRadius":0}}
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-If the dashboard was created from a template, this is name of the asset source.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-If the dashboard was created from a template, this is name of the template.
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The API version for the dashboard.
-
-### AnalyticsDownloadEventLog AnalyticsDownloadEventLog represent downloads made from lens and dashboard in the CRM Analytics. This object is available in API
-
-version 61.0 and later.
-
-Supported Calls
-
-`describeSObjects()`, `query()`
-
-
-Standard Objects AnalyticsDownloadEventLog
-
-Special Access Rules
-
-To access this object, you must have the View Event Log Object Data user permission.
-
-Fields
-
-**Field** **Details**
-
-```
-AnalyticsSessionIdentifier
-
-AnalyticsTimestamp
-
-AssetIdentifier
-
-AssetType
-
-ClientIp
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of a particular session of CRM Analytics. Use this field to determine which log lines
-originated from a particular session.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The time when this log line was generated.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The asset ID from the user download.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The asset type from the user download.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The IP address of the client that’s using Salesforce services. A Salesforce internal IP (such as
-a login from AppExchange) is shown as “Salesforce.com IP”. For example: `96.43.144.26` .
-
-
-Standard Objects AnalyticsDownloadEventLog
-
-**Field** **Details**
-
-```
-CpuTime
-
-DatasetIdentifiers
-
-DownloadFormat
-
-LoginKey
-
-RecordCount
-
-RequestIdentifier
-
-```
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The CPU time in milliseconds used to complete the request. This field indicates the amount
-of activity taking place in the app server layer.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-A comma-separated list of used dataset IDs.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The format of the data for export.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The string that ties together all events in a given user’s login session. It starts with a login
-event and ends with either a logout event or the user session expiring. For example:
-`GeJCsym5eyvtEK2I` .
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of records exported.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-
-Standard Objects AnalyticsDownloadEventLog
-
-**Field** **Details**
-
-**Description**
-Globally unique identifier for a given request.
-
-```
-RunTime
-
-SessionKey
-
-Timestamp
-
-Uri
-
-UserIdentifier
-
-```
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The amount of time that the request took in milliseconds.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The user’s unique session ID. You can use this value to identify all user events within a session.
-When a user logs out and logs in again, a new session is started. For example:
-`d7DEq/ANa7nNZZVD` .
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The access time of Salesforce services in GMT. For example,
-`2020-01-20T19:12:26.965Z` . Milliseconds are the most granular setting.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The URI of the page that’s receiving the request. For example: `/home/home.jsp` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the user who’s using Salesforce services through the UI or the API. For example:
-`00530000009M943` .
-
-
-### Standard Objects AnalyticsInteractEventLog
-
-**Field** **Details**
-
-```
-UserType
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The category of user license.
-
-Possible values are:
-
-**•** `CsnOnly` —Users whose access to the application is limited to Chatter. This user type
-includes Chatter Free and Chatter moderator users.
-
-**•** `CspLitePortal` —CSP Lite Portal license. Users whose access is limited because
-they’re organization customers and access the application through a customer portal or
-an Experience Cloud site.
-
-**•** `CustomerSuccess` —Customer Success license. Users whose access is limited
-because they’re organization customers and access the application through a customer
-portal.
-
-**•** `Guest` —Users whose access is limited so that your customers can view and interact
-with your site without logging in.
-
-**•** `PowerCustomerSuccess` —Power Customer Success license. Users whose access
-is limited because they’re organization customers and access the application through a
-customer portal. Users with this license type can view and edit data they directly own
-or data owned by or shared with users below them in the customer portal role hierarchy.
-
-**•** `PowerPartner` —Power Partner license. Users whose access is limited because they’re
-partners and typically access the application through a partner portal or site.
-
-**•** `SelfService` —Users whose access is limited because they’re organization customers
-and access the application through a self-service portal.
-
-**•** `Standard` —Standard user license. This user type also includes Salesforce Platform
-and Salesforce Platform One user licenses, and admins for this org.
-
-### AnalyticsInteractEventLog
-
-Analytics Interact Event Log represents route or page changes made in the CRM Analytic UI. This object is available in API version 61.0
-and later.
-
-[Note: This object stores event data that's queryable from platform APIs. For event data stored in event log files, see EventLogFile.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_eventlogfile.htm)
-
-Supported Calls
-
-`describeSObjects()`, `query()`
-
-
-Standard Objects AnalyticsInteractEventLog
-
-Special Access Rules
-
-To access this object, you must have the View Event Log Object Data user permission.
-
-Fields
-
-**Field** **Details**
-
-```
-AnalyticsSessionIdentifier
-
-AnalyticsTimestamp
-
-ClickCount
-
-ClientIp
-
-CpuTime
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of a particular session of CRM Analytics. Use this field to determine which log lines
-originated from a particular session.
-
-**Type**
-datetime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The time when this log line was generated.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of clicks performed on a page in the CRM Analytics UI.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The IP address of the client that’s using Salesforce services. A Salesforce internal IP (such as
-a login from AppExchange) is shown as “Salesforce.com IP”. For example: `96.43.144.26` .
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-
-Standard Objects AnalyticsInteractEventLog
-
-**Field** **Details**
-
-**Description**
-The CPU time in milliseconds used to complete the request. This field indicates the amount
-of activity taking place in the app server layer.
-
-```
-LoginKey
-
-ReadTime
-
-RecordIdentifier
-
-RequestIdentifier
-
-RunTime
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The string that ties together all events in a given user’s login session. It starts with a login
-event and ends with either a logout event or the user session expiring. For example:
-`GeJCsym5eyvtEK2I` .
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The amount of time a user spent on a particular tab.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The unique ID of the CRM Analytics object.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The unique ID of a single transaction. A transaction can contain one or more events. Each
-event in a given transaction has the same `RequestIdentifier.` For example:
-3nWgxWbDKWWDIk0FKfF5DV.
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The amount of time that the request took in milliseconds.
-
-
-Standard Objects AnalyticsInteractEventLog
-
-**Field** **Details**
-
-```
-SessionCount
-
-SessionKey
-
-TabIdentifier
-
-Timestamp
-
-TotalTime
-
-Type
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of times a user returned to a particular page.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The user’s unique session ID. You can use this value to identify all user events within a session.
-When a user logs out and logs in again, a new session is started. For example:
-`d7DEq/ANa7nNZZVD` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the particular Analytics tab in the UI.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The access time of Salesforce services in GMT. For example,
-`2020-01-20T19:12:26.965Z` . Milliseconds are the most granular setting.
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The total amount of time (in milliseconds) a tab is open.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-
-### Standard Objects AnalyticsLicensedAsset
-
-**Field** **Details**
-
-**Description**
-The CRM Analytics object type.
-
-```
-Uri
-
-UserIdentifier
-
-ViewMode
-
-```
-
-Usage
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The URI of the page that’s receiving the request. For example: `/home/home.jsp` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the user who’s using Salesforce services through the UI or the API. For example:
-`00530000009M943` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The view mode for the CRM Analytics asset. Possible values include `view`
-
-**•** `edit`
-
-**•** `present`
-
-**•** `JSON`
-
-**•** `print`
-
-This event type is captured when a tab is closed. It collates the interaction statistics over the life of the tab, including total open time,
-read time, and so on. These statistics are aggregated as you go to other tabs and then return, and logged only when the tab is closed.
-
-### AnalyticsLicensedAsset
-
-Represents a licensed Analytics asset. In this context, Analytics is CRM Analytics, Sonic, or Mulesoft Data Path. Available in API version
-52.0 and later.
-
-
-### Standard Objects AnalyticsPerfEventLog
-
-Supported Calls
-
-`create()`, `delete()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
-
-Fields
-
-**Field** **Details**
-
-```
-ConsumerNamespace
-
-LicenseType
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-**Description**
-The consumer namespace for the asset. The possible values are:
-
-**•** `Industries`
-
-**Type**
-picklist
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-The license type for the asset. The possible values are:
-
-**•** `Aqs` (Analytics Query Service)
-
-**•** `Cdp` (Data Cloud)
-
-**•** `DataPipelineQuery` (Data Pipeline Query)
-
-**•** `EinsteinAnalytics` (CRM Analytics)
-
-**•** `MulesoftDataPath` (Mulesoft DataPath)
-
-**•** `Sonic` (Salesforce Data Pipelines)
-
-The default value is `EinsteinAnalytics` .
-
-### AnalyticsPerfEventLog
-
-Analytics Perf Event Log helps track trends in your Analytics performance. This object is available in API version 61.0 and later.
-
-[Note: This object stores event data that's queryable from platform APIs. For event data stored in event log files, see EventLogFile.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_eventlogfile.htm)
-
-Supported Calls
-
-`describeSObjects()`, `query()`
-
-
-Standard Objects AnalyticsPerfEventLog
-
-Special Access Rules
-
-To access this object, you must have the View Event Log Object Data user permission.
-
-Fields
-
-**Field** **Details**
-
-```
-AnalyticsSessionIdentifier
-
-AnalyticsTimestamp
-
-ClientIp
-
-CpuTime
-
-EffectivePageTime
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of a particular session of CRM Analytics. Use this field to determine which log lines
-originated from a particular session.
-
-**Type**
-datetime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The time when this log line is generated.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The IP address of the client that’s using Salesforce services. A Salesforce internal IP (such as
-a login from AppExchange) is shown as “Salesforce.com IP”. For example: `96.43.144.26` .
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The CPU time in milliseconds used to complete the request. This field indicates the amount
-of activity taking place in the app server layer.
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-
-Standard Objects AnalyticsPerfEventLog
-
-**Field** **Details**
-
-**Description**
-The experienced page time in milliseconds.
-
-```
-IsInitialLoad
-
-LoginKey
-
-QueriedName
-
-RecordIdentifier
-
-RequestIdentifier
-
-```
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether the event is for the initial load of the Dashboard ( `true` ) or not ( `false` ).
-
-The default value is `false` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The string that ties together all events in a given user’s login session. It starts with a login
-event and ends with either a logout event or the user session expiring. For example:
-`GeJCsym5eyvtEK2I` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The asset title or query string.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The unique ID of the CRM Analytics object.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The unique ID of a single transaction. A transaction can contain one or more events. Each
-event in a given transaction has the same `RequestIdentifier.` For example:
-3nWgxWbDKWWDIk0FKfF5DV.
-
-
-Standard Objects AnalyticsPerfEventLog
-
-**Field** **Details**
-
-```
-RunTime
-
-SessionKey
-
-TabIdentifier
-
-Timestamp
-
-Uri
-
-UserIdentifier
-
-```
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The amount of time that the request took in milliseconds.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The user’s unique session ID. You can use this value to identify all user events within a session.
-When a user logs out and logs in again, a new session is started. For example:
-`d7DEq/ANa7nNZZVD` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the particular Analytics tab in the UI.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The access time of Salesforce services in GMT. For example,
-`2020-01-20T19:12:26.965Z` . Milliseconds are the most granular setting.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The URI of the page that’s receiving the request. For example: `/home/home.jsp` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-
-### Standard Objects AnalyticsVisualization
-
-**Field** **Details**
-
-**Description**
-The ID of the user who’s using Salesforce services through the UI or the API. For example:
-`00530000009M943` .
-
-```
-ViewMode
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The view mode for the CRM Analytics asset. Possible values include `view`
-
-**•** `edit`
-
-**•** `present`
-
-**•** `JSON`
-
-**•** `print`
-
-### AnalyticsVisualization
-
-Represents a Tableau Next viusalization. This object is available in API version 64.0 and later.
-
-Supported Calls
-
-`create()`, `delete()`, `describeSObjects()`, `query()`, `retrieve()`, `search()`, `update()`, `upsert()`
-
-Special Access Rules
-
-To access this object, you must have Tableau Next enabled in your org and a Tableau Next permission set.
-
-Fields
-
-**Field** **Details**
-
-```
-AnalyticsWorkspaceId
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-The ID of the Tableau Next workspace the visualization is associated with.
-
-This field is a relationship field.
-
-**Relationship Name**
-AnalyticsWorkspace
-
-
-Standard Objects AnalyticsVisualization
-
-**Field** **Details**
-
-**Refers To**
-AnalyticsWorkspace
-
-```
-Description
-
-DeveloperName
-
-Language
-
-LastDraftModifiedDate
-
-LastPublishedDate
-
-MasterLabel
-
-```
-
-**Type**
-string
-
-**Properties**
-Create, Nillable, Update
-
-**Description**
-The description of the visualization.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-The API name of the visualization.
-
-**Type**
-picklist
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-**Description**
-The supported languages for the visualization. There are over 50+ supported language and
-dialect values.
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-The last modified date for the visualization in draft mode.
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-The last published date for the visualization.
-
-**Type**
-string
-
-
-Standard Objects AnalyticsVisualization
-
-**Field** **Details**
-
-**Properties**
-Create, Filter, Group, idLookup, Sort, Update
-
-**Description**
-The label for the visualization.
-
-```
-NamespacePrefix
-
-OwnerId
-
-TemplateAssetSourceName
-
-TemplateSource
-
-Version
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The namespace prefix for the visualization.
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-The user ID of the user who created the visualization.
-
-This field is a relationship field.
-
-**Relationship Name**
-Owner
-
-**Refers To**
-User
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-If the visualization was created from a template, this is name of the asset source.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-If the visualization was created from a template, this is name of the template.
-
-**Type**
-double
-
-
-### Standard Objects AnalyticsVizField
-
-**Field** **Details**
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-The API version for the visualization.
-
-### AnalyticsVizField
-
-Represents a Tableau Next viusalization field. This object is available in API version 65.0 and later.
-
-Supported Calls
-
-`create()`, `delete()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
-
-Special Access Rules
-
-To access this object, you must have Tableau Next enabled in your org and a Tableau Next permission set.
-
-Fields
-
-**Field** **Details**
-
-```
-AdHocCalc
-
-DisplayCategory
-
-FieldKey
-
-```
-
-**Type**
-textarea
-
-**Properties**
-Create, Nillable, Update
-
-**Description**
-An ad-hoc calculation for the visualization field.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-**Description**
-The display category for the visualization field.
-
-Possible values are:
-
-**•** `Continuous` —continuous
-
-**•** `Discrete` —discrete
-
-**Type**
-string
-
-
-Standard Objects AnalyticsVizField
-
-**Field** **Details**
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-The key for for the visualization field.
-
-```
-Function
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-**Description**
-The function for the visualization field.
-
-Possible values are:
-
-**•** `Avg`
-
-**•** `Count`
-
-**•** `CountD`
-
-**•** `DatePartDay`
-
-**•** `DatePartMonth`
-
-**•** `DatePartQuarter`
-
-**•** `DatePartWeek`
-
-**•** `DatePartWeekDay`
-
-**•** `DatePartYear`
-
-**•** `DateTruncDay`
-
-**•** `DateTruncMonth`
-
-**•** `DateTruncQuarter`
-
-**•** `DateTruncWeek`
-
-**•** `DateTruncYear`
-
-**•** `FiscalDatePartMonth`
-
-**•** `FiscalDatePartQuarter`
-
-**•** `FiscalDatePartWeek`
-
-**•** `FiscalDatePartYear`
-
-**•** `FiscalDateTruncMonth`
-
-**•** `FiscalDateTruncQuarter`
-
-**•** `FiscalDateTruncWeek`
-
-**•** `FiscalDateTruncYear`
-
-**•** `Max`
-
-**•** `Mdy`
-
-**•** `Median`
-
-**•** `Min`
-
-
-Standard Objects AnalyticsVizField
-
-**Field** **Details**
-
-**•** `My`
-
-**•** `Stdev`
-
-**•** `Stdevp`
-
-**•** `Sum`
-
-**•** `UserAgg`
-
-**•** `Var`
-
-**•** `Varp`
-
-```
-Label
-
-Role
-
-SemanticFieldApiName
-
-SemanticObjectApiName
-
-Type
-
-```
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The label for the visualization field.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-**Description**
-The role for the visualization field.
-
-Possible values are:
-
-**•** `Dimension`
-
-**•** `Measure`
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The API for the field in the semantic model.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The API name for object the field belongs to in the semantic model.
-
-**Type**
-picklist
-
-
-### Standard Objects AnalyticsVizViewDef
-
-**Field** **Details**
-
-**Properties**
-Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-**Description**
-The type for the visualization field.
-
-Possible values are:
-
-**•** `Field`
-
-**•** `MeasureNames`
-
-**•** `MeasureValues`
-
-```
-UniqueIndex
-
-VisualizationId
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, idLookup, Nillable, Sort
-
-**Description**
-The unique index value for the visualization field.
-
-This field is a calculated field.
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-The ID of the visualization the field belongs to.
-
-This field is a relationship field.
-
-**Relationship Name**
-Visualization
-
-**Relationship Type**
-Master-detail
-
-**Refers To**
-AnalyticsVisualization (the master object)
-
-### AnalyticsVizViewDef
-
-Represents a Tableau Next viusalization view definition. This object is available in API version 64.0 and later.
-
-Supported Calls
-
-`create()`, `delete()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
-
-
-Standard Objects AnalyticsVizViewDef
-
-Special Access Rules
-
-To access this object, you must have Tableau Next enabled in your org and a Tableau Next permission set.
-
-Fields
-
-**Field** **Details**
-
-```
-DeveloperName
-
-IsOriginal
-
-Language
-
-```
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-The API name of the visualization view definition.
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Indicates whether the view definition is original ( `true` ) or not ( `false` ).
-
-The default value is `false` .
-
-**Type**
-picklist
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-**Description**
-The supported languages for the visualization view definition.
-
-Possible values are:
-
-**•** `da` —Danish
-
-**•** `de` —German
-
-**•** `en_US` —English
-
-**•** `es` —Spanish
-
-**•** `es_MX` —Spanish (Mexico)
-
-**•** `fi` —Finnish
-
-**•** `fr` —French
-
-**•** `it` —Italian
-
-**•** `ja` —Japanese
-
-**•** `ko` —Korean
-
-**•** `nl_NL` —Dutch
-
-**•** `no` —Norwegian
-
-
-Standard Objects AnalyticsVizViewDef
-
-**Field** **Details**
-
-**•** `pt_BR` —Portuguese (Brazil)
-
-**•** `ru` —Russian
-
-**•** `sv` —Swedish
-
-**•** `th` —Thai
-
-**•** `zh_CN` —Chinese (Simplified)
-
-**•** `zh_TW` —Chinese (Traditional)
-
-```
-MasterLabel
-
-NamespacePrefix
-
-OwnerId
-
-Version
-
-```
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, idLookup, Sort, Update
-
-**Description**
-The label for the visualization view definition.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The namespace prefix for the visualization view definition.
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-The user ID of the user who created the visualization view definition.
-
-This field is a relationship field.
-
-**Relationship Name**
-Owner
-
-**Refers To**
-User
-
-**Type**
-double
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-The API version for the visualization view definition.
-
-
-### Standard Objects AnalyticsWorkspace
-
-**Field** **Details**
-
-```
-VisualizationId
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-
-This field is a relationship field.
-
-**Relationship Name**
-Visualization
-
-**Refers To**
-AnalyticsVisualization
-
-### AnalyticsWorkspace
-
-Represents a Tableau Next workspace. This object is available in API version 54.0 and later.
-
-Supported Calls
-
-`describeSObjects()`, `query()`, `retrieve()`, `search()`
-
-Special Access Rules
-
-To access this object, you must have Tableau Next enabled in your org and a Tableau Next permission set.
-
-Fields
-
-**Field** **Details**
-
-```
-Description
-
-DeveloperName
-
-```
-
-**Type**
-textarea
-
-**Properties**
-Nillable
-
-**Description**
-The description for the workspace.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The API name for the workspace.
-
-
-Standard Objects AnalyticsWorkspace
-
-**Field** **Details**
-
-```
-Language
-
-MasterLabel
-
-NamespacePrefix
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort
-
-**Description**
-The supported languages for the workspace.
-
-Possible values are:
-
-**•** `da` —Danish
-
-**•** `de` —German
-
-**•** `en_US` —English
-
-**•** `es` —Spanish
-
-**•** `es_MX` —Spanish (Mexico)
-
-**•** `fi` —Finnish
-
-**•** `fr` —French
-
-**•** `it` —Italian
-
-**•** `ja` —Japanese
-
-**•** `ko` —Korean
-
-**•** `nl_NL` —Dutch
-
-**•** `no` —Norwegian
-
-**•** `pt_BR` —Portuguese (Brazil)
-
-**•** `ru` —Russian
-
-**•** `sv` —Swedish
-
-**•** `th` —Thai
-
-**•** `zh_CN` —Chinese (Simplified)
-
-**•** `zh_TW` —Chinese (Traditional)
-
-**Type**
-string
-
-**Properties**
-Filter, Group, idLookup, Sort
-
-**Description**
-The label for the workspace.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The namespace prefix for the workspace.
-
-
-### Standard Objects AnalyticsWorkspaceAsset AnalyticsWorkspaceAsset
-
-Represents a Tableau Next asset in a workspace. This object is available in API version 54.0 and later.
-
-Supported Calls
-
-`describeSObjects()`, `query()`, `retrieve()`
-
-Special Access Rules
-
-To access this object, you must have Tableau Next enabled in your org and a Tableau Next permission set.
-
-Fields
-
-**Field** **Details**
-
-```
-ActivePromotionRequestId
-
-AnalyticsWorkspaceId
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the active promotion request for the workspace asset.
-
-This field is a relationship field.
-
-**Relationship Name**
-ActivePromotionRequest
-
-**Refers To**
-DataAssetPromotionRequest
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The ID of the Tableau Next workspace the asset is associated with.
-
-This field is a relationship field.
-
-**Relationship Name**
-### AnalyticsWorkspace
-
-**Relationship Type**
-Master-detail
-
-**Refers To**
-AnalyticsWorkspace (the master object)
-
-
-Standard Objects AnalyticsWorkspaceAsset
-
-**Field** **Details**
-
-```
-AssetId
-
-AssetType
-
-AssetUsageType
-
-HistoricalPromotionStatus
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the asset.
-
-This field is a polymorphic relationship field.
-
-**Relationship Name**
-Asset
-
-**Refers To**
-AnalyticsDashboard, AnalyticsVisualization
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort
-
-**Description**
-The type of asset.
-
-Possible values are:
-
-**•** `AnalyticsDashboard` —Analytics Dashboard
-
-**•** `AnalyticsVisualization` —Analytics Visualization
-
-**•** `MktCalculatedInsightObject` —Calculated Insight Object
-
-**•** `MktDataConnection` —Data Cloud Connection
-
-**•** `MktDataLakeObject` —Data Lake Object
-
-**•** `MktDataModelObject` —Data Model Object
-
-**•** `SemanticModel` —Semantic Model
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort
-
-**Description**
-The type of usage for the asset.
-
-Possible values are:
-
-**•** `Created`
-
-**•** `Referenced`
-
-**Type**
-picklist
-
-
-### Standard Objects Announcement
-
-**Field** **Details**
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The historical promotion status for the asset.
-
-Possible values are:
-
-**•** `pending`
-
-**•** `promoted`
-
-**•** `unpromoted`
-
-```
-MetadataSourceType
-
-### Announcement
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The source type of the asset metadata.
-
-Possible values are:
-
-**•** `Promoted`
-
-**•** `Reused`
-
-Represents a Chatter group announcement. This object is available in API version 30.0 and later.
-
-Supported Calls
-
-`create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`,
-`undelete()`, `update()`, `upsert()`
-
-Fields
-
-**Field Name** **Details**
-
-```
-ExpirationDate
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Sort, Update
-
-**Description**
-
-Required. The date on which the announcement expires. Announcements display
-on the group UI until 11:59 p.m. local time on the selected date.
-
-
-Standard Objects Announcement
-
-**Field Name** **Details**
-
-```
-FeedItemId
-
-ParentId
-
-SendEmails
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-
-Required. The ID of the FeedItem that contains the content of the announcement.
-Announcements are stored as text posts.
-
-This is a relationship field.
-
-**Relationship Name**
-FeedItem
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-FeedItem
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-
-The ID of the parent CollaborationGroup that the announcement belongs to. An
-announcement can belong only to a single Chatter group.
-
-This is a relationship field.
-
-**Relationship Name**
-Parent
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-CollaborationGroup
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-
-Set to `true` to email all group members when an announcement is posted to
-the group. The default is `false` . This requires the user to have the “Send
-announcement on email” permission.
-
-This field is available in API version 36.0 and later.
-
-
-### Standard Objects ApexCalloutEventLog
-
-**Field Name** **Details**
-
-Note: This field is currently available to select customers through a pilot
-program. To be nominated to join this pilot program, contact Salesforce.
-Additional terms and conditions may apply to participate in the pilot
-program. Please note that pilot programs are subject to change, and as
-such, we cannot guarantee acceptance into this pilot program or a
-particular time frame in which this feature can be enabled. Any unreleased
-services or features referenced in this document, press releases, or public
-statements are not currently available and may not be delivered on time
-or at all. Customers who purchase our services should make their purchase
-decisions based upon features that are currently available.
-
-Usage
-
-Group owners, managers, and users with the “Modify All Data” permission can use the Announcement object to create, edit, and delete
-group announcements. Creating a group announcement is a three-step process.
-
-**1.** Use the FeedItem object to create a text post with the announcement’s content. Use the CollaborationGroup record you want to
-post the announcement to as the parent of this feed item.
-
-**2.** Next, use the feed item ID and an expiration date to create the announcement record.
-
-**3.** Finally, update the `AnnouncementId` field in the CollaborationGroup record with the ID of the announcement you created.
-
-To delete the group announcement, simply delete the `AnnouncementId` value in the CollaborationGroup record. To restore a group
-announcement, update the `AnnouncementId` field for a group with the announcement’s ID. The expiration date for the announcement
-should be in the future and the feed item used to create the announcement should be parented by the same group.
-
-### ApexCalloutEventLog
-
-Apex Callout event logs contain details about callouts (external requests) during Apex code execution. This object is available in API
-version 55.0 and later.
-
-[Note: This object stores event data that's queryable from platform APIs. For event data stored in event log files, see EventLogFile.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_eventlogfile.htm)
-
-Supported Calls
-
-`describeSObjects()`, `query()`
-
-Special Access Rules
-
-To access this object, you must have the View Event Log Object Data user permission.
-
-
-Standard Objects ApexCalloutEventLog
-
-Fields
-
-**Field** **Details**
-
-```
-BotIdentifier
-
-BotSessionIdentifier
-
-ClientIp
-
-CpuTime
-
-IsSuccess
-
-LoginKey
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the bot.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The bot session ID.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The IP address of the client that’s using Salesforce services. A Salesforce internal IP (such as
-a login from AppExchange) is shown as “Salesforce.com IP”. For example: `96.43.144.26` .
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The CPU time in milliseconds used to complete the request. This field indicates the amount
-of activity taking place in the app server layer.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether the callout request was successful.
-
-**Type**
-string
-
-
-Standard Objects ApexCalloutEventLog
-
-**Field** **Details**
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The string that ties together all events in a given user’s login session. It starts with a login
-event and ends with either a logout event or the user session expiring. For example:
-`GeJCsym5eyvtEK2I` .
-
-```
-Method
-
-PlannerIdentifier
-
-RequestIdentifier
-
-RequestSize
-
-RequestTime
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The HTTP method of the callout. For example: `GET`, `POST`, `PUT`, and so on.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the agent planner.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The unique ID of a single transaction. A transaction can contain one or more events. Each
-event in a given transaction has the same `RequestId` . For example:
-`3nWgxWbDKWWDIk0FKfF5DV` .
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The size of the callout request body, in bytes.
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-
-Standard Objects ApexCalloutEventLog
-
-**Field** **Details**
-
-**Description**
-The amount of time that the request took in milliseconds.
-
-```
-ResponseSize
-
-RunTime
-
-SessionKey
-
-StatusCode
-
-Timestamp
-
-```
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The size of the callout response, in bytes.
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Not used for this event type. Use the `RequestTime` field instead.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The user’s unique session ID. You can use this value to identify all user events within a session.
-When a user logs out and logs in again, a new session is started. For example:
-`d7DEq/ANa7nNZZVD` .
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The returned status code of the request.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The access time of Salesforce services in GMT. For example,
-`2020-01-20T19:12:26.965Z` . Milliseconds are the most granular setting.
-
-
-### Standard Objects ApexClass
-
-**Field** **Details**
-
-```
-Type
-
-Uri
-
-Url
-
-UserIdentifier
-
-### ApexClass
-
-```
-
-Represents an Apex class.
-
-Supported Calls
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The type of Apex callout. For example: `REST` or `AJAX` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The URI of the page that’s receiving the request. For example: `/home/home.jsp` .
-
-**Type**
-string
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The callout endpoint URL. For example, `www.salesforce.com` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the user who’s using Salesforce services through the UI or the API. For example:
-`00530000009M943` .
-
-`create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`,
-`search()update()`, `upsert()`
-
-
-Standard Objects ApexClass
-
-Fields
-
-**Field** **Details**
-
-```
-ApiVersion
-
-Body
-
-BodyCrc
-
-IsValid
-
-LengthWithoutComments
-
-Name
-
-```
-
-**Type**
-double
-
-**Properties**
-Create, Filter, Sort, Update
-
-**Description**
-The API version for this class. Every class has an API version specified at creation.
-
-**Type**
-textarea
-
-**Properties**
-Create, Nillable, Update
-
-**Description**
-The Apex class definition.
-
-Limit: 1 million characters.
-
-**Type**
-double
-
-**Properties**
-Create, Defaulted on create, Filter, Nillable, Sort, Update
-
-**Description**
-The CRC (cyclic redundancy check) of the class or trigger file.
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Indicates whether any dependent metadata has changed since the class was last compiled
-( `true` ) or not ( `false` ). The default value is `false` .
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-
-Length of the class without comments.
-
-**Type**
-string
-
-
-Standard Objects ApexClass
-
-**Field** **Details**
-
-**Properties**
-Create, Filter, Group, idLookup, Sort, Update
-
-**Description**
-
-Name of the class.
-
-Limit: 255 characters
-
-```
-NamespacePrefix
-
-Status
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The namespace prefix that is associated with this object. Each Developer Edition org that
-creates a managed package has a unique namespace prefix. Limit: 15 characters. You can
-refer to a component in a managed package by using the
-_**`namespacePrefix`**_ `__` _**`componentName`**_ notation.
-
-The namespace prefix can have one of the following values.
-
-**•** In Developer Edition orgs, `NamespacePrefix` is set to the namespace prefix of the
-org for all objects that support it, unless an object is in an installed managed package.
-In that case, the object has the namespace prefix of the installed managed package. This
-field’s value is the namespace prefix of the Developer Edition org of the package
-developer.
-
-**•** In orgs that are not Developer Edition orgs, `NamespacePrefix` is set only for objects
-that are part of an installed managed package. All other objects have no namespace
-prefix.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-The current status of the Apex class. The following string values are valid:
-
-**•** `Active` —The class is active.
-
-**•** `Deleted` —The class is marked for deletion. This is useful for managed packages,
-because it allows a class to be deleted when a managed package is updated.
-
-**•** `Inactive` —This option is unused and is only supported for ApexTrigger. For more
-[information, see the Metadata API Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/)
-
-
-### Standard Objects ApexComponent
-
-Usage
-
-Although Apex classes and triggers have the Create and Update field properties, a runtime exception occurs if you try to create, update,
-or delete them using the API. Instead, use the Salesforce Extensions for Visual Studio Code or the Ant Migration Tool to create or update
-[Apex classes or triggers. Apex classes and triggers can’t be created, edited, or deleted in a production org. See Deploying Apex.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_deploying.htm)
-
-SEE ALSO:
-
-ApexTrigger
-
-_Developer Guide_ [: Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/)
-
-### ApexComponent
-
-Represents a definition for a custom component that can be used in a Visualforce page alongside standard components such as
-
-`<apex:relatedList>` and `<apex:dataTable>` .
-
-Represents a definition for a custom component that can be used in a Visualforce page alongside standard components such as
-
-`<apex:relatedList>` and `<apex:dataTable>` . For information, see the _[Visualforce Developers Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.pages.meta/pages/)_ .
-
-Supported Calls
-
-`create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`, `search()`,
-`update()`, `upsert()`
-
-Fields
-
-**Field** **Details**
-
-```
-ApiVersion
-
-ControllerKey
-
-```
-
-**Type**
-double
-
-**Properties**
-Create, Filter, Sort, Update
-
-**Description**
-The API version for this custom component. Every custom component has an API version
-specified at creation. If the API version is less than 15.0 and `ApiVersion` is not specified,
-`ApiVersion` defaults to 15.0.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The identifier for the controller associated with this custom component:
-
-**•** If the `ControllerType` parameter is set to `Standard` or `StandardSet`, this
-value is the name of the sObject that defines the controller.
-
-
-Standard Objects ApexComponent
-
-**Field** **Details**
-
-**•** If the `ControllerType` parameter is set to `Custom`, this value is the name of the
-Apex class that defines the controller.
-
-```
-ControllerType
-
-Description
-
-Markup
-
-MasterLabel
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-The type of controller associated with this Visualforce custom component. Possible values
-include:
-
-**•** `Not Specified`, for custom components defined without a value for the
-`controller` attribute on the `<apex:component>` tag
-
-**•** `Standard`, a value that can't be used with custom components or errors may occur
-
-**•** `StandardSet`, a value that can't be used with custom components or errors may
-occur
-
-**•** `Custom`, for components that have a value for the `controller` attribute on the
-
-`<apex:component>` tag
-
-**Type**
-textarea
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-Description of the Visualforce custom component.
-
-**Type**
-textarea
-
-**Properties**
-Create, Update
-
-**Description**
-The Visualforce markup, HTML, Javascript, and any other Web-enabled code that defines the
-content of the custom component.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-The text used to identify the Visualforce custom component in the Setup area of Salesforce.
-The Label for this field is **Label** .
-
-
-### Standard Objects ApexEmailNotification
-
-**Field** **Details**
-
-```
-Name
-
-NamespacePrefix
-
-```
-
-Usage
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, idLookup, Sort, Update
-
-**Description**
-Required. Name of this Visualforce custom component.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The namespace prefix that is associated with this object. Each Developer Edition org that
-creates a managed package has a unique namespace prefix. Limit: 15 characters. You can
-refer to a component in a managed package by using the
-_**`namespacePrefix`**_ `__` _**`componentName`**_ notation.
-
-The namespace prefix can have one of the following values.
-
-**•** In Developer Edition orgs, `NamespacePrefix` is set to the namespace prefix of the
-org for all objects that support it, unless an object is in an installed managed package.
-In that case, the object has the namespace prefix of the installed managed package. This
-field’s value is the namespace prefix of the Developer Edition org of the package
-developer.
-
-**•** In orgs that are not Developer Edition orgs, `NamespacePrefix` is set only for objects
-that are part of an installed managed package. All other objects have no namespace
-prefix.
-
-Use custom components to encapsulate a common design pattern and then reuse that pattern several times in one or more Visualforce
-pages. All users who can view Visualforce pages can view custom components, but the “Customize Application” permission is required
-to create or update custom components.
-
-SEE ALSO:
-
-ApexPage
-
-StaticResource
-
-_Developer Guide_ [: Visualforce Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.pages.meta/pages/)
-
-### ApexEmailNotification
-
-Stores a Salesforce user ID or external email address to be notified when unhandled Apex exceptions occur. This object is available in
-API version 35.0 and later.
-
-
-### Standard Objects ApexExecutionEventLog
-
-Note: Each ApexEmailNotification contains either an email or a user ID, but not both.
-
-Supported Calls
-
-`create()`, `delete()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
-
-Fields
-
-**Field** **Details**
-
-```
-Email
-
-UserId
-
-```
-
-Usage
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, idLookup, Nillable, Sort, Update
-
-**Description**
-The external email address to which the notification is sent. Mutually exclusive with the
-`UserId` field.
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-ID of the user to which the notification is sent. Mutually exclusive with the `Email` field.
-
-This is a relationship field.
-
-**Relationship Name**
-User
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-User
-
-To notify users of your org at the email addresses they have on record, use `UserId` . To notify external users or alternate email addresses,
-use `Email` .
-
-### ApexExecutionEventLog
-
-Apex Execution event logs contain details about Apex classes that are used. This object is available in API version 55.0 and later.
-
-[Note: This object stores event data that's queryable from platform APIs. For event data stored in event log files, see EventLogFile.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_eventlogfile.htm)
-
-
-Standard Objects ApexExecutionEventLog
-
-Supported Calls
-
-`describeSObjects()`, `query()`
-
-Special Access Rules
-
-To access this object, you must have the View Event Log Object Data user permission.
-
-Fields
-
-**Field** **Details**
-
-```
-BotIdentifier
-
-BotSessionIdentifier
-
-CalloutTime
-
-ClientIp
-
-CpuTime
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the bot.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The bot session ID.
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Time spent waiting on webservice callouts, in milliseconds.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The IP address of the client that’s using Salesforce services. A Salesforce internal IP (such as
-a login from AppExchange) is shown as “Salesforce.com IP”. If the user’s session context isn't
-available, this field returns a blank value.
-
-**Type**
-double
-
-
-Standard Objects ApexExecutionEventLog
-
-**Field** **Details**
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The CPU time in milliseconds used to complete the request. This field indicates the amount
-of activity taking place in the app server layer.
-
-```
-DatabaseTotalTime
-
-EntryPoint
-
-ExecutionTime
-
-IsLongRunningRequest
-
-LoginKey
-
-```
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Time (in milliseconds) spent waiting for database processing in aggregate for all operations
-in the request. Compare this field to `CpuTime` to determine whether performance issues
-are occurring in the database layer or in your own code.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The entry point for this Apex execution. For example,
-`GeneralCloner.cloneAndInsertRecords` or `VF- /apex/CloneUser` .
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The end-to-end Apex execution time (in milliseconds).
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-
-Indicates whether the request is counted against your org’s concurrent long-running Apex
-request limit ( `true` ) or not ( `false` ).
-
-Asynchronous Apex jobs (batch, queueable, scheduled, and future), background processes,
-and bulk API requests are not counted against the concurrent long-running limit.
-
-**Type**
-string
-
-
-Standard Objects ApexExecutionEventLog
-
-**Field** **Details**
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The string that ties together all events in a given user’s login session. It starts with a login
-event and ends with either a logout event or the user session expiring. For example:
-`GeJCsym5eyvtEK2I` .
-
-```
-PlannerIdentifier
-
-Quiddity
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the agent planner.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The type of outer execution associated with this event. For example:
-
-**•** `A` –ACS Batch Apex
-
-**•** `C` –Scheduled Apex
-
-**•** `E` –Inbound Email Service
-
-**•** `F` –Future
-
-**•** `H` –Apex REST
-
-**•** `I` –Invocable Action
-
-**•** `K` –Quick Action
-
-**•** `L` –Lightning
-
-**•** `M` –Remote Action
-
-**•** `P` –Bulk Apex jobs running in parallel
-
-**•** `Q` –Queueable
-
-**•** `R` –Synchronous uncategorized (which is where all transactions not specified elsewhere
-end up)
-
-**•** `S` –QueryLocator Batch Apex (Batch Apex jobs run faster when the start method returns
-a QueryLocator object that doesn't include related records via a subquery. See Batch
-[Apex Best Practices in Using Batch Apex.)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_batch_interface.htm#apex_batch_best_practices)
-
-**•** `T` –Tests Apex
-
-**•** `V` –Visualforce
-
-**•** `W` –SOAP Webservices
-
-**•** `X` –Execute Anonymous
-
-
-Standard Objects ApexExecutionEventLog
-
-**Field** **Details**
-
-Implementations of the Process.Plugin interface use the quiddity value `R` .
-
-```
-RequestIdentifier
-
-RunTime
-
-SessionKey
-
-SoqlQueryCount
-
-Timestamp
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The unique ID of a single transaction. A transaction can contain one or more events. Each
-event in a given transaction has the same `RequestId` . For example:
-`3nWgxWbDKWWDIk0FKfF5DV` .
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The amount of time the request took, as measured by SFDC code.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The user’s unique session ID. You can use this value to identify all user events within a session.
-When a user logs out and logs in again, a new session is started. For example:
-`d7DEq/ANa7nNZZVD` .
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The number of SOQL queries that were executed during the event.
-
-This value is the aggregate across all namespaces, and can exceed the per-namespace limits.
-For test executions, the aggregate total value across all test methods executed in the request
-is used. If you are using this value to track limit consumption, consider filtering out test
-execution quiddities (indicated by the `Quiddity` field).
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-
-### Standard Objects ApexExtlCalloutEventLog
-
-**Field** **Details**
-
-**Description**
-The access time of Salesforce services in GMT. For example,
-`2020-01-20T19:12:26.965Z` . Milliseconds are the most granular setting.
-
-```
-Uri
-
-UserIdentifier
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The URI of the page that’s receiving the request. For example: `/home/home.jsp` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The 15-character ID of the user who’s using Salesforce services through the UI or the API.
-For example: `00530000009M943` .
-
-### ApexExtlCalloutEventLog
-
-Apex Extl Callout EventLog represent external data callouts via custom adapters for Salesforce Connect. This object is available in API
-version 61.0 and later.
-
-[Note: This object stores event data that's queryable from platform APIs. For event data stored in event log files, see EventLogFile.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_eventlogfile.htm)
-
-Supported Calls
-
-`describeSObjects()`, `query()`
-
-Special Access Rules
-
-To access this object, you must have the View Event Log Object Data user permission.
-
-Fields
-
-**Field** **Details**
-
-```
-Action
-
-```
-
-**Type**
-string
-
-
-Standard Objects ApexExtlCalloutEventLog
-
-**Field** **Details**
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Action performed by the callout.
-
-```
-ExecutionTime
-
-FetchTime
-
-IsSuccess
-
-Message
-
-ObjectType
-
-```
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The end-to-end Apex execution time in milliseconds.
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Duration (in milliseconds) it takes to retrieve the query results from the external system.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether the query was successful ( `true` ) or not ( `false` ).
-
-The default value is `false` .
-
-**Type**
-string
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Error or warning message associated with the failed call.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The type of event. The value is always BulkApi2.
-
-
-Standard Objects ApexExtlCalloutEventLog
-
-**Field** **Details**
-
-```
-QueryFilter
-
-QueryLimit
-
-QueryOffset
-
-QueryOrderBy
-
-QuerySelect
-
-RequestIdentifier
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Field expressions to filter the rows to return. Corresponds to `WHERE` in SOQL queries.
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Maximum number of rows to return for a query. Corresponds to `LIMIT` in SOQL queries.
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Number of rows to skip when paging through a result set. Corresponds to `OFFSET` in SOQL
-queries.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Field or column to use for sorting query results, and whether to sort the results in ascending
-(default) or descending order. Corresponds to `ORDER BY` in SOQL queries.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Comma-delineated list of fields being queried. Corresponds to `SELECT` in SOQL queries.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-
-Standard Objects ApexExtlCalloutEventLog
-
-**Field** **Details**
-
-**Description**
-The unique ID of a single transaction. A transaction can contain one or more events. Each
-event in a given transaction has the same `RequestIdentifier.` For example:
-3nWgxWbDKWWDIk0FKfF5DV.
-
-```
-RowCount
-
-RowsFetched
-
-Subqueries
-
-Throughput
-
-Timestamp
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Total number of records in the result set.
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Number of rows fetched by the callout.
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Number of subqueries this query has been split into.
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Number of records retrieved in one second.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The access time of Salesforce services in GMT. For example,
-`2020-01-20T19:12:26.965Z` . Milliseconds are the most granular setting.
-
-
-### Standard Objects ApexInlineEventLog
-
-**Field** **Details**
-
-```
-TotalTime
-
-UserIdentifier
-
-### ApexInlineEventLog
-
-```
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-How long it takes (in milliseconds) to prepare and execute the query and to retrieve the
-query results.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the user who’s using Salesforce services through the UI or the API. For example:
-`00530000009M943` .
-
-This object is reserved for future use. This object is available in API version 66.0 and later.
-
-### ApexLog
-
-Represents a debug log containing information about a transaction, including information about Apex, Visualforce, and workflow and
-validation rules. This object is available in API version 19.0 and later.
-
-Supported Calls
-
-`delete()`, `describeSObjects()`, `query()`, `retrieve()`
-
-Fields
-
-**Field** **Details**
-
-```
-Application
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-This value depends on the client type that triggered the log.
-
-**•** For API clients, this value is the client ID.
-
-
-Standard Objects ApexLog
-
-**Field** **Details**
-
-**•** For browser clients, this value is `Browser` .
-
-```
-DurationMilliseconds
-
-Location
-
-LogLength
-
-LogUserId
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-Duration of the transaction in milliseconds.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-Specifies the location of the origin of the log. Values are:
-
-**•** `Monitoring` —Log is generated as part of debug log monitoring. These types of logs
-are maintained for seven days or until a user deletes them.
-
-**•** `SystemLog` —Log is generated from the Developer Console. These types of logs are
-maintained for 24 hours or until the user clears them.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-Length of the log in bytes.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-ID of the user whose actions triggered the debug log.
-
-This is a polymorphic relationship field.
-
-**Relationship Name**
-LogUser
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-User
-
-
-Standard Objects ApexLog
-
-**Field** **Details**
-
-```
-Operation
-
-Request
-
-RequestIdentifier
-
-StartTime
-
-Status
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-Name of the operation that triggered the debug log, such as `APEXSOAP`, `Apex Sharing`
-`Recalculation`, and so on.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-Request type. Values are:
-
-**•** `API` —Request came from the API
-
-**•** `Application` —Request came from the Salesforce user interface
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The unique identifier of the request that triggered the debug log. Use this request identifier
-to correlate multiple debug logs triggered by the same request.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Sort
-
-**Description**
-Start time of the transaction.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-Status of the transaction. This value is either `Success`, or the text of an unhandled Apex
-exception.
-
-
-### Standard Objects ApexPage
-
-Usage
-
-You can read information about this object, as well as delete it, but you can't update or insert it.
-
-SEE ALSO:
-
-ApexClass
-
-ApexTrigger
-
-_Developer Guide_ [: Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/)
-
-### ApexPage
-
-Represents a single Visualforce page.
-
-Supported Calls
-
-`create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`, `search()`,
-`update()`, `upsert()`
-
-Fields
-
-**Field** **Details**
-
-```
-ApiVersion
-
-ControllerKey
-
-```
-
-**Type**
-double
-
-**Properties**
-Create, Filter, Sort, Update
-
-**Description**
-The API version for this page. Every page has an API version specified at creation. If the API
-version is less than 15.0 and `ApiVersion` is not specified, `ApiVersion` defaults to
-15.0.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The identifier for the controller associated with this page:
-
-**•** If the `ControllerType` parameter is set to `Standard` or `StandardSet`, this
-value is the name of the sObject that defines the controller.
-
-**•** If the `ControllerType` parameter is set to `Custom`, this value is the name of the
-Apex class that defines the controller.
-
-
-Standard Objects ApexPage
-
-**Field** **Details**
-
-```
-ControllerType
-
-Description
-
-IsAvailableInTouch
-
-IsConfirmationTokenRequired
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-The type of controller associated with this Visualforce page. Possible values include:
-
-**•** `Not Specified`, for pages defined with neither a `standardController` nor
-a `controller` attribute on the `<apex:page>` tag
-
-**•** `Standard`, for pages defined with the `standardController` attribute on the
-
-`<apex:page>` tag
-
-**•** `StandardSet`, for pages defined using the `standardController` and
-`recordSetVar` attribute on the `<apex:page>` tag
-
-**•** `Custom`, for pages defined with the `controller` attribute on the `<apex:page>`
-tag
-
-**Type**
-textarea
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-Description of the Visualforce page.
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Indicates if Visualforce tabs associated with the Visualforce page can be used in the Salesforce
-mobile app ( `true` ) or not ( `false` ). (Use of this field for Salesforce Touch is deprecated.)
-This field is available in API version 27.0 and later.
-
-Standard object tabs that are overridden with a Visualforce page aren’t supported in the
-Salesforce mobile app, even if you set this field for the page. The default Salesforce app page
-for the object is displayed instead of the Visualforce page.
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Indicates whether `GET` requests for the page require a CSRF confirmation token ( `true` ) or
-not ( `false` ). This field is available in API version 28.0 and later.
-
-
-Standard Objects ApexPage
-
-**Field** **Details**
-
-If you change this field’s value from `false` to `true`, links to the page require a CSRF token
-to be added to them, or the page will be inaccessible.
-
-```
-Markup
-
-MasterLabel
-
-Name
-
-NamespacePrefix
-
-```
-
-**Type**
-textarea
-
-**Properties**
-Create, Update
-
-**Description**
-The Visualforce markup, HTML, Javascript, and any other Web-enabled code that defines the
-content of the page.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-The text used to identify the Visualforce page in the Setup area of Salesforce. The Label is
-**Label** .
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, idLookup, Sort, Update
-
-**Description**
-Required. Name of this Visualforce page.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The namespace prefix that is associated with this object. Each Developer Edition org that
-creates a managed package has a unique namespace prefix. Limit: 15 characters. You can
-refer to a component in a managed package by using the
-_**`namespacePrefix`**_ `__` _**`componentName`**_ notation.
-
-The namespace prefix can have one of the following values.
-
-**•** In Developer Edition orgs, `NamespacePrefix` is set to the namespace prefix of the
-org for all objects that support it, unless an object is in an installed managed package.
-In that case, the object has the namespace prefix of the installed managed package. This
-field’s value is the namespace prefix of the Developer Edition org of the package
-developer.
-
-
-### Standard Objects ApexPageInfo
-
-**Field** **Details**
-
-**•** In orgs that are not Developer Edition orgs, `NamespacePrefix` is set only for objects
-that are part of an installed managed package. All other objects have no namespace
-prefix.
-
-Usage
-
-Use Visualforce pages to add custom content that extends the base Salesforce application functionality. All users in Visualforce-enabled
-organizations can view Visualforce pages, but the “Customize Application” permission is required to create or update them.
-
-SEE ALSO:
-
-ApexComponent
-
-StaticResource
-
-_Developer Guide_ [: Visualforce Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.pages.meta/pages/)
-
-### ApexPageInfo
-
-Represents metadata about a single Visualforce page. This object is available in API version 48.0 and later.
-
-Supported Calls
-
-`describeSObjects()`, `query()`
-
-Special Access Rules
-
-As of Summer '20 and later, this object can only be accessed by users who can view a particular Visualforce page, and users with the
-View Setup and Configuration permission.
-
-Fields
-
-**Field** **Details**
-
-```
-ApexPageId
-
-ApiVersion
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-ID for the Visualforce page.
-
-**Type**
-double
-
-
-Standard Objects ApexPageInfo
-
-**Field** **Details**
-
-**Properties**
-Filter, Sort
-
-**Description**
-The API version for the page. Every page has an API version specified at creation. If the API
-version is less than `15.0` and `ApiVersion` is not specified, `ApiVersion` defaults to
-`15.0` .
-
-```
-Description
-
-DurableId
-
-IsAvailableInTouch
-
-IsShowHeader
-
-MasterLabel
-
-```
-
-**Type**
-textarea
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Description of the Visualforce page.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-For internal use only.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates if Visualforce tabs associated with the Visualforce page can be used in the Salesforce
-app ( `true` ) or not ( `false` ). The default value is `false` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The `showHeader` value for the Visualforce page. This will be “unknown” if the Visualforce
-page uses an expression to compute `showHeader` . The default value is `true` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-
-### Standard Objects ApexRestApiEventLog
-
-**Field** **Details**
-
-**Description**
-The text used to identify the Visualforce page in the Setup area of Salesforce.
-
-```
-Name
-
-NameSpacePrefix
-
-```
-
-Usage
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-Developer name of the Visualforce page.
-
-**Type**
-string
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The namespace prefix associated with this object. Each Developer Edition org that creates
-a managed package has a unique namespace prefix. Limit: 15 characters. You can refer to a
-component in a managed package by using the
-`namespacePrefix__componentName` notation.
-
-The namespace prefix can have one of the following values.
-
-**•** In Developer Edition orgs, the namespace prefix is set to the namespace prefix of the
-org for all objects that support it.
-
-Note: If an object is in an installed managed package, the object has the
-namespace prefix of the installed managed package. This field’s value is the
-namespace prefix of the Developer Edition org of the package developer.
-
-**•** In non-Developer Edition orgs, `NamespacePrefix` is only set for objects that are
-part of an installed managed package. Objects outside of an installed managed package
-do not have a namespace prefix.
-
-Use `ApexPageInfo` to query limited metadata about Visualforce pages. Some of this metadata corresponds to settings for a Visualforce
-page available in Visualforce Pages. To access Visualforce Pages, from _`Setup`_, in the _`Quick Find`_ box, enter _`Custom Code`_ . Then,
-select Visualforce Pages. Other values are only available via API. Use `ApexPageInfo` [in Visualforce pages to add custom content that](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_apexpage.htm)
-extends the base Salesforce application functionality.
-
-Users can only query `ApexPageInfo` records if they can display the associated Visualforce page, or if they have the View Setup &
-Configuration permission. Allow users to view Visualforce pages by modifying their user profile or assigning permission sets.
-
-### ApexRestApiEventLog
-
-Apex REST API event logs capture information about every Apex REST API request. This object is available in API version 55.0 and later.
-
-
-Standard Objects ApexRestApiEventLog
-
-[Note: This object stores event data that's queryable from platform APIs. For event data stored in event log files, see EventLogFile.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_eventlogfile.htm)
-
-Supported Calls
-
-`describeSObjects()`, `query()`
-
-Special Access Rules
-
-To access this object, you must have the View Event Log Object Data user permission.
-
-Fields
-
-**Field** **Details**
-
-```
-ClientIp
-
-CpuTime
-
-DatabaseBlocks
-
-DatabaseCpuTime
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The IP address of the client that’s using Salesforce services. A Salesforce internal IP (such as
-a login from AppExchange) is shown as “Salesforce.com IP”. For example: `96.43.144.26` .
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The CPU time in milliseconds used to complete the request. This field indicates the amount
-of activity taking place in the app server layer.
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Indicates how much activity is occurring in the database. A high value for this field suggests
-that adding indexes or filters on your queries would benefit performance.
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-
-Standard Objects ApexRestApiEventLog
-
-**Field** **Details**
-
-**Description**
-The CPU time in milliseconds to complete the request. Indicates the amount of activity taking
-place in the database layer during the request.
-
-```
-DatabaseTotalTime
-
-ExceptionMessage
-
-FieldCount
-
-LoginKey
-
-MediaType
-
-```
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The time in nanoseconds for a database round trip. Includes time spent in the JDBC driver,
-network to the database, and `DatabaseCpuTime` . Compare this field to `CpuTime` to
-determine whether performance issues are occurring in the database layer or in your own
-code.
-
-**Type**
-string
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The exception message for a SOAP API request. An exception message gives details about
-errors in handling an API request, such as why an API request failed. For example:
-common.exception.ApiException: startDate cannot be more than 30 days ago.
-
-**Type**
-int
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The number of fields or columns, where applicable.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The string that ties together all events in a given user’s login session. It starts with a login
-event and ends with either a logout event or the user session expiring. For example:
-`GeJCsym5eyvtEK2I` .
-
-**Type**
-string
-
-
-Standard Objects ApexRestApiEventLog
-
-**Field** **Details**
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The media type of the response.
-
-```
-Method
-
-ObjectName
-
-RequestIdentifier
-
-RequestSize
-
-RequestStatus
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The apex method name.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-API objects that are accessed. For example: `Account`, `Opportunity`, `Contact`, and
-so on.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The unique ID of a single transaction. A transaction can contain one or more events. Each
-event in a given transaction has the same `RequestId` . For example:
-`3nWgxWbDKWWDIk0FKfF5DV` .
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The size of the callout request body, in bytes.
-
-**Type**
-String
-
-**Description**
-The status of the request for a page view or user interface action.
-
-For example:
-
-
-Standard Objects ApexRestApiEventLog
-
-**Field** **Details**
-
-**•** `S` —Success. Salesforce handled the request successfully. If an Apex controller throws
-an exception, this status is also returned.
-
-**•** `F` —Failure. Typically 4xx or 5xx HTTP codes, such as no permission to view page, page
-took too long to render, page is read-only.
-
-**•** `U` —Undefined
-
-**•** `A` —Authorization Error
-
-**•** `R` —Redirect. Typically a 3xx HTTP code, possibly initiated by an Apex controller in a
-Visualforce page.
-
-**•** `N` —Not Found. 404 error.
-
-This field can have a blank value.
-
-```
-ResponseSize
-
-RowsProcessed
-
-RunTime
-
-SessionKey
-
-```
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The size of the callout response, in bytes.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of rows that were processed in the request. For example: `150` .
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The amount of time the request took, as measured by SFDC code.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The user’s unique session ID. You can use this value to identify all user events within a session.
-When a user logs out and logs in again, a new session is started. For example:
-`d7DEq/ANa7nNZZVD` .
-
-
-Standard Objects ApexRestApiEventLog
-
-**Field** **Details**
-
-```
-StatusCode
-
-Timestamp
-
-Uri
-
-UserIdentifier
-
-UserType
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The HTTP status code for the response.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The access time of Salesforce services in GMT. For example,
-`2020-01-20T19:12:26.965Z` . Milliseconds are the most granular setting.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The URI of the page that’s receiving the request. For example: `/home/home.jsp` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The 15-character ID of the user who’s using Salesforce services through the UI or the API.For
-example: `00530000009M943` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The category of user license.
-
-Possible values are:
-
-**•** `CsnOnly` —Users whose access to the application is limited to Chatter. This user type
-includes Chatter Free and Chatter moderator users.
-
-
-### Standard Objects ApexSoapApiEventLog
-
-**Field** **Details**
-
-**•** `CspLitePortal` —CSP Lite Portal license. Users whose access is limited because
-they’re organization customers and access the application through a customer portal or
-an Experience Cloud site.
-
-**•** `CustomerSuccess` —Customer Success license. Users whose access is limited
-because they’re organization customers and access the application through a customer
-portal.
-
-**•** `Guest` —Users whose access is limited so that your customers can view and interact
-with your site without logging in.
-
-**•** `PowerCustomerSuccess` —Power Customer Success license. Users whose access
-is limited because they’re organization customers and access the application through a
-customer portal. Users with this license type can view and edit data they directly own
-or data owned by or shared with users below them in the customer portal role hierarchy.
-
-**•** `PowerPartner` —Power Partner license. Users whose access is limited because they’re
-partners and typically access the application through a partner portal or site.
-
-**•** `SelfService` —Users whose access is limited because they’re organization customers
-and access the application through a self-service portal.
-
-**•** `Standard` —Standard user license. This user type also includes Salesforce Platform
-and Salesforce Platform One user licenses, and admins for this org.
-
-### ApexSoapApiEventLog
-
-Apex SOAP event logs contain details about custom SOAP web service calls. This object is available in API version 55.0 and later.
-
-[Note: This object stores event data that's queryable from platform APIs. For event data stored in event log files, see EventLogFile.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_eventlogfile.htm)
-
-Supported Calls
-
-`describeSObjects()`, `query()`
-
-Special Access Rules
-
-To access this object, you must have the View Event Log Object Data user permission.
-
-Fields
-
-**Field** **Details**
-
-```
-ClassName
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-
-Standard Objects ApexSoapApiEventLog
-
-**Field** **Details**
-
-**Description**
-The Apex class name. If the class is part of a managed package, this string includes the
-package namespace.
-
-```
-ClientIp
-
-ClientName
-
-CpuTime
-
-DatabaseTotalTime
-
-LimitUsagePercent
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The IP address of the client that’s using Salesforce services. A Salesforce internal IP (such as
-a login from AppExchange) is shown as “Salesforce.com IP”. For example: `96.43.144.26` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The name of the client that’s using Salesforce services. This field is an optional parameter
-that can be passed in API calls. If blank, the caller didn't specify a client in the CallOptions
-header.
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The CPU time in milliseconds used to complete the request. This field indicates the amount
-of activity taking place in the app server layer.
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Time (in milliseconds) spent waiting for database processing in aggregate for all operations
-in the request. Compare this field to `CpuTime` to determine whether performance issues
-are occurring in the database layer or in your own code.
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-
-Standard Objects ApexSoapApiEventLog
-
-**Field** **Details**
-
-**Description**
-The percentage of Apex SOAP calls that were made against the organization’s limit.
-
-```
-LoginKey
-
-MethodName
-
-QueryString
-
-RateLimitUsage
-
-RequestIdentifier
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The string that ties together all events in a given user’s login session. It starts with a login
-event and ends with either a logout event or the user session expiring. For example:
-`GeJCsym5eyvtEK2I` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The name of the calling Apex method.
-
-**Type**
-string
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The SOQL query, if one was performed.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The percent of the current usage of your rate limit.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The unique ID of a single transaction. A transaction can contain one or more events. Each
-event in a given transaction has the same `RequestIdentifier` . For example:
-`3nWgxWbDKWWDIk0FKfF5DV` .
-
-
-Standard Objects ApexSoapApiEventLog
-
-**Field** **Details**
-
-```
-RequestStatus
-
-RunTime
-
-SessionKey
-
-Timestamp
-
-```
-
-**Type**
-String
-
-**Description**
-The status of the request for a page view or user interface action.
-
-For example:
-
-**•** `S` —Success. Salesforce handled the request successfully. If an Apex controller throws
-an exception, this status is also returned.
-
-**•** `F` —Failure. Typically 4xx or 5xx HTTP codes, such as no permission to view page, page
-took too long to render, page is read-only.
-
-**•** `U` —Undefined
-
-**•** `A` —Authorization Error
-
-**•** `R` —Redirect. Typically a 3xx HTTP code, possibly initiated by an Apex controller in a
-Visualforce page.
-
-**•** `N` —Not Found. 404 error.
-
-This field can have a blank value.
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The amount of time that the request took in milliseconds.
-
-Requests with a value over five seconds are considered long-running requests for the purposes
-of the Concurrent Long-Running Apex Limit.
-
-HTTP callout processing time isn't included when calculating the 5-second limit. We pause
-the timer for the callout and resume it when the callout completes.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The user’s unique session ID. You can use this value to identify all user events within a session.
-When a user logs out and logs in again, a new session is started. For example:
-`d7DEq/ANa7nNZZVD` .
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-
-Standard Objects ApexSoapApiEventLog
-
-**Field** **Details**
-
-**Description**
-The access time of Salesforce services in GMT. For example,
-`2020-01-20T19:12:26.965Z` . Milliseconds are the most granular setting.
-
-```
-Uri
-
-UserIdentifier
-
-UserType
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The URI of the page that’s receiving the request. For example: `/home/home.jsp` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The 15-character ID of the user who’s using Salesforce services through the UI or the API.
-For example: `00530000009M943` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The category of user license.
-
-Possible values are:
-
-**•** `CsnOnly` —Users whose access to the application is limited to Chatter. This user type
-includes Chatter Free and Chatter moderator users.
-
-**•** `CspLitePortal` —CSP Lite Portal license. Users whose access is limited because
-they’re organization customers and access the application through a customer portal or
-an Experience Cloud site.
-
-**•** `CustomerSuccess` —Customer Success license. Users whose access is limited
-because they’re organization customers and access the application through a customer
-portal.
-
-**•** `Guest` —Users whose access is limited so that your customers can view and interact
-with your site without logging in.
-
-**•** `PowerCustomerSuccess` —Power Customer Success license. Users whose access
-is limited because they’re organization customers and access the application through a
-customer portal. Users with this license type can view and edit data they directly own
-or data owned by or shared with users below them in the customer portal role hierarchy.
-
-**•** `PowerPartner` —Power Partner license. Users whose access is limited because they’re
-partners and typically access the application through a partner portal or site.
-
-
-### Standard Objects ApexTestQueueItem
-
-**Field** **Details**
-
-**•** `SelfService` —Users whose access is limited because they’re organization customers
-and access the application through a self-service portal.
-
-**•** `Standard` —Standard user license. This user type also includes Salesforce Platform
-and Salesforce Platform One user licenses, and admins for this org.
-
-### ApexTestQueueItem
-
-Represents a single Apex class in the Apex job queue. This object is available in API version 23.0 and later.
-
-This object is available in API version 23.0 and later.
-
-Supported Calls
-
-`create()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
-
-Special Access Rules
-
-In API version 49.0 and later, users must have the View Setup and Configuration permission to access this object.
-
-Fields
-
-**Field Name** **Description**
-
-```
-ApexClassId
-
-ExtendedStatus
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-
-The Apex class whose tests are to be executed.
-
-This is a relationship field.
-
-**Relationship Name**
-ApexClass
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-ApexClass
-
-**Type**
-string
-
-**Properties**
-Filter, Nillable, Sort
-
-
-Standard Objects ApexTestQueueItem
-
-**Field Name** **Description**
-
-**Description**
-
-The pass rate of the test run.
-
-For example: “(4/6)”. This means that four out of a total of six tests passed.
-
-If the class fails to execute, this field contains the cause of the failure.
-
-```
-ParentJobId
-
-ShouldSkipCodeCoverage
-
-Status
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-
-Points to the AsyncApexJob that represents the entire test run.
-
-If you insert multiple Apex test queue items in a single bulk operation, the queue
-items share the same parent job. This means that a test run can consist of the
-execution of the tests of several classes if all the test queue items are inserted in
-the same bulk operation.
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-
-Indicates whether to opt out of collecting code coverage information during
-Apex test runs. Available in API version 43.0 and later.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-The status of the job. Valid values are:
-
-**•** `Holding` [1]
-
-**•** `Queued`
-
-**•** `Preparing`
-
-**•** `Processing`
-
-**•** `Aborted`
-
-**•** `Completed`
-
-**•** `Failed`
-
-1 This status applies to batch jobs in the Apex flex queue.
-
-
-### Standard Objects ApexTestResult
-
-**Field Name** **Description**
-
-```
-TestRunResultId
-
-```
-
-Usage
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-
-The ID of the associated ApexTestRunResult object.
-
-Insert an `ApexTestQueueItem` object to place its corresponding Apex class in the Apex job queue for execution. The Apex job
-executes the test methods in the class.
-
-To abort a class that is in the Apex job queue, perform an update operation on the ApexTestQueueItem object and set its `Status`
-field to _`Aborted`_ .
-
-If you insert multiple Apex test queue items in a single bulk operation, the queue items share the same parent job. This means that a
-test run can consist of the execution of the tests of several classes if all the test queue items are inserted in the same bulk operation.
-
-### ApexTestResult
-
-Represents the result of an Apex test method execution. This object is available in API version 23.0 and later.
-
-Supported Calls
-
-`create()`, `delete()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
-
-Special Access Rules
-
-In API version 49.0 and later, users must have the View Setup and Configuration permission to access this object.
-
-Fields
-
-**Field Name** **Details**
-
-```
-ApexClassId
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-
-The Apex class whose test methods were executed.
-
-This is a relationship field.
-
-
-Standard Objects ApexTestResult
-
-**Field Name** **Details**
-
-**Relationship Name**
-ApexClass
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-ApexClass
-
-```
-ApexLogId
-
-ApexTestRunResultId
-
-AsyncApexJobId
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-
-Points to the ApexLog for this test method execution if debug logging is enabled;
-otherwise, `null` .
-
-This is a relationship field.
-
-**Relationship Name**
-ApexLog
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-ApexLog
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-
-The ID of the ApexTestRunResult that represents the entire test run.
-
-This is a relationship field.
-
-**Relationship Name**
-ApexTestRunResult
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-ApexTestRunResult
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-
-Standard Objects ApexTestResult
-
-**Field Name** **Details**
-
-**Description**
-
-Points to the AsyncApexJob that represents the entire test run.
-
-This field points to the same object as
-`ApexTestQueueItem.ParentJobId` .
-
-This is a relationship field.
-
-**Relationship Name**
-AsyncApexJob
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-AsyncApexJob
-
-```
-IsTestSetup
-
-Message
-
-MethodName
-
-Outcome
-
-```
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-
-Indicates if the results are for a test setup method. The default is false.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-
-The exception error message if a test failure occurs; otherwise, `null` .
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-
-The test method name.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-
-The result of the test method execution. Can be one of these values:
-
-
-Standard Objects ApexTestResult
-
-**Field Name** **Details**
-
-**•** Pass
-
-**•** Fail
-
-**•** CompileFail
-
-**•** Skip
-
-```
-QueueItemId
-
-RunTime
-
-StackTrace
-
-TestTimestamp
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-
-Points to the ApexTestQueueItem which is the class that this test method is part
-of.
-
-This is a relationship field.
-
-**Relationship Name**
-QueueItem
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-ApexTestQueueItem
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-
-The time it took the test method to run, in milliseconds.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-
-The Apex stack trace if the test failed; otherwise, `null` .
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Sort, Update
-
-**Description**
-
-The start time of the test method.
-
-
-### Standard Objects ApexTestResultLimits
-
-Usage
-
-### You can query the fields of the ApexTestResult record that corresponds to a test method executed as part of an Apex class
-
-execution.
-
-### Each test method execution is represented by a single ApexTestResult record. For example, if an Apex test class contains six test methods, six ApexTestResult records are created. These records are in addition to the ApexTestQueueItem record that
-
-represents the Apex class.
-
-Each ApexTestResult record has an associated ApexTestResultLimits on page 610 record, which captures the Apex limits used during
-execution of the test method.
-
-### ApexTestResultLimits
-
-Captures the Apex test limits used for a particular test method execution. An instance of this object is associated with each ApexTestResult
-record. This object is available in API version 37.0 and later.
-
-Supported Calls
-
-`create()`, `delete()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
-
-Special Access Rules
-
-In API version 49.0 and later, users must have the View Setup and Configuration permission to access this object.
-
-Fields
-
-**Field Name** **Details**
-
-```
-ApexTestResultId
-
-AsyncCalls
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-
-The ID of the associated ApexTestResult object.
-
-This is a relationship field.
-
-**Relationship Name**
-### ApexTestResult
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-### ApexTestResult
-
-**Type**
-int
-
-
-Standard Objects ApexTestResultLimits
-
-**Field Name** **Details**
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-
-The number of asynchronous calls made during the test run.
-
-```
-Callouts
-
-Cpu
-
-Dml
-
-DmlRows
-
-Email
-
-```
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-
-The number of callouts made during the test run.
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-
-The amount of CPU used during the test run, in milliseconds.
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-
-The number of DML statements made during the test run.
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-
-The number of rows accessed by DML statements during the test run.
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-The number of email invocations made during the test run.
-
-
-Standard Objects ApexTestResultLimits
-
-**Field Name** **Details**
-
-```
-LimitContext
-
-LimitExceptions
-
-MobilePush
-
-QueryRows
-
-Soql
-
-Sosl
-
-```
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-
-Indicates whether the test run was synchronous or asynchronous.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-
-Indicates whether your org has any limits that differ from the default limits.
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-
-The number of mobile push calls made during the test run.
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-
-The number of rows queried during the test run.
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-
-The number of SOQL queries made during the test run.
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-
-### Standard Objects ApexTestRunResult
-
-**Field Name** **Details**
-
-**Description**
-
-The number of SOSL queries made during the test run.
-
-Usage
-
-The ApexTestResultLimits object is populated for each test method execution, and it captures the limits used between the Test.startTest()
-and Test.stopTest() methods. If startTest() and stopTest() aren’t called, limits usage isn’t captured. Note the following:
-
-**•** The associated test method must be run asynchronously.
-
-**•** Limits for asynchronous Apex operations (batch, scheduled, future, and queueable) that are called within test methods aren’t
-captured.
-
-**•** Limits are captured only for the default namespace.
-
-### ApexTestRunResult
-
-Contains summary information about all the test methods that were run in a particular Apex job. This object is available in API version
-37.0 and later.
-
-Supported Calls
-
-`create()`, `delete()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
-
-Special Access Rules
-
-In API version 49.0 and later, users must have the View Setup and Configuration permission to access this object.
-
-Fields
-
-**Field Name** **Details**
-
-```
-AsyncApexJobId
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-
-The parent Apex job ID for the result.
-
-This is a relationship field.
-
-**Relationship Name**
-AsyncApexJob
-
-**Relationship Type**
-Lookup
-
-
-Standard Objects ApexTestRunResult
-
-**Field Name** **Details**
-
-**Refers To**
-AsyncApexJob
-
-```
-ClassesCompleted
-
-ClassesEnqueued
-
-EndTime
-
-IsAllTests
-
-JobName
-
-MethodsCompleted
-
-```
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-
-The total number of classes executed during the test run.
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-
-The total number of classes enqueued during the test run.
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-
-The time at which the test run ended.
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-
-Indicates whether all Apex test classes were run.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-
-Reserved for future use.
-
-**Type**
-int
-
-
-Standard Objects ApexTestRunResult
-
-**Field Name** **Details**
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The total number of methods completed during the test run. This value is updated
-after each class is run.
-
-```
-MethodsEnqueued
-
-MethodsFailed
-
-Source
-
-StartTime
-
-Status
-
-```
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The total number of methods enqueued for the test run. This value is initialized
-before the test runs.
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The total number of methods that failed during this test run. This value is updated
-after each class is run.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-
-The source of the test run, such as the Developer Console.
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Sort, Update
-
-**Description**
-
-The time at which the test run started.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort, Update
-
-
-Standard Objects ApexTestRunResult
-
-**Field Name** **Details**
-
-**Description**
-
-The status of the test run. Values include:
-
-**•** Queued
-
-**•** Preparing
-
-**•** Processing
-
-**•** Aborted
-
-**•** Completed
-
-**•** Failed
-
-```
-TestSetupTime
-
-TestTime
-
-UserId
-
-```
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-
-The time it took the setup methods to run, in milliseconds.
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-
-The time it took the test to run, in milliseconds.
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-
-The user who ran the test run.
-
-This is a relationship field.
-
-**Relationship Name**
-User
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-User
-
-
-### Standard Objects ApexTestSuite ApexTestSuite
-
-Represents a suite of Apex classes to include in a test run. A TestSuiteMembership object associates each class with the suite. This object
-is available in API version 36.0 and later.
-
-Supported Calls
-
-`create()`, `delete()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
-
-Special Access Rules
-
-In API version 49.0 and later, users must have the View Setup and Configuration permission to access this object.
-
-Fields
-
-**Field Name** **Description**
-
-```
-TestSuiteName
-
-```
-
-Usage
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort, Unique, Update
-
-**Description**
-
-The name of the Apex test suite. This label appears in the user interface.
-
-This value is case-sensitive and must be unique.
-
-Insert a TestSuiteMembership object using an API call to associate an Apex class with an ApexTestSuite object. (ApexTestSuite and
-TestSuiteMembership aren’t editable through Apex DML.) To remove the class from the test suite, delete the TestSuiteMembership
-object. If you delete an Apex test class or test suite, all TestSuiteMembership objects that contain that class or suite are deleted.
-
-The following SOQL query returns the membership object that relates this Apex class to this test suite.
-
-```
-SELECT Id FROM TestSuiteMembership WHERE ApexClassId = '01pD0000000Fhy9IAC'
-
-   AND ApexTestSuiteId = '05FD00000004CDBMA2'
-
-```
-
-SEE ALSO:
-
-TestSuiteMembership
-
-### ApexTrigger
-
-Represents an Apex trigger.
-
-
-Standard Objects ApexTrigger
-
-Supported Calls
-
-`create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`, `search()`,
-`update()`, `upsert()`
-
-Fields
-
-**Field** **Details**
-
-```
-ApiVersion
-
-Body
-
-```
-
-BodyCrc
-
-```
-IsValid
-
-LengthWithoutComments
-
-```
-
-**Type**
-double
-
-**Properties**
-Create, Filter, Sort, Update
-
-**Description**
-The API version for this trigger. Every trigger has an API version specified at creation.
-
-**Type**
-textarea
-
-**Properties**
-Create, Nillable, Update
-
-**Description**
-The Apex trigger definition.
-
-Limit: 1 million characters.
-
-**Type**
-double
-
-**Properties**
-Create, Defaulted on create, Filter, Nillable, Sort, Update
-
-**Description**
-The CRC (cyclic redundancy check) of the class or trigger file.
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Indicates whether any dependent metadata has changed since the trigger was last compiled
-( `true` ) or not ( `false` ).
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-
-Standard Objects ApexTrigger
-
-**Field** **Details**
-
-**Description**
-Length of the trigger without comments
-
-```
-Name
-
-NamespacePrefix
-
-Status
-
-```
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, idLookup, Sort, Update
-
-**Description**
-Name of the trigger.
-
-Limit: 255 characters
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The namespace prefix that is associated with this object. Each Developer Edition org that
-creates a managed package has a unique namespace prefix. Limit: 15 characters. You can
-refer to a component in a managed package by using the
-_**`namespacePrefix`**_ `__` _**`componentName`**_ notation.
-
-The namespace prefix can have one of the following values.
-
-**•** In Developer Edition orgs, `NamespacePrefix` is set to the namespace prefix of the
-org for all objects that support it, unless an object is in an installed managed package.
-In that case, the object has the namespace prefix of the installed managed package. This
-field’s value is the namespace prefix of the Developer Edition org of the package
-developer.
-
-**•** In orgs that are not Developer Edition orgs, `NamespacePrefix` is set only for objects
-that are part of an installed managed package. All other objects have no namespace
-prefix.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-The current status of the Apex trigger. The following string values are valid:
-
-**•** `Active` —The trigger is active.
-
-**•** `Inactive` —The trigger is inactive, but not deleted.
-
-**•** `Deleted` —The trigger is marked for deletion. This is useful for managed packages,
-because it allows a class to be deleted when a managed package is updated.
-
-
-Standard Objects ApexTrigger
-
-**Field** **Details**
-
-Note: `Inactive` is not valid for ApexClass. For more information, see the _[Metadata](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/)_
-_[API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/)_ .
-
-```
-TableEnumOrId
-
-UsageAfterDelete
-
-UsageAfterInsert
-
-UsageAfterUndelete
-
-UsageAfterUpdate
-
-UsageBeforeDelete
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-**Description**
-Specifies the object associated with the trigger, such as Account or Contact.
-
-**Type**
-boolean
-
-**Properties**
-Create, Filter, Update
-
-**Description**
-Specifies whether the trigger is an `after delete` trigger ( `true` ) or not ( `false` ).
-
-**Type**
-boolean
-
-**Properties**
-Create, Filter, Update
-
-**Description**
-Specifies whether the trigger is an `after insert` trigger ( `true` ) or not ( `false` ).
-
-**Type**
-boolean
-
-**Properties**
-Create, Filter, Update
-
-**Description**
-Specifies whether the trigger is an `after undelete` trigger ( `true` ) or not ( `false` ).
-
-**Type**
-boolean
-
-**Properties**
-Create, Filter, Update
-
-**Description**
-Specifies whether the trigger is an `after update` trigger ( `true` ) or not ( `false` ).
-
-**Type**
-boolean
-
-**Properties**
-Create, Filter, Update
-
-
-### Standard Objects ApexTriggerEventLog
-
-**Field** **Details**
-
-**Description**
-Specifies whether the trigger is a `before delete` trigger ( `true` ) or not ( `false` ).
-
-```
-UsageBeforeInsert
-
-UsageBeforeUpdate
-
-UsageIsBulk
-
-```
-
-Usage
-
-**Type**
-boolean
-
-**Properties**
-Create, Filter, Update
-
-**Description**
-Specifies whether the trigger is a `before insert` trigger ( `true` ) or not ( `false` ).
-
-**Type**
-boolean
-
-**Properties**
-Create, Filter, Update
-
-**Description**
-Specifies whether the trigger is a `before update` trigger ( `true` ) or not ( `false` ).
-
-**Type**
-boolean
-
-**Properties**
-Create, Filter, Update
-
-**Description**
-Specifies whether the trigger is defined as a bulk trigger ( `true` ) or not ( `false` ).
-
-Note: This field is not used for Apex triggers saved using Salesforce API version 10.0
-or higher: all triggers starting with that version are automatically considered bulk, and
-this field will always return `true` .
-
-Although Apex classes and triggers have the Create and Update field properties, a runtime exception occurs if you try to create, update,
-or delete them using the API. Instead, use the Salesforce Extensions for Visual Studio Code or the Ant Migration Tool to create or update
-[Apex classes or triggers. Apex classes and triggers can’t be created, edited, or deleted in a production org. See Deploying Apex.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_deploying.htm)
-
-SEE ALSO:
-
-ApexClass
-
-_Developer Guide_ [: Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/)
-
-### ApexTriggerEventLog
-
-Apex Trigger event logs contain details about triggers that fire in an organization. This object is available in API version 55.0 and later.
-
-
-Standard Objects ApexTriggerEventLog
-
-[Note: This object stores event data that's queryable from platform APIs. For event data stored in event log files, see EventLogFile.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_eventlogfile.htm)
-
-Supported Calls
-
-`describeSObjects()`, `query()`
-
-Special Access Rules
-
-To access this object, you must have the View Event Log Object Data user permission.
-
-Fields
-
-**Field** **Details**
-
-```
-BotIdentifier
-
-BotSessionIdentifier
-
-ClientIp
-
-CpuTime
-
-DatabaseTotalTime
-
-```
-
-**Type**
-String
-
-**Description**
-The ID of the bot.
-
-**Type**
-String
-
-**Description**
-The bot session ID.
-
-**Type**
-String
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The IP address of the client that is using Salesforce services. A Salesforce internal IP (such as
-a login from AppExchange) is shown as “Salesforce.com IP”. For example: `96.43.144.26` .
-
-**Type**
-Double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The CPU time in milliseconds used to complete the request. This field indicates the amount
-of activity taking place in the app server layer.
-
-**Type**
-Double
-
-**Properties**
-Filter, Nillable, Sort
-
-
-Standard Objects ApexTriggerEventLog
-
-**Field** **Details**
-
-**Description**
-Time (in milliseconds) spent waiting for database processing in aggregate for all operations
-in the request. Compare this field to `CpuTime` to determine whether performance issues
-are occurring in the database layer or in your own code.
-
-```
-ExecutionTime
-
-LoginKey
-
-ObjectName
-
-PlannerIdentifier
-
-RequestIdentifier
-
-```
-
-**Type**
-Double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The end-to-end Apex execution time (in milliseconds).
-
-**Type**
-String
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The string that ties together all events in a given user’s login session. It starts with a login
-event and ends with either a logout event or the user session expiring. For example:
-`GeJCsym5eyvtEK2I` .
-
-**Type**
-String
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The name of the object affected by the trigger.
-
-**Type**
-String
-
-**Description**
-The ID of the agent planner.
-
-**Type**
-String
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The string that ties together all events in a given user’s login session. It starts with a login
-event and ends with either a logout event or the user session expiring. For example:
-`GeJCsym5eyvtEK2I` .
-
-
-Standard Objects ApexTriggerEventLog
-
-**Field** **Details**
-
-```
-RequestStatus
-
-RunTime
-
-SessionKey
-
-Timestamp
-
-```
-
-**Type**
-String
-
-**Description**
-The status of the request for a page view or user interface action.
-
-For example:
-
-**•** `S` —Success. Salesforce handled the request successfully. If an Apex controller throws
-an exception, this status is also returned.
-
-**•** `F` —Failure. Typically 4xx or 5xx HTTP codes, such as no permission to view page, page
-took too long to render, page is read-only.
-
-**•** `U` —Undefined
-
-**•** `A` —Authorization Error
-
-**•** `R` —Redirect. Typically a 3xx HTTP code, possibly initiated by an Apex controller in a
-Visualforce page.
-
-**•** `N` —Not Found. 404 error.
-
-This field can have a blank value.
-
-**Type**
-Double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The amount of time that the request took in milliseconds.
-
-Requests with a value over five seconds are considered long-running requests for the purposes
-of the Concurrent Long-Running Apex Limit.
-
-HTTP callout processing time isn't included when calculating the 5-second limit. We pause
-the timer for the callout and resume it when the callout completes.
-
-**Type**
-String
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The user’s unique session ID. You can use this value to identify all user events within a session.
-When a user logs out and logs in again, a new session is started. For example:
-`d7DEq/ANa7nNZZVD` .
-
-**Type**
-DateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-
-Standard Objects ApexTriggerEventLog
-
-**Field** **Details**
-
-**Description**
-The access time of Salesforce services in GMT. For example,
-`2020-01-20T19:12:26.965Z` . Milliseconds are the most granular setting.
-
-```
-TriggerIdentifier
-
-TriggerName
-
-TriggerType
-
-Uri
-
-```
-
-**Type**
-String
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The 15-character ID of the trigger that was fired.
-
-**Type**
-String
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-For triggers coming from managed packages, `TriggerName` includes a namespace prefix
-separated with a `.` character. If no namespace prefix is present, the trigger is from an
-unmanaged trigger. For example:
-
-**•** `examplePackage.managedExampleTrigger` —Managed trigger from the
-examplePackage namespace
-
-**•** `unmanagedExampleTrigger` —Unmanaged trigger
-
-**Type**
-String
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The type of this trigger.
-
-Possible values are:
-
-**•** AfterInsert
-
-**•** AfterUpdate
-
-**•** BeforeInsert
-
-**•** BeforeUpdate
-
-**Type**
-String
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The URI of the page that’s receiving the request. For example: `/home/home.jsp` .
-
-
-### Standard Objects ApexTypeImplementor
-
-**Field** **Details**
-
-```
-UserIdentifier
-
-UserType
-
-```
-
-**Type**
-String
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The 15-character ID of the user who is using Salesforce services through the UI or the API.
-For example: `00530000009M943` .
-
-**Type**
-String
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The category of user license.
-
-Possible values are:
-
-**•** `CsnOnly` —Users whose access to the application is limited to Chatter. This user type
-includes Chatter Free and Chatter moderator users.
-
-**•** `CspLitePortal` —CSP Lite Portal license. Users whose access is limited because
-they’re organization customers and access the application through a customer portal or
-an Experience Cloud site.
-
-**•** `CustomerSuccess` —Customer Success license. Users whose access is limited
-because they’re organization customers and access the application through a customer
-portal.
-
-**•** `Guest` —Users whose access is limited so that your customers can view and interact
-with your site without logging in.
-
-**•** `PowerCustomerSuccess` —Power Customer Success license. Users whose access
-is limited because they’re organization customers and access the application through a
-customer portal. Users with this license type can view and edit data they directly own
-or data owned by or shared with users below them in the customer portal role hierarchy.
-
-**•** `PowerPartner` —Power Partner license. Users whose access is limited because they’re
-partners and typically access the application through a partner portal or site.
-
-**•** `SelfService` —Users whose access is limited because they’re organization customers
-and access the application through a self-service portal.
-
-**•** `Standard` —Standard user license. This user type also includes Salesforce Platform
-and Salesforce Platform One user licenses, and admins for this org.
-
-### ApexTypeImplementor
-
-Represents Apex classes that directly or indirectly implement an interface. Using a SOQL query, this object gets information about public
-or global classes and only global classes for installed managed packages. This object is available in API version 54.0 and later.
-
-
-Standard Objects ApexTypeImplementor
-
-Supported Calls
-
-`describeSObjects()`, `query()`
-
-Fields
-
-**Field** **Details**
-
-```
-ApexClassId
-
-ClassName
-
-ClassNamespacePrefix
-
-DurableId
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The foreign key to the outer class that contains the Apex class implementing the interface.
-
-This is a relationship field.
-
-**Relationship Name**
-ApexClass
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-ApexClass
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-Apex class name that implements the interface. For an inner class that implements the
-interface, the outer class and inner name separated by a period.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The namespace prefix of the class that implements the interface.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-A unique identifier for the interface and implementor.
-
-
-Standard Objects ApexTypeImplementor
-
-**Field** **Details**
-
-```
-InterfaceApexClassId
-
-InterfaceName
-
-InterfaceNamespacePrefix
-
-IsConcrete
-
-```
-
-Usage
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The foreign key to the outer class that contains the Apex class defining the interface. Null
-for built-in system interfaces, such as `System.Batchable` .
-
-This is a relationship field.
-
-**Relationship Name**
-InterfaceApexClass
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-ApexClass
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The interface name for which Apex class implementation is retrieved. For an inner interface,
-the outer Apex class name and the inner interface name separated by a period.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The namespace prefix of the class that defines the interface.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether the implementing class is abstract ( `false` ) or not ( `true` ).
-
-ApexTypeImplementor considers access modifiers based on the context, such as the namespace from which the ApexTypeImplementor
-entity is queried. These are additional usage considerations.
-
-
-Standard Objects ApexTypeImplementor
-
-**•** In installed managed packages, you get information about all global implementors in the org, and public implementors from the
-managed package itself.
-
-**•** ApexTypeImplementor appropriately filters classes that are annotated with `@Deprecated` . For example it respects the package
-version dependency settings of a class when queried from that class.
-
-**•** ApexTypeImplementor returns implementors where `ApexClass.IsValid` is set to `False` (invalid classes) in addition to
-when it’s set to `True` . Classes that don’t compile or execute can be returned. An implementor class is only guaranteed to be usable
-if `ApexClass.IsValid` is set to `True` for the implementor.
-
-**•** If a package is installed but not yet compiled because Compile on Deploy is disabled, ApexTypeImplementor returns no values until
-compilation is complete. In environments like sandboxes where Compile on Deploy can be disabled, you must perform a manual
-compilation to get complete results.
-
-**•** To avoid cross-namespace collisions, always specify an InterfaceNamespacePrefix as a WHERE clause in SOQL queries for
-ApexTypeImplementor. Otherwise, the query includes all namespaces instead of only the current namespace. If a package contains
-an interface with the same name as an interface in a different namespace, a query without a specified InterfaceNamespacePrefix
-can return false implementors that can’t be assigned to the interface.
-
-For example, say a managed package contains a global interface named `RoundingStrategy` and a global class named
-`HalfDown` that implements `RoundingStrategy` . If a subscriber org has an interface that’s also named `RoundingStrategy`,
-then the query `[SELECT ApexClass.Id FROM ApexTypeImplementor WHERE InterfaceName =`
-`'RoundingStrategy']`, if performed in the subscriber org, can return the ID of `HalfDown` instead of an implementor in
-the subscriber org. To avoid this issue, perform a query that specifies a InterfaceNamespacePrefix: `[SELECT ApexClass.Id`
-
-```
-    FROM ApexTypeImplementor WHERE InterfaceName = 'RoundingStrategy' AND
-```
-
-`InterfaceNamespacePrefix = 'PackageNamespace']` .
-
-Example
-
-This example demonstrates how an interface allows flexibility in a configuration, record, or user-driven selection of the rounding strategy
-to apply. The multiple implementations of the interface can be discovered using ApexTypeImplementor and the specific implementation
-chosen based on user requirements.
-
-```
-   // Common interface that all rounding strategies will implement
-
-   public interface RoundingStrategy {
-
-      Decimal round(Decimal toRound);
-
-   }
-
-   public abstract class RoundingStrategies {
-
-      public class Ceiling implements RoundingStrategy {
-
-        public Decimal round(Decimal toRound) {
-
-           return toRound.round(System.RoundingMode.CEILING);
-
-        }
-
-      }
-
-      public class HalfDown implements RoundingStrategy {
-
-        public Decimal round(Decimal toRound) {
-
-           return toRound.round(System.RoundingMode.HALF_DOWN);
-
-        }
-
-      }
-
-      public class TwoDecimalPlaces implements RoundingStrategy {
-
-        public Decimal round(Decimal toRound) {
-
-           return toRound.setScale(2, System.RoundingMode.HALF_UP);
-
-```
-
-
-### Standard Objects ApexUnexpectedExcpEventLog
-
-```
-        }
-
-      }
-
-   }
-
-   List<ApexTypeImplementor> interfaceImpls = [
-
-           SELECT ClassName, ClassNamespacePrefix
-
-           FROM ApexTypeImplementor
-
-           WHERE InterfaceName = 'RoundingStrategy' and IsConcrete = true and
-
-   InterfaceNamespacePrefix = ''
-
-           ORDER BY ClassName ASC NULLS LAST];
-
-   // For example, an admin can be presented with a list of Apex classes
-
-   // that can be applied. Simulated selection of 2 decimal places
-
-   ApexTypeImplementor selectedRoundingStrategy = interfaceImpls[2];
-
-   System.assertEquals('RoundingStrategies.TwoDecimalPlaces',
-
-      selectedRoundingStrategy.ClassName);
-
-   // Create an instance of the class that implements the interface
-
-   RoundingStrategy rs = (RoundingStrategy)
-
-   Type.forName(selectedRoundingStrategy.ClassNamespacePrefix,
-
-      selectedRoundingStrategy.ClassName).newInstance();
-
-   Decimal rounded = rs.round(7.1459);
-
-   System.assertEquals(7.15, rounded);
-
-### ApexUnexpectedExcpEventLog
-
-```
-
-Apex Unexpected Excp Event Log captures information about unexpected exceptions in Apex code execution. This object is available
-in API version 61.0 and later.
-
-[Note: This object stores event data that's queryable from platform APIs. For event data stored in event log files, see EventLogFile.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_eventlogfile.htm)
-
-Supported Calls
-
-`describeSObjects()`, `query()`
-
-Special Access Rules
-
-To access this object, you must have the View Event Log Object Data user permission.
-
-Fields
-
-**Field** **Details**
-
-```
-ExceptionCategory
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-
-Standard Objects ApexUnexpectedExcpEventLog
-
-**Field** **Details**
-
-**Description**
-The category of the unexpected Apex exception. For example, the LimitException exception
-type is split into subcategories that indicate if you exceeded a limit, such as the total heap
-size or CPU time. Possible values:
-
-**•** Subcategories of LimitException that indicate the Apex limit you’ve exceeded. Examples:
-
-**•** LimitException: CpuTime: Maximum CPU time on the Salesforce servers.
-
-**•** LimitException: HeapSize: Total heap size
-
-**•** LimitException: Queries: Total number of SOQL queries issued.
-
-**•** LimitException: QueryRows: Total number of records retrieved by SOQL queries.
-
-**•** LimitException: DmlStatements: Total number of DML statements issued.
-
-**•** LimitException: Callouts: Total number of callouts (HTTP requests or web services calls)
-in a transaction.
-
-```
-ExceptionMessage
-
-ExceptionType
-
-RequestIdentifier
-
-StackTrace
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The exception message for a SOAP API request. An exception message gives details about
-errors in handling an API request, such as why an API request failed. For example:
-common.exception.ApiException: startDate cannot be more than 30 days ago.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The class type of the unexpected exception. For example: System.MathException
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The unique ID of a single transaction. A transaction can contain one or more events. Each
-event in a given transaction has the same `RequestIdentifier.` For example:
-3nWgxWbDKWWDIk0FKfF5DV.
-
-**Type**
-string
-
-**Properties**
-Filter, Nillable, Sort
-
-
-### Standard Objects ApiTotalUsageEventLog
-
-**Field** **Details**
-
-**Description**
-The stack trace for the exception. For example:
-
-```
-                   Class.OpportunityUtility.insert: line 22, column 1
-
-                   AnonymousBlock: line 1, column 1
-
-```
-
-```
-Timestamp
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The access time of Salesforce services in GMT. For example,
-`2020-01-20T19:12:26.965Z` . Milliseconds are the most granular setting.
-
-### ApiTotalUsageEventLog
-
-API Total Usage Event Log contains details about Platform SOAP API, Platform REST API, and Bulk API requests. This object is available in
-API version 61.0 and later.
-
-[Note: This object stores event data that's queryable from platform APIs. For event data stored in event log files, see EventLogFile.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_eventlogfile.htm)
-
-Supported Calls
-
-`describeSObjects()`, `query()`
-
-Special Access Rules
-
-To access this object, you must have the View Event Log Object Data user permission.
-
-Fields
-
-**Field** **Details**
-
-```
-ApiFamily
-
-ApiResource
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The API family. For example, REST, SOAP, or Bulk.
-
-**Type**
-string
-
-
-Standard Objects ApiTotalUsageEventLog
-
-**Field** **Details**
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The API method or resource. For example, `describeSObjects` for SOAP.
-
-```
-BotIdentifier
-
-BotSessionIdentifier
-
-ClientIp
-
-ClientName
-
-ConnectedAppIdentifier
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the bot.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The bot session ID.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The IP address of the client that’s using Salesforce services. A Salesforce internal IP, such as
-a login from AppExchange, is shown as “Salesforce.com IP”. For example: 96.43.144.26.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The name of the client making the API request.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the connected app making the API request.
-
-
-Standard Objects ApiTotalUsageEventLog
-
-**Field** **Details**
-
-```
-HttpMethod
-
-IsApiLimitCounted
-
-ObjectName
-
-PlannerIdentifier
-
-RequestIdentifier
-
-StatusCode
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The HTTP method. For example, `GET` .
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Whether the request counted against the API limit ( `true` ) or not ( `false` ).
-
-The default value is `false` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The name of the object accessed by the API request.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the agent planner.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The unique ID of a single transaction. A transaction can contain one or more events. Each
-event in a given transaction has the same `RequestIdentifier.` For example:
-3nWgxWbDKWWDIk0FKfF5DV.
-
-**Type**
-int
-
-
-### Standard Objects AppAnalyticsQueryRequest
-
-**Field** **Details**
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The HTTP response status code for the request.
-
-```
-Timestamp
-
-UserIdentifier
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The access time of Salesforce services in GMT. For example,
-`2020-01-20T19:12:26.965Z` . Milliseconds are the most granular setting.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the user who’s using Salesforce services through the UI or the API. For example:
-`00530000009M943` .
-
-### AppAnalyticsQueryRequest
-
-Represents a request for AppExchange App Analytics data.
-
-AppExchange App Analytics is available for packages that passed security review and are registered to a License Management App
-(LMA). Usage data is provided as package usage logs, as month-based package usage summaries, or as point-in-time subscriber snapshots.
-Usage logs, monthly usage summaries, and subscriber snapshots are downloadable comma-separated value (.csv) files. For information
-[on how to optimize your use of App Analytics, see AppExchange App Analytics Best Practices.](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/app_analytics_best_practices.htm)
-
-[Note: Usage data from Government Cloud and Government Cloud Plus orgs isn’t available in App Analytics.](https://www.salesforce.com/solutions/industries/government1/products/government-cloud/)
-
-Supported Calls
-
-`create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`,
-`undelete()`, `update()`, `upsert()`
-
-Special Access Rules
-
-[See Get Started with AppExchange App Analytics in the](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/app_analytics_intro_2gp.htm) _Second-Generation Managed Packaging Developer Guide_ .
-
-
-Standard Objects AppAnalyticsQueryRequest
-
-Fields
-
-**Field Name** **Details**
-
-```
-AvailableSince
-
-DataType
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Nillable, Sort
-
-**Description**
-
-An optional value used to limit the requested results file to data newly arrived in
-the data lake after the specified date and time. This field is always transferred in
-the Coordinated Universal Time (UTC) time zone. Use the `AvailableSince`
-field as part of your catch-up query strategy.
-
-`AvailableSince` must be later than `StartTime` and `EndTime`, if
-specified. `AvailableSince` must be earlier than now. A query must include
-`StartTime`, `AvailableSince`, or both.
-
-For example, to schedule a catch-up query on `2021-04-03T18:00:00Z`
-for this date range:
-
-**•** `StartTime=2021-03-29T00:00:00Z`
-
-**•** `EndTime=2021-03-30T00:00:00Z`
-
-Valid `AvailableSince` values range from `2021-03-30T00:00:00Z`
-`to 2021-04-03T18:00:00Z` .
-
-For more information on `AvailableSince` and catch-up queries, read
-[AppExchange App Analytics Best Practices.](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/app_analytics_best_practices.htm)
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort
-
-**Description**
-
-The type of usage data being requested. Valid values include:
-
-**•** `PackageUsageLog`
-
-**•** `PackageUsageSummary`
-
-**•** `SubscriberSnapshot`
-
-Note: In Summer ’20, we changed the enum names from
-`CustomObjectUsageSummary` and `CustomObjectUsageLog`
-to `PackageUsageSummary` and `PackageUsageLog` .
-
-If you wrote integrations using `CustomObjectUsageSummary` or
-`CustomObjectUsageLog`, they continue to work only with v47 and
-earlier. After you upgrade to v48, you must update the `DataType` to
-`PackageUsageSummary` and `PackageUsageLog` .
-
-
-Standard Objects AppAnalyticsQueryRequest
-
-**Field Name** **Details**
-
-```
-DownloadExpirationTime
-
-DownloadSize
-
-DownloadUrl
-
-EndTime
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-
-The time when the download URL is no longer valid. The expiration time is 60
-minutes after the query is completed.
-
-**Type**
-long
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The size of the AppExchange App Analytics results file available for download,
-in bytes.
-
-**Type**
-textarea
-
-**Properties**
-Nillable
-
-**Description**
-
-URL that the user can download data from. Populated after the request is
-completed. This URL expires and is removed after the expiration time is reached.
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Nillable, Sort
-
-**Description**
-Enter end time in format yyyy-MM-ddTHH:mm:ss.
-
-Example:
-
-2019-04-15T12:00:00
-
-For Package Usage Summaries, we recommend that StartTime corresponds to
-midnight UTC at beginning of the desired month and EndTime corresponds to
-midnight UTC at the beginning of the following month.
-
-For example, to retrieve the Package Usage Summary for December 2024 specify:
-
-**•** `StartTime=2024-12-01T00:00:00Z`
-
-**•** `EndTime=2025-01-01T00:00:00Z`
-
-
-Standard Objects AppAnalyticsQueryRequest
-
-**Field Name** **Details**
-
-```
-ErrorMessage
-
-FileCompression
-
-FileType
-
-LastReferencedDate
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-
-Stores error message text that results from this query.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-
-The file compression format of your requested results file. `FileCompression`
-and `FileType` must align. If `FileType` is `csv`, `FileCompression`
-defaults to `none` and can be `none` or `gzip` . If `FileType` is `parquet`,
-`FileCompression` is `snappy` by default and can be `snappy`, `gzip`, or
-`none` .
-
-Valid values include:
-
-**•** `gzip`
-
-**•** `snappy`
-
-**•** `none`
-
-**Type**
-picklist
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-
-The data format of your requested results file. The default is `csv` .
-`FileCompression` and `FileType` must align. If `FileType` is `csv`,
-`FileCompression` defaults to `none` and can be `none` or `gzip` . If
-`FileType` is `parquet`, `FileCompression` is `snappy` by default and
-can be `snappy`, `gzip`, or `none` .
-
-Valid values include:
-
-**•** `csv`
-
-**•** `parquet`
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-
-Standard Objects AppAnalyticsQueryRequest
-
-**Field Name** **Details**
-
-**Description**
-
-The timestamp for when the current user last viewed a record related to this
-record.
-
-```
-LastViewedDate
-
-Name
-
-OrganizationIds
-
-PackageIds
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-
-The timestamp for when the current user last viewed this record. If this value is
-null, it’s possible that this record was referenced (LastReferencedDate) and not
-viewed.
-
-**Type**
-string
-
-**Properties**
-Autonumber, Defaulted on create, Filter, idLookup, Sort
-
-**Description**
-
-The auto-generated name of the App Analytics query request.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort
-
-**Description**
-
-Optional. Enter up to 16 comma-separated org IDs without spaces between IDs.
-Or enter up to 15 comma-separated org IDs with spaces between the IDs.
-
-To request data for all the orgs the package is installed in, leave the field blank.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort
-
-**Description**
-
-Optional. Enter up to 16 comma-separated package IDs without spaces between
-IDs. Or enter up to 15 comma-separated package IDs with spaces between the
-IDs. Use the subscriber package ID that begins with `033` . To retrieve a list of your
-second-generation managed package IDs, run `sf package list`
-`--verbose` in Salesforce CLI.
-
-To request data on all packages registered to this License Management App,
-leave the field blank.
-
-
-Standard Objects AppAnalyticsQueryRequest
-
-**Field Name** **Details**
-
-```
-QuerySubmittedTime
-
-RequestState
-
-StartTime
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-
-The date and time that the App Analytics query request was received for
-processing, in Coordinated Universal Time (UTC). `QuerySubmittedTime`
-is read only.
-
-**Type**
-picklist
-
-**Properties**
-Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-
-Status of the query request. Valid values are:
-
-**•** `New`
-
-**•** `Pending`
-
-**•** `Complete`
-
-**•** `Expired`
-
-**•** `Failed`
-
-**•** `NoData`
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Nillable, Sort
-
-**Description**
-Enter start time in format yyyy-MM-ddTHH:mm:ss. All App Analytics query requests
-must include `StartTime` or `AvailableSince` or both.
-
-Example:
-
-2019-04-14T12:00:00
-
-For Package Usage Summaries, we recommend that StartTime corresponds to
-midnight UTC at beginning of the desired month and EndTime corresponds to
-midnight UTC at the beginning of the following month.
-
-For example, to retrieve the Package Usage Summary for December 2024 specify:
-
-**•** `StartTime=2024-12-01T00:00:00Z`
-
-**•** `EndTime=2025-01-01T00:00:00Z`
-
-
-### Standard Objects AppDefinition
-
-Usage
-
-To request usage data, log in to the License Management Org (LMO) that your package is registered to, and initiate the API request from
-the LMO. In a 24-hour period, you can download a maximum 20 GB of AppExchange App Analytics data.
-
-[See Download Package Usage Logs, Package Usage Summaries, and Subscriber Snapshots in the](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/app_analytics_download_mp_logs.htm) _Second Generation Managed Packaging_
-_Developer Guide_ .
-
-If requests to view package usage log or subscriber snapshot data are inactive for 90 days, we reserve the right to stop collecting this
-[data. To resume data collection, log a support case in the Salesforce Partner Community. For product, specify](https://partners.salesforce.com) **Partner Programs &**
-**Benefits** . For topic, specify **ISV Technology Request** .
-
-### AppDefinition
-
-Represents the metadata of an app and its navigation items. Metadata is returned only for apps that the current user can access. This
-object is available in API version 43.0 and later.
-
-Supported Calls
-
-`describeSObjects()`, `query()`
-
-Fields
-
-**Field Name** **Details**
-
-```
-Description
-
-DeveloperName
-
-DurableId
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The optional description of the application.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The developer name of the application.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-A unique virtual Salesforce ID for the application.
-
-
-Standard Objects AppDefinition
-
-**Field Name** **Details**
-
-```
-HeaderColor
-
-Id
-
-IsLargeFormFactorSupported
-
-IsMediumFormFactorSupported
-
-IsNavAutoTempTabsDisabled
-
-IsNavPersonalizationDisabled
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The header color in the application. Specify the color with a hexadecimal code,
-such as #0000FF for blue.
-
-**Type**
-ID
-
-**Properties**
-Defaulted on create, Filter, Group, idLookup, Sort
-
-**Description**
-A default Salesforce ID.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether the Large form factor is set in the `CustomApplication`
-metadata.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether the Medium form factor is set in the `CustomApplication`
-metadata.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether the navigation automatically creates temporary tabs settings.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-
-Standard Objects AppDefinition
-
-**Field Name** **Details**
-
-**Description**
-Indicates whether navigation personalization is disabled.
-
-```
-IsNavTabPersistenceDisabled
-
-IsOmniPinnedViewEnabled
-
-IsOverrideOrgTheme
-
-IsSmallFormFactorSupported
-
-Label
-
-```
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether workspace tabs are cleared for each new console session.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether the Omni-Channel component is enabled in sidebar view. The
-default is false.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether to override the global theme for the org. When true, the color
-scheme and logo that the user has set are used. When false, the global theme
-for the org is used, even if the user has set a color scheme and logo.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether the Small form factor is set in the `CustomApplication`
-metadata.
-
-**Type**
-string
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The localized label value corresponding to the MasterLabel field.
-
-
-Standard Objects AppDefinition
-
-**Field Name** **Details**
-
-```
-LogoUrl
-
-MasterLabel
-
-NamespacePrefix
-
-NavType
-
-UiType
-
-UtilityBar
-
-```
-
-**Type**
-url
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The logo URL of the application as selected by the admin.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The non-translated label entered when the application was created.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The namespace of the application.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The type of navigation for the application. The value `Standard` is for Lightning
-Experience. The value `Console` is for Salesforce console. A null value is for
-Salesforce Classic.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-Indicates the type of custom application. The value `Aloha` is for Salesforce
-Classic, and `Lightning` is for Lightning Experience.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-
-### Standard Objects AppExtension
-
-**Field Name** **Details**
-
-**Description**
-The ID of the utility bar associated with this application.
-
-### AppExtension
-
-Represents a connection between the Field Service mobile app and another app, typically for passing record data to the Salesforce
-mobile app or other apps. This object is available in API version 41.0 and later.
-
-Supported Calls
-
-`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
-
-Special Access Rules
-
-Field Service must be enabled.
-
-Fields
-
-**Field Name** **Details**
-
-### `AppExtensionLabel` `AppExtensionName`
-
-```
-FieldServiceMobileSettingsId
-
-```
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-
-The label in the UI for the app extension.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-The API name of the app extension.
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-The ID of a set of field service mobile settings.
-
-
-Standard Objects AppExtension
-
-**Field Name** **Details**
-
-```
-InstallationUrl
-
-LaunchValue
-
-ScopedToObjectTypes
-
-Type
-
-```
-
-Associated Objects
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The URL that takes the user to the app install location, such as the App Store or
-Google Play.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-A value directing the Field Service app to the appropriate app extension. The
-Launch Value can be a static URL or a dynamic value that you can represent with
-certain tokens. These tokens pass field information from the record that the user
-is currently viewing. The basic format for these tokens is based on the field names;
-for example: **{!$Name}** .
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-Indicates the types of records from which the app extension can be activated.
-Scoping an app extension to an object lets users activate the app extension from
-records of the specified type. For example, to scope to both work orders and
-service appointments you would use the value
-`WorkOrder,ServiceAppointment` .
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-A picklist of types of app extensions: iOS, Android, Flow, and Lightning Apps
-
-This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
-Otherwise, they’re available in the specified API version and later.
-
-
-### Standard Objects ApplicationFormTemplate
-
-**AppExtensionChangeEvent**
-
-Change events are available for the object. Available in API version 55.0 and later.
-
-### ApplicationFormTemplate
-
-Represents the fields to capture application metadata as a template which is used in application tracking and processing. This object is
-available in API version 59.0 and later.
-
-Supported Calls
-
-`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
-`retrieve()`, `search()`, `undelete()`, `update()`, `upsert()`
-
-Special Access Rules
-
-This object is available only with the EAndU Cloud Program Access permission set.
-
-Fields
-
-**Field** **Details**
-
-```
-ApprovalFlowName
-
-ApplicationType
-
-```
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The name of the flow that must be launched to approve the applications associated with
-the application form template.
-
-**Type**
-picklist
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-**Description**
-Specifies the type of application or template.
-
-Possible values are:
-
-**•** `Contractor`
-
-**•** `EVCharger` —EV Charger
-
-**•** `EnergyEfficiency` —Energy Efficiency
-
-**•** `NewConnection` —New Connection
-
-The default value is `NewConnection` .
-
-
-Standard Objects ApplicationFormTemplate
-
-**Field** **Details**
-
-```
-ApprovalLimitAmount
-
-ApprovalFlowName
-
-ApproverId
-
-Description
-
-Name
-
-```
-
-**Type**
-currency
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-Amount up to which the approver has the authority to approve applications.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The name of the flow that must be launched to approve the applications associated with
-the application form template.
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The user who must approve the application payout.
-
-This field is a relationship field.
-
-**Relationship Name**
-Approver
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-User
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The description of the application form template.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, idLookup, Sort, Update
-
-
-### Standard Objects AppMenuItem
-
-**Field** **Details**
-
-**Description**
-The name of the application form template.
-
-Associated Objects
-
-This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
-Otherwise, they’re available in the specified API version and later.
-
-**[ApplicationFormTemplateChangeEvent](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_change_event.htm)**
-
-Change events are available for the object.
-
-**[ApplicationFormTemplateFeed](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_feed.htm)**
-
-Feed tracking is available for the object.
-
-**[ApplicationFormTemplateHistory](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_history.htm)**
-
-History is available for tracked fields of the object.
-
-**[ApplicationFormTemplateOwnerSharingRule](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_ownersharingrule.htm)**
-
-Sharing rules are available for the object.
-
-**[ApplicationFormTemplateShare](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_share.htm)**
-
-Sharing is available for the object.
-
-### AppMenuItem
-
-Represents the organization’s default settings for items in the app menu or App Launcher.
-
-Supported Calls
-
-`delete()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`
-
-Fields
-
-**Field** **Details**
-
-```
-ApplicationId
-
-CanvasAccessMethod
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-
-The 15-character ID for the menu item.
-
-**Type**
-picklist
-
-
-Standard Objects AppMenuItem
-
-**Field** **Details**
-
-**Properties**
-Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The access method for the canvas app. Values can be:
-
-**•** `Get` —OAuth Webflow
-
-**•** `Post` —Signed Request
-
-```
-CanvasEnabled
-
-CanvasOptions
-
-CanvasReferenceId
-
-CanvasSelectedLocations
-
-```
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates if the app menu item is a canvas app ( `true` ) or not ( `false` ). The default setting
-is `false` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Represents the options enabled for a canvas connected app. The options are:
-
-**•** `PersonalEnabled` —The app is enabled as a canvas personal app.
-
-**•** `HideHeader` —The publisher header, which contains the “What are you working on?”
-text, is hidden.
-
-**•** `HideShare` —The publisher **Share** button is hidden.
-
-This field is available in API version 34.0 and later.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The canvas app unique identifier.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-
-Standard Objects AppMenuItem
-
-**Field** **Details**
-
-**Description**
-The selected locations for the canvas app which define where the canvas app can appear in
-the user interface. For example:
-
-```
-                    Chatter,ChatterFeed,Publisher,ServiceDesk
-
-```
-
-```
-CanvasUrl
-
-Description
-
-IconUrl
-
-InfoUrl
-
-IsAccessible
-
-```
-
-**Type**
-url
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The URL of the canvas app.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-A description of this menu item.
-
-**Type**
-url
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The icon for the menu item’s application.
-
-**Type**
-url
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The URL for more information about the application.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-
-If `true`, the current user is authorized to use the app. The default setting is `false` .
-
-
-Standard Objects AppMenuItem
-
-**Field** **Details**
-
-```
-IsRegisteredDeviceOnly
-
-IsUsingAdminAuthorization
-
-IsVisible
-
-Label
-
-LogoUrl
-
-MobileAppBinaryId
-
-```
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-If `true`, indicates that the app is available to registered devices only. The default setting is
-`false` . Available in API version 49.0 and later.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-If `true`, the app is pre-authorized for certain users by the administrator. The default setting
-is `false` .
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-
-If `true`, the app is visible to users of the organization. The default setting is `false` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The app’s name.
-
-**Type**
-url
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The logo for the menu item’s application. The default is the initials of the `Label` value.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-
-Standard Objects AppMenuItem
-
-**Field** **Details**
-
-**Description**
-The URL for the Mobile App Binary file.
-
-```
-MobileAppInstallUrl
-
-MobileAppInstalledDate
-
-MobileAppInstalledVersion
-
-MobileAppVer
-
-MobileDeviceType
-
-MobileMinOsVer
-
-```
-
-**Type**
-url
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The location mobile users are directed to install the app. Available in API version 49.0 and
-later.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The date and time that a user installed a mobile app. Available in API version 49.0 and later.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The version of the user’s installed mobile app. Available in API version 49.0 and later.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The version number of the mobile app. Available in API version 49.0 and later.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The supported device form factors for the mobile app. Available in API version 49.0 and later.
-
-**Type**
-string
-
-
-Standard Objects AppMenuItem
-
-**Field** **Details**
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The minimum version required for the app. Available in API version 49.0 and later.
-
-```
-MobilePlatform
-
-MobileStartUrl
-
-Name
-
-NamespacePrefix
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The mobile platform for the app. Possible values include:
-
-**•** `android – Android`
-
-**•** `ios – iOS`
-
-Available in API version 49.0 and later.
-
-**Type**
-url
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The location mobile users are directed to after they’ve authenticated. This field is used with
-connected apps and Experience Builder sites. For sites only, this location is a fully qualified
-domain name. For other apps, it’s a relative URL.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The API name of the item.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The namespace prefix that is associated with this object. Each Developer Edition org that
-creates a managed package has a unique namespace prefix. Limit: 15 characters. You can
-refer to a component in a managed package by using the
-_**`namespacePrefix`**_ `__` _**`componentName`**_ notation.
-
-The namespace prefix can have one of the following values:
-
-
-Standard Objects AppMenuItem
-
-**Field** **Details**
-
-**•** In Developer Edition orgs, `NamespacePrefix` is set to the namespace prefix of the
-org for all objects that support it, unless an object is in an installed managed package.
-In that case, the object has the namespace prefix of the installed managed package. This
-field’s value is the namespace prefix of the Developer Edition org of the package
-developer.
-
-**•** In orgs that are not Developer Edition orgs, `NamespacePrefix` is set only for objects
-that are part of an installed managed package. All other objects have no namespace
-prefix.
-
-```
-SortOrder
-
-StartUrl
-
-Type
-
-UserSortOrder
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The index value that controls where this item appears in the menu. For example, a menu
-item with a sort order of 5 appears between items with sort order values of 3 and 9.
-
-**Type**
-url
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-For a connected app, the location users are directed to after they’ve authenticated. Otherwise,
-the application’s default start page.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The type of application represented by this item. The types are:
-
-**•** `ConnectedApplication`
-
-**•** `Network`
-
-**•** `ServiceProvider`
-
-**•** `TabSet`
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-
-### Standard Objects AppointmentAssignmentPolicy
-
-**Field** **Details**
-
-**Description**
-
-The index value that represents where the user set this item in the menu (or App Launcher).
-For example, an item with a sort order value of 5 appears between items with sort order
-values of 3 and 9.
-
-This value is separate from SortOrder so you can create logic incorporating both values. For
-example, if you want the user-sorted items to appear first, followed by the organization order
-for the rest, use:
-
-```
-                    SELECT ApplicationId,SortOrder,UserSortOrder FROM AppMenuItem
-
-                     order by userSortOrder NULLS LAST, sortOrder NULLS LAST
-
-```
-
-Usage
-
-Use this read-only object to view an entry in the Lightning Platform app menu or the App Launcher. You can create a SOQL query to
-retrieve all items, even items the user does not see from the user interface.
-
-There are many ways you can use AppMenuItem. Here are some examples:
-
-**•** Build your own App Launcher or app menu in Salesforce. Create a custom page showing all the apps you have access to and that
-lets you run them using single sign-on.
-
-**•** Build your own App Launcher or app menu on a tablet or mobile app. You can have your own app for launching applications on
-various mobile devices.
-
-**•** Build an app launcher into your company’s intranet. There’s no need to have it run on Salesforce because Salesforce APIs let you
-integrate with Salesforce programmatically and build an app launcher.
-
-Tip: To get metadata information about apps and their tabs, use the Apex `Schema.describeTabs()` method, REST API
-`/vXX.X/tabs/` resource, or SOAP API `describeTabs()` call.
-
-### AppointmentAssignmentPolicy
-
-Stores information about resource assignment rules. This object is available in API version 52.0 and later.
-
-Supported Calls
-
-`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
-
-Fields
-
-**Field** **Details**
-
-```
-FullName
-
-```
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-
-Standard Objects AppointmentAssignmentPolicy
-
-**Field** **Details**
-
-**Description**
-The API name of the AppointmentAssignmentPolicy object.
-
-Note: Only users with View DeveloperName OR View Setup and Configuration
-permission can view, group, sort, and filter this field.
-
-```
-Language
-
-MasterLabel
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-**Description**
-The language of the appointment assignment policy.
-
-Possible values are:
-
-**•** `Possible` values are:
-
-**•** `da` (Danish)
-
-**•** `de` (German)
-
-**•** `en_US` (English)
-
-**•** `es` (Spanish)
-
-**•** `es_MX` (Spanish - Mexican)
-
-**•** `fi` (Finnish)
-
-**•** `fr` (French)
-
-**•** `it` (Italian)
-
-**•** `ja` (Japanese)
-
-**•** `ko` (Korean)
-
-**•** `nl_NL` (Dutch)
-
-**•** `no` (Norwegian)
-
-**•** `pt_BR` (Portuguese - Brazilian)
-
-**•** `ru` (Russian)
-
-**•** `sv` (Swedish)
-
-**•** `th` (Thai)
-
-**•** `zh_CN` (Chinese - Simplified)
-
-**•** `zh_TW` (Chinese - Traditional)
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-The label for the appointment assignment policy.
-
-
-### Standard Objects AppointmentScheduleAggr
-
-**Field** **Details**
-
-```
-PolicyApplicableDuration
-
-PolicyType
-
-UtilizationFactor
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-The frequency at which the utilization of service resources is calculated. This field is available
-in API version 53.0 and later.
-
-Possible values are:
-
-**•** `Parameter-Based`
-
-**•** `Monthly`
-
-**•** `Weekly`
-
-The default value is Parameter-Based.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-The type of appointment assignment policy.
-
-Possible values are:
-
-**•** `loadBalancing`
-
-**Type**
-picklist
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-Specifies the count type for the resource utilization. This field is available in API version 53.0
-and later.
-
-Possible values are:
-
-**•** `NumberOfAppointments`
-
-**•** `TotalAppointmentDuration`
-
-The default value is TotalAppointmentDuration.
-
-### AppointmentScheduleAggr
-
-Records the utilization of a service resource, by date, for the Load Balancing appointment assignment policy. This object is available in
-API version 52.0 and later.
-
-
-Standard Objects AppointmentScheduleAggr
-
-Supported Calls
-
-`create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`,
-`undelete()`, `update()`, `upsert()`
-
-Fields
-
-**Field** **Details**
-
-```
-AppointmentDate
-
-Name
-
-ResourceUtilizationCount
-
-ServiceResourceId
-
-```
-
-**Type**
-date
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The date of the appointment.
-
-**Type**
-string
-
-**Properties**
-Autonumber, Defaulted on create, Filter, idLookup, Sort
-
-**Description**
-The name or ID of the AppointmentScheduleAggr object.
-
-**Type**
-integer
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of appointments scheduled for a service resource. Available in API version 53.0
-and later.
-
-This is a calculated field.
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The service resource associated with the appointment scheduling aggregate.
-
-This is a relationship field.
-
-**Relationship Name**
-ServiceResource
-
-**Relationship Type**
-Lookup
-
-
-### Standard Objects AppointmentScheduleLog
-
-**Field** **Details**
-
-**Refers To**
-ServiceResource
-
-```
-TotalResourceUtilization
-
-UsageType
-
-```
-
-Associated Objects
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The number of minutes for which the service resource has scheduled appointments.
-
-This is a calculated field.
-
-**Type**
-picklist
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-Specify the usage type of the AppointmentScheduleAggr object.
-
-Possible values are:
-
-**•** `FSL_Daily`
-
-**•** `FSL_Monthly`
-
-**•** `FSL_Weekly`
-
-**•** `LightningScheduler`
-
-The default value is 'LightningScheduler'.
-
-This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
-Otherwise, they’re available in the specified API version and later.
-
-**AppointmentScheduleAggrOwnerSharingRule on page 65**
-Sharing rules are available for the object.
-
-**AppointmentScheduleAggrShare on page 67**
-Sharing is available for the object.
-
-### AppointmentScheduleLog
-
-Stores service appointments of each service Resource. This object is used to calculate the utilization of a service resource for the
-AppointmentScheduleAggr object. This object is available in API version 52.0 and later.
-
-
-Standard Objects AppointmentScheduleLog
-
-Supported Calls
-
-`create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`,
-`undelete()`, `update()`, `upsert()`
-
-Fields
-
-**Field** **Details**
-
-```
-AppointmentDate
-
-AppointmentScheduleAggrId
-
-IsUsedForResourceUtilization
-
-Name
-
-```
-
-**Type**
-date
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The date of the appointment.
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-The appointment scheduling aggregate associated with the appointment scheduling log.
-
-This is a relationship field.
-
-**Relationship Name**
-AppointmentScheduleAggr
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-AppointmentScheduleAggr
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Indicates whether the appointment scheduling log is used for deriving the appointment
-scheduling aggregate.
-
-The default value is 'false'.
-
-**Type**
-string
-
-**Properties**
-Autonumber, Defaulted on create, Filter, idLookup, Sort
-
-
-Standard Objects AppointmentScheduleLog
-
-**Field** **Details**
-
-**Description**
-The name or ID of the AppointmentScheduleLog object.
-
-```
-RelatedRecordId
-
-ResourceUtilization
-
-ServiceResourceId
-
-UsageType
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The service appointment, resource absence, event, or any other related record associated
-with the appointment scheduling log.
-
-This is a polymorphic relationship field.
-
-**Relationship Name**
-RelatedRecord
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-Event, ServiceAppointment
-
-**Type**
-double
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-The number of minutes the service resource already has scheduled appointments for.
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The service resource associated with the appointment scheduling log.
-
-This is a relationship field.
-
-**Relationship Name**
-ServiceResource
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-ServiceResource
-
-**Type**
-picklist
-
-
-### Standard Objects AppointmentSchedulingPolicy
-
-**Field** **Details**
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-Specify the product associated with the AppointmentScheduleLog object.
-
-Possible values are:
-
-**•** `FSL_Daily` —FSL - Daily
-
-**•** `FSL_Monthly` —FSL - Monthly
-
-**•** `FSL_Weekly` —FSL - Weekly
-
-**•** `LightningScheduler` —Lightning Scheduler
-
-The default value is 'LightningScheduler'.
-
-Associated Objects
-
-This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
-Otherwise, they’re available in the specified API version and later.
-
-**AppointmentScheduleLogChangeEvent on page 68**
-Change events are available for the object.
-
-**AppointmentScheduleLogFeed on page 55**
-Feed tracking is available for the object.
-
-**AppointmentScheduleLogHistory on page 63**
-History is available for tracked fields of the object.
-
-**AppointmentScheduleLogOwnerSharingRule on page 65**
-Sharing rules are available for the object.
-
-**AppointmentScheduleLogShare on page 67**
-Sharing is available for the object.
-
-### AppointmentSchedulingPolicy
-
-Represents a set of rules for scheduling appointments using Salesforce Scheduler. This object is available in API version 45.0 and later.
-
-Supported Calls
-
-`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
-
-Fields
-
-**Field** **Details**
-
-```
-AppointmentAssignmentPolicyId
-
-```
-
-**Type**
-reference
-
-
-Standard Objects AppointmentSchedulingPolicy
-
-**Field** **Details**
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The name or ID of the appointment assignment policy. This is a relationship field, available
-in version 52.0 and later.
-
-**Relationship Name**
-AppointmentAssignmentPolicy
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-AppointmentAssignmentPolicy
-
-```
-AppointmentStartTimeInterval
-
-DeveloperName
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-The proposed time interval in minutes between appointment start times. For example, set
-the interval to 15. Appointments can then begin at the top of the hour and at 15-minute
-intervals thereafter (10:00 AM, 10:15 AM, 10:30 AM, and so on). Possible values are:
-
-**•** `5`
-
-**•** `10`
-
-**•** `15`
-
-**•** `20`
-
-**•** `30`
-
-**•** `45`
-
-**•** `60`
-
-**•** `90`
-
-**•** `120`
-
-**•** `150`
-
-**•** `180`
-
-**•** `240`
-
-**•** `300`
-
-**•** `360`
-
-**•** `420`
-
-**•** `480`
-
-**Type**
-string
-
-
-Standard Objects AppointmentSchedulingPolicy
-
-**Field** **Details**
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-The API name of the AppointmentSchedulingPolicy object.
-
-```
-ExtCalEventHandlerId
-
-IsOrgDefault
-
-IsSvcTerrOpHoursWithShiftsUsed
-
-IsSvcTerritoryMemberShiftUsed
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The API name of the custom Apex class that checks service resources’ external calendar
-events and returns the time slots where service resources are already booked. Available in
-API version 50.0 and later.
-
-This is a relationship field.
-
-**Relationship Name**
-ExtCalEventHandler
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-ApexClass
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether this scheduling policy is the default appointment scheduling policy for
-Lightning Scheduler appointments in this org.
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Indicates whether this scheduling policy considers the intersection of shifts and service
-territory operating hours when determining the availability of service resources for
-appointments (true). The default value is false. Available in API version 56.0 and later.
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-
-Standard Objects AppointmentSchedulingPolicy
-
-**Field** **Details**
-
-**Description**
-Indicates whether this scheduling policy considers shifts of service territory members when
-determining the availability of service resources for appointments (true). The default value
-is false. Available in API version 56.0 and later.
-
-```
-Language
-
-MasterLabel
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-**Description**
-The language of the appointment scheduling policy.
-
-Possible values are:
-
-**•** `Possible` values are:
-
-**•** `da` (Danish)
-
-**•** `de` (German)
-
-**•** `en_US` (English)
-
-**•** `es` (Spanish)
-
-**•** `es_MX` (Spanish - Mexican)
-
-**•** `fi` (Finnish)
-
-**•** `fr` (French)
-
-**•** `it` (Italian)
-
-**•** `ja` (Japanese)
-
-**•** `ko` (Korean)
-
-**•** `nl_NL` (Dutch)
-
-**•** `no` (Norwegian)
-
-**•** `pt_BR` (Portuguese - Brazilian)
-
-**•** `ru` (Russian)
-
-**•** `sv` (Swedish)
-
-**•** `th` (Thai)
-
-**•** `zh_CN` (Chinese - Simplified)
-
-**•** `zh_TW` (Chinese - Traditional)
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-The label for the appointment scheduling policy.
-
-
-Standard Objects AppointmentSchedulingPolicy
-
-**Field** **Details**
-
-```
-ShouldConsiderCalendarEvents
-
-ShouldEnforceExcludedResource
-
-ShouldEnforceRequiredResource
-
-ShouldMatchSkill
-
-ShouldMatchSkillLevel
-
-ShouldRespectVisitingHours
-
-```
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Indicates whether this policy checks the Salesforce calendar for resource availability.
-
-The default value is 'false'.
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Indicates whether this appointment scheduling policy prevents excluded service resources
-from being assigned to appointments.
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Indicates whether this appointment scheduling policy allows only required service resources
-to be assigned to appointments.
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Indicates whether this appointment scheduling policy allows only required service resources
-who have certain skills to be assigned to appointments.
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Indicates whether this appointment scheduling policy allows only required service resources
-who have certain skills and skill levels to be assigned to appointments.
-
-**Type**
-boolean
-
-
-### Standard Objects AppointmentTopicTimeSlot
-
-**Field** **Details**
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Indicates whether this appointment scheduling policy prevents users from scheduling
-appointments outside of an account’s visiting hours.
-
-```
-ShouldUsePrimaryMembers
-
-ShouldUseSecondaryMembers
-
-```
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Indicates whether this appointment scheduling policy allows only service resources who are
-primary members of a service territory to be assigned to appointments.
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Indicates whether this appointment scheduling policy allows service resources who are
-secondary members of a service territory to be assigned to appointments.
-
-### AppointmentTopicTimeSlot
-
-Represents a lookup to a work type or a work type group for a time slot This object is available in API version 52.0 and later.
-
-Supported Calls
-
-`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
-`retrieve()`, `undelete()`, `update()`, `upsert()`
-
-Fields
-
-**Field** **Details**
-
-### `AppointmentTopicTimeSlotKey`
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, idLookup, Nillable, Sort, Update
-
-
-Standard Objects AppointmentTopicTimeSlot
-
-**Field** **Details**
-
-**Description**
-Non-editable validating field used to ensure no two rows have the same time slot and work
-type or work type group values in an instance.
-
-```
-Name
-
-OperatingHoursId
-
-TimeSlotId
-
-WorkTypeGroupId
-
-```
-
-**Type**
-string
-
-**Properties**
-Autonumber, Defaulted on create, Filter, idLookup, Sort
-
-**Description**
-Name or ID of the AppointmentTopicTimeSlot object.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The operating hours that contain the time slot.
-
-This is a relationship field.
-
-**Relationship Name**
-OperatingHours
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-OperatingHours
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-The ID of the time slot.
-
-This is a relationship field.
-
-**Relationship Name**
-TimeSlot
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-TimeSlot
-
-**Type**
-reference
-
-
-Standard Objects AppointmentTopicTimeSlot
-
-**Field** **Details**
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The work type group associated with this time slot.
-
-This is a relationship field.
-
-**Relationship Name**
-WorkTypeGroup
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-WorkTypeGroup
-
-```
-WorkTypeId
-
-```
-
-Associated Objects
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The work type associated with this time slot.
-
-This is a relationship field.
-
-**Relationship Name**
-WorkType
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-WorkType
-
-This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
-Otherwise, they’re available in the specified API version and later.
-
-**AppointmentTopicTimeSlotChangeEvent on page 68**
-Change events are available for the object.
-
-**AppointmentTopicTimeSlotFeed on page 55**
-Feed tracking is available for the object.
-
-**AppointmentTopicTimeSlotHistory on page 63**
-History is available for tracked fields of the object.
-
-**AppointmentTopicTimeSlotOwnerSharingRule on page 65**
-Sharing rules are available for the object.
-
-**AppointmentTopicTimeSlotShare on page 67**
-Sharing is available for the object.
-
-
-### Standard Objects Approval Approval
-
-Represents an approval request for a Contract.
-
-Note: This object is read-only and is specific to approvals on the Contract object. It isn't equal to or involved in the approval
-processes represented by the ProcessInstance, which is more powerful.
-
-Supported Calls
-
-`describeSObjects()`, `query()`, `retrieve()`
-
-Special Access Rules
-
-Customer Portal users can't access this object.
-
-Fields
-
-**Field** **Details**
-
-```
-ApproveComment
-
-IsDeleted
-
-OwnerId
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Text entered by the user when they approved or rejected this approval request. Required.
-Limit: 4,000 characters.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter
-
-**Description**
-Indicates whether the object has been moved to the Recycle Bin ( `true` ) or not ( `false` ).
-Label is **Deleted** .
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-Required. ID of the User being asked to approve or reject the approval request. Must be a
-valid User ID. Required.
-
-
-Standard Objects Approval
-
-**Field** **Details**
-
-```
- ParentId
-
- RequestComment
-
- Status
-
-```
-
-Usage
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-Required. ID of the Contract associated with this approval request. Must be a valid contract
-ID.
-
-**Type**
-string
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Text entered by the User who created the approval request. Optional. This field can't be
-updated after the Approval has been created. Limit: 4,000 characters.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort
-
-**Description**
-Required. Status of this approval request. One of the following picklist values:
-
-**•** `Pending` —Specified only when the Approval request is created ( `create()` call)
-
-**•** `Approved` —Specified only when the Approval request is approved ( `update()`
-call)
-
-**•** `Rejected` —Specified when the Approval request is rejected ( `update()` call) or
-when it is created ( `create()` call) and immediately rejected for archival/historical
-purposes.
-
-This object allows client applications to programmatically handle approval requests for a Contract. Initially, to request a Contract approval,
-a client application might create a new Approval request record, specifying the `ParentId`, OwnerId (user approving or rejecting the
-request), Status (Pending), and (optionally) RequestComment fields. Note that when a client application creates the first approval request,
-if the value of the Contract `Status` field is Draft, then the Approval `Status` for this record is automatically changed to In Approval
-Process (see ContractStatus for more information).
-
-A client application might subsequently update an existing Approval request, specifying the `Status` (Approved or `Rejected` ) and
-an `ApproveComment` (required); the `RequestComment` field can't be updated. Updating an Approval record (either to approve
-or reject) requires the client application to be logged in with “Approve Contract” permission. To update an Approval request, its `Status`
-must be Pending—a client application can't update an Approval that has already been Approved or Rejected. To re-submit an approval
-request for a given Contract, a client application must create a new, separate Approval record and repeat the approval process.
-
-
-### Standard Objects ApprovalAlertContentDef
-
-Once a Contract has been approved (not rejected), the Contract `LastApprovedDate` field is automatically updated, however the
-Contract `Status` field isn't updated, it keeps the value InApproval.
-
-An approved Contract must be activated explicitly. Client applications can activate a Contract by setting the value in its `Status` field
-to Activated, or a User can activate a Contract via the Salesforce user interface.
-
-A Contract can have multiple approval requests in various states (Pending, Approved, and Rejected). In addition, one User can have
-multiple approval requests associated with the same Contract.
-
-Client applications can't explicitly deleteApproval records. Approval records are deleted automatically if the parent Contract is deleted.
-
-SEE ALSO:
-
-Overview of Salesforce Objects and Fields
-
-### ApprovalAlertContentDef
-
-Represents the mapping that links specific user-created email templates to different notification events such as initial assignment or
-reassignment within an Advanced Approvals flow. This object is available in API version 66.0 and later.
-
-Supported Calls
-
-`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
-`retrieve()`, `undelete()`, `update()`, `upsert()`
-
-Special Access Rules
-
-This object is available in Enterprise, Professional, Unlimited, and Developer Editions where Advanced Approvals is enabled.
-
-Fields
-
-**Field** **Details**
-
-```
-ApprovalFlowApiName
-
-ApprovalStepApiName
-
-```
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-The API name of the approval workflow.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The unique API name of the approval step.
-
-
-Standard Objects ApprovalAlertContentDef
-
-**Field** **Details**
-
-```
-EmailTemplateId
-
-Name
-
-NotificationReason
-
-```
-
-Associated Objects
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The email template that's associated with an approval step in the approval workflow.
-
-This field is a relationship field.
-
-**Relationship Name**
-EmailTemplate
-
-**Refers To**
-EmailTemplate
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, idLookup, Sort, Update
-
-**Description**
-The name of the approval alert content definition.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-The reason within an approval step's lifecycle that triggers the notification for which an email
-is sent. For example, when an approval work item is moved from one user to another, a
-reassignment notification email is sent to the user.
-
-Possible values are:
-
-**•** `ApprovalCreationSuccess`
-
-**•** `ApprovalStepAssignment`
-
-**•** `ApprovalStepAssignmentToDelegate`
-
-**•** `ApprovalStepReassignment`
-
-**•** `ApprovalStepReassignmentToDelegate`
-
-**•** `ApprovalSubmissionApprovedOrRejectedStatusUpdate`
-
-**•** `ApprovalWorkItemStatusUpdate`
-
-**•** `AutoApprovalConfirmation`
-
-This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
-
-
-### Standard Objects ApprovalSubmission
-
-**ApprovalAlertContentDefHistory on page 63**
-History is available for tracked fields of the object.
-
-### ApprovalSubmission
-
-Represents the instance of an approval request that's submitted for a record of the related object. This object is available in API version
-62.0 and later.
-
-Supported Calls
-
-`describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`, `update()`
-
-Special Access Rules
-
-This object is available for users with a Salesforce user license of type Salesforce in Enterprise, Performance, Unlimited, and Developer
-Editions.
-
-Fields
-
-**Field** **Details**
-
-```
-Comments
-
-DoesSendApprovalEmail
-
-FlowOrchestrationInstanceId
-
-```
-
-**Type**
-textarea
-
-**Properties**
-Nillable, Update
-
-**Description**
-The comments that the user adds when they submit the request for approval.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Required. Indicates whether approval request emails are sent to approvers and delegates
-( `true` ) or not ( `false` ).
-
-The default value is `false` .
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort, Update
-
-**Description**
-The ID of the flow orchestration instance record that's associated with the approval.
-
-
-Standard Objects ApprovalSubmission
-
-**Field** **Details**
-
-This field is a relationship field.
-
-**Relationship Name**
-FlowOrchestrationInstance
-
-**Refers To**
-FlowOrchestrationInstance
-
-```
-IsEligibleForSmartApproval
-
-IsSmartApprovalRun
-
-Name
-
-OwnerId
-
-```
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Indicates whether the approval submission is eligible for smart approval ( `true` ) or not
-( `false` ).
-
-The default value is `false` .
-
-This field is only available with Advanced Approvals enabled.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Indicates whether this approval submission either is run in smart approval mode ( `true` ) or
-not ( `false` ).
-
-The default value is `false` .
-
-This field is only available with Advanced Approvals enabled.
-
-**Type**
-string
-
-**Properties**
-Autonumber, Defaulted on create, Filter, idLookup, Sort
-
-**Description**
-The sequentially-generated name of the approval submission record, for example
-AS-000000001.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort, Update
-
-**Description**
-The ID of the user or the group that owns the approval submission record.
-
-This field is a polymorphic relationship field.
-
-
-Standard Objects ApprovalSubmission
-
-**Field** **Details**
-
-**Relationship Name**
-Owner
-
-**Refers To**
-User
-
-```
-RelatedRecordId
-
-RelatedRecordObjectName
-
-SmartApprvlBasisSubmissionId
-
-Status
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort, Update
-
-**Description**
-Required. The API name of the related record that’s submitted for approval.
-
-**Relationship Name**
-RelatedRecord
-
-**Refers To**
-The objects that you have access to for approvals.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort, Update
-
-**Description**
-Required. The type of record that was submitted for approval.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort, Update
-
-**Description**
-The previous approval submission used as reference for the auto-approval evaluation.
-
-This field is a relationship field.
-
-This field is only available with Advanced Approvals enabled.
-
-**Relationship Name**
-SmartApprvlBasisSubmission
-
-**Refers To**
-ApprovalSubmission
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort, Update
-
-
-### Standard Objects ApprovalSubmissionDetail
-
-**Field** **Details**
-
-**Description**
-Required. The status of the approval.
-
-Valid values are:
-
-**•** `Approved`
-
-**•** `Canceled`
-
-**•** `Errored`
-
-**•** `InProgress`
-
-**•** `Recalled`
-
-**•** `Rejected`
-
-**•** `Suspended`
-
-```
-SubmittedById
-
-```
-
-Associated Objects
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort, Update
-
-**Description**
-Required. The ID of the user who submitted the record for approval.
-
-This field is a relationship field.
-
-**Relationship Name**
-SubmittedBy
-
-**Refers To**
-User
-
-This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
-Otherwise, they’re available in the specified API version and later.
-
-**ApprovalSubmissionShare on page 67**
-Sharing is available for the object.
-
-**ApprovalSubmissionHistory on page 63**
-History is available for tracked fields of the object.
-
-### ApprovalSubmissionDetail ApprovalSubmissionDetail contains additional information about operations happening during the approval lifecycle. It will not hold
-
-any information that’s already captured in the existing ApprovalSubmission and ApprovalWorkItem entities. This object is available in
-API version 62.0 and later.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-
-Standard Objects ApprovalSubmissionDetail
-
-Supported Calls
-
-`describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`, `update()`
-
-Special Access Rules
-
-This object is available in Enterprise, Performance, Unlimited, and Developer Editions for users with access to the Approval Submission
-object.
-
-Fields
-
-**Field** **Details**
-
-```
-ActionChannelName
-
-ActionContext
-
-ActionName
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-The name of the channel where the action was performed.
-
-Valid values are:
-
-**•** `ApprovalRecord`
-
-**•** `Email`
-
-**•** `InvocableAction`
-
-**•** `ScreenFlow`
-
-**•** `Slack`
-
-**•** `System`
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort, Update
-
-**Description**
-The context of the action taken for the item assigned for approval. For example, if the approval
-has been reassigned the string would be `Reassigned from User Id -`
-_**`<original_assignee_id>`**_ .
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-The action taken for the item assigned for approval.
-
-Valid values are:
-
-
-Standard Objects ApprovalSubmissionDetail
-
-**Field** **Details**
-
-**•** `Cancel`
-
-**•** `Override`
-
-**•** `Reassign`
-
-**•** `Recall`
-
-**•** `Review`
-
-```
-ActionPerformedById
-
-ActionPerformerRole
-
-ApprovalSubmissionId
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort, Update
-
-**Description**
-The ID of the user who performed the action on the item submitted for approval.
-
-This field is a relationship field.
-
-**Relationship Name**
-ActionPerformedBy
-
-**Refers To**
-User
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-The role of the user who performed the action on the item submitted for approval.
-
-Valid values are:
-
-**•** `Admin`
-
-**•** `Assignee`
-
-**•** `Delegate`
-
-**•** `Submitter`
-
-**•** `System`
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The approval submission that's associated with the detail record.
-
-This field is a relationship field.
-
-**Relationship Name**
-ApprovalSubmission
-
-
-Standard Objects ApprovalSubmissionDetail
-
-**Field** **Details**
-
-**Relationship Type**
-Master-detail
-
-**Refers To**
-ApprovalSubmission (the master object)
-
-```
-ApprovalWorkItemId
-
-Comments
-
-Name
-
-```
-
-Associated Objects
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The approval assignment associated with the detail record.
-
-This field is a relationship field.
-
-**Relationship Name**
-ApprovalWorkItem
-
-**Refers To**
-ApprovalWorkItem
-
-**Type**
-textarea
-
-**Properties**
-Nillable, Update
-
-**Description**
-The comments that the user adds when they cancel, review, reassign or recall the request.
-
-**Type**
-string
-
-**Properties**
-Autonumber, Defaulted on create, Filter, idLookup, Sort
-
-**Description**
-The sequentially-generated name of the approval submission detail record, for example
-ASD-000000026.
-
-This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
-Otherwise, they’re available in the specified API version and later.
-
-**ApprovalSubmissionDetailHistory on page 63**
-History is available for tracked fields of the object.
-
-
-### Standard Objects ApprovalWorkItem ApprovalWorkItem
-
-Contains run-time information about each step in an approval workflow, such as assignees and their decisions regarding the object's
-approval. Has a master-detail relationship with ApprovalSubmission. This object is available in API version 61.0 and later.
-
-Supported Calls
-
-`describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`, `update()`
-
-Special Access Rules
-
-This object is available in Enterprise, Performance, Unlimited, and Developer Editions for users with access to the Approval Submission
-object.
-
-Fields
-
-**Field** **Details**
-
-```
-ApprovalChainName
-
-ApprovalConditionName
-
-ApprovalSubmissionId
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort, Update
-
-**Description**
-The name of the related approval chain. This field is populated when there are multiple
-approval chains that are run in parallel. This field is only available with Advanced Approvals
-enabled.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort, Update
-
-**Description**
-The name of the condition that assigns the work item to a user or group for approval.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The approval submission that's associated with this item.
-
-This field is a relationship field.
-
-**Relationship Name**
-ApprovalSubmission
-
-
-Standard Objects ApprovalWorkItem
-
-**Field** **Details**
-
-**Relationship Type**
-Master-detail
-
-**Refers To**
-ApprovalSubmission (the master object)
-
-```
-AssignedToId
-
-Comments
-
-FlowOrchestrationWorkItemId
-
-IsAutoReviewed
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort, Update
-
-**Description**
-The user, group, or queue that was assigned the work item.
-
-This field is a polymorphic relationship field.
-
-**Relationship Name**
-AssignedTo
-
-**Refers To**
-Group (Type = Regular), Group (Type = Queue), User
-
-**Type**
-textarea
-
-**Properties**
-Nillable, Update
-
-**Description**
-The comments that the user adds when they review or override the work item.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort, Update
-
-**Description**
-The identifier of the associated flow orchestration work item.
-
-This field is a relationship field.
-
-**Relationship Name**
-FlowOrchestrationWorkItem
-
-**Refers To**
-FlowOrchestrationWorkItem
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort, Update
-
-
-Standard Objects ApprovalWorkItem
-
-**Field** **Details**
-
-**Description**
-Indicates whether the work item was auto-reviewed ( `true` ) or not ( `false` ).
-
-The default value is `false` .
-
-This field is only available with Advanced Approvals enabled.
-
-```
-IsEligibleForAutoApproval
-
-IsEligibleForSmartApproval
-
-Name
-
-RelatedRecordId
-
-```
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Indicates whether custom logic is used for auto-approval of this approval work item (true)
-or not (false).
-
-This field is only available with Advanced Approvals enabled.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Indicates whether the approval work item is eligible for smart approval ( `true` ) or not
-( `false` ).
-
-The default value is `false` .
-
-This field is only available with Advanced Approvals enabled.
-
-**Type**
-string
-
-**Properties**
-Autonumber, Defaulted on create, Filter, idLookup, Sort
-
-**Description**
-The sequentially-generated name of the related record that’s submitted for approval, for
-example AWI-000000001.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort, Update
-
-**Description**
-The API name of the related record that's submitted for approval.
-
-**Relationship Name**
-RelatedRecord
-
-
-Standard Objects ApprovalWorkItem
-
-**Field** **Details**
-
-**Refers To**
-The objects that you have access to for approvals.
-
-```
-RelatedRecordObjectName
-
-ReviewedById
-
-ReviewedDate
-
-SmartApprovalBasisWorkItemId
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort, Update
-
-**Description**
-The name of the related record that's submitted for approval.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort, Update
-
-**Description**
-The identifier of the user that reviewed the work item.
-
-This field is a relationship field.
-
-**Relationship Name**
-ReviewedBy
-
-**Refers To**
-User
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort, Update
-
-**Description**
-The date and time when the work item was reviewed.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort, Update
-
-**Description**
-The previous approval work item used as a reference for the auto-approval evaluation.
 
-This field is a relationship field.
+### Standard Objects ActionCadenceRuleCondition
 
-This field is only available with Advanced Approvals enabled.
-
-**Relationship Name**
-SmartApprovalBasisWorkItem
-
-**Refers To**
-ApprovalWorkItem
-
-
-### Standard Objects ApprovalWorkItemCondition
-
-**Field** **Details**
-
-```
-Status
-
-```
-
-Associated Objects
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-The status of the approval work item.
-
-Possible values are:
-
-**•** `Approved`
-
-**•** `Assigned`
-
-**•** `Canceled`
-
-**•** `Errored` —Error
-
-**•** `Recalled`
-
-**•** `Rejected`
-
-**•** `Withdrawn`
-
-This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
-Otherwise, they’re available in the specified API version and later.
-
-**ApprovalWorkItemHistory on page 63**
-History is available for tracked fields of the object.
-
-### ApprovalWorkItemCondition
-
-Represents a condition for starting and concluding an approval step that's evaluated as part of the smart approval process. This object
-is available in API version 64.0 and later.
-
-Supported Calls
-
-`describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`, `update()`
-
-Special Access Rules
-
-This object is available in Enterprise, Professional, Unlimited, and Developer Editions where Advanced Approvals is enabled with the
-Modify All Data or the Approval Admin user permission.
-
-
-Standard Objects ApprovalWorkItemCondition
-
-Fields
-
-**Field** **Details**
-
-```
-ApprovalWorkItemCriteriaId
-
-ConditionSequencePosition
-
-HasEvaluationSucceeded
-
-IsConditionExcluded
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The approval work item criteria associated with the approval work item condition. The
-approval work item criteria defines the logic by which the approval conditions are evaluated.
-
-This field is a relationship field.
-
-**Relationship Name**
-ApprovalWorkItemCriteria
-
-**Relationship Type**
-Master-detail
-
-**Refers To**
-ApprovalWorkItemCriteria (the master object)
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort, Update
-
-**Description**
-The order in which the condition is evaluated relative to other conditions that are part of the
-requirement logic.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Indicates whether the first value (left side) evaluates against the second value (right side)
-successfully ( `true` ) or not ( `false` ).
-
-The default value is `false` .
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Indicates whether the condition must be excluded from evaluation ( `true` ) or not ( `false` )
-in an auto-approval process.
-
-
-Standard Objects ApprovalWorkItemCondition
-
-**Field** **Details**
-
-The default value is `false` .
-
-```
-LeftValue
-
-LeftValueDataType
-
-Name
-
-OperatorType
-
-```
-
-**Type**
-textarea
-
-**Properties**
-Nillable, Update
-
-**Description**
-The first value of the condition that's evaluated against the second value.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-**Description**
-The data type of the first operand (left side) in this condition.
-
-Possible values are:
-
-**•** `Apex`
-
-**•** `Boolean`
-
-**•** `Currency`
-
-**•** `Date`
-
-**•** `DateTime` —Date/Time
-
-**•** `MultiSelectPicklist` —Multi-Select Picklist
-
-**•** `Number`
-
-**•** `Other`
-
-**•** `Picklist`
-
-**•** `Text`
-
-**•** `Time`
-
-**Type**
-string
-
-**Properties**
-Autonumber, Defaulted on create, Filter, idLookup, Sort
-
-**Description**
-The sequentially-generated name of the approval work item condition record, for example
-AWCO-000000071.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-
-Standard Objects ApprovalWorkItemCondition
-
-**Field** **Details**
-
-**Description**
-The operator for the condition.
-
-Possible values are:
-
-**•** `Contains`
-
-**•** `EndsWith`
-
-**•** `Equal`
-
-**•** `GreaterThan`
-
-**•** `GreaterThanOrEqualTo`
-
-**•** `HasError`
-
-**•** `In`
-
-**•** `IsBlank`
-
-**•** `IsChanged`
-
-**•** `IsEmpty`
-
-**•** `IsNull`
-
-**•** `LessThan`
-
-**•** `LessThanOrEqualTo`
-
-**•** `None`
-
-**•** `NotEqualTo`
-
-**•** `NotIn`
-
-**•** `StartsWith`
-
-**•** `WasSelected`
-
-**•** `WasSet`
-
-**•** `WasVisited`
-
-```
-RightValue
-
-RightValueDataType
-
-```
-
-**Type**
-textarea
-
-**Properties**
-Nillable, Update
-
-**Description**
-The second value (right side) of the condition that's evaluated against the first value.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-**Description**
-The data type of the second operand for the condition.
-
-Possible values are:
-
-**•** `Apex`
-
-
-### Standard Objects ApprovalWorkItemCriteria
-
-**Field** **Details**
-
-**•** `Boolean`
-
-**•** `Currency`
-
-**•** `Date`
-
-**•** `DateTime` —Date/Time
-
-**•** `MultiSelectPicklist` —Multi-Select Picklist
-
-**•** `Number`
-
-**•** `Other`
-
-**•** `Picklist`
-
-**•** `Text`
-
-**•** `Time`
-
-### ApprovalWorkItemCriteria
-
-Represents the logic by which a smart approval request is evaluated. This object is available in API version 64.0 and later.
-
-Supported Calls
-
-`describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`, `update()`
-
-Special Access Rules
-
-This object is available in Enterprise, Professional, Unlimited, and Developer Editions where Advanced Approvals is enabled with the
-Modify All Data or the Approval Admin user permission.
-
-Fields
-
-**Field** **Details**
-
-```
-ApprovalStepApiName
-
-ApprovalWorkItemId
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Sort, Update
-
-**Description**
-The unique API name of the approval step that uses the logic in the approval work item
-criteria.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-
-### Standard Objects AppTabMember
-
 **Field** **Details**
-
-**Description**
-The parent approval work item associated with the approval work item criteria.
-
-This field is a relationship field.
-
-**Relationship Name**
-ApprovalWorkItem
-
-**Relationship Type**
-Master-detail
-
-**Refers To**
-ApprovalWorkItem (the master object)
-
-```
-CriteriaType
-
-Name
-
-RequirementLogic
-
-### AppTabMember
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-**Description**
-Specifies whether the requirement logic is for an entry or exit condition.
-
-Possible values are:
-
-**•** `Entry`
-
-**•** `Exit`
-
-**Type**
-string
-
-**Properties**
-Autonumber, Defaulted on create, Filter, idLookup, Sort
-
-**Description**
-The sequentially-generated name of the approval work item criteria record, for example
-AWCR-000000071.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort, Update
-
-**Description**
-The requirement logic of all entry or exit conditions.
-
-Represents the list of tabs for each of the available apps. This object is available in API version 43.0 and later.
-
-
-Standard Objects AppTabMember
-
-Supported Calls
-
-`describeSObjects()`, `query()`
-
-Fields
-
-**Field Name** **Details**
-
-```
-AppDefinitionId
-
-DurableId
-
-SortOrder
-
-TabDefinitionId
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-
-The ID of the `AppDefinition` object.
-
-This is a relationship field.
-
-**Relationship Name**
-AppDefinition
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-AppDefinition
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-
-A unique virtual Salesforce ID for the color.
-
-**Type**
-int
 
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-
-The number used to sort this tab in the application.
-
-**Type**
-string
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-
-The ID of the `TabDefinition` object.
-
-
-### Standard Objects ApptBundleAggrDurDnscale
-
-**Field Name** **Details**
-
-This is a relationship field.
-
-**Relationship Name**
-TabDefinition
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-TabDefinition
-
-```
-WorkspaceDriverField
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
 **Description**
-
-Refers to the workspace mapping in the `CustomApplication` Metadata
-API object.
-
-### ApptBundleAggrDurDnscale
-
-Sums the duration of the bundle members, reduced by a predefined percentage. This object is available in API version 54.0 and later.
-
-Supported Calls
-
-`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
-`retrieve()`, `search()`, `undelete()`, `update()`, `upsert()`
-
-Special Access Rules
-
-**•** Field Service must be enabled.
-
-**•** Bundling must be enabled in the Field Service Settings.
-
-**•** The Field Service Admin, Field Service Bundle for Dispatcher, and Field Service Integration permission sets must be enabled.
-
-Fields
-
-**Field** **Details**
-
-```

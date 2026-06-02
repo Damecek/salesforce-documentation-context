@@ -1,9 +1,10430 @@
+      Auth.SessionManagement.getLightningLoginEligibility(id);
+
+   if (eligibility == Auth.LightningLoginEligibility.ELIGIBLE) {
+
+      // success
+
+   }
+
+##### getQrCode()
+
+```
+
+Returns a map containing a URL to a quick response (QR) code and a time-based one-time password (TOTP) shared secret to configure
+authenticator apps or devices for multi-factor authentication (MFA).
+
+Signature
+
+```
+   public static Map<String, String> getQrCode()
+
+```
+
+Return Value
+
+Type: Map<String, String>
+
+Usage
+
+The QR code encodes the returned secret as well as the current user's username. The keys are `qrCodeUrl` and `secret` . Calling this
+method does not change any state for the user, nor does it read any state from the user. This method returns a brand new secret every
+time it is called, does not save that secret anywhere, and does not validate the TOTP token. The admin must explicitly save the values
+for the user after verifying a TOTP token with the secret.
+
+The `secret` is a base32-encoded string of a 20-byte shared key.
+
+
+Apex Reference Guide SessionManagement Class
+
+Example
+
+The following is an example of how to request the QR code.
+
+```
+   public String getGetQRCode() {
+
+        return getQRCode();
+
+      }
+
+      public String getQRCode() {
+
+        Map<String, String> codeResult = Auth.SessionManagement.getQrCode();
+
+        String result = 'URL: '+codeResult.get('qrCodeUrl') + ' SECRET: ' +
+
+   codeResult.get('secret');
+
+        return result;
+
+      }
+
+```
+
+The following is an example of a returned map.
+
+```
+   {qrCodeUrl=https://www.salesforce.com/secur/qrCode?w=200&h=200&t=tf&u=user%0000000000.com&s=AAAAA7B5BBBB5AAAAAAA66BBBB,
+
+       secret=AAAAA7B5AAAAAA5BBBBBBBBB66AAA}
+
+##### getRequiredSessionLevelForProfile(profileId)
+
+```
+
+Indicates the required login security session level for the given profile.
+
+Signature
+
+```
+   public static Auth.SessionLevel getRequiredSessionLevelForProfile(String profileId)
+
+```
+
+Parameters
+
+```
+   profileId
+```
+
+Type: String
+
+The 15-character profile ID.
+
+Return Value
+
+Type: Auth.SessionLevel
+
+The session security level required at login for the profile with the ID _`profileId`_ . You can customize the assignment of each level in
+Session Settings. For example, you can set the High Assurance level to apply only to users who authenticated with multi-factor
+authentication (MFA) or through a specific identity provider.
+
+##### ignoreForConcurrentSessionLimit(sessions)
+
+This method is reserved for internal Salesforce use.
+
+Signature
+
+```
+   public static Map<String,String> ignoreForConcurrentSessionLimit(Object sessions)
+
+```
+
+
+Apex Reference Guide SessionManagement Class
+
+Parameters
+
+```
+   sessions
+```
+
+Type: Object
+
+Return Value
+
+Type: Map<String, String>
+
+##### inOrgNetworkRange(ipAddress)
+
+Indicates whether the given IP address is within the organization's trusted IP range according to the organization's Network Access
+settings.
+
+Signature
+
+```
+   public static Boolean inOrgNetworkRange( String ipAddress )
+
+```
+
+Parameters
+
+```
+   ipAddress
+```
+
+Type: String
+
+The IP address to validate.
+
+Return Value
+
+Type: Boolean
+
+Usage
+
+If a trusted IP range is not defined, this returns `false`, and throws an exception if the IP address is not valid.
+
+**Trusted IP Range Exists?** **User is in the Trusted IP Range?** **Return Value**
+
+Yes Yes `true`
+
+Yes No `false`
+
+No N/A `false`
+
+##### isIpAllowedForProfile(profileId, ipAddress)
+
+Indicates whether the given IP address is within the trusted IP range for the given profile.
+
+Signature
+
+```
+   public static Boolean isIpAllowedForProfile(String profileId, String ipAddress)
+
+```
+
+
+Apex Reference Guide SessionManagement Class
+
+Parameters
+
+```
+   profileId
+```
+
+Type: String
+
+The 15-character alphanumeric string for the current user’s profile ID.
+
+```
+   ipAddress
+```
+
+Type: String
+
+The IP address to validate.
+
+Return Value
+
+Type: Boolean
+
+Usage
+
+If a trusted IP range is not defined, this returns `true`, and throws an exception if the IP address is not valid or if the profile ID is not valid.
+
+**Trusted IP Range Exists?** **User is in the Trusted IP Range?** **Return Value**
+
+Yes Yes `true`
+
+Yes No `false`
+
+No N/A `true`
+
+##### setSessionLevel(level)
+
+Sets the user's current session security level.
+
+Signature
+
+```
+   public static Void setSessionLevel(Auth.SessionLevel level)
+
+```
+
+Parameters
+
+```
+   level
+```
+
+Type: Auth.SessionLevel
+
+The session security level to assign to the user. The meaning of each level can be customized in the Session Settings for each
+organization, such as setting the High Assurance level to apply only to users who authenticated with multi-factor authentication
+(MFA) or through a specific identity provider.
+
+Return Value
+
+Type: Void
+
+Usage
+
+This setting affects the session level of all sessions associated with the current session, such as Visualforce or UI access.
+
+If you create an Apex test method that calls this method, the test fails with an error such as, “Unexpected Exception: Current session
+unavailable." An error occurs because there isn’t a session in the context through which the test is being run.
+
+
+Apex Reference Guide SessionManagement Class
+
+Example
+
+The following is an example class for setting the session level.
+
+```
+   public class RaiseSessionLevel{
+
+      public void setLevelHigh() {
+
+        Auth.SessionManagement.setSessionLevel(Auth.SessionLevel.HIGH_ASSURANCE);
+
+      }
+
+      public void setLevelStandard() {
+
+        Auth.SessionManagement.setSessionLevel(Auth.SessionLevel.STANDARD);
+
+      }
+
+   }
+
+##### validateTotpTokenForKey(sharedKey, totpCode) Deprecated. Use validateTotpTokenForKey(totpSharedKey, totpCode, description) instead.
+
+```
+
+Signature
+
+```
+   public static Boolean validateTotpTokenForKey( String sharedKey, String totpCode )
+
+```
+
+Parameters
+
+```
+   sharedKey
+```
+
+Type: String
+
+The shared (secret) key. The _`sharedKey`_ must be a base32-encoded string of a 20-byte shared key.
+
+```
+   totpCode
+```
+
+Type: String
+
+The time-based one-time password (TOTP) code to validate.
+
+Return Value
+
+Type: Boolean
+
+Usage
+
+If the key is invalid or doesn’t exist, this method throws an invalid parameter value exception or a no data found exception, respectively.
+If the current user exceeds the maximum of 10 token validation attempts, this method throws a security exception.
+
+##### validateTotpTokenForKey(totpSharedKey, totpCode, description)
+
+Indicates whether a time-based one-time password (TOTP) code (token) is valid for the given shared key.
+
+Signature
+
+```
+   public static Boolean validateTotpTokenForKey(String totpSharedKey, String totpCode,
+
+   String description)
+
+```
+
+
+Apex Reference Guide SessionManagement Class
+
+Parameters
+
+```
+   totpSharedKey
+```
+
+Type: String
+
+The shared (secret) key. The _`totpSharedKey`_ must be a base32-encoded string of a 20-byte shared key.
+
+```
+   totpCode
+```
+
+Type: String
+
+The time-based one-time password (TOTP) code to validate.
+
+```
+   description
+```
+
+Type: String
+
+The custom description that describes the activity requiring identity verification; for example, “Complete purchase and check out”.
+In the Setup user interface, this text is shown in the Activity Message column of Identity Verification History. The _`description`_
+must be 128 characters or fewer. If you provide a value that’s longer, it’s truncated to 128 characters.
+
+Return Value
+
+Type: Boolean
+
+Usage
+
+If the key is invalid or doesn’t exist, this method throws an invalid parameter value exception or a no data found exception, respectively.
+If the current user exceeds the maximum of 10 token validation attempts, this method throws a security exception.
+
+##### validateTotpTokenForUser(totpCode) Deprecated. Use validateTotpTokenForUser(totpCode, description) instead.
+
+Signature
+
+```
+   public static Boolean validateTotpTokenForUser( String totpCode )
+
+```
+
+Parameters
+
+```
+   totpCode
+```
+
+Type: String
+
+The time-based one-time password (TOTP) code to validate.
+
+Return Value
+
+Type: Boolean
+
+Usage
+
+If the current user does not have a TOTP code, this method throws an exception. If the current user has attempted too many validations,
+this method throws an exception.
+
+##### validateTotpTokenForUser(totpCode, description)
+
+Indicates whether a time-based one-time password (TOTP) code (token) is valid for the current user.
+
+
+Apex Reference Guide SessionManagement Class
+
+Signature
+
+```
+   public static Boolean validateTotpTokenForUser(String totpCode, String description)
+
+```
+
+Parameters
+
+```
+   totpCode
+```
+
+Type: String
+
+The time-based one-time password (TOTP) code to validate.
+
+```
+   description
+```
+
+Type: String
+
+The custom description that describes the activity requiring identity verification; for example, “Complete purchase and check out”.
+This text appears to users when they verify their identity in Salesforce and, if they use Salesforce Authenticator version 2 or later, in
+the Salesforce Authenticator mobile app. In addition, in the Setup user interface, this text is shown in the Activity Message column
+of Identity Verification History. The _`description`_ must be 128 characters or fewer. If you provide a value that’s longer, it’s
+truncated to 128 characters.
+
+Return Value
+
+Type: Boolean
+
+Usage
+
+If the current user does not have a TOTP code, or if the current user has attempted too many validations, this method throws an exception.
+
+##### verifyDeviceFlow(userCode, startUrl)
+
+Verifies the user code entered during the device authentication flow and redirects users to the OAuth approval page. If users aren’t
+logged in, they must log in. After successful login, users are prompted to allow the device to access Salesforce data.
+
+Signature
+
+```
+   public static System.PageReference verifyDeviceFlow(String userCode, String startUrl)
+
+```
+
+Parameters
+
+```
+   userCode
+```
+
+Type: String
+
+Human-readable user code provided to the user by Salesforce. The user must enter this code at the verification URL to approve
+device access to Salesforce data.
+
+```
+   startURL
+```
+
+Type: String
+
+The URL for the page that the user is redirected to after successful login and approval of the device to access Salesforce data. If you
+don’t specify a start URL, the user is redirected to the Home page.
+
+Return Value
+
+Type:System.PageReference
+
+
+### Apex Reference Guide SessionLevel Enum
+
+Usage
+
+Include this method in the Apex controller when creating a custom Visualforce User Code Verification page for the OAuth 2.0 device
+authentication flow. This method verifies the user code, prompts the user to log in as needed, and prompts the user to allow the device
+access to Salesforce data. Upon successful verification and authentication, the user is redirected to the page defined by the start URL.
+
+### SessionLevel Enum
+
+An `Auth.SessionLevel` enum value is used by the `SessionManagement.setSessionLevel` method.
+
+Namespace
+
+Auth
+
+Enum Values
+
+**Value** **Description**
+
+`LOW` The user’s security level for the current session meets the lowest requirements.
+
+Note: This low level is not available, nor used, in the Salesforce UI. User
+sessions through the Salesforce UI are either standard or high assurance. You
+can set this level using the API, but users assigned this level will experience
+unpredictable and reduced functionality in their Salesforce organization.
+
+`STANDARD` The user’s security level for the current session meets the Standard requirements
+set in the current organization Session Security Levels.
+
+`HIGH_ASSURANCE` The user’s security level for the current session meets the High Assurance
+requirements set in the current organization Session Security Levels.
+
+Usage
+
+With session-level security, you control user access to features that support it, such as connected apps and reporting. For example, you
+can customize an organization’s Session Settings to require users to log in with multi-factor authentication (MFA) to get a High Assurance
+session. Then, you can restrict access to a specific connected app by requiring a High Assurance session level in the settings for the
+connected app.
+
+### TokenValidationResult Class
+
+Contains methods that describe the result of the token validation performed by a token exchange handler using the
+`validateIncomingToken` method in the `Auth.Oauth2TokenExchangeHandler` class during the OAuth 2.0 token
+exchange flow.
+
+Namespace
+
+Auth
+
+
+Apex Reference Guide TokenValidationResult Class
+
+Usage
+
+For a full example implementation that shows how to get information from the `TokenValidationResult` [class, see OAuth 2.0](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/token_exchange_handler.htm)
+[Token Exchange Handler Examples.](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/token_exchange_handler.htm)
+
+Example
+
+Here’s is an example of the `Auth.TokenValidationResult` class.
+
+```
+   global class TokenValidationResult {
+
+      global TokenValidationResult(Boolean valid) { this.isValid = valid; }
+
+      global TokenValidationResult(Boolean isValid, Object data, Auth.UserData userData,
+
+        String token, Auth.OAuth2TokenExchangeType tokenType, String customErrorMsg) {
+
+        this.isValid = isValid;
+
+        this.data = data;
+
+        this.userData = userData;
+
+        this.token = token;
+
+        this.tokenType = tokenType;
+
+        this.customErrorMsg = customErrorMsg;
+
+      }
+
+      global Boolean isValid;
+
+      global Object data;
+
+      global Auth.UserData userData;
+
+      global String token;
+
+      global Auth.OAuth2TokenExchangeType tokenType; //Enum
+
+      global String customErrorMsg; //Custom error message that’s returned to the client if
+
+    token validation fails
+
+      global Boolean isValid(){
+
+        return isValid;
+
+      }
+
+      global Object getData(){
+
+        return data;
+
+      }
+
+      global Auth.UserData getUserData(){
+
+        return userData;
+
+      }
+
+      global String getToken(){
+
+        return token;
+
+      }
+
+      global OAuth2TokenExchangeType getTokenType(){
+
+        return tokenType;
+
+      }
+
+      global String getCustomErrorMessage(){
+
+        return customErrorMsg;
+
+      }
+
+   }
+
+```
+
+
+Apex Reference Guide TokenValidationResult Class
+
+IN THIS SECTION:
+
+#### TokenValidationResult Constructors
+
+TokenValidationResult Properties
+
+TokenValidationResult Methods
+
+#### TokenValidationResult Constructors The following are constructors for TokenValidationResult .
+
+IN THIS SECTION:
+
+##### TokenValidationResult(isValid, data, userData, token, tokenType, customErrorMsg)
+
+Creates an instance of the `Auth.TokenValidationResult` class to describe the result of token validation performed during
+the OAuth 2.0 token exchange flow.
+
+TokenValidationResult(valid)
+Creates an instance of the `Auth.TokenValidationResult` class to describe a valid token validation result during the OAuth
+2.0 token exchange flow.
+
+##### **`TokenValidationResult(isValid, data, userData, token, tokenType,`**
+
+```
+  customErrorMsg)
+
+```
+
+Creates an instance of the `Auth.TokenValidationResult` class to describe the result of token validation performed during
+the OAuth 2.0 token exchange flow.
+
+Signature
+
+```
+   public TokenValidationResult(Boolean isValid, Object data, Auth.UserData userData,
+
+   String token, Auth.OAuth2TokenExchangeType tokenType, String customErrorMsg)
+
+```
+
+Parameters
+
+```
+   isValid
+```
+
+Type: Boolean
+
+If `true`, the token is valid.
+
+```
+   data
+```
+
+Type: Object
+
+Stores custom data that isn’t stored in `userData` .
+
+```
+   userData
+```
+
+[Type: Auth.UserData](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_class_Auth_UserData.htm)
+
+Stores information about a Salesforce user.
+
+```
+   token
+```
+
+Type: String
+
+The token from the external identity provider.
+
+```
+   tokenType
+```
+
+[Type: Auth.OAuth2TokenExchangeType](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_enum_Auth_OAuth2TokenExchangeType.htm)
+
+
+Apex Reference Guide TokenValidationResult Class
+
+The type of token from the external identity provider.
+
+##### _`customErrorMsg`_
+
+Type: String
+
+A custom error message that’s returned if the token validation fails.
+
+##### **`TokenValidationResult(valid)`**
+
+Creates an instance of the `Auth.TokenValidationResult` class to describe a valid token validation result during the OAuth
+2.0 token exchange flow.
+
+Signature
+
+```
+   public TokenValidationResult(Boolean valid)
+
+```
+
+Parameters
+
+```
+   valid
+```
+
+Type: Boolean
+
+Indicates a valid token validation result.
+
+#### TokenValidationResult Properties
+
+##### The following are properties for TokenValidationResult .
+
+IN THIS SECTION:
+
+##### customErrorMsg
+
+A custom error message that’s returned if token validation fails.
+
+data
+Contains information about the user that isn’t stored in the `Auth.UserData` class, such as information obtained via callouts to
+the external identity provider.
+
+isValid
+Indicates whether the token is valid or not, based on the custom validation logic in your token exchange handler.
+
+token
+The token from the external identity provider.
+
+tokenType
+The type of token from the external identity provider. It can be an access token, refresh token, ID token, SAML 2.0 assertion, or a JSON
+Web Token (JWT).
+
+userData
+Information about the user that’s obtained from the identity provider’s token.
+
+##### **`customErrorMsg`**
+
+A custom error message that’s returned if token validation fails.
+
+
+Apex Reference Guide TokenValidationResult Class
+
+Signature
+
+```
+   public String customErrorMsg {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### **`data`**
+
+Contains information about the user that isn’t stored in the `Auth.UserData` class, such as information obtained via callouts to the
+external identity provider.
+
+Signature
+
+```
+   public Object data {get; set;}
+
+```
+
+Property Value
+
+Type: Object
+
+##### **`isValid`**
+
+Indicates whether the token is valid or not, based on the custom validation logic in your token exchange handler.
+
+Signature
+
+```
+   public Boolean isValid {get; set;}
+
+```
+
+Property Value
+
+Type: Boolean
+
+##### **`token`**
+
+The token from the external identity provider.
+
+Signature
+
+```
+   public String token {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### **`tokenType`**
+
+The type of token from the external identity provider. It can be an access token, refresh token, ID token, SAML 2.0 assertion, or a JSON
+Web Token (JWT).
+
+
+Apex Reference Guide TokenValidationResult Class
+
+Signature
+
+```
+   public Auth.OAuth2TokenExchangeType tokenType {get; set;}
+
+```
+
+Property Value
+
+[Type: Auth.OAuth2TokenExchangeType](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_enum_Auth_OAuth2TokenExchangeType.htm)
+
+##### **`userData`**
+
+Information about the user that’s obtained from the identity provider’s token.
+
+Signature
+
+```
+   public Auth.UserData userData {get; set;}
+
+```
+
+Property Value
+
+[Type: Auth.UserData](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_class_Auth_UserData.htm)
+
+#### TokenValidationResult Methods The following are methods for TokenValidationResult .
+
+IN THIS SECTION:
+
+##### getCustomErrorMessage()
+
+Retrieves the `CustomErrorMsg` that’s returned when token validation fails.
+
+getData()
+##### Retrieves data from the identity provider token. This data can include custom data that isn’t stored in the userData property.
+
+getToken()
+Retrieves the token that was passed from the external identity provider.
+
+getTokenType()
+Retrieves the type of token that was passed from the external identity provider.
+
+getUserData()
+Retrieves information about the user. The user information can be obtained from the identity provider’s token or from callouts to
+the identity provider, if applicable.
+
+isValid
+Indicates whether the token is valid or not, based on the custom validation logic in your token exchange handler.
+
+##### **`getCustomErrorMessage()`**
+
+Retrieves the `CustomErrorMsg` that’s returned when token validation fails.
+
+Signature
+
+```
+   public String getCustomErrorMessage()
+
+```
+
+
+Apex Reference Guide TokenValidationResult Class
+
+Return Value
+
+Type: String
+
+##### **`getData()`**
+
+Retrieves data from the identity provider token. This data can include custom data that isn’t stored in the `userData` property.
+
+Signature
+
+```
+   public Object getData()
+
+```
+
+Return Value
+
+Type: Object
+
+##### **`getToken()`**
+
+Retrieves the token that was passed from the external identity provider.
+
+Signature
+
+```
+   public String getToken()
+
+```
+
+Return Value
+
+Type: String
+
+##### **`getTokenType()`**
+
+Retrieves the type of token that was passed from the external identity provider.
+
+Signature
+
+```
+   public Auth.OAuth2TokenExchangeType getTokenType()
+
+```
+
+Return Value
+
+[Type: Auth.OAuth2TokenExchangeType](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_enum_Auth_OAuth2TokenExchangeType.htm)
+
+##### **`getUserData()`**
+
+Retrieves information about the user. The user information can be obtained from the identity provider’s token or from callouts to the
+identity provider, if applicable.
+
+Signature
+
+```
+   public Auth.UserData getUserData()
+
+```
+
+
+### Apex Reference Guide UserData Class
+
+Return Value
+
+[Type: Auth.UserData](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_class_Auth_UserData.htm)
+
+##### **`isValid`**
+
+Indicates whether the token is valid or not, based on the custom validation logic in your token exchange handler.
+
+Signature
+
+```
+   public Boolean isValid {get; set;}
+
+```
+
+Property Value
+
+Type: Boolean
+
+### UserData Class
+
+Stores user information for authentication provider registration handlers, including handlers that implement the
+`Auth.RegistrationHandler` interface and handlers built using Flow Builder.
+
+Namespace
+
+Auth
+
+Usage
+
+For more information about using this class with the `Auth.RegistrationHandler` [interface, see Storing User Information and](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_auth_plugin.htm#apex_auth_plugin_part2)
+[Getting Access Tokens in the](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_auth_plugin.htm#apex_auth_plugin_part2) `RegistrationHandler` Interface documentation.
+
+[For more information about using this class as an Apex-defined variable in a user registration flow, see Example: Authentication Provider](https://help.salesforce.com/s/articleView?id=xcloud.sso_flow_registration_handler_example.htm&language=en_US)
+[Registration Handler Flow in Salesforce Help](https://help.salesforce.com/s/articleView?id=xcloud.sso_flow_registration_handler_example.htm&language=en_US)
+
+IN THIS SECTION:
+
+#### UserData Constructors
+
+UserData Properties
+
+#### UserData Constructors
+
+### The following are constructors for UserData .
+
+IN THIS SECTION:
+
+UserData(identifier, firstName, lastName, fullName, email, link, userName, locale, provider, siteLoginUrl, attributeMap)
+Creates a new instance of the `Auth.UserData` class using the specified arguments.
+
+UserData(identifier, firstName, lastName, fullName, email, link, username, locale, provider, siteLoginUrl, attributeMap, idToken,
+userInfoJSONString)
+Creates an instance of the Auth.UserData class that includes the ID token and user info response from the identity provider, if returned
+during single sign-on.
+
+
+Apex Reference Guide UserData Class
+
+##### UserData(identifier, firstName, lastName, fullName, email, link, userName, locale, provider,
+
+siteLoginUrl, attributeMap)
+
+Creates a new instance of the `Auth.UserData` class using the specified arguments.
+
+Signature
+
+```
+   public UserData(String identifier, String firstName, String lastName, String fullName,
+
+   String email, String link, String userName, String locale, String provider, String
+
+   siteLoginUrl, Map<String,String> attributeMap)
+
+```
+
+Parameters
+
+```
+   identifier
+```
+
+Type: String
+
+An identifier from the third party for the authenticated user, such as the Facebook user number or the Salesforce user ID.
+
+```
+   firstName
+```
+
+Type: String
+
+The first name of the authenticated user, according to the third party.
+
+```
+   lastName
+```
+
+Type: String
+
+The last name of the authenticated user, according to the third party.
+
+```
+   fullName
+```
+
+Type: String
+
+The full name of the authenticated user, according to the third party.
+
+```
+   email
+```
+
+Type: String
+
+The email address of the authenticated user, according to the third party.
+
+```
+   link
+```
+
+Type: String
+
+A stable link for the authenticated user such as `https://www.facebook.com/MyUsername` .
+
+```
+   userName
+```
+
+Type: String
+
+The username of the authenticated user in the third party.
+
+```
+   locale
+```
+
+Type: String
+
+The standard locale string for the authenticated user.
+
+```
+   provider
+```
+
+Type: String
+
+The service used to log in, such as Facebook or Janrain.
+
+```
+   siteLoginUrl
+```
+
+Type: String
+
+The site login page URL passed in if used with a site; `null` otherwise.
+
+
+Apex Reference Guide UserData Class
+
+```
+   attributeMap
+```
+
+Type: Map<String, String>
+
+A map of data from the third party, in case the handler has to access non-standard values. For example, when using Janrain as a
+provider, the fields Janrain returns in its `accessCredentials` dictionary are placed into the `attributeMap` . These fields
+vary by provider.
+
+##### **`UserData(identifier, firstName, lastName, fullName, email, link, username,`**
+
+```
+  locale, provider, siteLoginUrl, attributeMap, idToken, userInfoJSONString)
+
+```
+
+Creates an instance of the Auth.UserData class that includes the ID token and user info response from the identity provider, if returned
+during single sign-on.
+
+Signature
+
+```
+   public UserData(String identifier, String firstName, String lastName, String fullName,
+
+   String email, String link, String username, String locale, String provider, String
+
+   siteLoginUrl, Map<String,String> attributeMap, String idToken, String userInfoJSONString)
+
+```
+
+Parameters
+
+```
+   identifier
+```
+
+Type: String
+
+An identifier from the third party for the authenticated user, such as the Facebook user number or the Salesforce user ID.
+
+```
+   firstName
+```
+
+Type: String
+
+The first name of the authenticated user, according to the third party.
+
+```
+   lastName
+```
+
+Type: String
+
+The last name of the authenticated user, according to the third party.
+
+```
+   fullName
+```
+
+Type: String
+
+The full name of the authenticated user, according to the third party.
+
+```
+   email
+```
+
+Type: String
+
+The email address of the authenticated user, according to the third party.
+
+```
+   link
+```
+
+Type: String
+
+A stable link for the authenticated user such as `https://www.facebook.com/MyUsername` .
+
+```
+   username
+```
+
+Type: String
+
+The username of the authenticated user in the third party.
+
+```
+   locale
+```
+
+Type: String
+
+
+Apex Reference Guide UserData Class
+
+The standard locale string for the authenticated user.
+
+```
+   provider
+```
+
+Type: String
+
+The service used to log in, such as Facebook or Janrain.
+
+```
+   siteLoginUrl
+```
+
+Type: String
+
+The site login page URL passed in if used with a site; `null` otherwise.
+
+```
+   attributeMap
+```
+
+Type: Map<String, String>
+
+A map of data from the third party, in case the handler has to access non-standard values. For example, when using Janrain as a
+provider, the fields Janrain returns in its `accessCredentials` dictionary are placed into the _`attributeMap`_ . These fields
+vary by provider.
+
+```
+   idToken
+```
+
+Type: String
+
+If provided by the third party, the ID token, formatted as an encoded JWT. The ID token contains claims with information about the
+authenticated user.
+
+```
+   userInfoJSONString
+```
+
+Type: String
+
+If provided by the third party, the user info response, formatted as a JSON object that has been serialized into a string.
+
+#### UserData Properties The following are properties for UserData .
+
+IN THIS SECTION:
+
+identifier
+An identifier from the third party for the authenticated user, such as the Facebook user number or the Salesforce user ID.
+
+firstName
+The first name of the authenticated user, according to the third party.
+
+lastName
+The last name of the authenticated user, according to the third party.
+
+fullName
+The full name of the authenticated user, according to the third party.
+
+email
+The email address of the authenticated user, according to the third party.
+
+link
+A stable link for the authenticated user such as `https://www.facebook.com/MyUsername` .
+
+username
+The username of the authenticated user in the third party.
+
+locale
+The standard locale string for the authenticated user.
+
+
+Apex Reference Guide UserData Class
+
+provider
+The service used to log in, such as Facebook or Janrain.
+
+siteLoginUrl
+The site login page URL passed in if used with a site; `null` otherwise.
+
+attributeMap
+A map of data from the third party, in case the handler has to access non-standard values. For example, when using Janrain as a
+provider, the fields Janrain returns in its `accessCredentials` dictionary are placed into the `attributeMap` . These fields
+vary by provider.
+
+idToken
+If provided, the ID token from the third party, formatted as an encoded JWT. The ID token contains claims with information about
+the authenticated user.
+
+userInfoJSONString
+If provided, the user info response from the third party. The user info response is a JSON object containing user attributes. When
+used in this property, the JSON object is serialized into a string.
+
+idTokenJSONString
+If provided, the ID token from the third party. The ID token is formatted as a JSON Web Token (JWT) containing claims with information
+about the user. When used in this property, the ID token is serialized into a string.
+
+##### identifier
+
+An identifier from the third party for the authenticated user, such as the Facebook user number or the Salesforce user ID.
+
+Signature
+
+```
+   public String identifier {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### firstName
+
+The first name of the authenticated user, according to the third party.
+
+Signature
+
+```
+   public String firstName {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### lastName
+
+The last name of the authenticated user, according to the third party.
+
+
+Apex Reference Guide UserData Class
+
+Signature
+
+```
+   public String lastName {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### fullName
+
+The full name of the authenticated user, according to the third party.
+
+Signature
+
+```
+   public String fullName {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### email
+
+The email address of the authenticated user, according to the third party.
+
+Signature
+
+```
+   public String email {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### link
+
+A stable link for the authenticated user such as `https://www.facebook.com/MyUsername` .
+
+Signature
+
+```
+   public String link {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### username
+
+The username of the authenticated user in the third party.
+
+Signature
+
+```
+   public String username {get; set;}
+
+```
+
+
+Apex Reference Guide UserData Class
+
+Property Value
+
+Type: String
+
+##### locale
+
+The standard locale string for the authenticated user.
+
+Signature
+
+```
+   public String locale {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### provider
+
+The service used to log in, such as Facebook or Janrain.
+
+Signature
+
+```
+   public String provider {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### siteLoginUrl
+
+The site login page URL passed in if used with a site; `null` otherwise.
+
+Signature
+
+```
+   public String siteLoginUrl {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### attributeMap
+
+A map of data from the third party, in case the handler has to access non-standard values. For example, when using Janrain as a provider,
+##### the fields Janrain returns in its accessCredentials dictionary are placed into the attributeMap . These fields vary by provider.
+
+Signature
+
+```
+   public Map<String, String> attributeMap {get; set;}
+
+```
+
+
+### Apex Reference Guide VerificationAction Enum
+
+Property Value
+
+Type: Map<String, String>
+
+##### **`idToken`**
+
+If provided, the ID token from the third party, formatted as an encoded JWT. The ID token contains claims with information about the
+authenticated user.
+
+Signature
+
+```
+   public String idToken {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### **`userInfoJSONString`**
+
+If provided, the user info response from the third party. The user info response is a JSON object containing user attributes. When used
+in this property, the JSON object is serialized into a string.
+
+Signature
+
+```
+   public String userInfoJSONString {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### **`idTokenJSONString`**
+
+If provided, the ID token from the third party. The ID token is formatted as a JSON Web Token (JWT) containing claims with information
+about the user. When used in this property, the ID token is serialized into a string.
+
+Signature
+
+```
+   public String idTokenJSONString {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+### VerificationAction Enum
+
+Indicates the method that you use to send a one-time password (OTP) to a user during the headless passwordless login flow.
+
+Usage
+
+Use this enum to specify the user's method of receiving a one-time password when you implement the
+`Auth.HeadlessUserDiscoveryHandler` interface.
+
+
+### Apex Reference Guide VerificationMethod Enum
+
+Enum Values
+
+The following are the values of the `Auth.VerificationAction` enum.
+
+**Value** **Description**
+
+`EMAIL` Indicates that the user is verifying their identity with email.
+
+`SMS` Indicates that the user is verifying their identity with SMS.
+
+### VerificationMethod Enum
+
+Contains the different ways users can identify themselves when logging in. You can use it to implement mobile-centric passwordless
+login pages and to self-register (and deregister) verification methods.
+
+Usage
+
+The enum value is an argument in `System.Site.passwordlessLogin`,
+`System.UserManagement.registerVerificationMethod`, and
+`System.UserManagement.deregisterVerificationMethod` on page 4398 methods. The value indicates the method
+used to verify a user’s identity.
+
+Enum Values
+
+The following are the values of the `Auth.VerificationMethod` enum.
+
+**Value** **Description**
+
+`BUILT_IN_AUTHENTICATOR` Identity verified with a built-in authenticator.
+
+`EMAIL` Identity verified with a verification code sent in an email message.
+
+`PASSWORD` Identity verified with a password.
+
+`SALESFORCE_AUTHENTICATOR` Identity verified by Salesforce Authenticator.
+
+`SECURITY_KEY` Identity verified by a WebAuthn-compatible physical security key. Includes all security
+keys registered or used after Summer ’22.
+
+`SMS` Identity verified with a verification code sent via SMS message.
+
+`TOTP` Identity verified with a time-based one-time password (TOTP).
+
+`U2F` Identity verified by a U2F physical security key, such as a YubiKey.
+
+Note: For U2F security keys registered or used after Summer ’22, use
+SECURITY_KEY instead.
+
+### VerificationPolicy Enum
+
+The `Auth.VerificationPolicy` enum contains an identity verification policy value used by the
+`SessionManagement.generateVerificationUrl` method.
+
+
+### Apex Reference Guide VerificationResult Class
+
+Usage
+
+The enum value is an argument in the `SessionManagement.generateVerificationUrl` method. The value indicates the
+session security policy required to initiate identity verification for the user’s session.
+
+Enum Values
+
+The `Auth.VerificationPolicy` enum has this value.
+
+**Value** **Description**
+
+`HIGH_ASSURANCE` The security level for the user’s current session must be High Assurance.
+
+### VerificationResult Class
+
+Contains the result of a verification challenge that you invoke when you create your own Verify page. The challenge can be initiated by
+either the `System.UserManagement.verifyPasswordlessLogin` or
+`System.UserManagement.verifySelfRegistration` method.
+
+Namespace
+
+Auth
+
+Usage
+
+When users sign up for or log in to your Experience Cloud site with an email address or phone number, Salesforce sends them a verification
+code. At the same time, Salesforce generates the Verify page for users to enter the code to verify their identity. You can replace the
+Salesforce-generated Verify page with one that you create with Visualforce. Then invoke the verification challenge and, if the verification
+code is entered correctly, log in the user. For sign-up, you use the `System.UserManagement.verifySelfRegistration`
+method. For passwordless login, you use the System.UserManagement.verifyPasswordlessLogin method. The methods return the
+verification result, which contains the message displayed as a result of the challenge. This message also indicates whether the challenge
+is successful and where to direct the user when the verification code is entered correctly.
+
+Example
+
+This code contains the result of a verification challenge that registers a new user.
+
+```
+   String id = System.UserManagement.initSelfRegistration
+
+         (Auth.VerificationMethod.SMS, user);
+
+        Auth.VerificationResult res = System.UserManagement.verifySelfRegistration
+
+         (Auth.VerificationMethod.SMS, id, ‘123456’, null);
+
+        if(res.success == true){
+
+      //redirect
+
+   }
+
+```
+
+IN THIS SECTION:
+
+VerificationResult Constructor
+
+VerificationResult Properties
+
+
+Apex Reference Guide VerificationResult Class
+
+VerificationResult Method
+
+#### VerificationResult Constructor VerificationResult has the following constructor.
+
+IN THIS SECTION:
+
+##### VerificationResult(redirect, success, message)
+#### Creates an instance of the VerificationResult class that contains the verification result from
+
+`System.UserManagement.verifySelfRegistration` .
+
+##### VerificationResult(redirect, success, message)
+
+#### Creates an instance of the VerificationResult class that contains the verification result from
+
+`System.UserManagement.verifySelfRegistration` .
+
+Signature
+
+```
+   public VerificationResult(System.PageReference redirect, Boolean success, String message)
+
+```
+
+Parameters
+
+```
+   redirect
+```
+
+Type: System.PageReferenceSystem.PageReference
+
+Where user is directed upon successful verification.
+
+```
+   success
+```
+
+Type: Boolean
+
+Indicates whether verification succeeded.
+
+```
+   message
+```
+
+Type: String
+
+Message that displays as a result of a verification challenge.
+
+#### VerificationResult Properties The following are properties for VerificationResult .
+
+IN THIS SECTION:
+
+message
+Message that displays as a result of a verification challenge. `Token is valid` if the identity verification is successful. Other
+values are `FAILURE`, `PENDING`, `RATE_LIMITED`, or `FAILURE_REPORT` .
+
+redirect
+Where the user is directed after entering the verification code successfully, for example, the Experience Cloud site’s home page or
+location specified by the start URL.
+
+success
+The verification challenge is successful.
+
+
+Apex Reference Guide VerificationResult Class
+
+##### message
+
+Message that displays as a result of a verification challenge. `Token is valid` if the identity verification is successful. Other values
+are `FAILURE`, `PENDING`, `RATE_LIMITED`, or `FAILURE_REPORT` .
+
+Signature
+
+```
+   public String message {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### redirect
+
+Where the user is directed after entering the verification code successfully, for example, the Experience Cloud site’s home page or location
+specified by the start URL.
+
+Signature
+
+```
+   public System.PageReference redirect {get; set;}
+
+```
+
+Property Value
+
+Type: System.PageReferenceSystem.PageReference
+
+##### success
+
+The verification challenge is successful.
+
+Signature
+
+```
+   public Boolean success {get; set;}
+
+```
+
+Property Value
+
+Type: Boolean
+
+#### VerificationResult Method VerificationResult has the following method.
+
+IN THIS SECTION:
+
+##### clone()
+
+Duplicates the Auth.VerificationResult object.
+
+##### clone()
+
+Duplicates the Auth.VerificationResult object.
+
+
+### Apex Reference Guide Auth Exceptions
+
+Signature
+
+```
+   public Object clone()
+
+```
+
+Return Value
+
+Type: VerificationResult
+
+### Auth Exceptions The Auth namespace contains some exception classes.
+
+All exception classes support built-in methods for returning the error message and exception type. See Exception Class and Built-In
+Exceptions.
+
+### The Auth namespace contains the following exception.
+
+**Exception** **Description**
+
+```
+Auth.
+
+AuthProviderPluginException
+
+Auth.ConnectedAppPlugin
+
+Exception
+
+Auth.DiscoveryCustomErrorException
+
+Auth.JWTBearerTokenExchange.
+
+JWTBearerTokenExchangeException
+
+```
+
+Throw this exception to indicate that an error occurred when using the auth provider plug-in.
+Use to display a custom error message to the user. To get the error message and write it to
+debug log, use the `String getMessage()` .
+
+Throw this exception to indicate that an error occurred while running the custom behavior for
+a connected app. To get the error message and write it to debug log, use the `String`
+
+`getMessage()` .
+
+Throw this exception to customize error messages that appear on Discovery logins and
+Configurable Self-Registration pages. An error message can have up to 200 characters. Use
+custom error exceptions to localize error messages.
+
+Include this exception in:
+
+**•** `Auth.MyDomainLoginDiscoveryHandler` to show a custom error message on
+the My Domain login page
+
+**•** `Auth.LoginDiscoveryHandler` to show an error message on the Experience
+Cloud site login page
+
+**•** `Auth.ConfigurableSelfRegHandler` to show an error message on the
+Experience Cloud site self-registration Verify page
+
+The Verify page shows up if you configured self-registration with either an **Email** or **Text**
+**Message** verification method. If you didn’t set up sign-up with a verification method, the error
+message appears on the self-registration page.
+
+To get the error message and write it to debug log, use the `String getMessage()` .
+
+Throw this exception to indicate a problem with the response from the token endpoint in the
+JWTBearerTokenExchange class. This exception occurs during the OAuth 2.0 JWT bearer token
+flow when the HTTP response:
+
+**•** Fails to return an access token
+
+**•** Isn’t in JSON format
+
+**•** Returns a response code other than a 200 “OK” success code
+
+To get the error message and write it to debug log, use the `String getMessage()` .
+
+
+Apex Reference Guide Auth Exceptions
+
+**Exception** **Description**
+
+`Auth.JWTValidationException` Throws this exception to indicate failure to validate a JWT using methods in the `JWTUtil`
+class. This exception occurs during the OAuth 2.0 token exchange flow in these scenarios.
+
+**•** Can’t parse the JWT
+
+**•** Can’t validate the JWT using a certificate, a public key, or the remote keys endpoint,
+depending on which method you use
+
+```
+Auth.LoginDiscoveryException
+
+Auth.VerificationException
+
+```
+
+Examples
+
+Throw this exception to indicate that an error occurred when executing the Login Discovery
+handler. For an example, see LoginDiscoveryHandler Example Implementation. To get the error
+message and write it to debug log, use the `String getMessage()` .
+
+Throw this exception to trigger verification based on the passed-in policy. You can throw this
+exception in an Apex trigger or Visualforce controller. The system automatically sends you to
+the verification endpoint, if possible.
+
+Note: You can’t catch this exception. The exception immediately triggers the verification.
+
+This example uses `AuthProviderPluginException` to throw a custom exception in a custom authentication provider
+implementation. Use this exception if you want the end user to see a specific message, passing in the error message as a parameter. If
+you use another exception, users see a standard Salesforce error message.
+
+```
+global override Auth.OAuthRefreshResult refresh(Map<string,string>
+
+authProviderConfiguration,String refreshToken){
+
+        HttpRequest req = new HttpRequest();
+
+        String accessToken = null;
+
+        String error = null;
+
+        try {
+
+        // DEVELOPER TODO: Make a refresh token flow using refreshToken passed
+
+        // in as an argument to get the new access token
+
+        // accessToken = ...
+
+        } catch (System.CalloutException e) {
+
+        error = e.getMessage();
+
+        }
+
+        catch(Exception e) {
+
+        error = e.getMessage();
+
+        throw new Auth.AuthProviderPluginException('My custom error');
+
+        }
+
+        return new Auth.OAuthRefreshResult(accessToken,refreshToken, error);
+
+        }
+
+```
+
+This example uses `Auth.VerificationException` to trigger verification if a user attempts to create an account without a high
+assurance session.
+
+```
+trigger testTrigger on Account (before insert) {
+
+   Map<String, String> sessionMap = auth.SessionManagement.getCurrentSession();
+
+   if(!sessionMap.get('SessionSecurityLevel').equals('HIGH_ASSURANCE')) {
+
+```
+
+
+## Apex Reference Guide Cache Namespace
+
+```
+        throw new Auth.VerificationException(
+
+           Auth.VerificationPolicy.HIGH_ASSURANCE, 'Insert Account');
+
+      }
+
+   }
+
+## Cache Namespace The Cache namespace contains methods for managing the platform cache. The following are the classes in the Cache namespace.
+
+```
+
+IN THIS SECTION:
+
+### CacheBuilder Interface
+
+An interface for safely retrieving and removing values from a session or org cache. Use the interface to generate a value that you
+want to store in the cache. The interface checks for cache misses, which means you no longer need to check for null cache values
+yourself.
+
+Org Class
+Use the `Cache.Org` class to add, retrieve, and manage values in the org cache. Unlike the session cache, the org cache is not tied
+to any session and is available to the organization across requests and to all users.
+
+OrgPartition Class
+Contains methods to manage cache values in the org cache of a specific partition. Unlike the session cache, the org cache is not tied
+to any session. It’s available to the org across requests and to all users.
+
+Partition Class
+Base class of `Cache.OrgPartition` and `Cache.SessionPartition` . Use the subclasses to manage the cache partition
+for org caches and session caches.
+
+Session Class
+Use the `Cache.Session` class to add, retrieve, and manage values in the session cache. The session cache is active as long as
+the user’s Salesforce session is valid (the user is logged in, and the session is not expired).
+
+SessionPartition Class
+Contains methods to manage cache values in the session cache of a specific partition.
+
+Cache Exceptions
+## The Cache namespace contains exception classes.
+
+Visibility Enum
+Use the `Cache.Visibility` enumeration in the `Cache.Session` or `Cache.Org` methods to indicate whether a cached
+value is visible only in the value’s namespace or in all namespaces.
+
+SEE ALSO:
+
+_[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/apex_cache_namespace_overview.htm)_ : Platform Cache
+
+### CacheBuilder Interface
+
+An interface for safely retrieving and removing values from a session or org cache. Use the interface to generate a value that you want
+to store in the cache. The interface checks for cache misses, which means you no longer need to check for null cache values yourself.
+
+
+Apex Reference Guide CacheBuilder Interface
+
+Namespace
+
+#### Cache
+
+IN THIS SECTION:
+
+#### CacheBuilder Methods
+
+CacheBuilder Example Implementation
+
+SEE ALSO:
+
+_Apex Developer Guide_ [: Safely Cache Values with the CacheBuilder Interface](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/apex_platform_cache_builder.htm)
+
+#### CacheBuilder Methods The following are methods for CacheBuilder .
+
+IN THIS SECTION:
+
+##### doLoad(var)
+
+Contains the logic that builds a cached value. You don’t call this method directly. Instead, it’s called indirectly when you reference
+#### the class that implements the CacheBuilder interface.
+
+##### doLoad(var)
+
+Contains the logic that builds a cached value. You don’t call this method directly. Instead, it’s called indirectly when you reference the
+#### class that implements the CacheBuilder interface.
+
+Signature
+
+```
+   public Object doLoad(String var)
+
+```
+
+Parameters
+
+```
+   var
+```
+
+Type: String
+
+A case-sensitive string value used to build a cached value. This parameter is also used as part of the unique key that identifies the
+cached value.
+
+Return Value
+
+Type: Object
+
+The value that was cached. Cast the return value to the appropriate type.
+
+
+### Apex Reference Guide Org Class
+
+#### CacheBuilder Example Implementation This example creates a class called UserInfoCache that implements the CacheBuilder interface. The class caches the results
+
+of a SOQL query run against the User object.
+
+```
+   class UserInfoCache implements Cache.CacheBuilder {
+
+      public Object doLoad(String userid) {
+
+        User u = (User)[SELECT Id, IsActive, username FROM User WHERE id =: userid];
+
+        return u;
+
+      }
+
+   }
+
+```
+
+This example gets a cached User record based on a user ID. If the value exists in the org cache, it is returned. If the value doesn’t exist,
+the `doLoad(String var)` method is re-executed, and the new value is cached and returned.
+
+```
+   User batman = (User) Cache.Org.get(UserInfoCache.class, ‘00541000000ek4c');
+
+### Org Class
+
+```
+
+Use the `Cache.Org` class to add, retrieve, and manage values in the org cache. Unlike the session cache, the org cache is not tied to
+any session and is available to the organization across requests and to all users.
+
+Namespace
+
+#### Cache
+
+Usage
+
+**Cache Key Format**
+
+This table lists the format of the key parameter that some methods in this class take, such as `put`, `get`, and `contains` .
+
+Note:
+
+**•** If no default partition is specified in the org, calling a cache method without fully qualifying the key name causes a
+`Cache.Org.OrgCacheException` to be thrown.
+
+**•** The `local` prefix in an installed managed package refers to the namespace of the subscriber org and not the package’s
+namespace. The cache `put` calls aren’t allowed in a partition that the invoking class doesn’t own.
+
+
+Apex Reference Guide Org Class
+
+Example
+
+This class is the controller for a sample Visualforce page (shown in the subsequent code sample). The cached values are initially added
+to the cache by the `init()` method, which the Visualforce page invokes when it loads through the `action` attribute. The cache
+keys don’t contain the `namespace.partition` prefix. They all refer to the default partition in your org. To run this sample, create
+a partition and mark it as default.
+
+The Visualforce page contains four output components. These components call `get` methods on the controller that returns the following
+values from the cache: a date, data based on the `MyData` inner class, a counter, a text value, and a list. The size of the list is also returned.
+
+The Visualforce page also contains two buttons. The Rerender button invokes the `go()` method on the controller. This method increases
+the values of the counter and the custom data in the cache. When you click **Rerender**, the two counters increase by one each time. The
+`go()` method retrieves the values of these counters from the cache, increments their values by one, and stores them again in the
+cache.
+
+The Remove datetime Key button deletes the date-time value (with key `datetime` ) from the cache. As a result, the value next to
+`Cached datetime:` is cleared on the page.
+
+Note: If another user logs in and runs this sample, this user gets the cache values that were last added or updated by the previous
+user. For example, if the counter value was five, the next user sees the counter value as increased to six.
+
+```
+   public class OrgCacheController {
+
+      // Inner class.
+
+      // Used as the data type of a cache value.
+
+      class MyData {
+
+        public String value { get; set; }
+
+        public Integer counter { get; set; }
+
+        public MyData(String value) {
+
+           this.value = value;
+
+           this.counter = 0;
+
+        }
+
+        public void inc() {
+
+           counter++;
+
+        }
+
+        override public String toString() {
+
+           return this.value + ':' + this.counter;
+
+        }
+
+      }
+
+      // Apex List.
+
+      // Used as the data type of a cached value.
+
+      private List<String> numbers =
+
+           new List<String> { 'ONE', 'TWO', 'THREE', 'FOUR', 'FIVE' };
+
+      // Constructor of the controller for the Visualforce page.
+
+      public OrgCacheController() {
+
+      }
+
+      // Adds various values to the cache.
+
+      // This method is called when the Visualforce page loads.
+
+      public void init() {
+
+        // All key values are not qualified by the namespace.partition
+
+```
+
+
+Apex Reference Guide Org Class
+
+```
+        // prefix because they use the default partition.
+
+        // Add counter to the cache with initial value of 0
+
+        // or increment it if it's already there.
+
+        if (!Cache.Org.contains('counter')) {
+
+           Cache.Org.put('counter', 0);
+
+        } else {
+
+           Cache.Org.put('counter', getCounter() + 1);
+
+        }
+
+        // Add the datetime value to the cache only if it's not already there.
+
+        if (!Cache.Org.contains('datetime')) {
+
+           DateTime dt = DateTime.now();
+
+           Cache.Org.put('datetime', dt);
+
+        }
+
+        // Add the custom data to the cache only if it's not already there.
+
+        if (!Cache.Org.contains('data')) {
+
+           Cache.Org.put('data', new MyData('Some custom value'));
+
+        }
+
+        // Add a list of number to the cache if not already there.
+
+        if (!Cache.Org.contains('list')) {
+
+           Cache.Org.put('list', numbers);
+
+        }
+
+        // Add a string value to the cache if not already there.
+
+        if (!Cache.Org.contains('output')) {
+
+           Cache.Org.put('output', 'Cached text value');
+
+        }
+
+      }
+
+      // Return counter from the cache.
+
+      public Integer getCounter() {
+
+        return (Integer)Cache.Org.get('counter');
+
+      }
+
+      // Return datetime value from the cache.
+
+      public String getCachedDatetime() {
+
+        DateTime dt = (DateTime)Cache.Org.get('datetime');
+
+        return dt != null ? dt.format() : null;
+
+      }
+
+      // Return cached value whose type is the inner class MyData.
+
+      public String getCachedData() {
+
+        MyData mydata = (MyData)Cache.Org.get('data');
+
+        return mydata != null ? mydata.toString() : null;
+
+      }
+
+      // Return output from the cache.
+
+      public String getOutput() {
+
+        return (String)Cache.Org.get('output');
+
+      }
+
+```
+
+
+Apex Reference Guide Org Class
+
+```
+      // Return list from the cache.
+
+      public List<String> getList() {
+
+        return (List<String>)Cache.Org.get('list');
+
+      }
+
+      // Method invoked by the Rerender button on the Visualforce page.
+
+      // Updates the values of various cached values.
+
+      // Increases the values of counter and the MyData counter if those
+
+      // cache values are still in the cache.
+
+      public PageReference go() {
+
+        // Increase the cached counter value or set it to 0
+
+        // if it's not cached.
+
+        if (Cache.Org.contains('counter')) {
+
+           Cache.Org.put('counter', getCounter() + 1);
+
+        } else {
+
+           Cache.Org.put('counter', 0);
+
+        }
+
+        // Get the custom data value from the cache.
+
+        MyData d = (MyData)Cache.Org.get('data');
+
+        // Only if the data is already in the cache, update it.
+
+        if (Cache.Org.contains('data')) {
+
+           d.inc();
+
+           Cache.Org.put('data', d);
+
+        }
+
+        return null;
+
+      }
+
+      // Method invoked by the Remove button on the Visualforce page.
+
+      // Removes the datetime cached value from the org cache.
+
+      public PageReference remove() {
+
+        Cache.Org.remove('datetime');
+
+        return null;
+
+      }
+
+   }
+
+```
+
+This is the Visualforce page that corresponds to the `OrgCacheController` class.
+
+```
+   <apex:page controller="OrgCacheController" action="{!init}">
+
+      <apex:outputPanel id="output">
+
+        <br/>Cached datetime: <apex:outputText value="{!cachedDatetime}"/>
+
+        <br/>Cached data: <apex:outputText value="{!cachedData}"/>
+
+        <br/>Cached counter: <apex:outputText value="{!counter}"/>
+
+        <br/>Output: <apex:outputText value="{!output}"/>
+
+        <br/>Repeat: <apex:repeat var="item" value="{!list}">
+
+           <apex:outputText value="{!item}"/>&nbsp;
+
+        </apex:repeat>
+
+        <br/>List size: <apex:outputText value="{!list.size}"/>
+
+      </apex:outputPanel>
+
+      <br/><br/>
+
+      <apex:form >
+
+```
+
+
+Apex Reference Guide Org Class
+
+```
+        <apex:commandButton id="go" action="{!go}" value="Rerender" rerender="output"/>
+
+        <apex:commandButton id="remove" action="{!remove}" value="Remove datetime Key"
+
+   rerender="output"/>
+
+      </apex:form>
+
+   </apex:page>
+
+```
+
+This is the output of the page after clicking the **Rerender** button twice. The counter value could differ in your case if a key named
+`counter` was already in the cache before running this sample.
+
+```
+   Cached datetime:8/11/2015 1:58 PM
+
+   Cached data:Some custom value:2
+
+   Cached counter:2
+
+   Output:Cached text value
+
+   Repeat:ONE TWO THREE FOUR FIVE
+
+   List size:5
+
+```
+
+IN THIS SECTION:
+
+#### Org Constants
+
+The Org class provides a constant that you can use when setting the time-to-live (TTL) value.
+
+#### Org Methods
+
+SEE ALSO:
+
+_[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/apex_cache_namespace_overview.htm)_ : Platform Cache
+
+#### Org Constants
+
+The Org class provides a constant that you can use when setting the time-to-live (TTL) value.
+
+**Constant** **Description**
+
+`MAX_TTL_SECS` Represents the maximum amount of time, in seconds, to keep the cached value in the
+org cache.
+
+#### Org Methods The following are methods for Org . All methods are static.
+
+IN THIS SECTION:
+
+contains(key)
+Returns `true` if the org cache contains a cached value corresponding to the specified key.
+
+contains(keys)
+Returns `true` if the org cache contains values for the specified key entries.
+
+contains(setOfKeys)
+Returns `true` if the org cache contains values for a specified set of keys.
+
+
+Apex Reference Guide Org Class
+
+get(key)
+Returns the cached value corresponding to the specified key from the org cache.
+
+get(cacheBuilder, key)
+Returns the cached value corresponding to the specified key from the org cache. Use this method if your cached value is a class that
+implements the `CacheBuilder` interface.
+
+get(keys)
+Returns the cached values corresponding to the specified set of keys from the org cache.
+
+getAvgGetSize()
+Returns the average item size of all the keys fetched from the org cache, in bytes.
+
+getAvgGetTime()
+Returns the average time taken to get a key from the org cache, in nanoseconds.
+
+getAvgValueSize()
+**Deprecated and available only in API versions 49.0 and earlier.** Returns the average item size for keys in the org cache, in bytes.
+
+getCapacity()
+Returns the percentage of org cache capacity that has been used.
+
+getKeys()
+Returns a set of all keys that are stored in the org cache and visible to the invoking namespace.
+
+getMaxGetSize()
+Returns the maximum item size of all the keys fetched from the org cache, in bytes.
+
+getMaxGetTime()
+Returns the maximum time taken to get a key from the org cache, in nanoseconds.
+
+getMaxValueSize()
+**Deprecated and available only in API versions 49.0 and earlier.** Returns the maximum item size for keys in the org cache, in
+bytes.
+
+getMissRate()
+Returns the miss rate in the org cache.
+
+getName()
+Returns the name of the default cache partition.
+
+getNumKeys()
+Returns the total number of keys in the org cache.
+
+getPartition(partitionName)
+Returns a partition from the org cache that corresponds to the specified partition name.
+
+put(key, value)
+Stores the specified key/value pair as a cached entry in the org cache. The `put` method can write only to the cache in your org’s
+namespace.
+
+put(key, value, visibility)
+Stores the specified key/value pair as a cached entry in the org cache and sets the cached value’s visibility.
+
+put(key, value, ttlSecs)
+Stores the specified key/value pair as a cached entry in the org cache and sets the cached value’s lifetime.
+
+
+Apex Reference Guide Org Class
+
+put(key, value, ttlSecs, visibility, immutable)
+Stores the specified key/value pair as a cached entry in the org cache. This method also sets the cached value’s lifetime, visibility,
+and whether it can be overwritten by another namespace.
+
+remove(key)
+Deletes the cached value corresponding to the specified key from the org cache.
+
+remove(cacheBuilder, key)
+Deletes the cached value corresponding to the specified key from the org cache. Use this method if your cached value is a class that
+implements the `CacheBuilder` interface.
+
+##### contains(key)
+
+Returns `true` if the org cache contains a cached value corresponding to the specified key.
+
+Signature
+
+```
+   public static Boolean contains(String key)
+
+```
+
+Parameters
+
+```
+   key
+```
+
+Type: String
+
+A case-sensitive string value that uniquely identifies a cached value. For information about the format of the key name, see Usage.
+
+Return Value
+
+Type: Boolean
+
+`true` if a cache entry is found. Othewise, `false` .
+
+##### contains(keys)
+
+Returns `true` if the org cache contains values for the specified key entries.
+
+Signature
+
+```
+   public static List<Boolean> contains(List<String> keys)
+
+```
+
+Parameters
+
+```
+   keys
+```
+
+Type: List<String>
+
+A list of keys that identifies cached values. For information about the format of the key name, see Usage.
+
+Return Value
+
+Type: List<Boolean>
+
+`true` if the key entries are found. Othewise, `false` .
+
+
+Apex Reference Guide Org Class
+
+##### contains(setOfKeys)
+
+Returns `true` if the org cache contains values for a specified set of keys.
+
+Signature
+
+```
+   public static Map <String, Boolean> contains (Set<String> keys)
+
+```
+
+Parameters
+
+```
+   setOfKeys
+```
+
+Type: Set <String>
+
+A set of keys that uniquely identifies cached values. For information about the format of the key name, see Usage
+
+Return Value
+
+Type: Map <String, Boolean>
+
+Returns the cache key and corresponding Boolean value indicating that the key entry exists. The Boolean value is `false` if the key
+entry doesn't exist.
+
+Usage
+
+The number of input keys cannot exceed the maximum limit of 10.
+
+Example
+
+In this example, the code checks for the presence of multiple keys on the default partition. It fetches the cache key and the corresponding
+Boolean value for the key entry from the org cache of the default partition.
+
+```
+   Set<String> keys = new Set<String>{'key1','key2','key3','key4','key5'};
+
+   Map<String,Boolean> result = Cache.Org.contains(keys);
+
+   for(String key : result.keySet()) {
+
+      system.debug('key: ' + key);
+
+      system.debug('Is Key Present in the cache : ' + result.get(key));
+
+   }
+
+```
+
+In this example, the code checks for the presence of multiple keys on different partitions. It fetches the cache key and the corresponding
+Boolean value for the key entry from the org cache of different partitions.
+
+```
+   // Assuming there are three partitions p1, p2, p3 with default 'local' namespace
+
+   Set<String> keys = new Set<String>{'local.p1.key','local.p2.key', 'local.p3.key'};
+
+   Map<String,Boolean> result = Cache.Org.contains(keys);
+
+   for(String key : result.keySet()) {
+
+      system.debug('key: ' + key);
+
+      system.debug('Is Key Present in the cache : + result.get(key));
+
+   }
+
+##### get(key)
+
+```
+
+Returns the cached value corresponding to the specified key from the org cache.
+
+
+Apex Reference Guide Org Class
+
+Signature
+
+```
+   public static Object get(String key)
+
+```
+
+Parameters
+
+```
+   key
+```
+
+Type: String
+
+A case-sensitive string value that uniquely identifies a cached value. For information about the format of the key name, see Usage.
+
+Return Value
+
+Type: Object
+
+The cached value as a generic object type. Cast the returned value to the appropriate type.
+
+Usage
+
+Because `Cache.Org.get()` returns an object, cast the returned value to a specific type to facilitate use of the returned value.
+
+```
+   // Get a cached value
+
+   Object obj = Cache.Org.get('ns1.partition1.orderDate');
+
+   // Cast return value to a specific data type
+
+   DateTime dt2 = (DateTime)obj;
+
+```
+
+If a `Cache.Org.get()` call doesn’t find the referenced key, it returns `null` .
+
+##### get(cacheBuilder, key)
+
+Returns the cached value corresponding to the specified key from the org cache. Use this method if your cached value is a class that
+implements the `CacheBuilder` interface.
+
+Signature
+
+```
+   public static Object get(System.Type cacheBuilder, String key)
+
+```
+
+Parameters
+
+```
+   cacheBuilder
+```
+
+Type: System.Type
+
+The Apex class that implements the `CacheBuilder` interface.
+
+```
+   key
+```
+
+Type: String
+
+A case-sensitive string value that, combined with the class name corresponding to the _`cacheBuilder`_ parameter, uniquely
+identifies a cached value.
+
+Return Value
+
+Type: Object
+
+The cached value as a generic object type. Cast the returned value to the appropriate type.
+
+
+Apex Reference Guide Org Class
+
+Usage
+
+Because `Cache.Org.get(` _`cacheBuilder`_ `,` _`key`_ `)` returns an object, cast the returned value to a specific type to facilitate use
+of the returned value.
+
+```
+   return ((DateTime)Cache.Org.get(DateCache.class, 'datetime')).format();
+
+##### get(keys)
+
+```
+
+Returns the cached values corresponding to the specified set of keys from the org cache.
+
+Signature
+
+```
+   public static Map <String, Object> get (Set <String> keys)
+
+```
+
+Parameters
+
+```
+   keys
+```
+
+Type: Set <String>
+
+A set of keys that uniquely identify cached values. For information about the format of the key name, see Usage.
+
+Return Value
+
+Type: Map <String, Object>
+
+Returns the cache key and corresponding value. Returns null when no corresponding value is found for an input key.
+
+Usage
+
+The number of input keys cannot exceed the maximum limit of 10.
+
+Examples
+
+Fetch multiple keys from the org cache of the default partition.
+
+```
+   Set<String> keys = new Set<String>{'key1','key2','key3','key4','key5'};
+
+   Map<String,Object> result = Cache.Org.get(keys);
+
+   for(String key : result.keySet()) {
+
+      system.debug('key: ' + key);
+
+      system.debug('value: ' + result.get(key));
+
+   }
+
+```
+
+Fetch multiple keys from the org cache of different partitions.
+
+```
+   // Assuming there are three partitions p1, p2, p3 with default 'local' namespace
+
+   Set<String> keys = new Set<String>{'local.p1.key','local.p2.key', 'local.p3.key'};
+
+   Map<String,Object> result = Cache.Org.get(keys);
+
+   for(String key : result.keySet()) {
+
+      system.debug('key: ' + key);
+
+      system.debug('value: ' + result.get(key));
+
+   }
+
+```
+
+
+Apex Reference Guide Org Class
+
+##### getAvgGetSize()
+
+Returns the average item size of all the keys fetched from the org cache, in bytes.
+
+Signature
+
+```
+   public static Long getAvgGetSize()
+
+```
+
+Return Value
+
+Type: Long
+
+Example
+
+In this example the following keys and their corresponding value sizes are inserted. The code then fetches the keys: key 1, key 2, key 3
+and key 4 and returns the average item size of the fetched keys.
+
+```
+   // Inserting keys key1, key2, key3, key4, key5
+
+   Cache.Org.put('key1', 'value1');
+
+   Cache.Org.put('key2', 'value2');
+
+   Cache.Org.put('key3', 'this is a big value !!!');
+
+   Cache.Org.put('key4', 4);
+
+   Cache.Org.put('key5', 5);
+
+   // Fetching keys - key1, key2, key3, key4
+
+   Object v1 = Cache.Org.get('key1');
+
+   Object v2 = Cache.Org.get('key2');
+
+   Object v3 = Cache.Org.get('key3');
+
+   Object v4 = Cache.Org.get('key4');
+
+   // Fetching average get size
+
+   Long val = Cache.Org.getAvgGetSize();
+
+   // Avg item size returned is 44 ( average of 42(key1), 42(key2), 58(key3) and 36(key4)
+
+   keys that were fetched )
+
+   System.debug('Avg Get Size :' + val);
+
+##### getAvgGetTime()
+
+```
+
+Returns the average time taken to get a key from the org cache, in nanoseconds.
+
+
+Apex Reference Guide Org Class
+
+Signature
+
+```
+   public static Long getAvgGetTime()
+
+```
+
+Return Value
+
+Type: Long
+
+##### getAvgValueSize()
+
+**Deprecated and available only in API versions 49.0 and earlier.** Returns the average item size for keys in the org cache, in bytes.
+
+Signature
+
+```
+   public static Long getAvgValueSize()
+
+```
+
+Return Value
+
+Type: Long
+
+##### getCapacity()
+
+Returns the percentage of org cache capacity that has been used.
+
+Signature
+
+```
+   public static Double getCapacity()
+
+```
+
+Return Value
+
+Type: Double
+
+Used cache as a percentage number.
+
+##### getKeys()
+
+Returns a set of all keys that are stored in the org cache and visible to the invoking namespace.
+
+Signature
+
+```
+   public static Set<String> getKeys()
+
+```
+
+Return Value
+
+Type: Set<String>
+
+A set containing all cache keys.
+
+##### getMaxGetSize()
+
+Returns the maximum item size of all the keys fetched from the org cache, in bytes.
+
+
+Apex Reference Guide Org Class
+
+Signature
+
+```
+   public static Long getMaxGetSize()
+
+```
+
+Return Value
+
+Type: Long
+
+Example
+
+In this example the following keys and their corresponding value sizes are inserted. The code fetches the keys: key 1, key 2 and key 4
+and returns the maximum key value size from the fetched keys.
+
+```
+   // Inserting keys key1, key2, key3, key4, key5
+
+   Cache.Org.put('key1', 'value1');
+
+   Cache.Org.put('key2', 'value2');
+
+   Cache.Org.put('key3', 'this is a big value !!!');
+
+   Cache.Org.put('key4', 4);
+
+   Cache.Org.put('key5', 5);
+
+   // Fetching keys - key1, key2, key4
+
+   Object v1 = Cache.Org.get('key1');
+
+   Object v2 = Cache.Org.get('key2');
+
+   Object v4 = Cache.Org.get('key4');
+
+   // Fetching max get size
+
+   Long val = Cache.Org.getMaxGetSize();
+
+   // Max item size returned is 42 ( max of 42(key1), 42(key2), and 36(key4) keys that were
+
+   fetched )
+
+   System.debug('Max Get Size :' + val);
+
+##### getMaxGetTime()
+
+```
+
+Returns the maximum time taken to get a key from the org cache, in nanoseconds.
+
+Signature
+
+```
+   public static Long getMaxGetTime()
+
+```
+
+
+Apex Reference Guide Org Class
+
+Return Value
+
+Type: Long
+
+##### getMaxValueSize()
+
+**Deprecated and available only in API versions 49.0 and earlier.** Returns the maximum item size for keys in the org cache, in bytes.
+
+Signature
+
+```
+   public static Long getMaxValueSize()
+
+```
+
+Return Value
+
+Type: Long
+
+##### getMissRate()
+
+Returns the miss rate in the org cache.
+
+Signature
+
+```
+   public static Double getMissRate()
+
+```
+
+Return Value
+
+Type: Double
+
+##### getName()
+
+Returns the name of the default cache partition.
+
+Signature
+
+```
+   public String getName()
+
+```
+
+Return Value
+
+Type: String
+
+The name of the default cache partition.
+
+##### getNumKeys()
+
+Returns the total number of keys in the org cache.
+
+Signature
+
+```
+   public static Long getNumKeys()
+
+```
+
+
+Apex Reference Guide Org Class
+
+Return Value
+
+Type: Long
+
+##### getPartition(partitionName)
+
+Returns a partition from the org cache that corresponds to the specified partition name.
+
+Signature
+
+```
+   public static cache.OrgPartition getPartition(String partitionName)
+
+```
+
+Parameters
+
+```
+   partitionName
+```
+
+Type: String
+
+A partition name that is qualified by the namespace, for example, _`namespace.partition`_ .
+
+Return Value
+
+Type: Cache.OrgPartition
+
+Example
+
+After you get the org partition, you can add and retrieve the partition’s cache values.
+
+```
+   // Get partition
+
+   Cache.OrgPartition orgPart = Cache.Org.getPartition('myNs.myPartition');
+
+   // Retrieve cache value from the partition
+
+   if (orgPart.contains('BookTitle')) {
+
+      String cachedTitle = (String)orgPart.get('BookTitle');
+
+   }
+
+   // Add cache value to the partition
+
+   orgPart.put('OrderDate', Date.today());
+
+   // Or use dot notation to call partition methods
+
+   String cachedAuthor = (String)Cache.Org.getPartition('myNs.myPartition').get('BookAuthor');
+
+##### put(key, value) Stores the specified key/value pair as a cached entry in the org cache. The put method can write only to the cache in your org’s
+```
+
+namespace.
+
+Signature
+
+```
+   public static void put(String key, Object value)
+
+```
+
+
+Apex Reference Guide Org Class
+
+Parameters
+
+```
+   key
+```
+
+Type: String
+
+A case-sensitive string value that uniquely identifies a cached value. For information about the format of the key name, see Usage.
+
+```
+   value
+```
+
+Type: Object
+
+The value to store in the cache. The cached value must be serializable.
+
+Return Value
+
+Type: void
+
+##### put(key, value, visibility)
+
+Stores the specified key/value pair as a cached entry in the org cache and sets the cached value’s visibility.
+
+Signature
+
+```
+   public static void put(String key, Object value, Cache.Visibility visibility)
+
+```
+
+Parameters
+
+```
+   key
+```
+
+Type: String
+
+A case-sensitive string value that uniquely identifies a cached value. For information about the format of the key name, see Usage.
+
+```
+   value
+```
+
+Type: Object
+
+The value to store in the cache. The cached value must be serializable.
+
+```
+   visibility
+```
+
+Type: Cache.Visibility
+
+Indicates whether the cached value is available only to Apex code that is executing in the same namespace or to Apex code executing
+from any namespace.
+
+Return Value
+
+Type: void
+
+##### put(key, value, ttlSecs)
+
+Stores the specified key/value pair as a cached entry in the org cache and sets the cached value’s lifetime.
+
+Signature
+
+```
+   public static void put(String key, Object value, Integer ttlSecs)
+
+```
+
+
+Apex Reference Guide Org Class
+
+Parameters
+
+```
+   key
+```
+
+Type: String
+
+A case-sensitive string value that uniquely identifies a cached value. For information about the format of the key name, see Usage.
+
+```
+   value
+```
+
+Type: Object
+
+The value to store in the cache. The cached value must be serializable.
+
+```
+   ttlSecs
+```
+
+Type: Integer
+
+The amount of time, in seconds, to keep the cached value in the org cache. The maximum is 172,800 seconds (48 hours). The
+minimum value is 300 seconds or 5 minutes. The default value is 86,400 seconds (24 hours).
+
+Return Value
+
+Type: void
+
+##### put(key, value, ttlSecs, visibility, immutable)
+
+Stores the specified key/value pair as a cached entry in the org cache. This method also sets the cached value’s lifetime, visibility, and
+whether it can be overwritten by another namespace.
+
+Signature
+
+```
+   public static void put(String key, Object value, Integer ttlSecs, cache.Visibility
+
+   visibility, Boolean immutable)
+
+```
+
+Parameters
+
+```
+   key
+```
+
+Type: String
+
+A case-sensitive string value that uniquely identifies a cached value. For information about the format of the key name, see Usage.
+
+```
+   value
+```
+
+Type: Object
+
+The value to store in the cache. The cached value must be serializable.
+
+```
+   ttlSecs
+```
+
+Type: Integer
+
+The amount of time, in seconds, to keep the cached value in the org cache. The maximum is 172,800 seconds (48 hours). The
+minimum value is 300 seconds or 5 minutes. The default value is 86,400 seconds (24 hours).
+
+```
+   visibility
+```
+
+Type: Cache.Visibility
+
+Indicates whether the cached value is available only to Apex code that is executing in the same namespace or to Apex code executing
+from any namespace.
+
+```
+   immutable
+```
+
+Type: Boolean
+
+Indicates whether the cached value can be overwritten by another namespace ( `false` ) or not ( `true` ).
+
+
+Apex Reference Guide Org Class
+
+Return Value
+
+Type: void
+
+##### remove(key)
+
+Deletes the cached value corresponding to the specified key from the org cache.
+
+Signature
+
+```
+   public static Boolean remove(String key)
+
+```
+
+Parameters
+
+```
+   key
+```
+
+Type: String
+
+A case-sensitive string value that uniquely identifies a cached value. For information about the format of the key name, see Usage.
+
+Return Value
+
+Type: Boolean
+
+`true` if the cache value was successfully removed. Otherwise, `false` .
+
+##### remove(cacheBuilder, key)
+
+Deletes the cached value corresponding to the specified key from the org cache. Use this method if your cached value is a class that
+implements the `CacheBuilder` interface.
+
+Signature
+
+```
+   public static Boolean remove(System.Type cacheBuilder, String key)
+
+```
+
+Parameters
+
+```
+   cacheBuilder
+```
+
+Type: System.Type
+
+The Apex class that implements the `CacheBuilder` interface.
+
+```
+   key
+```
+
+Type: String
+
+A case-sensitive string value that, combined with the class name corresponding to the _`cacheBuilder`_ parameter, uniquely
+identifies a cached value.
+
+Return Value
+
+Type: Boolean
+
+`true` if the cache value was successfully removed. Otherwise, `false` .
+
+
+### Apex Reference Guide OrgPartition Class OrgPartition Class
+
+Contains methods to manage cache values in the org cache of a specific partition. Unlike the session cache, the org cache is not tied to
+any session. It’s available to the org across requests and to all users.
+
+Namespace
+
+Cache
+
+Usage
+
+This class extends Cache.Partition and inherits all its non-static methods. Utility methods for creating and validating keys aren’t supported
+and can be called only from the `Cache.Partition` parent class. For a list of `Cache.Partition` methods, see Partition Methods.
+
+To get an org partition, call `Cache.Org.getPartition` and pass in a fully qualified partition name, as follows.
+
+```
+   Cache.OrgPartition orgPartition = Cache.Org.getPartition('namespace.myPartition');
+
+```
+
+See Cache Key Format for Partition Methods.
+
+The org cache supports concurrent reads and writes across multiple simultaneous Apex transactions, but the results can be indeterminate.
+[See Platform Cache Considerations in the](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/apex_platform_cache_limitations.htm) _Apex Developer Guide_ .
+
+Org cache operations are atomic transactions. If the Apex request that the cache operations run in fails, then all cache operations in that
+[request are rolled back. See Platform Cache Internals in the](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/apex_platform_cache_internals.htm) _Apex Developer Guide_ .
+
+Example
+
+This class is the controller for a sample Visualforce page (shown in the subsequent code sample). The controller shows how to use the
+methods of `Cache.OrgPartition` to manage a cache value on a particular partition. The controller takes inputs from the Visualforce
+page for the partition name, key name for a counter, and initial counter value. The controller contains default values for these inputs.
+When you click **Rerender** on the Visualforce page, the `go()` method is invoked and increases the counter by one. When you click
+**Remove Key**, the counter key is removed from the cache. The counter value gets reset to its initial value when it’s re-added to the cache.
+
+Note: If another user logs in and runs this sample, the user gets the cache values that were last added or updated by the previous
+user. For example, if the counter value was five, the next user sees the counter value as increased to six.
+
+```
+   public class OrgPartitionController {
+
+      // Name of a partition
+
+      String partitionInput = 'local.myPartition';
+
+      // Name of the key
+
+      String counterKeyInput = 'counter';
+
+      // Key initial value
+
+      Integer counterInitValue = 0;
+
+      // Org partition object
+
+      Cache.OrgPartition orgPartition;
+
+      // Constructor of the controller for the Visualforce page.
+
+      public OrgPartitionController() {
+
+      }
+
+      // Adds counter value to the cache.
+
+      // This method is called when the Visualforce page loads.
+
+```
+
+
+Apex Reference Guide OrgPartition Class
+
+```
+      public void init() {
+
+        // Create the partition instance based on the partition name
+
+        orgPartition = getPartition();
+
+        // Create the partition instance based on the partition name
+
+        // given in the Visualforce page or the default value.
+
+        orgPartition = Cache.Org.getPartition(partitionInput);
+
+        // Add counter to the cache with an initial value
+
+        // or increment it if it's already there.
+
+        if (!orgPartition.contains(counterKeyInput)) {
+
+           orgPartition.put(counterKeyInput, counterInitValue);
+
+        } else {
+
+           orgPartition.put(counterKeyInput, getCounter() + 1);
+
+        }
+
+      }
+
+      // Returns the org partition based on the partition name
+
+      // given in the Visualforce page or the default value.
+
+      private Cache.OrgPartition getPartition() {
+
+        if (orgPartition == null) {
+
+           orgPartition = Cache.Org.getPartition(partitionInput);
+
+        }
+
+        return orgPartition;
+
+      }
+
+      // Return counter from the cache.
+
+      public Integer getCounter() {
+
+        return (Integer)getPartition().get(counterKeyInput);
+
+      }
+
+      // Invoked by the Submit button to save input values
+
+      // supplied by the user.
+
+      public PageReference save() {
+
+        // Reset the initial key value in the cache
+
+        getPartition().put(counterKeyInput, counterInitValue);
+
+        return null;
+
+      }
+
+      // Method invoked by the Rerender button on the Visualforce page.
+
+      // Updates the values of various cached values.
+
+      // Increases the values of counter and the MyData counter if those
+
+      // cache values are still in the cache.
+
+      public PageReference go() {
+
+        // Get the org partition object
+
+        orgPartition = getPartition();
+
+        // Increase the cached counter value or set it to 0
+
+        // if it's not cached.
+
+        if (orgPartition.contains(counterKeyInput)) {
+
+           orgPartition.put(counterKeyInput, getCounter() + 1);
+
+        } else {
+
+```
+
+
+Apex Reference Guide OrgPartition Class
+
+```
+           orgPartition.put(counterKeyInput, counterInitValue);
+
+        }
+
+        return null;
+
+      }
+
+      // Method invoked by the Remove button on the Visualforce page.
+
+      // Removes the datetime cached value from the org cache.
+
+      public PageReference remove() {
+
+        getPartition().remove(counterKeyInput);
+
+        return null;
+
+      }
+
+      // Get and set methods for accessing variables
+
+      // that correspond to the input text fields on
+
+      // the Visualforce page.
+
+      public String getPartitionInput() {
+
+        return partitionInput;
+
+      }
+
+      public String getCounterKeyInput() {
+
+        return counterKeyInput;
+
+      }
+
+      public Integer getCounterInitValue() {
+
+        return counterInitValue;
+
+      }
+
+      public void setPartitionInput(String partition) {
+
+        this.partitionInput = partition;
+
+      }
+
+      public void setCounterKeyInput(String keyName) {
+
+        this.counterKeyInput = keyName;
+
+      }
+
+      public void setCounterInitValue(Integer counterValue) {
+
+        this.counterInitValue = counterValue;
+
+      }
+
+   }
+
+```
+
+This is the Visualforce page that corresponds to the `OrgPartitionController` class.
+
+```
+   <apex:page controller="OrgPartitionController" action="{!init}">
+
+      <apex:form >
+
+        <br/>Partition with Namespace Prefix: <apex:inputText value="{!partitionInput}"/>
+
+        <br/>Counter Key Name: <apex:inputText value="{!counterKeyInput}"/>
+
+        <br/>Counter Initial Value: <apex:inputText value="{!counterInitValue}"/>
+
+        <apex:commandButton action="{!save}" value="Save Key Input Values"/>
+
+      </apex:form>
+
+      <apex:outputPanel id="output">
+
+```
+
+
+### Apex Reference Guide Partition Class
+
+```
+        <br/>Cached Counter: <apex:outputText value="{!counter}"/>
+
+      </apex:outputPanel>
+
+      <br/>
+
+      <apex:form >
+
+        <apex:commandButton id="go" action="{!go}" value="Rerender" rerender="output"/>
+
+        <apex:commandButton id="remove" action="{!remove}" value="Remove Key"
+
+   rerender="output"/>
+
+      </apex:form>
+
+   </apex:page>
+
+```
+
+SEE ALSO:
+
+_[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/apex_cache_namespace_overview.htm)_ : Platform Cache
+
+### Partition Class
+
+Base class of `Cache.OrgPartition` and `Cache.SessionPartition` . Use the subclasses to manage the cache partition
+for org caches and session caches.
+
+Namespace
+
+Cache
+
+Cache Key Format for Partition Methods
+
+After you obtain the partition object (an instance of `Cache.OrgPartition` or `Cache.SessionPartition` ), the methods
+to add, retrieve, and manage the cache values in a partition take the key name. The key name that you supply to these methods ( `get()`,
+`put()`, `remove()`, and `contains()` ) doesn’t include the `namespace.partition` prefix.
+
+IN THIS SECTION:
+
+#### Partition Methods
+
+SEE ALSO:
+
+OrgPartition Class
+
+SessionPartition Class
+
+_[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/apex_cache_namespace_overview.htm)_ : Platform Cache
+
+#### Partition Methods
+
+### The following are methods for Partition .
+
+IN THIS SECTION:
+
+contains(key)
+Returns `true` if the cache partition contains a cached value corresponding to the specified key.
+
+
+Apex Reference Guide Partition Class
+
+contains(setOfKeys)
+Returns `true` if the cache partition contains values for a specified set of keys.
+
+createFullyQualifiedKey(namespace, partition, key)
+Generates a fully qualified key from the passed-in key components. The format of the generated key string is
+`namespace.partition.key` .
+
+createFullyQualifiedPartition(namespace, partition)
+Generates a fully qualified partition name from the passed-in namespace and partition. The format of the generated partition string
+is `namespace.partition` .
+
+get(key)
+Returns the cached value corresponding to the specified key from the cache partition.
+
+get(keys)
+Returns the cached values corresponding to the specified set of keys from the cache partition.
+
+get(cacheBuilder, key)
+Returns the cached value corresponding to the specified key from the partition cache. Use this method if your cached value is a class
+that implements the `CacheBuilder` interface.
+
+getAvgGetSize()
+Returns the average item size of all the keys fetched from the partition, in bytes.
+
+getAvgGetTime()
+Returns the average time taken to get a key from the partition, in nanoseconds.
+
+getAvgValueSize()
+**Deprecated and available only in API versions 49.0 and earlier.** Returns the average item size for keys in the partition, in bytes.
+
+getCapacity()
+Returns the percentage of cache used of the total capacity for this partition.
+
+getKeys()
+Returns a set of all keys that are stored in the cache partition and visible to the invoking namespace.
+
+getMaxGetSize()
+Returns the maximum item size of all the keys fetched from the partition, in bytes.
+
+getMaxGetTime()
+Returns the maximum time taken to get a key from the partition, in nanoseconds.
+
+getMaxValueSize()
+**Deprecated and available only in API versions 49.0 and earlier.** Returns the maximum item size for keys in the partition, in
+bytes.
+
+getMissRate()
+Returns the miss rate in the partition.
+
+getName()
+Returns the name of this cache partition.
+
+getNumKeys()
+Returns the total number of keys in the partition.
+
+
+Apex Reference Guide Partition Class
+
+isAvailable()
+Returns `true` if the Salesforce session is available. Only applies to `Cache.SessionPartition` . The session cache isn’t
+available when an active session isn’t present, such as in asynchronous Apex or code called by asynchronous Apex. For example, if
+batch Apex causes an Apex trigger to execute, the session cache isn’t available in the trigger because the trigger runs in asynchronous
+context.
+
+put(key, value)
+Stores the specified key/value pair as a cached entry in the cache partition. The `put` method can write only to the cache in your
+org’s namespace.
+
+put(key, value, visibility)
+Stores the specified key/value pair as a cached entry in the cache partition and sets the cached value’s visibility.
+
+put(key, value, ttlSecs)
+Stores the specified key/value pair as a cached entry in the cache partition and sets the cached value’s lifetime.
+
+put(key, value, ttlSecs, visibility, immutable)
+Stores the specified key/value pair as a cached entry in the cache partition. This method also sets the cached value’s lifetime, visibility,
+and whether it can be overwritten by another namespace.
+
+remove(key)
+Deletes the cached value corresponding to the specified key from this cache partition.
+
+remove(cacheBuilder, key)
+Deletes the cached value corresponding to the specified key from the partition cache. Use this method if your cached value is a class
+that implements the `CacheBuilder` interface.
+
+validateCacheBuilder(cacheBuilder)
+Validates that the specified class implements the `CacheBuilder` interface.
+
+validateKey(isDefault, key)
+Validates a cache key. This method throws a `Cache.InvalidParamException` if the key is not valid. A valid key is not
+`null` and contains alphanumeric characters.
+
+validateKeyValue(isDefault, key, value)
+Validates a cache key and ensures that the cache value is non-null. This method throws a `Cache.InvalidParamException`
+if the key or value is not valid. A valid key is not `null` and contains alphanumeric characters.
+
+validateKeys(isDefault, keys)
+Validates the specified cache keys. This method throws a `Cache.InvalidParamException` if the key is not valid. A valid
+key is not `null` and contains alphanumeric characters.
+
+validatePartitionName(name)
+Validates the partition name — for example, that it is not null.
+
+##### contains(key)
+
+Returns `true` if the cache partition contains a cached value corresponding to the specified key.
+
+Signature
+
+```
+   public Boolean contains(String key)
+
+```
+
+
+Apex Reference Guide Partition Class
+
+Parameters
+
+```
+   key
+```
+
+Type: String
+
+A case-sensitive string value that uniquely identifies a cached value.
+
+Return Value
+
+Type: Boolean
+
+`true` if a cache entry is found. Othewise, `false` .
+
+##### contains(setOfKeys)
+
+Returns `true` if the cache partition contains values for a specified set of keys.
+
+Signature
+
+```
+   public Map <String, Boolean> contains (Set<String> keys)
+
+```
+
+Parameters
+
+```
+   setOfKeys
+```
+
+Type: Set <String>
+
+A set of keys that uniquely identifies cached values. For information about the format of the key name, see Usage.
+
+Return Value
+
+Type: Map <String, Boolean>
+
+Returns the cache key and corresponding Boolean value indicating that the key entry exists. The Boolean value is `false` if the key
+entry doesn't exist.
+
+Usage
+
+The number of input keys cannot exceed the maximum limit of 10.
+
+Example
+
+In this example, the code checks for the presence of multiple keys on a partition. It fetches the cache key and the corresponding Boolean
+value for the key entry from the org cache of the partition.
+
+```
+   // Assuming there is a partition p1 in the default 'local' namespace
+
+   Set<String> keys = new Set<String>{'key1','key2','key3','key4','key5'};
+
+   Cache.OrgPartition orgPart = Cache.Org.getPartition('local.p1');
+
+   Map<String,Boolean> result = orgPart.contains(keys);
+
+   for(String key : result.keySet()) {
+
+      system.debug('key: ' + key);
+
+      system.debug('Is Key Present in the cache:' + result.get(key));
+
+   }
+
+```
+
+
+Apex Reference Guide Partition Class
+
+In this example, the code checks for the presence of multiple keys on a partition. It fetches the cache key and the corresponding Boolean
+value for the key entry from the session cache of the partition.
+
+```
+   // Assuming there are three partitions p1, p2, p3 with default 'local' namespace
+
+   Set<String> keys = new Set<String>{'key1','key2','key3','key4','key5'};
+
+   Cache.SessionPartition sessionPart = Cache.Session.getPartition('local.p1');
+
+   Map<String,Boolean> result = sessionPart.contains(keys);
+
+   for(String key : result.keySet()) {
+
+      system.debug('key: ' + key);
+
+      system.debug('value: ' + result.get(key));
+
+   }
+
+##### createFullyQualifiedKey(namespace, partition, key)
+
+```
+
+Generates a fully qualified key from the passed-in key components. The format of the generated key string is
+`namespace.partition.key` .
+
+Signature
+
+```
+   public static String createFullyQualifiedKey(String namespace, String partition, String
+
+   key)
+
+```
+
+Parameters
+
+```
+   namespace
+```
+
+Type: String
+
+The namespace of the cache key.
+
+```
+   partition
+```
+
+Type: String
+
+The partition of the cache key.
+
+```
+   key
+```
+
+Type: String
+
+The name of the cache key.
+
+Return Value
+
+Type: String
+
+##### createFullyQualifiedPartition(namespace, partition)
+
+Generates a fully qualified partition name from the passed-in namespace and partition. The format of the generated partition string is
+`namespace.partition` .
+
+Signature
+
+```
+   public static String createFullyQualifiedPartition(String namespace, String partition)
+
+```
+
+
+Apex Reference Guide Partition Class
+
+Parameters
+
+```
+   namespace
+```
+
+Type: String
+
+The namespace of the cache key.
+
+```
+   partition
+```
+
+Type: String
+
+The partition of the cache key.
+
+Return Value
+
+Type: String
+
+##### get(key)
+
+Returns the cached value corresponding to the specified key from the cache partition.
+
+Signature
+
+```
+   public Object get(String key)
+
+```
+
+Parameters
+
+```
+   key
+```
+
+Type: String
+
+A case-sensitive string value that uniquely identifies a cached value.
+
+Return Value
+
+Type: Object
+
+The cached value as a generic object type. Cast the returned value to the appropriate type.
+
+##### get(keys)
+
+Returns the cached values corresponding to the specified set of keys from the cache partition.
+
+Signature
+
+```
+   public Map <String, Object> get (Set <String> keys)
+
+```
+
+Parameters
+
+```
+   keys
+```
+
+Type: Set <String>
+
+A set of keys that uniquely identify cached values. For information about the format of the key name, see Usage.
+
+Return Value
+
+Type: Map <String, Object>
+
+
+Apex Reference Guide Partition Class
+
+Returns the cache key and corresponding value. Returns null when no corresponding value is found for an input key.
+
+Usage
+
+The number of input keys cannot exceed the maximum limit of 10.
+
+Examples
+
+Fetch multiple keys from the org cache of a partition.
+
+```
+   // Assuming there is a partition p1 in the default 'local' namespace
+
+   Set<String> keys = new Set<String>{'key1','key2','key3','key4','key5'};
+
+   Cache.OrgPartition orgPart = Cache.Org.getPartition('local.p1');
+
+   Map<String,Object> result = orgPart.get(keys);
+
+   for(String key : result.keySet()) {
+
+      system.debug('key: ' + key);
+
+      system.debug('value: ' + result.get(key));
+
+   }
+
+```
+
+Fetch multiple keys from the session cache of a partition.
+
+```
+   // Assuming there is a partition p1 in the default 'local' namespace
+
+   Set<String> keys = new Set<String>{'key1','key2','key3','key4','key5'};
+
+   Cache.SessionPartition sessionPart = Cache.Session.getPartition('local.p1');
+
+   Map<String,Object> result = sessionPart.get(keys);
+
+   for(String key : result.keySet()) {
+
+      system.debug('key: ' + key);
+
+      system.debug('value: ' + result.get(key));
+
+   }
+
+##### get(cacheBuilder, key)
+
+```
+
+Returns the cached value corresponding to the specified key from the partition cache. Use this method if your cached value is a class
+that implements the `CacheBuilder` interface.
+
+Signature
+
+```
+   public Object get(System.Type cacheBuilder, String key)
+
+```
+
+Parameters
+
+```
+   cacheBuilder
+```
+
+Type: System.Type
+
+The Apex class that implements the `CacheBuilder` interface.
+
+```
+   key
+```
+
+Type: String
+
+A case-sensitive string value that, combined with the class name corresponding to the _`cacheBuilder`_ parameter, uniquely
+identifies a cached value.
+
+
+Apex Reference Guide Partition Class
+
+Return Value
+
+Type: Object
+
+The cached value as a generic object type. Cast the returned value to the appropriate type.
+
+##### getAvgGetSize()
+
+Returns the average item size of all the keys fetched from the partition, in bytes.
+
+Signature
+
+```
+   public Long getAvgGetSize()
+
+```
+
+Return Value
+
+Type: Long
+
+##### getAvgGetTime()
+
+Returns the average time taken to get a key from the partition, in nanoseconds.
+
+Signature
+
+```
+   public Long getAvgGetTime()
+
+```
+
+Return Value
+
+Type: Long
+
+##### getAvgValueSize()
+
+**Deprecated and available only in API versions 49.0 and earlier.** Returns the average item size for keys in the partition, in bytes.
+
+Signature
+
+```
+   public Long getAvgValueSize()
+
+```
+
+Return Value
+
+Type: Long
+
+##### getCapacity()
+
+Returns the percentage of cache used of the total capacity for this partition.
+
+Signature
+
+```
+   public Double getCapacity()
+
+```
+
+
+Apex Reference Guide Partition Class
+
+Return Value
+
+Type: Double
+
+Used partition cache as a percentage number.
+
+##### getKeys()
+
+Returns a set of all keys that are stored in the cache partition and visible to the invoking namespace.
+
+Signature
+
+```
+   public Set<String> getKeys()
+
+```
+
+Return Value
+
+Type: Set<String>
+
+A set containing all cache keys.
+
+##### getMaxGetSize()
+
+Returns the maximum item size of all the keys fetched from the partition, in bytes.
+
+Signature
+
+```
+   public Long getMaxGetSize()
+
+```
+
+Return Value
+
+Type: Long
+
+##### getMaxGetTime()
+
+Returns the maximum time taken to get a key from the partition, in nanoseconds.
+
+Signature
+
+```
+   public Long getMaxGetTime()
+
+```
+
+Return Value
+
+Type: Long
+
+##### getMaxValueSize()
+
+**Deprecated and available only in API versions 49.0 and earlier.** Returns the maximum item size for keys in the partition, in bytes.
+
+Signature
+
+```
+   public Long getMaxValueSize()
+
+```
+
+
+Apex Reference Guide Partition Class
+
+Return Value
+
+Type: Long
+
+##### getMissRate()
+
+Returns the miss rate in the partition.
+
+Signature
+
+```
+   public Double getMissRate()
+
+```
+
+Return Value
+
+Type: Double
+
+##### getName()
+
+Returns the name of this cache partition.
+
+Signature
+
+```
+   public String getName()
+
+```
+
+Return Value
+
+Type: String
+
+The name of this cache partition.
+
+##### getNumKeys()
+
+Returns the total number of keys in the partition.
+
+Signature
+
+```
+   public Long getNumKeys()
+
+```
+
+Return Value
+
+Type: Long
+
+##### isAvailable()
+
+Returns `true` if the Salesforce session is available. Only applies to `Cache.SessionPartition` . The session cache isn’t available
+when an active session isn’t present, such as in asynchronous Apex or code called by asynchronous Apex. For example, if batch Apex
+causes an Apex trigger to execute, the session cache isn’t available in the trigger because the trigger runs in asynchronous context.
+
+Signature
+
+```
+   public Boolean isAvailable()
+
+```
+
+
+Apex Reference Guide Partition Class
+
+Return Value
+
+Type: Boolean
+
+##### put(key, value) Stores the specified key/value pair as a cached entry in the cache partition. The put method can write only to the cache in your org’s
+
+namespace.
+
+Signature
+
+```
+   public void put(String key, Object value)
+
+```
+
+Parameters
+
+```
+   key
+```
+
+Type: String
+
+A case-sensitive string value that uniquely identifies a cached value.
+
+```
+   value
+```
+
+Type: Object
+
+The value to store in the cache. The cached value must be serializable.
+
+Return Value
+
+Type: void
+
+##### put(key, value, visibility)
+
+Stores the specified key/value pair as a cached entry in the cache partition and sets the cached value’s visibility.
+
+Signature
+
+```
+   public void put(String key, Object value, cache.Visibility visibility)
+
+```
+
+Parameters
+
+```
+   key
+```
+
+Type: String
+
+A case-sensitive string value that uniquely identifies a cached value.
+
+```
+   value
+```
+
+Type: Object
+
+The value to store in the cache. The cached value must be serializable.
+
+```
+   visibility
+```
+
+Type: Cache.Visibility
+
+Indicates whether the cached value is available only to Apex code that is executing in the same namespace or to Apex code executing
+from any namespace.
+
+
+Apex Reference Guide Partition Class
+
+Return Value
+
+Type: void
+
+##### put(key, value, ttlSecs)
+
+Stores the specified key/value pair as a cached entry in the cache partition and sets the cached value’s lifetime.
+
+Signature
+
+```
+   public void put(String key, Object value, Integer ttlSecs)
+
+```
+
+Parameters
+
+```
+   key
+```
+
+Type: String
+
+A case-sensitive string value that uniquely identifies a cached value.
+
+```
+   value
+```
+
+Type: Object
+
+The value to store in the cache. The cached value must be serializable.
+
+```
+   ttlSecs
+```
+
+Type: Integer
+
+The amount of time, in seconds, to keep the cached value in the cache.
+
+Return Value
+
+Type: void
+
+##### put(key, value, ttlSecs, visibility, immutable)
+
+Stores the specified key/value pair as a cached entry in the cache partition. This method also sets the cached value’s lifetime, visibility,
+and whether it can be overwritten by another namespace.
+
+Signature
+
+```
+   public void put(String key, Object value, Integer ttlSecs, cache.Visibility visibility,
+
+   Boolean immutable)
+
+```
+
+Parameters
+
+```
+   key
+```
+
+Type: String
+
+A case-sensitive string value that uniquely identifies a cached value.
+
+```
+   value
+```
+
+Type: Object
+
+The value to store in the cache. The cached value must be serializable.
+
+```
+   ttlSecs
+```
+
+Type: Integer
+
+
+Apex Reference Guide Partition Class
+
+The amount of time, in seconds, to keep the cached value in the cache.
+
+```
+   visibility
+```
+
+Type: Cache.Visibility
+
+Indicates whether the cached value is available only to Apex code that is executing in the same namespace or to Apex code executing
+from any namespace.
+
+```
+   immutable
+```
+
+Type: Boolean
+
+Indicates whether the cached value can be overwritten by another namespace ( `false` ) or not ( `true` ).
+
+Return Value
+
+Type: void
+
+##### remove(key)
+
+Deletes the cached value corresponding to the specified key from this cache partition.
+
+Signature
+
+```
+   public Boolean remove(String key)
+
+```
+
+Parameters
+
+```
+   key
+```
+
+Type: String
+
+A case-sensitive string value that uniquely identifies a cached value.
+
+Return Value
+
+Type: Boolean
+
+`true` if the cache value was successfully removed. Otherwise, `false` .
+
+##### remove(cacheBuilder, key)
+
+Deletes the cached value corresponding to the specified key from the partition cache. Use this method if your cached value is a class
+that implements the `CacheBuilder` interface.
+
+Signature
+
+```
+   public Boolean remove(System.Type cacheBuilder, String key)
+
+```
+
+Parameters
+
+```
+   cacheBuilder
+```
+
+Type: System.Type
+
+The Apex class that implements the `CacheBuilder` interface.
+
+```
+   key
+```
+
+Type: String
+
+
+Apex Reference Guide Partition Class
+
+A case-sensitive string value that, combined with the class name corresponding to the _`cacheBuilder`_ parameter, uniquely
+identifies a cached value.
+
+Return Value
+
+Type: Boolean
+
+`true` if the cache value was successfully removed. Otherwise, `false` .
+
+##### validateCacheBuilder(cacheBuilder)
+
+Validates that the specified class implements the `CacheBuilder` interface.
+
+Signature
+
+```
+   public static void validateCacheBuilder(System.Type cacheBuilder)
+
+```
+
+Parameters
+
+```
+   cacheBuilder
+```
+
+Type: System.Type
+
+The class to validate.
+
+Return Value
+
+Type: void
+
+##### validateKey(isDefault, key)
+
+Validates a cache key. This method throws a `Cache.InvalidParamException` if the key is not valid. A valid key is not `null`
+and contains alphanumeric characters.
+
+Signature
+
+```
+   public static void validateKey(Boolean isDefault, String key)
+
+```
+
+Parameters
+
+```
+   isDefault
+```
+
+Type: Boolean
+
+Set to `true` if the key references a default partition. Otherwise, set to `false` .
+
+```
+   key
+```
+
+Type: String
+
+The key to validate.
+
+Return Value
+
+Type: void
+
+
+Apex Reference Guide Partition Class
+
+##### validateKeyValue(isDefault, key, value)
+
+Validates a cache key and ensures that the cache value is non-null. This method throws a `Cache.InvalidParamException` if
+the key or value is not valid. A valid key is not `null` and contains alphanumeric characters.
+
+Signature
+
+```
+   public static void validateKeyValue(Boolean isDefault, String key, Object value)
+
+```
+
+Parameters
+
+```
+   isDefault
+```
+
+Type: Boolean
+
+Set to `true` if the key references a default partition. Otherwise, set to `false` .
+
+```
+   key
+```
+
+Type: String
+
+The key to validate.
+
+```
+   value
+```
+
+Type: Object
+
+The cache value to validate.
+
+Return Value
+
+Type: void
+
+##### validateKeys(isDefault, keys)
+
+Validates the specified cache keys. This method throws a `Cache.InvalidParamException` if the key is not valid. A valid key
+is not `null` and contains alphanumeric characters.
+
+Signature
+
+```
+   public static void validateKeys(Boolean isDefault, Set<String> keys)
+
+```
+
+Parameters
+
+```
+   isDefault
+```
+
+Type: Boolean
+
+Set to `true` if the key references a default partition. Otherwise, set to `false` .
+
+```
+   keys
+```
+
+Type: Set<String>
+
+A set of key string values to validate.
+
+Return Value
+
+Type: void
+
+
+### Apex Reference Guide Session Class
+
+##### validatePartitionName(name)
+
+Validates the partition name — for example, that it is not null.
+
+Signature
+
+```
+   public static void validatePartitionName(String name)
+
+```
+
+Parameters
+
+```
+   name
+```
+
+Type: String
+
+The name of the partition to validate.
+
+Return Value
+
+Type: void
+
+### Session Class
+
+Use the `Cache.Session` class to add, retrieve, and manage values in the session cache. The session cache is active as long as the
+user’s Salesforce session is valid (the user is logged in, and the session is not expired).
+
+Namespace
+
+Cache
+
+Usage
+
+**Cache Key Format**
+
+This table lists the format of the key parameter that some methods in this class take, such as `put`, `get`, and `contains` .
+
+Note:
+
+**•** If no default partition is specified in the org, calling a cache method without fully qualifying the key name causes a
+`Cache.Session.SessionCacheException` to be thrown.
+
+**•** The `local` prefix in an installed managed package refers to the namespace of the subscriber org and not the package’s
+namespace. The cache `put` calls are not allowed in a partition that the invoking class doesn’t own.
+
+
+Apex Reference Guide Session Class
+
+Example
+
+This class is the controller for a sample Visualforce page (shown in the subsequent code sample). The cached values are initially added
+to the cache by the `init()` method, which the Visualforce page invokes when it loads through the `action` attribute. The cache
+keys don’t contain the `namespace.partition` prefix. They all refer to a default partition in your org. The Visualforce page expects
+a partition named `myPartition` . To run this sample, create a default partition in your org with the name `myPartition` .
+
+The Visualforce page contains four output components. The first three components call `get` methods on the controller that return the
+following values from the cache: a date, data based on the `MyData` inner class, and a counter. The next output component uses the
+`$Cache.Session` global variable to get the cached string value for the key named `output` . Next, the `$Cache.Session` global
+variable is used again in the Visualforce page to iterate over the elements of a cached value of type `List` . The size of the list is also
+returned.
+
+The Visualforce page also contains two buttons. The Rerender button invokes the `go()` method on the controller. This method increases
+the values of the counter and the custom data in the cache. If you click **Rerender**, the two counters increase by one each time. The
+`go()` method retrieves the values of these counters from the cache, increments their values by one, and stores them again in the
+cache.
+
+The Remove button deletes the date-time value (with key `datetime` ) from the cache. As a result, the value next to `Cached`
+`datetime:` is cleared on the page.
+
+```
+   public class SessionCacheController {
+
+      // Inner class.
+
+      // Used as the data type of a cache value.
+
+      class MyData {
+
+        public String value { get; set; }
+
+        public Integer counter { get; set; }
+
+        public MyData(String value) {
+
+           this.value = value;
+
+           this.counter = 0;
+
+        }
+
+        public void inc() {
+
+           counter++;
+
+        }
+
+        override public String toString() {
+
+           return this.value + ':' + this.counter;
+
+        }
+
+      }
+
+      // Apex List.
+
+      // Used as the data type of a cached value.
+
+      private List<String> numbers =
+
+           new List<String> { 'ONE', 'TWO', 'THREE', 'FOUR', 'FIVE' };
+
+      // Constructor of the controller for the Visualforce page.
+
+      public SessionCacheController() {
+
+      }
+
+      // Adds various values to the cache.
+
+      // This method is called when the Visualforce page loads.
+
+      public void init() {
+
+```
+
+
+Apex Reference Guide Session Class
+
+```
+        // All key values are not qualified by the namespace.partition
+
+        // prefix because they use the default partition.
+
+        // Add counter to the cache with initial value of 0
+
+        // or increment it if it's already there.
+
+        if (!Cache.Session.contains('counter')) {
+
+           Cache.Session.put('counter', 0);
+
+        } else {
+
+           Cache.Session.put('counter', getCounter() + 1);
+
+        }
+
+        // Add the datetime value to the cache only if it's not already there.
+
+        if (!Cache.Session.contains('datetime')) {
+
+           DateTime dt = DateTime.now();
+
+           Cache.Session.put('datetime', dt);
+
+        }
+
+        // Add the custom data to the cache only if it's not already there.
+
+        if (!Cache.Session.contains('data')) {
+
+           Cache.Session.put('data', new MyData('Some custom value'));
+
+        }
+
+        // Add a list of number to the cache if not already there.
+
+        if (!Cache.Session.contains('list')) {
+
+           Cache.Session.put('list', numbers);
+
+        }
+
+        // Add a string value to the cache if not already there.
+
+        if (!Cache.Session.contains('output')) {
+
+           Cache.Session.put('output', 'Cached text value');
+
+        }
+
+      }
+
+      // Return counter from the cache.
+
+      public Integer getCounter() {
+
+        return (Integer)Cache.Session.get('counter');
+
+      }
+
+      // Return datetime value from the cache.
+
+      public String getCachedDatetime() {
+
+        DateTime dt = (DateTime)Cache.Session.get('datetime');
+
+        return dt != null ? dt.format() : null;
+
+      }
+
+      // Return cached value whose type is the inner class MyData.
+
+      public String getCachedData() {
+
+        MyData mydata = (MyData)Cache.Session.get('data');
+
+        return mydata != null ? mydata.toString() : null;
+
+      }
+
+      // Method invoked by the Rerender button on the Visualforce page.
+
+      // Updates the values of various cached values.
+
+      // Increases the values of counter and the MyData counter if those
+
+      // cache values are still in the cache.
+
+```
+
+
+Apex Reference Guide Session Class
+
+```
+      public PageReference go() {
+
+        // Increase the cached counter value or set it to 0
+
+        // if it's not cached.
+
+        if (Cache.Session.contains('counter')) {
+
+           Cache.Session.put('counter', getCounter() + 1);
+
+        } else {
+
+           Cache.Session.put('counter', 0);
+
+        }
+
+        // Get the custom data value from the cache.
+
+        MyData d = (MyData)Cache.Session.get('data');
+
+        // Only if the data is already in the cache, update it.
+
+        if (Cache.Session.contains('data')) {
+
+           d.inc();
+
+           Cache.Session.put('data', d);
+
+        }
+
+        return null;
+
+      }
+
+      // Method invoked by the Remove button on the Visualforce page.
+
+      // Removes the datetime cached value from the session cache.
+
+      public PageReference remove() {
+
+        Cache.Session.remove('datetime');
+
+        return null;
+
+      }
+
+   }
+
+```
+
+This is the Visualforce page that corresponds to the `SessionCacheController` class.
+
+```
+   <apex:page controller="SessionCacheController" action="{!init}">
+
+      <apex:outputPanel id="output">
+
+        <br/>Cached datetime: <apex:outputText value="{!cachedDatetime}"/>
+
+        <br/>Cached data: <apex:outputText value="{!cachedData}"/>
+
+        <br/>Cached counter: <apex:outputText value="{!counter}"/>
+
+        <br/>Output: <apex:outputText value="{!$Cache.Session.local.myPartition.output}"/>
+
+        <br/>Repeat: <apex:repeat var="item"
+
+   value="{!$Cache.Session.local.myPartition.list}">
+
+           <apex:outputText value="{!item}"/>&nbsp;
+
+        </apex:repeat>
+
+        <br/>List size: <apex:outputText
+
+   value="{!$Cache.Session.local.myPartition.list.size}"/>
+
+      </apex:outputPanel>
+
+      <br/><br/>
+
+      <apex:form >
+
+        <apex:commandButton id="go" action="{!go}" value="Rerender" rerender="output"/>
+
+        <apex:commandButton id="remove" action="{!remove}" value="Remove datetime Key"
+
+   rerender="output"/>
+
+      </apex:form>
+
+   </apex:page>
+
+```
+
+
+Apex Reference Guide Session Class
+
+This is the output of the page after clicking the Rerender button twice. The counter value could differ in your case if a key named
+`counter` was already in the cache before running this sample.
+
+```
+   Cached datetime:8/11/2015 1:58 PM
+
+   Cached data:Some custom value:2
+
+   Cached counter:2
+
+   Output:Cached text value
+
+   Repeat:ONE TWO THREE FOUR FIVE
+
+   List size:5
+
+```
+
+IN THIS SECTION:
+
+#### Session Constants
+
+The Session class provides a constant that you can use when setting the time-to-live (TTL) value.
+
+#### Session Methods
+
+SEE ALSO:
+
+_[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/apex_cache_namespace_overview.htm)_ : Platform Cache
+
+#### Session Constants
+
+The Session class provides a constant that you can use when setting the time-to-live (TTL) value.
+
+**Constant** **Description**
+
+`MAX_TTL_SECS` Represents the maximum amount of time, in seconds, to keep the cached value in the
+session cache.
+
+#### Session Methods The following are methods for Session . All methods are static.
+
+IN THIS SECTION:
+
+contains(key)
+Returns `true` if the session cache contains a cached value corresponding to the specified key.
+
+contains(setOfKeys)
+Returns `true` if the cache contains values for a specified set of keys.
+
+get(key)
+Returns the cached value corresponding to the specified key from the session cache.
+
+get(keys)
+Returns the cached values corresponding to the specified set of keys from the session cache.
+
+get(cacheBuilder, key)
+Returns the cached value corresponding to the specified key from the session cache. Use this method if your cached value is a class
+that implements the `CacheBuilder` interface.
+
+
+Apex Reference Guide Session Class
+
+getAvgGetSize()
+Returns the average item size of all the keys fetched from the session cache, in bytes.
+
+getAvgGetTime()
+Returns the average time taken to get a key from the session cache, in nanoseconds.
+
+getAvgValueSize()
+**Deprecated and available only in API versions 49.0 and earlier.** Returns the average item size for keys in the session cache, in
+bytes.
+
+getCapacity()
+Returns the percentage of session cache capacity that has been used.
+
+getKeys()
+Returns all keys that are stored in the session cache and visible to the invoking namespace.
+
+getMaxGetSize()
+Returns the maximum item size of all the keys fetched from the session cache, in bytes.
+
+getMaxGetTime()
+Returns the maximum time taken to get a key from the session cache, in nanoseconds.
+
+getMaxValueSize()
+**Deprecated and available only in API versions 49.0 and earlier.** Returns the maximum item size for keys in the session cache,
+in bytes.
+
+getMissRate()
+Returns the miss rate in the session cache.
+
+getName()
+Returns the name of the default cache partition.
+
+getNumKeys()
+Returns the total number of keys in the session cache.
+
+getPartition(partitionName)
+Returns a partition from the session cache that corresponds to the specified partition name.
+
+isAvailable()
+Returns `true` if the session cache is available for use. The session cache isn’t available when an active session isn’t present, such
+as in asynchronous Apex or code called by asynchronous Apex. For example, if batch Apex causes an Apex trigger to execute, the
+session cache isn’t available in the trigger because the trigger runs in asynchronous context.
+
+put(key, value)
+Stores the specified key/value pair as a cached entry in the session cache. The `put` method can write only to the cache in your org’s
+namespace.
+
+put(key, value, visibility)
+Stores the specified key/value pair as a cached entry in the session cache and sets the cached value’s visibility.
+
+put(key, value, ttlSecs)
+Stores the specified key/value pair as a cached entry in the session cache and sets the cached value’s lifetime.
+
+put(key, value, ttlSecs, visibility, immutable)
+Stores the specified key/value pair as a cached entry in the session cache. This method also sets the cached value’s lifetime, visibility,
+and whether it can be overwritten by another namespace.
+
+
+Apex Reference Guide Session Class
+
+remove(key)
+Deletes the cached value corresponding to the specified key from the session cache.
+
+remove(cacheBuilder, key)
+Deletes the cached value corresponding to the specified key from the session cache. Use this method if your cached value is a class
+that implements the `CacheBuilder` interface.
+
+##### contains(key)
+
+Returns `true` if the session cache contains a cached value corresponding to the specified key.
+
+Signature
+
+```
+   public static Boolean contains(String key)
+
+```
+
+Parameters
+
+```
+   key
+```
+
+Type: String
+
+A case-sensitive string value that uniquely identifies a cached value. For information about the format of the key name, see Usage.
+
+Return Value
+
+Type: Boolean
+
+`true` if a cache entry is found. Othewise, `false` .
+
+##### contains(setOfKeys)
+
+Returns `true` if the cache contains values for a specified set of keys.
+
+Signature
+
+```
+   public static Map <String, Boolean> contains (Set<String> keys)
+
+```
+
+Parameters
+
+```
+   setOfKeys
+```
+
+Type: Set <String>
+
+A set of keys that uniquely identifies cached values. For information about the format of the key name, see Usage.
+
+Return Value
+
+Type: Map <String, Boolean>
+
+Returns the cache key and corresponding Boolean value indicating that the key entry exists. The Boolean value is `false` if the key
+entry doesn't exist.
+
+Usage
+
+The number of input keys cannot exceed the maximum limit of 10.
+
+
+Apex Reference Guide Session Class
+
+Example
+
+In this example, the code checks for the presence of multiple keys on the default partition. It fetches the cache key and the corresponding
+Boolean value for the key entry from the session cache of the default partition.
+
+```
+   Set<String> keys = new Set<String>{'key1','key2','key3','key4','key5'};
+
+   Map<String,Boolean> result = Cache.Session.contains(keys);
+
+   for(String key : result.keySet()) {
+
+      system.debug('key: ' + key);
+
+      system.debug('Is Key Present in the cache : ' + result.get(key));
+
+   }
+
+```
+
+In this example, the code checks for the presence of multiple keys on different partitions. It fetches the cache key and the corresponding
+Boolean value for the key entry from the session cache of different partitions.
+
+```
+   // Assuming there are three partitions p1, p2, p3 with default 'local' namespace
+
+   Set<String> keys = new Set<String>{'local.p1.key','local.p2.key', 'local.p3.key'};
+
+   Map<String,Boolean> result = Cache.Session.contains(keys);
+
+   for(String key : result.keySet()) {
+
+      system.debug('key: ' + key);
+
+      system.debug('Is Key Present in the cache : + result.get(key));
+
+   }
+
+##### get(key)
+
+```
+
+Returns the cached value corresponding to the specified key from the session cache.
+
+Signature
+
+```
+   public static Object get(String key)
+
+```
+
+Parameters
+
+```
+   key
+```
+
+Type: String
+
+A case-sensitive string value that uniquely identifies a cached value. For information about the format of the key name, see Usage.
+
+Return Value
+
+Type: Object
+
+The cached value as a generic object type. Cast the returned value to the appropriate type.
+
+Usage
+
+Because `Cache.Session.get()` returns an object, we recommend that you cast the returned value to a specific type to facilitate
+use of the returned value.
+
+```
+   // Get a cached value
+
+   Object obj = Cache.Session.get('ns1.partition1.orderDate');
+
+   // Cast return value to a specific data type
+
+   DateTime dt2 = (DateTime)obj;
+
+```
+
+
+Apex Reference Guide Session Class
+
+If a `Cache.Session.get()` call doesn’t find the referenced key, it returns `null` .
+
+##### get(keys)
+
+Returns the cached values corresponding to the specified set of keys from the session cache.
+
+Signature
+
+```
+   public static Map <String, Object> get (Set <String> keys)
+
+```
+
+Parameters
+
+```
+   keys
+```
+
+Type: Set <String>
+
+A set of keys that uniquely identify cached values. For information about the format of the key name, see Usage.
+
+Return Value
+
+Type: Map <String, Object>
+
+Returns the cache key and corresponding value. Returns null when no corresponding value is found for an input key.
+
+Usage
+
+The number of input keys cannot exceed the maximum limit of 10.
+
+Example
+
+Fetch multiple keys from the session cache of the default partition.
+
+```
+   Set<String> keys = new Set<String>{'key1','key2','key3','key4','key5'};
+
+   Map<String,Object> result = Cache.Session.get(keys);
+
+   for(String key : result.keySet()) {
+
+      system.debug('key: ' + key);
+
+      system.debug('value: ' + result.get(key));
+
+   }
+
+```
+
+Fetch multiple keys from the session cache of different partitions.
+
+```
+   // Assuming there are three partitions p1, p2, p3 with default 'local' namespace
+
+   Set<String> keys = new Set<String>{'local.p1.key','local.p2.key', 'local.p3.key'};
+
+   Map<String,Object> result = Cache.Session.get(keys);
+
+   for(String key : result.keySet()) {
+
+      system.debug('key: ' + key);
+
+      system.debug('value: ' + result.get(key));
+
+   }
+
+##### get(cacheBuilder, key)
+
+```
+
+Returns the cached value corresponding to the specified key from the session cache. Use this method if your cached value is a class that
+implements the `CacheBuilder` interface.
+
+
+Apex Reference Guide Session Class
+
+Signature
+
+```
+   public static Object get(System.Type cacheBuilder, String key)
+
+```
+
+Parameters
+
+```
+   cacheBuilder
+```
+
+Type: System.Type
+
+The Apex class that implements the `CacheBuilder` interface.
+
+```
+   key
+```
+
+Type: String
+
+A case-sensitive string value that, combined with the class name corresponding to the _`cacheBuilder`_ parameter, uniquely
+identifies a cached value.
+
+Return Value
+
+Type: Object
+
+The cached value as a generic object type. Cast the returned value to the appropriate type.
+
+Usage
+
+Because `Cache.Session.get(` _`cacheBuilder`_ `,` _`key`_ `)` returns an object, cast the returned value to a specific type to facilitate
+use of the returned value.
+
+```
+   return ((DateTime)Cache.Session.get(DateCache.class, 'datetime')).format();
+
+##### getAvgGetSize()
+
+```
+
+Returns the average item size of all the keys fetched from the session cache, in bytes.
+
+Signature
+
+```
+   public static Long getAvgGetSize()
+
+```
+
+Return Value
+
+Type: Long
+
+##### getAvgGetTime()
+
+Returns the average time taken to get a key from the session cache, in nanoseconds.
+
+Signature
+
+```
+   public static Long getAvgGetTime()
+
+```
+
+Return Value
+
+Type: Long
+
+
+Apex Reference Guide Session Class
+
+##### getAvgValueSize()
+
+**Deprecated and available only in API versions 49.0 and earlier.** Returns the average item size for keys in the session cache, in bytes.
+
+Signature
+
+```
+   public static Long getAvgValueSize()
+
+```
+
+Return Value
+
+Type: Long
+
+##### getCapacity()
+
+Returns the percentage of session cache capacity that has been used.
+
+Signature
+
+```
+   public static Double getCapacity()
+
+```
+
+Return Value
+
+Type: Double
+
+Used cache as a percentage number.
+
+##### getKeys()
+
+Returns all keys that are stored in the session cache and visible to the invoking namespace.
+
+Signature
+
+```
+   public static Set<String> getKeys()
+
+```
+
+Return Value
+
+Type: Set<String>
+
+A set containing all cache keys.
+
+##### getMaxGetSize()
+
+Returns the maximum item size of all the keys fetched from the session cache, in bytes.
+
+Signature
+
+```
+   public static Long getMaxGetSize()
+
+```
+
+Return Value
+
+Type: Long
+
+
+Apex Reference Guide Session Class
+
+##### getMaxGetTime()
+
+Returns the maximum time taken to get a key from the session cache, in nanoseconds.
+
+Signature
+
+```
+   public static Long getMaxGetTime()
+
+```
+
+Return Value
+
+Type: Long
+
+##### getMaxValueSize()
+
+**Deprecated and available only in API versions 49.0 and earlier.** Returns the maximum item size for keys in the session cache, in
+bytes.
+
+Signature
+
+```
+   public static Long getMaxValueSize()
+
+```
+
+Return Value
+
+Type: Long
+
+##### getMissRate()
+
+Returns the miss rate in the session cache.
+
+Signature
+
+```
+   public static Double getMissRate()
+
+```
+
+Return Value
+
+Type: Double
+
+##### getName()
+
+Returns the name of the default cache partition.
+
+Signature
+
+```
+   public String getName()
+
+```
+
+Return Value
+
+Type: String
+
+The name of the default cache partition.
+
+
+Apex Reference Guide Session Class
+
+##### getNumKeys()
+
+Returns the total number of keys in the session cache.
+
+Signature
+
+```
+   public static Long getNumKeys()
+
+```
+
+Return Value
+
+Type: Long
+
+##### getPartition(partitionName)
+
+Returns a partition from the session cache that corresponds to the specified partition name.
+
+Signature
+
+```
+   public static cache.SessionPartition getPartition(String partitionName)
+
+```
+
+Parameters
+
+```
+   partitionName
+```
+
+Type: String
+
+A partition name that is qualified by the namespace, for example, _`namespace.partition`_ .
+
+Return Value
+
+Type: Cache.SessionPartition
+
+Example
+
+After you get the session partition, you can add and retrieve the partition’s cache values.
+
+```
+   // Get partition
+
+   Cache.SessionPartition sessionPart = Cache.Session.getPartition('myNs.myPartition');
+
+   // Retrieve cache value from the partition
+
+   if (sessionPart.contains('BookTitle')) {
+
+      String cachedTitle = (String)sessionPart.get('BookTitle');
+
+   }
+
+   // Add cache value to the partition
+
+   sessionPart.put('OrderDate', Date.today());
+
+   // Or use dot notation to call partition methods
+
+   String cachedAuthor =
+
+   (String)Cache.Session.getPartition('myNs.myPartition').get('BookAuthor');
+
+```
+
+
+Apex Reference Guide Session Class
+
+##### isAvailable()
+
+Returns `true` if the session cache is available for use. The session cache isn’t available when an active session isn’t present, such as in
+asynchronous Apex or code called by asynchronous Apex. For example, if batch Apex causes an Apex trigger to execute, the session
+cache isn’t available in the trigger because the trigger runs in asynchronous context.
+
+Signature
+
+```
+   public static Boolean isAvailable()
+
+```
+
+Return Value
+
+Type: Boolean
+
+`true` if the session cache is available. Otherwise, `false` .
+
+##### put(key, value) Stores the specified key/value pair as a cached entry in the session cache. The put method can write only to the cache in your org’s
+
+namespace.
+
+Signature
+
+```
+   public static void put(String key, Object value)
+
+```
+
+Parameters
+
+```
+   key
+```
+
+Type: String
+
+A string that uniquely identifies the value to be cached. For information about the format of the key name, see Usage.
+
+```
+   value
+```
+
+Type: Object
+
+The value to store in the cache. The cached value must be serializable.
+
+Return Value
+
+Type: void
+
+##### put(key, value, visibility)
+
+Stores the specified key/value pair as a cached entry in the session cache and sets the cached value’s visibility.
+
+Signature
+
+```
+   public static void put(String key, Object value, Cache.Visibility visibility)
+
+```
+
+Parameters
+
+```
+   key
+```
+
+Type: String
+
+
+Apex Reference Guide Session Class
+
+A string that uniquely identifies the value to be cached. For information about the format of the key name, see Usage.
+
+```
+   value
+```
+
+Type: Object
+
+The value to store in the cache. The cached value must be serializable.
+
+```
+   visibility
+```
+
+Type: Cache.Visibility
+
+Indicates whether the cached value is available only to Apex code that is executing in the same namespace or to Apex code executing
+from any namespace.
+
+Return Value
+
+Type: void
+
+##### put(key, value, ttlSecs)
+
+Stores the specified key/value pair as a cached entry in the session cache and sets the cached value’s lifetime.
+
+Signature
+
+```
+   public static void put(String key, Object value, Integer ttlSecs)
+
+```
+
+Parameters
+
+```
+   key
+```
+
+Type: String
+
+A string that uniquely identifies the value to be cached. For information about the format of the key name, see Usage.
+
+```
+   value
+```
+
+Type: Object
+
+The value to store in the cache. The cached value must be serializable.
+
+```
+   ttlSecs
+```
+
+Type: Integer
+
+The amount of time, in seconds, to keep the cached value in the session cache. The cached values remain in the cache as long as
+the Salesforce session hasn’t expired. The maximum value is 28,800 seconds or eight hours. The minimum value is 300 seconds or
+five minutes.
+
+Return Value
+
+Type: void
+
+##### put(key, value, ttlSecs, visibility, immutable)
+
+Stores the specified key/value pair as a cached entry in the session cache. This method also sets the cached value’s lifetime, visibility,
+and whether it can be overwritten by another namespace.
+
+
+Apex Reference Guide Session Class
+
+Signature
+
+```
+   public static void put(String key, Object value, Integer ttlSecs, cache.Visibility
+
+   visibility, Boolean immutable)
+
+```
+
+Parameters
+
+```
+   key
+```
+
+Type: String
+
+A string that uniquely identifies the value to be cached. For information about the format of the key name, see Usage.
+
+```
+   value
+```
+
+Type: Object
+
+The value to store in the cache. The cached value must be serializable.
+
+```
+   ttlSecs
+```
+
+Type: Integer
+
+The amount of time, in seconds, to keep the cached value in the session cache. The cached values remain in the cache as long as
+the Salesforce session hasn’t expired. The maximum value is 28,800 seconds or eight hours. The minimum value is 300 seconds or
+five minutes.
+
+```
+   visibility
+```
+
+Type: Cache.Visibility
+
+Indicates whether the cached value is available only to Apex code that is executing in the same namespace or to Apex code executing
+from any namespace.
+
+```
+   immutable
+```
+
+Type: Boolean
+
+Indicates whether the cached value can be overwritten by another namespace ( `false` ) or not ( `true` ).
+
+Return Value
+
+Type: void
+
+##### remove(key)
+
+Deletes the cached value corresponding to the specified key from the session cache.
+
+Signature
+
+```
+   public static Boolean remove(String key)
+
+```
+
+Parameters
+
+```
+   key
+```
+
+Type: String
+
+A case-sensitive string value that uniquely identifies a cached value. For information about the format of the key name, see Usage.
+
+Return Value
+
+Type: Boolean
+
+
+### Apex Reference Guide SessionPartition Class
+
+`true` if the cache value was successfully removed. Otherwise, `false` .
+
+##### remove(cacheBuilder, key)
+
+Deletes the cached value corresponding to the specified key from the session cache. Use this method if your cached value is a class that
+implements the `CacheBuilder` interface.
+
+Signature
+
+```
+   public static Boolean remove(System.Type cacheBuilder, String key)
+
+```
+
+Parameters
+
+```
+   cacheBuilder
+```
+
+Type: System.Type
+
+The Apex class that implements the `CacheBuilder` interface.
+
+```
+   key
+```
+
+Type: String
+
+A case-sensitive string value that, combined with the class name corresponding to the _`cacheBuilder`_ parameter, uniquely
+identifies a cached value.
+
+Return Value
+
+Type: Boolean
+
+`true` if the cache value was successfully removed. Otherwise, `false` .
+
+### SessionPartition Class
+
+Contains methods to manage cache values in the session cache of a specific partition.
+
+Namespace
+
+Cache
+
+Usage
+
+This class extends Cache.Partition and inherits all of its non-static methods. Utility methods for creating and validating keys are not
+supported and can be called only from the `Cache.Partition` parent class. For a list of `Cache.Partition` methods, see
+Partition Methods.
+
+To get a session partition, call `Cache.Session.getPartition` and pass in a fully qualified partition name, as follows.
+
+```
+   Cache.SessionPartition sessionPartition =
+
+   Cache.Session.getPartition('namespace.myPartition');
+
+```
+
+See Cache Key Format for Partition Methods.
+
+
+Apex Reference Guide SessionPartition Class
+
+Example
+
+This class is the controller for a sample Visualforce page (shown in the subsequent code sample). The controller shows how to use the
+methods of `Cache.SessionPartition` to manage a cache value on a particular partition. The controller takes inputs from the
+Visualforce page for the partition name, key name for a counter, and initial counter value. The controller contains default values for these
+inputs. When you click **Rerender** on the Visualforce page, the `go()` method is invoked and increases the counter by one. When you
+click **Remove Key**, the counter key is removed from the cache. The counter value gets reset to its initial value when it’s re-added to the
+cache.
+
+```
+   public class SessionPartitionController {
+
+     // Name of a partition in the local namespace
+
+     String partitionInput = 'local.myPartition';
+
+     // Name of the key
+
+     String counterKeyInput = 'counter';
+
+     // Key initial value
+
+     Integer counterInitValue = 0;
+
+     // Session partition object
+
+     Cache.SessionPartition sessionPartition;
+
+      // Constructor of the controller for the Visualforce page.
+
+      public SessionPartitionController() {
+
+      }
+
+      // Adds counter value to the cache.
+
+      // This method is called when the Visualforce page loads.
+
+      public void init() {
+
+        // Create the partition instance based on the partition name
+
+        sessionPartition = getPartition();
+
+        // Add counter to the cache with an initial value
+
+        // or increment it if it's already there.
+
+        if (!sessionPartition.contains(counterKeyInput)) {
+
+           sessionPartition.put(counterKeyInput, counterInitValue);
+
+        } else {
+
+           sessionPartition.put(counterKeyInput, getCounter() + 1);
+
+        }
+
+      }
+
+      // Returns the session partition based on the partition name
+
+      // given in the Visualforce page or the default value.
+
+      private Cache.SessionPartition getPartition() {
+
+        if (sessionPartition == null) {
+
+           sessionPartition = Cache.Session.getPartition(partitionInput);
+
+        }
+
+        return sessionPartition;
+
+      }
+
+      // Return counter from the cache.
+
+      public Integer getCounter() {
+
+        return (Integer)getPartition().get(counterKeyInput);
+
+      }
+
+```
+
+
+Apex Reference Guide SessionPartition Class
+
+```
+      // Invoked by the Submit button to save input values
+
+      // supplied by the user.
+
+      public PageReference save() {
+
+        // Reset the initial key value in the cache
+
+        getPartition().put(counterKeyInput, counterInitValue);
+
+        return null;
+
+      }
+
+      // Method invoked by the Rerender button on the Visualforce page.
+
+      // Updates the values of various cached values.
+
+      // Increases the values of counter and the MyData counter if those
+
+      // cache values are still in the cache.
+
+      public PageReference go() {
+
+        // Get the partition object
+
+        sessionPartition = getPartition();
+
+        // Increase the cached counter value or set it to 0
+
+        // if it's not cached.
+
+        if (sessionPartition.contains(counterKeyInput)) {
+
+           sessionPartition.put(counterKeyInput, getCounter() + 1);
+
+        } else {
+
+           sessionPartition.put(counterKeyInput, counterInitValue);
+
+        }
+
+        return null;
+
+      }
+
+      // Method invoked by the Remove button on the Visualforce page.
+
+      // Removes the datetime cached value from the session cache.
+
+      public PageReference remove() {
+
+        getPartition().remove(counterKeyInput);
+
+        return null;
+
+      }
+
+      // Get and set methods for accessing variables
+
+      // that correspond to the input text fields on
+
+      // the Visualforce page.
+
+      public String getPartitionInput() {
+
+        return partitionInput;
+
+      }
+
+      public String getCounterKeyInput() {
+
+        return counterKeyInput;
+
+      }
+
+      public Integer getCounterInitValue() {
+
+        return counterInitValue;
+
+      }
+
+      public void setPartitionInput(String partition) {
+
+        this.partitionInput = partition;
+
+      }
+
+```
+
+
+### Apex Reference Guide Cache Exceptions
+
+```
+      public void setCounterKeyInput(String keyName) {
+
+        this.counterKeyInput = keyName;
+
+      }
+
+      public void setCounterInitValue(Integer counterValue) {
+
+        this.counterInitValue = counterValue;
+
+      }
+
+   }
+
+```
+
+This is the Visualforce page that corresponds to the `SessionPartitionController` class.
+
+```
+   <apex:page controller="SessionPartitionController" action="{!init}">
+
+      <apex:form >
+
+        <br/>Partition with Namespace Prefix: <apex:inputText value="{!partitionInput}"/>
+
+        <br/>Counter Key Name: <apex:inputText value="{!counterKeyInput}"/>
+
+        <br/>Counter Initial Value: <apex:inputText value="{!counterInitValue}"/>
+
+        <apex:commandButton action="{!save}" value="Save Key Input Values"/>
+
+      </apex:form>
+
+      <apex:outputPanel id="output">
+
+        <br/>Cached Counter: <apex:outputText value="{!counter}"/>
+
+      </apex:outputPanel>
+
+      <br/>
+
+      <apex:form >
+
+        <apex:commandButton id="go" action="{!go}" value="Rerender" rerender="output"/>
+
+        <apex:commandButton id="remove" action="{!remove}" value="Remove Key"
+
+   rerender="output"/>
+
+      </apex:form>
+
+   </apex:page>
+
+```
+
+SEE ALSO:
+
+_[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexcode.meta/apexcode/apex_cache_namespace_overview.htm)_ : Platform Cache
+
+### Cache Exceptions The Cache namespace contains exception classes.
+
+All exception classes support built-in methods for returning the error message and exception type. See Exception Class and Built-In
+Exceptions on page 3882 in the _Apex Developer Guide_ .
+
+### The Cache namespace contains these exceptions.
+
+**Exception** **Thrown when**
+
+`Cache.Session.SessionCacheException` An error occurred while adding or retrieving a value in the session
+cache.
+
+`Cache.Session.SessionCacheNoSessionException` An attempt is made to access the cache when the session cache
+isn’t available.
+
+
+### Apex Reference Guide Visibility Enum
+
+**Exception** **Thrown when**
+
+`Cache.Org.OrgCacheException` An attempt is made to access a partition that doesn’t exist or whose
+name is invalid.
+
+`Cache.InvalidParamException` An invalid parameter value is passed into a method of
+`Cache.Session` or `Cache.Org` . This error occurs when:
+
+**•** The key referenced is null or empty or is not alphanumeric.
+
+**•** The key isn’t qualified with the namespace and partition in the
+format `<namespace>.<partition>.<key>` .
+
+**•** The key isn’t qualified in the format `<key>` for the default
+partition, or for a key inserted through the partition object.
+
+**•** The namespace referenced is null or empty.
+
+**•** The partition name is null or empty or is not alphanumeric.
+
+**•** Another referenced value is null.
+
+`Cache.ItemSizeLimitExceededException` A cache `put` call is made with an item that exceeds the maximum
+size limit. To fix this error, break the item into multiple, smaller items.
+
+```
+Cache.BulkApiKeysLimitExceededException
+
+Cache.PlatformCacheInvalidOperationException
+
+Cache.CacheBuilderExecutionException
+
+```
+
+The number of key parameters passed into a bulk method `get(keys)` or `contains(setOfKeys)` exceeds the
+maximum limit of 10.
+
+A cache `put` or `remove` call is made that is not allowed. For
+example, when calling `put` or `remove` inside a Visualforce
+constructor.
+
+This error occurs when the execution of the CacheBuilder fails; this
+could be due to an error in parsing, a permissions error while
+accessing records, or an issue with Apex callouts.
+
+`Cache.InvalidCacheBuilderException` A `get(CacheBuilder cb, String key)`,
+`remove(CacheBuilder cb, String key)`, or
+
+`validateCacheBuilder(CacheBuilder cb)` method
+is called but the `cb` parameter is a class that does not implement
+the `Cache.CacheBuilder` interface.
+
+### Visibility Enum
+
+Use the `Cache.Visibility` enumeration in the `Cache.Session` or `Cache.Org` methods to indicate whether a cached
+value is visible only in the value’s namespace or in all namespaces.
+
+Enum Values
+
+The following are the values of the `Cache.Visibility` enum.
+
+
+## Apex Reference Guide Canvas Namespace
+
+**Value** **Description**
+
+`ALL` The cached value is available to Apex code executing
+from any namespace. This is the default state.
+
+```
+NAMESPACE
+
+## Canvas Namespace
+
+```
+
+The cached value is available to Apex code executing
+from the same namespace.
+
+If a key has the `Visibility.NAMESPACE`
+attribute, a `get` method initiated from a different
+namespace returns `null` .
+
+## The Canvas namespace provides an interface and classes for canvas apps in Salesforce. The following are the interfaces and classes in the Canvas namespace.
+
+IN THIS SECTION:
+
+### ApplicationContext Interface
+
+Use this interface to retrieve application context information, such as the application version or URL.
+
+CanvasLifecycleHandler Interface
+Implement this interface to control context information and add custom behavior during the application render phase.
+
+ContextTypeEnum Enum
+Describes context data that can be excluded from canvas app context data. You specify which context types to exclude in the
+`excludeContextTypes()` method in your `CanvasLifecycleHandler` implementation.
+
+EnvironmentContext Interface
+Use this interface to retrieve environment context information, such as the app display location or the configuration parameters.
+
+RenderContext Interface
+A wrapper interface that is used to retrieve application and environment context information.
+
+Test Class
+Contains methods for automated testing of your Canvas classes.
+
+Canvas Exceptions
+## The Canvas namespace contains exception classes.
+
+SEE ALSO:
+
+[Canvas Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.262.0.platform_connect.meta/platform_connect/canvas_framework_intro.htm)
+
+### ApplicationContext Interface
+
+Use this interface to retrieve application context information, such as the application version or URL.
+
+
+Apex Reference Guide ApplicationContext Interface
+
+Namespace
+
+Canvas
+
+Usage
+
+#### The ApplicationContext interface provides methods to retrieve application information about the canvas app that’s being
+
+rendered. Most of the methods are read-only. For this interface, you don’t need to create an implementation. Use the default
+implementation that Salesforce provides.
+
+IN THIS SECTION:
+
+#### ApplicationContext Methods ApplicationContext Methods The following are methods for ApplicationContext .
+
+IN THIS SECTION:
+
+##### getCanvasUrl()
+
+Retrieves the fully qualified URL of the canvas app.
+
+getDeveloperName()
+Retrieves the internal API name of the canvas app.
+
+getName()
+Retrieves the name of the canvas app.
+
+getNamespace()
+Retrieves the namespace prefix of the canvas app.
+
+getVersion()
+Retrieves the current version of the canvas app.
+
+setCanvasUrlPath(newPath)
+Overrides the URL of the canvas app for the current request.
+
+##### getCanvasUrl()
+
+Retrieves the fully qualified URL of the canvas app.
+
+Signature
+
+```
+   public String getCanvasUrl()
+
+```
+
+Return Value
+
+Type: String
+
+
+Apex Reference Guide ApplicationContext Interface
+
+Usage
+
+Use this method to get the URL of the canvas app, for example:
+`http://instance.salesforce.com:8080/canvas_app_path/canvas_app.jsp` .
+
+##### getDeveloperName()
+
+Retrieves the internal API name of the canvas app.
+
+Signature
+
+```
+   public String getDeveloperName()
+
+```
+
+Return Value
+
+Type: String
+
+Usage
+
+Use this method to get the API name of the canvas app. You specify this value in the `API Name` field when you expose the canvas
+app by creating a connected app.
+
+##### getName()
+
+Retrieves the name of the canvas app.
+
+Signature
+
+```
+   public String getName()
+
+```
+
+Return Value
+
+Type: String
+
+Usage
+
+Use this method to get the name of the canvas app.
+
+##### getNamespace()
+
+Retrieves the namespace prefix of the canvas app.
+
+Signature
+
+```
+   public String getNamespace()
+
+```
+
+Return Value
+
+Type: String
+
+
+Apex Reference Guide ApplicationContext Interface
+
+Usage
+
+Use this method to get the Salesforce namespace prefix that’s associated with the canvas app.
+
+##### getVersion()
+
+Retrieves the current version of the canvas app.
+
+Signature
+
+```
+   public String getVersion()
+
+```
+
+Return Value
+
+Type: String
+
+Usage
+
+Use this method to get the current version of the canvas app. This value changes after you update and republish a canvas app in an
+organization. If you are in a Developer Edition organization, using this method always returns the latest version.
+
+##### setCanvasUrlPath(newPath)
+
+Overrides the URL of the canvas app for the current request.
+
+Signature
+
+```
+   public void setCanvasUrlPath(String newPath)
+
+```
+
+Parameters
+
+```
+   newPath
+```
+
+Type: String
+
+The URL (not including domain) that you need to use to override the canvas app URL.
+
+Return Value
+
+Type: Void
+
+Usage
+
+Use this method to override the URL path and query string of the canvas app. Do not provide a fully qualified URL, because the provided
+URL string will be appended to the original canvas URL domain.
+
+For example, if the current canvas app URL is `https://myserver.com:6000/myAppPath` and you call
+`setCanvasUrlPath('/alternatePath/args?arg1=1&arg2=2')`, the adjusted canvas app URL will be
+`https://myserver.com:6000/alternatePath/args?arg1=1&arg2=2` .
+
+If the provided path results in a malformed URL, or a URL that exceeds 2,048 characters, a System.CanvasException will be thrown.
+
+This method overrides the canvas app URL for the current request and does not permanently change the canvas app URL as configured
+in the UI for the Salesforce canvas app settings.
+
+
+### Apex Reference Guide CanvasLifecycleHandler Interface CanvasLifecycleHandler Interface
+
+Implement this interface to control context information and add custom behavior during the application render phase.
+
+Namespace
+
+### Canvas
+
+Usage
+
+Use this interface to specify what canvas context information is provided to your app by implementing the `excludeContextTypes()`
+method. Use this interface to call custom code when the app is rendered by implementing the `onRender()` method.
+
+If you provide an implementation of this interface, you must implement `excludeContextTypes()` and `onRender()` .
+
+Example Implementation
+
+The following example shows a simple implementation of CanvasLifecycleHandler that specifies that organization context information
+will be excluded and prints a debug message when the app is rendered.
+
+```
+   public class MyCanvasListener
+
+   implements Canvas.CanvasLifecycleHandler{
+
+      public Set<Canvas.ContextTypeEnum> excludeContextTypes(){
+
+        Set<Canvas.ContextTypeEnum> excluded = new Set<Canvas.ContextTypeEnum>();
+
+        excluded.add(Canvas.ContextTypeEnum.ORGANIZATION);
+
+        return excluded;
+
+      }
+
+      public void onRender(Canvas.RenderContext renderContext){
+
+        System.debug('Canvas lifecycle called.');
+
+      }
+
+   }
+
+```
+
+IN THIS SECTION:
+
+#### CanvasLifecycleHandler Methods
+
+SEE ALSO:
+
+_Canvas Developer Guide_ [: Customizing Your App Lifecycle](https://developer.salesforce.com/docs/atlas.en-us.262.0.platform_connect.meta/platform_connect/canvas_customizing_app_lifecycle.htm)
+
+#### CanvasLifecycleHandler Methods
+
+### The following are methods for CanvasLifecycleHandler .
+
+IN THIS SECTION:
+
+excludeContextTypes()
+Lets the implementation exclude parts of the CanvasRequest context, if the application does not need it.
+
+
+Apex Reference Guide CanvasLifecycleHandler Interface
+
+##### onRender(renderContext)
+
+Invoked when a canvas app is rendered. Provides the ability to set and retrieve canvas application and environment context information
+during the application render phase.
+
+##### excludeContextTypes()
+
+Lets the implementation exclude parts of the CanvasRequest context, if the application does not need it.
+
+Signature
+
+```
+   public Set<Canvas.ContextTypeEnum> excludeContextTypes()
+
+```
+
+Return Value
+
+Type: SET<Canvas.ContextTypeEnum>
+
+This method must return `null` or a set of zero or more ContextTypeEnum values. Returning `null` enables all attributes by default.
+ContextTypeEnum values that can be set are:
+
+**•** Canvas.ContextTypeEnum.ORGANIZATION
+
+**•** Canvas.ContextTypeEnum.RECORD_DETAIL
+
+**•** Canvas.ContextTypeEnum.USER
+
+See ContextTypeEnum on page 285 for more details on these values.
+
+Usage
+
+Implement this method to specify which attributes to disable in the context of the canvas app. A disabled attribute will set the associated
+canvas context information to null.
+
+Disabling attributes can help improve performance by reducing the size of the signed request and canvas context. Also, disabled attributes
+do not need to be retrieved by Salesforce, which further improves performance.
+
+See the _[Canvas Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.262.0.platform_connect.meta/platform_connect/)_ for more information on context information in the Context object that’s provided in the CanvasRequest.
+
+Example
+
+This example implementation specifies that the organization information will be disabled in the canvas context.
+
+```
+   public Set<Canvas.ContextTypeEnum> excludeContextTypes() {
+
+      Set<Canvas.ContextTypeEnum> excluded = new Set<Canvas.ContextTypeEnum>();
+
+      excluded.add(Canvas.ContextTypeEnum.ORGANIZATION);
+
+      return excluded;
+
+   }
+
+```
+
+SEE ALSO:
+
+_Canvas Developer Guide_ [: Filtering CanvasRequest Context Data](https://developer.salesforce.com/docs/atlas.en-us.262.0.platform_connect.meta/platform_connect/canvas_filtering_context_data.htm)
+
+##### onRender(renderContext)
+
+Invoked when a canvas app is rendered. Provides the ability to set and retrieve canvas application and environment context information
+during the application render phase.
+
+
+### Apex Reference Guide ContextTypeEnum Enum
+
+Signature
+
+```
+   public void onRender(Canvas.RenderContext renderContext)
+
+```
+
+Parameters
+
+```
+   renderContext
+```
+
+Type: Canvas.RenderContext
+
+Return Value
+
+Type: Void
+
+Usage
+
+If implemented, this method is called whenever the canvas app is rendered. The implementation can set and retrieve context information
+by using the provided Canvas.RenderContext.
+
+[This method is called whenever signed request or context information is retrieved by the client. See the Canvas Developer Guide for](https://developer.salesforce.com/docs/atlas.en-us.262.0.platform_connect.meta/platform_connect/)
+more information on signed request authentication.
+
+Example
+
+This example implementation prints ‘Canvas lifecycle called.’ to the debug log when the canvas app is rendered.
+
+```
+   public void onRender(Canvas.RenderContext renderContext) {
+
+      System.debug('Canvas lifecycle called.');
+
+   }
+
+```
+
+SEE ALSO:
+
+_Canvas Developer Guide_ [: Controlling App Behavior](https://developer.salesforce.com/docs/atlas.en-us.262.0.platform_connect.meta/platform_connect/canvas_controlling_app_behavior.htm)
+
+### ContextTypeEnum Enum
+
+Describes context data that can be excluded from canvas app context data. You specify which context types to exclude in the
+`excludeContextTypes()` method in your `CanvasLifecycleHandler` implementation.
+
+Namespace
+
+Canvas
+
+Enum Values
+
+**Value** **Description**
+
+`ORGANIZATION` Exclude context information about the organization in which the canvas app is
+running.
+
+`RECORD_DETAIL` Exclude context information about the object record on which the canvas app
+appears.
+
+
+### Apex Reference Guide EnvironmentContext Interface
+
+**Value** **Description**
+
+`USER` Exclude context information about the current user.
+
+### EnvironmentContext Interface
+
+Use this interface to retrieve environment context information, such as the app display location or the configuration parameters.
+
+Namespace
+
+Canvas
+
+Usage
+
+### The EnvironmentContext interface provides methods to retrieve environment information about the current canvas app. For
+
+this interface, you don’t need to create an implementation. Use the default implementation that Salesforce provides.
+
+IN THIS SECTION:
+
+#### EnvironmentContext Methods EnvironmentContext Methods
+
+### The following are methods for EnvironmentContext .
+
+IN THIS SECTION:
+
+addEntityField(fieldName)
+Adds a field to the list of object fields that are returned in the signed request Record object when the component appears on a
+Visualforce page that’s placed on an object.
+
+addEntityFields(fieldNames)
+Adds a set of fields to the list of object fields that are returned in the signed request Record object when the component appears
+on a Visualforce page that’s placed on an object.
+
+getDisplayLocation()
+Retrieves the display location where the canvas app is being called from. For example, a value of Visualforce page.
+
+getEntityFields()
+Retrieves the list of object fields that are returned in the signed request Record object when the component appears on a Visualforce
+page that’s placed on an object.
+
+getLocationUrl()
+Retrieves the location URL of the canvas app.
+
+getParametersAsJSON()
+Retrieves the current custom parameters for the canvas app. Parameters are returned as a JSON string.
+
+getSublocation()
+Retrieves the display sublocation where the canvas app is being called from.
+
+
+Apex Reference Guide EnvironmentContext Interface
+
+setParametersAsJSON(jsonString)
+Sets the custom parameters for the canvas app.
+
+##### addEntityField(fieldName)
+
+Adds a field to the list of object fields that are returned in the signed request Record object when the component appears on a Visualforce
+page that’s placed on an object.
+
+Signature
+
+```
+   public void addEntityField(String fieldName)
+
+```
+
+Parameters
+
+```
+   fieldName
+```
+
+Type: String
+
+The object field name that you need to add to the list of returned fields., Using ‘*’ adds all fields that the user has permission to view.
+
+Return Value
+
+Type: Void
+
+Usage
+
+When you use the `<apex:canvasApp>` component to display a canvas app on a Visualforce page, and that page is associated with
+[an object (placed on the page layout, for example), you can specify fields to be returned from the related object. See the Canvas Developer](https://developer.salesforce.com/docs/atlas.en-us.262.0.platform_connect.meta/platform_connect/)
+[Guide for more information on the Record object.](https://developer.salesforce.com/docs/atlas.en-us.262.0.platform_connect.meta/platform_connect/)
+
+Use `addEntityField()` to add a field to the list of object fields that are returned in the signed request Record object. By default
+the list of fields includes ID. You can add fields by name or add all fields that the user has permission to view by calling
+`addEntityField('*')` .
+
+You can inspect the configured list of fields by using Canvas.EnvironmentContext. `getEntityFields()` .
+
+Example
+
+This example adds the Name and BillingAddress fields to the list of object fields. This example assumes the canvas app will appear in a
+Visualforce page that's associated with the Account page layout.
+
+```
+   Canvas.EnvironmentContext env = renderContext.getEnvironmentContext();
+
+   // Add Name and BillingAddress to fields (assumes we'll run from the Account detail page)
+
+   env.addEntityField('Name');
+
+   env.addEntityField('BillingAddress');
+
+##### addEntityFields(fieldNames)
+
+```
+
+Adds a set of fields to the list of object fields that are returned in the signed request Record object when the component appears on a
+Visualforce page that’s placed on an object.
+
+
+Apex Reference Guide EnvironmentContext Interface
+
+Signature
+
+```
+   public void addEntityFields(Set<String> fieldNames)
+
+```
+
+Parameters
+
+```
+   fieldNames
+```
+
+Type: SET<String>
+
+The set of object field names that you need to add to the list of returned fields. If an item in the set is ‘*’, all fields that the user has
+permission to view are added.
+
+Return Value
+
+Type: Void
+
+Usage
+
+When you use the `<apex:canvasApp>` component to display a canvas app on a Visualforce page, and that page is associated with
+an object (placed on the page layout, for example), you can specify fields to be returned from the related object. See the _[Canvas Developer](https://developer.salesforce.com/docs/atlas.en-us.262.0.platform_connect.meta/platform_connect/)_
+_[Guide](https://developer.salesforce.com/docs/atlas.en-us.262.0.platform_connect.meta/platform_connect/)_ for more information on the Record object.
+
+Use `addEntityFields()` to add a set of one or more fields to the list of object fields that are returned in the signed request Record
+object. By default the list of fields includes ID. You can add fields by name or add all fields that the user has permission to view by adding
+a set that includes ‘*’ as one of the strings.
+
+You can inspect the configured list of fields by using Canvas.EnvironmentContext. `getEntityFields()` .
+
+Example
+
+This example adds the Name, BillingAddress, and YearStarted fields to the list of object fields. This example assumes that the canvas app
+will appear in a Visualforce page that’s associated with the Account page layout.
+
+```
+   Canvas.EnvironmentContext env = renderContext.getEnvironmentContext();
+
+   // Add Name, BillingAddress and YearStarted to fields (assumes we'll run from the Account
+
+    detail page)
+
+   Set<String> fields = new Set<String>{'Name','BillingAddress','YearStarted'};
+
+   env.addEntityFields(fields);
+
+##### getDisplayLocation()
+
+```
+
+Retrieves the display location where the canvas app is being called from. For example, a value of Visualforce page.
+
+Signature
+
+```
+   public String getDisplayLocation()
+
+```
+
+Return Value
+
+Type: String
+
+The return value can be one of the following strings:
+
+**•** Chatter—The canvas app was called from the Chatter tab.
+
+
+Apex Reference Guide EnvironmentContext Interface
+
+**•** ChatterFeed—The canvas app was called from a Chatter canvas feed item.
+
+**•** MobileNav—The canvas app was called from the navigation menu.
+
+**•** OpenCTI—The canvas app was called from an Open CTI component.
+
+**•** PageLayout—The canvas app was called from an element within a page layout. If the displayLocation is PageLayout, one of the
+subLocation values might be returned.
+
+**•** Publisher—The canvas app was called from a canvas custom quick action.
+
+**•** ServiceDesk—The canvas app was called from a Salesforce Console component.
+
+**•** Visualforce—The canvas app was called from a Visualforce page.
+
+**•** None—The canvas app was called from the Canvas App Previewer.
+
+Usage
+
+Use this method to obtain the display location for the canvas app.
+
+##### getEntityFields()
+
+Retrieves the list of object fields that are returned in the signed request Record object when the component appears on a Visualforce
+page that’s placed on an object.
+
+Signature
+
+```
+   public List<String> getEntityFields()
+
+```
+
+Return Value
+
+Type: LIST<String>
+
+Usage
+
+When you use the `<apex:canvasApp>` component to display a canvas app on a Visualforce page, and that page is associated with
+an object (placed on the page layout, for example), you can specify fields to be returned from the related object. See the _[Canvas Developer](https://developer.salesforce.com/docs/atlas.en-us.262.0.platform_connect.meta/platform_connect/)_
+_[Guide](https://developer.salesforce.com/docs/atlas.en-us.262.0.platform_connect.meta/platform_connect/)_ for more information on the Record object.
+
+Use getEntityFields() to retrieve the list of object fields that are returned in the signed request Record object. By default the list of fields
+includes ID. The list of fields can be configured by using the Canvas.EnvironmentContext. `addEntityField(fieldName)` or
+Canvas.EnvironmentContext. `addEntityFields(fieldNames)` methods.
+
+Example
+
+This example gets the current list of object fields and retrieves each item in the list, printing each field name to the debug log.
+
+```
+   Canvas.EnvironmentContext env = renderContext.getEnvironmentContext();
+
+   List<String> entityFields = env.getEntityFields();
+
+   for (String fieldVal : entityFields) {
+
+      System.debug('Environment Context entityField: ' + fieldVal);
+
+   }
+
+```
+
+If the canvas app that’s using this lifecycle code was run from the detail page of an Account, the debug log output might look like:
+
+```
+   Environment Context entityField: Id
+
+```
+
+
+Apex Reference Guide EnvironmentContext Interface
+
+##### getLocationUrl()
+
+Retrieves the location URL of the canvas app.
+
+Signature
+
+```
+   public String getLocationUrl()
+
+```
+
+Return Value
+
+Type: String
+
+Usage
+
+Use this method to obtain the URL of the page where the user accessed the canvas app. For example, if the user accessed your app by
+clicking a link on the Chatter tab, this method returns the URL of the Chatter tab, which would be similar to
+‘https:// _`MyDomainName`_ .my.salesforce.com/_ui/core/chatter/ui/ChatterPage’.
+
+##### getParametersAsJSON()
+
+Retrieves the current custom parameters for the canvas app. Parameters are returned as a JSON string.
+
+Signature
+
+```
+   public String getParametersAsJSON()
+
+```
+
+Return Value
+
+Type: String
+
+Usage
+
+Use this method to get the current custom parameters for the canvas app. The parameters are returned in a JSON string that can be
+de-serialized by using the System.JSON. `deserializeUntyped(jsonString)` method.
+
+Custom parameters can be modified by using the Canvas.EnvironmentContext. `setParametersAsJSON(jsonString)` string.
+
+Example
+
+This example gets the current custom parameters, de-serializes them into a map, and prints the results to the debug log.
+
+```
+   Canvas.EnvironmentContext env = renderContext.getEnvironmentContext();
+
+   // Get current custom params
+
+   Map<String, Object> currentParams =
+
+      (Map<String, Object>) JSON.deserializeUntyped(env.getParametersAsJSON());
+
+   System.debug('Environment Context custom paramters: ' + currentParams);
+
+##### getSublocation()
+
+```
+
+Retrieves the display sublocation where the canvas app is being called from.
+
+
+Apex Reference Guide EnvironmentContext Interface
+
+Signature
+
+```
+   public String getSublocation()
+
+```
+
+Return Value
+
+Type: String
+
+The return value can be one of the following strings:
+
+**•** S1MobileCardFullview—The canvas app was called from a mobile card.
+
+**•** S1MobileCardPreview—The canvas app was called from a mobile card preview. The user must click the preview to open the app.
+
+**•** S1RecordHomePreview—The canvas app was called from a record detail page preview. The user must click the preview to open
+the app.
+
+**•** S1RecordHomeFullview—The canvas app was called from a page layout.
+
+Usage
+
+Use this method to obtain the display sublocation for the canvas app. Use only if the primary display location can be displayed on mobile
+devices.
+
+##### setParametersAsJSON(jsonString)
+
+Sets the custom parameters for the canvas app.
+
+Signature
+
+```
+   public void setParametersAsJSON(String jsonString)
+
+```
+
+Parameters
+
+```
+   jsonString
+```
+
+Type: String
+
+The custom parameters that you need to set, serialized into a JSON format string.
+
+Return Value
+
+Type: Void
+
+Usage
+
+Use this method to set the current custom parameters for the canvas app. The parameters must be provided in a JSON string. You can
+use the System.JSON. `serialize(objectToSerialize)` method to serialize a map into a JSON string.
+
+Setting the custom parameters will overwrite the custom parameters that are set for the current request. If you need to modify the
+current custom parameters, first get the current set of custom parameters by using `getParametersAsJSON()`, modify the retrieved
+parameter set as needed, and then use this modified set in your call to setParametersAsJSON().
+
+If the provided JSON string exceeds 32KB, a System.CanvasException will be thrown.
+
+
+### Apex Reference Guide RenderContext Interface
+
+Example
+
+This example gets the current custom parameters, adds a new `newCustomParam` parameter with a value of ‘TESTVALUE’, and sets
+the current custom parameters.
+
+```
+   Canvas.EnvironmentContext env = renderContext.getEnvironmentContext();
+
+   // Get current custom params
+
+   Map<String, Object> previousParams =
+
+      (Map<String, Object>) JSON.deserializeUntyped(env.getParametersAsJSON());
+
+   // Add a new custom param
+
+   previousParams.put('newCustomParam','TESTVALUE');
+
+   // Now replace the parameters with the current parameters plus our new custom param
+
+   env.setParametersAsJSON(JSON.serialize(previousParams));
+
+### RenderContext Interface
+
+```
+
+A wrapper interface that is used to retrieve application and environment context information.
+
+Namespace
+
+Canvas
+
+Usage
+
+Use this interface to retrieve application and environment context information for your canvas app. For this interface, you don’t need to
+create an implementation. Use the default implementation that Salesforce provides.
+
+IN THIS SECTION:
+
+#### RenderContext Methods RenderContext Methods
+
+### The following are methods for RenderContext .
+
+IN THIS SECTION:
+
+##### getApplicationContext()
+
+Retrieves the application context information.
+
+getEnvironmentContext()
+Retrieves the environment context information.
+
+##### getApplicationContext()
+
+Retrieves the application context information.
+
+
+Apex Reference Guide RenderContext Interface
+
+Signature
+
+```
+   public Canvas.ApplicationContext getApplicationContext()
+
+```
+
+Return Value
+
+Type: Canvas.ApplicationContext
+
+Usage
+
+Use this method to get the application context information for your canvas app.
+
+Example
+
+The following example implementation of the CanvasLifecycleHandler onRender() method uses the provided RenderContext to retrieve
+the application context information and then checks the namespace, version, and app URL.
+
+```
+   public void onRender(Canvas.RenderContext renderContext){
+
+      Canvas.ApplicationContext app = renderContext.getApplicationContext();
+
+      if (!'MyNamespace'.equals(app.getNamespace())){
+
+        // This application is installed, add code as needed
+
+        ...
+
+      }
+
+      // Check the application version
+
+      Double currentVersion = Double.valueOf(app.getVersion());
+
+      if (currentVersion <= 5){
+
+        // Add version specific code as needed
+
+        ...
+
+        // Tell the canvas application to operate in deprecated mode
+
+        app.setCanvasUrlPath('/canvas?deprecated=true');
+
+      }
+
+   }
+
+##### getEnvironmentContext()
+
+```
+
+Retrieves the environment context information.
+
+Signature
+
+```
+   public Canvas.EnvironmentContext getEnvironmentContext()
+
+```
+
+Return Value
+
+Type: Canvas.EnvironmentContext
+
+Usage
+
+Use this method to get the environment context information for your canvas app.
+
+
+### Apex Reference Guide Test Class
+
+Example
+
+The following example implementation of the CanvasLifecycleHandler onRender() method uses the provided RenderContext to retrieve
+the environment context information and then modifies the custom parameters.
+
+```
+   public void onRender(Canvas.RenderContext renderContext) {
+
+     Canvas.EnvironmentContext env =
+
+        renderContext.getEnvironmentContext();
+
+      // Retrieve the custom params
+
+      Map<String, Object> previousParams = (Map<String, Object>)
+
+         JSON.deserializeUntyped(env.getParametersAsJSON());
+
+      previousParams.put('param1',1);
+
+      previousParams.put('param2',3.14159);
+
+      ...
+
+      // Now, add in some opportunity record IDs
+
+      Opportunity[] o = [select id, name from opportunity];
+
+      previousParams.put('opportunities',o);
+
+      // Now, replace the parameters
+
+      env.setParametersAsJSON(JSON.serialize(previousParams));
+
+   }
+
+### Test Class
+
+```
+
+Contains methods for automated testing of your Canvas classes.
+
+Namespace
+
+Canvas
+
+Usage
+
+Use this class to test your implementation of Canvas.CanvasLifecycleHandler with mock test data. You can create a test
+Canvas.RenderContext with mock application and environment context data and use this data to verify that your CanvasLifecycleHandler
+is being invoked correctly.
+
+IN THIS SECTION:
+
+Test Constants
+The Test class provides constants that are used as keys when you set mock application and environment context data.
+
+Test Methods
+The Test class provides methods for creating test contexts and invoking your CanvasLifecycleHandler with mock data.
+
+SEE ALSO:
+
+_Canvas Developer Guide_ [: Testing Your CanvasLifecycleHandler Implementation](https://developer.salesforce.com/docs/atlas.en-us.262.0.platform_connect.meta/platform_connect/canvas_testing_your_canvaslifecyclehandler.htm)
+
+
+Apex Reference Guide Test Class
+
+#### Test Constants
+
+The Test class provides constants that are used as keys when you set mock application and environment context data.
+
+##### When you call Canvas.Test. mockRenderContext(applicationContextTestValues,
+
+`environmentContextTestValues)`, you need to provide maps of key-value pairs to represent your mock application and
+environment context data. The Test class provides static constant strings that you can use as keys for various parts of the application
+and environment context.
+
+**Constant** **Description**
+
+`KEY_CANVAS_URL` Represents the canvas app URL key in the ApplicationContext.
+
+`KEY_DEVELOPER_NAME` Represents the canvas app developer or API name key in the ApplicationContext.
+
+`KEY_DISPLAY_LOCATION` Represents the canvas app display location key in the EnvironmentContext.
+
+`KEY_LOCATION_URL` Represents the canvas app location URL key in the EnvironmentContext.
+
+`KEY_NAME` Represents the canvas app name key in the ApplicationContext.
+
+`KEY_NAMESPACE` Represents the canvas app namespace key in the ApplicationContext.
+
+`KEY_SUB_LOCATION` Represents the canvas app sublocation key in the EnvironmentContext.
+
+`KEY_VERSION` Represents the canvas app version key in the ApplicationContext.
+
+#### Test Methods
+
+The Test class provides methods for creating test contexts and invoking your CanvasLifecycleHandler with mock data.
+
+#### The following are methods for Test . All are static methods.
+
+IN THIS SECTION:
+
+##### mockRenderContext(applicationContextTestValues, environmentContextTestValues)
+
+Creates and returns a test Canvas.RenderContext based on the provided application and environment context parameters.
+
+testCanvasLifecycle(lifecycleHandler, mockRenderContext)
+Calls the Canvas test framework to invoke a CanvasLifecycleHandler with the provided RenderContext.
+
+##### mockRenderContext(applicationContextTestValues, environmentContextTestValues)
+
+Creates and returns a test Canvas.RenderContext based on the provided application and environment context parameters.
+
+Signature
+
+```
+   public static Canvas.RenderContext mockRenderContext(Map<String,String>
+
+   applicationContextTestValues, Map<String,String> environmentContextTestValues)
+
+```
+
+Parameters
+
+```
+   applicationContextTestValues
+```
+
+Type: Map<String,String>
+
+
+Apex Reference Guide Test Class
+
+Specifies a map of key-value pairs that provide mock application context data. Use constants that are provided by Canvas.Test as
+keys. If `null` is provided for this parameter, the canvas framework generates some default mock application context values.
+
+```
+   environmentContextTestValues
+```
+
+Type: Map<String,String>
+
+Specifies a map of key-value pairs that provide mock environment context data. Use constants provided by Canvas.Test as keys. If
+
+`null` is provided for this parameter, the canvas framework generates some default mock environment context values.
+
+Return Value
+
+Type: Canvas.RenderContext
+
+Usage
+
+Use this method to create a mock Canvas.RenderContext. Use the returned RenderContext in calls to
+##### Canvas.Test. testCanvasLifecycle(lifecycleHandler, mockRenderContext) for testing
+
+Canvas.CanvasLifecycleHandler implementations.
+
+Example
+
+The following example creates maps to represent mock application and environment context data and generates a test
+Canvas.RenderContext. This test RenderContext can be used in a call to
+##### Canvas.Test. testCanvasLifecycle(lifecycleHandler, mockRenderContext) .
+
+```
+   Map<String,String> appValues = new Map<String,String>();
+
+   appValues.put(Canvas.Test.KEY_NAMESPACE,'alternateNamespace');
+
+   appValues.put(Canvas.Test.KEY_VERSION,'3.0');
+
+   Map<String,String> envValues = new Map<String,String>();
+
+   envValues.put(Canvas.Test.KEY_DISPLAY_LOCATION,'Chatter');
+
+   envValues.put(Canvas.Test.KEY_LOCATION_URL,'https:// MyDomainName .my.salesforce.com/_ui/core/chatter/ui/ChatterPage');
+
+   Canvas.RenderContext mock = Canvas.Test.mockRenderContext(appValues,envValues);
+
+```
+
+SEE ALSO:
+
+_Canvas Developer Guide_ [: Testing Your CanvasLifecycleHandler Implementation](https://developer.salesforce.com/docs/atlas.en-us.262.0.platform_connect.meta/platform_connect/canvas_testing_your_canvaslifecyclehandler.htm)
+
+##### testCanvasLifecycle(lifecycleHandler, mockRenderContext)
+
+Calls the Canvas test framework to invoke a CanvasLifecycleHandler with the provided RenderContext.
+
+Signature
+
+```
+   public static Void testCanvasLifecycle(Canvas.CanvasLifecycleHandler
+
+   lifecycleHandler,Canvas.RenderContext mockRenderContext)
+
+```
+
+Parameters
+
+```
+   lifecycleHandler
+```
+
+Type: Canvas.CanvasLifecycleHandler
+
+
+Apex Reference Guide Test Class
+
+Specifies the CanvasLifecycleHandler implementation that you need to invoke.
+
+```
+   mockRenderContext
+```
+
+Type: Canvas.RenderContext
+
+Specifies the RenderContext information that you need to provide to the invoked CanvasLifecycleHandler. If `null` is provided for
+this parameter, the canvas framework generates and uses a default mock RenderContext.
+
+Return Value
+
+Type: Void
+
+Usage
+
+Use this method to invoke an implementation of Canvas.CanvasLifecycleHandler. `onRender(renderContext)` with a mock
+Canvas.RenderContext that you provide.
+
+Example
+
+The following example creates an Apex test class that uses maps to represent mock application and environment context data. The
+mock RenderContext object is then used to invoke a CanvasLifecycleHandler object. In this example, the CanvasLifecycleHandler is
+defined as MyCanvasListener, which is example implementation provided in Canvas.RenderContext.
+
+```
+   @IsTest
+
+   global class CanvasRendercontextTest {
+
+      @IsTest
+
+      static void testRenderContext(){
+
+        // Set some application context data in a Map
+
+        Map<String,String> appValues = new Map<String,String>();
+
+        appValues.put(Canvas.Test.KEY_NAMESPACE,'alternateNamespace');
+
+        appValues.put(Canvas.Test.KEY_VERSION,'3.0');
+
+        // Set some environment context data in a MAp
+
+        Map<String,String> envValues = new Map<String,String>();
+
+        envValues.put(Canvas.Test.KEY_DISPLAY_LOCATION,'Chatter');
+
+   envValues.put(Canvas.Test.KEY_LOCATION_URL,'https://MyDomainName.my.salesforce.com/_ui/core/chatter/ui/ChatterPage');
+
+        // Create a mock RenderContext using the test application and environment context
+
+    data Maps
+
+        Canvas.RenderContext mock = Canvas.Test.mockRenderContext(appValues,envValues);
+
+        // Set some custom params on the mock RenderContext
+
+   mock.getEnvironmentContext().setParametersAsJSON('{\"param1\":1,\"boolParam\":true,\"stringParam\":\"test
+
+    string\"}');
+
+        // Create a CanvasLifecycleHandler
+
+        MyCanvasListener handler = new MyCanvasListener();
+
+        // Use the mock RenderContext to invoke the CanvasLifecycleHandler
+
+        Canvas.Test.testCanvasLifecycle(handler,mock);
+
+```
+
+
+### Apex Reference Guide Canvas Exceptions
+
+```
+    }
+
+   }
+
+```
+
+SEE ALSO:
+
+_Canvas Developer Guide_ [: Testing Your CanvasLifecycleHandler Implementation](https://developer.salesforce.com/docs/atlas.en-us.262.0.platform_connect.meta/platform_connect/canvas_testing_your_canvaslifecyclehandler.htm)
+
+### Canvas Exceptions The Canvas namespace contains exception classes.
+
+All exception classes support built-in methods for returning the error message and exception type. See Exception Class and Built-In
+Exceptions.
+
+### The Canvas namespace contains this exception:
+
+**Exception** **Description**
+
+`Canvas.CanvasRenderException` Use this class in your implementation of
+Canvas.CanvasLifecycleHandler. `onRender(renderContext)` . To show
+
+an error to the user in your `onRender()` implementation, throw a
+`Canvas.CanvasRenderException`, and the canvas framework will
+render the error message to the user. This exception will be managed only
+within the `onRender()` method.
+
+Example
+
+The following example implementation of `onRender()` catches a CanvasException that was thrown because a canvas URL was set
+with a string that exceeded the maximum length. A CanvasRenderException is created and thrown to display the error to the user.
+
+```
+   public class MyCanvasListener
+
+   implements Canvas.CanvasLifecycleHandler {
+
+      public void onRender(Canvas.RenderContext renderContext) {
+
+        Canvas.ApplicationContext app = renderContext.getApplicationContext();
+
+        // Code to generate a URL string that is too long
+
+        // ...
+
+        // Try to set the canvas app URL using the invalid URL string
+
+        try {
+
+           app.setCanvasUrlPath(aUrlPathThatIsTooLong);
+
+        } catch (CanvasException e) {
+
+           // Display error to user by throwing a new CanvasRenderException
+
+           throw new Canvas.CanvasRenderException(e.getMessage());
+
+        }
+
+      }
+
+   }
+
+```
+
+[See the Canvas Developer Guide for additional examples that use CanvasRenderException.](https://developer.salesforce.com/docs/atlas.en-us.262.0.platform_connect.meta/platform_connect/)
+
+
+## Apex Reference Guide ChatterAnswers Namespace ChatterAnswers Namespace The ChatterAnswers namespace provides an interface for creating Account records. The following is the interface in the ChatterAnswers namespace.
+
+IN THIS SECTION:
+
+### AccountCreator Interface
+
+Creates Account records that will be associated with Chatter Answers users.
+
+### AccountCreator Interface
+
+Creates Account records that will be associated with Chatter Answers users.
+
+Namespace
+
+## ChatterAnswers
+
+Usage
+
+The `ChatterAnswers.AccountCreator` is specified in the `registrationClassName` attribute of a
+`chatteranswers:registration` Visualforce component. This interface is called by Chatter Answers and allows for custom
+creation of Account records used for portal users.
+
+To implement the `ChatterAnswers.AccountCreator` interface, you must first declare a class with the `implements`
+keyword as follows:
+
+```
+   public class ChatterAnswersRegistration implements ChatterAnswers.AccountCreator {
+
+```
+
+Next, your class must provide an implementation for the following method:
+
+```
+   public String createAccount(String firstname, String lastname, Id siteAdminId) {
+
+      // Your code here
+
+   }
+
+```
+
+The implemented method must be declared as `global` or `public` .
+
+IN THIS SECTION:
+
+#### AccountCreator Methods
+
+AccountCreator Example Implementation
+
+#### AccountCreator Methods
+
+### The following are methods for AccountCreator .
+
+IN THIS SECTION:
+
+createAccount(firstName, lastName, siteAdminId)
+Accepts basic user information and creates an Account record. The implementation of this method returns the account ID.
+
+
+Apex Reference Guide AccountCreator Interface
+
+##### createAccount(firstName, lastName, siteAdminId)
+
+Accepts basic user information and creates an Account record. The implementation of this method returns the account ID.
+
+Signature
+
+```
+   public String createAccount(String firstName, String lastName, Id siteAdminId)
+
+```
+
+Parameters
+
+```
+   firstName
+```
+
+Type: String
+
+The first name of the user who is registering.
+
+```
+   lastName
+```
+
+Type: String
+
+The last name of the user who is registering.
+
+```
+   siteAdminId
+```
+
+Type: ID
+
+The user ID of the Site administrator, used for notification if any exceptions occur.
+
+Return Value
+
+Type: String
+
+#### AccountCreator Example Implementation
+
+##### This is an example implementation of the ChatterAnswers.AccountCreator interface. The createAccount method
+
+implementation accepts user information and creates an Account record. The method returns a String value for the Account ID.
+
+```
+   public class ChatterAnswersRegistration implements ChatterAnswers.AccountCreator {
+
+      public String createAccount(String firstname, String lastname, Id siteAdminId) {
+
+        Account a = new Account(name = firstname + ' ' + lastname, ownerId = siteAdminId);
+
+         insert a;
+
+         return a.Id;
+
+      }
+
+   }
+
+```
+
+This example tests the code above.
+
+```
+   @isTest
+
+   private class ChatterAnswersCreateAccountTest {
+
+      static testMethod void validateAccountCreation() {
+
+        User[] user = [SELECT Id, Firstname, Lastname from User WHERE UserType='Standard'];
+
+        if (user.size() == 0) { return; }
+
+        String firstName = user[0].FirstName;
+
+        String lastName = user[0].LastName;
+
+        String userId = user[0].Id;
+
+        String accountId = new ChatterAnswersRegistration().createAccount(firstName,
+
+   lastName, userId);
+
+```
+
+
+## Apex Reference Guide CommerceBuyGrp Namespace
+
+```
+        Account acct = [SELECT name, ownerId from Account where Id =: accountId];
+
+        System.assertEquals(firstName + ' ' + lastName, acct.name);
+
+        System.assertEquals(userId, acct.ownerId);
+
+     }
+
+   }
+
+## CommerceBuyGrp Namespace The CommerceBuyGrp namespace provides classes and methods for retrieving information about the buyer groups associated with
+```
+
+a user.
+
+## The following are the classes in the CommerceBuyGrp namespace.
+
+IN THIS SECTION:
+
+### BuyerGroupEvaluationService Class The BuyerGroupEvaluationService class allows you define and execute custom business logic for dynamically assigning
+
+users to buyer groups. Unlike out-of-the-box configurations limited to account, market, or data segment-based buyer groups, this
+service supports extensibility and empowers you to implement tailored buyer group evaluation strategies. It supports both guest
+and logged-in user scenarios, enabling highly customizable and context-specific buyer group determination.
+
+BuyerGroupRequest Class
+Contains methods to retrieve account and store details used to identify the buyer groups associated with a user.
+
+BuyerGroupResponse Class
+Contains constructors and methods to retrieve the buyer groups associated with a user.
+
+SEE ALSO:
+
+_[Salesforce B2B Commerce and D2C Commerce](https://help.salesforce.com/s/articleView?id=commerce.comm_buyer_group_extension.htm&language=en_US)_ : Assign Users to Buyer Groups
+
+_[B2B Commerce and D2C Commerce Developer Guide](https://developer.salesforce.com/docs/commerce/salesforce-commerce/guide/available-extensions.html)_ : Available Domain Extensions
+
+### BuyerGroupEvaluationService Class The BuyerGroupEvaluationService class allows you define and execute custom business logic for dynamically assigning
+
+users to buyer groups. Unlike out-of-the-box configurations limited to account, market, or data segment-based buyer groups, this service
+supports extensibility and empowers you to implement tailored buyer group evaluation strategies. It supports both guest and logged-in
+user scenarios, enabling highly customizable and context-specific buyer group determination.
+
+Namespace
+
+## CommerceBuyGrp
+
+Consideration
+
+### When implementing the BuyerGroupEvaluationService, remember these key points:
+
+**•** [The number of buyer groups that can be assigned to a user is determined by the limit set in your Salesforce org. See Shopper Buyer](https://developer.salesforce.com/docs/commerce/salesforce-commerce/guide/b2b-b2c-comm-data-model-shopper-buyer-groups-accounts-limits.html)
+[Groups and Accounts Data Limits Groups.](https://developer.salesforce.com/docs/commerce/salesforce-commerce/guide/b2b-b2c-comm-data-model-shopper-buyer-groups-accounts-limits.html)
+
+
+Apex Reference Guide BuyerGroupEvaluationService Class
+
+**•** Supported for B2B stores and D2C stores with custom checkout enabled. It isn't available for stores using managed checkout. See
+[Configure Custom Checkout for a B2B or D2C Store.](https://help.salesforce.com/s/articleView?id=commerce.comm_custom_checkout.htm&language=en_US)
+
+**•** Buyer group assignments may not take effect immediately if caching is enabled. To make sure the buyer group extensibility service
+functions properly and to avoid caching-related issues, disable both the Salesforce Content Delivery Network (CDN) and Salesforce
+Edge Network.
+
+Test these changes in your sandbox org before applying them in production. Go to **My Domain Settings** and disable both options
+for enhanced domains.
+
+[See Considerations for the Salesforce CDN and Considerations for Salesforce Edge Network.](https://help.salesforce.com/s/articleView?id=platform.community_builder_cdn_considerations.htm&language=en_US)
+
+Usage
+
+#### Use the BuyerGroupEvaluationService to implement custom logic for assigning users to buyer groups. By integrating your
+
+logic with this service, you can evaluate and assign buyer groups in real time based on criteria specific to your organization.
+
+**•** Define Custom Logic—Create your own business rules to evaluate and assign users to appropriate Buyer Groups.
+
+#### • Integration with the Service—Integrate your custom logic into the BuyerGroupEvaluationService to dynamically
+
+determine buyer group membership at runtime.
+
+**•** Test and Validate—Test your implementation to ensure it behaves as expected and doesn’t introduce errors or inconsistencies in
+group assignments.
+
+Example
+
+For an example implementation of the `CommerceBuyGrp.BuyerGroupEvaluationService` [class, see Commerce Extensibility.](https://github.com/forcedotcom/commerce-extensibility/blob/main/commerce/domain/buyergroup/service/classes/BuyerGroupEvaluationServiceSample.cls)
+
+IN THIS SECTION:
+
+#### BuyerGroupEvaluationService Methods BuyerGroupEvaluationService Methods The following are methods for BuyerGroupEvaluationService .
+
+IN THIS SECTION:
+
+##### getBuyerGroupIds(request)
+
+Retrieves a list of evaluated buyer group IDs assigned to a user based on custom or predefined business logic.
+
+##### **`getBuyerGroupIds(request)`**
+
+Retrieves a list of evaluated buyer group IDs assigned to a user based on custom or predefined business logic.
+
+Signature
+
+```
+   public CommerceBuyGrp.BuyerGroupResponse
+
+   getBuyerGroupIds(CommerceBuyGrp.BuyerGroupRequest request)
+
+```
+
+
+### Apex Reference Guide BuyerGroupRequest Class
+
+Parameters
+
+```
+   request
+```
+
+Type: CommerceBuyGrp.BuyerGroupRequest
+
+Return Value
+
+Type: CommerceBuyGrp.BuyerGroupResponseCommerceBuyGrp.BuyerGroupResponse
+
+### BuyerGroupRequest Class
+
+Contains methods to retrieve account and store details used to identify the buyer groups associated with a user.
+
+Namespace
+
+CommerceBuyGrp
+
+IN THIS SECTION:
+
+#### BuyerGroupRequest Methods BuyerGroupRequest Methods
+
+### The following are methods for BuyerGroupRequest .
+
+IN THIS SECTION:
+
+##### getAccountId()
+
+Returns the account ID of a user.
+
+getStoreId()
+Returns the ID of the web store.
+
+getRequestContextParameters()
+Returns a map of user context parameters evaluated at runtime, including `isGuestUser`, `locale`, and
+`guest_uuid_essential_{siteId}` .
+
+##### **`getAccountId()`**
+
+Returns the account ID of a user.
+
+Signature
+
+```
+   public String getAccountId()
+
+```
+
+Return Value
+
+Type: String
+
+
+### Apex Reference Guide BuyerGroupResponse Class
+
+##### **`getStoreId()`**
+
+Returns the ID of the web store.
+
+Signature
+
+```
+   public String getStoreId()
+
+```
+
+Return Value
+
+Type: String
+
+##### **`getRequestContextParameters()`**
+
+Returns a map of user context parameters evaluated at runtime, including `isGuestUser`, `locale`, and
+`guest_uuid_essential_{siteId}` .
+
+Signature
+
+```
+   public Map<String,Object> getRequestContextParameters()
+
+```
+
+Return Value
+
+Type: Map<String,Object>
+
+Here's a list of context parameters to include in the request:
+
+**Name** **Type** **Description**
+
+`guest_uuid_` String Specifies the multiple key-value pair representing guest UUID
+`essential_{siteId}` cookie for each store. Generated by the client as a unique device
+identifier where `siteId` is the 15-digit ID for the site associated
+with the webstore.
+
+`isGuestUser` Boolean Indicates whether the user in context is a guest user ( `true` ) or an
+authenticated user ( `false` ).
+
+`locale` String Specifies the user's locale.
+
+### BuyerGroupResponse Class
+
+Contains constructors and methods to retrieve the buyer groups associated with a user.
+
+Namespace
+
+CommerceBuyGrp
+
+IN THIS SECTION:
+
+BuyerGroupResponse Constructors
+
+BuyerGroupResponse Methods
+
+
+Apex Reference Guide BuyerGroupResponse Class
+
+#### BuyerGroupResponse Constructors The following are constructors for BuyerGroupResponse .
+
+IN THIS SECTION:
+
+##### BuyerGroupResponse(buyerGroupIds)
+
+Creates a new instance of the `CommerceBuyGrp.BuyerGroupResponse` class using the specified `buyerGroupIds`
+payload parameter.
+
+##### BuyerGroupResponse()
+
+Creates a new instance of the `CommerceBuyGrp.BuyerGroupResponse` class.
+
+##### **`BuyerGroupResponse(buyerGroupIds)`**
+
+Creates a new instance of the `CommerceBuyGrp.BuyerGroupResponse` class using the specified `buyerGroupIds` payload
+parameter.
+
+Signature
+
+```
+   public BuyerGroupResponse(Set<String> buyerGroupIds)
+
+```
+
+Parameters
+
+```
+   buyerGroupIds
+```
+
+Type: Set<String>
+
+List of buyer group IDs for a user.
+
+##### **`BuyerGroupResponse()`**
+
+Creates a new instance of the `CommerceBuyGrp.BuyerGroupResponse` class.
+
+Signature
+
+```
+   public BuyerGroupResponse()
+
+#### BuyerGroupResponse Methods The following are methods for BuyerGroupResponse .
+
+```
+
+IN THIS SECTION:
+
+getBuyerGroupIds()
+Retrieves a list of evaluated buyer group IDs assigned to a user.
+
+setBuyerGroupIds(buyerGroupIds)
+Sets a list of evaluated buyer group IDs assigned to a user.
+
+setError(errorMessage, localizedErrorMessage)
+Sets the error message to be returned when the evaluation of buyer group IDs fails.
+
+
+Apex Reference Guide BuyerGroupResponse Class
+
+##### **`getBuyerGroupIds()`**
+
+Retrieves a list of evaluated buyer group IDs assigned to a user.
+
+Signature
+
+```
+   public Set<String> getBuyerGroupIds()
+
+```
+
+Return Value
+
+Type: Set<String>
+
+##### **`setBuyerGroupIds(buyerGroupIds)`**
+
+Sets a list of evaluated buyer group IDs assigned to a user.
+
+Signature
+
+```
+   public void setBuyerGroupIds(Set<String> buyerGroupIds)
+
+```
+
+Parameters
+
+```
+   buyerGroupIds
+```
+
+Type: Set<String>
+
+Return Value
+
+Type: void
+
+##### **`setError(errorMessage, localizedErrorMessage)`**
+
+Sets the error message to be returned when the evaluation of buyer group IDs fails.
+
+Signature
+
+```
+   public void setError(String errorMessage, String localizedErrorMessage)
+
+```
+
+Parameters
+
+```
+   errorMessage
+```
+
+Type: String
+
+The message stating the reason for the error.
+
+```
+   localizedErrorMessage
+```
+
+Type: String
+
+The translated error message.
+
+Return Value
+
+Type: void
+
+
+## Apex Reference Guide CommerceExtension Namespace CommerceExtension Namespace Use the CommerceExtension namespace to define resolution strategies for registered Commerce extensions. The following are the classes in the CommerceExtension namespace.
+
+IN THIS SECTION:
+
+### ExtensionInfo Class
+
+Contains static methods to expose extension-related context information.
+
+Resolution Class
+Resolution of a resolution strategy, which conditionally invokes default domain logic, logic provided by an extension provider, or no
+logic.
+
+ResolutionException Class
+Exception indicating a problem with the execution of a resolution strategy.
+
+ResolutionStates Enum
+Potential resolution states for a resolution strategy.
+
+ResolutionStrategy Interface
+Interface for a resolution strategy.
+
+### ExtensionInfo Class
+
+Contains static methods to expose extension-related context information.
+
+Namespace
+
+CommerceExtension on page 307
+
+Example
+
+```
+        // The Sample Extension Provider registered with developer name as
+
+        // 'tax_extension_provider_for_us' will be selected for execution for en_US locale
+
+        if(CommerceExtension.ExtensionInfo.getLocaleString() == 'en_US') {
+
+           return new CommerceExtension.Resolution('tax_extension_provider_for_us');
+
+        }
+
+        // The Sample Extension Provider registered with developer name as
+
+        // 'tax_extension_provider_for_canada' will be selected for execution for en_CA
+
+   locale
+
+        if(CommerceExtension.ExtensionInfo.getLocaleString() == 'en_CA') {
+
+          return new CommerceExtension.Resolution('tax_extension_provider_for_canada');
+
+        }
+
+        // The default Salesforce Internal Tax Api will return an empty response for German
+
+    locale
+
+        if(CommerceExtension.ExtensionInfo.getLocaleString() == 'de') {
+
+          return new CommerceExtension.Resolution(CommerceExtension.ResolutionStates.OFF);
+
+```
+
+
+Apex Reference Guide ExtensionInfo Class
+
+```
+        }
+
+```
+
+IN THIS SECTION:
+
+#### ExtensionInfo Methods ExtensionInfo Methods The following are methods for ExtensionInfo .
+
+IN THIS SECTION:
+
+##### getClientApiVersion()
+
+Returns the version number of the Client API for the extension context.
+
+##### getCustomParameterField(fieldName)
+
+Returns a custom parameter field value, if available, for the extension context.
+
+getLocaleString()
+Returns the locale for the extension context.
+
+isCustomParametersAvailable()
+Indicates whether custom parameters are available for the extension context.
+
+##### **`getClientApiVersion()`**
+
+Returns the version number of the Client API for the extension context.
+
+Signature
+
+```
+   public static Double getClientApiVersion()
+
+```
+
+Return Value
+
+Type: Double
+
+Version number of the Client API for the extension context.
+
+##### **`getCustomParameterField(fieldName)`**
+
+Returns a custom parameter field value, if available, for the extension context.
+
+Signature
+
+```
+   public static String getCustomParameterField(String fieldName)
+
+```
+
+Parameters
+
+```
+   fieldName
+```
+
+Type: String
+
+Custom parameter field name.
+
+
+### Apex Reference Guide Resolution Class
+
+Return Value
+
+Type: String
+
+Custom parameter field value for the extension context.
+
+##### **`getLocaleString()`**
+
+Returns the locale for the extension context.
+
+Signature
+
+```
+   public static String getLocaleString()
+
+```
+
+Return Value
+
+Type: String
+
+Locale for the extension context.
+
+##### **`isCustomParametersAvailable()`**
+
+Indicates whether custom parameters are available for the extension context.
+
+Signature
+
+```
+   public static Boolean isCustomParametersAvailable()
+
+```
+
+Return Value
+
+Type: Boolean
+
+Value indicating if custom parameters are available in the extension context ( `true` ) or not ( `false` ).
+
+### Resolution Class
+
+Resolution of a resolution strategy, which conditionally invokes default domain logic, logic provided by an extension provider, or no
+logic.
+
+Namespace
+
+CommerceExtension on page 307
+
+Example
+
+```
+   public class TaxServiceExtensionResolverSample extends commercestoretax.TaxService implements
+
+    CommerceExtension.ResolutionStrategy {
+
+      public CommerceExtension.Resolution resolve() {
+
+        // The Sample Extension Provider registered with developer name as
+
+   'tax_extension_provider_for_us' will be selected for execution for en_US locale
+
+        if(CommerceExtension.ExtensionInfo.getLocaleString() == 'en_US') {
+
+           return new CommerceExtension.Resolution('tax_extension_provider_for_us');
+
+```
+
+
+Apex Reference Guide Resolution Class
+
+```
+        }
+
+        // The Sample Extension Provider registered with developer name as
+
+   'tax_extension_provider_for_canada' will be selected for execution for en_CA locale
+
+        if(CommerceExtension.ExtensionInfo.getLocaleString() == 'en_CA') {
+
+          return new CommerceExtension.Resolution('tax_extension_provider_for_canada');
+
+        }
+
+        // The default Salesforce Internal Tax Api will return an empty response for German
+
+    locale
+
+        if(CommerceExtension.ExtensionInfo.getLocaleString() == 'de') {
+
+          return new CommerceExtension.Resolution(CommerceExtension.ResolutionStates.OFF);
+
+        }
+
+        // The default Salesforce Internal Tax Api will be selected for execution for all
+
+    other locales than US, Canada and Germany
+
+        return new CommerceExtension.Resolution();
+
+      }
+
+   }
+
+```
+
+IN THIS SECTION:
+
+#### Resolution Constructors
+
+Resolution Methods
+
+#### Resolution Constructors The following are constructors for Resolution .
+
+IN THIS SECTION:
+
+##### Resolution(resolutionState)
+
+Constructor that takes a CommerceExtension.ResolutionStates object as an argument.
+
+Resolution(providerName)
+Constructor that takes the name of an extension provider as an argument.
+
+Resolution()
+Default constructor for the Resolution class.
+
+##### **`Resolution(resolutionState)`**
+
+Constructor that takes a CommerceExtension.ResolutionStates object as an argument.
+
+Signature
+
+```
+   public Resolution(CommerceExtension.ResolutionStates resolutionState)
+
+```
+
+Parameters
+
+```
+   resolutionState
+```
+
+Type: CommerceExtension.ResolutionStates on page 314
+
+
+Apex Reference Guide Resolution Class
+
+Resolution state.
+
+##### **`Resolution(providerName)`**
+
+Constructor that takes the name of an extension provider as an argument.
+
+Signature
+
+```
+   public Resolution(String providerName)
+
+```
+
+Parameters
+
+```
+   providerName
+```
+
+Type: String
+
+Name of the extension provider.
+
+##### **`Resolution()`**
+
+Default constructor for the Resolution class.
+
+Signature
+
+```
+   public Resolution()
+
+#### Resolution Methods
+
+##### The following are methods for Resolution .
+
+```
+
+IN THIS SECTION:
+
+##### getProviderName()
+
+Returns the name of an extension provider.
+
+getResolutionState()
+Returns the resolution state of the resolution.
+
+##### **`getProviderName()`**
+
+Returns the name of an extension provider.
+
+Signature
+
+```
+   public String getProviderName()
+
+```
+
+Return Value
+
+Type: String
+
+Name of an extension provider.
+
+
+### Apex Reference Guide ResolutionException Class
+
+##### **`getResolutionState()`**
+
+Returns the resolution state of the resolution.
+
+Signature
+
+```
+   public CommerceExtension.ResolutionStates getResolutionState()
+
+```
+
+Return Value
+
+Type: CommerceExtension.ResolutionStates on page 314
+
+Resolution state of the resolution.
+
+### ResolutionException Class
+
+Exception indicating a problem with the execution of a resolution strategy.
+
+Namespace
+
+CommerceExtension on page 307
+
+IN THIS SECTION:
+
+#### ResolutionException Constructors
+
+ResolutionException Methods
+
+#### ResolutionException Constructors
+
+### The following are constructors for ResolutionException .
+
+IN THIS SECTION:
+
+##### ResolutionException(errorMessage, exception)
+
+Constructor that takes two arguments: an error message and an exception.
+
+ResolutionException(exception)
+Constructor that takes an exception as an argument,
+
+ResolutionException(errorMessage)
+Constructor that takes an error message as an argument.
+
+ResolutionException()
+Default constructor for the ResolutionException class.
+
+##### **`ResolutionException(errorMessage, exception)`**
+
+Constructor that takes two arguments: an error message and an exception.
+
+Signature
+
+```
+   public ResolutionException(String errorMessage, Exception exception)
+
+```
+
+
+Apex Reference Guide ResolutionException Class
+
+Parameters
+
+```
+   errorMessage
+```
+
+Type: String
+
+Error message.
+
+```
+   exception
+```
+
+[Type: Exception](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_classes_exception_methods.htm)
+
+Exception.
+
+##### **`ResolutionException(exception)`**
+
+Constructor that takes an exception as an argument,
+
+Signature
+
+```
+   public ResolutionException(Exception exception)
+
+```
+
+Parameters
+
+```
+   exception
+```
+
+[Type: Exception](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_classes_exception_methods.htm)
+
+Exception.
+
+##### **`ResolutionException(errorMessage)`**
+
+Constructor that takes an error message as an argument.
+
+Signature
+
+```
+   public ResolutionException(String errorMessage)
+
+```
+
+Parameters
+
+```
+   errorMessage
+```
+
+Type: String
+
+Error message.
+
+##### **`ResolutionException()`**
+
+Default constructor for the ResolutionException class.
+
+Signature
+
+```
+   public ResolutionException()
+
+#### ResolutionException Methods
+
+##### The following are methods for the ResolutionException class.
+
+```
+
+
+### Apex Reference Guide ResolutionStates Enum
+
+IN THIS SECTION:
+
+##### getTypeName()
+
+Returns the type of the exception.
+
+##### **`getTypeName()`**
+
+Returns the type of the exception.
+
+Signature
+
+```
+   public String getTypeName()
+
+```
+
+Return Value
+
+Type: String
+
+The type of the Exception.
+
+### ResolutionStates Enum
+
+Potential resolution states for a resolution strategy.
+
+Enum Values
+
+The following are the values of the `CommerceExtension.ResolutionStates` enum.
+
+**Value** **Description**
+
+`EXECUTE_DEFAULT` Run the default domain logic (without running extension provider logic).
+
+`EXECUTE_REGISTERED` Run the extension provider logic provided by the Apex class registered for the
+endpoint provider name.
+
+`OFF` Don’t run any domain logic (default logic or logic provided by an extension provider).
+
+### ResolutionStrategy Interface
+
+Interface for a resolution strategy.
+
+Namespace
+
+CommerceExtension on page 307
+
+Usage
+
+When you implement this interface, you can register your apex class just like an extension provider class. Your class can then conditionally
+decide how to handle each extension invocation. You can delegate to a specific extension provider, you can execute default domain
+logic, or you can execute no logic at all.
+
+
+Apex Reference Guide ResolutionStrategy Interface
+
+IN THIS SECTION:
+
+#### ResolutionStrategy Methods ResolutionStrategy Example Implementation ResolutionStrategy Methods The following are methods for ResolutionStrategy .
+
+IN THIS SECTION:
+
+##### resolve()
+
+Returns a resolution object, which indicates how the resolution strategy was resolved. The resolution indicates whether default logic,
+extension provider logic, or no logic is executed.
+
+##### **`resolve()`**
+
+Returns a resolution object, which indicates how the resolution strategy was resolved. The resolution indicates whether default logic,
+extension provider logic, or no logic is executed.
+
+Signature
+
+```
+   public CommerceExtension.Resolution resolve()
+
+```
+
+Return Value
+
+Type: CommerceExtension.Resolution on page 309
+
+Resolution object that indicates how the resolution strategy was resolved.
+
+#### ResolutionStrategy Example Implementation
+
+This is an example implementation of the `CommerceExtension.ResolutionStrategy` interface.
+
+```
+   // This sample is for the situation when different tax behaviors need to be
+
+   // implemented for different locales.
+
+   //
+
+   // These tax behaviors can be 
+   // 1. ResolutionState - EXECUTE_DEFAULT (the default Salesforce Internal Tax Api).
+
+   // 2. ResolutionState - EXECUTE_REGISTERED (extended or overridden implementations
+
+   // via the extension point from the default Salesforce Internal Tax Api)
+
+   // 3. ResolutionState - OFF (In this case, the default Salesforce Internal Tax Api
+
+   // will return an empty response).
+
+   //
+
+   // An Extension Provider is a custom apex class which extends or overrides the
+
+   // default Salesforce Internal Tax Api.
+
+   //
+
+   // An Extension Resolver is a custom apex class which selects different resolution
+
+   // states (EXECUTE_DEFAULT, EXECUTE_REGISTERED and OFF) for different locales
+
+   // to execute respective implementations (Extension Providers or the Default
+
+   // Salesforce Internal Tax Api).
+
+```
+
+
+## Apex Reference Guide CommerceOrders Namespace
+
+```
+   // Your custom apex extension providers and the resolver must be registered with
+
+   // the tax extension point and then the resolver must be registered and mapped to
+
+   // the web store via appropriate setup.
+
+   //
+
+   // You can have as many Extension Providers registered as per your use case and
+
+   // select them in your resolver for different locales.
+
+   //
+
+   // Please follow the corresponding salesforce documentation on how to use locales.
+
+   // For more information related to that, please see the corresponding documentation.
+
+   // This must implement the commercestoretax.TaxService class in order to be
+
+   // processed by the tax service flow. It must also implement the
+
+   // CommerceExtension.ResolutionStrategy in order to work as a extension resolver
+
+   // and get the different locales and resolutions.
+
+   //
+
+   public class TaxServiceExtensionResolverSample
+
+      extends commercestoretax.TaxService
+
+      implements CommerceExtension.ResolutionStrategy {
+
+      public CommerceExtension.Resolution resolve() {
+
+        // The Sample Extension Provider registered with developer name as
+
+        // 'tax_extension_provider_for_us' will be selected for execution for en_US locale
+
+        if (CommerceExtension.ExtensionInfo.getLocaleString() == 'en_US') {
+
+           return new CommerceExtension.Resolution('tax_extension_provider_for_us');
+
+        }
+
+        // The Sample Extension Provider registered with developer name as
+
+        // 'tax_extension_provider_for_canada' will be selected for execution for en_CA
+
+   locale
+
+        if (CommerceExtension.ExtensionInfo.getLocaleString() == 'en_CA') {
+
+          return new CommerceExtension.Resolution('tax_extension_provider_for_canada');
+
+        }
+
+        // The default Salesforce Internal Tax Api will return an empty response for German
+
+    locale
+
+        if (CommerceExtension.ExtensionInfo.getLocaleString() == 'de') {
+
+           return new CommerceExtension.Resolution(
+
+             CommerceExtension.ResolutionStates.OFF
+
+           );
+
+        }
+
+        // The default Salesforce Internal Tax Api will be selected for execution for
+
+        // all other locales than US, Canada and Germany
+
+        return new CommerceExtension.Resolution();
+
+      }
+
+   }
+
+## CommerceOrders Namespace The CommerceOrders namespace provides classes and methods to place orders with integrated pricing, configuration, and validation.
+
+```
+
+[See CommerceOrders namespace for more information about the available classes and methods.](https://developer.salesforce.com/docs/atlas.en-us.262.0.revenue_lifecycle_management_dev_guide.meta/revenue_lifecycle_management_dev_guide/apex_namespace_commerceorders.htm)
+
+
+## Apex Reference Guide CommercePayments Namespace CommercePayments Namespace Use the CommercePayments namespace to provide a safe and customizable platform for managing customer payments and
+
+refunds.
+
+## To review CommercePayments use cases and walkthroughs, go to Use Cases for the CommercePayments Namespace. The following are the classes in the CommercePayments namespace.
+
+IN THIS SECTION:
+
+AbstractResponse Class
+Contains the normalized response fields from payment gateways that are common to all the other gateway responses.
+
+AbstractTransactionResponse Class
+Abstract class for storing normalized information sent from payment gateways about a payment transaction. Holds the common
+response fields sent from payment gateways for authorization, sale, capture, and refund transactions.
+
+AccountType Enum
+Specifies the account type.
+
+AccountHolderType Enum
+Specifies the type of the account holder.
+
+AddressRequest Class
+Contains address request data that is sent to a gateway adapter during a service call.
+
+AlternativePaymentMethodRequest Class
+The class contains information about the alternative payment method that are required for a gateway to process the request.
+
+AlternativePaymentMethodResponse Class
+The class contains the response details of the alternative payment method.
+
+AuditParamsRequest
+
+`AuditParamsRequest` is used for audit parameters in a transaction request. This is an abstract request class that is extended
+by the `BaseRequest` class.
+
+AuthApiPaymentMethodRequest Class
+Sends information about a payment method to a gateway adapter during an authorization service call.
+
+AuthorizationRequest Class
+Sends information about an authorization request to a gateway adapter during a service call. This class extends the `BaseRequest`
+class and inherits all its methods.
+
+AuthorizationResponse Class
+Response sent by the payment gateway adapter for an authorization service.
+
+AuthorizationReversalRequest Class
+Sends information about an authorization reversal request to a gateway adapter during a service call.
+
+AuthorizationReversalResponse Class
+Response sent by the payment gateway following a payment authorization reversal service.
+
+BankType Enum
+Specifies the bank type.
+
+BankPaymentMethodRequest Class
+Sends data related to a bank payment method to a gateway adapter during a service call.
+
+
+Apex Reference Guide CommercePayments Namespace
+
+BankPaymentMethodResponse Class
+This class contains information about the bank payment method response. The gateway adapter reads the gateway response and
+generates a `BankPaymentMethodResponse`, populating the required fields to create a bank payment method.
+
+BaseApiPaymentMethodRequest Class
+Abstract class used to send information about a payment method to a gateway adapter during a service call.
+
+BaseNotification Class
+Abstract class for storing notification information sent from payment gateways.
+
+BasePaymentMethodRequest Class
+Abstract class for storing information about payment methods.
+
+BaseRequest Class
+
+`BaseRequest` is extended by all the request classes.
+
+CaptureNotification Class
+When a payment gateway sends a notification for a capture transaction, the payment gateway adapter creates the
+`CaptureNotification` object to store information about the notification.
+
+CaptureRequest Class
+Represents a capture request. This class extends the `BaseRequest` class and inherits all its methods.
+
+CaptureResponse Class
+The payment gateway adapter sends this response for the capture request type. This class extends `AbstractResponse` and
+inherits its methods.
+
+CardCategory Enum
+Defines whether the payment method represents a credit card or a debit card.
+
+CardPaymentMethodRequest Class
+Sends data related to a card payment method to a gateway adapter during a service call.
+
+CardPaymentMethodResponse Class
+This class contains details about the card payment method.
+
+CardType Enum
+Specifies the credit card issuer.
+
+CustomMetadataTypeInfo Class
+Access information about custom metadata. The `PaymentGatewayAdapter` can send `CustomMetadataTypeInfo` to
+transaction requests through the response object’s `SalesforceResultCodeInfo` .
+
+EnhancedPaymentDataInput Class
+Sends enhanced payment data, including Level 2 and Level 3 fields, to the gateway adapter as part of the service call.
+
+GatewayErrorResponse Class
+Use to respond with an error indication following errors from the `PaymentGateway` adapter, such as request-forbidden responses,
+custom validation errors, or expired API tokens.
+
+GatewayNotificationResponse Class
+When the payment gateway sends a notification to the payments platform, the platform responds with a
+`GatewayNotificationResponse` indicating whether the platform succeeded or failed at receiving the notification.
+
+GatewayResponse Interface
+Generic payment gateway response interface. This class extends the `CaptureResponse` on page 398,
+`AbstractTransactionResponse` on page 324, and `AbstractResponse` on page 320 classes and inherits all their
+properties. It has no unique methods or parameters.
+
+
+Apex Reference Guide CommercePayments Namespace
+
+NotificationClient Class
+Communicates with the payment platform regarding the gateway’s notification.
+
+NotificationSaveResult Class
+Contains the result of the payment platform’s attempt to record data from the gateway’s notification.
+
+NotificationStatus Enum
+Shows whether the payments platform successfully received the notification from the gateway.
+
+PaymentGatewayAdapter Interface
+
+`PaymentGatewayAdapters` can implement this interface in order to process requests.
+
+PaymentGatewayAsyncAdapter Interface
+Implement the interface to allow customers to process payments asynchronously.
+
+PaymentGatewayContext Class
+Wraps the information related to a payment request.
+
+PaymentGatewayNotificationContext Class
+Wraps the information related to a gateway notification.
+
+PaymentGatewayNotificationRequest Class
+Contains the notification request data from the gateway.
+
+PaymentMethodDetailsResponse Class
+This class contains the details about the payment method.
+
+LineItemInput Class
+Sends the list of individual line items associated with the payment to the gateway adapter.
+
+PaymentMethodIdType Enum
+Specifies the ID of the payment method type.
+
+PaymentMethodTokenizationRequest Class
+Stores data about a request to tokenize a card payment method. The tokenization process occurs in the payment gateway. This
+process replaces sensitive customer data, such as a card number or CVV, with unique identification symbols. The symbols are used
+while the data is handled by Salesforce, the payment gateway, and the customer bank, allowing Salesforce to store the token without
+storing sensitive customer data.
+
+PaymentMethodTokenizationResponse Class
+Gateway response sent by payment gateway adapters for the payment method tokenization request. The response includes the
+payment method’s token ID value.
+
+PaymentsHttp Class
+Makes an HTTP request to start the interaction with the payment gateway.
+
+PostAuthApiPaymentMethodRequest Class
+Sends information about a payment method to a gateway adapter during a postauthorization service call.
+
+PostAuthorizationRequest Class
+Sends information about a postauthorization request to a gateway adapter during a service call.
+
+PostAuthorizationResponse Class
+Response sent by the payment gateway adapter for a postauthorization service.
+
+ReferencedRefundNotification Class
+When a payment gateway sends a notification for a refund transaction, the payment gateway adapter creates the
+`ReferencedRefundNotification` object to store information about notification.
+
+
+### Apex Reference Guide AbstractResponse Class
+
+ReferencedRefundRequest
+Access information about the referenced refund requests. Extends the `RefundRequest` class.
+
+ReferencedRefundResponse Class
+The payment gateway adapter sends this response for the `ReferencedRefund` request type.
+
+RefundRequest Class
+Sends data related to a refund to the payment gateway adapter.
+
+RequestType Enum
+Defines the type of payment transaction request made to the payment gateway.
+
+RetryCategory Enum
+Specifies the retry category.
+
+RetryDecision Enum
+Specifies the retry decision.
+
+SaleApiPaymentMethodRequest Class
+Sends data related to a card payment method to a gateway adapter during a sale service call.
+
+SaleNotification Class
+When a payment gateway sends a notification for a sale payment, the payment gateway adapter creates the `SaleNotification`
+object to store information about notification.
+
+SaleRequest Class
+Stores information about a sales request.
+
+SaleResponse Class
+Response sent by payment gateway adapters for a sales service.
+
+SalesforceResultCode Enum
+Defines the gateway call status values in Salesforce based on the call status values that the payment gateway returned.
+
+SalesforceResultCodeInfo
+Stores Salesforce result code information from payment gateway adapters.
+
+StandardEntryClassCode Enum
+Specifies the three-letter code that identifies the type of electronic payment transaction being processed within the Automated
+Clearing House (ACH) network.
+
+TokenizeNotification Class
+When a payment gateway sends a notification for a payment method tokenization, the payment gateway adapter creates the
+`TokenizeNotification` object to store information about notification.
+
+### AbstractResponse Class
+
+Contains the normalized response fields from payment gateways that are common to all the other gateway responses.
+
+Namespace
+
+CommercePayments
+
+
+Apex Reference Guide AbstractResponse Class
+
+Usage
+
+You must specify the `CommercePayments` namespace when creating an instance of this class. The constructor of this class takes
+no arguments. For example:
+
+```
+   CommercePayments.AbstractResponse abr = new CommercePayments.AbstractResponse();
+
+```
+
+This class can’t be instantiated on its own. This class implements the GatewayResponse class. Other GatewayResponse classes extend
+this class to inherit common properties.
+
+IN THIS SECTION:
+
+#### AbstractResponse Methods AbstractResponse Methods The following are methods for AbstractResponse .
+
+IN THIS SECTION:
+
+##### setGatewayAvsCode(gatewayAvsCode)
+
+Sets the AVS (address verification system) result code information that the gateway returned. Maximum length of 64 characters.
+
+setGatewayDate(gatewayDate)
+Sets the date that the transaction occurred. Some gateways don’t send this value.
+
+setGatewayMessage(gatewayMessage)
+Sets error messages that the gateway returned for the payment request. Maximum length of 255 characters.
+
+setGatewayResultCode(gatewayResultCode)
+Sets a gateway-specific result code. The code may be mapped to a Salesforce-specific result code. Maximum length of 64 characters.
+
+setGatewayResultCodeDescription(gatewayResultCodeDescription)
+Sets a description of the gateway-specific result code that a payment gateway returned. Maximum length of 1000 characters.
+
+setSalesforceResultCodeInfo(salesforceResultCodeInfo)
+Sets the Salesforce-specific result code information. Payment gateways have many response codes for payment calls. Salesforce
+uses the result code information to map payment gateway codes to a predefined set of standard Salesforce result codes.
+
+setRetryCategory(retryCategory)
+Sets the retry category returned by the payment gateway for the failed payment in a batch flow.
+
+setRetryDecision(retryDecision)
+Sets the retry decision.
+
+##### setGatewayAvsCode(gatewayAvsCode)
+
+Sets the AVS (address verification system) result code information that the gateway returned. Maximum length of 64 characters.
+
+Signature
+
+```
+   global void setGatewayAvsCode(String gatewayAvsCode)
+
+```
+
+
+Apex Reference Guide AbstractResponse Class
+
+Parameters
+
+```
+   gatewayAvsCode
+```
+
+Type: String
+
+Code sent by gateways that use an address verification system.
+
+Return Value
+
+Type: void
+
+##### setGatewayDate(gatewayDate)
+
+Sets the date that the transaction occurred. Some gateways don’t send this value.
+
+Signature
+
+```
+   global void setGatewayDate(Datetime gatewayDate)
+
+```
+
+Parameters
+
+```
+   gatewayDate
+```
+
+Type: Datetime
+
+Date and time of the gateway communication.
+
+Return Value
+
+Type: void
+
+##### setGatewayMessage(gatewayMessage)
+
+Sets error messages that the gateway returned for the payment request. Maximum length of 255 characters.
+
+Signature
+
+```
+   global void setGatewayMessage(String gatewayMessage)
+
+```
+
+Parameters
+
+```
+   gatewayMessage
+```
+
+Type: String
+
+Information on error messages sent from the gateway.
+
+Return Value
+
+Type: void
+
+##### setGatewayResultCode(gatewayResultCode)
+
+Sets a gateway-specific result code. The code may be mapped to a Salesforce-specific result code. Maximum length of 64 characters.
+
+
+Apex Reference Guide AbstractResponse Class
+
+Signature
+
+```
+   global void setGatewayResultCode(String gatewayResultCode)
+
+```
+
+Parameters
+
+```
+   gatewayResultCode
+```
+
+Type: String
+
+Gateway-specific result code. Must be used to map a Salesforce-specific result code.
+
+Return Value
+
+Type: void
+
+##### setGatewayResultCodeDescription(gatewayResultCodeDescription)
+
+Sets a description of the gateway-specific result code that a payment gateway returned. Maximum length of 1000 characters.
+
+Signature
+
+```
+   global void setGatewayResultCodeDescription(String gatewayResultCodeDescription)
+
+```
+
+Parameters
+
+```
+   gatewayResultCodeDescription
+```
+
+Type: String
+
+Description of the gateway’s result code. Use this field to learn more about why the gateway returned a certain result code.
+
+Return Value
+
+Type: void
+
+##### setSalesforceResultCodeInfo(salesforceResultCodeInfo)
+
+Sets the Salesforce-specific result code information. Payment gateways have many response codes for payment calls. Salesforce uses
+the result code information to map payment gateway codes to a predefined set of standard Salesforce result codes.
+
+Signature
+
+```
+   global void setSalesforceResultCodeInfo(commercepayments.SalesforceResultCodeInfo
+
+   salesforceResultCodeInfo)
+
+```
+
+Parameters
+
+```
+   salesforceResultCodeInfo
+```
+
+Type: commercepayments.SalesforceResultCodeInfo on page 519
+
+Description of the Salesforce result code value.
+
+
+### Apex Reference Guide AbstractTransactionResponse Class
+
+Return Value
+
+Type: void
+
+##### **`setRetryCategory(retryCategory)`**
+
+Sets the retry category returned by the payment gateway for the failed payment in a batch flow.
+
+Signature
+
+```
+   public void setRetryCategory(commercepayments.RetryCategory retryCategory)
+
+```
+
+Parameters
+
+```
+   retryCategory
+```
+
+Type: commercepayments.RetryCategory
+
+Specifies the payment failure category used to determine retry eligibility.
+
+Return Value
+
+Type: void
+
+##### **`setRetryDecision(retryDecision)`**
+
+Sets the retry decision.
+
+Signature
+
+```
+   public void setRetryDecision(commercepayments.RetryDecision retryDecision)
+
+```
+
+Parameters
+
+```
+   retryDecision
+```
+
+Type: commercepayments.RetryDecision
+
+Determines whether the payment operation can be retried based on the retry category.
+
+Return Value
+
+Type: void
+
+### AbstractTransactionResponse Class
+
+Abstract class for storing normalized information sent from payment gateways about a payment transaction. Holds the common response
+fields sent from payment gateways for authorization, sale, capture, and refund transactions.
+
+Namespace
+
+CommercePayments
+
+
+Apex Reference Guide AbstractTransactionResponse Class
+
+Usage
+
+Specify the `CommercePayments` namespace when creating an instance of this class. The constructor of this class takes no arguments.
+For example:
+
+```
+   CommercePayments.AbstractTransactionResponse atr = new
+
+   CommercePayments.AbstractTransactionResponse();
+
+```
+
+IN THIS SECTION:
+
+#### AbstractTransactionResponse Methods AbstractTransactionResponse Methods The following are methods for AbstractTransactionResponse .
+
+IN THIS SECTION:
+
+##### setAmount(amount)
+
+Sets the transaction amount. Must be a non-negative value.
+
+setGatewayAvsCode(gatewayAvsCode)
+Sets the AVS (address verification system) result code that the gateway returned. Maximum length of 64 characters.
+
+setGatewayDate(gatewayDate)
+Sets the date that the notification occurred. Some gateways don’t send this value.
+
+setGatewayMessage(gatewayMessage)
+Sets error messages that the gateway returned for the notification request. Maximum length of 255 characters.
+
+setGatewayReferenceDetails(gatewayReferenceDetails)
+Sets the payment gateway’s reference details.
+
+setGatewayReferenceNumber(gatewayReferenceNumber)
+Sets the payment gateway’s reference number.
+
+setGatewayResultCode(gatewayResultCode)
+Sets a gateway-specific result code. You can map the result code to a Salesforce-specific result code. Maximum length of 64 characters.
+
+setGatewayResultCodeDescription(gatewayResultCodeDescription)
+Sets a description of the gateway-specific result code that a payment gateway returned. Maximum length of 1000 characters.
+
+setSalesforceResultCodeInfo(salesforceResultCodeInfo)
+Sets the Salesforce-specific result code information.
+
+##### setAmount(amount)
+
+Sets the transaction amount. Must be a non-negative value.
+
+Signature
+
+```
+   global void setAmount(Double amount)
+
+```
+
+
+Apex Reference Guide AbstractTransactionResponse Class
+
+Parameters
+
+```
+   amount
+```
+
+Type: Double
+
+The amount of the transaction.
+
+Return Value
+
+Type: void
+
+##### setGatewayAvsCode(gatewayAvsCode)
+
+Sets the AVS (address verification system) result code that the gateway returned. Maximum length of 64 characters.
+
+Signature
+
+```
+   global void setGatewayAvsCode(String gatewayAvsCode)
+
+```
+
+Parameters
+
+```
+   gatewayAvsCode
+```
+
+Type: String
+
+Used to verify the address mapped to a payment method when the payments platform requests tokenization from the payment
+gateway.
+
+Return Value
+
+Type: void
+
+##### setGatewayDate(gatewayDate)
+
+Sets the date that the notification occurred. Some gateways don’t send this value.
+
+Signature
+
+```
+   global void setGatewayDate(Datetime gatewayDate)
+
+```
+
+Parameters
+
+```
+   gatewayDate
+```
+
+Type: Datetime
+
+The date that the transaction occurred.
+
+Return Value
+
+Type: void
+
+##### setGatewayMessage(gatewayMessage)
+
+Sets error messages that the gateway returned for the notification request. Maximum length of 255 characters.
+
+
+Apex Reference Guide AbstractTransactionResponse Class
+
+Signature
+
+```
+   global void setGatewayMessage(String gatewayMessage)
+
+```
+
+Parameters
+
+```
+   gatewayMessage
+```
+
+Type: String
+
+The message that the gateway returned with the transaction request. Contains additional information about the transaction.
+
+Return Value
+
+Type: void
+
+##### setGatewayReferenceDetails(gatewayReferenceDetails)
+
+Sets the payment gateway’s reference details.
+
+Signature
+
+```
+   global void setGatewayReferenceDetails(String gatewayReferenceDetails)
+
+```
+
+Parameters
+
+```
+   gatewayReferenceDetails
+```
+
+Type: String
+
+Provides information about the gateway communication.
+
+Return Value
+
+Type: void
+
+##### setGatewayReferenceNumber(gatewayReferenceNumber)
+
+Sets the payment gateway’s reference number.
+
+Signature
+
+```
+   global void setGatewayReferenceNumber(String gatewayReferenceNumber)
+
+```
+
+Parameters
+
+```
+   gatewayReferenceNumber
+```
+
+Type: String
+
+Unique transaction ID created by the payment gateway.
+
+Return Value
+
+Type: void
+
+
+Apex Reference Guide AbstractTransactionResponse Class
+
+##### setGatewayResultCode(gatewayResultCode)
+
+Sets a gateway-specific result code. You can map the result code to a Salesforce-specific result code. Maximum length of 64 characters.
+
+Signature
+
+```
+   global void setGatewayResultCode(String gatewayResultCode)
+
+```
+
+Parameters
+
+```
+   gatewayResultCode
+```
+
+Type: String
+
+Gateway-specific result code. Must be mapped to a Salesforce-specific result code.
+
+Return Value
+
+Type: void
+
+##### setGatewayResultCodeDescription(gatewayResultCodeDescription)
+
+Sets a description of the gateway-specific result code that a payment gateway returned. Maximum length of 1000 characters.
+
+Signature
+
+```
+   global void setGatewayResultCodeDescription(String gatewayResultCodeDescription)
+
+```
+
+Parameters
+
+```
+   gatewayResultCodeDescription
+```
+
+Type: String
+
+Provides additional information about the result code and why the gateway returned the specific code. Descriptions vary between
+different gateways.
+
+Return Value
+
+Type: void
+
+##### setSalesforceResultCodeInfo(salesforceResultCodeInfo)
+
+Sets the Salesforce-specific result code information.
+
+Signature
+
+```
+   global void setSalesforceResultCodeInfo(commercepayments.SalesforceResultCodeInfo
+
+   salesforceResultCodeInfo)
+
+```
+
+Parameters
+
+```
+   salesforceResultCodeInfo
+```
+
+Type: commercepayments.SalesforceResultCodeInfo on page 519
+
+
+### Apex Reference Guide AccountType Enum
+
+Payment gateways have many response codes for payment calls. Salesforce uses the result code information to map payment
+gateway codes to a predefined set of standard Salesforce result codes.
+
+Return Value
+
+Type: void
+
+### AccountType Enum
+
+Specifies the account type.
+
+Enum Values
+
+The following are the values of the `commercepayments.AccountType` enum.
+
+**Value** **Description**
+
+```
+   Checking
+
+   Savings
+
+### AccountHolderType Enum
+
+```
+
+Specifies the type of the account holder.
+
+Enum Values
+
+The following are the values of the `commercepayments.AccountHolderType` enum.
+
+**Value** **Description**
+
+```
+   Business
+
+   Individual
+
+### AddressRequest Class
+
+```
+
+Contains address request data that is sent to a gateway adapter during a service call.
+
+Namespace
+
+CommercePayments
+
+Usage
+
+Contains information about the payment method’s address. Use this information in authorization, sale, and tokenization requests. The
+payment gateway adapter uses information in an AddressRequest object to construct a JSON request to send to the payment gateway.
+
+The constructor of this class takes no arguments. For example:
+
+
+Apex Reference Guide AddressRequest Class
+
+```
+   CommercePayments.AddressRequest adr = new CommercePayments.AddressRequest();
+
+```
+
+IN THIS SECTION:
+
+#### AddressRequest Constructors
+
+AddressRequest Properties
+
+AddressRequest Methods
+
+#### AddressRequest Constructors The following are constructors for AddressRequest .
+
+IN THIS SECTION:
+
+##### AddressRequest(street, city, state, country, postalCode)
+
+Constructs a sample address. This constructor is intended for test usage and throws an exception if used outside of the Apex test
+context.
+
+##### AddressRequest(street, city, state, country, postalCode)
+
+Constructs a sample address. This constructor is intended for test usage and throws an exception if used outside of the Apex test context.
+
+Signature
+
+```
+   global AddressRequest(String street, String city, String state, String country, String
+
+   postalCode)
+
+```
+
+Parameters
+
+```
+   street
+```
+
+Type: String
+
+Street for the payment method's address.
+
+```
+   city
+```
+
+Type: String
+
+City for the payment method's address.
+
+```
+   state
+```
+
+Type: String
+
+State for the payment method's address.
+
+```
+   country
+```
+
+Type: String
+
+Country for the payment method's address.
+
+```
+   postalCode
+```
+
+Type: String
+
+Postal code for the payment method's address.
+
+
+Apex Reference Guide AddressRequest Class
+
+#### AddressRequest Properties The following are properties for AddressRequest .
+
+IN THIS SECTION:
+
+##### city
+
+City of the payment method address.
+
+##### companyName
+
+Company name of the payment method address.
+
+##### country
+
+Country for the payment method address.
+
+postalCode
+Postal code for the payment method address.
+
+state
+State for the payment method address.
+
+street
+Street for the payment method address.
+
+##### city
+
+City of the payment method address.
+
+Signature
+
+```
+   global String city {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### companyName
+
+Company name of the payment method address.
+
+Signature
+
+```
+   global String companyName {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### country
+
+Country for the payment method address.
+
+
+Apex Reference Guide AddressRequest Class
+
+Signature
+
+```
+   global String country {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### postalCode
+
+Postal code for the payment method address.
+
+Signature
+
+```
+   global String postalCode {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### state
+
+State for the payment method address.
+
+Signature
+
+```
+   global String state {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### street
+
+Street for the payment method address.
+
+Signature
+
+```
+   global String street {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+#### AddressRequest Methods The following are methods for AddressRequest .
+
+
+Apex Reference Guide AddressRequest Class
+
+IN THIS SECTION:
+
+##### equals(obj)
+
+Maintains the integrity of lists of type `AddressRequest` by determining the equality of external objects in a list. This method
+is dynamic and is based on the equals method in Java.
+
+##### hashCode()
+
+Maintains the integrity of lists of type `AddressRequest` .
+
+##### toString()
+
+Converts a date to a string.
+
+##### equals(obj)
+
+Maintains the integrity of lists of type `AddressRequest` by determining the equality of external objects in a list. This method is
+dynamic and is based on the equals method in Java.
+
+Signature
+
+```
+   global Boolean equals(Object obj)
+
+```
+
+Parameters
+
+```
+   obj
+```
+
+Type: Object
+
+External object whose key is to be validated.
+
+Return Value
+
+Type: Boolean
+
+##### hashCode()
+
+Maintains the integrity of lists of type `AddressRequest` .
+
+Signature
+
+```
+   global Integer hashCode()
+
+```
+
+Return Value
+
+Type: Integer
+
+##### toString()
+
+Converts a date to a string.
+
+Signature
+
+```
+   global String toString()
+
+```
+
+
+### Apex Reference Guide AlternativePaymentMethodRequest Class
+
+Return Value
+
+Type: String
+
+### AlternativePaymentMethodRequest Class
+
+The class contains information about the alternative payment method that are required for a gateway to process the request.
+
+Namespace
+
+CommercePayments
+
+Example
+
+```
+   commercepayments.PostAuthApiPaymentMethodRequest apiPaymentMethod
+
+   =(commercepayments.PostAuthApiPaymentMethodRequest) postAuthRequest.paymentMethod;
+
+   commercepayments.AlternativePaymentMethodRequest alternativePaymentMethod=
+
+   (commercepayments.AlternativePaymentMethodRequest) apiPaymentMethod.alternativePaymentMethod;
+
+   String gatewayToken = (String)alternativePaymentMethod.gatewayToken;
+
+   String gatewayTokenDetails = (String)alternativePaymentMethod.gatewayTokenDetails;
+
+   String name = (String)alternativePaymentMethod.name;
+
+   String accountId = (String)alternativePaymentMethod.accountId;
+
+   String email = (String)alternativePaymentMethod.email;
+
+```
+
+IN THIS SECTION:
+
+#### AlternativePaymentMethodRequest Constructors
+
+AlternativePaymentMethodRequest Properties
+
+AlternativePaymentMethodRequest Methods
+
+#### AlternativePaymentMethodRequest Constructors
+
+### The following are constructors for AlternativePaymentMethodRequest .
+
+IN THIS SECTION:
+
+##### AlternativePaymentMethodRequest(gatewayToken)
+
+Creates a new instance of the `CommercePayments.AlternativePaymentMethodRequest` class.
+
+##### **`AlternativePaymentMethodRequest(gatewayToken)`**
+
+Creates a new instance of the `CommercePayments.AlternativePaymentMethodRequest` class.
+
+Signature
+
+```
+   public AlternativePaymentMethodRequest(String gatewayToken)
+
+```
+
+
+Apex Reference Guide AlternativePaymentMethodRequest Class
+
+Parameters
+
+```
+   gatewayToken
+```
+
+Type: String
+
+A unique, alphanumeric ID, called a token, that a payment gateway generates when it first processes a payment. The token replaces
+the actual payment data so that the data is kept secure. This token is stored as encrypted text, and can be used for recurring payments.
+
+#### AlternativePaymentMethodRequest Properties The following are properties for AlternativePaymentMethodRequest .
+
+IN THIS SECTION:
+
+##### accountId
+
+Salesforce account ID to which this payment method is linked.
+
+##### email
+
+Email address of the card holder.
+
+gatewayToken
+A unique, alphanumeric ID, that a payment gateway generates when it first processes a payment.
+
+gatewayTokenDetails
+Information about the gateway token.
+
+name
+Name that you assign to the PaymentMethod object.
+
+##### **`accountId`**
+
+Salesforce account ID to which this payment method is linked.
+
+Signature
+
+```
+   public String accountId {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### **`email`**
+
+Email address of the card holder.
+
+Signature
+
+```
+   public String email {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+
+Apex Reference Guide AlternativePaymentMethodRequest Class
+
+##### **`gatewayToken`**
+
+A unique, alphanumeric ID, that a payment gateway generates when it first processes a payment.
+
+The token replaces the actual payment data so that the data is kept secure. This token is stored as encrypted text, and can be used for
+recurring payments.
+
+Signature
+
+```
+   public String gatewayToken {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### **`gatewayTokenDetails`**
+
+Information about the gateway token.
+
+Signature
+
+```
+   public String gatewayTokenDetails {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### **`name`**
+
+Name that you assign to the PaymentMethod object.
+
+Signature
+
+```
+   public String name {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+#### AlternativePaymentMethodRequest Methods The following are methods for AlternativePaymentMethodRequest .
+
+IN THIS SECTION:
+
+equals(obj)
+#### Maintains the integrity of lists of type AlternativePaymentMethodRequest by determining the equality of external
+
+objects in a list. This method is dynamic and based on the equals method in Java.
+
+hashCode()
+#### Maintains the integrity of lists of type AlternativePaymentMethodRequest by determining the uniqueness of the external
+
+object records in a list.
+
+
+### Apex Reference Guide AlternativePaymentMethodResponse Class
+
+##### toString()
+
+Converts a date to a string.
+
+##### **`equals(obj)`**
+
+Maintains the integrity of lists of type `AlternativePaymentMethodRequest` by determining the equality of external objects
+in a list. This method is dynamic and based on the equals method in Java.
+
+Signature
+
+```
+   public Boolean equals(Object obj)
+
+```
+
+Parameters
+
+```
+   obj
+```
+
+Type: Object
+
+External object whose key is to be validated.
+
+Return Value
+
+Type: Boolean
+
+##### **`hashCode()`**
+
+Maintains the integrity of lists of type `AlternativePaymentMethodRequest` by determining the uniqueness of the external
+object records in a list.
+
+Signature
+
+```
+   public Integer hashCode()
+
+```
+
+Return Value
+
+Type: Integer
+
+##### **`toString()`**
+
+Converts a date to a string.
+
+Signature
+
+```
+   public String toString()
+
+```
+
+Return Value
+
+Type: String
+
+### AlternativePaymentMethodResponse Class
+
+The class contains the response details of the alternative payment method.
+
+
+Apex Reference Guide AlternativePaymentMethodResponse Class
+
+Namespace
+
+CommercePayments
+
+Example
+
+```
+   commercepayments.AlternativePaymentMethodResponse response = new
+
+   commercepayments.AlternativePaymentMethodResponse();
+
+   response.setEmail('alternativePaymentMethod');
+
+   response.setEmail('foo@foo.com');
+
+   response.setGatewayToken('NMoPoIOnTZSaRaWcV7gUUXe');
+
+   response.setGatewayTokenDetails('gateway token details');
+
+```
+
+IN THIS SECTION:
+
+#### AlternativePaymentMethodResponse Methods AlternativePaymentMethodResponse Methods The following are methods for AlternativePaymentMethodResponse .
+
+IN THIS SECTION:
+
+##### setAccountId(accountId)
+
+Sets the ID of the Salesforce payments account to which the payment method is linked.
+
+setComments(comments)
+Sets the notes about the payment method added by users.
+
+setEmail(email)
+Sets the email ID of the card holder.
+
+setGatewayToken(gatewayToken)
+Sets the token ID that a payment gateway generates when it first processes a payment.
+
+setGatewayTokenDetails(gatewayTokenDetails)
+Sets the details about the payment gateway token.
+
+setName(name)
+Sets the name that is assigned to the PaymentMethod object.
+
+##### **`setAccountId(accountId)`**
+
+Sets the ID of the Salesforce payments account to which the payment method is linked.
+
+Signature
+
+```
+   public void setAccountId(Id accountId)
+
+```
+
+
+Apex Reference Guide AlternativePaymentMethodResponse Class
+
+Parameters
+
+```
+   accountId
+```
+
+Type: Id
+
+Salesforce payments account ID.
+
+Return Value
+
+Type: void
+
+##### **`setComments(comments)`**
+
+Sets the notes about the payment method added by users.
+
+Signature
+
+```
+   public void setComments(String comments)
+
+```
+
+Parameters
+
+```
+   comments
+```
+
+Type: String
+
+Notes about the payment method added by users, maximum 1000 characters.
+
+Return Value
+
+Type: void
+
+##### **`setEmail(email)`**
+
+Sets the email ID of the card holder.
+
+Signature
+
+```
+   public void setEmail(String email)
+
+```
+
+Parameters
+
+```
+   email
+```
+
+Type: String
+
+Email ID of the card holder.
+
+Return Value
 
 Type: void
 
 ##### **`setGatewayToken(gatewayToken)`**
 
 Sets the token ID that a payment gateway generates when it first processes a payment.
+
+
+Apex Reference Guide AlternativePaymentMethodResponse Class
 
 Signature
 
@@ -37,9 +10458,6 @@ Signature
    public void setGatewayTokenDetails(String gatewayTokenDetails)
 
 ```
-
-
-### Apex Reference Guide AuditParamsRequest
 
 Parameters
 
@@ -80,7 +10498,8 @@ Return Value
 
 Type: void
 
-### AuditParamsRequest AuditParamsRequest is used for audit parameters in a transaction request. This is an abstract request class that is extended by
+
+### Apex Reference Guide AuditParamsRequest AuditParamsRequest AuditParamsRequest is used for audit parameters in a transaction request. This is an abstract request class that is extended by
 
 the `BaseRequest` class.
 
@@ -96,27 +10515,21 @@ and phone number. This class can't be instantiated on its own. All `CommercePaym
 
 IN THIS SECTION:
 
-### AuditParamsRequest Constructors AuditParamsRequest Properties
-
-
-#### Apex Reference Guide AuditParamsRequest AuditParamsRequest Constructors The following are constructors for AuditParamsRequest .
+### AuditParamsRequest Constructors AuditParamsRequest Properties AuditParamsRequest Constructors The following are constructors for AuditParamsRequest .
 
 IN THIS SECTION:
 
-##### AuditParamsRequest(email, macAddress, ipAddress, phone)
+### AuditParamsRequest(email, macAddress, ipAddress, phone)
 
 This constructor is intended for test usage and throws an exception if used outside of the Apex test context.
 
-##### AuditParamsRequest(email, macAddress, ipAddress, phone)
+### AuditParamsRequest(email, macAddress, ipAddress, phone)
 
 This constructor is intended for test usage and throws an exception if used outside of the Apex test context.
 
 Signature
 
-```
-   AuditParamsRequest(String email, String macAddress, String ipAddress, String phone)
-
-```
+### `AuditParamsRequest(String email, String macAddress, String ipAddress, String phone)`
 
 Parameters
 
@@ -144,9 +10557,10 @@ Type: String
 
 The customer’s IP address. Gateways often use this data in risk checks.
 
-```
-   phone
-```
+
+#### Apex Reference Guide AuditParamsRequest
+
+##### _`phone`_
 
 Type: String
 
@@ -156,20 +10570,21 @@ Phone number of the client that initiated the request.
 
 IN THIS SECTION:
 
-email
+##### email
+
 Email of the client that initiated the request.
 
-ipAddress
+##### ipAddress
+
 The customer’s IP address. Gateways often use this data in risk checks.
 
-macAddress
+##### macAddress
+
 Mac address of the customer’s device. Gateways often use this data in risk checks.
 
-phone
+##### phone
+
 Phone number of the client that initiated the request.
-
-
-### Apex Reference Guide AuthApiPaymentMethodRequest Class
 
 ##### email
 
@@ -199,6 +10614,9 @@ Type: String
 
 Phone number of the client that initiated the request.
 
+
+### Apex Reference Guide AuthApiPaymentMethodRequest Class
+
 Property Value
 
 Type: String
@@ -219,26 +10637,27 @@ An object of this class is available through the `paymentMethod` field on the `A
 
 IN THIS SECTION:
 
-AuthApiPaymentMethodRequest Constructors
+#### AuthApiPaymentMethodRequest Constructors
 
 AuthApiPaymentMethodRequest Properties
 
+#### AuthApiPaymentMethodRequest Constructors
 
-Apex Reference Guide AuthApiPaymentMethodRequest Class
-
-#### AuthApiPaymentMethodRequest Constructors The following are constructors for AuthApiPaymentMethodRequest .
+### The following are constructors for AuthApiPaymentMethodRequest .
 
 IN THIS SECTION:
 
-##### AuthApiPaymentMethodRequest(cardPaymentMethodRequest) Constructs a sample cardPaymentMethodRequest . This constructor is intended for test usage and throws an exception if
+##### AuthApiPaymentMethodRequest(cardPaymentMethodRequest)
 
+Constructs a sample `cardPaymentMethodRequest` . This constructor is intended for test usage and throws an exception if
 used outside of the Apex test context.
 
-##### AuthApiPaymentMethodRequest()
-#### Constructor for AuthApiPaymentMethodRequest .
+AuthApiPaymentMethodRequest()
+### Constructor for AuthApiPaymentMethodRequest .
 
-##### AuthApiPaymentMethodRequest(cardPaymentMethodRequest) Constructs a sample cardPaymentMethodRequest . This constructor is intended for test usage and throws an exception if used
+##### AuthApiPaymentMethodRequest(cardPaymentMethodRequest)
 
+Constructs a sample `cardPaymentMethodRequest` . This constructor is intended for test usage and throws an exception if used
 outside of the Apex test context.
 
 Signature
@@ -246,28 +10665,33 @@ Signature
 ```
    global AuthApiPaymentMethodRequest(commercepayments.CardPaymentMethodRequest
 
-##### `cardPaymentMethodRequest)`
+   cardPaymentMethodRequest)
 
 ```
 
 Parameters
 
-##### _`cardPaymentMethodRequest`_
+```
+   cardPaymentMethodRequest
+```
 
-Type: commercepayments.CardPaymentMethodRequest on page 403
+Type: commercepayments.CardPaymentMethodRequest on page 404
+
+
+### Apex Reference Guide AuthorizationRequest Class
 
 Contains information about the card payment method. Used to send information to a gateway adapter during a service call.
 
-##### AuthApiPaymentMethodRequest()
-
-#### Constructor for AuthApiPaymentMethodRequest .
+##### AuthApiPaymentMethodRequest() Constructor for AuthApiPaymentMethodRequest .
 
 Signature
 
 ```
    global AuthApiPaymentMethodRequest()
 
-#### AuthApiPaymentMethodRequest Properties The following are properties for AuthApiPaymentMethodRequest .
+#### AuthApiPaymentMethodRequest Properties
+
+##### The following are properties for AuthApiPaymentMethodRequest .
 
 ```
 
@@ -280,9 +10704,6 @@ The card payment method object used in a payment method request.
 ##### cardPaymentMethod
 
 The card payment method object used in a payment method request.
-
-
-### Apex Reference Guide AuthorizationRequest Class
 
 Signature
 
@@ -293,7 +10714,7 @@ Signature
 
 Property Value
 
-Type: commercepayments.CardPaymentMethodRequest on page 403
+Type: commercepayments.CardPaymentMethodRequest on page 404
 
 ### AuthorizationRequest Class
 
@@ -309,6 +10730,9 @@ Usage
 This class contains information about a transaction authorization request. The gateway adapter reads fields from this class while
 constructing an authorization JSON request to send to the payment gateway. An object of this class is available by calling
 `getPaymentRequest()` in the `PaymentGatewayContext Class` .
+
+
+Apex Reference Guide AuthorizationRequest Class
 
 Example
 
@@ -357,12 +10781,6 @@ Creating a `buildAuthRequest` class to store information about the authorization
 
         jsonGeneratorInstance.writeFieldName('amount');
 
-```
-
-
-Apex Reference Guide AuthorizationRequest Class
-
-```
         jsonGeneratorInstance.writeStartObject();
 
         jsonGeneratorInstance.writeStringField('value', amount);
@@ -413,6 +10831,12 @@ Apex Reference Guide AuthorizationRequest Class
 
                     String expMonth =
 
+```
+
+
+Apex Reference Guide AuthorizationRequest Class
+
+```
    ((String.ValueOf(cardPaymentMethod.expiryMonth)).length() == 1 ? '0' : '') +
 
    String.ValueOf(cardPaymentMethod.expiryMonth);
@@ -463,12 +10887,11 @@ Apex Reference Guide AuthorizationRequest Class
 
 ```
 
-
-Apex Reference Guide AuthorizationRequest Class
-
 IN THIS SECTION:
 
-#### AuthorizationRequest Constructors AuthorizationRequest Properties
+#### AuthorizationRequest Constructors
+
+AuthorizationRequest Properties
 
 AuthorizationRequest Methods
 
@@ -493,11 +10916,12 @@ Signature
 
 ```
 
+
+Apex Reference Guide AuthorizationRequest Class
+
 Parameters
 
-```
-   amount
-```
+##### _`amount`_
 
 Type: Double
 
@@ -507,10 +10931,12 @@ The amount of the authorization.
 
 IN THIS SECTION:
 
-accountId
+##### accountId
+
 The customer account where the authorization is performed.
 
-amount
+##### amount
+
 The total amount of the authorization. Can be positive or negative.
 
 comments
@@ -522,8 +10948,8 @@ The ISO currency code for the authorization request.
 paymentMethod
 The payment method used to process the authorization in the authorization request.
 
-
-Apex Reference Guide AuthorizationRequest Class
+paymentMethodData
+Payment method data used in the authorize payment request.
 
 ##### accountId
 
@@ -554,6 +10980,9 @@ Signature
 Property Value
 
 Type: Double
+
+
+Apex Reference Guide AuthorizationRequest Class
 
 ##### comments
 
@@ -589,9 +11018,6 @@ Type: String
 
 The payment method used to process the authorization in the authorization request.
 
-
-Apex Reference Guide AuthorizationRequest Class
-
 Signature
 
 ```
@@ -601,7 +11027,31 @@ Signature
 
 Property Value
 
-Type: AuthApiPaymentMethodRequest on page 342
+Type: AuthApiPaymentMethodRequest on page 343
+
+##### **`paymentMethodData`**
+
+Payment method data used in the authorize payment request.
+
+##### This field is populated when AuthorizationInput specifies a saved payment method. Accessible using paymentMethodData
+
+on `AuthorizationRequest` . The map contains these fields from `SavedPaymentMethod` : `GatewayToken`, `Type`,
+`GatewayReference`, and `StandardEntryCode` for direct gateway interaction without querying the database. This field is
+supported only for saved payment methods of type card.
+
+Signature
+
+```
+   public Map<String,String> paymentMethodData {get; set;}
+
+```
+
+Property Value
+
+Type: Map<String,String>
+
+
+Apex Reference Guide AuthorizationRequest Class
 
 #### AuthorizationRequest Methods The following are methods for AuthorizationRequest .
 
@@ -615,7 +11065,8 @@ method is dynamic and based on the equals method in Java.
 ##### hashCode()
 #### Maintains the integrity of lists of type AuthorizationRequest by determining the uniqueness of the external object in a list.
 
-toString()
+##### toString()
+
 Converts a date to a string.
 
 ##### equals(obj)
@@ -656,9 +11107,6 @@ Signature
 
 ```
 
-
-### Apex Reference Guide AuthorizationResponse Class
-
 Return Value
 
 Type: Integer
@@ -666,6 +11114,9 @@ Type: Integer
 ##### toString()
 
 Converts a date to a string.
+
+
+### Apex Reference Guide AuthorizationResponse Class
 
 Signature
 
@@ -727,12 +11178,6 @@ Example
 
              system.debug('status - authorised');
 
-```
-
-
-Apex Reference Guide AuthorizationResponse Class
-
-```
             authResponse.setGatewayAuthCode((String)mapOfResponseValues.get('authCode'));
 
              authResponse.setSalesforceResultCodeInfo(new
@@ -745,6 +11190,12 @@ Apex Reference Guide AuthorizationResponse Class
 
              system.debug('status - refused');
 
+```
+
+
+Apex Reference Guide AuthorizationResponse Class
+
+```
    authResponse.setGatewayResultCodeDescription((String)mapOfResponseValues.get('refusalReason'));
 
              authResponse.setSalesforceResultCodeInfo(new
@@ -802,9 +11253,6 @@ Sets the expiration date of the authorization request.
 setGatewayAuthCode(gatewayAuthCode)
 Sets the authorization code that the gateway returned. Maximum length of 64 characters.
 
-
-Apex Reference Guide AuthorizationResponse Class
-
 setGatewayAvsCode(gatewayAvsCode)
 Sets the AVS (address verification system) result code information that the gateway returned. Maximum length of 64 characters.
 
@@ -813,6 +11261,9 @@ Sets the date that the authorization occurred. Some gateways don’t send this v
 
 setGatewayMessage(gatewayMessage)
 Sets error messages that the gateway returned for the authorization request. Maximum length of 255 characters.
+
+
+Apex Reference Guide AuthorizationResponse Class
 
 setGatewayReferenceDetails(gatewayReferenceDetails)
 Stores data that you can use for subsequent authorizations. You can use any data that isn’t normalized in financial entities. This field
@@ -869,9 +11320,6 @@ Signature
 
 ```
 
-
-Apex Reference Guide AuthorizationResponse Class
-
 Parameters
 
 ```
@@ -879,6 +11327,9 @@ Parameters
 ```
 
 Type: Boolean
+
+
+Apex Reference Guide AuthorizationResponse Class
 
 Return Value
 
@@ -943,9 +11394,6 @@ Signature
 
 ```
 
-
-Apex Reference Guide AuthorizationResponse Class
-
 Parameters
 
 ```
@@ -953,6 +11401,9 @@ Parameters
 ```
 
 Type: String
+
+
+Apex Reference Guide AuthorizationResponse Class
 
 Used to verify the address mapped to a payment method when the payments platform requests tokenization from the payment
 gateway.
@@ -1012,15 +11463,15 @@ Type: void
 Stores data that you can use for subsequent authorizations. You can use any data that isn’t normalized in financial entities. This field has
 a maximum length of 1000 characters and can store data as JSON or XML.
 
-
-Apex Reference Guide AuthorizationResponse Class
-
 Signature
 
 ```
    global void setGatewayReferenceDetails(String gatewayReferenceDetails)
 
 ```
+
+
+Apex Reference Guide AuthorizationResponse Class
 
 Parameters
 
@@ -1084,12 +11535,12 @@ Return Value
 
 Type: void
 
-
-Apex Reference Guide AuthorizationResponse Class
-
 ##### setGatewayResultCodeDescription(gatewayResultCodeDescription)
 
 Sets a description of the gateway-specific result code that a payment gateway returned. Maximum length of 1000 characters.
+
+
+Apex Reference Guide AuthorizationResponse Class
 
 Signature
 
@@ -1133,7 +11584,7 @@ Parameters
    paymentMethodTokenizationResponse
 ```
 
-PaymentMethodTokenizationResponse on page 442
+PaymentMethodTokenizationResponse on page 455
 
 Gateway response sent by payment gateway adapters for the payment method tokenization request.
 
@@ -1155,18 +11606,18 @@ Signature
 
 ```
 
-
-### Apex Reference Guide AuthorizationReversalRequest Class
-
 Parameters
 
 ```
    salesforceResultCodeInfo
 ```
 
-Type: SalesforceResultCodeInfo on page 502
+Type: SalesforceResultCodeInfo on page 519
 
 Description of the Salesforce result code value.
+
+
+### Apex Reference Guide AuthorizationReversalRequest Class
 
 Return Value
 
@@ -1178,7 +11629,7 @@ Sends information about an authorization reversal request to a gateway adapter d
 
 Namespace
 
-CommercePayments on page 316
+CommercePayments on page 317
 
 Example
 
@@ -1235,12 +11686,6 @@ code.
 
         else
 
-```
-
-
-Apex Reference Guide AuthorizationReversalRequest Class
-
-```
         {
 
            throw new SalesforceValidationException('Required Field Missing : Amount');
@@ -1251,6 +11696,12 @@ Apex Reference Guide AuthorizationReversalRequest Class
 
         authReversalResponse.setGatewayDate(system.now());
 
+```
+
+
+Apex Reference Guide AuthorizationReversalRequest Class
+
+```
         authReversalResponse.setGatewayResultCode('00');
 
         authReversalResponse.setGatewayResultCodeDescription('Transaction Normal');
@@ -1267,9 +11718,7 @@ Apex Reference Guide AuthorizationReversalRequest Class
 
 IN THIS SECTION:
 
-#### AuthorizationReversalRequest Constructors
-
-AuthorizationReversalRequest Properties
+#### AuthorizationReversalRequest Constructors AuthorizationReversalRequest Properties
 
 AuthorizationReversalRequest Methods
 
@@ -1312,10 +11761,10 @@ Type: String
 
 The authorization request to be reversed.
 
+#### AuthorizationReversalRequest Properties The following are properties for AuthorizationReversalRequest .
+
 
 Apex Reference Guide AuthorizationReversalRequest Class
-
-#### AuthorizationReversalRequest Properties The following are properties for AuthorizationReversalRequest .
 
 IN THIS SECTION:
 
@@ -1376,30 +11825,30 @@ Property Value
 
 Type: String
 
+#### AuthorizationReversalRequest Methods The following are methods for AuthorizationReversalRequest .
+
 
 Apex Reference Guide AuthorizationReversalRequest Class
-
-#### AuthorizationReversalRequest Methods The following are methods for AuthorizationReversalRequest .
 
 IN THIS SECTION:
 
 ##### equals(obj)
-#### Maintains the integrity of lists of type AuthorizationReversalRequest by determining the equality of external objects
 
+Maintains the integrity of lists of type `AuthorizationReversalRequest` by determining the equality of external objects
 in a list. This method is dynamic and based on the equals method in Java.
 
 ##### hashCode()
-#### Maintains the integrity of lists of type AuthorizationReversalRequest by determining the uniqueness of the external
 
+Maintains the integrity of lists of type `AuthorizationReversalRequest` by determining the uniqueness of the external
 object in a list.
 
-toString()
+##### toString()
+
 Converts a date to a string.
 
 ##### equals(obj)
 
-#### Maintains the integrity of lists of type AuthorizationReversalRequest by determining the equality of external objects in a
-
+Maintains the integrity of lists of type `AuthorizationReversalRequest` by determining the equality of external objects in a
 list. This method is dynamic and based on the equals method in Java.
 
 Signature
@@ -1425,8 +11874,7 @@ Type: Boolean
 
 ##### hashCode()
 
-#### Maintains the integrity of lists of type AuthorizationReversalRequest by determining the uniqueness of the external object
-
+Maintains the integrity of lists of type `AuthorizationReversalRequest` by determining the uniqueness of the external object
 in a list.
 
 Signature
@@ -1440,9 +11888,6 @@ Return Value
 
 Type: Integer
 
-
-### Apex Reference Guide AuthorizationReversalResponse Class
-
 ##### toString()
 
 Converts a date to a string.
@@ -1453,6 +11898,9 @@ Signature
    global String toString()
 
 ```
+
+
+### Apex Reference Guide AuthorizationReversalResponse Class
 
 Return Value
 
@@ -1518,12 +11966,6 @@ the Salesforce result code.
 
         authReversalResponse.setGatewayDate(system.now());
 
-```
-
-
-Apex Reference Guide AuthorizationReversalResponse Class
-
-```
         authReversalResponse.setGatewayResultCode('00');
 
         authReversalResponse.setGatewayResultCodeDescription('Transaction Normal');
@@ -1537,6 +11979,9 @@ Apex Reference Guide AuthorizationReversalResponse Class
       }
 
 ```
+
+
+Apex Reference Guide AuthorizationReversalResponse Class
 
 IN THIS SECTION:
 
@@ -1585,9 +12030,6 @@ Signature
 
 ```
 
-
-Apex Reference Guide AuthorizationReversalResponse Class
-
 Parameters
 
 ```
@@ -1599,6 +12041,9 @@ Type: Double
 Return Value
 
 Type: void
+
+
+Apex Reference Guide AuthorizationReversalResponse Class
 
 ##### setGatewayAvsCode(gatewayAvsCode)
 
@@ -1653,9 +12098,6 @@ Type: void
 
 Sets error messages that the gateway returned for the authorization reversal request. Maximum length of 255 characters.
 
-
-Apex Reference Guide AuthorizationReversalResponse Class
-
 Signature
 
 ```
@@ -1670,6 +12112,9 @@ Parameters
 ```
 
 Type: String
+
+
+Apex Reference Guide AuthorizationReversalResponse Class
 
 Return Value
 
@@ -1724,9 +12169,6 @@ Return Value
 
 Type: void
 
-
-Apex Reference Guide AuthorizationReversalResponse Class
-
 ##### setGatewayResultCode(gatewayResultCode)
 
 Sets a gateway-specific result code. The code can be mapped to a Salesforce-specific result code. Maximum length of 64 characters.
@@ -1737,6 +12179,9 @@ Signature
    global void setGatewayResultCode(String gatewayResultCode)
 
 ```
+
+
+Apex Reference Guide AuthorizationReversalResponse Class
 
 Parameters
 
@@ -1799,16 +12244,14 @@ Parameters
 
 Type: SalesforceResultCodeInfo
 
-
-### Apex Reference Guide BankType Enum
-
 Description of the Salesforce result code value.
 
 Return Value
 
 Type: void
 
-### BankType Enum
+
+### Apex Reference Guide BankType Enum BankType Enum
 
 Specifies the bank type.
 
@@ -1832,7 +12275,7 @@ Sends data related to a bank payment method to a gateway adapter during a servic
 
 Namespace
 
-CommercePayments on page 316
+CommercePayments on page 317
 
 Usage
 
@@ -1858,12 +12301,6 @@ Example
 
       String accountId;
 
-```
-
-
-Apex Reference Guide BankPaymentMethodRequest Class
-
-```
       JSONGenerator jsonGeneratorInstance = JSON.createGenerator(true);
 
       jsonGeneratorInstance.writeStartObject();
@@ -1874,6 +12311,12 @@ Apex Reference Guide BankPaymentMethodRequest Class
 
       jsonGeneratorInstance.writeStringField('reference', 'Tokenize_' +
 
+```
+
+
+Apex Reference Guide BankPaymentMethodRequest Class
+
+```
    String.valueOf(Datetime.now().getTime()));
 
       // Payment method details (from encrypted form input)
@@ -1950,12 +12393,6 @@ Apex Reference Guide BankPaymentMethodRequest Class
 
            jsonGeneratorInstance.writeStringField('ownerName',
 
-```
-
-
-Apex Reference Guide BankPaymentMethodRequest Class
-
-```
    bankPaymentMethod.accountHolderName);
 
         } else {
@@ -1966,6 +12403,12 @@ Apex Reference Guide BankPaymentMethodRequest Class
 
         jsonGeneratorInstance.writeEndObject();
 
+```
+
+
+Apex Reference Guide BankPaymentMethodRequest Class
+
+```
       }
 
       // Zero-dollar amount
@@ -2035,14 +12478,14 @@ IN THIS SECTION:
 accountHolderFirstName
 The first name of the account holder for the bank payment method.
 
-
-Apex Reference Guide BankPaymentMethodRequest Class
-
 accountHolderLastName
 The last name of the account holder for the bank payment method.
 
 accountHolderName
 The name of the account holder for the bank payment method.
+
+
+Apex Reference Guide BankPaymentMethodRequest Class
 
 accountHolderType
 The type of the account holder.
@@ -2097,12 +12540,12 @@ Property Value
 
 Type: String
 
-
-Apex Reference Guide BankPaymentMethodRequest Class
-
 ##### **`accountHolderLastName`**
 
 The last name of the account holder for the bank payment method.
+
+
+Apex Reference Guide BankPaymentMethodRequest Class
 
 Signature
 
@@ -2164,15 +12607,15 @@ Type: String
 
 The unique account number for the bank account.
 
-
-Apex Reference Guide BankPaymentMethodRequest Class
-
 Signature
 
 ```
    public String accountNumber {get; set;}
 
 ```
+
+
+Apex Reference Guide BankPaymentMethodRequest Class
 
 Property Value
 
@@ -2191,7 +12634,7 @@ Signature
 
 Property Value
 
-Type: commercepayments.AccountType on page 328
+Type: commercepayments.AccountType on page 329
 
 ##### **`autoPay`**
 
@@ -2228,9 +12671,6 @@ Type: String
 
 The bank type associated with the bank payment method.
 
-
-Apex Reference Guide BankPaymentMethodRequest Class
-
 Signature
 
 ```
@@ -2238,9 +12678,12 @@ Signature
 
 ```
 
+
+Apex Reference Guide BankPaymentMethodRequest Class
+
 Property Value
 
-Type: commercepayments.BankType on page 365
+Type: commercepayments.BankType on page 366
 
 ##### **`comments`**
 
@@ -2298,12 +12741,12 @@ Signature
 
 ```
 
-
-Apex Reference Guide BankPaymentMethodRequest Class
-
 Property Value
 
 Type: String
+
+
+Apex Reference Guide BankPaymentMethodRequest Class
 
 ##### **`standardEntryClassCode`**
 
@@ -2319,7 +12762,7 @@ Signature
 
 Property Value
 
-Type: commercepayments.StandardEntryClassCode on page 503
+Type: commercepayments.StandardEntryClassCode on page 520
 
 #### BankPaymentMethodRequest Methods The following are methods for BankPaymentMethodRequest .
 
@@ -2330,7 +12773,7 @@ IN THIS SECTION:
 
 This method is dynamic and based on the equals method in Java.
 
-hashCode()
+##### hashCode()
 #### Maintains the integrity of lists of type BankPaymentMethodRequest .
 
 toString()
@@ -2363,12 +12806,12 @@ Return Value
 
 Type: Boolean
 
-
-### Apex Reference Guide BankPaymentMethodResponse Class
-
 ##### **`hashCode()`**
 
-Maintains the integrity of lists of type `BankPaymentMethodRequest` .
+#### Maintains the integrity of lists of type BankPaymentMethodRequest .
+
+
+### Apex Reference Guide BankPaymentMethodResponse Class
 
 Signature
 
@@ -2403,7 +12846,7 @@ This class contains information about the bank payment method response. The gate
 
 Namespace
 
-CommercePayments on page 316
+CommercePayments on page 317
 
 IN THIS SECTION:
 
@@ -2422,11 +12865,11 @@ Sets the Payments account ID associated with the bank payment method.
 setAccountType(accountType)
 Sets the account type for the bank payment method.
 
-
-Apex Reference Guide BankPaymentMethodResponse Class
-
 setBankCode(bankCode)
 Sets the unique nine-digit code that identifies the bank code for the bank payment method.
+
+
+Apex Reference Guide BankPaymentMethodResponse Class
 
 setBankName(bankName)
 Sets the bank name for the bank payment method.
@@ -2486,15 +12929,15 @@ Type: void
 
 Sets the Payments account ID associated with the bank payment method.
 
-
-Apex Reference Guide BankPaymentMethodResponse Class
-
 Signature
 
 ```
    public void setAccountId(String accountId)
 
 ```
+
+
+Apex Reference Guide BankPaymentMethodResponse Class
 
 Parameters
 
@@ -2525,7 +12968,7 @@ Parameters
    accountType
 ```
 
-Type: commercepayments.AccountType on page 328
+Type: commercepayments.AccountType on page 329
 
 Return Value
 
@@ -2558,15 +13001,15 @@ Type: void
 
 Sets the bank name for the bank payment method.
 
-
-Apex Reference Guide BankPaymentMethodResponse Class
-
 Signature
 
 ```
    public void setBankName(String bankName)
 
 ```
+
+
+Apex Reference Guide BankPaymentMethodResponse Class
 
 Parameters
 
@@ -2597,7 +13040,7 @@ Parameters
    bankType
 ```
 
-Type: commercepayments.BankType on page 365
+Type: commercepayments.BankType on page 366
 
 Return Value
 
@@ -2630,15 +13073,15 @@ Type: void
 
 Sets the email address of the bank account holder.
 
-
-Apex Reference Guide BankPaymentMethodResponse Class
-
 Signature
 
 ```
    public void setEmail(String email)
 
 ```
+
+
+Apex Reference Guide BankPaymentMethodResponse Class
 
 Parameters
 
@@ -2702,15 +13145,15 @@ Type: void
 
 Sets the last four digits of the bank account number.
 
-
-Apex Reference Guide BankPaymentMethodResponse Class
-
 Signature
 
 ```
    public void setLast4(String lastFour)
 
 ```
+
+
+Apex Reference Guide BankPaymentMethodResponse Class
 
 Parameters
 
@@ -2793,7 +13236,7 @@ Parameters
    standardEntryClassCode
 ```
 
-Type: commercepayments.StandardEntryClassCode on page 503
+Type: commercepayments.StandardEntryClassCode on page 520
 
 Return Value
 
@@ -3362,7 +13805,7 @@ Parameters
    salesforceResultCodeInfo
 ```
 
-Type: commercepayments.SalesforceResultCodeInfo on page 502
+Type: commercepayments.SalesforceResultCodeInfo on page 519
 
 Payment gateways have many response codes for payment calls. Salesforce uses the result code information to map payment
 gateway codes to a predefined set of standard Salesforce result codes.
@@ -3391,7 +13834,7 @@ Parameters
    status
 ```
 
-Type: commercepayments.NotificationStatus on page 426
+Type: commercepayments.NotificationStatus on page 432
 
 Shows whether the payments platform successfully received the notification from the gateway.
 
@@ -3409,7 +13852,7 @@ CommercePayments
 
 Usage
 
-### The BasePaymentMethodRequest class contains fields common to CardPaymentMethodRequest on page 403
+### The BasePaymentMethodRequest class contains fields common to CardPaymentMethodRequest on page 404
 
 .
 
@@ -3890,7 +14333,7 @@ Parameters
    salesforceResultCodeInfo
 ```
 
-Type: commercepayments.SalesforceResultCodeInfo on page 502
+Type: commercepayments.SalesforceResultCodeInfo on page 519
 
 Description of the Salesforce result code value.
 
@@ -3915,7 +14358,7 @@ Parameters
    status
 ```
 
-Type: NotificationStatus on page 426
+Type: NotificationStatus on page 432
 
 Sets the Salesforce-specific result code information. Payment gateways have many response codes for payment calls. Salesforce
 uses the result code information to map payment gateway codes to a predefined set of standard Salesforce result codes.
@@ -3931,7 +14374,7 @@ Represents a capture request. This class extends the `BaseRequest` class and inh
 
 Namespace
 
-CommercePayments on page 316
+CommercePayments on page 317
 
 Usage
 
@@ -4057,7 +14500,7 @@ Apex Reference Guide CaptureResponse Class
 
 Namespace
 
-CommercePayments on page 316
+CommercePayments on page 317
 
 Usage
 
@@ -4374,7 +14817,7 @@ Defines whether the payment method represents a credit card or a debit card.
 
 Namespace
 
-CommercePayments on page 316
+CommercePayments on page 317
 
 Enum Values
 
@@ -4393,7 +14836,7 @@ Sends data related to a card payment method to a gateway adapter during a servic
 
 Namespace
 
-CommercePayments on page 316
+CommercePayments on page 317
 
 Usage
 
@@ -4447,7 +14890,7 @@ Parameters
    cardCategory
 ```
 
-Type: CardCategory on page 402
+Type: CardCategory on page 403
 
 Defines whether the card payment method is a credit card or a debit card.
 
@@ -4552,7 +14995,7 @@ Signature
 
 Property Value
 
-Type: CardCategory on page 402
+Type: CardCategory on page 403
 
 ##### cardHolderFirstName
 
@@ -5390,11 +15833,11 @@ The following are the values of the `commercepayments.CardType` enum.
 transaction requests through the response object’s `SalesforceResultCodeInfo` .
 
 
-### Apex Reference Guide GatewayErrorResponse Class
+### Apex Reference Guide EnhancedPaymentDataInput Class
 
 Namespace
 
-CommercePayments on page 316
+CommercePayments on page 317
 
 IN THIS SECTION:
 
@@ -5437,6 +15880,353 @@ Field that contains the Salesforce result code values. Belongs to the custom met
 
 #### CustomMetadataTypeInfo Methods The following are methods for CustomMetadataTypeInfo .
 
+### EnhancedPaymentDataInput Class
+
+Sends enhanced payment data, including Level 2 and Level 3 fields, to the gateway adapter as part of the service call.
+
+Namespace
+
+CommercePayments on page 317
+
+
+Apex Reference Guide EnhancedPaymentDataInput Class
+
+Usage
+
+Supported only for third-party payment gateways; not supported for native payments.
+
+IN THIS SECTION:
+
+#### EnhancedPaymentDataInput Properties
+
+EnhancedPaymentDataInput Methods
+
+#### EnhancedPaymentDataInput Properties The following are properties for EnhancedPaymentDataInput .
+
+IN THIS SECTION:
+
+additionalAttributes
+Map of gateway-specific or custom fields.
+
+discountAmount
+Discount amount.
+
+dutyAmount
+The total amount charged as duty or import or export tariffs on the transaction.
+
+invoiceNumber
+Invoice number associated with the payment.
+
+lineItems
+Collection of individual line items associated with the payment.
+
+referenceId
+Customer reference or identifier.
+
+salesTaxAmount
+Sales tax amount.
+
+shipFromZip
+Origin postal code.
+
+shipToCountry
+Destination country code.
+
+shipToZip
+Destination postal code.
+
+shippingAmount
+Shipping or freight amount.
+
+taxRate
+Percentage rate of tax applied to the transaction or line item.
+
+totalTaxAmount
+Total tax amount for the transaction.
+
+
+Apex Reference Guide EnhancedPaymentDataInput Class
+
+##### **`additionalAttributes`**
+
+Map of gateway-specific or custom fields.
+
+Signature
+
+```
+   public Map<String,String> additionalAttributes {get; set;}
+
+```
+
+Property Value
+
+Type: Map<String,String>
+
+##### **`discountAmount`**
+
+Discount amount.
+
+Signature
+
+```
+   public Double discountAmount {get; set;}
+
+```
+
+Property Value
+
+Type: Double
+
+##### **`dutyAmount`**
+
+The total amount charged as duty or import or export tariffs on the transaction.
+
+Signature
+
+```
+   public Double dutyAmount {get; set;}
+
+```
+
+Property Value
+
+Type: Double
+
+##### **`invoiceNumber`**
+
+Invoice number associated with the payment.
+
+Signature
+
+```
+   public String invoiceNumber {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### **`lineItems`**
+
+Collection of individual line items associated with the payment.
+
+
+Apex Reference Guide EnhancedPaymentDataInput Class
+
+Signature
+
+```
+   public List<commercepayments.LineItemInput> lineItems {get; set;}
+
+```
+
+Property Value
+
+Type: List<commercepayments.LineItemInput on page 443>
+
+##### **`referenceId`**
+
+Customer reference or identifier.
+
+Signature
+
+```
+   public String referenceId {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### **`salesTaxAmount`**
+
+Sales tax amount.
+
+Signature
+
+```
+   public Double salesTaxAmount {get; set;}
+
+```
+
+Property Value
+
+Type: Double
+
+##### **`shipFromZip`**
+
+Origin postal code.
+
+Signature
+
+```
+   public String shipFromZip {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### **`shipToCountry`**
+
+Destination country code.
+
+Signature
+
+```
+   public String shipToCountry {get; set;}
+
+```
+
+
+Apex Reference Guide EnhancedPaymentDataInput Class
+
+Property Value
+
+Type: String
+
+##### **`shipToZip`**
+
+Destination postal code.
+
+Signature
+
+```
+   public String shipToZip {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### **`shippingAmount`**
+
+Shipping or freight amount.
+
+Signature
+
+```
+   public Double shippingAmount {get; set;}
+
+```
+
+Property Value
+
+Type: Double
+
+##### **`taxRate`**
+
+Percentage rate of tax applied to the transaction or line item.
+
+Signature
+
+```
+   public Double taxRate {get; set;}
+
+```
+
+Property Value
+
+Type: Double
+
+##### **`totalTaxAmount`**
+
+Total tax amount for the transaction.
+
+Signature
+
+```
+   public Double totalTaxAmount {get; set;}
+
+```
+
+Property Value
+
+Type: Double
+
+
+Apex Reference Guide EnhancedPaymentDataInput Class
+
+#### EnhancedPaymentDataInput Methods The following are methods for EnhancedPaymentDataInput .
+
+IN THIS SECTION:
+
+##### equals(obj)
+#### Maintains the integrity of lists of type EnhancedPaymentDataInput by determining the equality of external objects in a list.
+
+This method is dynamic and based on the equals method in Java.
+
+##### hashCode()
+#### Maintains the integrity of lists of type EnhancedPaymentDataInput .
+
+##### toString()
+
+Converts a date to a string.
+
+##### **`equals(obj)`**
+
+#### Maintains the integrity of lists of type EnhancedPaymentDataInput by determining the equality of external objects in a list. This
+
+method is dynamic and based on the equals method in Java.
+
+Signature
+
+```
+   public Boolean equals(Object obj)
+
+```
+
+Parameters
+
+```
+   obj
+```
+
+Type: Object
+
+External object whose key is to be validated.
+
+Return Value
+
+Type: Boolean
+
+##### **`hashCode()`**
+
+#### Maintains the integrity of lists of type EnhancedPaymentDataInput .
+
+Signature
+
+```
+   public Integer hashCode()
+
+```
+
+Return Value
+
+Type: Integer
+
+##### **`toString()`**
+
+Converts a date to a string.
+
+
+### Apex Reference Guide GatewayErrorResponse Class
+
+Signature
+
+```
+   public String toString()
+
+```
+
+Return Value
+
+Type: String
+
 ### GatewayErrorResponse Class
 
 Use to respond with an error indication following errors from the `PaymentGateway` adapter, such as request-forbidden responses,
@@ -5444,20 +16234,17 @@ custom validation errors, or expired API tokens.
 
 Namespace
 
-CommercePayments on page 316
-
-
-Apex Reference Guide GatewayErrorResponse Class
+CommercePayments on page 317
 
 Usage
 
-#### Use GatewayErrorResponse to create an object that stores information about error responses sent by the payment gateway
+### Use GatewayErrorResponse to create an object that stores information about error responses sent by the payment gateway
 
 adapter.
 
 Example
 
-#### If GatewayResponse receives an exception rather than a valid request, it calls GatewayErrorResponse to create an error
+### If GatewayResponse receives an exception rather than a valid request, it calls GatewayErrorResponse to create an error
 
 object with information about the exception.
 
@@ -5504,6 +16291,12 @@ object with information about the exception.
 
            return error;
 
+```
+
+
+### Apex Reference Guide GatewayNotificationResponse Class
+
+```
         }
 
       }
@@ -5516,11 +16309,9 @@ IN THIS SECTION:
 
 IN THIS SECTION:
 
-GatewayErrorResponse(errorCode, errorMessage)
+##### GatewayErrorResponse(errorCode, errorMessage)
+
 Constructor to create a GatewayErrorResponse object that accepts `errorCode` and `errorMessage` .
-
-
-### Apex Reference Guide GatewayNotificationResponse Class
 
 ##### GatewayErrorResponse(errorCode, errorMessage)
 
@@ -5566,9 +16357,12 @@ Note: _`errorMessage`_ must have a value, otherwise the platform throws an error
 When the payment gateway sends a notification to the payments platform, the platform responds with a
 ### GatewayNotificationResponse indicating whether the platform succeeded or failed at receiving the notification.
 
+
+Apex Reference Guide GatewayNotificationResponse Class
+
 Namespace
 
-CommercePayments on page 316
+CommercePayments on page 317
 
 Usage
 
@@ -5584,12 +16378,9 @@ no arguments. For example:
 
 When an asynchronous payment gateway sends a notification, the gateway requires the platform to acknowledge that it has either
 succeeded or failed in receiving the notification. Payment gateway adapters use this class to construct the acknowledgment response,
-### which gateways expect for a notification. GatewayNotificationResponse is the return type of the processNotification
+#### which gateways expect for a notification. GatewayNotificationResponse is the return type of the processNotification
 
 method.
-
-
-Apex Reference Guide GatewayNotificationResponse Class
 
 Example
 
@@ -5635,6 +16426,9 @@ Sets the HTTP status code sent to the gateway as part of the payments platform�
 Sets the body of the response to the gateway. Some gateways expect the payments platform to acknowledge the notification with a
 response regardless of whether the notification was accepted.
 
+
+Apex Reference Guide GatewayNotificationResponse Class
+
 Signature
 
 ```
@@ -5667,12 +16461,6 @@ Common response values include `accepted` for successfully receiving the respons
 
      }
 
-```
-
-
-### Apex Reference Guide GatewayResponse Interface
-
-```
      gnr.setStatusCode(200);
 
      gnr.setResponseBody(Blob.valueOf('[accepted]'));
@@ -5731,22 +16519,22 @@ example:
 
 ```
 
+
+### Apex Reference Guide GatewayResponse Interface
+
 Return Value
 
 Type: void
 
 ### GatewayResponse Interface
 
-Generic payment gateway response interface. This class extends the `CaptureResponse` on page 397,
+Generic payment gateway response interface. This class extends the `CaptureResponse` on page 398,
 `AbstractTransactionResponse` on page 324, and `AbstractResponse` on page 320 classes and inherits all their properties.
 It has no unique methods or parameters.
 
 Namespace
 
-CommercePayments on page 316
-
-
-### Apex Reference Guide NotificationClient Class
+CommercePayments on page 317
 
 IN THIS SECTION:
 
@@ -5813,6 +16601,12 @@ This is an example implementation of the `commercepayments.GatewayResponse` inte
 
         }
 
+```
+
+
+### Apex Reference Guide NotificationClient Class
+
+```
         try{
 
            //Parsing the response from gateway
@@ -5835,12 +16629,9 @@ This is an example implementation of the `commercepayments.GatewayResponse` inte
 
 Communicates with the payment platform regarding the gateway’s notification.
 
-
-Apex Reference Guide NotificationClient Class
-
 Namespace
 
-CommercePayments on page 316
+CommercePayments on page 317
 
 Usage
 
@@ -5853,8 +16644,8 @@ For example:
 ```
 
 This class is used in asynchronous payment gateway adapters. The notification client contains API for communicating with the payments
-##### platform regarding the gateway’s notification. When the gateway sends a notification, the gateway adapter invokes the record
-#### method in NotificationClient to request that the platform updates notification details.
+platform regarding the gateway’s notification. When the gateway sends a notification, the gateway adapter invokes the `record`
+### method in NotificationClient to request that the platform updates notification details.
 
 Example
 
@@ -5870,13 +16661,17 @@ gateway.
 
 IN THIS SECTION:
 
-#### NotificationClient Methods NotificationClient Methods The following are methods for NotificationClient .
+#### NotificationClient Methods NotificationClient Methods
+
+### The following are methods for NotificationClient .
 
 IN THIS SECTION:
 
-##### record(notification)
-
+record(notification)
 Stores the results of a notification request.
+
+
+### Apex Reference Guide NotificationSaveResult Class
 
 ##### record(notification)
 
@@ -5897,14 +16692,11 @@ Parameters
    notification
 ```
 
-Type: BaseNotification on page 382
-
-
-### Apex Reference Guide NotificationSaveResult Class
+Type: BaseNotification on page 383
 
 Return Value
 
-Type: NotificationSaveResult on page 425
+Type: NotificationSaveResult on page 431
 
 ### NotificationSaveResult Class
 
@@ -5912,7 +16704,7 @@ Contains the result of the payment platform’s attempt to record data from the 
 
 Namespace
 
-CommercePayments on page 316
+CommercePayments on page 317
 
 Usage
 
@@ -5943,6 +16735,9 @@ IN THIS SECTION:
 
 ### The following are methods for NotificationSaveResult .
 
+
+### Apex Reference Guide NotificationStatus Enum
+
 IN THIS SECTION:
 
 ##### getErrorMessage()
@@ -5950,18 +16745,17 @@ IN THIS SECTION:
 Gets the error message, if any, from the payment platform regarding its attempt to save the notification sent from the payment
 gateway.
 
-getStatusCode()
+##### getStatusCode()
+
 Gets the status code from the payment platform’s attempt to save the notification sent from the payment gateway.
 
-isSuccess()
+##### isSuccess()
+
 Gets the status of whether the payment platform successfully saved the notification sent from the payment gateway.
 
 ##### getErrorMessage()
 
 Gets the error message, if any, from the payment platform regarding its attempt to save the notification sent from the payment gateway.
-
-
-### Apex Reference Guide NotificationStatus Enum
 
 Signature
 
@@ -6008,12 +16802,14 @@ Type: Boolean
 
 Shows whether the payments platform successfully received the notification from the gateway.
 
+
+### Apex Reference Guide PaymentGatewayAdapter Interface
+
 Usage
 
 When the gateway sends a notification for a payment request, the payments platform delegates the notification request to the gateway
 adapter. First, the adapter evaluates the signature from the notification request. If the signature is valid, the adapter builds a notification
-### object to store information about the notification. During this process, the adapter sets the NotificationStatus to Failed
-
+object to store information about the notification. During this process, the adapter sets the `NotificationStatus` to `Failed`
 or `Success` based on information from the notification request.
 
 Enum Values
@@ -6024,11 +16820,6 @@ The following are the values of the `commercepayments.NotificationStatus` enum.
 
 `Failed` The payments platform couldn’t receive the notification due to an error.
 
-
-### Apex Reference Guide PaymentGatewayAdapter Interface
-
-**Value** **Description**
-
 `Success` The payments platform received the notification.
 
 ### PaymentGatewayAdapter Interface
@@ -6037,7 +16828,7 @@ The following are the values of the `commercepayments.NotificationStatus` enum.
 
 Namespace
 
-CommercePayments on page 316
+CommercePayments on page 317
 
 IN THIS SECTION:
 
@@ -6064,13 +16855,16 @@ Signature
 
 ```
 
+
+### Apex Reference Guide PaymentGatewayAsyncAdapter Interface
+
 Parameters
 
 ```
    var1
 ```
 
-[Type: commercepayments.PaymentGatewayContext](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_commercepayments_PaymentGatewayContext.htm#apex_class_commerce_payments_PaymentGatewayContext)
+[Type: commercepayments.PaymentGatewayContext](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_class_commercepayments_PaymentGatewayContext.htm#apex_class_commerce_payments_PaymentGatewayContext)
 
 You can retrieve the request type and the request from the Context object.
 
@@ -6084,18 +16878,14 @@ The response from the payment gateway.
 
 Implement the interface to allow customers to process payments asynchronously.
 
-
-Apex Reference Guide PaymentGatewayAsyncAdapter Interface
-
 Namespace
 
-CommercePayments on page 316
+CommercePayments on page 317
 
 Usage
 
-##### Implementing an asynchronous adapter also requires the processNotification method from the GatewayNotificationResponse
-
-on page 420 class.
+Implementing an asynchronous adapter also requires the `processNotification` method from the GatewayNotificationResponse
+on page 426 class.
 
 Example
 
@@ -6128,9 +16918,12 @@ Example
 
 IN THIS SECTION:
 
-#### PaymentGatewayAsyncAdapter Methods
+PaymentGatewayAsyncAdapter Methods
 
 PaymentGatewayAsyncAdapter Example Implementation
+
+
+Apex Reference Guide PaymentGatewayAsyncAdapter Interface
 
 #### PaymentGatewayAsyncAdapter Methods The following are methods for PaymentGatewayAsyncAdapter .
 
@@ -6153,22 +16946,19 @@ Signature
 
 ```
 
-
-Apex Reference Guide PaymentGatewayAsyncAdapter Interface
-
 Parameters
 
 ```
    paymentGatewayNotificationContext
 ```
 
-Type: PaymentGatewayNotificationContext on page 432
+Type: PaymentGatewayNotificationContext on page 439
 
 The `PaymentGatewayNotificationContext` object wraps all the information related to a gateway notification.
 
 Return Value
 
-Type: GatewayNotificationResponse on page 420
+Type: GatewayNotificationResponse on page 426
 
 When the payment gateway sends a notification to the payments platform, the platform responds with a
 `GatewayNotificationResponse` indicating whether the platform succeeded or failed at receiving the notification.
@@ -6206,6 +16996,12 @@ This is a sample implementation of the `commercepayments.PaymentGatewayAsyncAdap
 
       req.setEndpoint('/pal/servlet/Payment/v52/capture');
 
+```
+
+
+Apex Reference Guide PaymentGatewayAsyncAdapter Interface
+
+```
       body =
 
    buildCaptureRequest((commercepayments.CaptureRequest)gatewayContext.getPaymentRequest());
@@ -6242,12 +17038,6 @@ This is a sample implementation of the `commercepayments.PaymentGatewayAsyncAdap
 
    }
 
-```
-
-
-Apex Reference Guide PaymentGatewayAsyncAdapter Interface
-
-```
    if ( requestType == commercepayments.RequestType.Capture) {
 
       response = createCaptureResponse(res);
@@ -6312,6 +17102,12 @@ Apex Reference Guide PaymentGatewayAsyncAdapter Interface
 
    }
 
+```
+
+
+### Apex Reference Guide PaymentGatewayContext Class
+
+```
    notification.setStatus(notificationStatus);
 
    notification.setGatewayReferenceNumber(pspReference);
@@ -6342,16 +17138,15 @@ Apex Reference Guide PaymentGatewayAsyncAdapter Interface
 
    return gnr;
 
+### PaymentGatewayContext Class
+
 ```
-
-
-### Apex Reference Guide PaymentGatewayContext Class PaymentGatewayContext Class
 
 Wraps the information related to a payment request.
 
 Namespace
 
-CommercePayments on page 316
+CommercePayments on page 317
 
 Usage
 
@@ -6387,13 +17182,14 @@ Example
 
 IN THIS SECTION:
 
-#### PaymentGatewayContext Constructors
+PaymentGatewayContext Constructors
 
 PaymentGatewayContext Methods
 
-#### PaymentGatewayContext Constructors
 
-### The following are constructors for PaymentGatewayContext .
+Apex Reference Guide PaymentGatewayContext Class
+
+#### PaymentGatewayContext Constructors The following are constructors for PaymentGatewayContext .
 
 IN THIS SECTION:
 
@@ -6416,9 +17212,6 @@ Signature
 
 ```
 
-
-### Apex Reference Guide PaymentGatewayNotificationContext Class
-
 Parameters
 
 ```
@@ -6433,7 +17226,7 @@ Raw payload. Sensitive attributes are masked to ensure PCI compliance.
    requestType
 ```
 
-[Type: commercepayments.RequestType Enum](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_enum_commercepayments_RequestType.htm)
+[Type: commercepayments.RequestType Enum](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_enum_commercepayments_RequestType.htm)
 
 Defines the type of request made to the gateway
 
@@ -6445,8 +17238,7 @@ IN THIS SECTION:
 
 Returns the payment request object.
 
-##### getPaymentRequestType()
-
+getPaymentRequestType()
 Returns the payment request type.
 
 ##### getPaymentRequest()
@@ -6459,6 +17251,9 @@ Signature
    global commercepayments.PaymentGatewayRequest getPaymentRequest()
 
 ```
+
+
+### Apex Reference Guide PaymentGatewayNotificationContext Class
 
 Return Value
 
@@ -6483,12 +17278,9 @@ Type: String
 
 Wraps the information related to a gateway notification.
 
-
-Apex Reference Guide PaymentGatewayNotificationContext Class
-
 Namespace
 
-CommercePayments on page 316
+CommercePayments on page 317
 
 Usage
 
@@ -6523,7 +17315,12 @@ Example
 
 IN THIS SECTION:
 
-#### PaymentGatewayNotificationContext Methods PaymentGatewayNotificationContext Methods The following are methods for PaymentGatewayNotificationContext .
+#### PaymentGatewayNotificationContext Methods PaymentGatewayNotificationContext Methods
+
+### The following are methods for PaymentGatewayNotificationContext .
+
+
+### Apex Reference Guide PaymentGatewayNotificationRequest Class
 
 IN THIS SECTION:
 
@@ -6546,16 +17343,15 @@ Signature
 
 Return Value
 
-Type: PaymentGatewayNotificationRequest on page 434
+Type: PaymentGatewayNotificationRequest on page 440
 
-
-### Apex Reference Guide PaymentGatewayNotificationRequest Class PaymentGatewayNotificationRequest Class
+### PaymentGatewayNotificationRequest Class
 
 Contains the notification request data from the gateway.
 
 Namespace
 
-CommercePayments on page 316
+CommercePayments on page 317
 
 Usage
 
@@ -6565,8 +17361,8 @@ gateway adapter. If the notification payload contains an `eventCode` of `CAPTURE
 `ReferencedRefundNotification` . If the notification payload contains `eventCode` of `AUTHORISATION`, the adapter
 constructs a `GatewayNotificationResponse` .
 
-You can obtain a notification request from `PaymentGatewayNotificationContext` on page 432 by invoking its
-`getPaymentGatewayNotificationRequest` method.
+You can obtain a notification request from `PaymentGatewayNotificationContext` on page 439 by invoking its
+##### getPaymentGatewayNotificationRequest method.
 
 Example
 
@@ -6587,13 +17383,14 @@ Example
 
 IN THIS SECTION:
 
-#### PaymentGatewayNotificationRequest Properties
+PaymentGatewayNotificationRequest Properties
 
 PaymentGatewayNotificationRequest Methods
 
-#### PaymentGatewayNotificationRequest Properties
 
-### The following are properties for PaymentGatewayNotificationRequest .
+Apex Reference Guide PaymentGatewayNotificationRequest Class
+
+#### PaymentGatewayNotificationRequest Properties The following are properties for PaymentGatewayNotificationRequest .
 
 IN THIS SECTION:
 
@@ -6611,9 +17408,6 @@ Signature
    global Blob requestBody {get; set;}
 
 ```
-
-
-### Apex Reference Guide PaymentMethodDetailsResponse Class
 
 Property Value
 
@@ -6650,6 +17444,9 @@ Type: Map<String,String>
 
 Stores the notification request body information from the payment gateway’s notification request.
 
+
+### Apex Reference Guide PaymentMethodDetailsResponse Class
+
 Signature
 
 ```
@@ -6668,9 +17465,6 @@ This class contains the details about the payment method.
 Namespace
 
 CommercePayments
-
-
-Apex Reference Guide PaymentMethodDetailsResponse Class
 
 Example
 
@@ -6697,7 +17491,9 @@ Example
 
 IN THIS SECTION:
 
-#### PaymentMethodDetailsResponse Methods PaymentMethodDetailsResponse Methods The following are methods for PaymentMethodDetailsResponse .
+#### PaymentMethodDetailsResponse Methods PaymentMethodDetailsResponse Methods
+
+### The following are methods for PaymentMethodDetailsResponse .
 
 IN THIS SECTION:
 
@@ -6705,13 +17501,15 @@ IN THIS SECTION:
 
 Sets the alternative payment method details.
 
-##### setCardPaymentMethod(cardPaymentMethod)
-
+setCardPaymentMethod(cardPaymentMethod)
 Sets the details about the card payment method.
 
 ##### **`setAlternativePaymentMethod(alternativePaymentMethod)`**
 
 Sets the alternative payment method details.
+
+
+### Apex Reference Guide LineItemInput Class
 
 Signature
 
@@ -6740,9 +17538,6 @@ Type: void
 
 Sets the details about the card payment method.
 
-
-### Apex Reference Guide PaymentMethodIdType Enum
-
 Signature
 
 ```
@@ -6765,6 +17560,424 @@ Details about the card payment method.
 Return Value
 
 Type: void
+
+### LineItemInput Class
+
+Sends the list of individual line items associated with the payment to the gateway adapter.
+
+Namespace
+
+CommercePayments on page 317
+
+IN THIS SECTION:
+
+LineItemInput Properties
+
+LineItemInput Methods
+
+
+Apex Reference Guide LineItemInput Class
+
+#### LineItemInput Properties The following are properties for LineItemInput .
+
+IN THIS SECTION:
+
+additionalAttributes
+Map of additional attributes.
+
+commodityCode
+Commodity code.
+
+description
+Description of the product.
+
+discount
+Discount applied to the line item level.
+
+discountIndicator
+Specifies whether a discount was applied to the specific line item.
+
+dutyAmount
+Duty or tariff applied specifically to a item (not the whole order).
+
+grossNetIndicator
+Specifies if the line item amount is Gross (before discounts) or Net (after discounts).
+
+lineItemId
+Line item identifier. Specify when multiple items are present.
+
+lineItemTotal
+Total amount for that line item.
+
+name
+Product or service name.
+
+quantity
+Quantity purchased.
+
+shippingAmount
+Shipping or freight cost allocated to that line item.
+
+sku
+SKU or product code.
+
+taxAmount
+Line-level tax amount.
+
+taxRate
+Tax percentage applied to that specific line item.
+
+unitPrice
+Unit price.
+
+uom
+Unit of measure. For example, EA, HRS, and KG.
+
+
+Apex Reference Guide LineItemInput Class
+
+##### **`additionalAttributes`**
+
+Map of additional attributes.
+
+Signature
+
+```
+   public Map<String,String> additionalAttributes {get; set;}
+
+```
+
+Property Value
+
+Type: Map<String,String>
+
+##### **`commodityCode`**
+
+Commodity code.
+
+Signature
+
+```
+   public String commodityCode {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### **`description`**
+
+Description of the product.
+
+Signature
+
+```
+   public String description {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### **`discount`**
+
+Discount applied to the line item level.
+
+Signature
+
+```
+   public Double discount {get; set;}
+
+```
+
+Property Value
+
+Type: Double
+
+##### **`discountIndicator`**
+
+Specifies whether a discount was applied to the specific line item.
+
+
+Apex Reference Guide LineItemInput Class
+
+Signature
+
+```
+   public Boolean discountIndicator {get; set;}
+
+```
+
+Property Value
+
+Type: Boolean
+
+##### **`dutyAmount`**
+
+Duty or tariff applied specifically to a item (not the whole order).
+
+Signature
+
+```
+   public Double dutyAmount {get; set;}
+
+```
+
+Property Value
+
+Type: Double
+
+##### **`grossNetIndicator`**
+
+Specifies if the line item amount is Gross (before discounts) or Net (after discounts).
+
+Signature
+
+```
+   public String grossNetIndicator {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### **`lineItemId`**
+
+Line item identifier. Specify when multiple items are present.
+
+Signature
+
+```
+   public String lineItemId {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### **`lineItemTotal`**
+
+Total amount for that line item.
+
+Signature
+
+```
+   public Double lineItemTotal {get; set;}
+
+```
+
+
+Apex Reference Guide LineItemInput Class
+
+Property Value
+
+Type: Double
+
+##### **`name`**
+
+Product or service name.
+
+Signature
+
+```
+   public String name {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### **`quantity`**
+
+Quantity purchased.
+
+Signature
+
+```
+   public Integer quantity {get; set;}
+
+```
+
+Property Value
+
+Type: Integer
+
+##### **`shippingAmount`**
+
+Shipping or freight cost allocated to that line item.
+
+Signature
+
+```
+   public Double shippingAmount {get; set;}
+
+```
+
+Property Value
+
+Type: Double
+
+##### **`sku`**
+
+SKU or product code.
+
+Signature
+
+```
+   public String sku {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+
+Apex Reference Guide LineItemInput Class
+
+##### **`taxAmount`**
+
+Line-level tax amount.
+
+Signature
+
+```
+   public Double taxAmount {get; set;}
+
+```
+
+Property Value
+
+Type: Double
+
+##### **`taxRate`**
+
+Tax percentage applied to that specific line item.
+
+Signature
+
+```
+   public Double taxRate {get; set;}
+
+```
+
+Property Value
+
+Type: Double
+
+##### **`unitPrice`**
+
+Unit price.
+
+Signature
+
+```
+   public Double unitPrice {get; set;}
+
+```
+
+Property Value
+
+Type: Double
+
+##### **`uom`**
+
+Unit of measure. For example, EA, HRS, and KG.
+
+Signature
+
+```
+   public String uom {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+#### LineItemInput Methods The following are methods for LineItemInput .
+
+
+Apex Reference Guide LineItemInput Class
+
+IN THIS SECTION:
+
+##### equals(obj)
+
+Maintains the integrity of lists of type `LineItemInput` by determining the equality of external objects in a list. This method is
+dynamic and based on the equals method in Java.
+
+##### hashCode()
+
+Maintains the integrity of lists of type `LineItemInput` .
+
+##### toString()
+
+Converts a date to a string.
+
+##### **`equals(obj)`**
+
+Maintains the integrity of lists of type `LineItemInput` by determining the equality of external objects in a list. This method is
+dynamic and based on the equals method in Java.
+
+Signature
+
+```
+   public Boolean equals(Object obj)
+
+```
+
+Parameters
+
+```
+   obj
+```
+
+Type: Object
+
+External object whose key is to be validated.
+
+Return Value
+
+Type: Boolean
+
+##### **`hashCode()`**
+
+Maintains the integrity of lists of type `LineItemInput` .
+
+Signature
+
+```
+   public Integer hashCode()
+
+```
+
+Return Value
+
+Type: Integer
+
+##### **`toString()`**
+
+Converts a date to a string.
+
+Signature
+
+```
+   public String toString()
+
+```
+
+
+### Apex Reference Guide PaymentMethodIdType Enum
+
+Return Value
+
+Type: String
 
 ### PaymentMethodIdType Enum
 
@@ -6789,7 +18002,7 @@ sensitive customer data.
 
 Namespace
 
-CommercePayments on page 316
+CommercePayments on page 317
 
 Usage
 
@@ -6805,17 +18018,15 @@ The constructor of this class takes no arguments. For example:
 This class holds all the required details about the tokenize request. Gateway adapters read the information in this class while constructing
 a tokenization JSON request, which is sent to the payment gateway.
 
-
-Apex Reference Guide PaymentMethodTokenizationRequest Class
-
 Example
 
 The following code is used within your payment gateway adapter Apex class.
 
 Use the `GatewayResponse` class's `processRequest` method to build responses based on the request type that it receives
-from an instance of `PaymentGatewayContext on page 431` . If the request type is Tokenize, `GatewayResponse on`
-`page 422` calls the `createTokenizeResponse` method and passes an instance of the
-`PaymentMethodTokenizationRequest` class. The passed `PaymentMethodTokenizationRequest` object contains
+from an instance of `PaymentGatewayContext on page 437` . If the request type is Tokenize, `GatewayResponse on`
+`page 429` calls the `createTokenizeResponse` method and passes an instance of the
+### PaymentMethodTokenizationRequest class. The passed PaymentMethodTokenizationRequest object contains
+
 the address and cardPaymentMethod information that the payment gateway needs to manage the tokenization process. For example:
 
 ```
@@ -6823,6 +18034,12 @@ the address and cardPaymentMethod information that the payment gateway needs to 
 
     gatewayContext) {
 
+```
+
+
+Apex Reference Guide PaymentMethodTokenizationRequest Class
+
+```
         commercepayments.RequestType requestType = gatewayContext.getPaymentRequestType();
 
          commercepayments.GatewayResponse response;
@@ -6859,9 +18076,9 @@ the address and cardPaymentMethod information that the payment gateway needs to 
 
       }
 
+#### Configure the createTokenizeResponse method to accept an instance of PaymentMethodTokenizationRequest .
 ```
 
-Configure the `createTokenizeResponse` method to accept an instance of `PaymentMethodTokenizationRequest` .
 Then, build an instance of `PaymentMethodTokenizationResponse` based on the values received from the payment gateway.
 
 ```
@@ -6899,16 +18116,18 @@ Then, build an instance of `PaymentMethodTokenizationResponse` based on the valu
 
 The `tokenizeResponse` contains the results of the gateway's tokenization process, and if successful, the tokenized value.
 
-
-Apex Reference Guide PaymentMethodTokenizationRequest Class
-
 IN THIS SECTION:
 
-#### PaymentMethodTokenizationRequest Constructors PaymentMethodTokenizationRequest Properties
+#### PaymentMethodTokenizationRequest Constructors
+
+PaymentMethodTokenizationRequest Properties
 
 PaymentMethodTokenizationRequest Methods
 
 #### PaymentMethodTokenizationRequest Constructors The following are constructors for PaymentMethodTokenizationRequest .
+
+
+Apex Reference Guide PaymentMethodTokenizationRequest Class
 
 IN THIS SECTION:
 
@@ -6917,10 +18136,7 @@ IN THIS SECTION:
 Payment gateway ID constructor used with `paymentMethodTokenizationRequest` . This constructor is intended for test
 usage and throws an exception if used outside of the Apex test context.
 
-##### PaymentMethodTokenizationRequest()
-#### The following are constructors for PaymentMethodTokenizationRequest .
-
-##### PaymentMethodTokenizationRequest(paymentGatewayId)
+##### PaymentMethodTokenizationRequest() The following are constructors for PaymentMethodTokenizationRequest . PaymentMethodTokenizationRequest(paymentGatewayId)
 
 Payment gateway ID constructor used with `paymentMethodTokenizationRequest` . This constructor is intended for test
 usage and throws an exception if used outside of the Apex test context.
@@ -6942,16 +18158,16 @@ Type: String
 
 The payment method’s payment gateway ID that will be tokenized.
 
-##### PaymentMethodTokenizationRequest()
-
-#### The following are constructors for PaymentMethodTokenizationRequest .
+##### PaymentMethodTokenizationRequest() The following are constructors for PaymentMethodTokenizationRequest .
 
 Signature
 
 ```
    global PaymentMethodTokenizationRequest()
 
-#### PaymentMethodTokenizationRequest Properties The following are properties for PaymentMethodTokenizationRequest .
+#### PaymentMethodTokenizationRequest Properties
+
+##### The following are properties for PaymentMethodTokenizationRequest .
 
 ```
 
@@ -6960,20 +18176,17 @@ IN THIS SECTION:
 address
 The card payment method address to be tokenized.
 
-
-Apex Reference Guide PaymentMethodTokenizationRequest Class
-
-##### bankPaymentMethod
-
+bankPaymentMethod
 The bank payment method containing data to be tokenized.
 
-##### cardPaymentMethod
-
+cardPaymentMethod
 The card payment method containing data to be tokenized.
 
-##### savedByMerchant
-
+savedByMerchant
 Indicates whether the payment method to be tokenized is saved by the marchant ( `true` ) or not ( `false` ).
+
+
+Apex Reference Guide PaymentMethodTokenizationRequest Class
 
 ##### address
 
@@ -7003,7 +18216,7 @@ Signature
 
 Property Value
 
-Type: commercepayments.BankPaymentMethodRequest on page 365
+Type: commercepayments.BankPaymentMethodRequest on page 366
 
 ##### cardPaymentMethod
 
@@ -7018,7 +18231,7 @@ Signature
 
 Property Value
 
-Type: CardPaymentMethodRequest on page 403
+Type: CardPaymentMethodRequest on page 404
 
 ##### **`savedByMerchant`**
 
@@ -7031,34 +18244,34 @@ Signature
 
 ```
 
-
-Apex Reference Guide PaymentMethodTokenizationRequest Class
-
 Property Value
 
 Type: Boolean
 
 #### PaymentMethodTokenizationRequest Methods The following are methods for PaymentMethodTokenizationRequest .
 
+
+Apex Reference Guide PaymentMethodTokenizationRequest Class
+
 IN THIS SECTION:
 
 ##### equals(obj)
-#### Maintains the integrity of lists of type PaymentMethodTokenizationRequest by determining the equality of external
 
+Maintains the integrity of lists of type `PaymentMethodTokenizationRequest` by determining the equality of external
 objects in a list. This method is dynamic and is based on the equals method in Java.
 
 ##### hashCode()
-#### Maintains the integrity of lists of type PaymentMethodTokenizationRequest by determining the uniquness of the
 
+Maintains the integrity of lists of type `PaymentMethodTokenizationRequest` by determining the uniquness of the
 external object records in a list.
 
-toString()
+##### toString()
+
 Converts a date to a string.
 
 ##### equals(obj)
 
-#### Maintains the integrity of lists of type PaymentMethodTokenizationRequest by determining the equality of external objects
-
+Maintains the integrity of lists of type `PaymentMethodTokenizationRequest` by determining the equality of external objects
 in a list. This method is dynamic and is based on the equals method in Java.
 
 Signature
@@ -7084,8 +18297,7 @@ Type: Boolean
 
 ##### hashCode()
 
-#### Maintains the integrity of lists of type PaymentMethodTokenizationRequest by determining the uniquness of the external
-
+Maintains the integrity of lists of type `PaymentMethodTokenizationRequest` by determining the uniquness of the external
 object records in a list.
 
 Signature
@@ -7094,9 +18306,6 @@ Signature
    global Integer hashCode()
 
 ```
-
-
-### Apex Reference Guide PaymentMethodTokenizationResponse Class
 
 Return Value
 
@@ -7113,6 +18322,9 @@ Signature
 
 ```
 
+
+### Apex Reference Guide PaymentMethodTokenizationResponse Class
+
 Return Value
 
 Type: String
@@ -7124,7 +18336,7 @@ method’s token ID value.
 
 Namespace
 
-CommercePayments on page 316
+CommercePayments on page 317
 
 Usage
 
@@ -7156,12 +18368,8 @@ Example
 ### PaymentMethodTokenizationResponse contains only setter methods. Each setter accepts a value from the payment gateway and use it to set an attribute of PaymentMethodTokenizationResponse . The most important method in PaymentMethodTokenizationResponse is setGatewayTokenEncrypted, which
 ```
 
-[uses Salesforce encryption to set an encrypted token value for a payment method. The](https://developer.salesforce.com/docs/atlas.en-us.260.0.securityImplGuide.meta/securityImplGuide/fields_about_encrypted_fields.htm) `setGatewayTokenEncrypted` method
+[uses Salesforce encryption to set an encrypted token value for a payment method. The](https://help.salesforce.com/s/articleView?id=platform.fields_about_encrypted_fields&type=5&language=en_US) `setGatewayTokenEncrypted` method
 is available in Salesforce API v52.0 and later. We recommend using it to ensure your tokenized payment method values are encrypted
-
-
-Apex Reference Guide PaymentMethodTokenizationResponse Class
-
 and secure. While the `setGatewayToken` method (available in earlier API versions) also returns a payment method token, the
 tokenized value isn't encrypted.
 
@@ -7185,6 +18393,9 @@ If the instantiated class already has a gateway token, `setGatewayTokenEncrypted
       }
 
 ```
+
+
+Apex Reference Guide PaymentMethodTokenizationResponse Class
 
 A typical instantiation of `PaymentMethodTokenizationResponse` sets the encrypted gateway token alongside the other
 tokenization response values sent by the gateway.
@@ -7258,12 +18469,6 @@ After you've built a PaymentMethodTokenizationResponse object and set the encryp
 
           }
 
-```
-
-
-Apex Reference Guide PaymentMethodTokenizationResponse Class
-
-```
           authResponse.setGatewayResultCode('00');
 
           authResponse.setGatewayResultCodeDescription('Transaction Normal');
@@ -7285,6 +18490,9 @@ Apex Reference Guide PaymentMethodTokenizationResponse Class
         }
 
 ```
+
+
+Apex Reference Guide PaymentMethodTokenizationResponse Class
 
 **Sale Response**
 
@@ -7343,13 +18551,9 @@ IN THIS SECTION:
 
 #### PaymentMethodTokenizationResponse Methods PaymentMethodTokenizationResponse Methods The following are methods for PaymentMethodTokenizationResponse .
 
-
-Apex Reference Guide PaymentMethodTokenizationResponse Class
-
 IN THIS SECTION:
 
-##### setAmount(amount)
-
+setAmount(amount)
 Sets the amount for payment tokenization. Can be positive, negative, or zero.
 
 setAsync(async)
@@ -7358,6 +18562,9 @@ method remains in a pending state until the async notification is received.
 
 setBankName(bankName)
 Sets the bank name for payment tokenization.
+
+
+Apex Reference Guide PaymentMethodTokenizationResponse Class
 
 setChecksum(checksum)
 Sets the unique hash of the payment method that the gateway returned.
@@ -7403,9 +18610,6 @@ uses the result code information to map payment gateway codes to a predefined se
 
 Sets the amount for payment tokenization. Can be positive, negative, or zero.
 
-
-Apex Reference Guide PaymentMethodTokenizationResponse Class
-
 Signature
 
 ```
@@ -7424,6 +18628,9 @@ Type: Double
 Return Value
 
 Type: void
+
+
+Apex Reference Guide PaymentMethodTokenizationResponse Class
 
 ##### **`setAsync(async)`**
 
@@ -7476,9 +18683,6 @@ Type: void
 
 Sets the unique hash of the payment method that the gateway returned.
 
-
-Apex Reference Guide PaymentMethodTokenizationResponse Class
-
 Signature
 
 ```
@@ -7497,6 +18701,9 @@ Type: String
 Return Value
 
 Type: void
+
+
+Apex Reference Guide PaymentMethodTokenizationResponse Class
 
 ##### **`setCustomerReference(customerReference)`**
 
@@ -7547,9 +18754,6 @@ Return Value
 
 Type: void
 
-
-Apex Reference Guide PaymentMethodTokenizationResponse Class
-
 ##### setGatewayDate(gatewayDate)
 
 Sets the date that the tokenization occurred. Some gateways don’t send this value.
@@ -7568,6 +18772,9 @@ Parameters
 ```
 
 Type: Datetime
+
+
+Apex Reference Guide PaymentMethodTokenizationResponse Class
 
 Return Value
 
@@ -7619,9 +18826,6 @@ Return Value
 
 Type: void
 
-
-Apex Reference Guide PaymentMethodTokenizationResponse Class
-
 ##### **`setGatewayReferenceNumber(gatewayReferenceNumber)`**
 
 Sets the reference number that the gateway returned.
@@ -7640,6 +18844,9 @@ Parameters
 ```
 
 Type: String
+
+
+Apex Reference Guide PaymentMethodTokenizationResponse Class
 
 Return Value
 
@@ -7692,9 +18899,6 @@ Type: String
 Provides additional information about the result code and why the gateway returned the specific code. Descriptions will vary between
 different gateways.
 
-
-Apex Reference Guide PaymentMethodTokenizationResponse Class
-
 Return Value
 
 Type: void
@@ -7709,6 +18913,9 @@ Signature
    global void setGatewayToken(String gatewayToken)
 
 ```
+
+
+Apex Reference Guide PaymentMethodTokenizationResponse Class
 
 Parameters
 
@@ -7761,9 +18968,6 @@ Signature
 
 ```
 
-
-### Apex Reference Guide PaymentsHttp Class
-
 Parameters
 
 ```
@@ -7772,12 +18976,15 @@ Parameters
 
 Type: String
 
-[The gateway token that the payment gateway sends following a tokenization request. Salesforce Payments uses Salesforce encryption](https://developer.salesforce.com/docs/atlas.en-us.260.0.securityImplGuide.meta/securityImplGuide/fields_about_encrypted_fields.htm)
+[The gateway token that the payment gateway sends following a tokenization request. Salesforce Payments uses Salesforce encryption](https://help.salesforce.com/s/articleView?id=platform.fields_about_encrypted_fields&type=5&language=en_US)
 to encrypt the token value.
 
 Return Value
 
 Type: void
+
+
+### Apex Reference Guide PaymentsHttp Class
 
 ##### setSalesforceResultCodeInfo(salesforceResultCodeInfo)
 
@@ -7799,7 +19006,7 @@ Parameters
    salesforceResultCodeInfo
 ```
 
-Type: SalesforceResultCodeInfo on page 502
+Type: SalesforceResultCodeInfo on page 519
 
 Description of the Salesforce result code value.
 
@@ -7813,7 +19020,7 @@ Makes an HTTP request to start the interaction with the payment gateway.
 
 Namespace
 
-CommercePayments on page 316
+CommercePayments on page 317
 
 Usage
 
@@ -7827,20 +19034,21 @@ no arguments. For example:
 
 IN THIS SECTION:
 
-PaymentsHttp Methods
+#### PaymentsHttp Methods
 
 PaymentsHttp Constructors
 
+#### PaymentsHttp Methods
 
-### Apex Reference Guide PostAuthApiPaymentMethodRequest Class
-
-#### PaymentsHttp Methods The following are methods for PaymentsHttp . All methods are instance methods.
+### The following are methods for PaymentsHttp . All methods are instance methods.
 
 IN THIS SECTION:
 
-##### send(Request)
-
+send(Request)
 Sends an HttpRequest and returns the response.
+
+
+### Apex Reference Guide PostAuthApiPaymentMethodRequest Class
 
 ##### send(Request)
 
@@ -7859,11 +19067,11 @@ Parameters
    request
 ```
 
-[Type: System.HttpRequest](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_restful_http_httprequest.htm#apex_classes_restful_http_httprequest)
+[Type: System.HttpRequest](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_classes_restful_http_httprequest.htm#apex_classes_restful_http_httprequest)
 
 Return Value
 
-[Type: System.HttpResponse](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_restful_http_httpresponse.htm#apex_classes_restful_http_httpresponse)
+[Type: System.HttpResponse](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_classes_restful_http_httpresponse.htm#apex_classes_restful_http_httpresponse)
 
 #### PaymentsHttp Constructors The following are constructors for PaymentsHttp .
 
@@ -7892,15 +19100,15 @@ Namespace
 
 CommercePayments
 
-
-Apex Reference Guide PostAuthApiPaymentMethodRequest Class
-
 Usage
 
 Contains information about the payment method that is used for a postauthorization request. It contains all available payment methods
 as fields, but populates only one field for each request. The gateway adapter uses this class when constructing a postauthorization
 request. An object of this class is available through the `paymentMethod` field on the `PostAuthorizationRequest Class`
 object.
+
+
+Apex Reference Guide PostAuthApiPaymentMethodRequest Class
 
 IN THIS SECTION:
 
@@ -7924,7 +19132,8 @@ IN THIS SECTION:
 Constructs a sample `cardPaymentMethodRequest` . This constructor is intended for test usage and throws an exception if
 used outside of the Apex test context.
 
-PostAuthApiPaymentMethodRequest(AlternativePaymentMethodRequest)
+##### PostAuthApiPaymentMethodRequest(AlternativePaymentMethodRequest)
+
 Constructs a sample `alternativePaymentMethodRequest` . This constructor is intended for test usage and throws an
 exception if used outside of the Apex test context.
 
@@ -7951,12 +19160,9 @@ Parameters
    cardPaymentMethodRequest
 ```
 
-Type: commercepayments.CardPaymentMethodRequest on page 403
+Type: commercepayments.CardPaymentMethodRequest on page 404
 
 Contains information about the card payment method. Used to send information to a gateway adapter during a service call.
-
-
-Apex Reference Guide PostAuthApiPaymentMethodRequest Class
 
 ##### **`PostAuthApiPaymentMethodRequest(AlternativePaymentMethodRequest)`**
 
@@ -7972,13 +19178,14 @@ Signature
 
 ```
 
+
+Apex Reference Guide PostAuthApiPaymentMethodRequest Class
+
 Parameters
 
-```
-   alternativePaymentMethodRequest
-```
+##### _`alternativePaymentMethodRequest`_
 
-Type: commercepayments.AlternativePaymentMethodRequest on page 403
+Type: commercepayments.AlternativePaymentMethodRequest on page 404
 
 Contains information about the alternative payment method. Used to send information to a gateway adapter during a service call.
 
@@ -8003,7 +19210,8 @@ IN THIS SECTION:
 
 The card payment method object used in a postauthorizaiton payment method request.
 
-alternativePaymentMethod
+##### alternativePaymentMethod
+
 The alternative payment method object used in a postauthorizaiton payment method request.
 
 ##### **`cardPaymentMethod`**
@@ -8019,10 +19227,7 @@ Signature
 
 Property Value
 
-Type: commercepayments.CardPaymentMethodRequest on page 403
-
-
-### Apex Reference Guide PostAuthorizationRequest Class
+Type: commercepayments.CardPaymentMethodRequest on page 404
 
 ##### **`alternativePaymentMethod`**
 
@@ -8039,7 +19244,8 @@ Property Value
 
 Type: commercepayments.alternativePaymentMethodRequest
 
-### PostAuthorizationRequest Class
+
+### Apex Reference Guide PostAuthorizationRequest Class PostAuthorizationRequest Class
 
 Sends information about a postauthorization request to a gateway adapter during a service call.
 
@@ -8049,7 +19255,7 @@ CommercePayments
 
 Usage
 
-This class extends `[BaseRequest](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_commercepayments_BaseRequest.htm)` and contains information about a transaction postauthorization request. The gateway adapter reads
+This class extends `[BaseRequest](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_class_commercepayments_BaseRequest.htm)` and contains information about a transaction postauthorization request. The gateway adapter reads
 fields from this class to validate the client-side transaction with the payment gateway. An object of this class is available by calling
 `getPaymentRequest()` in the `PaymentGatewayContext Class` ).
 
@@ -8075,12 +19281,10 @@ Lists the constructors for postauthorization requests.
 
 IN THIS SECTION:
 
-PostAuthorizationRequest(amount)
+##### PostAuthorizationRequest(amount)
+
 Constructor for building the amount in a postauthorization request. This constructor is intended for test usage and throws an
 exception if used outside of the Apex test context.
-
-
-Apex Reference Guide PostAuthorizationRequest Class
 
 ##### **`PostAuthorizationRequest(amount)`**
 
@@ -8096,17 +19300,22 @@ Signature
 
 Parameters
 
-##### _`amount`_
+```
+   amount
+```
 
 Type: Double
 
 The amount of the authorization.
 
+
+Apex Reference Guide PostAuthorizationRequest Class
+
 #### PostAuthorizationRequest Properties
 
 Lists properties for a postauthorizaiton request.
 
-##### The following are properties for a PostAuthorizationRequest .
+#### The following are properties for a PostAuthorizationRequest .
 
 IN THIS SECTION:
 
@@ -8118,7 +19327,8 @@ The customer account that is settled when the postauthorization is performed.
 
 The total amount of the postauthorization request.
 
-comments
+##### comments
+
 Comments about the postauthorization. Users can enter comments to provide additional information.
 
 currencyIsoCode
@@ -8146,9 +19356,6 @@ Type: String
 
 The total amount of the postauthorization request.
 
-
-### Apex Reference Guide PostAuthorizationResponse Class
-
 Signature
 
 ```
@@ -8163,6 +19370,9 @@ Type: Double
 ##### **`comments`**
 
 Comments about the postauthorization. Users can enter comments to provide additional information.
+
+
+### Apex Reference Guide PostAuthorizationResponse Class
 
 Signature
 
@@ -8203,7 +19413,7 @@ Signature
 
 Property Value
 
-Type: AuthApiPaymentMethodRequest on page 342
+Type: AuthApiPaymentMethodRequest on page 343
 
 ### PostAuthorizationResponse Class
 
@@ -8213,12 +19423,9 @@ Namespace
 
 CommercePayments
 
-
-Apex Reference Guide PostAuthorizationResponse Class
-
 Usage
 
-[This class extends AbstractTransactionResponse. The constructor of this class takes no arguments. For example:](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_commercepayments_AbstractTransactionResponse.htm)
+[This class extends AbstractTransactionResponse. The constructor of this class takes no arguments. For example:](https://developer.salesforce.com/docs/atlas.en-us.262.0.apexref.meta/apexref/apex_class_commercepayments_AbstractTransactionResponse.htm)
 
 ```
    CommercePayments.PostAuthorizationResponse authr = new
@@ -8228,9 +19435,12 @@ Usage
 ```
 
 Contains information about the payment gateway’s response following an authorization transaction. The gateway adapter uses the
-#### payment gateway’s response to populate the PostAuthorizationResponse fields. The payments platform uses the information
+### payment gateway’s response to populate the PostAuthorizationResponse fields. The payments platform uses the information
 
 from this class to settle the transaction.
+
+
+Apex Reference Guide PostAuthorizationResponse Class
 
 IN THIS SECTION:
 
@@ -8272,9 +19482,6 @@ Sets the reference number that the gateway returned.
 setGatewayResultCode(gatewayResultCode)
 Sets a gateway-specific result code. The code may be mapped to a Salesforce-specific result code. Maximum length of 64 characters.
 
-
-Apex Reference Guide PostAuthorizationResponse Class
-
 setGatewayResultCodeDescription(gatewayResultCodeDescription)
 Sets a description of the gateway-specific result code that a payment gateway returned. Maximum length of 1000 characters.
 
@@ -8283,6 +19490,9 @@ Sets details about the payment method.
 
 setPaymentMethodTokenizationResponse(paymentMethodTokenizationResponse)
 Sets information from the gateway about the tokenized payment method.
+
+
+Apex Reference Guide PostAuthorizationResponse Class
 
 setSalesforceResultCodeInfo(salesforceResultCodeInfo)
 Sets the Salesforce-specific result code information. Payment gateways have many response codes for payment calls. Salesforce
@@ -8338,9 +19548,6 @@ Return Value
 
 Type: void
 
-
-Apex Reference Guide PostAuthorizationResponse Class
-
 ##### **`setAsync(async)`**
 
 Sets whether the payment capture or authorization is asynchronous ( `True` ) or synchronous ( `False` ). If `True`, then the payment or
@@ -8352,6 +19559,9 @@ Signature
    global void setAsync(Boolean async)
 
 ```
+
+
+Apex Reference Guide PostAuthorizationResponse Class
 
 Parameters
 
@@ -8409,9 +19619,6 @@ Type: String
 
 The authorization code returned by the gateway.
 
-
-Apex Reference Guide PostAuthorizationResponse Class
-
 Return Value
 
 Type: void
@@ -8426,6 +19633,9 @@ Signature
    public void setGatewayAvsCode(String gatewayAvsCode)
 
 ```
+
+
+Apex Reference Guide PostAuthorizationResponse Class
 
 Parameters
 
@@ -8476,9 +19686,6 @@ Signature
 
 ```
 
-
-Apex Reference Guide PostAuthorizationResponse Class
-
 Parameters
 
 ```
@@ -8494,6 +19701,9 @@ Type: void
 ##### **`setGatewayReferenceDetails(gatewayReferenceDetails)`**
 
 Sets any additional reference details that the gateway returned.
+
+
+Apex Reference Guide PostAuthorizationResponse Class
 
 Signature
 
@@ -8548,9 +19758,6 @@ Signature
 
 ```
 
-
-Apex Reference Guide PostAuthorizationResponse Class
-
 Parameters
 
 ```
@@ -8568,6 +19775,9 @@ Type: void
 ##### **`setGatewayResultCodeDescription(gatewayResultCodeDescription)`**
 
 Sets a description of the gateway-specific result code that a payment gateway returned. Maximum length of 1000 characters.
+
+
+Apex Reference Guide PostAuthorizationResponse Class
 
 Signature
 
@@ -8620,9 +19830,6 @@ Type: void
 
 Sets information from the gateway about the tokenized payment method.
 
-
-### Apex Reference Guide ReferencedRefundNotification Class
-
 Signature
 
 ```
@@ -8640,9 +19847,12 @@ Parameters
    paymentMethodTokenizationResponse
 ```
 
-PaymentMethodTokenizationResponse on page 442
+PaymentMethodTokenizationResponse on page 455
 
 Gateway response sent by payment gateway adapters for the payment method tokenization request.
+
+
+### Apex Reference Guide ReferencedRefundNotification Class
 
 Return Value
 
@@ -8668,7 +19878,7 @@ Parameters
    salesforceResultCodeInfo
 ```
 
-Type: commercepayments.SalesforceResultCodeInfo on page 502
+Type: commercepayments.SalesforceResultCodeInfo on page 519
 
 Description of the Salesforce result code value.
 
@@ -8683,15 +19893,12 @@ When a payment gateway sends a notification for a refund transaction, the paymen
 
 Namespace
 
-CommercePayments on page 316
+CommercePayments on page 317
 
 Usage
 
 This class is used with asynchronous payments. When a payment gateway sends a notification for a refund transcation, the gateway
 ### adapter creates an object of type ReferencedRefundNotification to populate the respective values.
-
-
-Apex Reference Guide ReferencedRefundNotification Class
 
 The constructor of this class takes no arguments. For example:
 
@@ -8717,6 +19924,12 @@ Example
 
         }
 
+```
+
+
+Apex Reference Guide ReferencedRefundNotification Class
+
+```
         commercepayments.BaseNotification notification = null;
 
         if ('CAPTURE'.equals(eventCode)) {
@@ -8737,7 +19950,8 @@ IN THIS SECTION:
 
 IN THIS SECTION:
 
-setAmount(amount)
+##### setAmount(amount)
+
 Sets the transaction amount. Can be positive, negative, or zero.
 
 setGatewayAvsCode(gatewayAvsCode)
@@ -8761,9 +19975,6 @@ Sets the payment gateway’s result code.
 setGatewayResultCodeDescription(gatewayResultCodeDescription)
 Sets the payment gateway’s result code description.
 
-
-Apex Reference Guide ReferencedRefundNotification Class
-
 setId(id)
 Sets the ID of a notification sent by the payment gateway.
 
@@ -8776,6 +19987,9 @@ Sets the notification status value on the notification object.
 ##### setAmount(amount)
 
 Sets the transaction amount. Can be positive, negative, or zero.
+
+
+Apex Reference Guide ReferencedRefundNotification Class
 
 Signature
 
@@ -8828,9 +20042,6 @@ Type: void
 
 Sets the date that communication for the refund notification occurred with the payment gateway.
 
-
-Apex Reference Guide ReferencedRefundNotification Class
-
 Signature
 
 ```
@@ -8851,6 +20062,9 @@ The date that communication happened with the gateway.
 Return Value
 
 Type: void
+
+
+Apex Reference Guide ReferencedRefundNotification Class
 
 ##### setGatewayMessage(gatewayMessage)
 
@@ -8900,9 +20114,6 @@ Return Value
 
 Type: void
 
-
-Apex Reference Guide ReferencedRefundNotification Class
-
 ##### setGatewayReferenceNumber(gatewayReferenceNumber)
 
 Sets the payment gateway’s reference number.
@@ -8923,6 +20134,9 @@ Parameters
 Type: String
 
 Unique transaction ID created by the payment gateway.
+
+
+Apex Reference Guide ReferencedRefundNotification Class
 
 Return Value
 
@@ -8974,9 +20188,6 @@ Type: String
 
 Description of the gateway result code. Provides additional context about the result code .
 
-
-Apex Reference Guide ReferencedRefundNotification Class
-
 Return Value
 
 Type: void
@@ -8991,6 +20202,9 @@ Signature
    global void setId(String id)
 
 ```
+
+
+### Apex Reference Guide ReferencedRefundRequest
 
 Parameters
 
@@ -9023,7 +20237,7 @@ Parameters
    salesforceResultCodeInfo
 ```
 
-Type: SalesforceResultCodeInfo on page 502
+Type: SalesforceResultCodeInfo on page 519
 
 Description of the Salesforce result code value.
 
@@ -9042,16 +20256,13 @@ Signature
 
 ```
 
-
-### Apex Reference Guide ReferencedRefundRequest
-
 Parameters
 
 ```
    status
 ```
 
-Type: NotificationStatus on page 426
+Type: NotificationStatus on page 432
 
 Indicates whether the payments platform successfully received the notification from the payment gateway.
 
@@ -9063,9 +20274,12 @@ Type: void
 
 Access information about the referenced refund requests. Extends the `RefundRequest` class.
 
+
+#### Apex Reference Guide ReferencedRefundRequest
+
 Namespace
 
-CommercePayments on page 316
+CommercePayments on page 317
 
 Example
 
@@ -9090,24 +20304,27 @@ Example
 
 IN THIS SECTION:
 
-### ReferencedRefundRequest Constructors ReferencedRefundRequest Properties ReferencedRefundRequest Methods ReferencedRefundRequest Constructors The following are constructors for ReferencedRefundRequest .
+#### ReferencedRefundRequest Constructors ReferencedRefundRequest Properties
+
+ReferencedRefundRequest Methods
+
+#### ReferencedRefundRequest Constructors The following are constructors for ReferencedRefundRequest .
 
 IN THIS SECTION:
 
-### ReferencedRefundRequest(amount, paymentId)
+##### ReferencedRefundRequest(amount, paymentId)
 
 This constructor is intended for test usage and throws an exception if used outside of the Apex test context.
 
-### ReferencedRefundRequest(amount, paymentId)
+##### ReferencedRefundRequest(amount, paymentId)
 
 This constructor is intended for test usage and throws an exception if used outside of the Apex test context.
-
-
-#### Apex Reference Guide ReferencedRefundRequest
 
 Parameters
 
-##### _`amount`_
+```
+   amount
+```
 
 Type: Double
 
@@ -9123,6 +20340,9 @@ The payment record.
 
 #### ReferencedRefundRequest Properties The following are properties for ReferencedRefundRequest .
 
+
+### Apex Reference Guide ReferencedRefundResponse Class
+
 IN THIS SECTION:
 
 ##### PaymentId
@@ -9161,9 +20381,6 @@ Property Value
 
 Type: Double
 
-
-### Apex Reference Guide ReferencedRefundResponse Class
-
 #### ReferencedRefundRequest Methods The following are methods for ReferencedRefundRequest .
 
 ### ReferencedRefundResponse Class
@@ -9172,11 +20389,14 @@ Type: Double
 
 Namespace
 
-CommercePayments on page 316
+CommercePayments on page 317
 
 Usage
 
 The constructor of this class takes no arguments. For example:
+
+
+Apex Reference Guide ReferencedRefundResponse Class
 
 ```
    CommercePayments.ReferencedRefundResponse refr = new
@@ -9187,13 +20407,12 @@ The constructor of this class takes no arguments. For example:
 
 IN THIS SECTION:
 
-#### ReferencedRefundResponse Methods ReferencedRefundResponse Methods
-
-### The following are methods for ReferencedRefundResponse .
+#### ReferencedRefundResponse Methods ReferencedRefundResponse Methods The following are methods for ReferencedRefundResponse .
 
 IN THIS SECTION:
 
-setAmount(amount)
+##### setAmount(amount)
+
 Sets the transaction amount. The value must be a postive number.
 
 setAsync(async)
@@ -9218,9 +20437,6 @@ Sets the payment gateway’s reference number.
 setGatewayResultCode(gatewayResultCode)
 Sets the payment gateway’s result code.
 
-
-Apex Reference Guide ReferencedRefundResponse Class
-
 setGatewayResultCodeDescription(gatewayResultCodeDescription)
 Sets the payment gateway’s result code description.
 
@@ -9237,6 +20453,9 @@ Signature
    global void setAmount(Double amount)
 
 ```
+
+
+Apex Reference Guide ReferencedRefundResponse Class
 
 Parameters
 
@@ -9287,9 +20506,6 @@ Signature
 
 ```
 
-
-Apex Reference Guide ReferencedRefundResponse Class
-
 Parameters
 
 ```
@@ -9307,6 +20523,9 @@ Type: void
 ##### setGatewayDate(gatewayDate)
 
 Sets the payment gateway’s date.
+
+
+Apex Reference Guide ReferencedRefundResponse Class
 
 Signature
 
@@ -9358,9 +20577,6 @@ Type: void
 
 Sets the payment gateway’s reference details.
 
-
-Apex Reference Guide ReferencedRefundResponse Class
-
 Signature
 
 ```
@@ -9381,6 +20597,9 @@ Information about the gateway communication.
 Return Value
 
 Type: void
+
+
+Apex Reference Guide ReferencedRefundResponse Class
 
 ##### setGatewayReferenceNumber(gatewayReferenceNumber)
 
@@ -9432,9 +20651,6 @@ Return Value
 
 Type: void
 
-
-### Apex Reference Guide RefundRequest Class
-
 ##### setGatewayResultCodeDescription(gatewayResultCodeDescription)
 
 Sets the payment gateway’s result code description.
@@ -9455,6 +20671,9 @@ Parameters
 Type: String
 
 Description of the `GatewayResultCode` . Provides more information about the result code returned by the gateway.
+
+
+### Apex Reference Guide RefundRequest Class
 
 Return Value
 
@@ -9479,7 +20698,7 @@ Parameters
    salesforceResultCodeInfo
 ```
 
-Type: commercepayments.SalesforceResultCodeInfo on page 502
+Type: commercepayments.SalesforceResultCodeInfo on page 519
 
 Describes the Salesforce result code value.
 
@@ -9493,7 +20712,7 @@ Sends data related to a refund to the payment gateway adapter.
 
 Namespace
 
-CommercePayments on page 476
+CommercePayments on page 489
 
 Usage
 
@@ -9503,9 +20722,6 @@ The constructor of this class takes no arguments. For example:
    CommercePayments.RefundRequest rrq = new CommercePayments.RefundRequest();
 
 ```
-
-
-Apex Reference Guide RefundRequest Class
 
 Example
 
@@ -9518,22 +20734,27 @@ Example
 
 IN THIS SECTION:
 
-#### RefundRequest Methods RefundRequest Methods The following are methods for RefundRequest .
+#### RefundRequest Methods RefundRequest Methods
+
+### The following are methods for RefundRequest .
+
+
+### Apex Reference Guide RequestType Enum
 
 IN THIS SECTION:
 
 ##### equals(obj)
-#### Maintains the integrity of lists of type RefundRequest by determining the equality of external objects in a list. This method is
 
+Maintains the integrity of lists of type `RefundRequest` by determining the equality of external objects in a list. This method is
 dynamic and is based on the equals method in Java.
 
 ##### hashCode()
-#### Maintains the integrity of lists of type RefundRequest by determining the uniqueness of the external object records in a list.
+
+Maintains the integrity of lists of type `RefundRequest` by determining the uniqueness of the external object records in a list.
 
 ##### equals(obj)
 
-#### Maintains the integrity of lists of type RefundRequest by determining the equality of external objects in a list. This method is
-
+Maintains the integrity of lists of type `RefundRequest` by determining the equality of external objects in a list. This method is
 dynamic and is based on the equals method in Java.
 
 Signature
@@ -9557,7 +20778,7 @@ Type: Boolean
 
 ##### hashCode()
 
-#### Maintains the integrity of lists of type RefundRequest by determining the uniqueness of the external object records in a list.
+Maintains the integrity of lists of type `RefundRequest` by determining the uniqueness of the external object records in a list.
 
 Signature
 
@@ -9570,8 +20791,7 @@ Return Value
 
 Type: Integer
 
-
-### Apex Reference Guide RequestType Enum RequestType Enum
+### RequestType Enum
 
 Defines the type of payment transaction request made to the payment gateway.
 
@@ -9582,6 +20802,11 @@ The following are the values of the `commercepayments.RequestType` enum.
 **Value** **Description**
 
 `Authorize` Payment authorization request
+
+
+### Apex Reference Guide RetryCategory Enum
+
+**Value** **Description**
 
 `PostAuth` Post authorization request
 
@@ -9632,17 +20857,15 @@ reasons other than insufficient funds.
 `Security` Security violations or issues such as fraud, risk, authentication, verification, and
 authorization.
 
-
-### Apex Reference Guide RetryDecision Enum
-
-**Value** **Description**
-
 `Unknown` The payment gateway error code isn't recognized or isn't mapped to a specific
 category.
 
 ### RetryDecision Enum
 
 Specifies the retry decision.
+
+
+### Apex Reference Guide SaleApiPaymentMethodRequest Class
 
 Enum Values
 
@@ -9660,7 +20883,7 @@ Sends data related to a card payment method to a gateway adapter during a sale s
 
 Namespace
 
-CommercePayments on page 316
+CommercePayments on page 317
 
 Usage
 
@@ -9689,19 +20912,17 @@ SaleApiPaymentMethodRequest Methods
 
 ### The following are constructors for SaleApiPaymentMethodRequest .
 
-
-Apex Reference Guide SaleApiPaymentMethodRequest Class
-
 IN THIS SECTION:
 
-##### SaleApiPaymentMethodRequest(cardPaymentMethodRequest)
-
+SaleApiPaymentMethodRequest(cardPaymentMethodRequest)
 Sends data related to a card payment method to a gateway adapter during a sale service call.
 
-##### SaleApiPaymentMethodRequest()
-
+SaleApiPaymentMethodRequest()
 Constructor for building a sale payment method request. This constructor is intended for test usage and throws an exception if used
 outside of the Apex test context.
+
+
+Apex Reference Guide SaleApiPaymentMethodRequest Class
 
 ##### SaleApiPaymentMethodRequest(cardPaymentMethodRequest)
 
@@ -9720,7 +20941,7 @@ Parameters
 
 ##### _`cardPaymentMethodRequest`_
 
-Type: CardPaymentMethodRequest on page 403
+Type: CardPaymentMethodRequest on page 404
 
 ##### SaleApiPaymentMethodRequest()
 
@@ -9744,7 +20965,8 @@ IN THIS SECTION:
 
 Contains details of the card used in a payment method.
 
-standardEntryClassCode
+##### standardEntryClassCode
+
 Contains details of the standard entry class code used in a payment method.
 
 ##### cardPaymentMethod
@@ -9758,16 +20980,16 @@ Signature
 
 ```
 
-
-Apex Reference Guide SaleApiPaymentMethodRequest Class
-
 Property Value
 
-Type: CardPaymentMethodRequest on page 403
+Type: CardPaymentMethodRequest on page 404
 
 ##### **`standardEntryClassCode`**
 
 Contains details of the standard entry class code used in a payment method.
+
+
+Apex Reference Guide SaleApiPaymentMethodRequest Class
 
 Signature
 
@@ -9778,7 +21000,7 @@ Signature
 
 Property Value
 
-Type: commercepayments.StandardEntryClassCode on page 503
+Type: commercepayments.StandardEntryClassCode on page 520
 
 #### SaleApiPaymentMethodRequest Methods The following are methods for SaleApiPaymentMethodRequest .
 
@@ -9789,7 +21011,7 @@ IN THIS SECTION:
 
 a list. This method is dynamic and is based on the equals method in Java.
 
-hashCode()
+##### hashCode()
 #### Maintains the integrity of lists of type SaleApiPaymentMethodRequest by determining the uniqueness of the external
 
 object records in a list.
@@ -9822,12 +21044,10 @@ Return Value
 
 Type: Boolean
 
-
-### Apex Reference Guide SaleNotification Class
-
 ##### hashCode()
 
-Maintains the integrity of lists of type `SaleApiPaymentMethodRequest` by determining the uniqueness of the external object
+#### Maintains the integrity of lists of type SaleApiPaymentMethodRequest by determining the uniqueness of the external object
+
 records in a list.
 
 Signature
@@ -9836,6 +21056,9 @@ Signature
    global Integer hashCode()
 
 ```
+
+
+### Apex Reference Guide SaleNotification Class
 
 Return Value
 
@@ -9862,7 +21085,7 @@ object to store information about notification.
 
 Namespace
 
-CommercePayments on page 316
+CommercePayments on page 317
 
 Usage
 
@@ -9892,12 +21115,6 @@ Example
 
       Blob request = gatewayNotificationRequest.getRequestBody();
 
-```
-
-
-Apex Reference Guide SaleNotification Class
-
-```
       AdyenNotificationRequest notificationRequest =
 
    AdyenNotificationRequest.parse(request.toString().replace('currency', 'currencyCode'));
@@ -9916,6 +21133,12 @@ Apex Reference Guide SaleNotification Class
 
       String eventCode = notificationRequestItem.eventCode;
 
+```
+
+
+Apex Reference Guide SaleNotification Class
+
+```
       Double amount = notificationRequestItem.amount.value;
 
       String reason = notificationRequestItem.reason;
@@ -9992,12 +21215,12 @@ Apex Reference Guide SaleNotification Class
 
 ```
 
-
-Apex Reference Guide SaleNotification Class
-
 IN THIS SECTION:
 
 #### SaleNotification Methods SaleNotification Methods The following are methods for SaleNotification .
+
+
+Apex Reference Guide SaleNotification Class
 
 IN THIS SECTION:
 
@@ -10047,9 +21270,6 @@ Sets the notification status value on the notification object.
 
 Sets the amount for the sale payment.
 
-
-Apex Reference Guide SaleNotification Class
-
 Signature
 
 ```
@@ -10064,6 +21284,9 @@ Parameters
 ```
 
 Type: Double
+
+
+Apex Reference Guide SaleNotification Class
 
 Return Value
 
@@ -10118,9 +21341,6 @@ Return Value
 
 Type: void
 
-
-Apex Reference Guide SaleNotification Class
-
 ##### **`setGatewayMessage(gatewayMessage)`**
 
 Sets error messages that the gateway returned for the sale request. Maximum length of 255 characters.
@@ -10131,6 +21351,9 @@ Signature
    public void setGatewayMessage(String gatewayMessage)
 
 ```
+
+
+Apex Reference Guide SaleNotification Class
 
 Parameters
 
@@ -10191,9 +21414,6 @@ Return Value
 
 Type: void
 
-
-Apex Reference Guide SaleNotification Class
-
 ##### **`setGatewayResultCode(gatewayResultCode)`**
 
 Sets a gateway-specific result code. The code may be mapped to a Salesforce-specific result code. Maximum length of 64 characters.
@@ -10204,6 +21424,9 @@ Signature
    public void setGatewayResultCode(String gatewayResultCode)
 
 ```
+
+
+Apex Reference Guide SaleNotification Class
 
 Parameters
 
@@ -10265,9 +21488,6 @@ Return Value
 
 Type: void
 
-
-Apex Reference Guide SaleNotification Class
-
 ##### **`setRetryCategory(retryCategory)`**
 
 Sets the retry category returned by the payment gateway for the failed payment.
@@ -10278,6 +21498,9 @@ Signature
    public void setRetryCategory(commercepayments.RetryCategory retryCategory)
 
 ```
+
+
+Apex Reference Guide SaleNotification Class
 
 Parameters
 
@@ -10338,10 +21561,7 @@ Parameters
    salesforceResultCodeInfo
 ```
 
-Type: commercepayments.SalesforceResultCodeInfo on page 501
-
-
-### Apex Reference Guide SaleRequest Class
+Type: commercepayments.SalesforceResultCodeInfo on page 518
 
 Return Value
 
@@ -10350,6 +21570,9 @@ Type: void
 ##### **`setStatus(status)`**
 
 Sets the notification status value on the notification object.
+
+
+### Apex Reference Guide SaleRequest Class
 
 Signature
 
@@ -10364,7 +21587,7 @@ Parameters
    status
 ```
 
-Type: commercepayments.NotificationStatus on page 426
+Type: commercepayments.NotificationStatus on page 432
 
 Return Value
 
@@ -10376,7 +21599,7 @@ Stores information about a sales request.
 
 Namespace
 
-CommercePayments on page 316
+CommercePayments on page 317
 
 Usage
 
@@ -10387,13 +21610,33 @@ sale JSON request thatis sent to the payment gateway. The object of this class i
 Example
 
 ```
-   private String buildSaleRequest(commercepayments.SaleRequest saleRequest) {
+      /**
+
+      * Responsibilities:
+
+      * - Set merchant and reference details
+
+      * - Convert amount into minor units (e.g., cents)
+
+      * - Map payment method types (card, ACH, SEPA, etc.)
+
+      * - Include stored payment method token for recurring payments
+
+      * - Optionally include enhanced Level 2/3 data
+
+      *
+
+      * @param saleRequest Input request containing payment and shopper details
+
+      * @return JSON string payload for the payment gateway
+
+      */
+
+      private String buildSaleRequest(commercepayments.SaleRequest saleRequest) {
+
+        // Resolve currency (fallback to user's default if missing)
 
         String currencyIso = saleRequest.currencyIsoCode;
-
-        commercepayments.SaleApiPaymentMethodRequest paymentMethod =
-
-   saleRequest.paymentMethod;
 
         if (currencyIso == null) {
 
@@ -10401,13 +21644,9 @@ Example
 
         }
 
-        JSONGenerator jsonGeneratorInstance = JSON.createGenerator(true);
+        // Extract payment method
 
-        jsonGeneratorInstance.writeStartObject();
-
-       jsonGeneratorInstance.writeStringField('merchantAccount', '{!$Credential.Username}');
-
-        jsonGeneratorInstance.writeStringField('reference',
+        commercepayments.SaleApiPaymentMethodRequest paymentMethod =
 
 ```
 
@@ -10415,19 +21654,51 @@ Example
 Apex Reference Guide SaleRequest Class
 
 ```
-   String.valueOf(Datetime.now().getTime()) + String.valueOf(Math.random()).substring(2, 8));
+   saleRequest.paymentMethod;
+
+        // Initialize JSON generator
+
+        JSONGenerator jsonGeneratorInstance = JSON.createGenerator(true);
+
+        jsonGeneratorInstance.writeStartObject();
+
+        // Merchant configuration (from Named Credential)
+
+       jsonGeneratorInstance.writeStringField('merchantAccount', '{!$Credential.Username}');
+
+        // Unique reference using timestamp + random suffix
+
+        jsonGeneratorInstance.writeStringField(
+
+           'reference',
+
+           String.valueOf(Datetime.now().getTime()) +
+
+           String.valueOf(Math.random()).substring(2, 8)
+
+        );
+
+        // Amount block
 
         jsonGeneratorInstance.writeFieldName('amount');
 
         jsonGeneratorInstance.writeStartObject();
 
-        jsonGeneratorInstance.writeStringField('value', String.ValueOf((saleRequest.amount
+        jsonGeneratorInstance.writeStringField(
 
-    * 100.0).intValue()));
+           'value',
+
+           String.valueOf((saleRequest.amount * 100.0).intValue()) // convert to minor
+
+   units
+
+        );
 
         jsonGeneratorInstance.writeStringField('currency', currencyIso);
 
         jsonGeneratorInstance.writeEndObject();
+
+        // Payment method block
 
         jsonGeneratorInstance.writeFieldName('paymentMethod');
 
@@ -10435,7 +21706,9 @@ Apex Reference Guide SaleRequest Class
 
         String shopperReference;
 
-        String type = 'scheme';
+        String type = 'scheme'; // default = card
+
+        // Handle stored payment method data (tokenized payments)
 
         if (saleRequest.paymentMethodData != null) {
 
@@ -10446,6 +21719,8 @@ Apex Reference Guide SaleRequest Class
    saleRequest.paymentMethodData.get('paymentMethodType');
 
            shopperReference = saleRequest.paymentMethodData.get('gatewayReference');
+
+           // Map payment method types to gateway-specific values
 
            if ('us_bank_account'.equals(paymentMethodType)) {
 
@@ -10465,13 +21740,39 @@ Apex Reference Guide SaleRequest Class
 
            }
 
+```
+
+
+Apex Reference Guide SaleRequest Class
+
+```
            jsonGeneratorInstance.writeStringField('type', type);
 
            jsonGeneratorInstance.writeStringField('storedPaymentMethodId', token);
 
         }
 
-        jsonGeneratorInstance.writeEndObject();
+        // Add enhanced scheme data ONLY for card payments
+
+        // Note: Gateway might have validations on L2/L3 data so do test them out before
+
+   using L2/L3 else transactions might fail
+
+        if (enhancedPaymentData != null && 'scheme'.equals(type)) {
+
+           jsonGeneratorInstance.writeFieldName('additionalData');
+
+           jsonGeneratorInstance.writeStartObject();
+
+           populateEnhancedSchemeData(jsonGeneratorInstance, enhancedPaymentData);
+
+           jsonGeneratorInstance.writeEndObject(); // additionalData
+
+        }
+
+        jsonGeneratorInstance.writeEndObject(); // paymentMethod
+
+        // Recurring / shopper configuration
 
         jsonGeneratorInstance.writeStringField('shopperInteraction', 'ContAuth');
 
@@ -10481,24 +21782,285 @@ Apex Reference Guide SaleRequest Class
 
         jsonGeneratorInstance.writeStringField('shopperReference', shopperReference);
 
+        // Immediate capture
+
         jsonGeneratorInstance.writeNumberField('captureDelayHours', 0);
 
-        jsonGeneratorInstance.writeEndObject();
+        jsonGeneratorInstance.writeEndObject(); // root
 
         return jsonGeneratorInstance.getAsString();
+
+      }
+
+      /**
+
+      * Populates Level 2 and Level 3 enhanced scheme data.
+
+      *
+
+      * @param jsonGeneratorInstance JSON generator
+
+      * @param enhancedPaymentData Enhanced payment data input
+
+      */
+
+      private void populateEnhancedSchemeData(JSONGenerator jsonGeneratorInstance,
+
+                              commercepayments.EnhancedPaymentDataInput
+
+   enhancedPaymentData) {
+
+        // -------- Level 2 fields -------
+        if (enhancedPaymentData.totalTaxAmount != null) {
+
+           jsonGeneratorInstance.writeStringField(
+
+             'enhancedSchemeData.totalTaxAmount',
+
+             toMinorUnits(enhancedPaymentData.totalTaxAmount)
+
+           );
+
+        }
+
+        if (enhancedPaymentData.shippingAmount != null) {
+
+           jsonGeneratorInstance.writeStringField(
+
+             'enhancedSchemeData.freightAmount',
+
+             toMinorUnits(enhancedPaymentData.shippingAmount)
+
+           );
+
+```
+
+
+Apex Reference Guide SaleRequest Class
+
+```
+        }
+
+        if (enhancedPaymentData.discountAmount != null) {
+
+           jsonGeneratorInstance.writeStringField(
+
+             'enhancedSchemeData.discountAmount',
+
+             toMinorUnits(enhancedPaymentData.discountAmount)
+
+           );
+
+        }
+
+        if (enhancedPaymentData.invoiceNumber != null) {
+
+           jsonGeneratorInstance.writeStringField(
+
+             'enhancedSchemeData.customerReference',
+
+             enhancedPaymentData.invoiceNumber
+
+           );
+
+        }
+
+        // -------- Level 3 fields (line items) -------
+        if (enhancedPaymentData.lineItems != null) {
+
+           Integer index = 1;
+
+           for (commercepayments.LineItemInput item : enhancedPaymentData.lineItems) {
+
+             populateLineItemData(
+
+               jsonGeneratorInstance,
+
+               item,
+
+               'enhancedSchemeData.itemDetailLine' + index + '.'
+
+             );
+
+             index++;
+
+           }
+
+        }
+
+        // Shipping / destination info
+
+        if (enhancedPaymentData.shipFromZip != null) {
+
+           jsonGeneratorInstance.writeStringField(
+
+             'enhancedSchemeData.shipFromPostalCode',
+
+             enhancedPaymentData.shipFromZip
+
+           );
+
+        }
+
+        if (enhancedPaymentData.shipToZip != null) {
+
+           jsonGeneratorInstance.writeStringField(
+
+             'enhancedSchemeData.destinationPostalCode',
+
+             enhancedPaymentData.shipToZip
+
+           );
+
+        }
+
+        if (enhancedPaymentData.shipToCountry != null) {
+
+           jsonGeneratorInstance.writeStringField(
+
+             'enhancedSchemeData.destinationCountryCode',
+
+             enhancedPaymentData.shipToCountry
+
+           );
+
+        }
+
+      }
+
+```
+
+
+Apex Reference Guide SaleRequest Class
+
+```
+      /**
+
+      * Populates Level 3 line item data.
+
+      *
+
+      * @param jsonGeneratorInstance JSON generator
+
+      * @param item Line item input
+
+      * @param prefix Field prefix for indexed items
+
+      */
+
+      private void populateLineItemData(JSONGenerator jsonGeneratorInstance,
+
+                          commercepayments.LineItemInput item,
+
+                          String prefix) {
+
+        if (item.sku != null) {
+
+           jsonGeneratorInstance.writeStringField(prefix + 'productCode', item.sku);
+
+        }
+
+        if (item.name != null) {
+
+           jsonGeneratorInstance.writeStringField(prefix + 'description', item.name);
+
+        }
+
+        if (item.quantity != null) {
+
+           jsonGeneratorInstance.writeStringField(prefix + 'quantity',
+
+   String.valueOf(item.quantity));
+
+        }
+
+        // Unit price is always written
+
+        jsonGeneratorInstance.writeStringField(
+
+           prefix + 'unitPrice',
+
+           toMinorUnits(item.unitPrice)
+
+        );
+
+        if (item.taxAmount != null) {
+
+           jsonGeneratorInstance.writeStringField(
+
+             prefix + 'taxAmount',
+
+             toMinorUnits(item.taxAmount)
+
+           );
+
+        }
+
+        if (item.discount != null) {
+
+           jsonGeneratorInstance.writeStringField(
+
+             prefix + 'discountAmount',
+
+             toMinorUnits(item.discount)
+
+           );
+
+        }
+
+        if (item.commodityCode != null) {
+
+           jsonGeneratorInstance.writeStringField(prefix + 'commodityCode',
+
+   item.commodityCode);
+
+        }
+
+        if (item.uom != null) {
+
+           jsonGeneratorInstance.writeStringField(prefix + 'unitOfMeasure', item.uom);
+
+        }
+
+      }
+
+```
+
+
+Apex Reference Guide SaleRequest Class
+
+```
+      /**
+
+      * Converts amount to minor units (e.g., dollars →cents).
+
+      *
+
+      * @param amount Decimal amount
+
+      * @return String representation of minor units
+
+      */
+
+      private static String toMinorUnits(Decimal amount) {
+
+        if (amount == null) return null;
+
+        Decimal value = (amount * 100)
+
+           .setScale(0, System.RoundingMode.HALF_UP);
+
+        return String.valueOf(value.intValue());
+
+      }
 
 ```
 
 IN THIS SECTION:
 
-SaleRequest Constructors
-
-SaleRequest Properties
+#### SaleRequest Constructors SaleRequest Properties
 
 SaleRequest Methods
-
-
-Apex Reference Guide SaleRequest Class
 
 #### SaleRequest Constructors The following are constructors for SaleRequest .
 
@@ -10533,12 +22095,17 @@ Amount of the sale request.
 
 #### SaleRequest Properties The following are properties for SaleRequest .
 
+
+Apex Reference Guide SaleRequest Class
+
 IN THIS SECTION:
 
-accountId
+##### accountId
+
 Customer account ID for the sale request.
 
-amount
+##### amount
+
 Amount of the sale request. Can be positive only.
 
 comments
@@ -10546,6 +22113,12 @@ Additional information about the sale request.
 
 currencyIsoCode
 Currency code for the sale request.
+
+enhancedPaymentData
+Represents enhanced payment data, including Level 2 and Level 3 fields.
+
+paymentInitiationSourceId
+ID of the source that initiated the payment.
 
 paymentMethod
 Payment method used in the sale request.
@@ -10555,9 +22128,6 @@ Payment method data used in the sale request.
 
 submittedByMerchant
 Indicates whether the sale request is submitted by the marchant ( `true` ) or not ( `false` ).
-
-
-Apex Reference Guide SaleRequest Class
 
 ##### accountId
 
@@ -10589,6 +22159,9 @@ Property Value
 
 Type: Double
 
+
+Apex Reference Guide SaleRequest Class
+
 ##### comments
 
 Additional information about the sale request.
@@ -10619,23092 +22192,5 @@ Property Value
 
 Type: String
 
-##### paymentMethod
-
-Payment method used in the sale request.
-
-
-Apex Reference Guide SaleRequest Class
-
-Signature
-
-```
-   global commercepayments.SaleApiPaymentMethodRequest paymentMethod {get; set;}
-
-```
-
-Property Value
-
-Type: SaleApiPaymentMethodRequest on page 479
-
-##### **`paymentMethodData`**
-
-Payment method data used in the sale request.
-
-##### This field is populated when SaleInput specifies a saved payment method. Accessible using paymentMethodData on
-#### SaleRequest . The map contains these fields from SavedPaymentMethod : GatewayToken, Type, GatewayReference,
-
-and `StandardEntryCode` for direct gateway interaction without querying the database.
-
-Signature
-
-```
-   public Map<String,String> paymentMethodData {get; set;}
-
-```
-
-Property Value
-
-Type: Map<String,String>
-
-##### **`submittedByMerchant`**
-
-Indicates whether the sale request is submitted by the marchant ( `true` ) or not ( `false` ).
-
-Signature
-
-```
-   public Boolean submittedByMerchant {get; set;}
-
-```
-
-Property Value
-
-Type: Boolean
-
-#### SaleRequest Methods The following are methods for SaleRequest .
-
-IN THIS SECTION:
-
-equals(obj)
-Compares this object with the specified object and returns `true` if both objects are equal; otherwise, returns `false` .
-
-hashCode()
-#### Maintains the integrity of lists of type SaleRequest by determining the uniqueness of the external object records in a list.
-
-toString()
-Converts a date to a string.
-
-
-### Apex Reference Guide SaleResponse Class
-
-##### equals(obj)
-
-Compares this object with the specified object and returns `true` if both objects are equal; otherwise, returns `false` .
-
-Signature
-
-```
-   global Boolean equals(Object obj)
-
-```
-
-Parameters
-
-```
-   obj
-```
-
-Type: Object
-
-Return Value
-
-Type: Boolean
-
-##### hashCode()
-
-Maintains the integrity of lists of type `SaleRequest` by determining the uniqueness of the external object records in a list.
-
-Signature
-
-```
-   global Integer hashCode()
-
-```
-
-Return Value
-
-Type: Integer
-
-##### toString()
-
-Converts a date to a string.
-
-Signature
-
-```
-   global String toString()
-
-```
-
-Return Value
-
-Type: String
-
-### SaleResponse Class
-
-Response sent by payment gateway adapters for a sales service.
-
-Namespace
-
-CommercePayments on page 316
-
-
-Apex Reference Guide SaleResponse Class
-
-Usage
-
-The constructor of this class takes no arguments. For example:
-
-```
-   CommercePayments.SaleResponse slr CommercePayments.SaleResponse();
-
-```
-
-This class contains details about a customer card that was used as a payment method for Authorization, Sale, or Tokenization request.
-The gateway adapter reads the fields of this class while constructing a transaction JSON request, which it then sends to the payment
-gateway. The object of this class is made available by the `cardPaymentMethod` field in `SaleApiPaymentMethodRequest`
-
-`on page 479` and `AuthApiPaymentMethodRequest on page 342` .
-
-Example
-
-#### This code sample builds a SaleResponse object.
-
-```
-   commercepayments.SaleResponse saleResponse = new commercepayments.SaleResponse();
-
-   saleResponse.setGatewayReferenceDetails("refDetailString");
-
-   saleResponse.setGatewayResultCode("res_code");
-
-   saleResponse.setGatewayResultCodeDescription("");
-
-   saleResponse.setGatewayReferenceNumber("");
-
-   saleResponse.setSalesforceResultCodeInfo(getSalesforceResultCodeInfo(commercepayments.SalesforceResultCode.SUCCESS.name()));
-
-```
-
-IN THIS SECTION:
-
-#### SaleResponse Methods SaleResponse Methods The following are methods for SaleResponse .
-
-IN THIS SECTION:
-
-setAmount(amount)
-Sets the transaction amount. Must be a non-negative value.
-
-setAsync(async)
-Indicates whether the gateway response is received asynchronously ( `true` ) or not ( `false` ). When set to `true`, the sale payment
-record remains in a pending state until the async notification is received.
-
-setGatewayAvsCode(gatewayAvsCode)
-Sets the AVS (address verification system) result code information that the gateway returned. Maximum length of 64 characters.
-
-setGatewayDate(gatewayDate)
-Sets the date that the sale occurred. Some gateways don’t send this value.
-
-setGatewayMessage(gatewayMessage)
-Sets error messages that the gateway returned for the sale request. Maximum length of 255 characters.
-
-setGatewayReferenceDetails(gatewayReferenceDetails)
-Sets additional data that you can use for subsequent sales. You can use any data that isn’t normalized in financial entities. This field
-has a maximum length of 1000 characters and can store data as JSON or XML.
-
-setGatewayReferenceNumber(gatewayReferenceNumber)
-Sets the unique gateway reference number for the transaction that the gateway returned. Maximum length of 255 characters.
-
-
-Apex Reference Guide SaleResponse Class
-
-setGatewayResultCode(gatewayResultCode)
-Sets a gateway-specific result code. The code may be mapped to a Salesforce-specific result code. Maximum length of 64 characters.
-
-setGatewayResultCodeDescription(gatewayResultCodeDescription)
-Sets a description of the gateway-specific result code that a payment gateway returned. Maximum length of 1000 characters.
-
-setPaymentMethodTokenizationResponse(paymentMethodTokenizationResponse)
-Sets information from the gateway about the tokenized payment method.
-
-setRetryCategory(retryCategory)
-Sets the retry category returned by the payment gateway for the failed payment for a batch flow.
-
-setRetryDecision(retryDecision)
-Sets the retry decision.
-
-setSalesforceResultCodeInfo(salesforceResultCodeInfo)
-Sets the Salesforce-specific result code information. Payment gateways have many response codes for payment calls. Salesforce
-uses the result code information to map payment gateway codes to a predefined set of standard Salesforce result codes.
-
-##### setAmount(amount)
-
-Sets the transaction amount. Must be a non-negative value.
-
-Signature
-
-```
-   global void setAmount(Double amount)
-
-```
-
-Parameters
-
-```
-   amount
-```
-
-Type: Double
-
-The amount of the transaction.
-
-Return Value
-
-Type: void
-
-##### **`setAsync(async)`**
-
-Indicates whether the gateway response is received asynchronously ( `true` ) or not ( `false` ). When set to `true`, the sale payment
-record remains in a pending state until the async notification is received.
-
-Signature
-
-```
-   public void setAsync(Boolean async)
-
-```
-
-Parameters
-
-```
-   async
-```
-
-Type: Boolean
-
-
-Apex Reference Guide SaleResponse Class
-
-Return Value
-
-Type: void
-
-##### setGatewayAvsCode(gatewayAvsCode)
-
-Sets the AVS (address verification system) result code information that the gateway returned. Maximum length of 64 characters.
-
-Signature
-
-```
-   global void setGatewayAvsCode(String gatewayAvsCode)
-
-```
-
-Parameters
-
-```
-   gatewayAvsCode
-```
-
-Type: String
-
-Used to verify the address mapped to a payment method when the payments platform requests tokenization from the payment
-gateway.
-
-Return Value
-
-Type: void
-
-##### setGatewayDate(gatewayDate)
-
-Sets the date that the sale occurred. Some gateways don’t send this value.
-
-Signature
-
-```
-   global void setGatewayDate(Datetime gatewayDate)
-
-```
-
-Parameters
-
-```
-   gatewayDate
-```
-
-Type: Datetime
-
-Return Value
-
-Type: void
-
-##### setGatewayMessage(gatewayMessage)
-
-Sets error messages that the gateway returned for the sale request. Maximum length of 255 characters.
-
-Signature
-
-```
-   global void setGatewayMessage(String gatewayMessage)
-
-```
-
-
-Apex Reference Guide SaleResponse Class
-
-Parameters
-
-```
-   gatewayMessage
-```
-
-Type: String
-
-Return Value
-
-Type: void
-
-##### setGatewayReferenceDetails(gatewayReferenceDetails)
-
-Sets additional data that you can use for subsequent sales. You can use any data that isn’t normalized in financial entities. This field has
-a maximum length of 1000 characters and can store data as JSON or XML.
-
-Signature
-
-```
-   global void setGatewayReferenceDetails(String gatewayReferenceDetails)
-
-```
-
-Parameters
-
-```
-   gatewayReferenceDetails
-```
-
-Type: String
-
-Return Value
-
-Type: void
-
-##### setGatewayReferenceNumber(gatewayReferenceNumber)
-
-Sets the unique gateway reference number for the transaction that the gateway returned. Maximum length of 255 characters.
-
-Signature
-
-```
-   global void setGatewayReferenceNumber(String gatewayReferenceNumber)
-
-```
-
-Parameters
-
-```
-   gatewayReferenceNumber
-```
-
-Type: String
-
-Unique authorization ID created by the payment gateway.
-
-Return Value
-
-Type: void
-
-##### setGatewayResultCode(gatewayResultCode)
-
-Sets a gateway-specific result code. The code may be mapped to a Salesforce-specific result code. Maximum length of 64 characters.
-
-
-Apex Reference Guide SaleResponse Class
-
-Signature
-
-```
-   global void setGatewayResultCode(String gatewayResultCode)
-
-```
-
-Parameters
-
-```
-   gatewayResultCode
-```
-
-Type: String
-
-Gateway-specific result code. Must be used to map a Salesforce-specific result code.
-
-Return Value
-
-Type: void
-
-##### setGatewayResultCodeDescription(gatewayResultCodeDescription)
-
-Sets a description of the gateway-specific result code that a payment gateway returned. Maximum length of 1000 characters.
-
-Signature
-
-```
-   global void setGatewayResultCodeDescription(String gatewayResultCodeDescription)
-
-```
-
-Parameters
-
-```
-   gatewayResultCodeDescription
-```
-
-Type: String
-
-Description of the gateway’s result code. Use this field to learn more about why the gateway returned a certain result code.
-
-Return Value
-
-Type: void
-
-##### setPaymentMethodTokenizationResponse(paymentMethodTokenizationResponse)
-
-Sets information from the gateway about the tokenized payment method.
-
-Signature
-
-```
-   global void
-
-   setPaymentMethodTokenizationResponse(commercepayments.PaymentMethodTokenizationResponse
-
-   paymentMethodTokenizationResponse)
-
-```
-
-Parameters
-
-```
-   paymentMethodTokenizationResponse
-```
-
-Type: PaymentMethodTokenizationResponse on page 442
-
-Gateway response sent by payment gateway adapters for the payment method tokenization request. The response includes the
-payment method’s token ID value.
-
-
-Apex Reference Guide SaleResponse Class
-
-Return Value
-
-Type: void
-
-##### **`setRetryCategory(retryCategory)`**
-
-Sets the retry category returned by the payment gateway for the failed payment for a batch flow.
-
-Signature
-
-```
-   public void setRetryCategory(commercepayments.RetryCategory retryCategory)
-
-```
-
-Parameters
-
-```
-   retryCategory
-```
-
-Type: commercepayments.RetryCategory
-
-Specifies the payment failure category used to determine retry eligibility.
-
-Return Value
-
-Type: void
-
-##### **`setRetryDecision(retryDecision)`**
-
-Sets the retry decision.
-
-Signature
-
-```
-   public void setRetryDecision(commercepayments.RetryDecision retryDecision)
-
-```
-
-Parameters
-
-```
-   retryDecision
-```
-
-Type: commercepayments.RetryDecision
-
-Determines whether the payment operation can be retried based on the retry category.
-
-Return Value
-
-Type: void
-
-##### setSalesforceResultCodeInfo(salesforceResultCodeInfo)
-
-Sets the Salesforce-specific result code information. Payment gateways have many response codes for payment calls. Salesforce uses
-the result code information to map payment gateway codes to a predefined set of standard Salesforce result codes.
-
-Signature
-
-```
-   global void setSalesforceResultCodeInfo(commercepayments.SalesforceResultCodeInfo
-
-   salesforceResultCodeInfo)
-
-```
-
-
-### Apex Reference Guide SalesforceResultCode Enum
-
-Parameters
-
-```
-   salesforceResultCodeInfo
-```
-
-Type: SalesforceResultCodeInfo on page 502
-
-Sets the Salesforce-specific result code information. Payment gateways have many response codes for payment calls. Salesforce
-uses the result code information to map payment gateway codes to a predefined set of standard Salesforce result codes.
-
-Return Value
-
-Type: void
-
-### SalesforceResultCode Enum
-
-Defines the gateway call status values in Salesforce based on the call status values that the payment gateway returned.
-
-Usage
-
-Payment gateways can return many different responses. Salesforce maps these responses into one of seven possible Salesforce response
-values.
-
-Enum Values
-
-The following are the values of the `commercepayments.SalesforceResultCode` enum.
-
-**Value** **Description**
-
-```
-Decline
-
-```
-
-The gateway call failed, but it may still work if you try again. For example, the
-customer had insufficient funds or briefly lost their connection to the internet. This
-is also known as a “soft decline.”
-
-`Indeterminate` The gateway didn't respond to the call and the user has to check the transaction
-request’s status. Indeterminate responses often occur following server timeouts,
-
-system failure, or any action that interrupts the gateway’s ability to process the
-payment.
-
-`PermanentFail` The customer’s bank recognized the payment account as closed, terminated, or
-fraudulent. The gateway won’t further calls from the payment method associate
-
-with the transaction. After a permanent fail response, the transaction changes its
-gateway status to Permanent Fail.
-
-`RequiresReview` The gateway call initially failed, but the payment method may still work after further
-evaluation. This response often happens when the customer bank requires more
-
-information about the payment request. In this case, the bank provides an
-authorization code manually when the payment manager calls the processor.
-
-`Success` The gateway processed the transaction successfully.
-
-`SystemError` Salesforce ended the payment request call before receiving a gateway response.
-System error responses often occur due to gateway server errors, invalid customer
-
-credentials, or anytime the request times out before receiving a gateway response.
-The failure occurs before the request reaches the gateway, so there’s no risk of an
-
-
-### Apex Reference Guide SalesforceResultCodeInfo
-
-**Value** **Description**
-
-unaccounted payment remaining in the gateway. You can continue with the
-transaction by manually creating a payment.
-
-`ValidationError` The gateway received incorrect customer payment information, such as misspelled
-credit card names or a CVV with missing numbers.
-
-### SalesforceResultCodeInfo
-
-Stores Salesforce result code information from payment gateway adapters.
-
-Namespace
-
-CommercePayments on page 316
-
-Usage
-
-The constructor of this class takes no arguments. For example:
-
-```
-   CommercePayments.SalesforceResultCodeInfo srci = new
-
-   CommercePayments.SalesforceResultCodeInfo();
-
-### Gateways can return the transaction result as either CustomMetadata or SalesforceResultCode .
-
-```
-
-IN THIS SECTION:
-
-### SalesforceResultCodeInfo Constructors SalesforceResultCodeInfo Constructors The following are constructors for SalesforceResultCodeInfo .
-
-IN THIS SECTION:
-
-### SalesforceResultCodeInfo(customMetadataTypeInfo)
-
-Constructor for providing the `customMetadataTypeInfo` for the result of the transaction.
-
-### SalesforceResultCodeInfo(salesforceResultCode)
-
-Constructor that provides the `salesforceResultCode` for the transaction result.
-
-### SalesforceResultCodeInfo(customMetadataTypeInfo)
-
-Constructor for providing the `customMetadataTypeInfo` for the result of the transaction.
-
-Signature
-
-```
-   global SalesforceResultCodeInfo(commercepayments.CustomMetadataTypeInfo
-
-   customMetadataTypeInfo)
-
-```
-
-
-### Apex Reference Guide StandardEntryClassCode Enum
-
-Parameters
-
-```
-   customMetadataTypeInfo
-```
-
-Type: CustomMetadataTypeInfo on page 417
-
-Information about the metadata type.
-
-##### SalesforceResultCodeInfo(salesforceResultCode)
-
-Constructor that provides the `salesforceResultCode` for the transaction result.
-
-Signature
-
-```
-   global SalesforceResultCodeInfo(commercepayments.SalesforceResultCode
-
-   salesforceResultCode)
-
-```
-
-Parameters
-
-```
-   salesforceResultCode
-```
-
-Type: SalesforceResultCode on page 501
-
-The enum value for the result code.
-
-### StandardEntryClassCode Enum
-
-Specifies the three-letter code that identifies the type of electronic payment transaction being processed within the Automated Clearing
-House (ACH) network.
-
-Enum Values
-
-The following are the values of the `commercepayments.StandardEntryClassCode` enum.
-
-**Value** **Description**
-
-`Ccd` —Corporate Credit or Debit
-
-`Ppd` —Prearranged Payment and Deposit
-
-`Tel` —Telephone-Initiated Entry
-
-`Web` —Internet Initiated/Mobile
-
-### TokenizeNotification Class
-
-When a payment gateway sends a notification for a payment method tokenization, the payment gateway adapter creates the
-### TokenizeNotification object to store information about notification.
-
-Namespace
-
-CommercePayments on page 316
-
-
-Apex Reference Guide TokenizeNotification Class
-
-Usage
-
-`TokenizeNotification` is used in asynchronous payment gateway adapters. Specify the `CommercePayments` namespace
-when creating an instance of this class. The constructor of this class takes no arguments. For example:
-
-```
-   commercePayments.TokenizeNotification Notification = new
-
-   commercepayments.TokenizeNotification();
-
-```
-
-Example
-
-```
-   global commercepayments.GatewayNotificationResponse
-
-   processNotification(commercepayments.PaymentGatewayNotificationContext
-
-   gatewayNotificationContext) {
-
-      commercepayments.PaymentGatewayNotificationRequest gatewayNotificationRequest =
-
-   gatewayNotificationContext.getPaymentGatewayNotificationRequest();
-
-      Blob request = gatewayNotificationRequest.getRequestBody();
-
-      AdyenNotificationRequest notificationRequest =
-
-   AdyenNotificationRequest.parse(request.toString().replace('currency', 'currencyCode'));
-
-      List < AdyenNotificationRequest.NotificationItems > notificationItems =
-
-   notificationRequest.notificationItems;
-
-      AdyenNotificationRequest.NotificationRequestItem notificationRequestItem =
-
-   notificationItems[0].NotificationRequestItem;
-
-      Boolean success = Boolean.valueOf(notificationRequestItem.success);
-
-      String pspReference = notificationRequestItem.pspReference;
-
-      String eventCode = notificationRequestItem.eventCode;
-
-      Double amount = notificationRequestItem.amount.value;
-
-      String reason = notificationRequestItem.reason;
-
-      Datetime eventDate = notificationRequestItem.eventDate;
-
-      commercepayments.NotificationStatus notificationStatus = null;
-
-      if (success) {
-
-        notificationStatus = commercepayments.NotificationStatus.Success;
-
-      } else {
-
-        notificationStatus = commercepayments.NotificationStatus.Failed;
-
-      }
-
-      commercepayments.BaseNotification notification = null;
-
-      if ('RECURRING_CONTRACT'.equals(eventCode)) {
-
-        // NOTE: if you are consuming RECURRING_CONTRACT instead of AUTHORISATION for token
-
-    webhook, use originalReference instead of pspReference
-
-        commercepayments.TokenizeNotification tokenizeNotification = new
-
-   commercepayments.TokenizeNotification();
-
-        String gatewayToken = pspReference;
-
-        tokenizeNotification.setGatewayTokenEncrypted(gatewayToken);
-
-        notification = tokenizeNotification;
-
-        String originalReference = notificationRequestItem.originalReference;
-
-        notification.setGatewayReferenceNumber(originalReference);
-
-      } else {
-
-        system.debug('handling unknown event : ' + eventCode);
-
-        commercepayments.GatewayNotificationResponse unknownEventResponse = new
-
-   commercepayments.GatewayNotificationResponse();
-
-        unknownEventResponse.setStatusCode(200);
-
-```
-
-
-Apex Reference Guide TokenizeNotification Class
-
-```
-        unknownEventResponse.setResponseBody(Blob.valueOf('[not allowed]'));
-
-        return unknownEventResponse;
-
-      }
-
-      notification.setStatus(notificationStatus);
-
-      notification.setAmount(amount / 100);
-
-      notification.setGatewayResultCodeDescription(reason);
-
-      notification.setGatewayDate(eventDate);
-
-      commercepayments.NotificationSaveResult saveResult =
-
-   commercepayments.NotificationClient.record(notification);
-
-      commercepayments.GatewayNotificationResponse gnr = new
-
-   commercepayments.GatewayNotificationResponse();
-
-      if (saveResult.isSuccess()) {
-
-        gnr.setStatusCode(200);
-
-      } else {
-
-        gnr.setStatusCode(400);
-
-      }
-
-      gnr.setResponseBody(Blob.valueOf(saveResult.toString()));
-
-      return gnr;
-
-   }
-
-```
-
-IN THIS SECTION:
-
-#### TokenizeNotification Methods TokenizeNotification Methods The following are methods for TokenizeNotification .
-
-IN THIS SECTION:
-
-setAmount(amount)
-Sets the amount.
-
-setGatewayAvsCode(gatewayAvsCode)
-Sets the AVS (address verification system) result code information that the gateway returned. Maximum length of 64 characters.
-
-setGatewayDate(gatewayDate)
-Sets the date that the sale occurred. Some gateways don’t send this value.
-
-setGatewayMessage(gatewayMessage)
-Sets error messages that the gateway returned for the sale request. Maximum length of 255 characters.
-
-setGatewayReferenceDetails(gatewayReferenceDetails)
-Sets additional data that you can use for payment tokenization. You can use any data that isn’t normalized in financial entities. This
-field has a maximum length of 1000 characters and can store data as JSON or XML.
-
-setGatewayReferenceNumber(gatewayReferenceNumber)
-Sets the unique gateway reference number for the transaction that the gateway returned. Maximum length of 255 characters.
-
-setGatewayResultCode(gatewayResultCode)
-Sets a gateway-specific result code. The code may be mapped to a Salesforce-specific result code. Maximum length of 64 characters.
-
-
-Apex Reference Guide TokenizeNotification Class
-
-setGatewayResultCodeDescription(gatewayResultCodeDescription)
-Sets a description of the gateway-specific result code that a payment gateway returned. Maximum length of 1000 characters.
-
-setGatewayToken(gatewayToken)
-Sets the gateway token that the gateway returned.
-
-setGatewayTokenEncrypted(gatewayTokenEncrypted)
-Sets an unencrypted unique token ID generated by the payment gateway to represent the saved payment method. Set the value
-of the `gatewayTokenEncrypted` field on a SavedPaymentMethod object.
-
-setId(id)
-Sets the ID of a notification sent by the payment gateway.
-
-setSalesforceResultCodeInfo(salesforceResultCodeInfo)
-Sets the Salesforce-specific result code information. Payment gateways have many response codes for payment calls. Salesforce
-uses the result code information to map payment gateway codes to a predefined set of standard Salesforce result codes.
-
-setStatus(status)
-Sets the notification status value on the notification object.
-
-##### **`setAmount(amount)`**
-
-Sets the amount.
-
-Signature
-
-```
-   public void setAmount(Double amount)
-
-```
-
-Parameters
-
-```
-   amount
-```
-
-Type: Double
-
-Return Value
-
-Type: void
-
-##### **`setGatewayAvsCode(gatewayAvsCode)`**
-
-Sets the AVS (address verification system) result code information that the gateway returned. Maximum length of 64 characters.
-
-Signature
-
-```
-   public void setGatewayAvsCode(String gatewayAvsCode)
-
-```
-
-Parameters
-
-```
-   gatewayAvsCode
-```
-
-Type: String
-
-Used to verify the address mapped to a payment method when the payments platform requests tokenization from the payment
-gateway.
-
-
-Apex Reference Guide TokenizeNotification Class
-
-Return Value
-
-Type: void
-
-##### **`setGatewayDate(gatewayDate)`**
-
-Sets the date that the sale occurred. Some gateways don’t send this value.
-
-Signature
-
-```
-   public void setGatewayDate(Datetime gatewayDate)
-
-```
-
-Parameters
-
-```
-   gatewayDate
-```
-
-Type: Datetime
-
-Return Value
-
-Type: void
-
-##### **`setGatewayMessage(gatewayMessage)`**
-
-Sets error messages that the gateway returned for the sale request. Maximum length of 255 characters.
-
-Signature
-
-```
-   public void setGatewayMessage(String gatewayMessage)
-
-```
-
-Parameters
-
-```
-   gatewayMessage
-```
-
-Type: String
-
-Return Value
-
-Type: void
-
-##### **`setGatewayReferenceDetails(gatewayReferenceDetails)`**
-
-Sets additional data that you can use for payment tokenization. You can use any data that isn’t normalized in financial entities. This field
-has a maximum length of 1000 characters and can store data as JSON or XML.
-
-Signature
-
-```
-   public void setGatewayReferenceDetails(String gatewayReferenceDetails)
-
-```
-
-Parameters
-
-```
-   gatewayReferenceDetails
-```
-
-Type: String
-
-
-Apex Reference Guide TokenizeNotification Class
-
-Return Value
-
-Type: void
-
-##### **`setGatewayReferenceNumber(gatewayReferenceNumber)`**
-
-Sets the unique gateway reference number for the transaction that the gateway returned. Maximum length of 255 characters.
-
-Signature
-
-```
-   public void setGatewayReferenceNumber(String gatewayReferenceNumber)
-
-```
-
-Parameters
-
-```
-   gatewayReferenceNumber
-```
-
-Type: String
-
-Return Value
-
-Type: void
-
-##### **`setGatewayResultCode(gatewayResultCode)`**
-
-Sets a gateway-specific result code. The code may be mapped to a Salesforce-specific result code. Maximum length of 64 characters.
-
-Signature
-
-```
-   public void setGatewayResultCode(String gatewayResultCode)
-
-```
-
-Parameters
-
-```
-   gatewayResultCode
-```
-
-Type: String
-
-Return Value
-
-Type: void
-
-##### **`setGatewayResultCodeDescription(gatewayResultCodeDescription)`**
-
-Sets a description of the gateway-specific result code that a payment gateway returned. Maximum length of 1000 characters.
-
-Signature
-
-```
-   public void setGatewayResultCodeDescription(String gatewayResultCodeDescription)
-
-```
-
-Parameters
-
-```
-   gatewayResultCodeDescription
-```
-
-Type: String
-
-Description of the gateway’s result code. Use this field to learn more about why the gateway returned a certain result code.
-
-
-Apex Reference Guide TokenizeNotification Class
-
-Return Value
-
-Type: void
-
-##### **`setGatewayToken(gatewayToken)`**
-
-Sets the gateway token that the gateway returned.
-
-Signature
-
-```
-   public void setGatewayToken(String gatewayToken)
-
-```
-
-Parameters
-
-```
-   gatewayToken
-```
-
-Type: String
-
-Return Value
-
-Type: void
-
-##### **`setGatewayTokenEncrypted(gatewayTokenEncrypted)`**
-
-Sets an unencrypted unique token ID generated by the payment gateway to represent the saved payment method. Set the value of the
-`gatewayTokenEncrypted` field on a SavedPaymentMethod object.
-
-Signature
-
-```
-   public void setGatewayTokenEncrypted(String gatewayTokenEncrypted)
-
-```
-
-Parameters
-
-```
-   gatewayTokenEncrypted
-```
-
-Type: String
-
-Return Value
-
-Type: void
-
-##### **`setId(id)`**
-
-Sets the ID of a notification sent by the payment gateway.
-
-Signature
-
-```
-   public void setId(String id)
-
-```
-
-Parameters
-
-```
-   id
-```
-
-Type: String
-
-
-## Apex Reference Guide CommerceTax Namespace
-
-Return Value
-
-Type: void
-
-##### **`setSalesforceResultCodeInfo(salesforceResultCodeInfo)`**
-
-Sets the Salesforce-specific result code information. Payment gateways have many response codes for payment calls. Salesforce uses
-the result code information to map payment gateway codes to a predefined set of standard Salesforce result codes.
-
-Signature
-
-```
-   public void setSalesforceResultCodeInfo(commercepayments.SalesforceResultCodeInfo
-
-   salesforceResultCodeInfo)
-
-```
-
-Parameters
-
-```
-   salesforceResultCodeInfo
-```
-
-Type: commercepayments.SalesforceResultCodeInfo on page 501
-
-Return Value
-
-Type: void
-
-##### **`setStatus(status)`**
-
-Sets the notification status value on the notification object.
-
-Signature
-
-```
-   public void setStatus(commercepayments.NotificationStatus status)
-
-```
-
-Parameters
-
-```
-   status
-```
-
-Type: commercepayments.NotificationStatus on page 426
-
-Return Value
-
-Type: void
-
-## CommerceTax Namespace
-
-Manage the communication between Salesforce and an external tax engine.
-
-## The CommerceTax namespace includes these classes.
-
-IN THIS SECTION:
-
-AbstractTransactionResponse Class
-Abstract class that contains methods for setting tax fields based on the external tax provider's response. Response classes that extend
-`AbstractTransactionResponse` inherit these methods.
-
-
-Apex Reference Guide CommerceTax Namespace
-
-AddressesResponse Class
-Sets the tax address fields based on a response from the external tax engine. Contains setter methods for the Ship From, Ship To,
-and Sold To addresses.
-
-AddressResponse Class
-Contains a location code sent from the external tax engine.
-
-AmountDetailsResponse Class
-Sets tax amount fields based on a response from the external tax engine.
-
-CalculateTaxRequest Class
-Represents a request to an external tax engine to calculate tax. Extends the TaxTransactionRequest class and is the top-level request
-class.
-
-CalculateTaxResponse Class
-Sets the values of the tax transaction following a response from the external tax engine. Extends the AbstractTransactionResponse
-class and is the top-level response class.
-
-CalculateTaxType Enum
-Shows whether a tax calculation request is for estimated or actual tax.
-
-CustomTaxAttributesResponse Class
-Sets additional data or custom attributes in the tax response.
-
-ErrorResponse Class
-[Use to respond with an error after receiving errors from the PaymentGatewayAdapter methods of the CommercePayments namespace,](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_namespace_commercepayments.htm)
-such as request-forbidden responses, custom validation errors, or expired API tokens.
-
-HeaderTaxAddressesRequest Class
-Captures the address values that are applicable for the quote or order transaction.
-
-ImpositionResponse Class
-Stores details of tax impositions from the external tax engine.
-
-JurisdictionResponse Class
-Stores details from the external tax engine about the tax jurisdiction used in the tax calculation process. A tax jurisdiction represents
-a government entity that collects tax.
-
-LineItemResponse Class
-Response class that stores details of a list of one or more line items on which the tax engine has calculated tax.
-
-LineTaxAddressesRequest Class
-Stores details of the addresses applied per line item in a tax calculation request.
-
-RequestType Enum
-Shows the type of tax request made to the tax engine.
-
-ResultCode Enum
-Code that represents the results of a tax request made to the tax engine.
-
-RuleDetailsResponse Class
-Contains details about the tax rules used for tax calculation.
-
-TaxAddressesRequest Class
-Contains methods to get and set tax address values.
-
-TaxAddressRequest Class
-Contains address details used for tax calculation.
-
-
-### Apex Reference Guide AbstractTransactionResponse Class
-
-TaxApiException Class
-Contains details about any exceptions during the tax calculation process. Extends the `ApexBaseException` class.
-
-TaxCustomerDetailsRequest Class
-Contains customer details used in tax calculation.
-
-TaxDetailsResponse Class
-Stores details of the tax values that an external tax engine calculates in response to a tax calculation request.
-
-TaxEngineAdapter Interface
-Retrieves information from the tax engine and evaluates the information to define tax details.
-
-TaxEngineContext Class
-Wrapper class that stores details about the type of a tax calculation request.
-
-TaxLineItemRequest Class
-Contains line item details of a tax request.
-
-TaxSellerDetailsRequest Class
-Contains tax code details used in the tax calculation request.
-
-TaxTransactionRequest Class
-Abstract class for storing customer details used in tax calculation and estimation requests.
-
-TaxTransactionStatus Enum
-Shows whether the tax transaction has been committed or uncommitted.
-
-TaxTransactionType Enum
-Shows whether the tax transaction is for a credit or debit transaction.
-
-### AbstractTransactionResponse Class
-
-Abstract class that contains methods for setting tax fields based on the external tax provider's response. Response classes that extend
-### AbstractTransactionResponse inherit these methods.
-
-Namespace
-
-CommerceTax
-
-IN THIS SECTION:
-
-#### AbstractTransactionResponse Methods
-
-Learn more about the methods for AbstractTransactionResponse class.
-
-#### AbstractTransactionResponse Methods
-
-Learn more about the methods for AbstractTransactionResponse class.
-
-### The AbstractTransactionResponse class includes these methods.
-
-IN THIS SECTION:
-
-setAddresses(addresses)
-Uses an instance of `AddressesResponse` to set the values of tax address fields.
-
-
-Apex Reference Guide AbstractTransactionResponse Class
-
-setAmountDetails(amountDetails)
-Uses an instance of `AmountDetailsResponse` to set tax amount fields such as exemption amount and tax amount.
-
-setCurrencyIsoCode(currencyIsoCode)
-Sets the currencyIsoCode field.
-
-setCustomTaxAttributes(customTaxAttributes)
-Uses an instance of `CustomTaxAttributesResponse` class to include additional attributes in the tax response at the header
-level.
-
-setDescription(dscptn)
-Sets the Description field.
-
-setDocumentCode(documentCode)
-Sets the DocumentCode field. Document codes are often used to reference tax documents that the external tax engine uses in the
-tax calculation process. Document code acts as a unique link to chain-related transactions, such as amendment or refunds.
-
-setEffectiveDate(effectiveDate)
-Sets the EffectiveDate field. Effective Date fields are optional fields that store the date that a transaction takes effect. We provide
-these fields only for recordkeeping purposes – for example, if you must report an effective date to an external general ledger system.
-Salesforce doesn't use them to calculate any tax or payment values.
-
-setLineItems(lineItems)
-Uses an instance of the `LineItemResponse` class to set a list of line items. Each line item represents an item sent to an external
-tax engine for tax calculation.
-
-setReferenceDocumentCode(referenceDocumentCode)
-Sets the ReferenceDocumentCode field. Use this field to store the code of an additional document used in the tax calculation process.
-For example, use this field in case of a refund for a previously taxed purchase.
-
-setReferenceEntityId(referenceEntityId)
-Sets the ID of a reference entity. In Commerce Tax, a reference entity represents a record related to the items sent to the external
-tax engine for tax calculation. For example, if you sent order items for tax calculation, you could define the parent order as the
-reference entity.
-
-setTaxTransactionId(taxTrxnId)
-Sets the TaxTransactionId field using the ID of a tax transaction record. In Commerce Tax, a tax transaction record stores information
-about a specific tax calculation process.
-
-setTransactionDate(transactionDate)
-Sets the TransactionDate field.
-
-##### **`setAddresses(addresses)`**
-
-Uses an instance of `AddressesResponse` to set the values of tax address fields.
-
-Signature
-
-```
-   global void setAddresses(commercetax.AddressesResponse addresses)
-
-```
-
-Parameters
-
-```
-   addresses
-```
-
-Type: AddressesResponse
-
-Class that contains methods to set the Ship To, Ship From, and Sold To address information.
-
-
-Apex Reference Guide AbstractTransactionResponse Class
-
-Return Value
-
-Type: void
-
-##### **`setAmountDetails(amountDetails)`**
-
-Uses an instance of `AmountDetailsResponse` to set tax amount fields such as exemption amount and tax amount.
-
-Signature
-
-```
-   global void setAmountDetails(commercetax.AmountDetailsResponse amountDetails)
-
-```
-
-Parameters
-
-```
-   amountDetails
-```
-
-Type: AmountDetailsResponse
-
-Class that contains methods to set the tax exemption amount, tax amount, total amount, and total amount with tax.
-
-Return Value
-
-Type: void
-
-##### **`setCurrencyIsoCode(currencyIsoCode)`**
-
-Sets the currencyIsoCode field.
-
-Signature
-
-```
-   global void setCurrencyIsoCode(String currencyIsoCode)
-
-```
-
-Parameters
-
-```
-   currencyIsoCode
-```
-
-Type: String
-
-Three-letter ISO 4217 currency code associated with a tax object.
-
-Return Value
-
-Type: void
-
-##### **`setCustomTaxAttributes(customTaxAttributes)`**
-
-Uses an instance of `CustomTaxAttributesResponse` class to include additional attributes in the tax response at the header
-level.
-
-Signature
-
-```
-   global void setCustomTaxAttributes(commercetax.CustomTaxAttributesResponse
-
-   customTaxAttributes)
-
-```
-
-
-Apex Reference Guide AbstractTransactionResponse Class
-
-Parameters
-
-```
-   customTaxAttributes
-```
-
-Type: CustomTaxAttributesResponse
-
-Additional data or custom attributes to include in the tax response.
-
-Return Value
-
-Type: void
-
-##### **`setDescription(dscptn)`**
-
-Sets the Description field.
-
-Signature
-
-```
-   global void setDescription(String dscptn)
-
-```
-
-Parameters
-
-```
-   dscptn
-```
-
-Type: String
-
-Optional field for providing additional information about a record.
-
-Return Value
-
-Type: void
-
-##### **`setDocumentCode(documentCode)`**
-
-Sets the DocumentCode field. Document codes are often used to reference tax documents that the external tax engine uses in the tax
-calculation process. Document code acts as a unique link to chain-related transactions, such as amendment or refunds.
-
-Signature
-
-```
-   global void setDocumentCode(String documentCode)
-
-```
-
-Parameters
-
-```
-   documentCode
-```
-
-Type: String
-
-Code for a tax document used in the tax calculation process.
-
-Return Value
-
-Type: void
-
-
-Apex Reference Guide AbstractTransactionResponse Class
-
-##### **`setEffectiveDate(effectiveDate)`**
-
-Sets the EffectiveDate field. Effective Date fields are optional fields that store the date that a transaction takes effect. We provide these
-fields only for recordkeeping purposes – for example, if you must report an effective date to an external general ledger system. Salesforce
-doesn't use them to calculate any tax or payment values.
-
-Signature
-
-```
-   global void setEffectiveDate(Datetime effectiveDate)
-
-```
-
-Parameters
-
-```
-   effectiveDate
-```
-
-Type: Datetime
-
-Optional field that stores the date that a transaction takes effect.
-
-Return Value
-
-Type: void
-
-##### **`setLineItems(lineItems)`**
-
-Uses an instance of the `LineItemResponse` class to set a list of line items. Each line item represents an item sent to an external
-tax engine for tax calculation.
-
-Signature
-
-```
-   global void setLineItems(List<commercetax.LineItemResponse> lineItems)
-
-```
-
-Parameters
-
-```
-   lineItems
-```
-
-Type: List<LineItemResponse>
-
-A list of line items sent to an external tax engine for tax calculation.
-
-Return Value
-
-Type: void
-
-##### **`setReferenceDocumentCode(referenceDocumentCode)`**
-
-Sets the ReferenceDocumentCode field. Use this field to store the code of an additional document used in the tax calculation process.
-For example, use this field in case of a refund for a previously taxed purchase.
-
-Signature
-
-```
-   global void setReferenceDocumentCode(String referenceDocumentCode)
-
-```
-
-
-Apex Reference Guide AbstractTransactionResponse Class
-
-Parameters
-
-```
-   referenceDocumentCode
-```
-
-Type: String
-
-The code for a document used in the tax calculation process.
-
-Return Value
-
-Type: void
-
-##### **`setReferenceEntityId(referenceEntityId)`**
-
-Sets the ID of a reference entity. In Commerce Tax, a reference entity represents a record related to the items sent to the external tax
-engine for tax calculation. For example, if you sent order items for tax calculation, you could define the parent order as the reference
-entity.
-
-Signature
-
-```
-   global void setReferenceEntityId(String referenceEntityId)
-
-```
-
-Parameters
-
-```
-   referenceEntityId
-```
-
-Type: String
-
-ID of a record related to the items sent for tax calculation.
-
-Return Value
-
-Type: void
-
-##### **`setTaxTransactionId(taxTrxnId)`**
-
-Sets the TaxTransactionId field using the ID of a tax transaction record. In Commerce Tax, a tax transaction record stores information
-about a specific tax calculation process.
-
-Signature
-
-```
-   global void setTaxTransactionId(String taxTrxnId)
-
-```
-
-Parameters
-
-```
-   taxTrxnId
-```
-
-Type: String
-
-The ID of a tax transaction record in Commerce Tax.
-
-Return Value
-
-Type: void
-
-
-### Apex Reference Guide AddressesResponse Class
-
-##### **`setTransactionDate(transactionDate)`**
-
-Sets the TransactionDate field.
-
-Signature
-
-```
-   global void setTransactionDate(Datetime transactionDate)
-
-```
-
-Parameters
-
-```
-   transactionDate
-```
-
-Type: Datetime
-
-Date that a tax transaction occurred.
-
-Return Value
-
-Type: void
-
-### AddressesResponse Class
-
-Sets the tax address fields based on a response from the external tax engine. Contains setter methods for the Ship From, Ship To, and
-Sold To addresses.
-
-Namespace
-
-CommerceTax
-
-Usage
-
-### Because AddressesResponse contains multiple addresses, we recommend using multiple instances of AddressResponse
-
-to set unique values for each address.
-
-Example
-
-This code sample represents a portion of the code used in a mock tax adapter. In this example, you create three `AddressResponse`
-classes, set their location codes, and pass them to the `Ship To`, `Ship From`, and `Sold To` setter methods in
-### AddressesResponse . In an actual implementation, your AddressResponse classes already have a location code based on
-
-the response from the external tax engine.
-
-```
-   commercetax.AddressesResponse addressesRes = new commercetax.AddressesResponse();
-
-   //AddressResponse containing ShipTo information
-
-   commercetax.AddressResponse shipToAddress = new commercetax.AddressResponse();
-
-   shipToAddress.setLocationCode('1234567');
-
-   //AddressResponse containing ShipFrom information
-
-   commercetax.AddressResponse shipFromAddress = new commercetax.AddressResponse();
-
-   shipFromAddress.setLocationCode('84720385');
-
-   //AddressResponse containing Sold To information
-
-```
-
-
-Apex Reference Guide AddressesResponse Class
-
-```
-   commercetax.AddressResponse soldToAddress = new commercetax.AddressResponse();
-
-   soldToAddress.setLocationCode('92381749');
-
-   //set values of addressesRes
-
-   addressesRes.setShipFrom(shipFromAddress);
-
-   addressesRes.setShipTo(shipToAddress);
-
-   addressesRes.setSoldTo(soldToAddress);
-
-```
-
-IN THIS SECTION:
-
-#### AddressesResponse Methods
-
-Learn more about the methods for AddressesResponse class.
-
-#### AddressesResponse Methods
-
-Learn more about the methods for AddressesResponse class.
-
-#### The AddressesResponse class includes these methods.
-
-IN THIS SECTION:
-
-##### setShipFrom(shipFrom)
-
-Sets the value of a ShipFrom address field.
-
-setShipTo(shipTo)
-Sets the value of a ShipTo address field.
-
-setSoldTo(soldTo)
-Sets the value of a SoldTo address field.
-
-##### **`setShipFrom(shipFrom)`**
-
-Sets the value of a ShipFrom address field.
-
-Signature
-
-```
-   global void setShipFrom(commercetax.AddressResponse shipFrom)
-
-```
-
-Parameters
-
-```
-   shipFrom
-```
-
-Type: AddressResponse
-
-A single address. Use this generic address parameter to store any type of address, such as Ship From, Ship To, and Sold To details.
-#### Users set the specific address in an AddressResponse instance and then pass that instance to the AddressesResponse ’s
-
-`setShipTo()`, `setShipFrom()`, and `setSoldTo()` methods as needed.
-
-Return Value
-
-Type: void
-
-
-### Apex Reference Guide AddressResponse Class
-
-##### **`setShipTo(shipTo)`**
-
-Sets the value of a ShipTo address field.
-
-Signature
-
-```
-   global void setShipTo(commercetax.AddressResponse shipTo)
-
-```
-
-Parameters
-
-```
-   shipTo
-```
-
-Type: AddressResponse
-
-Stores a single address. This is a generic address parameter and can be used to store any type of address, such as Ship From, Ship
-### To, and Sold To details. Users set the specific address in an AddressResponse instance and then pass that instance to the
-
-`AddressesResponse` ’s `setShipTo()`, `setShipFrom()`, and `setSoldTo()` methods as needed.
-
-Return Value
-
-Type: void
-
-##### **`setSoldTo(soldTo)`**
-
-Sets the value of a SoldTo address field.
-
-Signature
-
-```
-   global void setSoldTo(commercetax.AddressResponse soldTo)
-
-```
-
-Parameters
-
-```
-   soldTo
-```
-
-Type: AddressResponse
-
-Stores a single address. This is a generic address parameter and can be used to store any type of address, such as Ship From, Ship
-To, Sold To details. Users set the specific address in an AddressResponse instance and then pass that instance to the
-`AddressesResponse` ’s `setShipTo()`, `setShipFrom()`, and `setSoldTo()` methods as needed.
-
-Return Value
-
-Type: void
-
-### AddressResponse Class
-
-Contains a location code sent from the external tax engine.
-
-Namespace
-
-CommerceTax
-
-
-Apex Reference Guide AddressResponse Class
-
-Usage
-
-#### Use the AddressResponse class to set unique values for each address.
-
-```
-   commercetax.AddressesResponse addressesRes = new commercetax.AddressesResponse();
-
-   //AddressResponse containing ShipTo information
-
-   commercetax.AddressResponse shipToAddress = new commercetax.AddressResponse();
-
-   shipToAddress.setLocationCode('1234567');
-
-   //AddressResponse containing ShipFrom information
-
-   commercetax.AddressResponse shipFromAddress = new commercetax.AddressResponse();
-
-   shipFromAddress.setLocationCode('84720385');
-
-   //AddressResponse containing Sold To information
-
-   commercetax.AddressResponse soldToAddress = new commercetax.AddressResponse();
-
-   soldToAddress.setLocationCode('92381749');
-
-   //set values of addressesRes
-
-   addressesRes.setShipFrom(shipFromAddress);
-
-   addressesRes.setShipTo(shipToAddress);
-
-   addressesRes.setSoldTo(soldToAddress);
-
-```
-
-IN THIS SECTION:
-
-#### AddressResponse Methods Learn more about the available methods with the AddressResponse class. AddressResponse Methods Learn more about the available methods with the AddressResponse class. The AddressResponse class includes these methods.
-
-IN THIS SECTION:
-
-##### setLocationCode(locationCode)
-
-Sets the value of a LocationCode field.
-
-##### **`setLocationCode(locationCode)`**
-
-Sets the value of a LocationCode field.
-
-Signature
-
-```
-   global void setLocationCode(String locationCode)
-
-```
-
-Parameters
-
-```
-   locationCode
-```
-
-Type: String
-
-
-### Apex Reference Guide AmountDetailsResponse Class
-
-A code that contains address information. This value can be passed to a method that sets the value of an address field.
-
-Return Value
-
-Type: void
-
-### AmountDetailsResponse Class
-
-Sets tax amount fields based on a response from the external tax engine.
-
-Namespace
-
-CommerceTax
-
-Example
-
-### In this example, an instance of AmountDetailsResponse class in a mock adapter calculates several tax amount fields. The
-
-`totalTax` and `totalAmount` parameters were defined in an instance of `LineItemResponse` class. The adapter then assigns
-the instance to `lineItemResponse` .
-
-```
-   commercetax.AmountDetailsResponse amountResponse = new commercetax.AmountDetailsResponse();
-
-   amountResponse.setTotalAmountWithTax(totalTax+totalAmount);
-
-   amountResponse.setExemptAmount(0);
-
-   amountResponse.setTotalAmount(totalAmount);
-
-   amountResponse.setTaxAmount(totalTax);
-
-   lineItemResponse.setAmountDetails(amountResponse);
-
-```
-
-IN THIS SECTION:
-
-#### AmountDetailsResponse Methods
-### Learn more about the methods available from the AmountDetailsResponse class.
-
-#### AmountDetailsResponse Methods
-
-### Learn more about the methods available from the AmountDetailsResponse class. The following are methods for AmountDetailsResponse .
-
-IN THIS SECTION:
-
-setExemptAmount(exemptAmount)
-Sets the value of the ExemptAmount field.
-
-setTaxAmount(taxAmount)
-Sets the value of the TaxAmount field.
-
-setTotalAmount(totalAmount)
-Sets the value of the TotalAmount field.
-
-setTotalAmountWithTax(totalAmtWithTax)
-Sets the value of the TotalAmountWithTax field.
-
-
-Apex Reference Guide AmountDetailsResponse Class
-
-##### **`setExemptAmount(exemptAmount)`**
-
-Sets the value of the ExemptAmount field.
-
-Signature
-
-```
-   global void setExemptAmount(Double exemptAmount)
-
-```
-
-Parameters
-
-```
-   exemptAmount
-```
-
-Type: Double
-
-The amount of a line item's total amount that's exempt from tax calculation.
-
-Return Value
-
-Type: void
-
-##### **`setTaxAmount(taxAmount)`**
-
-Sets the value of the TaxAmount field.
-
-Signature
-
-```
-   global void setTaxAmount(Double taxAmount)
-
-```
-
-Parameters
-
-```
-   taxAmount
-```
-
-Type: Double
-
-The calculated amount of tax for a line item.
-
-Return Value
-
-Type: void
-
-##### **`setTotalAmount(totalAmount)`**
-
-Sets the value of the TotalAmount field.
-
-Signature
-
-```
-   global void setTotalAmount(Double totalAmount)
-
-```
-
-Parameters
-
-```
-   totalAmount
-```
-
-Type: Double
-
-The total amount of a line item, excluding tax.
-
-
-### Apex Reference Guide CalculateTaxRequest Class
-
-Return Value
-
-Type: void
-
-##### **`setTotalAmountWithTax(totalAmtWithTax)`**
-
-Sets the value of the TotalAmountWithTax field.
-
-Signature
-
-```
-   global void setTotalAmountWithTax(Double totalAmtWithTax)
-
-```
-
-Parameters
-
-```
-   totalAmtWithTax
-```
-
-Type: Double
-
-The total amount of a line item combined with the calculated tax for that line item.
-
-Return Value
-
-Type: void
-
-### CalculateTaxRequest Class
-
-Represents a request to an external tax engine to calculate tax. Extends the TaxTransactionRequest class and is the top-level request
-class.
-
-Namespace
-
-CommerceTax
-
-Usage
-
-Keep these considerations in mind when you use this class.
-
-**•** If the `shouldVoidTax` property value is set to `true`, then the operation returns a response with `documentCode` property
-value updated to `referenceDocumentCode` property value that was originally sent in the request payload. The response also
-includes the `taxTransactionType` property value as `Void` . This indicates that the document specified in the
-`referenceDocumentCode` property value is voided.
-
-**•** If document is locked or you can't void the tax transaction for any reason, then you can use the Tax Calculation request to perform
-another transaction such as a Credit Tax request. In this scenario, the response includes the `documentCode` property value that
-was sent in the request payload.
-
-**•** If the document that's mentioned in the `referenceDocumentCode` property value isn't available in the tax engine, then an
-error response occurs with ResultCode on page 559 value as `ReferenceDocumentCodeMissing` .
-
-Example
-
-### See TaxEngineAdapter Example Implementation for more details on how to access information from the CalculateTaxRequest
-
-class.
-
-
-Apex Reference Guide CalculateTaxRequest Class
-
-IN THIS SECTION:
-
-#### CalculateTaxRequest Constructors Learn more about the constructors that are available with the CalculateTaxRequest class. This constructor is intended for
-
-test usage and throws an exception if used outside of the Apex test context.
-
-#### CalculateTaxRequest Properties Learn more about the available properties with the CalculateTaxRequest class.
-
-CalculateTaxRequest Methods
-#### Learn more about the available methods with the CalculateTaxRequest class. CalculateTaxRequest Constructors Learn more about the constructors that are available with the CalculateTaxRequest class. This constructor is intended for test
-
-usage and throws an exception if used outside of the Apex test context.
-
-#### The CalculateTaxRequest class includes these constructors.
-
-IN THIS SECTION:
-
-##### CalculateTaxRequest(taxType)
-
-This constructor is intended for test usage only and throws an exception if used outside of the Apex test context.
-
-##### **`CalculateTaxRequest(taxType)`**
-
-This constructor is intended for test usage only and throws an exception if used outside of the Apex test context.
-
-Signature
-
-```
-   global CalculateTaxRequest(commercetax.CalculateTaxType taxType)
-
-```
-
-Parameters
-
-```
-   taxType
-```
-
-Type: CalculateTaxType
-
-Indicates whether the tax calculation is for estimated tax or actual tax.
-
-#### CalculateTaxRequest Properties Learn more about the available properties with the CalculateTaxRequest class. The CalculateTaxRequest class includes these properties.
-
-IN THIS SECTION:
-
-isCommit
-Indicates whether the tax calculation has to be committed or reported to government authorities.
-
-isHeaderTaxRequested
-Indicates whether header tax is enabled in the tax engine ( `true` ) or not ( `false` ).
-
-
-Apex Reference Guide CalculateTaxRequest Class
-
-##### shouldVoidTax
-
-Indicates whether to void the tax transaction associated with a document that's mentioned in the `referenceDocumentCode`
-##### property value with taxType property value set to Actual and isCommit property value set to true . taxTransactionType
-
-Shows whether the tax transaction is for a credit or debit transaction.
-
-taxType
-Shows whether the tax calculation is for estimated or actual tax wherein only actual tax can be submitted.
-
-##### **`isCommit`**
-
-Indicates whether the tax calculation has to be committed or reported to government authorities.
-
-Signature
-
-```
-   global Boolean isCommit {get; set;}
-
-```
-
-Property Value
-
-Type: Boolean
-
-##### **`isHeaderTaxRequested`**
-
-Indicates whether header tax is enabled in the tax engine ( `true` ) or not ( `false` ).
-
-Signature
-
-```
-   global Boolean isHeaderTaxRequested {get; set;}
-
-```
-
-Property Value
-
-Type: Boolean
-
-##### **`shouldVoidTax`**
-
-Indicates whether to void the tax transaction associated with a document that's mentioned in the `referenceDocumentCode`
-##### property value with taxType property value set to Actual and isCommit property value set to true .
-
-Signature
-
-```
-   global commercetax.CalculateTaxType shouldVoidTax {get; set;}
-
-```
-
-Property Value
-
-Type: Boolean
-
-##### **`taxTransactionType`**
-
-Shows whether the tax transaction is for a credit or debit transaction.
-
-
-Apex Reference Guide CalculateTaxRequest Class
-
-Signature
-
-```
-   global commercetax.TaxTransactionType taxTransactionType {get; set;}
-
-```
-
-Property Value
-
-Type: TaxTransactionType
-
-##### **`taxType`**
-
-Shows whether the tax calculation is for estimated or actual tax wherein only actual tax can be submitted.
-
-Signature
-
-```
-   global commercetax.CalculateTaxType taxType {get; set;}
-
-```
-
-Property Value
-
-Type: CalculateTaxType
-
-#### CalculateTaxRequest Methods Learn more about the available methods with the CalculateTaxRequest class. The CalculateTaxRequest class includes these methods.
-
-IN THIS SECTION:
-
-##### equals(obj)
-#### Maintains the integrity of lists of type CalculateTaxRequest by determining the equality of external objects in a list. This
-
-method is dynamic and is based on the `equals()` method in Java.
-
-hashCode()
-#### Maintains the integrity of lists of type CalculateTaxRequest by determining the uniqueness of the external object records
-
-in a list.
-
-toString()
-Converts a value to a string.
-
-##### **`equals(obj)`**
-
-#### Maintains the integrity of lists of type CalculateTaxRequest by determining the equality of external objects in a list. This method
-
-is dynamic and is based on the `equals()` method in Java.
-
-Signature
-
-```
-   global Boolean equals(Object obj)
-
-```
-
-Parameters
-
-```
-   obj
-```
-
-Type: Object
-
-
-### Apex Reference Guide CalculateTaxResponse Class
-
-External object whose key is to be validated.
-
-Return Value
-
-Type: Boolean
-
-##### **`hashCode()`**
-
-Maintains the integrity of lists of type `CalculateTaxRequest` by determining the uniqueness of the external object records in a
-list.
-
-Signature
-
-```
-   global Integer hashCode()
-
-```
-
-Return Value
-
-Type: Integer
-
-##### **`toString()`**
-
-Converts a value to a string.
-
-Signature
-
-```
-   global String toString()
-
-```
-
-Return Value
-
-Type: String
-
-### CalculateTaxResponse Class
-
-Sets the values of the tax transaction following a response from the external tax engine. Extends the AbstractTransactionResponse class
-and is the top-level response class.
-
-Namespace
-
-CommerceTax
-
-Example
-
-```
-   if(requestType == commercetax.RequestType.CalculateTax){
-
-           commercetax.calculatetaxtype type = request.taxtype;
-
-           String docCode='';
-
-           if(request.DocumentCode == 'simulateEmptyDocumentCode')
-
-              docCode = '';
-
-           else if(request.DocumentCode != null)
-
-              docCode =request.DocumentCode;
-
-          else if(request.ReferenceEntityId != null) docCode = request.ReferenceEntityId;
-
-```
-
-
-Apex Reference Guide CalculateTaxResponse Class
-
-```
-           else docCode = String.valueOf(getRandomInteger(0,2147483647));
-
-           commercetax.CalculateTaxResponse response = new
-
-   commercetax.CalculateTaxResponse();
-
-           if(request.isCommit == true) {
-
-              response.setStatus(commercetax.TaxTransactionStatus.Committed);
-
-           } else {
-
-              response.setStatus(commercetax.TaxTransactionStatus.Uncommitted);
-
-           }
-
-           response.setDocumentCode(docCode);
-
-           response.setReferenceDocumentCode(request.referenceDocumentCode);
-
-           response.setTaxType(type);
-
-           response.setStatusDescription('statusDescription');
-
-           if(request.sellerDetails.code == 'testSellerCode') {
-
-              response.setDescription('SellerCode fetched from TaxEngine entity');
-
-           }
-
-           else {
-
-              response.setDescription('description');
-
-           }
-
-           response.setEffectiveDate(system.now());
-
-           if(request.transactionDate == null) {
-
-            response.setTransactionDate(system.now());
-
-           } else {
-
-            response.setTransactionDate(request.transactionDate);
-
-           }
-
-           if(request.taxTransactionType == null) {
-
-             response.setTaxTransactionType(commercetax.TaxTransactionType.Debit);
-
-           } else {
-
-             response.setTaxTransactionType(request.taxTransactionType);
-
-           }
-
-           if(request.currencyIsoCode == null || request.currencyIsoCode == '') {
-
-             response.setCurrencyIsoCode('USD');
-
-           } else {
-
-             response.setCurrencyIsoCode(request.currencyIsoCode);
-
-           }
-
-           response.setReferenceEntityId(request.ReferenceEntityId);
-
-   }
-
-```
-
-IN THIS SECTION:
-
-#### CalculateTaxResponse Methods Learn more about the available methods with the CalculateTaxResponse class. CalculateTaxResponse Methods Learn more about the available methods with the CalculateTaxResponse class. The CalculateTaxResponse class includes these methods.
-
-IN THIS SECTION:
-
-setAddresses(addresses)
-Sets the value of the Addresses field using the addresses contained in an instance of the AddressesResponse class.
-
-
-Apex Reference Guide CalculateTaxResponse Class
-
-setAmountDetails(amountDetails)
-Sets the value of the AmountDetails field using an instance of `AmountDetailsResponse` .
-
-setCurrencyIsoCode(currencyIsoCode)
-Sets the value of the CurrencyIsoCode field of the `CalculateTaxResponse` object.
-
-setDescription(dscptn)
-Sets the value of the Description field of the `CalculateTaxResponse` object.
-
-setDocumentCode(documentCode)
-Sets the value of the DocumentCode field of the `CalculateTaxResponse` object.
-
-setEffectiveDate(effectiveDate)
-Sets the value of the EffectiveDate field of the `CalculateTaxResponse` object.
-
-setLineItems(lineItems)
-Sets the value of the LineItems field of the `CalculateTaxResponse` object.
-
-setReferenceDocumentCode(referenceDocumentCode)
-Sets the value of the ReferenceDocumentCode field of the `CalculateTaxResponse` object.
-
-setReferenceEntityId(referenceEntityId)
-Sets the value of the ReferenceEntityId field of the `CalculateTaxResponse` object.
-
-setStatus(status)
-Sets the value of the Status field of the `CalculateTaxResponse` object.
-
-setStatusDescription(statusDescription)
-Sets the value of the StatusDescription field of the `CalculateTaxResponse` object.
-
-setTaxTransactionId(taxTrxnId)
-Sets the value of the TaxTransactionId field of the `CalculateTaxResponse` object.
-
-setTaxTransactionType(taxTransactionType)
-Sets the value of the TaxTransactionType field of the `CalculateTaxResponse` object.
-
-setTaxType(taxType)
-Sets the value of the TaxType field of the `CalculateTaxResponse` object.
-
-setTransactionDate(transactionDate)
-Sets the value of the TransactionDate field of the `CalculateTaxResponse` object.
-
-##### **`setAddresses(addresses)`**
-
-Sets the value of the Addresses field using the addresses contained in an instance of the AddressesResponse class.
-
-Signature
-
-```
-   global void setAddresses(commercetax.AddressesResponse addresses)
-
-```
-
-Parameters
-
-```
-   addresses
-```
-
-Type: AddressesResponse
-
-Contains Ship To, Ship From, and Sold To addresses.
-
-
-Apex Reference Guide CalculateTaxResponse Class
-
-Return Value
-
-Type: void
-
-##### **`setAmountDetails(amountDetails)`**
-
-Sets the value of the AmountDetails field using an instance of `AmountDetailsResponse` .
-
-Signature
-
-```
-   global void setAmountDetails(commercetax.AmountDetailsResponse amountDetails)
-
-```
-
-Parameters
-
-```
-   amountDetails
-```
-
-Type: AmountDetailsResponse
-
-The tax amount details for a line item on which tax was calculated.
-
-Return Value
-
-Type: void
-
-##### **`setCurrencyIsoCode(currencyIsoCode)`**
-
-Sets the value of the CurrencyIsoCode field of the `CalculateTaxResponse` object.
-
-Signature
-
-```
-   global void setCurrencyIsoCode(String currencyIsoCode)
-
-```
-
-Parameters
-
-```
-   currencyIsoCode
-```
-
-Type: String
-
-Three-letter ISO 4217 currency code associated with a tax object.
-
-Return Value
-
-Type: void
-
-##### **`setDescription(dscptn)`**
-
-Sets the value of the Description field of the `CalculateTaxResponse` object.
-
-Signature
-
-```
-   global void setDescription(String dscptn)
-
-```
-
-
-Apex Reference Guide CalculateTaxResponse Class
-
-Parameters
-
-```
-   dscptn
-```
-
-Type: String
-
-Optional description for providing more information about the calculate tax response.
-
-Return Value
-
-Type: void
-
-##### **`setDocumentCode(documentCode)`**
-
-Sets the value of the DocumentCode field of the `CalculateTaxResponse` object.
-
-Signature
-
-```
-   global void setDocumentCode(String documentCode)
-
-```
-
-Parameters
-
-```
-   documentCode
-```
-
-Type: String
-
-Code for a tax document that’s created by the tax engine for the calculation process.
-
-Return Value
-
-Type: void
-
-##### **`setEffectiveDate(effectiveDate)`**
-
-Sets the value of the EffectiveDate field of the `CalculateTaxResponse` object.
-
-Signature
-
-```
-   global void setEffectiveDate(Datetime effectiveDate)
-
-```
-
-Parameters
-
-```
-   effectiveDate
-```
-
-Type: Datetime
-
-The date a tax calculation action takes effect. This parameter is optional and is provided only for recordkeeping purpose. Additionally,
-this parameter is used to determine the tax rates or rules and overrides the transaction date. For example, if the tax calculation
-request is placed on January 3 and the transaction date is January 1, you can set the effective date as January 1.
-
-Return Value
-
-Type: void
-
-
-Apex Reference Guide CalculateTaxResponse Class
-
-##### **`setLineItems(lineItems)`**
-
-Sets the value of the LineItems field of the `CalculateTaxResponse` object.
-
-Signature
-
-```
-   global void setLineItems(List<commercetax.LineItemResponse> lineItems)
-
-```
-
-Parameters
-
-```
-   lineItems
-```
-
-Type: List<LineItemResponse>
-
-Response object that the tax adapter populates from the response of the external tax engine.
-
-Return Value
-
-Type: void
-
-##### **`setReferenceDocumentCode(referenceDocumentCode)`**
-
-Sets the value of the ReferenceDocumentCode field of the `CalculateTaxResponse` object.
-
-Signature
-
-```
-   global void setReferenceDocumentCode(String referenceDocumentCode)
-
-```
-
-Parameters
-
-```
-   referenceDocumentCode
-```
-
-Type: String
-
-Code for a reference document used in the tax calculation process.
-
-Return Value
-
-Type: void
-
-##### **`setReferenceEntityId(referenceEntityId)`**
-
-Sets the value of the ReferenceEntityId field of the `CalculateTaxResponse` object.
-
-Signature
-
-```
-   global void setReferenceEntityId(String referenceEntityId)
-
-```
-
-Parameters
-
-```
-   referenceEntityId
-```
-
-Type: String
-
-ID of an entity related to the line items submitted for tax calculation. For example, if order items were sent for tax calculation, you
-could use the ID of their parent order.
-
-
-Apex Reference Guide CalculateTaxResponse Class
-
-Return Value
-
-Type: void
-
-##### **`setStatus(status)`**
-
-Sets the value of the Status field of the `CalculateTaxResponse` object.
-
-Signature
-
-```
-   global void setStatus(commercetax.TaxTransactionStatus status)
-
-```
-
-Parameters
-
-```
-   status
-```
-
-Type: TaxTransactionStatus
-
-Indicates whether a tax transaction has been committed.
-
-Return Value
-
-Type: void
-
-##### **`setStatusDescription(statusDescription)`**
-
-Sets the value of the StatusDescription field of the `CalculateTaxResponse` object.
-
-Signature
-
-```
-   global void setStatusDescription(String statusDescription)
-
-```
-
-Parameters
-
-```
-   statusDescription
-```
-
-Type: String
-
-Optional value for providing more information about a tax transaction's status.
-
-Return Value
-
-Type: void
-
-##### **`setTaxTransactionId(taxTrxnId)`**
-
-Sets the value of the TaxTransactionId field of the `CalculateTaxResponse` object.
-
-Signature
-
-```
-   public void setTaxTransactionId(String taxTrxnId)
-
-```
-
-
-Apex Reference Guide CalculateTaxResponse Class
-
-Parameters
-
-```
-   taxTrxnId
-```
-
-Type: String
-
-The ID of the Salesforce tax transaction entity that stores information about the tax calculation transaction.
-
-Return Value
-
-Type: void
-
-##### **`setTaxTransactionType(taxTransactionType)`**
-
-Sets the value of the TaxTransactionType field of the `CalculateTaxResponse` object.
-
-Signature
-
-```
-   global void setTaxTransactionType(commercetax.TaxTransactionType taxTransactionType)
-
-```
-
-Parameters
-
-```
-   taxTransactionType
-```
-
-Type: TaxTransactionType
-
-Whether the tax transaction was for a credit, debit, or voided transaction.
-
-Return Value
-
-Type: void
-
-##### **`setTaxType(taxType)`**
-
-Sets the value of the TaxType field of the `CalculateTaxResponse` object.
-
-Signature
-
-```
-   global void setTaxType(commercetax.CalculateTaxType taxType)
-
-```
-
-Parameters
-
-```
-   taxType
-```
-
-Type: CalculateTaxType
-
-Indicates whether a tax calculation request is for estimated or actual tax.
-
-Return Value
-
-Type: void
-
-##### **`setTransactionDate(transactionDate)`**
-
-Sets the value of the TransactionDate field of the `CalculateTaxResponse` object.
-
-
-### Apex Reference Guide CalculateTaxType Enum
-
-Signature
-
-```
-   global void setTransactionDate(Datetime transactionDate)
-
-```
-
-Parameters
-
-```
-   transactionDate
-```
-
-Type: Datetime
-
-The date that the tax transaction occurred.
-
-Return Value
-
-Type: void
-
-### CalculateTaxType Enum
-
-Shows whether a tax calculation request is for estimated or actual tax.
-
-Usage
-
-Used by the CalculateTaxRequest and CalculateTaxResponse class methods.
-
-Enum Values
-
-The `commercetax.CalculateTaxType` enum includes these values.
-
-**Value** **Description**
-
-`Actual` Specifies that the tax calculation service should calculate the finalized (actual) tax
-for the requested line items.
-
-`Estimated` Specifies that the tax calculation service should estimate the tax for the requested
-line items.
-
-### CustomTaxAttributesResponse Class
-
-Sets additional data or custom attributes in the tax response.
-
-Namespace
-
-CommerceTax
-
-IN THIS SECTION:
-
-CustomTaxAttributesResponse Constructors
-### Learn more about the available constructors with the CustomTaxAttributesResponse class.
-
-CustomTaxAttributesResponse Methods
-### Learn more about the available methods with the CustomTaxAttributesResponse class.
-
-
-Apex Reference Guide CustomTaxAttributesResponse Class
-
-#### CustomTaxAttributesResponse Constructors Learn more about the available constructors with the CustomTaxAttributesResponse class. The CustomTaxAttributesResponse class includes these constructors.
-
-IN THIS SECTION:
-
-##### CustomTaxAttributesResponse()
-
-Constructor to set additional data or custom attributes in the tax response.
-
-##### **`CustomTaxAttributesResponse()`**
-
-Constructor to set additional data or custom attributes in the tax response.
-
-Signature
-
-```
-   global CustomTaxAttributesResponse()
-
-#### CustomTaxAttributesResponse Methods Learn more about the available methods with the CustomTaxAttributesResponse class. The CustomTaxAttributesResponse class includes these methods.
-
-```
-
-IN THIS SECTION:
-
-##### setData(data)
-
-Sets additional data or custom attributes in the tax response.
-
-##### **`setData(data)`**
-
-Sets additional data or custom attributes in the tax response.
-
-Signature
-
-```
-   global void setData(Map<String, Object> data)
-
-```
-
-Parameters
-
-```
-   data
-```
-
-Type: Map<String, Object>
-
-Additional data or custom attributes to be included in the tax response.
-
-Return Value
-
-Type: void
-
-
-### Apex Reference Guide ErrorResponse Class ErrorResponse Class
-
-[Use to respond with an error after receiving errors from the PaymentGatewayAdapter methods of the CommercePayments namespace,](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_namespace_commercepayments.htm)
-such as request-forbidden responses, custom validation errors, or expired API tokens.
-
-Namespace
-
-CommerceTax
-
-Example
-
-This example snippet of a mock tax adapter shows a hypothetical scenario to demo an error response. The adapter receives request
-information from `TaxEngineContext` and stores it in an instance of `CalculateTaxRequest` . If the request's `documentCode`
-property is null or indicates an error, the adapter returns an error response with information about the error.
-
-```
-   global virtual class MockAdapter implements commercetax.TaxEngineAdapter {
-
-      global commercetax.TaxEngineResponse processRequest(commercetax.TaxEngineContext
-
-   taxEngineContext) {
-
-         commercetax.RequestType requestType = taxEngineContext.getRequestType();
-
-         commercetax.CalculateTaxRequest request =
-
-   (commercetax.CalculateTaxRequest)taxEngineContext.getRequest();
-
-   if(request.documentCode == null) {
-
-           return new commercetax.ErrorResponse(commercetax.resultcode.TaxEngineError,
-
-   '404', 'documentCode is mandatory');
-
-         }
-
-         if(request.documentCode == 'TaxEngineError') {
-
-           return new commercetax.ErrorResponse(commercetax.resultcode.TaxEngineError,
-
-   '504', 'documentCode - not supported');
-
-         }
-
-         if(request.documentCode == 'simulateValidationFailureInAdapter') {
-
-           return new commercetax.ErrorResponse(commercetax.resultcode.TaxEngineError,
-
-   '400', 'validations for documentCode failed in adapter');
-
-         }
-
-         if(request.documentCode == 'simulateMalformedErrorInAdapter') {
-
-                return new
-
-   commercetax.ErrorResponse(commercetax.resultcode.TaxEngineError, null, 'malformed adapter
-
-    error response');
-
-         }
-
-         if(request.documentCode == 'simulateTaxEngineProcessFailure') {
-
-           return new commercetax.ErrorResponse(commercetax.resultcode.TaxEngineError,
-
-   '500', 'Tax Engine couldnt process your request');
-
-         }
-
-```
-
-IN THIS SECTION:
-
-ErrorResponse Constructors
-### Learn more about the available constructors with the ErrorResponse class.
-
-
-### Apex Reference Guide HeaderTaxAddressesRequest Class
-
-#### ErrorResponse Constructors Learn more about the available constructors with the ErrorResponse class. The ErrorResponse class includes these constructors.
-
-IN THIS SECTION:
-
-##### ErrorResponse(resultCode, errorCode, errorMessage)
-#### Constructor to initialize an ErrorResponse object from the result code, error code, and error message sent from the tax engine.
-
-##### **`ErrorResponse(resultCode, errorCode, errorMessage)`**
-
-#### Constructor to initialize an ErrorResponse object from the result code, error code, and error message sent from the tax engine.
-
-Signature
-
-```
-   global ErrorResponse(commercetax.ResultCode resultCode, String errorCode, String
-
-   errorMessage)
-
-```
-
-Parameters
-
-```
-   resultCode
-```
-
-Type: ResultCode
-
-Code for the type of result sent by the tax engine.
-
-```
-   errorCode
-```
-
-Type: String
-
-Code for the type of error sent by the tax engine.
-
-Codes must match the HTTP status codes to be returned to the user. Here are a few examples:
-
-**•** If the status code is for a bad request, set `errorCode` to `400` .
-
-**•** If the status code is for a forbidden request, set `errorCode` to `403` .
-
-**•** If `errorCode` isn't a valid HTTP status code, a 500 internal server error is returned.
-
-```
-   errorMessage
-```
-
-Type: String
-
-The error message sent by the tax engine.
-
-### HeaderTaxAddressesRequest Class
-
-Captures the address values that are applicable for the quote or order transaction.
-
-Namespace
-
-CommerceTax
-
-
-Apex Reference Guide HeaderTaxAddressesRequest Class
-
-IN THIS SECTION:
-
-#### HeaderTaxAddressesRequest Constructors Learn more about the constructors available with the HeaderTaxAddressesRequest class.
-
-HeaderTaxAddressesRequest Properties
-#### Learn more about the available properties with the HeaderTaxAddressesRequest class.
-
-HeaderTaxAddressesRequest Methods
-#### Learn more about the available methods with the HeaderTaxAddressesRequest class. HeaderTaxAddressesRequest Constructors Learn more about the constructors available with the HeaderTaxAddressesRequest class. The HeaderTaxAddressesRequest class includes these constructors.
-
-IN THIS SECTION:
-
-##### HeaderTaxAddressesRequest(shipFrom, shipTo, soldTo, billTo, taxEngineAddress)
-
-Constructor for initializing the required addresses of the tax addresses request such as the ship from, ship to, sold to, and bill to
-addresses. This constructor is intended for test usage and throws an exception if used outside of the Apex test context.
-
-##### **`HeaderTaxAddressesRequest(shipFrom, shipTo, soldTo, billTo, taxEngineAddress)`**
-
-Constructor for initializing the required addresses of the tax addresses request such as the ship from, ship to, sold to, and bill to addresses.
-This constructor is intended for test usage and throws an exception if used outside of the Apex test context.
-
-Signature
-
-```
-   global HeaderTaxAddressesRequest(commercetax.TaxAddressRequest shipFrom,
-
-   commercetax.TaxAddressRequest shipTo, commercetax.TaxAddressRequest soldTo,
-
-   commercetax.TaxAddressRequest billTo, commercetax.TaxAddressRequest taxEngineAddress)
-
-```
-
-Parameters
-
-```
-   shipFrom
-```
-
-Type: TaxAddressRequest
-
-Address where a line item was shipped from.
-
-```
-   shipTo
-```
-
-Type: TaxAddressRequest
-
-Address where a line item was shipped to.
-
-```
-   soldTo
-```
-
-Type: TaxAddressRequest
-
-Address of the line item's buyer.
-
-```
-   billTo
-```
-
-Type: TaxAddressRequest
-
-Person or group who was billed for the line item.
-
-
-Apex Reference Guide HeaderTaxAddressesRequest Class
-
-```
-   taxEngineAddress
-```
-
-Type: TaxAddressRequest
-
-Address that the tax engine uses to calculate tax.
-
-#### HeaderTaxAddressesRequest Properties Learn more about the available properties with the HeaderTaxAddressesRequest class. The HeaderTaxAddressesRequest class includes these properties.
-
-IN THIS SECTION:
-
-##### billTo
-
-Specifies the billTo address for a line item on which tax was calculated.
-
-##### shipFrom
-
-Specifies the shipFrom address for a line item on which tax was calculated.
-
-shipTo
-Specifies the shipTo address for a line item on which tax was calculated.
-
-soldTo
-Specifies the soldTo address for a line item on which tax was calculated.
-
-taxEngineAddress
-Address used by the tax engine when calculating tax for a line item.
-
-##### **`billTo`**
-
-Specifies the billTo address for a line item on which tax was calculated.
-
-Signature
-
-```
-   global commercetax.TaxAddressRequest billTo {get; set;}
-
-```
-
-Property Value
-
-Type: TaxAddressRequest
-
-##### **`shipFrom`**
-
-Specifies the shipFrom address for a line item on which tax was calculated.
-
-Signature
-
-```
-   global commercetax.TaxAddressRequest shipFrom {get; set;}
-
-```
-
-Property Value
-
-Type: TaxAddressRequest
-
-
-Apex Reference Guide HeaderTaxAddressesRequest Class
-
-##### **`shipTo`**
-
-Specifies the shipTo address for a line item on which tax was calculated.
-
-Signature
-
-```
-   global commercetax.TaxAddressRequest shipTo {get; set;}
-
-```
-
-Property Value
-
-Type: TaxAddressRequest
-
-##### **`soldTo`**
-
-Specifies the soldTo address for a line item on which tax was calculated.
-
-Signature
-
-```
-   global commercetax.TaxAddressRequest soldTo {get; set;}
-
-```
-
-Property Value
-
-Type: TaxAddressRequest
-
-##### **`taxEngineAddress`**
-
-Address used by the tax engine when calculating tax for a line item.
-
-Signature
-
-```
-   global commercetax.TaxAddressRequest taxEngineAddress {get; set;}
-
-```
-
-Property Value
-
-Type: TaxAddressRequest
-
-#### HeaderTaxAddressesRequest Methods Learn more about the available methods with the HeaderTaxAddressesRequest class. The HeaderTaxAddressesRequest class includes these methods.
-
-IN THIS SECTION:
-
-equals(obj)
-#### Maintains the integrity of lists of type HeaderTaxAddressesRequest by determining the equality of external objects in a
-
-list. This method is dynamic and is based on the `equals()` method in Java.
-
-hashCode()
-Maintains the integrity of lists of type `TaxAddressesRequest` by determining the uniqueness of the external objects in a list.
-
-toString()
-Converts a value to a string.
-
-
-### Apex Reference Guide ImpositionResponse Class
-
-##### **`equals(obj)`**
-
-Maintains the integrity of lists of type `HeaderTaxAddressesRequest` by determining the equality of external objects in a list.
-This method is dynamic and is based on the `equals()` method in Java.
-
-Signature
-
-```
-   global Boolean equals(Object obj)
-
-```
-
-Parameters
-
-```
-   obj
-```
-
-Type: Object
-
-External object whose key is to be validated.
-
-Return Value
-
-Type: Boolean
-
-##### **`hashCode()`**
-
-Maintains the integrity of lists of type `TaxAddressesRequest` by determining the uniqueness of the external objects in a list.
-
-Signature
-
-```
-   global Integer hashCode()
-
-```
-
-Return Value
-
-Type: Integer
-
-##### **`toString()`**
-
-Converts a value to a string.
-
-Signature
-
-```
-   global String toString()
-
-```
-
-Return Value
-
-Type: String
-
-### ImpositionResponse Class
-
-Stores details of tax impositions from the external tax engine.
-
-Namespace
-
-CommerceTax
-
-
-Apex Reference Guide ImpositionResponse Class
-
-Example
-
-In this mock adapter example, the adapter sets the `TaxDetailsResponse.setImposition()` method parameter to null if
-the request's document code indicates that the tax calculation didn't require any exceptions. Otherwise, it creates an instance of
-#### ImpositionResponse and sets its SubType and Type values, and then assigns it to TaxDetailsResponse .
-
-```
-   if(request.DocumentCode == 'SetsNullForResponseWithoutException'){
-
-     taxDetailsResponse.setImposition(null);
-
-                }else{
-
-                  commercetax.ImpositionResponse imposition = new
-
-   commercetax.ImpositionResponse();
-
-                  imposition.setSubType('subtype');
-
-                  imposition.setType('type');
-
-                  taxDetailsResponse.setImposition(imposition);
-
-               }
-
-```
-
-IN THIS SECTION:
-
-#### ImpositionResponse Methods Learn more about the available methods with the ImpositionResponse class. ImpositionResponse Methods Learn more about the available methods with the ImpositionResponse class. The ImpositionResponse class includes these methods.
-
-IN THIS SECTION:
-
-##### setId(id)
-#### Sets the ID field of the ImpositionResponse class.
-
-setName(name)
-#### Sets the Name field of the ImpositionResponse class.
-
-setSubType(subType)
-#### Sets the SubType field of the ImpositionResponse class.
-
-setType(type)
-#### Sets the Type field of the ImpositionResponse class.
-
-##### **`setId(id)`**
-
-#### Sets the ID field of the ImpositionResponse class.
-
-Signature
-
-```
-   global void setId(String id)
-
-```
-
-Parameters
-
-```
-   id
-```
-
-Type: String
-
-
-Apex Reference Guide ImpositionResponse Class
-
-User-defined ID value used for referencing the tax imposition.
-
-Return Value
-
-Type: void
-
-##### **`setName(name)`**
-
-Sets the Name field of the `ImpositionResponse` class.
-
-Signature
-
-```
-   global void setName(String name)
-
-```
-
-Parameters
-
-```
-   name
-```
-
-Type: String
-
-Optional user-defined name for the tax imposition response.
-
-Return Value
-
-Type: void
-
-##### **`setSubType(subType)`**
-
-Sets the SubType field of the `ImpositionResponse` class.
-
-Signature
-
-```
-   global void setSubType(String subType)
-
-```
-
-Parameters
-
-```
-   subType
-```
-
-Type: String
-
-Many tax calculation organizations use types and subtypes to categorize their tax imposition procedures. If the tax engine you use
-follows this process, set the subtype with this parameter.
-
-Return Value
-
-Type: void
-
-##### **`setType(type)`**
-
-Sets the Type field of the `ImpositionResponse` class.
-
-Signature
-
-```
-   public void setType(String type)
-
-```
-
-
-### Apex Reference Guide JurisdictionResponse Class
-
-Parameters
-
-```
-   type
-```
-
-Type: String
-
-Many tax calculation organizations use types and subtypes to categorize their tax imposition procedures. If the tax engine you use
-follows this process, set the type with this parameter.
-
-Return Value
-
-Type: void
-
-### JurisdictionResponse Class
-
-Stores details from the external tax engine about the tax jurisdiction used in the tax calculation process. A tax jurisdiction represents a
-government entity that collects tax.
-
-Namespace
-
-CommerceTax
-
-Example
-
-In this mock adapter example, the adapter sets the `TaxDetailsResponse.setJurisdiction()` method parameter to null
-if the request's document code indicates that the tax calculation didn't require any exceptions. Otherwise, it creates an instance of
-### JurisdictionResponse and sets its address values. Because this code represents a mock adapter, the example defines the
-
-address parameters directly. In a standard implementation, the jurisdiction's setters receive values passed from the eternal tax engine.
-
-```
-   if(request.DocumentCode == 'SetsNullForResponseWithoutException'){
-
-                  taxDetailsResponse.setJurisdiction(null);
-
-                }else{
-
-                  commercetax.JurisdictionResponse jurisdiction = new
-
-   commercetax.JurisdictionResponse();
-
-                  jurisdiction.setCountry('country');
-
-                  jurisdiction.setRegion('region');
-
-                  jurisdiction.setName('name');
-
-                  jurisdiction.setStateAssignedNumber('stateAssignedNo');
-
-                  jurisdiction.setId('id');
-
-                  jurisdiction.setLevel('level');
-
-                  taxDetailsResponse.setJurisdiction(jurisdiction);
-
-   }
-
-```
-
-IN THIS SECTION:
-
-#### JurisdictionResponse Methods
-### Learn more about the available methods with the JurisdictionResponse class.
-
-#### JurisdictionResponse Methods
-
-### Learn more about the available methods with the JurisdictionResponse class.
-
-
-Apex Reference Guide JurisdictionResponse Class
-
-The `JurisdictionResponse` class includes these methods.
-
-IN THIS SECTION:
-
-##### setCountry(country)
-
-Sets the Country field of the `JurisdictionResponse` class.
-
-##### setId(id)
-
-Sets the ID field of the `JurisdictionResponse` class.
-
-setLevel(level)
-Sets the Level field of the `JurisdictionResponse` class.
-
-setName(name)
-Sets the Name field of the `JurisdictionResponse` class.
-
-setRegion(region)
-Sets the Region value of the `JurisdictionResponse` class.
-
-setStateAssignedNumber(stateAssignedNo)
-Sets the StateAssignedNumber field of the `JurisdictionResponse` class.
-
-##### **`setCountry(country)`**
-
-Sets the Country field of the `JurisdictionResponse` class.
-
-Signature
-
-```
-   global void setCountry(String country)
-
-```
-
-Parameters
-
-```
-   country
-```
-
-Type: String
-
-The country of the tax jurisdiction entity's address.
-
-Return Value
-
-Type: void
-
-##### **`setId(id)`**
-
-Sets the ID field of the `JurisdictionResponse` class.
-
-Signature
-
-```
-   global void setId(String id)
-
-```
-
-Parameters
-
-```
-   id
-```
-
-Type: String
-
-
-Apex Reference Guide JurisdictionResponse Class
-
-User-defined Id value used to reference the jurisdiction response.
-
-Return Value
-
-Type: void
-
-##### **`setLevel(level)`**
-
-Sets the Level field of the `JurisdictionResponse` class.
-
-Signature
-
-```
-   global void setLevel(String level)
-
-```
-
-Parameters
-
-```
-   level
-```
-
-Type: String
-
-Level value used in the jurisdiction entity's address.
-
-Return Value
-
-Type: void
-
-##### **`setName(name)`**
-
-Sets the Name field of the `JurisdictionResponse` class.
-
-Signature
-
-```
-   global void setName(String name)
-
-```
-
-Parameters
-
-```
-   name
-```
-
-Type: String
-
-Optional user-defined name field for referencing the jurisdiction response.
-
-Return Value
-
-Type: void
-
-##### **`setRegion(region)`**
-
-Sets the Region value of the `JurisdictionResponse` class.
-
-Signature
-
-```
-   global void setRegion(String region)
-
-```
-
-
-### Apex Reference Guide LineItemResponse Class
-
-Parameters
-
-```
-   region
-```
-
-Type: String
-
-Region value used in the tax jurisdiction entity's address.
-
-Return Value
-
-Type: void
-
-##### **`setStateAssignedNumber(stateAssignedNo)`**
-
-Sets the StateAssignedNumber field of the `JurisdictionResponse` class.
-
-Signature
-
-```
-   global void setStateAssignedNumber(String stateAssignedNo)
-
-```
-
-Parameters
-
-```
-   stateAssignedNo
-```
-
-Type: String
-
-State assigned number value of the tax jurisdiction entity's address.
-
-Return Value
-
-Type: void
-
-### LineItemResponse Class
-
-Response class that stores details of a list of one or more line items on which the tax engine has calculated tax.
-
-Namespace
-
-CommerceTax
-
-Example
-
-### This example uses a LineItemResponse list to store information about each line item that was processed as part of the request.
-
-For simplicity, the sample code uses a static value of 1 for the tax rate. However, most integrations typically have a more complex process
-for determining a tax rate. Most integrations also build a `TaxDetailsResponse` list to store the actual tax value information that
-### they assign to each line item in the LineItemResponse list.
-
-```
-   Double totalTax = 0.0;
-
-           Double totalAmount = 0.0;
-
-           List<commercetax.LineItemResponse> lineItemResponses = new
-
-   List<commercetax.LineItemResponse>();
-
-           for(Commercetax.TaxLineItemRequest lineItem : request.lineItems){
-
-              commercetax.AddressesResponse addressesRes = new
-
-   commercetax.AddressesResponse();
-
-```
-
-
-Apex Reference Guide LineItemResponse Class
-
-```
-              if(request.DocumentCode == 'SetsNullForResponseWithoutException'){
-
-                addressesRes.setShipFrom(null);
-
-                addressesRes.setShipTO(null);
-
-                addressesRes.setSoldTo(null);
-
-              }else{
-
-              commercetax.AddressResponse addRes = new commercetax.AddressResponse();
-
-                addRes.setLocationCode('locationCode');
-
-                addressesRes.setShipFrom(addRes);
-
-                addressesRes.setShipTO(addRes);
-
-                addressesRes.setSoldTo(addRes);
-
-              }
-
-              commercetax.LineItemResponse lineItemResponse = new
-
-   commercetax.LineItemResponse();
-
-              Double totalLineTax = 0;
-
-              List<commercetax.TaxDetailsResponse> taxDetailsResponses = new
-
-   List<commercetax.TaxDetailsResponse>();
-
-              for(integer i =0;i<1;i++){
-
-                Integer rate = 1;
-
-                Double taxableAmount = lineItem.amount;
-
-                commercetax.TaxDetailsResponse taxDetailsResponse = new
-
-   commercetax.TaxDetailsResponse();
-
-                taxDetailsResponse.setRate(Double.valueOf(rate));
-
-                taxDetailsResponse.setTaxableAmount(taxableAmount);
-
-                Double tax = taxableAmount*rate;
-
-                totalLineTax+=tax;
-
-                taxDetailsResponse.setTax(taxableAmount*rate);
-
-                taxDetailsResponse.setExemptAmount(0);
-
-                taxDetailsResponse.setExemptReason('exemptReason');
-
-                taxDetailsResponse.setTaxRegionId('taxRegionId');
-
-   taxDetailsResponse.setTaxId(String.valueOf(getRandomInteger(0,2323233)));
-
-                taxDetailsResponse.setSerCode('serCode');
-
-                taxDetailsResponse.setTaxAuthorityTypeId('taxAuthorityTypeId');
-
-                if(request.DocumentCode == 'SetsNullForResponseWithoutException'){
-
-                  taxDetailsResponse.setImposition(null);
-
-                }else{
-
-                  commercetax.ImpositionResponse imposition = new
-
-   commercetax.ImpositionResponse();
-
-                  imposition.setSubType('subtype');
-
-                  imposition.setType('type');
-
-                  taxDetailsResponse.setImposition(imposition);
-
-                }
-
-                if(request.DocumentCode == 'SetsNullForResponseWithoutException'){
-
-                  taxDetailsResponse.setJurisdiction(null);
-
-                }else{
-
-                  commercetax.JurisdictionResponse jurisdiction = new
-
-   commercetax.JurisdictionResponse();
-
-                  jurisdiction.setCountry('country');
-
-                  jurisdiction.setRegion('region');
-
-                  jurisdiction.setName('name');
-
-                  jurisdiction.setStateAssignedNumber('stateAssignedNo');
-
-                  jurisdiction.setId('id');
-
-```
-
-
-Apex Reference Guide LineItemResponse Class
-
-```
-                  jurisdiction.setLevel('level');
-
-                  taxDetailsResponse.setJurisdiction(jurisdiction);
-
-                }
-
-                taxDetailsResponses.add(taxDetailsResponse);
-
-              }
-
-              lineItemResponse.setTaxes(taxDetailsResponses);
-
-              totalTax +=totalLineTax;
-
-              totalAmount+=lineItem.amount;
-
-```
-
-IN THIS SECTION:
-
-#### LineItemResponse Methods Learn more about the available methods with the LineItemResponse class. LineItemResponse Methods Learn more about the available methods with the LineItemResponse class. The LineItemResponse class includes these methods.
-
-IN THIS SECTION:
-
-setAddresses(addresses)
-#### Sets the Addresses field on the LineItemResponse using an instance of AddressesResponse class.
-
-setAmountDetails(amountDetails)
-#### Sets the Amount Details field on the LineItemResponse using an instance of AmountDetails .
-
-setCustomTaxAttributes(customTaxAttributes)
-Uses an instance of `CustomTaxAttributesResponse` class to include additional attributes in the tax response at line item
-level.
-
-setEffectiveDate(effectiveDate)
-#### Sets the EffectiveDate field on the LineItemResponse class. Effective Date fields are optional fields that store the date that a
-
-transaction takes effect. We provide these fields only for recordkeeping purposes – for example, if you must report an effective date
-to an external general ledger system. Salesforce doesn't use them to calculate any tax or payment values.
-
-setIsTaxable(isTaxable)
-#### Sets the IsTaxable field on the LineItemResponse class.
-
-setLineNumber(lineNumber)
-#### Sets the LineNumber field on the LineItemResponse class.
-
-setProductCode(productCode)
-#### Sets the ProductCode field on the LineItemResponse class.
-
-setQuantity(quantity)
-#### Sets the Quantity field on the LineItemResponse class.
-
-setTaxCode(taxCode)
-#### Sets the TaxCode field on the LineItemResponse .
-
-setTaxes(taxes)
-#### Sets the Taxes field on a LineItemResponse .
-
-
-Apex Reference Guide LineItemResponse Class
-
-##### **`setAddresses(addresses)`**
-
-Sets the Addresses field on the `LineItemResponse` using an instance of `AddressesResponse` class.
-
-Signature
-
-```
-   global void setAddresses(commercetax.AddressesResponse addresses)
-
-```
-
-Parameters
-
-```
-   addresses
-```
-
-Type: AddressesResponse
-
-Class that contains methods to set the Ship To, Ship From, and Sold To address information.
-
-Return Value
-
-Type: void
-
-##### **`setAmountDetails(amountDetails)`**
-
-Sets the Amount Details field on the `LineItemResponse` using an instance of `AmountDetails` .
-
-Signature
-
-```
-   global void setAmountDetails(commercetax.AmountDetailsResponse amountDetails)
-
-```
-
-Parameters
-
-```
-   amountDetails
-```
-
-Type: AmountDetailsResponse
-
-Class that contains methods to set the tax amount, total amount with tax, total amount, and exempt amount.
-
-Return Value
-
-Type: void
-
-##### **`setCustomTaxAttributes(customTaxAttributes)`**
-
-Uses an instance of `CustomTaxAttributesResponse` class to include additional attributes in the tax response at line item level.
-
-Signature
-
-```
-   global void setCustomTaxAttributes(commercetax.CustomTaxAttributesResponse
-
-   customTaxAttributes)
-
-```
-
-Parameters
-
-```
-   customTaxAttributes
-```
-
-Type: CustomTaxAttributesResponse
-
-Additional data or custom attributes to include in the tax response.
-
-
-Apex Reference Guide LineItemResponse Class
-
-Return Value
-
-Type: void
-
-##### **`setEffectiveDate(effectiveDate)`**
-
-Sets the EffectiveDate field on the `LineItemResponse` class. Effective Date fields are optional fields that store the date that a
-transaction takes effect. We provide these fields only for recordkeeping purposes – for example, if you must report an effective date to
-an external general ledger system. Salesforce doesn't use them to calculate any tax or payment values.
-
-Signature
-
-```
-   global void setEffectiveDate(Datetime effectiveDate)
-
-```
-
-Parameters
-
-```
-   effectiveDate
-```
-
-Type: Datetime
-
-Optional field that stores the date that a transaction takes effect.
-
-Return Value
-
-Type: void
-
-##### **`setIsTaxable(isTaxable)`**
-
-Sets the IsTaxable field on the `LineItemResponse` class.
-
-Signature
-
-```
-   global void setIsTaxable(Boolean isTaxable)
-
-```
-
-Parameters
-
-```
-   isTaxable
-```
-
-Type: Boolean
-
-Whether line items were taxed as part of the tax calculation request.
-
-Return Value
-
-Type: void
-
-##### **`setLineNumber(lineNumber)`**
-
-Sets the LineNumber field on the `LineItemResponse` class.
-
-Signature
-
-```
-   global void setLineNumber(String lineNumber)
-
-```
-
-
-Apex Reference Guide LineItemResponse Class
-
-Parameters
-
-```
-   lineNumber
-```
-
-Type: String
-
-User-defined number used to identify a line item.
-
-Return Value
-
-Type: void
-
-##### **`setProductCode(productCode)`**
-
-Sets the ProductCode field on the `LineItemResponse` class.
-
-Signature
-
-```
-   global void setProductCode(String productCode)
-
-```
-
-Parameters
-
-```
-   productCode
-```
-
-Type: String
-
-Code for the product that a line item represents.
-
-Return Value
-
-Type: void
-
-##### **`setQuantity(quantity)`**
-
-Sets the Quantity field on the `LineItemResponse` class.
-
-Signature
-
-```
-   global void setQuantity(Double quantity)
-
-```
-
-Parameters
-
-```
-   quantity
-```
-
-Type: Double
-
-Quantity of a line item.
-
-Return Value
-
-Type: void
-
-##### **`setTaxCode(taxCode)`**
-
-Sets the TaxCode field on the `LineItemResponse` .
-
-
-### Apex Reference Guide LineTaxAddressesRequest Class
-
-Signature
-
-```
-   global void setTaxCode(String taxCode)
-
-```
-
-Parameters
-
-```
-   taxCode
-```
-
-Type: String
-
-Federal code that an individual or business uses to pay their taxes to a federal or state government. The tax engine uses this code
-during the tax calculation process.
-
-Return Value
-
-Type: void
-
-##### **`setTaxes(taxes)`**
-
-Sets the Taxes field on a `LineItemResponse` .
-
-Signature
-
-```
-   global void setTaxes(List<commercetax.TaxDetailsResponse> taxes)
-
-```
-
-Parameters
-
-```
-   taxes
-```
-
-Type: List<TaxDetailsResponse>
-
-Tax values applied to a line item in the `LineItemResponse` list. This information is stored in a list of `TaxDetailsResponses`,
-which contains values such as tax, taxable amount, and tax rate.
-
-Return Value
-
-Type: void
-
-### LineTaxAddressesRequest Class
-
-Stores details of the addresses applied per line item in a tax calculation request.
-
-Namespace
-
-CommerceTax
-
-IN THIS SECTION:
-
-LineTaxAddressesRequest Constructors
-### Learn more about the constructors available with the LineTaxAddressesRequest class.
-
-LineTaxAddressesRequest Properties
-### Learn more about the available properties with the LineTaxAddressesRequest class.
-
-
-Apex Reference Guide LineTaxAddressesRequest Class
-
-LineTaxAddressesRequest Methods
-#### Learn more about the available methods with the LineTaxAddressesRequest class. LineTaxAddressesRequest Constructors Learn more about the constructors available with the LineTaxAddressesRequest class. The LineTaxAddressesRequest class includes these constructors.
-
-IN THIS SECTION:
-
-##### LineTaxAddressesRequest(shipFrom, shipTo, soldTo, billTo, taxEngineAddress)
-
-Constructor for initializing the required addresses for a line item of the tax addresses request such as the ship to, ship from, and bill
-to addresses. This constructor is intended for test usage and throws an exception if used outside of the Apex test context.
-
-##### **`LineTaxAddressesRequest(shipFrom, shipTo, soldTo, billTo, taxEngineAddress)`**
-
-Constructor for initializing the required addresses for a line item of the tax addresses request such as the ship to, ship from, and bill to
-addresses. This constructor is intended for test usage and throws an exception if used outside of the Apex test context.
-
-Signature
-
-```
-   global LineTaxAddressesRequest(commercetax.TaxAddressRequest shipFrom,
-
-   commercetax.TaxAddressRequest shipTo, commercetax.TaxAddressRequest soldTo,
-
-   commercetax.TaxAddressRequest billTo, commercetax.TaxAddressRequest taxEngineAddress)
-
-```
-
-Parameters
-
-```
-   shipFrom
-```
-
-TaxAddressRequest
-
-Address where a line item was shipped from.
-
-```
-   shipTo
-```
-
-TaxAddressRequest
-
-Address where a line item is shipped to.
-
-```
-   soldTo
-```
-
-TaxAddressRequest
-
-Address of the line item's buyer.
-
-```
-   billTo
-```
-
-TaxAddressRequest
-
-Person or group who was billed for the line item.
-
-```
-   taxEngineAddress
-```
-
-TaxAddressRequest
-
-Address that the tax engine uses to calculate tax.
-
-#### LineTaxAddressesRequest Properties Learn more about the available properties with the LineTaxAddressesRequest class.
-
-
-Apex Reference Guide LineTaxAddressesRequest Class
-
-The `LineTaxAddressesRequest` class includes these properties.
-
-IN THIS SECTION:
-
-##### billTo
-
-The Bill To address for a line item.
-
-##### shipFrom
-
-The Ship From address for a line item.
-
-##### shipTo
-
-The Ship To address for a line item.
-
-soldTo
-The Sold To address for a line item.
-
-##### **`billTo`**
-
-The Bill To address for a line item.
-
-Signature
-
-```
-   global commercetax.TaxAddressRequest billTo {get; set;}
-
-```
-
-Property Value
-
-Type: TaxAddressRequest
-
-##### **`shipFrom`**
-
-The Ship From address for a line item.
-
-Signature
-
-```
-   global commercetax.TaxAddressRequest shipFrom {get; set;}
-
-```
-
-Property Value
-
-Type: TaxAddressRequest
-
-##### **`shipTo`**
-
-The Ship To address for a line item.
-
-Signature
-
-```
-   global commercetax.TaxAddressRequest shipTo {get; set;}
-
-```
-
-Property Value
-
-Type: TaxAddressRequest
-
-
-Apex Reference Guide LineTaxAddressesRequest Class
-
-##### **`soldTo`**
-
-The Sold To address for a line item.
-
-Signature
-
-```
-   global commercetax.TaxAddressRequest soldTo {get; set;}
-
-```
-
-Property Value
-
-Type: TaxAddressRequest
-
-#### LineTaxAddressesRequest Methods Learn more about the available methods with the LineTaxAddressesRequest class. The LineTaxAddressesRequest class includes these methods.
-
-IN THIS SECTION:
-
-##### equals(obj)
-#### Maintains the integrity of lists of type LineTaxAddressesRequest by determining the equality of external objects in a list.
-
-This method is dynamic and is based on the `equals()` method in Java.
-
-hashCode()
-#### Maintains the integrity of lists of type LineTaxAddressesRequest by determining the uniquness of the external object
-
-records in a list.
-
-toString()
-Converts a value to a string.
-
-##### **`equals(obj)`**
-
-#### Maintains the integrity of lists of type LineTaxAddressesRequest by determining the equality of external objects in a list. This
-
-method is dynamic and is based on the `equals()` method in Java.
-
-Signature
-
-```
-   global Boolean equals(Object obj)
-
-```
-
-Parameters
-
-```
-   obj
-```
-
-Type: Object
-
-External object whose key is to be validated.
-
-Return Value
-
-Type: Boolean
-
-
-### Apex Reference Guide RequestType Enum
-
-##### **`hashCode()`**
-
-Maintains the integrity of lists of type `LineTaxAddressesRequest` by determining the uniquness of the external object records
-in a list.
-
-Signature
-
-```
-   global Integer hashCode()
-
-```
-
-Return Value
-
-Type: Integer
-
-##### **`toString()`**
-
-Converts a value to a string.
-
-Signature
-
-```
-   global String toString()
-
-```
-
-Return Value
-
-Type: String
-
-### RequestType Enum
-
-Shows the type of tax request made to the tax engine.
-
-Usage
-
-Used by the TaxEngineContext class method.
-
-Enum Values
-
-The `commercetax.RequestType` enum includes these values.
-
-**Value** **Description**
-
-`CalculateTax` Represents a request to calculate tax on a list of taxable line items.
-
-### ResultCode Enum
-
-Code that represents the results of a tax request made to the tax engine.
-
-Usage
-
-Used by the ErrorResponse class method.
-
-
-### Apex Reference Guide RuleDetailsResponse Class
-
-Enum Values
-
-The `commercetax.ResultCode` enum includes these values.
-
-**Value** **Description**
-
-`TaxEngineError` Represents an error that occurred during the tax request process.
-
-`ReferenceDocumentCodeMissing` Specifies if the document mentioned as a `referenceDocumentCode` value
-isn't available in the tax engine.
-
-### RuleDetailsResponse Class
-
-Contains details about the tax rules used for tax calculation.
-
-Namespace
-
-CommerceTax
-
-IN THIS SECTION:
-
-#### RuleDetailsResponse Methods
-### Learn more about the available methods with the RuleDetailsResponse class.
-
-#### RuleDetailsResponse Methods
-
-### Learn more about the available methods with the RuleDetailsResponse class. The RuleDetailsResponse includes these methods.
-
-IN THIS SECTION:
-
-##### RuleDetailsResponse()
-
-Contains information about the tax rules used when calculating tax for line items.
-
-setNonTaxableRuleId(nonTaxableRuleId)
-### Sets the NonTaxableRuleId field of the RuleDetailsResponse .
-
-setNonTaxableType(nonTaxableType)
-### Sets the NonTaxableType field of the RuleDetailsResponse .
-
-setRateRuleId(rateRuleId)
-### Sets the RateRuleId field of the RuleDetailsResponse .
-
-setRateSourceId(rateSourceId)
-### Sets the RateSourceId field on the RuleDetailsResponse .
-
-##### **`RuleDetailsResponse()`**
-
-Contains information about the tax rules used when calculating tax for line items.
-
-
-Apex Reference Guide RuleDetailsResponse Class
-
-Signature
-
-```
-   global void RuleDetailsResponse()
-
-```
-
-Return Value
-
-Type: void
-
-##### **`setNonTaxableRuleId(nonTaxableRuleId)`**
-
-Sets the NonTaxableRuleId field of the `RuleDetailsResponse` .
-
-Signature
-
-```
-   global void setNonTaxableRuleId(String nonTaxableRuleId)
-
-```
-
-Parameters
-
-```
-   nonTaxableRuleId
-```
-
-Type: String
-
-ID of the tax rule applied to non-taxable line items.
-
-Return Value
-
-Type: void
-
-##### **`setNonTaxableType(nonTaxableType)`**
-
-Sets the NonTaxableType field of the `RuleDetailsResponse` .
-
-Signature
-
-```
-   global void setNonTaxableType(String nonTaxableType)
-
-```
-
-Parameters
-
-```
-   nonTaxableType
-```
-
-Type: String
-
-Reason (from several possible types) that a line item is non-taxable.
-
-Return Value
-
-Type: void
-
-##### **`setRateRuleId(rateRuleId)`**
-
-Sets the RateRuleId field of the `RuleDetailsResponse` .
-
-Signature
-
-```
-   global void setRateRuleId(String rateRuleId)
-
-```
-
-
-### Apex Reference Guide TaxAddressesRequest Class
-
-Parameters
-
-```
-   rateRuleId
-```
-
-Type: String
-
-ID of the tax rule used to determine a tax rate.
-
-Return Value
-
-Type: void
-
-##### **`setRateSourceId(rateSourceId)`**
-
-Sets the RateSourceId field on the `RuleDetailsResponse` .
-
-Signature
-
-```
-   global void setRateSourceId(String rateSourceId)
-
-```
-
-Parameters
-
-```
-   rateSourceId
-```
-
-Type: String
-
-ID of the source object used for calculating tax rate.
-
-Return Value
-
-Type: void
-
-### TaxAddressesRequest Class
-
-Contains methods to get and set tax address values.
-
-Namespace
-
-CommerceTax
-
-IN THIS SECTION:
-
-#### TaxAddressesRequest Constructors
-### Learn more about the available constructors with the TaxAddressesRequest class.
-
-TaxAddressesRequest Properties
-### Learn more about the available properties with the TaxAddressesRequest class.
-
-TaxAddressesRequest Methods
-### Learn more about the available methods with the TaxAddressesRequest class.
-
-#### TaxAddressesRequest Constructors
-
-### Learn more about the available constructors with the TaxAddressesRequest class.
-
-
-Apex Reference Guide TaxAddressesRequest Class
-
-##### The TaxAddressesRequest class includes these constructors.
-
-IN THIS SECTION:
-
-##### TaxAddressesRequest(shipFrom, shipTo, soldTo, billTo, taxEngineAddress)
-
-Constructor for defining addresses for the tax addresses request. This constructor is intended for test usage and throws an exception
-if used outside of the Apex test context.
-
-##### **`TaxAddressesRequest(shipFrom, shipTo, soldTo, billTo, taxEngineAddress)`**
-
-Constructor for defining addresses for the tax addresses request. This constructor is intended for test usage and throws an exception if
-used outside of the Apex test context.
-
-Signature
-
-```
-   global TaxAddressesRequest(commercetax.TaxAddressRequest shipFrom,
-
-   commercetax.TaxAddressRequest shipTo, commercetax.TaxAddressRequest soldTo,
-
-   commercetax.TaxAddressRequest billTo, commercetax.TaxAddressRequest taxEngineAddress)
-
-```
-
-Parameters
-
-```
-   shipFrom
-```
-
-TaxAddressRequest
-
-The address where a line item was shipped from.
-
-```
-   shipTo
-```
-
-TaxAddressRequest
-
-The address where a line item is shipped to.
-
-```
-   soldTo
-```
-
-TaxAddressRequest
-
-The address of the line item's buyer.
-
-```
-   billTo
-```
-
-TaxAddressRequest
-
-The person or group who was billed for the line item.
-
-```
-   taxEngineAddress
-```
-
-TaxAddressRequest
-
-The address that the tax engine uses to calculate tax.
-
-#### TaxAddressesRequest Properties
-
-##### Learn more about the available properties with the TaxAddressesRequest class. The TaxAddressesRequest class includes these properties.
-
-IN THIS SECTION:
-
-billTo
-The Bill To address for a line item.
-
-
-Apex Reference Guide TaxAddressesRequest Class
-
-##### shipFrom
-
-The Ship From address for a line item.
-
-##### shipTo
-
-The Ship To address for a line item.
-
-##### soldTo
-
-The Sold To address for a line item.
-
-taxEngineAddress
-The Tax Engine Address for a line item.
-
-##### **`billTo`**
-
-The Bill To address for a line item.
-
-Signature
-
-```
-   global commercetax.TaxAddressRequest billTo {get; set;}
-
-```
-
-Property Value
-
-TaxAddressRequest
-
-##### **`shipFrom`**
-
-The Ship From address for a line item.
-
-Signature
-
-```
-   global commercetax.TaxAddressRequest shipFrom {get; set;}
-
-```
-
-Property Value
-
-TaxAddressRequest
-
-##### **`shipTo`**
-
-The Ship To address for a line item.
-
-Signature
-
-```
-   public commercetax.TaxAddressRequest shipTo {get; set;}
-
-```
-
-Property Value
-
-TaxAddressRequest
-
-##### **`soldTo`**
-
-The Sold To address for a line item.
-
-
-Apex Reference Guide TaxAddressesRequest Class
-
-Signature
-
-```
-   global commercetax.TaxAddressRequest soldTo {get; set;}
-
-```
-
-Property Value
-
-TaxAddressRequest
-
-##### **`taxEngineAddress`**
-
-The Tax Engine Address for a line item.
-
-Signature
-
-```
-   global commercetax.TaxAddressRequest taxEngineAddress {get; set;}
-
-```
-
-Property Value
-
-TaxAddressRequest
-
-#### TaxAddressesRequest Methods Learn more about the available methods with the TaxAddressesRequest class. The TaxAddressesRequest class includes these methods.
-
-IN THIS SECTION:
-
-##### equals(obj)
-#### Maintains the integrity of lists of type TaxAddressesRequest by determining the equality of external objects in a list. This
-
-method is dynamic and is based on the `equals()` method in Java.
-
-hashCode()
-#### Maintains the integrity of lists of type TaxAddressesRequest by determining the uniqueness of the external object records
-
-in a list.
-
-toString()
-Converts a value to a string.
-
-##### **`equals(obj)`**
-
-#### Maintains the integrity of lists of type TaxAddressesRequest by determining the equality of external objects in a list. This method
-
-is dynamic and is based on the `equals()` method in Java.
-
-Signature
-
-```
-   global Boolean equals(Object obj)
-
-```
-
-Parameters
-
-```
-   obj
-```
-
-Type: Object
-
-
-### Apex Reference Guide TaxAddressRequest Class
-
-External object whose key is to be validated.
-
-Return Value
-
-Type: Boolean
-
-##### **`hashCode()`**
-
-Maintains the integrity of lists of type `TaxAddressesRequest` by determining the uniqueness of the external object records in a
-list.
-
-Signature
-
-```
-   global Integer hashCode()
-
-```
-
-Return Value
-
-Type: Integer
-
-##### **`toString()`**
-
-Converts a value to a string.
-
-Signature
-
-```
-   global String toString()
-
-```
-
-Return Value
-
-Type: String
-
-### TaxAddressRequest Class
-
-Contains address details used for tax calculation.
-
-Namespace
-
-CommerceTax
-
-IN THIS SECTION:
-
-TaxAddressRequest Constructors
-### Learn more about the available constructors with the TaxAddressRequest class.
-
-TaxAddressRequest Properties
-### Learn more about the available properties with the TaxAddressRequest class.
-
-TaxAddressRequest Methods
-### Learn more about the available methods with the TaxAddressRequest class.
-
-
-Apex Reference Guide TaxAddressRequest Class
-
-#### TaxAddressRequest Constructors Learn more about the available constructors with the TaxAddressRequest class. The TaxAddressRequest class includes these constructors.
-
-IN THIS SECTION:
-
-##### TaxAddressRequest(city, country, latitude, longitude, postalCode, state, street, locationCode)
-#### Initializes the TaxAddressRequest object using address details. This constructor is intended for test usage and throws an
-
-exception if used outside of the Apex test context.
-
-##### **`TaxAddressRequest(city, country, latitude, longitude, postalCode, state,`**
-
-```
-  street, locationCode)
-
-#### Initializes the TaxAddressRequest object using address details. This constructor is intended for test usage and throws an exception
-```
-
-if used outside of the Apex test context.
-
-Signature
-
-```
-   global TaxAddressRequest(String city, String country, Double latitude, Double longitude,
-
-   String postalCode, String state, String street, String locationCode)
-
-```
-
-Parameters
-
-```
-   city
-```
-
-Type: String
-
-City used in an address, which is required for tax calculation.
-
-```
-   country
-```
-
-Type: String
-
-Country used in an address, which is required for tax calculation.
-
-```
-   latitude
-```
-
-Type: Double
-
-Latitude used in an address, which is required for tax calculation.
-
-```
-   longitude
-```
-
-Type: Double
-
-Longitude used in an address, which is required for tax calculation.
-
-```
-   postalCode
-```
-
-Type: String
-
-Postal code used in an address, which is required for tax calculation.
-
-```
-   state
-```
-
-Type: String
-
-State used in an address, which is required for tax calculation.
-
-```
-   street
-```
-
-Type: String
-
-Street used in an address, which is required for tax calculation.
-
-
-Apex Reference Guide TaxAddressRequest Class
-
-```
-   locationCode
-```
-
-Type: String
-
-Location code used in an address, which is required for tax calculation.
-
-#### TaxAddressRequest Properties Learn more about the available properties with the TaxAddressRequest class. The TaxAddressRequest class includes these properties.
-
-IN THIS SECTION:
-
-##### city
-
-City used in an address, which is required for tax calculation.
-
-country
-Country used in an address, which is required for tax calculation.
-
-countryCode
-Country code used in an address, which is required for tax calculation.
-
-latitude
-Latitude used in an address, which is required for tax calculation.
-
-locationCode
-Location code used in an address, which is required for tax calculation.
-
-longitude
-Longitude used in an address, which is required for tax calculation.
-
-postalCode
-Postal code used in an address, which is required for tax calculation.
-
-state
-State used in an address, which is required for tax calculation.
-
-stateCode
-State code used in an address, which is required for tax calculation.
-
-street
-Street used in an address, which is required for tax calculation.
-
-##### **`city`**
-
-City used in an address, which is required for tax calculation.
-
-Signature
-
-```
-   global String city {get; set;}
-
-```
-
-Property Value
-
-Type: String
-
-
-Apex Reference Guide TaxAddressRequest Class
-
-##### **`country`**
-
-Country used in an address, which is required for tax calculation.
-
-Signature
-
-```
-   global String country {get; set;}
-
-```
-
-Property Value
-
-Type: String
-
-##### **`countryCode`**
-
-Country code used in an address, which is required for tax calculation.
-
-Signature
-
-```
-   global String countryCode {get; set;}
-
-```
-
-Property Value
-
-Type: String
-
-##### **`latitude`**
-
-Latitude used in an address, which is required for tax calculation.
-
-Signature
-
-```
-   global Double latitude {get; set;}
-
-```
-
-Property Value
-
-Type: Double
-
-##### **`locationCode`**
-
-Location code used in an address, which is required for tax calculation.
-
-Signature
-
-```
-   global String locationCode {get; set;}
-
-```
-
-Property Value
-
-Type: String
-
-##### **`longitude`**
-
-Longitude used in an address, which is required for tax calculation.
-
-
-Apex Reference Guide TaxAddressRequest Class
-
-Signature
-
-```
-   global Double longitude {get; set;}
-
-```
-
-Property Value
-
-Type: Double
-
-##### **`postalCode`**
-
-Postal code used in an address, which is required for tax calculation.
-
-Signature
-
-```
-   global String postalCode {get; set;}
-
-```
-
-Property Value
-
-Type: String
-
-##### **`state`**
-
-State used in an address, which is required for tax calculation.
-
-Signature
-
-```
-   global String state {get; set;}
-
-```
-
-Property Value
-
-Type: String
-
-##### **`stateCode`**
-
-State code used in an address, which is required for tax calculation.
-
-Signature
-
-```
-   global String stateCode {get; set;}
-
-```
-
-Property Value
-
-Type: String
-
-##### **`street`**
-
-Street used in an address, which is required for tax calculation.
-
-Signature
-
-```
-   global String street {get; set;}
-
-```
-
-
-Apex Reference Guide TaxAddressRequest Class
-
-Property Value
-
-Type: String
-
-#### TaxAddressRequest Methods Learn more about the available methods with the TaxAddressRequest class. The TaxAddressRequest class includes these methods.
-
-IN THIS SECTION:
-
-##### equals(obj)
-
-Maintains the integrity of lists of type TaxAddressRequest by determining the equality of external objects in a list. This method is
-dynamic and based on the `equals()` method in Java.
-
-##### hashCode()
-#### Maintains the integrity of lists of type TaxAddressRequest by determining the uniqueness of the external object in a list.
-
-toString()
-Converts a date to a string.
-
-##### **`equals(obj)`**
-
-Maintains the integrity of lists of type TaxAddressRequest by determining the equality of external objects in a list. This method is dynamic
-and based on the `equals()` method in Java.
-
-Signature
-
-```
-   global Boolean equals(Object obj)
-
-```
-
-Parameters
-
-```
-   obj
-```
-
-Type: Object
-
-External object whose key is to be validated.
-
-Return Value
-
-Type: Boolean
-
-##### **`hashCode()`**
-
-#### Maintains the integrity of lists of type TaxAddressRequest by determining the uniqueness of the external object in a list.
-
-Signature
-
-```
-   global Integer hashCode()
-
-```
-
-Return Value
-
-Type: Integer
-
-
-### Apex Reference Guide TaxApiException Class
-
-##### **`toString()`**
-
-Converts a date to a string.
-
-Signature
-
-```
-   global String toString()
-
-```
-
-Return Value
-
-Type: String
-
-### TaxApiException Class
-
-Contains details about any exceptions during the tax calculation process. Extends the `ApexBaseException` class.
-
-Namespace
-
-CommerceTax
-
-IN THIS SECTION:
-
-#### TaxApiException Constructors
-### Learn more about the available constructors with the TaxApiException class.
-
-#### TaxApiException Constructors
-
-### Learn more about the available constructors with the TaxApiException class. The TaxApiException class includes these constructors.
-
-IN THIS SECTION:
-
-##### TaxApiException(var1, var2)
-### Initializes the TaxApiException class using an Exception and a string to provide more details about the exception. This
-
-constructor is intended for test usage and throws an exception if used outside of the Apex test context.
-
-TaxApiException(var1)
-### Initializes the TaxApiException class using an Exception . This constructor is intended for test usage and throws an
-
-exception if used outside of the Apex test context.
-
-TaxApiException()
-### Initializes the TaxApiException class without any initialized parameters. This constructor is intended for test usage and throws
-
-an exception if used outside of the Apex test context.
-
-##### **`TaxApiException(var1, var2)`**
-
-### Initializes the TaxApiException class using an Exception and a string to provide more details about the exception. This
-
-constructor is intended for test usage and throws an exception if used outside of the Apex test context.
-
-
-### Apex Reference Guide TaxCustomerDetailsRequest Class
-
-Signature
-
-```
-   global TaxApiException(String var1, Exception var2)
-
-```
-
-Parameters
-
-```
-   var1
-```
-
-Type: String
-
-Text that provides more information about the returned exception.
-
-```
-   var2
-```
-
-[Type: Exception](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_exception_methods.htm)
-
-An exception denotes an error that disrupts the normal flow of code execution. You can use Apex built-in exceptions or create
-custom exceptions. All exceptions have common methods.
-
-##### **`TaxApiException(var1)`** Initializes the TaxApiException class using an Exception . This constructor is intended for test usage and throws an exception
-
-if used outside of the Apex test context.
-
-Signature
-
-```
-   global TaxApiException(Exception var1)
-
-```
-
-Parameters
-
-```
-   var1
-```
-
-[Type: Exception](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_exception_methods.htm)
-
-An exception denotes an error that disrupts the normal flow of code execution. You can use Apex built-in exceptions or create
-custom exceptions. All exceptions have common methods.
-
-##### **`TaxApiException()`** Initializes the TaxApiException class without any initialized parameters. This constructor is intended for test usage and throws an
-
-exception if used outside of the Apex test context.
-
-Signature
-
-```
-   global TaxApiException()
-
-### TaxCustomerDetailsRequest Class
-
-```
-
-Contains customer details used in tax calculation.
-
-Namespace
-
-CommerceTax
-
-
-Apex Reference Guide TaxCustomerDetailsRequest Class
-
-IN THIS SECTION:
-
-#### TaxCustomerDetailsRequest Constructors Learn more about the available constructors with the TaxCustomerDetailsRequest class.
-
-TaxCustomerDetailsRequest Properties
-#### Learn more about the available properties with the TaxCustomerDetailsRequest class.
-
-TaxCustomerDetailsRequest Methods
-#### Learn more about the available methods with the TaxCustomerDetailsRequest class. TaxCustomerDetailsRequest Constructors Learn more about the available constructors with the TaxCustomerDetailsRequest class. The TaxCustomerDetailsRequest class includes these constructors.
-
-IN THIS SECTION:
-
-##### TaxCustomerDetailsRequest(accountId, code, exemptionNo, exemptionReason)
-#### Initializes the TaxCustomerDetailsRequest object. This constructor is intended for test usage and throws an exception if
-
-used outside of the Apex test context.
-
-##### **`TaxCustomerDetailsRequest(accountId, code, exemptionNo, exemptionReason)`**
-
-#### Initializes the TaxCustomerDetailsRequest object. This constructor is intended for test usage and throws an exception if used
-
-outside of the Apex test context.
-
-Signature
-
-```
-   global TaxCustomerDetailsRequest(String accountId, String code, String exemptionNo,
-
-   String exemptionReason)
-
-```
-
-Parameters
-
-```
-   accountId
-```
-
-Type: String
-
-The customer account ID for the line items sent for tax calculation.
-
-```
-   code
-```
-
-Type: String
-
-The tax code used during tax calculation.
-
-```
-   exemptionNo
-```
-
-Type: String
-
-The exemption number applied to any tax exempt line items.
-
-```
-   exemptionReason
-```
-
-Type: String
-
-The reason that certain line items are tax exempt.
-
-
-Apex Reference Guide TaxCustomerDetailsRequest Class
-
-#### TaxCustomerDetailsRequest Properties Learn more about the available properties with the TaxCustomerDetailsRequest class. The TaxCustomerDetailsRequest class includes these properties.
-
-IN THIS SECTION:
-
-##### accountId
-
-Customer account that contains the line items sent for tax calculation.
-
-##### code
-
-Tax code used during tax calculation.
-
-##### exemptionNo
-
-Number used to qualify a line item for tax exemption.
-
-exemptionReason
-Reason why a line item qualifies for tax exemption.
-
-taxCertificateId
-ID of a tax certificate used for tax calculation.
-
-##### **`accountId`**
-
-Customer account that contains the line items sent for tax calculation.
-
-Signature
-
-```
-   global String accountId {get; set;}
-
-```
-
-Property Value
-
-Type: String
-
-##### **`code`**
-
-Tax code used during tax calculation.
-
-Signature
-
-```
-   global String code {get; set;}
-
-```
-
-Property Value
-
-Type: String
-
-##### **`exemptionNo`**
-
-Number used to qualify a line item for tax exemption.
-
-
-Apex Reference Guide TaxCustomerDetailsRequest Class
-
-Signature
-
-```
-   global String exemptionNo {get; set;}
-
-```
-
-Property Value
-
-Type: String
-
-##### **`exemptionReason`**
-
-Reason why a line item qualifies for tax exemption.
-
-Signature
-
-```
-   global String exemptionReason {get; set;}
-
-```
-
-Property Value
-
-Type: String
-
-##### **`taxCertificateId`**
-
-ID of a tax certificate used for tax calculation.
-
-Signature
-
-```
-   global String taxCertificateId {get; set;}
-
-```
-
-Property Value
-
-Type: String
-
-#### TaxCustomerDetailsRequest Methods Learn more about the available methods with the TaxCustomerDetailsRequest class. The TaxCustomerDetailsRequest class includes these methods.
-
-IN THIS SECTION:
-
-equals(obj)
-#### Maintains the integrity of lists of type TaxCustomerDetailsRequest by determining the equality of external objects in a
-
-list. This method is dynamic and based on the `equals()` method in Java.
-
-hashCode()
-#### Maintains the integrity of lists of type TaxCustomerDetailsRequest by determining the uniqueness of the external objects
-
-in a list.
-
-toString()
-Converts a value to a string.
-
-
-### Apex Reference Guide TaxDetailsResponse Class
-
-##### **`equals(obj)`**
-
-Maintains the integrity of lists of type `TaxCustomerDetailsRequest` by determining the equality of external objects in a list.
-This method is dynamic and based on the `equals()` method in Java.
-
-Signature
-
-```
-   global Boolean equals(Object obj)
-
-```
-
-Parameters
-
-```
-   obj
-```
-
-Type: Object
-
-External object whose key is to be validated.
-
-Return Value
-
-Type: Boolean
-
-##### **`hashCode()`**
-
-Maintains the integrity of lists of type `TaxCustomerDetailsRequest` by determining the uniqueness of the external objects in
-a list.
-
-Signature
-
-```
-   global Integer hashCode()
-
-```
-
-Return Value
-
-Type: Integer
-
-##### **`toString()`**
-
-Converts a value to a string.
-
-Signature
-
-```
-   global String toString()
-
-```
-
-Return Value
-
-Type: String
-
-### TaxDetailsResponse Class
-
-Stores details of the tax values that an external tax engine calculates in response to a tax calculation request.
-
-
-Apex Reference Guide TaxDetailsResponse Class
-
-Namespace
-
-CommerceTax
-
-Usage
-
-If your tax calculation request contains multiple line items, we recommend building your adapter using a list of `TaxDetailsResponse`
-instances. Each instance represents the tax details calculated for a given line item.
-
-Example
-
-```
-   List<commercetax.TaxDetailsResponse> taxDetailsResponses = new
-
-   List<commercetax.TaxDetailsResponse>();
-
-              for(integer i =0;i<1;i++){
-
-                Integer rate = 1;
-
-                Double taxableAmount = lineItem.amount;
-
-                commercetax.TaxDetailsResponse taxDetailsResponse = new
-
-   commercetax.TaxDetailsResponse();
-
-                taxDetailsResponse.setRate(Double.valueOf(rate));
-
-                taxDetailsResponse.setTaxableAmount(taxableAmount);
-
-                Double tax = taxableAmount*rate;
-
-                totalLineTax+=tax;
-
-                taxDetailsResponse.setTax(taxableAmount*rate);
-
-                taxDetailsResponse.setExemptAmount(0);
-
-                taxDetailsResponse.setExemptReason('exemptReason');
-
-                taxDetailsResponse.setTaxRegionId('taxRegionId');
-
-   taxDetailsResponse.setTaxId(String.valueOf(getRandomInteger(0,2323233)));
-
-                taxDetailsResponse.setSerCode('serCode');
-
-                taxDetailsResponse.setTaxAuthorityTypeId('taxAuthorityTypeId');
-
-                if(request.DocumentCode == 'SetsNullForResponseWithoutException'){
-
-                  taxDetailsResponse.setImposition(null);
-
-                }else{
-
-                  commercetax.ImpositionResponse imposition = new
-
-   commercetax.ImpositionResponse();
-
-                  imposition.setSubType('subtype');
-
-                  imposition.setType('type');
-
-                  taxDetailsResponse.setImposition(imposition);
-
-                }
-
-                if(request.DocumentCode == 'SetsNullForResponseWithoutException'){
-
-                  taxDetailsResponse.setJurisdiction(null);
-
-                }else{
-
-                  commercetax.JurisdictionResponse jurisdiction = new
-
-   commercetax.JurisdictionResponse();
-
-                  jurisdiction.setCountry('country');
-
-                  jurisdiction.setRegion('region');
-
-                  jurisdiction.setName('name');
-
-                  jurisdiction.setStateAssignedNumber('stateAssignedNo');
-
-                  jurisdiction.setId('id');
-
-                  jurisdiction.setLevel('level');
-
-                  taxDetailsResponse.setJurisdiction(jurisdiction);
-
-                }
-
-```
-
-
-Apex Reference Guide TaxDetailsResponse Class
-
-```
-                taxDetailsResponses.add(taxDetailsResponse);
-
-              }
-
-              lineItemResponse.setTaxes(taxDetailsResponses);
-
-              totalTax +=totalLineTax;
-
-              totalAmount+=lineItem.amount;
-
-```
-
-IN THIS SECTION:
-
-#### TaxDetailsResponse Methods Learn more about the available methods with the TaxDetailsResponse class. TaxDetailsResponse Methods Learn more about the available methods with the TaxDetailsResponse class. The TaxDetailsResponse class includes these methods.
-
-IN THIS SECTION:
-
-setCustomTaxAttributes(customTaxAttributes)
-Uses an instance of `CustomTaxAttributesResponse` class to include additional attributes in the tax response at the tax
-line item level.
-
-setExemptAmount(exemptAmount)
-#### Sets the ExemptAmount field of the TaxDetailsResponse class.
-
-setExemptReason(reason)
-#### Sets the ExemptReason field of the TaxDetailsResponse class.
-
-setImposition(imposition)
-#### Sets the Imposition field of the TaxDetailsResponse class using an instance of the ImpositionResponse class.
-
-setJurisdiction(jurisdiction)
-#### Sets the Jurisdiction field of the TaxDetailsResponse using an instance of the JurisdictionResponse class.
-
-setRate(rate)
-#### Sets the Rate field of the TaxDetailsResponse class.
-
-setSerCode(serCode)
-#### Sets the Service Code field of the TaxDetailsResponse class.
-
-setTax(tax)
-#### Sets the Tax field of the TaxDetailsResponse class.
-
-setTaxAuthorityTypeId(taxAuthorityTypeId)
-#### Sets the TaxAuthorityTypeId field of the TaxDetailsResponse class.
-
-setTaxId(taxId)
-#### Sets the TaxId field of the TaxDetailsResponse class.
-
-setTaxRegionId(taxRegionId)
-#### Sets the TaxRegionId field on the TaxDetailsResponse class.
-
-setTaxRuleDetails(taxRuleDetails)
-#### Sets the TaxRuleDetails field of the TaxDetailsResponse class.
-
-
-Apex Reference Guide TaxDetailsResponse Class
-
-setTaxableAmount(taxableAmount)
-Sets the TaxableAmount field of the `TaxDetailsResponse class` .
-
-##### **`setCustomTaxAttributes(customTaxAttributes)`**
-
-Uses an instance of `CustomTaxAttributesResponse` class to include additional attributes in the tax response at the tax line
-item level.
-
-Signature
-
-```
-   global void setCustomTaxAttributes(commercetax.CustomTaxAttributesResponse
-
-   customTaxAttributes)
-
-```
-
-Parameters
-
-```
-   customTaxAttributes
-```
-
-Type: CustomTaxAttributesResponse
-
-Additional data or custom attributes to include in the tax response.
-
-Return Value
-
-Type: void
-
-##### **`setExemptAmount(exemptAmount)`**
-
-Sets the ExemptAmount field of the `TaxDetailsResponse` class.
-
-Signature
-
-```
-   global void setExemptAmount(Double exemptAmount)
-
-```
-
-Parameters
-
-```
-   exemptAmount
-```
-
-Type: Double
-
-Amount of tax on a line item that is exempt from tax calculation.
-
-Return Value
-
-Type: void
-
-##### **`setExemptReason(reason)`**
-
-Sets the ExemptReason field of the `TaxDetailsResponse` class.
-
-Signature
-
-```
-   global void setExemptReason(String reason)
-
-```
-
-
-Apex Reference Guide TaxDetailsResponse Class
-
-Parameters
-
-```
-   reason
-```
-
-Type: String
-
-Optional user-defined information on why a tax exemption applies to a line item.
-
-Return Value
-
-Type: void
-
-##### **`setImposition(imposition)`**
-
-Sets the Imposition field of the `TaxDetailsResponse` class using an instance of the `ImpositionResponse` class.
-
-Signature
-
-```
-   global void setImposition(commercetax.ImpositionResponse imposition)
-
-```
-
-Parameters
-
-```
-   imposition
-```
-
-Type: ImpositionResponse
-
-Contains information about why tax was imposed on a line item.
-
-Return Value
-
-Type: void
-
-##### **`setJurisdiction(jurisdiction)`**
-
-Sets the Jurisdiction field of the `TaxDetailsResponse` using an instance of the `JurisdictionResponse` class.
-
-Signature
-
-```
-   global void setJurisdiction(commercetax.JurisdictionResponse jurisdiction)
-
-```
-
-Parameters
-
-```
-   jurisdiction
-```
-
-Type: JurisdictionResponse
-
-Contains address information about the tax jurisdiction used in the tax calculation process.
-
-Return Value
-
-Type: void
-
-##### **`setRate(rate)`**
-
-Sets the Rate field of the `TaxDetailsResponse` class.
-
-
-Apex Reference Guide TaxDetailsResponse Class
-
-Signature
-
-```
-   global void setRate(Double rate)
-
-```
-
-Parameters
-
-```
-   rate
-```
-
-Type: Double
-
-Tax used during tax calculation. This value is often a decimal amount, such as 0.1 or 0.06, based on the applied tax percentage.
-
-Return Value
-
-Type: void
-
-##### **`setSerCode(serCode)`**
-
-Sets the Service Code field of the `TaxDetailsResponse` class.
-
-Signature
-
-```
-   global void setSerCode(String serCode)
-
-```
-
-Parameters
-
-```
-   serCode
-```
-
-Type: String
-
-Service code used in tax calculation.
-
-Return Value
-
-Type: void
-
-##### **`setTax(tax)`**
-
-Sets the Tax field of the `TaxDetailsResponse` class.
-
-Signature
-
-```
-   global void setTax(Double tax)
-
-```
-
-Parameters
-
-```
-   tax
-```
-
-Type: Double
-
-Amount of tax for a line item.
-
-Return Value
-
-Type: void
-
-
-Apex Reference Guide TaxDetailsResponse Class
-
-##### **`setTaxAuthorityTypeId(taxAuthorityTypeId)`**
-
-Sets the TaxAuthorityTypeId field of the `TaxDetailsResponse` class.
-
-Signature
-
-```
-   global void setTaxAuthorityTypeId(String taxAuthorityTypeId)
-
-```
-
-Parameters
-
-```
-   taxAuthorityTypeId
-```
-
-Type: String
-
-ID of the organization that oversees tax collection.
-
-Return Value
-
-Type: void
-
-##### **`setTaxId(taxId)`**
-
-Sets the TaxId field of the `TaxDetailsResponse` class.
-
-Signature
-
-```
-   global void setTaxId(String taxId)
-
-```
-
-Parameters
-
-```
-   taxId
-```
-
-Type: String
-
-ID value used to determine the tax for an individual or business.
-
-Return Value
-
-Type: void
-
-##### **`setTaxRegionId(taxRegionId)`**
-
-Sets the TaxRegionId field on the `TaxDetailsResponse` class.
-
-Signature
-
-```
-   global void setTaxRegionId(String taxRegionId)
-
-```
-
-Parameters
-
-```
-   taxRegionId
-```
-
-Type: String
-
-ID of the tax region used in tax calculation. A tax region represents a geographical area where tax is applied.
-
-
-### Apex Reference Guide TaxEngineAdapter Interface
-
-Return Value
-
-Type: void
-
-##### **`setTaxRuleDetails(taxRuleDetails)`**
-
-Sets the TaxRuleDetails field of the `TaxDetailsResponse` class.
-
-Signature
-
-```
-   global void setTaxRuleDetails(commercetax.RuleDetailsResponse taxRuleDetails)
-
-```
-
-Parameters
-
-```
-   taxRuleDetails
-```
-
-Type: RuleDetailsResponse
-
-Information about the Salesforce tax rules used during tax calculation.
-
-Return Value
-
-Type: void
-
-##### **`setTaxableAmount(taxableAmount)`**
-
-Sets the TaxableAmount field of the `TaxDetailsResponse class` .
-
-Signature
-
-```
-   global void setTaxableAmount(Double taxableAmount)
-
-```
-
-Parameters
-
-```
-   taxableAmount
-```
-
-Type: Double
-
-Amount that can be taxed on a line item.
-
-Return Value
-
-Type: void
-
-### TaxEngineAdapter Interface
-
-Retrieves information from the tax engine and evaluates the information to define tax details.
-
-Namespace
-
-CommerceTax
-
-
-Apex Reference Guide TaxEngineAdapter Interface
-
-IN THIS SECTION:
-
-#### TaxEngineAdapter Methods Learn more about the available methods with the TaxEngineAdapter class. TaxEngineAdapter Example Implementation Refer to the example implementation of the TaxEngineAdapter interface to accept information from a tax engine and evaluate
-
-the information to define tax details.
-
-Tax Mappings for Quotes and Orders
-You can extend and customize the tax interface for quotes and orders by using custom metadata types and tax mappings. These
-customizations help you with unique business requirements such as the inclusion of specific data for accurate calculations and
-audits.
-
-#### TaxEngineAdapter Methods Learn more about the available methods with the TaxEngineAdapter class. The TaxEngineAdapter class includes these methods.
-
-IN THIS SECTION:
-
-##### processRequest(requestType) The processRequest method takes an instance of TaxEngineContext class and returns a response with the calculated
-
-tax details through the `TaxDetailsResponse` class or an error response through the `ErrorResponse` class.
-
-##### **`processRequest(requestType)`** The processRequest method takes an instance of TaxEngineContext class and returns a response with the calculated tax
-
-details through the `TaxDetailsResponse` class or an error response through the `ErrorResponse` class.
-
-Signature
-
-```
-   global commercetax.TaxEngineResponse processRequest(commercetax.TaxEngineContext var1)
-
-```
-
-Parameters
-
-```
-   var1
-```
-
-Type: TaxEngineContext
-
-Wrapper class that stores information about the type of a tax calculation request.
-
-Return Value
-
-Type: TaxEngineResponse
-
-Generic interface representing a response from a tax engine.
-
-#### TaxEngineAdapter Example Implementation Refer to the example implementation of the TaxEngineAdapter interface to accept information from a tax engine and evaluate
-
-the information to define tax details.
-
-
-Apex Reference Guide TaxEngineAdapter Interface
-
-Namespace
-
-commercetax
-
-Usage
-
-The `TaxEngineAdapter` interface accepts information from the tax engine through the `TaxEngineContext` class. The
-interface evaluates the information to define tax in the response with details, such as tax amount and addresses. The response is used
-to update and create entities in the Salesforce org.
-
-Use these steps to build a sample tax adapter implementation. Each tax adapter implementation varies based on your implementation
-requirements. Customize this example to suit your business requirements.
-
-Example:
-
-**•** The custom adapter class implements the `TaxEngineAdapter` interface. The `processRequest` method takes an
-instance of `TaxEngineContext` class and returns a response with the calculated tax details through the
-`TaxDetailsResponse` class or an error response through the `ErrorResponse` class.
-
-```
-       global virtual class AvalaraAdapter implements commercetax.TaxEngineAdapter {
-
-         global commercetax.TaxEngineResponse processRequest(commercetax.TaxEngineContext
-
-        taxEngineContext) {
-
-            commercetax.RequestType requestType = taxEngineContext.getRequestType();
-
-            if(requestType == commercetax.RequestType.CalculateTax){
-
-               return CalculateTaxService.getTax(taxEngineContext);
-
-            }
-
-            else
-
-               return null;
-
-          }
-
-       }
-
-```
-
-**•** This example shows the `CalculateTaxService` class.
-
-```
-       global class CalculateTaxService {
-
-         // ============================================================================
-
-          // CONSTANT
-
-         // ============================================================================
-
-          private static final String AVALARA_ENDPOINT_URL_SANDBOX =
-
-       'https://sandbox-rest.avatax.com/api/v2';
-
-          // Avalara Endpoint URL Production
-
-          private static final String AVALARA_ENDPOINT_URL_PRODUCTION =
-
-       'https://rest.avatax.com/api/v2';
-
-         private static final String TEST_REQUEST_BODY = '{ "id": -1, "code": "00000131",
-
-        "companyId": -1, "date": "2017-02-03T00:00:00", "taxDate": "2017-02-03T00:00:00",
-
-        "status": "Temporary", "type": "SalesOrder", "reconciled": false, "totalAmount":
-
-        4000, "totalExempt": 0, "totalTax": 290, "totalTaxable": 4000,
-
-       "totalTaxCalculated": 290, "adjustmentReason": "NotAdjusted", "locked": false,
-
-       "version": 1, "modifiedDate": "2017-02-03T12:18:18.7347388Z", "modifiedUserId":
-
-       53894, "lines": [ { "id": -1, "transactionId": -1, "lineNumber":
-
-        "80241000000jNDCAA2", "discountAmount": 0, "exemptAmount": 0,
-
-       "exemptCertId": 0, "isItemTaxable": true, "lineAmount": 1000,
-
-       "reportingDate": "2017-02-03T00:00:00", "tax": 72.5, "taxableAmount":
-
-       1000, "taxCalculated": 72.5, "taxCode": "P0000000", "taxDate":
-
-```
-
-
-Apex Reference Guide TaxEngineAdapter Interface
-
-```
-       "2017-02-03T00:00:00", "taxIncluded": false, "details": [ {
-
-          "id": -1, "transactionLineId": -1, "transactionId": -1,
-
-          "country": "US", "region": "CA", "exemptAmount": 0,
-
-        "jurisCode": "06", "jurisName": "CALIFORNIA", "stateAssignedNo":
-
-        "", "jurisType": "STA", "nonTaxableAmount": 0, "rate":
-
-        0.06, "tax": 60, "taxableAmount": 1000, "taxType":
-
-       "Sales", "taxName": "CA STATE TAX", "taxAuthorityTypeId": 45,
-
-            "taxCalculated": 60, "rateType": "General" }, {
-
-          "id": -1, "transactionLineId": -1, "transactionId": -1,
-
-           "country": "US", "region": "CA", "exemptAmount": 0,
-
-         "jurisCode": "075", "jurisName": "SAN FRANCISCO",
-
-       "stateAssignedNo": "", "jurisType": "CTY", "nonTaxableAmount": 0,
-
-             "rate": 0.0025, "tax": 2.5, "taxableAmount": 1000,
-
-           "taxType": "Sales", "taxName": "CA COUNTY TAX",
-
-       "taxAuthorityTypeId": 45, "taxCalculated": 2.5, "rateType":
-
-       "General" }, { "id": -1, "transactionLineId": -1,
-
-             "transactionId": -1, "country": "US", "region": "CA",
-
-            "exemptAmount": 0, "jurisCode": "EMTV0", "jurisName": "SAN
-
-        FRANCISCO CO LOCAL TAX SL", "stateAssignedNo": "38", "jurisType":
-
-        "STJ", "nonTaxableAmount": 0, "rate": 0.01, "tax": 10,
-
-             "taxableAmount": 1000, "taxType": "Sales", "taxName":
-
-       "CA SPECIAL TAX", "taxAuthorityTypeId": 45, "taxCalculated": 10,
-
-             "rateType": "General" } ] } ]}';
-
-          private static String getTestResponseString(){
-
-          List<String> jsonResponse = new List<String> {
-
-                             '"id": 0',
-
-                             '"code": "testDocCode1231245984"',
-
-                             '"companyId": 468039',
-
-                             '"date": "2020-07-15"',
-
-                             '"paymentDate": "2020-07-15"',
-
-                             '"status": "Temporary"',
-
-                             '"type": "SalesOrder"',
-
-                             '"customerVendorCode": "testDocCode1234"',
-
-                             '"customerCode": "testDocCode1234"',
-
-                             '"reconciled": false',
-
-                             '"totalAmount": 232',
-
-                             '"totalExempt": 0',
-
-                             '"totalDiscount": 0',
-
-                             '"totalTax": 23.43',
-
-                             '"totalTaxable": 232',
-
-                             '"totalTaxCalculated": 23.43',
-
-                             '"adjustmentReason": "NotAdjusted"',
-
-                             '"locked": false',
-
-                             '"version": 1',
-
-                             '"exchangeRateEffectiveDate": "2020-07-15"',
-
-                             '"exchangeRate": 1',
-
-                           '"modifiedDate": "2020-08-13T11:19:20.4836636Z"',
-
-                             '"modifiedUserId": 53894',
-
-                             '"taxDate": "2020-07-15T00:00:00"',
-
-                             '"lines": [{"id": 0,"transactionId":
-
-       0,"lineNumber": "1","discountAmount": 0,"exemptAmount": 0,"exemptCertId":
-
-```
-
-
-Apex Reference Guide TaxEngineAdapter Interface
-
-```
-       0,"isItemTaxable": true,"itemCode": "","lineAmount": 232,"quantity":
-
-       1,"reportingDate": "2020-07-15","tax": 23.43,"taxableAmount": 232,"taxCalculated":
-
-        23.43,"taxCode": "P0000000","taxCodeId": 8087,"taxDate":
-
-       "2020-07-15","taxOverrideType": "None","taxOverrideAmount": 0,"taxIncluded":
-
-       false,"details": [{"id": 0,"transactionLineId": 0,"transactionId": 0,"country":
-
-       "US","region": "WA","exemptAmount": 0,"jurisCode": "53","jurisName":
-
-       "WASHINGTON","stateAssignedNo": "","jurisType": "STA","jurisdictionType":
-
-       "State","nonTaxableAmount": 0,"rate": 0.065,"tax": 15.08,"taxableAmount":
-
-       232,"taxType": "Sales","taxSubTypeId": "S","taxName": "WA STATE
-
-       TAX","taxAuthorityTypeId": 45,"taxCalculated": 15.08,"rateType":
-
-       "General","rateTypeCode": "G","unitOfBasis": "PerCurrencyUnit","isNonPassThru":
-
-       false,"isFee": false},{"id": 0,"transactionLineId": 0,"transactionId": 0,"country":
-
-        "US","region": "WA","exemptAmount": 0,"jurisCode": "033","jurisName":
-
-       "KING","stateAssignedNo": "1700","jurisType": "CTY","jurisdictionType":
-
-       "County","nonTaxableAmount": 0,"rate": 0,"tax": 0,"taxableAmount": 232,"taxType":
-
-       "Sales","taxSubTypeId": "S","taxName": "WA COUNTY TAX","taxAuthorityTypeId":
-
-       45,"taxCalculated": 0,"rateType": "General","rateTypeCode": "G","unitOfBasis":
-
-       "PerCurrencyUnit","isNonPassThru": false,"isFee": false}],"nonPassthroughDetails":
-
-        [],"hsCode": "","costInsuranceFreight": 0,"vatCode": "","vatNumberTypeId": 0}]',
-
-                             '"addresses": [{"id": 0,"transactionId":
-
-       0,"boundaryLevel": "Address","line1": "255 S. King Street","line2": "","line3":
-
-       "","city": "Seattle","region": "WA","postalCode": "98104","country":
-
-       "US","taxRegionId": 2109700,"latitude": "47.59821","longitude": "-122.33108"}]',
-
-                             '"summary": [{"country": "US","region":
-
-       "WA","jurisType": "State","jurisCode": "53","jurisName":
-
-       "WASHINGTON","taxAuthorityType": 45,"stateAssignedNo": "","taxType":
-
-       "Sales","taxSubType": "S","taxName": "WA STATE TAX","rateType": "General","taxable":
-
-        232,"rate": 0.065,"tax": 15.08,"taxCalculated": 15.08,"nonTaxable": 0,"exemption":
-
-        0},{"country": "US","region": "WA","jurisType": "County","jurisCode":
-
-       "033","jurisName": "KING","taxAuthorityType": 45,"stateAssignedNo": "1700","taxType":
-
-        "Sales","taxSubType": "S","taxName": "WA COUNTY TAX","rateType": "General","taxable":
-
-        232,"rate": 0,"tax": 0,"taxCalculated": 0,"nonTaxable": 0,"exemption": 0}]'
-
-                           };
-
-               return '{' + String.join(jsonResponse, ',') + '}';
-
-            }
-
-         public static commercetax.TaxEngineResponse getTax(commercetax.TaxEngineContext
-
-        taxEngineContext)
-
-          {
-
-            commercetax.CalculateTaxRequest request =
-
-       (commercetax.CalculateTaxRequest)taxEngineContext.getRequest();
-
-            commercetax.calculatetaxtype requestType = request.taxtype;
-
-            string referenceEntity = request.ReferenceEntityId;
-
-            try{
-
-               List<commercetax.TaxLineItemRequest> listOfLines = request.lineItems;
-
-               if(!listOfLines.isEmpty()){
-
-                 HttpService sendHttpRequest = new HttpService();
-
-                 sendHttpRequest.addHeader('Content-type', 'application/json');
-
-                 String requestBody =
-
-       AvalaraJSONBuilder.getInstance().frameJsonForGetTaxOrderItem(request);
-
-                 sendHttpRequest.post('/transactions/create',requestBody);
-
-                 //system.debug('Request '+requestBody);
-
-                 String responseString = '';
-
-                 if(Test.isRunningTest()){
-
-```
-
-
-Apex Reference Guide TaxEngineAdapter Interface
-
-```
-                   responseString = getTestResponseString();
-
-                 } else{
-
-                   responseString = sendHttpRequest.getResponse().getBody();
-
-                 }
-
-                 //system.debug(sendHttpRequest.getResponse());
-
-                 //system.debug('response'+responseString);
-
-                 //responseString = TEST_REQUEST_BODY;
-
-                 system.debug('Heap size used ' +Limits.getHeapSize());
-
-                 if(!responseString.contains('error'))
-
-                 {
-
-                   commercetax.CalculateTaxResponse response = new
-
-       commercetax.CalculateTaxResponse();
-
-                   JsonSuccessParser jsonSuccessParserClass =
-
-       JsonSuccessParser.parse(responseString);
-
-                   response.setTaxTransactionType(request.taxTransactionType);
-
-                   response.setDocumentCode(jsonSuccessParserClass.code);
-
-       response.setReferenceDocumentCode(jsonSuccessParserClass.referenceCode);
-
-                   if(jsonSuccessParserClass.status == 'Temporary') {
-
-       response.setStatus(commercetax.TaxTransactionStatus.Uncommitted);
-
-                   }
-
-                   if(jsonSuccessParserClass.status == 'Committed') {
-
-       response.setStatus(commercetax.TaxTransactionStatus.Committed);
-
-                   }
-
-                   response.setTaxType(requestType);
-
-                   commercetax.AmountDetailsResponse headerAmountResponse = new
-
-       commercetax.AmountDetailsResponse();
-
-       headerAmountResponse.setTotalAmountWithTax(jsonSuccessParserClass.totalAmount +
-
-       jsonSuccessParserClass.totaltax);
-
-       headerAmountResponse.setExemptAmount(jsonSuccessParserClass.totalExempt);
-
-       headerAmountResponse.setTotalAmount(jsonSuccessParserClass.totalAmount);
-
-       headerAmountResponse.setTaxAmount(jsonSuccessParserClass.totalTax);
-
-                   response.setAmountDetails(headerAmountResponse);
-
-       response.setStatusDescription(jsonSuccessParserClass.adjustmentReason);
-
-       response.setEffectiveDate(date.valueof(jsonSuccessParserClass.taxDate));
-
-       response.setTransactionDate(date.valueof(jsonSuccessParserClass.transactionDate));
-
-                   response.setReferenceEntityId(referenceEntity);
-
-                   response.setTaxTransactionId(jsonSuccessParserClass.id);
-
-                   response.setCurrencyIsoCode(request.currencyIsoCode);
-
-                   List<commercetax.LineItemResponse> lineItemResponses = new
-
-       List<commercetax.LineItemResponse>();
-
-                   for(JsonSuccessParser.Lines linesToProcess:
-
-       jsonSuccessParserClass.lines)
-
-                   {
-
-```
-
-
-Apex Reference Guide TaxEngineAdapter Interface
-
-```
-                      commercetax.LineItemResponse lineItemResponse = new
-
-       commercetax.LineItemResponse();
-
-                      Double rateCalculated = 0.0;
-
-                      List<commercetax.TaxDetailsResponse> taxDetailsResponses =
-
-        new List<commercetax.TaxDetailsResponse>();
-
-                      for(JsonSuccessParser.details linesDetails :
-
-       linesToProcess.details)
-
-                      {
-
-                        commercetax.TaxDetailsResponse taxDetailsResponse = new
-
-        commercetax.TaxDetailsResponse();
-
-                        if(linesDetails.exemptAmount != 0){
-
-       taxDetailsResponse.setExemptAmount(linesDetails.exemptAmount);
-
-                           taxDetailsResponse.setExemptReason('Some reason we
-
-        dont know');
-
-                        }
-
-                           commercetax.ImpositionResponse imposition = new
-
-       commercetax.ImpositionResponse();
-
-                             imposition.setSubType(linesDetails.taxName);
-
-                             imposition.setType(linesDetails.ratetype);
-
-                             imposition.setSubType(linesDetails.taxName);
-
-                             taxDetailsResponse.setImposition(imposition);
-
-                          commercetax.JurisdictionResponse jurisdiction = new
-
-        commercetax.JurisdictionResponse();
-
-                             jurisdiction.setCountry(linesDetails.country);
-
-                             jurisdiction.setRegion(linesDetails.region);
-
-                             jurisdiction.setName(linesDetails.jurisName);
-
-       jurisdiction.setStateAssignedNumber(linesDetails.stateAssignedNo);
-
-                             jurisdiction.setId(linesDetails.jurisCode);
-
-                             jurisdiction.setLevel(linesDetails.jurisType);
-
-                           taxDetailsResponse.setJurisdiction(jurisdiction);
-
-                             rateCalculated += linesDetails.rate;
-
-                           taxDetailsResponse.setRate(rateCalculated);
-
-                        taxDetailsResponse.setTax(linesDetails.taxCalculated);
-
-       taxDetailsResponse.setTaxableAmount(linesDetails.taxableAmount);
-
-       taxDetailsResponse.setTaxAuthorityTypeId(String.valueOf(linesDetails.taxAuthorityTypeId));
-
-                           taxDetailsResponse.setTaxId(linesDetails.id);
-
-       taxDetailsResponse.setTaxRegionId(linesDetails.region);
-
-                           taxDetailsResponses.add(taxDetailsResponse);
-
-                      }
-
-                        lineItemResponse.setTaxes(taxDetailsResponses);
-
-       lineItemResponse.setEffectiveDate(date.valueof(linesToProcess.taxDate));
-
-                        lineItemResponse.setIsTaxable(true);
-
-                           commercetax.AmountDetailsResponse amountResponse =
-
-        new commercetax.AmountDetailsResponse();
-
-```
-
-
-Apex Reference Guide TaxEngineAdapter Interface
-
-```
-       amountResponse.setTaxAmount(linesToProcess.taxCalculated);
-
-       amountResponse.setTotalAmount(linesToProcess.lineAmount);
-
-       amountResponse.setTotalAmountWithTax(linesToProcess.lineAmount+linesToProcess.taxCalculated);
-
-       amountResponse.setExemptAmount(linesToProcess.exemptAmount);
-
-                           lineItemResponse.setAmountDetails(amountResponse);
-
-       lineItemResponse.setIsTaxable(linesToProcess.isItemTaxable);
-
-                      lineItemResponse.setProductCode(linesToProcess.itemCode);
-
-                        lineItemResponse.setTaxCode(linesToProcess.taxCode);
-
-                      lineItemResponse.setLineNumber(linesToProcess.lineNumber);
-
-                        lineItemResponse.setQuantity(linesToProcess.quantity);
-
-                        lineItemResponses.add(lineItemResponse);
-
-                   }
-
-                   response.setLineItems(lineItemResponses);
-
-                   return response;
-
-                 }
-
-                 else
-
-                 {
-
-                   JsonErrorParser jsonErrorParserClass =
-
-       JsonErrorParser.parse(responseString);
-
-                   String message = null;
-
-                   if(String.isNotBlank(jsonErrorParserClass.error.message))
-
-                   {
-
-                     message=jsonErrorParserClass.error.message;
-
-                   }else{
-
-                        String errorMessage = '';
-
-                        for(JsonErrorParser.cls_details messageString :
-
-       jsonErrorParserClass.error.details)
-
-                        {
-
-                           if(String.isNotBlank(messageString.message) )
-
-                           {
-
-                             errorMessage = messageString.message;
-
-                           }
-
-                        }
-
-                        message = errorMessage;
-
-                      }
-
-                    return new
-
-       commercetax.ErrorResponse(commercetax.resultcode.TaxEngineError, '501', message);
-
-                 }
-
-               }else return null;
-
-            }
-
-            catch (Exception e)
-
-            {
-
-               throw e;
-
-            }
-
-```
-
-
-Apex Reference Guide TaxEngineAdapter Interface
-
-```
-          }
-
-       }
-
-```
-
-**•** In the `HttpService` class, replace the `test` value in the endpoint variable with the name of the
-`TaxTypedNamedCredential` record. This class contains the credentials that are required to access your Avalara account
-through Salesforce.
-
-```
-       public with sharing class HttpService
-
-       {
-
-          // Attribute to implement singleton pattern for Order Product Service class
-
-          private static HttpService httpServiceInstance;
-
-          // VARIABLES
-
-          private HttpResponse httpResponse;
-
-          private Map<String,String> mapOfHeaderParameter = new Map<String,String>();
-
-          private enum Method {GET, POST}
-
-          /**
-
-          * @name getInstance
-
-          * @description get an Instance of Service class
-
-          * @params NA
-
-          * @return Http Service Class Instance
-
-          */
-
-          public static HttpService getInstance()
-
-          {
-
-            if (NULL == httpServiceInstance)
-
-            {
-
-               httpServiceInstance = new HttpService();
-
-            }
-
-            return httpServiceInstance;
-
-          }
-
-          /**
-
-          * @name get
-
-          * @description Get Method to get a HTTP request
-
-          */
-
-          public void get(String endPoint)
-
-          {
-
-            send(newRequest(Method.GET, endPoint));
-
-          }
-
-          /**
-
-          * @name post
-
-          * @description Post Method to Post a HTTP request
-
-          */
-
-          public void post(String path, String requestBody)
-
-          {
-
-            String endPoint = 'callout:commerce.tax.TaxTypedNamedCredential:test'+path;
-
-            send(newRequest(Method.POST, endPoint, requestBody));
-
-          }
-
-          /**
-
-```
-
-
-Apex Reference Guide TaxEngineAdapter Interface
-
-```
-          * @name addHeader
-
-          * @description addHeader Methods to add all the defualt Header's required fo
-
-       rthe request
-
-          */
-
-          public void addHeader(String name, String value)
-
-          {
-
-            mapOfHeaderParameter.put(name, value);
-
-          }
-
-          /**
-
-          * @name setHeader
-
-          * @description setHeader Methods to set setHeader for the request
-
-          */
-
-          private void setHeader(HttpRequest request)
-
-          {
-
-            for(String headerValue : mapOfHeaderParameter.keySet())
-
-            {
-
-               request.setHeader(headerValue, mapOfHeaderParameter.get(headerValue));
-
-            }
-
-          }
-
-          /**
-
-          * @name newRequest
-
-          * @description newRequest Methods to make a new request
-
-          */
-
-          private HttpRequest newRequest(Method method, String endPoint)
-
-          {
-
-            return newRequest(method, endPoint, NULL);
-
-          }
-
-          /**
-
-          * @name newRequest
-
-          * @description newRequest Methods to make a new request
-
-          */
-
-         private HttpRequest newRequest(Method method, String endPoint, String requestBody)
-
-          {
-
-            HttpRequest request = new HttpRequest();
-
-            request.setMethod(Method.name());
-
-            setHeader(request);
-
-            request.setEndpoint(endPoint);
-
-            if (String.isNotBlank(requestBody))
-
-            {
-
-               request.setBody(requestBody);
-
-            }
-
-            request.setTimeout(120000);
-
-            return request;
-
-          }
-
-          /**
-
-          * @name send
-
-          * @description send Methods to send a request
-
-          */
-
-          private void send(HttpRequest request)
-
-          {
-
-```
-
-
-Apex Reference Guide TaxEngineAdapter Interface
-
-```
-            try
-
-            {
-
-               Http http = new Http();
-
-               httpResponse = http.send(request);
-
-            }
-
-            catch(System.CalloutException e)
-
-            {
-
-               system.debug('callout exception happened' + e.getMessage());
-
-            }
-
-            catch(Exception e)
-
-            {
-
-               system.debug('callout did not happen' + e.getMessage());
-
-            }
-
-          }
-
-          /**
-
-          * @name getResponse
-
-          * @description getResponse Method to get the Response
-
-          */
-
-          public HttpResponse getResponse()
-
-          {
-
-            return httpResponse;
-
-          }
-
-          /**
-
-          * @name getResponseToString
-
-          * @description getResponse Method to get the Responses
-
-          */
-
-          public String getResponseToString()
-
-          {
-
-            return getResponse().toString();
-
-          }
-
-       }
-
-```
-
-**•** Parse the `JsonSuccessParser` response object by using the `AvalaraJSONBuilder` class to build the response
-for your adapter.
-
-This example shows the `JsonSuccessParser` class.
-
-```
-       global with sharing class JsonSuccessParser
-
-       {
-
-         public static void consumeObject(JSONParser parser)
-
-         {
-
-          Integer depth = 0;
-
-          do {
-
-           JSONToken curr = parser.getCurrentToken();
-
-           if (curr == JSONToken.START_OBJECT ||
-
-            curr == JSONToken.START_ARRAY) {
-
-            depth++;
-
-           } else if (curr == JSONToken.END_OBJECT ||
-
-            curr == JSONToken.END_ARRAY) {
-
-            depth--;
-
-           }
-
-          } while (depth > 0 && parser.nextToken() != null);
-
-         }
-
-```
-
-
-Apex Reference Guide TaxEngineAdapter Interface
-
-```
-          public class Addresses {
-
-            public String id {get;set;}
-
-            public String transactionId {get;set;}
-
-            public String boundaryLevel {get;set;}
-
-            public String line1 {get;set;}
-
-            public String city {get;set;}
-
-            public String region {get;set;}
-
-            public String postalCode {get;set;}
-
-            public String country {get;set;}
-
-            public Integer taxRegionId {get;set;}
-
-            public Addresses(JSONParser parser) {
-
-               while (parser.nextToken() != JSONToken.END_OBJECT) {
-
-                 if (parser.getCurrentToken() == JSONToken.FIELD_NAME) {
-
-                   String text = parser.getText();
-
-                   if (parser.nextToken() != JSONToken.VALUE_NULL) {
-
-                      if (text == 'id') {
-
-                        id = parser.getText();
-
-                      } else if (text == 'transactionId') {
-
-                        transactionId = parser.getText();
-
-                      } else if (text == 'boundaryLevel') {
-
-                        boundaryLevel = parser.getText();
-
-                      } else if (text == 'line1') {
-
-                        line1 = parser.getText();
-
-                      } else if (text == 'city') {
-
-                        city = parser.getText();
-
-                      } else if (text == 'region') {
-
-                        region = parser.getText();
-
-                      } else if (text == 'postalCode') {
-
-                        postalCode = parser.getText();
-
-                      } else if (text == 'country') {
-
-                        country = parser.getText();
-
-                      } else if (text == 'taxRegionId') {
-
-                        taxRegionId = parser.getIntegerValue();
-
-                      } else {
-
-                        consumeObject(parser);
-
-                      }
-
-                   }
-
-                 }
-
-               }
-
-            }
-
-          }
-
-          public class Details {
-
-            public String id {get;set;}
-
-            public String transactionLineId {get;set;}
-
-            public String transactionId {get;set;}
-
-            public String country {get;set;}
-
-            public String region {get;set;}
-
-            public Integer exemptAmount {get;set;}
-
-            public String jurisCode {get;set;}
-
-            public String jurisName {get;set;}
-
-            public String stateAssignedNo {get;set;}
-
-```
-
-
-Apex Reference Guide TaxEngineAdapter Interface
-
-```
-            public String jurisType {get;set;}
-
-            public Integer nonTaxableAmount {get;set;}
-
-            public Double rate {get;set;}
-
-            public Double tax {get;set;}
-
-            public Integer taxableAmount {get;set;}
-
-            public String taxType {get;set;}
-
-            public String taxName {get;set;}
-
-            public Integer taxAuthorityTypeId {get;set;}
-
-            public Double taxCalculated {get;set;}
-
-            public String rateType {get;set;}
-
-            public Details(JSONParser parser) {
-
-               while (parser.nextToken() != JSONToken.END_OBJECT) {
-
-                 if (parser.getCurrentToken() == JSONToken.FIELD_NAME) {
-
-                   String text = parser.getText();
-
-                   if (parser.nextToken() != JSONToken.VALUE_NULL) {
-
-                      if (text == 'id') {
-
-                        id = parser.getText();
-
-                      } else if (text == 'transactionLineId') {
-
-                        transactionLineId = parser.getText();
-
-                      } else if (text == 'transactionId') {
-
-                        transactionId = parser.getText();
-
-                      } else if (text == 'country') {
-
-                        country = parser.getText();
-
-                      } else if (text == 'region') {
-
-                        region = parser.getText();
-
-                      } else if (text == 'exemptAmount') {
-
-                        exemptAmount = parser.getIntegerValue();
-
-                      } else if (text == 'jurisCode') {
-
-                        jurisCode = parser.getText();
-
-                      } else if (text == 'jurisName') {
-
-                        jurisName = parser.getText();
-
-                      } else if (text == 'stateAssignedNo') {
-
-                        stateAssignedNo = parser.getText();
-
-                      } else if (text == 'jurisType') {
-
-                        jurisType = parser.getText();
-
-                      } else if (text == 'nonTaxableAmount') {
-
-                        nonTaxableAmount = parser.getIntegerValue();
-
-                      } else if (text == 'rate') {
-
-                        rate = parser.getDoubleValue();
-
-                      } else if (text == 'tax') {
-
-                        tax = parser.getDoubleValue();
-
-                      } else if (text == 'taxableAmount') {
-
-                        taxableAmount = parser.getIntegerValue();
-
-                      } else if (text == 'taxType') {
-
-                        taxType = parser.getText();
-
-                      } else if (text == 'taxName') {
-
-                        taxName = parser.getText();
-
-                      } else if (text == 'taxAuthorityTypeId') {
-
-                        taxAuthorityTypeId = parser.getIntegerValue();
-
-                      } else if (text == 'taxCalculated') {
-
-                        taxCalculated = parser.getDoubleValue();
-
-                      } else if (text == 'rateType') {
-
-                        rateType = parser.getText();
-
-```
-
-
-Apex Reference Guide TaxEngineAdapter Interface
-
-```
-                      } else {
-
-                        consumeObject(parser);
-
-                      }
-
-                   }
-
-                 }
-
-               }
-
-            }
-
-          }
-
-          public class Messages {
-
-            public String summary {get;set;}
-
-            public String details {get;set;}
-
-            public String refersTo {get;set;}
-
-            public String severity {get;set;}
-
-            public String source {get;set;}
-
-            public Messages(JSONParser parser) {
-
-               while (parser.nextToken() != JSONToken.END_OBJECT) {
-
-                 if (parser.getCurrentToken() == JSONToken.FIELD_NAME) {
-
-                   String text = parser.getText();
-
-                   if (parser.nextToken() != JSONToken.VALUE_NULL) {
-
-                      if (text == 'summary') {
-
-                        summary = parser.getText();
-
-                      } else if (text == 'details') {
-
-                        details = parser.getText();
-
-                      } else if (text == 'refersTo') {
-
-                        refersTo = parser.getText();
-
-                      } else if (text == 'severity') {
-
-                        severity = parser.getText();
-
-                      } else if (text == 'source') {
-
-                        source = parser.getText();
-
-                      } else {
-
-                        consumeObject(parser);
-
-                      }
-
-                   }
-
-                 }
-
-               }
-
-            }
-
-          }
-
-          public String id {get;set;}
-
-          public String code {get;set;}
-
-          public String referenceCode {get;set;}
-
-          public Integer companyId {get;set;}
-
-          public String taxDate {get;set;}
-
-          public String transactionDate {get;set;}
-
-          public String status {get;set;}
-
-          public String type_Z {get;set;} // in json: type
-
-          public Boolean reconciled {get;set;}
-
-          public Integer totalAmount {get;set;}
-
-          public Integer totalExempt {get;set;}
-
-          public Double totalTax {get;set;}
-
-          public Integer totalTaxable {get;set;}
-
-          public Double totalTaxCalculated {get;set;}
-
-```
-
-
-Apex Reference Guide TaxEngineAdapter Interface
-
-```
-          public String adjustmentReason {get;set;}
-
-          public Boolean locked {get;set;}
-
-          public Integer version {get;set;}
-
-          public String modifiedDate {get;set;}
-
-          public Integer modifiedUserId {get;set;}
-
-          public List<Lines> lines {get;set;}
-
-          public List<Addresses> addresses {get;set;}
-
-          public List<Summary> summary {get;set;}
-
-          public List<Messages> messages {get;set;}
-
-          public JsonSuccessParser(JSONParser parser) {
-
-            while (parser.nextToken() != JSONToken.END_OBJECT) {
-
-               if (parser.getCurrentToken() == JSONToken.FIELD_NAME) {
-
-                 String text = parser.getText();
-
-                 if (parser.nextToken() != JSONToken.VALUE_NULL) {
-
-                   if (text == 'id') {
-
-                      id = parser.getText();
-
-                   } else if (text == 'code') {
-
-                      code = parser.getText();
-
-                   } else if (text == 'referenceCode'){
-
-                      referenceCode = parser.getText();
-
-                   } else if (text == 'companyId') {
-
-                      companyId = parser.getIntegerValue();
-
-                   } else if (text == 'taxDate') {
-
-                      taxDate = parser.getText();
-
-                   } else if (text == 'date') {
-
-                      transactionDate = parser.getText();
-
-                   } else if (text == 'status') {
-
-                      status = parser.getText();
-
-                   } else if (text == 'type') {
-
-                      type_Z = parser.getText();
-
-                   } else if (text == 'reconciled') {
-
-                      reconciled = parser.getBooleanValue();
-
-                   } else if (text == 'totalAmount') {
-
-                      totalAmount = parser.getIntegerValue();
-
-                   } else if (text == 'totalExempt') {
-
-                      totalExempt = parser.getIntegerValue();
-
-                   } else if (text == 'totalTax') {
-
-                      totalTax = parser.getDoubleValue();
-
-                   } else if (text == 'totalTaxable') {
-
-                      totalTaxable = parser.getIntegerValue();
-
-                   } else if (text == 'totalTaxCalculated') {
-
-                      totalTaxCalculated = parser.getDoubleValue();
-
-                   } else if (text == 'adjustmentReason') {
-
-                      adjustmentReason = parser.getText();
-
-                   } else if (text == 'locked') {
-
-                      locked = parser.getBooleanValue();
-
-                   } else if (text == 'version') {
-
-                      version = parser.getIntegerValue();
-
-                   } else if (text == 'modifiedDate') {
-
-                      modifiedDate = parser.getText();
-
-                   } else if (text == 'modifiedUserId') {
-
-                      modifiedUserId = parser.getIntegerValue();
-
-                   } else if (text == 'lines') {
-
-```
-
-
-Apex Reference Guide TaxEngineAdapter Interface
-
-```
-                      lines = new List<Lines>();
-
-                      while (parser.nextToken() != JSONToken.END_ARRAY) {
-
-                        lines.add(new Lines(parser));
-
-                      }
-
-                   } else if (text == 'addresses') {
-
-                      addresses = new List<Addresses>();
-
-                      while (parser.nextToken() != JSONToken.END_ARRAY) {
-
-                        addresses.add(new Addresses(parser));
-
-                      }
-
-                   } else if (text == 'summary') {
-
-                      summary = new List<Summary>();
-
-                      while (parser.nextToken() != JSONToken.END_ARRAY) {
-
-                        summary.add(new Summary(parser));
-
-                      }
-
-                   } else if (text == 'messages') {
-
-                      messages = new List<Messages>();
-
-                      while (parser.nextToken() != JSONToken.END_ARRAY) {
-
-                        messages.add(new Messages(parser));
-
-                      }
-
-                   } else {
-
-                      consumeObject(parser);
-
-                   }
-
-                 }
-
-               }
-
-            }
-
-          }
-
-          public class Summary {
-
-            public String country {get;set;}
-
-            public String region {get;set;}
-
-            public String jurisType {get;set;}
-
-            public String jurisCode {get;set;}
-
-            public String jurisName {get;set;}
-
-            public Integer taxAuthorityType {get;set;}
-
-            public String stateAssignedNo {get;set;}
-
-            public String taxType {get;set;}
-
-            public String taxName {get;set;}
-
-            public String taxGroup {get;set;}
-
-            public String rateType {get;set;}
-
-            public Integer taxable {get;set;}
-
-            public Double rate {get;set;}
-
-            public Double tax {get;set;}
-
-            public Double taxCalculated {get;set;}
-
-            public Integer nonTaxable {get;set;}
-
-            public Integer exemption {get;set;}
-
-            public Summary(JSONParser parser) {
-
-               while (parser.nextToken() != JSONToken.END_OBJECT) {
-
-                 if (parser.getCurrentToken() == JSONToken.FIELD_NAME) {
-
-                   String text = parser.getText();
-
-                   if (parser.nextToken() != JSONToken.VALUE_NULL) {
-
-                      if (text == 'country') {
-
-                        country = parser.getText();
-
-                      } else if (text == 'region') {
-
-```
-
-
-Apex Reference Guide TaxEngineAdapter Interface
-
-```
-                        region = parser.getText();
-
-                      } else if (text == 'jurisType') {
-
-                        jurisType = parser.getText();
-
-                      } else if (text == 'jurisCode') {
-
-                        jurisCode = parser.getText();
-
-                      } else if (text == 'jurisName') {
-
-                        jurisName = parser.getText();
-
-                      } else if (text == 'taxAuthorityType') {
-
-                        taxAuthorityType = parser.getIntegerValue();
-
-                      } else if (text == 'stateAssignedNo') {
-
-                        stateAssignedNo = parser.getText();
-
-                      } else if (text == 'taxType') {
-
-                        taxType = parser.getText();
-
-                      } else if (text == 'taxName') {
-
-                        taxName = parser.getText();
-
-                      } else if (text == 'taxGroup') {
-
-                        taxGroup = parser.getText();
-
-                      } else if (text == 'rateType') {
-
-                        rateType = parser.getText();
-
-                      } else if (text == 'taxable') {
-
-                        taxable = parser.getIntegerValue();
-
-                      } else if (text == 'rate') {
-
-                        rate = parser.getDoubleValue();
-
-                      } else if (text == 'tax') {
-
-                        tax = parser.getDoubleValue();
-
-                      } else if (text == 'taxCalculated') {
-
-                        taxCalculated = parser.getDoubleValue();
-
-                      } else if (text == 'nonTaxable') {
-
-                        nonTaxable = parser.getIntegerValue();
-
-                      } else if (text == 'exemption') {
-
-                        exemption = parser.getIntegerValue();
-
-                      } else {
-
-                        consumeObject(parser);
-
-                      }
-
-                   }
-
-                 }
-
-               }
-
-            }
-
-          }
-
-          public class Lines {
-
-            public String id {get;set;}
-
-            public String transactionId {get;set;}
-
-            public String lineNumber {get;set;}
-
-            public Integer discountAmount {get;set;}
-
-            public Integer exemptAmount {get;set;}
-
-            public Integer exemptCertId {get;set;}
-
-            public Boolean isItemTaxable {get;set;}
-
-            public Integer lineAmount {get;set;}
-
-            public Double quantity {get;set;}
-
-            public String reportingDate {get;set;}
-
-            public Double tax {get;set;}
-
-            public Integer taxableAmount {get;set;}
-
-            public Double taxCalculated {get;set;}
-
-```
-
-
-Apex Reference Guide TaxEngineAdapter Interface
-
-```
-            public String taxCode {get;set;}
-
-            public String taxDate {get;set;}
-
-            public Boolean taxIncluded {get;set;}
-
-            public List<Details> details {get;set;}
-
-            public String itemCode {get;set;}
-
-            public Lines(JSONParser parser) {
-
-               while (parser.nextToken() != JSONToken.END_OBJECT) {
-
-                 if (parser.getCurrentToken() == JSONToken.FIELD_NAME) {
-
-                   String text = parser.getText();
-
-                   if (parser.nextToken() != JSONToken.VALUE_NULL) {
-
-                      if (text == 'id') {
-
-                        id = parser.getText();
-
-                      } else if (text == 'transactionId') {
-
-                        transactionId = parser.getText();
-
-                      }else if (text == 'itemCode') {
-
-                        itemCode = parser.getText();
-
-                      }else if (text == 'lineNumber') {
-
-                        lineNumber = parser.getText();
-
-                      } else if (text == 'discountAmount') {
-
-                        discountAmount = parser.getIntegerValue();
-
-                      } else if (text == 'exemptAmount') {
-
-                        exemptAmount = parser.getIntegerValue();
-
-                      } else if (text == 'exemptCertId') {
-
-                        exemptCertId = parser.getIntegerValue();
-
-                      } else if (text == 'isItemTaxable') {
-
-                        isItemTaxable = parser.getBooleanValue();
-
-                      } else if (text == 'lineAmount') {
-
-                        lineAmount = parser.getIntegerValue();
-
-                      } else if (text == 'quantity') {
-
-                        quantity = parser.getDoubleValue();
-
-                      } else if (text == 'reportingDate') {
-
-                        reportingDate = parser.getText();
-
-                      } else if (text == 'tax') {
-
-                        tax = parser.getDoubleValue();
-
-                      } else if (text == 'taxableAmount') {
-
-                        taxableAmount = parser.getIntegerValue();
-
-                      } else if (text == 'taxCalculated') {
-
-                        taxCalculated = parser.getDoubleValue();
-
-                      } else if (text == 'taxCode') {
-
-                        taxCode = parser.getText();
-
-                      } else if (text == 'taxDate') {
-
-                        taxDate = parser.getText();
-
-                      } else if (text == 'taxIncluded') {
-
-                        taxIncluded = parser.getBooleanValue();
-
-                      } else if (text == 'details') {
-
-                        details = new List<Details>();
-
-                        while (parser.nextToken() != JSONToken.END_ARRAY) {
-
-                           details.add(new Details(parser));
-
-                        }
-
-                      } else {
-
-                        consumeObject(parser);
-
-                      }
-
-                   }
-
-                 }
-
-```
-
-
-Apex Reference Guide TaxEngineAdapter Interface
-
-```
-               }
-
-            }
-
-          }
-
-          public static JsonSuccessParser parse(String json)
-
-          {
-
-            return new JsonSuccessParser(System.JSON.createParser(json));
-
-          }
-
-       }
-
-```
-
-Prepare your JSON request to call the Avalara endpoint by using the `AvalaraJSONBuilder` class.
-
-```
-       public with sharing class AvalaraJSONBuilder
-
-       {
-
-          private static AvalaraJSONBuilder avalaraJSONBuilderInstance;
-
-          public static AvalaraJSONBuilder getInstance()
-
-          {
-
-            if (NULL == avalaraJSONBuilderInstance)
-
-            {
-
-               avalaraJSONBuilderInstance = new AvalaraJSONBuilder();
-
-            }
-
-            return avalaraJSONBuilderInstance;
-
-          }
-
-          public String frameJsonForGetTaxOrderItem(commercetax.CalculateTaxRequest
-
-       calculateTaxRequest)
-
-          {
-
-            try
-
-            {
-
-               Id accountid = null;
-
-               if(calculateTaxRequest.CustomerDetails.AccountId != null &&
-
-       calculateTaxRequest.CustomerDetails.AccountId != '')
-
-               accountid = Id.valueof(calculateTaxRequest.CustomerDetails.AccountId);
-
-               JSONGenerator jsonGeneratorInstance = JSON.createGenerator(true);
-
-               jsonGeneratorInstance.writeStartObject();
-
-               String type = null;
-
-               if(calculateTaxRequest.taxtype == commercetax.CalculateTaxType.Actual)
-
-                 type ='SalesInvoice';
-
-                 else type = 'SalesOrder';
-
-               jsonGeneratorInstance.writeStringField('type', type);
-
-               if(calculateTaxRequest.SellerDetails != null)
-
-                 jsonGeneratorInstance.writeStringField('companyCode',
-
-       calculateTaxRequest.SellerDetails.code);
-
-               else
-
-                 jsonGeneratorInstance.writeStringField('companyCode', 'billing2');
-
-               if(calculateTaxRequest.isCommit != null) {
-
-                 jsonGeneratorInstance.writeBooleanField('commit',
-
-       calculateTaxRequest.isCommit);
-
-               }
-
-               if(calculateTaxRequest.documentcode != null){
-
-                 jsonGeneratorInstance.writeStringField('code',
-
-       calculateTaxRequest.documentcode);
-
-```
-
-
-Apex Reference Guide TaxEngineAdapter Interface
-
-```
-               }else if(calculateTaxRequest.referenceEntityId != null) {
-
-                 jsonGeneratorInstance.writeStringField('code',
-
-       calculateTaxRequest.referenceEntityId);
-
-               }
-
-              if(calculateTaxRequest.CustomerDetails.code == null && accountid !=null)
-
-        {
-
-                 Account acc = [select id, name from account where id=:accountid];
-
-                 jsonGeneratorInstance.writeStringField('customerCode', acc.name);
-
-               } else {
-
-                 jsonGeneratorInstance.writeStringField('customerCode',
-
-       calculateTaxRequest.CustomerDetails.code);
-
-               }
-
-               if(calculateTaxRequest.EffectiveDate == null)
-
-                 jsonGeneratorInstance.writeDateField('date', system.today());
-
-               else
-
-                 jsonGeneratorInstance.writeDateTimeField('date',
-
-       calculateTaxRequest.EffectiveDate);
-
-               jsonGeneratorInstance.writeFieldName('lines');
-
-               jsonGeneratorInstance.writeStartArray();
-
-               for(integer i=0;i<1;i++){
-
-                 for(Commercetax.TaxLineItemRequest lineItem :
-
-       calculateTaxRequest.LineItems)
-
-                 {
-
-                   jsonGeneratorInstance.writeStartObject();
-
-                   if(lineItem.linenumber != null){
-
-                      jsonGeneratorInstance.writeStringField('number',
-
-       lineItem.linenumber);
-
-                   }
-
-                   jsonGeneratorInstance.writeNumberField('quantity',
-
-       lineItem.Quantity);
-
-                   jsonGeneratorInstance.writeNumberField('amount',
-
-       (lineItem.Amount));
-
-       jsonGeneratorInstance.writeStringField('taxCode',lineItem.taxCode);
-
-                   jsonGeneratorInstance.writeFieldName('addresses');
-
-                   jsonGeneratorInstance.writeStartObject();
-
-                   jsonGeneratorInstance.writeFieldName('ShipFrom');
-
-                   jsonGeneratorInstance.writeStartObject();
-
-                   jsonGeneratorInstance.writeStringField('line1',
-
-       lineItem.addresses.shipfrom.street);
-
-                   jsonGeneratorInstance.writeStringField('line2',
-
-       lineItem.addresses.shipfrom.street);
-
-                   jsonGeneratorInstance.writeStringField('city',
-
-       lineItem.addresses.shipfrom.city);
-
-                   jsonGeneratorInstance.writeStringField('region',
-
-       lineItem.addresses.shipfrom.state);
-
-                   jsonGeneratorInstance.writeStringField('country',
-
-       lineItem.addresses.shipfrom.country);
-
-       jsonGeneratorInstance.writeStringField('postalCode',lineItem.addresses.shipfrom.postalcode);
-
-                   jsonGeneratorInstance.writeEndObject();
-
-```
-
-
-Apex Reference Guide TaxEngineAdapter Interface
-
-```
-                   jsonGeneratorInstance.writeFieldName('ShipTo');
-
-                   jsonGeneratorInstance.writeStartObject();
-
-                   jsonGeneratorInstance.writeStringField('line1',
-
-       lineItem.addresses.shipto.street);
-
-                   jsonGeneratorInstance.writeStringField('line2',
-
-       lineItem.addresses.shipto.street);
-
-                   jsonGeneratorInstance.writeStringField('city',
-
-       lineItem.addresses.shipto.city);
-
-                   jsonGeneratorInstance.writeStringField('region',
-
-       lineItem.addresses.shipto.state);
-
-                   jsonGeneratorInstance.writeStringField('country',
-
-       lineItem.addresses.shipto.country);
-
-       jsonGeneratorInstance.writeStringField('postalCode',lineItem.addresses.shipto.postalcode);
-
-                   jsonGeneratorInstance.writeEndObject();
-
-                   jsonGeneratorInstance.writeFieldName('pointOfOrderOrigin');
-
-                   jsonGeneratorInstance.writeStartObject();
-
-                   jsonGeneratorInstance.writeStringField('line1',
-
-       lineItem.addresses.soldto.street);
-
-                   jsonGeneratorInstance.writeStringField('line2',
-
-       lineItem.addresses.soldto.street);
-
-                   jsonGeneratorInstance.writeStringField('city',
-
-       lineItem.addresses.soldto.city);
-
-                   jsonGeneratorInstance.writeStringField('region',
-
-       lineItem.addresses.soldto.state);
-
-                   jsonGeneratorInstance.writeStringField('country',
-
-       lineItem.addresses.soldto.country);
-
-       jsonGeneratorInstance.writeStringField('postalCode',lineItem.addresses.soldto.postalcode);
-
-                   jsonGeneratorInstance.writeEndObject();
-
-                   if(lineItem.effectiveDate != null)
-
-                   {
-
-                      jsonGeneratorInstance.writeFieldName('taxOverride');
-
-                      jsonGeneratorInstance.writeStartObject();
-
-                      jsonGeneratorInstance.writeDateTimeField('taxDate',
-
-       lineItem.effectiveDate);
-
-                      jsonGeneratorInstance.writeEndObject();
-
-                   }
-
-                   jsonGeneratorInstance.writeEndObject();
-
-                   jsonGeneratorInstance.writeEndObject();
-
-                 }
-
-               }
-
-                 jsonGeneratorInstance.writeEndArray();
-
-               jsonGeneratorInstance.writeEndObject();
-
-               return jsonGeneratorInstance.getAsString();
-
-            }
-
-            catch (Exception e)
-
-            {
-
-```
-
-
-Apex Reference Guide TaxEngineAdapter Interface
-
-```
-               throw e;
-
-            }
-
-          }
-
-       }
-
-```
-
-**•** Use the `JsonErrorParser` class to extract the error details, if any.
-
-```
-       global with sharing class JsonErrorParser
-
-       {
-
-          public cls_error error;
-
-          public class cls_error
-
-          {
-
-            public String code;
-
-            public String message;
-
-            public String target;
-
-            public cls_details[] details;
-
-          }
-
-          public class cls_details
-
-          {
-
-            public String code;
-
-            public String message;
-
-            public String description;
-
-            public String faultCode;
-
-            public String helpLink;
-
-            public String severity;
-
-          }
-
-          public static JsonErrorParser parse(String json)
-
-          {
-
-           return (JsonErrorParser) System.JSON.deserialize(json, JsonErrorParser.class);
-
-          }
-
-       }
-
-#### Tax Mappings for Quotes and Orders
-
-```
-
-You can extend and customize the tax interface for quotes and orders by using custom metadata types and tax mappings. These
-customizations help you with unique business requirements such as the inclusion of specific data for accurate calculations and audits.
-
-Tax callout extensions are supported for the Quote, QuoteLineItem, Order, and OrderItem objects to include additional fields to tax
-[requests. You must manually write back tax response extensions to the objects. See custom metadata types to specify all your tax](https://help.salesforce.com/s/articleView?id=platform.custommetadatatypes_overview.htm&language=en_US)
-mapping definitions.
-
-Request Mappings for Header Attributes
-
-This table defines the request mappings between the header attributes of a tax callout and fields of applicable quote and order objects.
-
-
-Apex Reference Guide TaxEngineAdapter Interface
-
-**Header Attributes** **Quote Mapping** **Order Mapping**
-
-currencyIsoCode
-
-If multi-currency is enabled, then this value
-is `Quote.CurrencyISOCode` .
-Otherwise, this value is NULL.
-
-If multi-currency is enabled, then this value
-is `Order.CurrencyISOCode` .
-Otherwise, this value is NULL.
-
-isCommit `False` `False`
-
-referenceEntityId Quote.ID Order.ID
-
-taxEngineId TaxTreatment.TaxEngine.ID TaxTreatment.TaxEngine.ID
-
-transactionDate Current System Date System Date
-
-**sellerDetails** NULL
-
-code TaxEngine.SellerCode
-
-**customerDetails**
-
-accountId Quote.AccountId Order.AccountId
-
-code NULL NULL
-
-exemptionNo NULL NULL
-
-exemptionReason NULL NULL
-
-taxType `Estimated` `Estimated`
-
-taxTransactionType NULL NULL
-
-effectiveDate NULL NULL
-
-**addresses**
-
-billTo NULL NULL
-
-shipTo NULL NULL
-
-shipFrom NULL NULL
-
-soldTo NULL NULL
-
-taxEngineAddress TaxEngine.Address TaxEngine.Address
-
-referenceDocumentCode NULL NULL
-
-description NULL NULL
-
-documentCode `Quote.ID-TaxEngineId` `Order.ID-TaxEngineId`
-
-shouldVoid `FALSE` `FALSE`
-
-lineItems Refer to the next line attributes section. Refer to the next line attributes section.
-
-Request Mappings for Line Attributes
-
-This table defines the request mappings between the line attributes of a tax callout and fields of applicable quote line items and order
-products.
-
-
-Apex Reference Guide TaxEngineAdapter Interface
-
-**Line Attributes** **Quote Line Item Mapping** **Order Product Mapping**
-
-taxCode TaxTreatment.TaxCode TaxTreatment.TaxCode
-
-productCode TaxTreatment.ProductCode TaxTreatment.ProductCode
-
-productId QuoteLineItem.Product2.Id OrderItem.Product2.Id
-
-amount QuoteLineItem.TotalPrice OrderItem.TotalPrice
-
-effectiveDate Current System Date Current System Date
-
-lineNumber QuoteLineItem.Id OrderItem.Id
-
-description NULL NULL
-
-quantity QuoteLineItem.Quantity OrderItem.Quantity
-
-**addresses**
-
-billTo
-
-shipTo
-
-Quote.BillingAddress. If Quote.BillingAddress Order.BillingAddress
-is null, then this value is
-Quote.Account.BillingAddress.
-
-Quote.ShippingAddress. If Order.ShippingAddress
-Quote.ShippingAddress is null, then this
-value is Quote.Account.ShippingAddress.
-
-shipFrom NULL NULL
-
-soldTo NULL NULL
-
-productsku QuoteLineItem.Product2.ProductCode OrderItem.Product2.ProductCode
-
-referenceDocumentCode NULL NULL
-
-Response Mappings for Header Attributes
-
-This table defines the response mappings between the header attributes of a tax callout and fields of applicable objects. Most response
-data is used for tax calculation and isn’t persisted on quote or order records.
-
-**Header Attributes** **Quote Mapping** **Order Mapping**
-
-currencyIsoCode Quote.CurrencyISOCode Order.CurrencyISOCode
-
-isCommit Not returned. Not returned.
-
-referenceEntityId Quote.ID Order.ID
-
-taxEngineId TaxTreatment.TaxEngine.ID TaxTreatment.TaxEngine.ID
-
-transactionDate System Date System Date
-
-**sellerDetails** Not returned. Not returned.
-
-code Not returned. Not returned.
-
-**customerDetails** Not returned. Not returned.
-
-
-Apex Reference Guide TaxEngineAdapter Interface
-
-**Header Attributes** **Quote Mapping** **Order Mapping**
-
-accountId Not returned. Not returned.
-
-code Not returned. Not returned.
-
-exemptionNo Not returned. Not returned.
-
-exemptionReason Not returned. Not returned.
-
-taxType `Estimated` `Estimated`
-
-taxTransactionType Not returned. Not returned.
-
-effectiveDate System Date System Date
-
-**addresses**
-
-billTo Not returned. Not returned.
-
-shipTo locationCode -> locationCode locationCode -> locationCode
-
-shipFrom Not returned. Not returned.
-
-soldTo Not returned. Not returned.
-
-taxEngineAddress Not returned. Not returned.
-
-referenceDocumentCode Not returned. Not returned.
-
-description Not returned. Not returned.
-
-documentCode `Quote.ID-TaxEngineId` `Order.ID-TaxEngineId`
-
-status `Uncommitted` `Uncommitted`
-
-taxEngineLogs Not returned. Not returned.
-
-resultCode Not returned. Not returned.
-
-transactionDate System Date System Date
-
-**amountDetails**
-
-exemptAmount Actual exemptAmount from response. Actual exemptAmount from response.
-
-taxAmount Actual taxAmount from response. Actual taxAmount from response.
-
-totalAmount Quote.Subtotal Order.Subtotal
-
-totalAmountWithTax TaxAmount + TotalAmount TaxAmount + TotalAmount
-
-lineItems Refer to the next line attributes section. Refer to the next line attributes section.
-
-Response Mappings for Line Attributes
-
-This table defines the response mappings between the line attributes of a tax callout and fields of applicable objects.
-
-
-Apex Reference Guide TaxEngineAdapter Interface
-
-**Line Attributes** **Quote Line Item Mapping** **Order Product Mapping**
-
-taxCode TaxTreatment.TaxCode TaxTreatment.TaxCode
-
-productCode TaxTreatment.ProductCode TaxTreatment.ProductCode
-
-productId Not returned. Not returned.
-
-**amountDetails**
-
-exemptAmount Actual exemptAmount from response Actual exemptAmount from response
-
-taxAmount Actual taxAmount from response Actual taxAmount from response
-
-totalAmount QuoteLineItem.Subtotal OrderItem.Subtotal
-
-totalAmountWithTax TaxAmount + TotalAmount TaxAmount + TotalAmount
-
-effectiveDate System Date System Date
-
-lineNumber QuoteLineItem.Id OrderItem.Id
-
-description Not returned. Not returned.
-
-quantity Not returned. Not returned.
-
-**addresses**
-
-billTo Not persisted. Not persisted.
-
-shipTo locationCode -> locationCode locationCode -> locationCode
-
-shipFrom Not returned. Not returned.
-
-soldTo Not returned. Not returned.
-
-productsku Not returned. Not returned.
-
-referenceDocumentCode Not returned. Not returned.
-
-taxes Refer to the next tax attributes section. Refer to the next tax attributes section.
-
-Response Mappings for Tax Attributes
-
-This table defines the response mappings between the tax attributes of a tax callout and fields of applicable objects.
-
-**Tax Attributes** **Quote Mapping** **Order Mapping**
-
-exemptAmount Not returned. Not returned.
-
-exemptReason Not returned. Not returned.
-
-**imposition**
-
-type Not returned. Not returned.
-
-Name Not returned. Not returned.
-
-**jurisdiction**
-
-
-### Apex Reference Guide TaxEngineContext Class
-
-**Tax Attributes** **Quote Mapping** **Order Mapping**
-
-country Not returned. Not returned.
-
-id Not returned. Not returned.
-
-level Not returned. Not returned.
-
-name Not returned. Not returned.
-
-region Not returned. Not returned.
-
-stateAssignedNo Not returned. Not returned.
-
-rate QuoteItemTaxItem.Rate OrderItemTaxItem.Rate
-
-tax QuoteItemTaxItem.amount OrderItemTaxItem.amount
-
-taxId Not returned. Not returned.
-
-taxableAmount Not returned. Not returned.
-
-### TaxEngineContext Class
-
-Wrapper class that stores details about the type of a tax calculation request.
-
-Namespace
-
-CommerceTax
-
-Example
-
-### At the beginning of a tax adapter, use TaxEngineContext class to pass the value of a request type to an instance of RequestType .
-
-```
-   global virtual class MockAdapter implements commercetax.TaxEngineAdapter {
-
-      global commercetax.TaxEngineResponse processRequest(commercetax.TaxEngineContext
-
-   taxEngineContext) {
-
-         commercetax.RequestType requestType = taxEngineContext.getRequestType();
-
-         commercetax.CalculateTaxRequest request =
-
-   (commercetax.CalculateTaxRequest)taxEngineContext.getRequest();
-
-### Build the rest of your adapter based on the type of request that you got from TaxEngineContext class.
-
-   if(requestType == commercetax.RequestType.CalculateTax){
-
-           commercetax.calculatetaxtype type = request.taxtype;
-
-           String docCode='';
-
-           if(request.DocumentCode == 'simulateEmptyDocumentCode')
-
-              docCode = '';
-
-           else if(request.DocumentCode != null)
-
-              docCode =request.DocumentCode;
-
-          else if(request.ReferenceEntityId != null) docCode = request.ReferenceEntityId;
-
-           else docCode = String.valueOf(getRandomInteger(0,2147483647));
-
-           commercetax.CalculateTaxResponse response = new
-
-```
-
-
-Apex Reference Guide TaxEngineContext Class
-
-```
-   commercetax.CalculateTaxResponse();
-
-           if(request.isCommit == true) {
-
-              response.setStatus(commercetax.TaxTransactionStatus.Committed);
-
-           } else {
-
-              response.setStatus(commercetax.TaxTransactionStatus.Uncommitted);
-
-           }
-
-   }
-
-```
-
-IN THIS SECTION:
-
-#### TaxEngineContext Constructors Learn more about the available constructors with the TaxEngineContext class.
-
-TaxEngineContext Methods
-#### Learn more about the available methods with the TaxEngineContext class. TaxEngineContext Constructors Learn more about the available constructors with the TaxEngineContext class. The TaxEngineContext class includes these constructors.
-
-IN THIS SECTION:
-
-##### TaxEngineContext(request, requestType, namedUri)
-#### Initializes the TaxEngineContext object. This constructor is intended for test usage and throws an exception if used outside
-
-of the Apex test context.
-
-##### **`TaxEngineContext(request, requestType, namedUri)`**
-
-#### Initializes the TaxEngineContext object. This constructor is intended for test usage and throws an exception if used outside of
-
-the Apex test context.
-
-Signature
-
-```
-   TaxEngineContext(commercetax.TaxEngineRequest request, commercetax.RequestType
-
-   requestType, String namedUri)
-
-```
-
-Parameters
-
-```
-   request
-```
-
-Type: TaxEngineRequest
-
-Information about the request.
-
-```
-   requestType
-```
-
-Type: RequestType
-
-Whether the tax request is to calculate or estimate tax.
-
-```
-   namedUri
-```
-
-Type: String
-
-URI that was called as part of the tax calculation request.
-
-
-Apex Reference Guide TaxEngineContext Class
-
-#### TaxEngineContext Methods Learn more about the available methods with the TaxEngineContext class. The TaxEngineContext class includes these methods.
-
-IN THIS SECTION:
-
-##### getNamedUri()
-#### Retrieves the value of the NamedUri field of the TaxEngineContext class.
-
-##### getRequest()
-#### Gets the value of the TaxEngineContext 's Request field.
-
-##### getRequestType()
-#### Gets the value of the RequestType field of the TaxEngineContext class.
-
-##### **`getNamedUri()`**
-
-#### Retrieves the value of the NamedUri field of the TaxEngineContext class.
-
-Signature
-
-```
-   global String getNamedUri()
-
-```
-
-Return Value
-
-Type: String
-
-##### **`getRequest()`**
-
-#### Gets the value of the TaxEngineContext 's Request field.
-
-Signature
-
-```
-   global commercetax.TaxEngineRequest getRequest()
-
-```
-
-Return Value
-
-Type: TaxEngineRequest
-
-An implemented instance of an external tax engine's interface for processing requests. We've provided the `TaxEngineRequest`
-interface for you to test within mock adapters with classes that implement it, such as CalculateTaxRequest. However, don’t use it outside
-of a testing context.
-
-##### **`getRequestType()`**
-
-#### Gets the value of the RequestType field of the TaxEngineContext class.
-
-Signature
-
-```
-   global commercetax.RequestType getRequestType()
-
-```
-
-
-### Apex Reference Guide TaxLineItemRequest Class
-
-Return Value
-
-Type: RequestType
-
-Indicates whether the calculation request was for actual or calculated tax.
-
-### TaxLineItemRequest Class
-
-Contains line item details of a tax request.
-
-Namespace
-
-CommerceTax
-
-IN THIS SECTION:
-
-#### TaxLineItemRequest Constructors
-### Learn more about the constructors available with the TaxLineItemRequest class.
-
-TaxLineItemRequest Properties
-### Learn more about the available properties with the TaxLineItemRequest class.
-
-TaxLineItemRequest Methods
-### Learn more about the available methods with the TaxLineItemRequest class.
-
-#### TaxLineItemRequest Constructors
-
-### Learn more about the constructors available with the TaxLineItemRequest class. The TaxLineItemRequest class includes these constructors.
-
-IN THIS SECTION:
-
-##### TaxLineItemRequest(addresses, amount, description, productCode, quantity, lineNumber, taxCode, effectiveDate)
-
-Initializes the request for the tax line item. This constructor is intended for test usage and throws an exception if used outside of the
-Apex test context.
-
-##### **`TaxLineItemRequest(addresses, amount, description, productCode, quantity,`**
-
-```
-  lineNumber, taxCode, effectiveDate)
-
-```
-
-Initializes the request for the tax line item. This constructor is intended for test usage and throws an exception if used outside of the
-Apex test context.
-
-Signature
-
-```
-   global TaxLineItemRequest(commercetax.LineTaxAddressesRequest addresses, Double amount,
-
-   String description, String productCode, Double quantity, String lineNumber, String
-
-   taxCode, Datetime effectiveDate)
-
-   commercetax.TaxLineItemRequest, newinstance, [commercetax.LineTaxAddressesRequest, Double,
-
-    String, String, Double, String, String, Datetime], commercetax.TaxLineItemRequest
-
-```
-
-
-Apex Reference Guide TaxLineItemRequest Class
-
-Parameters
-
-```
-   addresses
-```
-
-Type: LineTaxAddressesRequest
-
-Information about the addresses applied to each line item in a tax calculation request.
-
-```
-   amount
-```
-
-Type: Double
-
-Total amount (in a given currency) represented by a line item sent for tax calculation.
-
-```
-   description
-```
-
-Type: String
-
-User-defined description for a tax line item.
-
-```
-   productCode
-```
-
-Type: String
-
-Catalog code for the product represented by the tax line item.
-
-```
-   quantity
-```
-
-Type: Double
-
-Number of units of a given product that the tax line item represents.
-
-```
-   lineNumber
-```
-
-Type: String
-
-Unique number used to identify a tax line item.
-
-```
-   taxCode
-```
-
-Type: String
-
-Code used to identify how tax is calculated for a tax line item.
-
-```
-   effectiveDate
-```
-
-Type: Datetime
-
-This is a user-defined date used for reporting only. For negative invoice lines, this parameter represents the invoice date from the
-original invoice. In other cases, it represents the date when the tax transaction takes effect on the line item. The previous tax transaction
-type is always `Debit` for negative invoice lines.
-
-#### TaxLineItemRequest Properties Learn more about the available properties with the TaxLineItemRequest class. The TaxLineItemRequest class includes these properties.
-
-IN THIS SECTION:
-
-addresses
-Contains the list of addresses of a line item.
-
-amount
-Total amount (in a given currency) represented by a line item sent for tax calculation.
-
-customTaxAttributes
-Customised tax contract to include additional attributes at the line item level.
-
-
-Apex Reference Guide TaxLineItemRequest Class
-
-description
-User-defined description for a tax line item.
-
-effectiveDate
-The date that a tax transaction takes effect on a line item. This is a user-defined date used for reporting only.
-
-lineNumber
-Unique number used to identify a tax line item.
-
-productCode
-Catalog code for the product represented by the tax line item.
-
-productSKU
-Unique identifier of a product that can be used to identify products that are exempted from tax.
-
-quantity
-Number of units of a given product that the tax line item represents.
-
-referenceDocumentCode
-Identifier that combines the original invoice ID, previous tax transaction type, and tax engine ID, used in tax calculations for negative
-invoice lines.
-
-taxCode
-Code used to identify how tax is calculated for a tax line item.
-
-##### **`addresses`**
-
-Contains the list of addresses of a line item.
-
-Signature
-
-```
-   public commercetax.LineTaxAddressesRequest addresses {get; set;}
-
-```
-
-Property Value
-
-Type: commercetax.LineTaxAddressesRequest
-
-##### **`amount`**
-
-Total amount (in a given currency) represented by a line item sent for tax calculation.
-
-Signature
-
-```
-   global Double amount {get; set;}
-
-```
-
-Property Value
-
-Type: Double
-
-##### **`customTaxAttributes`**
-
-Customised tax contract to include additional attributes at the line item level.
-
-
-Apex Reference Guide TaxLineItemRequest Class
-
-Signature
-
-```
-   global commercetax.TaxLineItemRequest customTaxAttributes {get; set;}
-
-```
-
-Property Value
-
-Type: Map<String, Object>
-
-##### **`description`**
-
-User-defined description for a tax line item.
-
-Signature
-
-```
-   global String description {get; set;}
-
-```
-
-Property Value
-
-Type: String
-
-##### **`effectiveDate`**
-
-The date that a tax transaction takes effect on a line item. This is a user-defined date used for reporting only.
-
-Signature
-
-```
-   global Datetime effectiveDate {get; set;}
-
-```
-
-Property Value
-
-Type: Datetime
-
-##### **`lineNumber`**
-
-Unique number used to identify a tax line item.
-
-Signature
-
-```
-   global String lineNumber {get; set;}
-
-```
-
-Property Value
-
-Type: String
-
-##### **`productCode`**
-
-Catalog code for the product represented by the tax line item.
-
-Signature
-
-```
-   global String productCode {get; set;}
-
-```
-
-
-Apex Reference Guide TaxLineItemRequest Class
-
-Property Value
-
-Type: String
-
-##### **`productSKU`**
-
-Unique identifier of a product that can be used to identify products that are exempted from tax.
-
-Signature
-
-```
-   global String productSKU {get; set;}
-
-```
-
-Property Value
-
-Type: String
-
-##### **`quantity`**
-
-Number of units of a given product that the tax line item represents.
-
-Signature
-
-```
-   global Double quantity {get; set;}
-
-```
-
-Property Value
-
-Type: Double
-
-##### **`referenceDocumentCode`**
-
-Identifier that combines the original invoice ID, previous tax transaction type, and tax engine ID, used in tax calculations for negative
-invoice lines.
-
-For example, a referenceDocumentCode parameter value `3ttxx00000004Bh_Debit-4wAxx0000000001EAA` indicates
-`3ttxx00000004Bh` is the original invoice ID and `4wAxx0000000001EAA` is the tax engine ID. The previous tax transaction
-type is always `Debit` for negative invoice lines.
-
-Signature
-
-```
-   global String referenceDocumentCode {get; set;}
-
-```
-
-Property Value
-
-Type: String
-
-##### **`taxCode`**
-
-Code used to identify how tax is calculated for a tax line item.
-
-Signature
-
-```
-   global String taxCode {get; set;}
-
-```
-
-
-Apex Reference Guide TaxLineItemRequest Class
-
-Property Value
-
-Type: String
-
-#### TaxLineItemRequest Methods Learn more about the available methods with the TaxLineItemRequest class. The TaxLineItemRequest class includes these methods.
-
-IN THIS SECTION:
-
-##### equals(obj)
-#### Maintains the integrity of lists of type TaxLineItemRequest by determining the equality of external objects in a list. This
-
-method is dynamic and is based on the `equals()` method in Java.
-
-##### hashCode()
-#### Maintains the integrity of lists of type TaxLineItemRequest by determining the uniqueness of the external object records in
-
-a list.
-
-toString()
-Converts a value to a string.
-
-##### **`equals(obj)`**
-
-#### Maintains the integrity of lists of type TaxLineItemRequest by determining the equality of external objects in a list. This method
-
-is dynamic and is based on the `equals()` method in Java.
-
-Signature
-
-```
-   global Boolean equals(Object obj)
-
-```
-
-Parameters
-
-```
-   obj
-```
-
-Type: Object
-
-External object whose key is to be validated.
-
-Return Value
-
-Type: Boolean
-
-##### **`hashCode()`**
-
-#### Maintains the integrity of lists of type TaxLineItemRequest by determining the uniqueness of the external object records in a
-
-list.
-
-Signature
-
-```
-   global Integer hashCode()
-
-```
-
-
-### Apex Reference Guide TaxSellerDetailsRequest Class
-
-Return Value
-
-Type: Integer
-
-##### **`toString()`**
-
-Converts a value to a string.
-
-Signature
-
-```
-   global String toString()
-
-```
-
-Return Value
-
-Type: String
-
-### TaxSellerDetailsRequest Class
-
-Contains tax code details used in the tax calculation request.
-
-Namespace
-
-CommerceTax
-
-IN THIS SECTION:
-
-#### TaxSellerDetailsRequest Constructors
-### Learn more about the available constructors with the TaxSellerDetailsRequest class.
-
-TaxSellerDetailsRequest Properties
-### Learn more about the available properties with the TaxSellerDetailsRequest class.
-
-TaxSellerDetailsRequest Methods
-### Learn more about the available methods with the TaxSellerDetailsRequest class.
-
-#### TaxSellerDetailsRequest Constructors
-
-### Learn more about the available constructors with the TaxSellerDetailsRequest class. The TaxSellerDetailsRequest class includes these constructors.
-
-IN THIS SECTION:
-
-##### TaxSellerDetailsRequest(code)
-
-Initializes the request for the tax seller details. This constructor is intended for test usage and throws an exception if used outside of
-the Apex test context
-
-##### **`TaxSellerDetailsRequest(code)`**
-
-Initializes the request for the tax seller details. This constructor is intended for test usage and throws an exception if used outside of the
-Apex test context
-
-
-Apex Reference Guide TaxSellerDetailsRequest Class
-
-Signature
-
-```
-   global TaxSellerDetailsRequest(String code)
-
-```
-
-Parameters
-
-##### _`code`_
-
-Type: String
-
-Tax code used for tax calculation.
-
-#### TaxSellerDetailsRequest Properties Learn more about the available properties with the TaxSellerDetailsRequest class. The TaxSellerDetailsRequest class includes these properties.
-
-IN THIS SECTION:
-
-##### code
-
-Tax code used for tax calculation.
-
-##### **`code`**
-
-Tax code used for tax calculation.
-
-Signature
-
-```
-   global String code {get; set;}
-
-```
-
-Property Value
-
-Type: String
-
-#### TaxSellerDetailsRequest Methods Learn more about the available methods with the TaxSellerDetailsRequest class. The TaxSellerDetailsRequest class includes these methods.
-
-IN THIS SECTION:
-
-equals(obj)
-#### Maintains the integrity of lists of type TaxSellerDetailsRequest by determining the equality of the external objects in a
-
-list. This method is dynamic and based on the `equals()` method in Java.
-
-hashCode()
-#### Maintains the integrity of lists of type TaxSellerDetailsRequest by determining the uniqueness of the external objects
-
-in a list.
-
-toString()
-Converts a value to a string.
-
-
-### Apex Reference Guide TaxTransactionRequest Class
-
-##### **`equals(obj)`**
-
-Maintains the integrity of lists of type `TaxSellerDetailsRequest` by determining the equality of the external objects in a list.
-This method is dynamic and based on the `equals()` method in Java.
-
-Signature
-
-```
-   global Boolean equals(Object obj)
-
-```
-
-Parameters
-
-```
-   obj
-```
-
-Type: Object
-
-External object whose key is to be validated.
-
-Return Value
-
-Type: Boolean
-
-##### **`hashCode()`**
-
-Maintains the integrity of lists of type `TaxSellerDetailsRequest` by determining the uniqueness of the external objects in a
-list.
-
-Signature
-
-```
-   global Integer hashCode()
-
-```
-
-Return Value
-
-Type: Integer
-
-##### **`toString()`**
-
-Converts a value to a string.
-
-Signature
-
-```
-   global String toString()
-
-```
-
-Return Value
-
-Type: String
-
-### TaxTransactionRequest Class
-
-Abstract class for storing customer details used in tax calculation and estimation requests.
-
-
-Apex Reference Guide TaxTransactionRequest Class
-
-Namespace
-
-CommerceTax
-
-Usage
-
-Specify the `CommerceTax` namespace when creating an instance of this class. The constructor of this class takes no arguments. For
-#### example, let's say you create an instance of CalculateTaxRequest class, which extends the TaxTransactionRequest
-
-class.
-
-IN THIS SECTION:
-
-#### TaxTransactionRequest Constructors Learn more about the available constructors with the TaxTransactionRequest class.
-
-TaxTransactionRequest Properties
-#### Learn more about the available properties with the TaxTransactionRequest class.
-
-TaxTransactionRequest Methods
-
-#### TaxTransactionRequest Constructors Learn more about the available constructors with the TaxTransactionRequest class. The TaxTransactionRequest class includes these constructors.
-
-IN THIS SECTION:
-
-##### TaxTransactionRequest(addresses, currencyIsoCode, customerDetails, description, documentCode, referenceDocumentCode,
-
-transactionDate, effectiveDate, lineItems, referenceEntityId, sellerDetails, customTaxAttributes)
-Initializes the request for the tax transaction. This constructor is intended for test usage and throws an exception if used outside of
-the Apex test context.
-
-##### **`TaxTransactionRequest(addresses, currencyIsoCode, customerDetails,`**
-
-```
-  description, documentCode, referenceDocumentCode, transactionDate,
-
-  effectiveDate, lineItems, referenceEntityId, sellerDetails,
-
-  customTaxAttributes)
-
-```
-
-Initializes the request for the tax transaction. This constructor is intended for test usage and throws an exception if used outside of the
-Apex test context.
-
-Signature
-
-```
-   global TaxTransactionRequest(commercetax.HeaderTaxAddressesRequest addresses, String
-
-   currencyIsoCode, commercetax.TaxCustomerDetailsRequest customerDetails, String
-
-   description, String documentCode, String referenceDocumentCode, Datetime transactionDate,
-
-   Datetime effectiveDate, List<commercetax.TaxLineItemRequest> lineItems, String
-
-   referenceEntityId, commercetax.TaxSellerDetailsRequest sellerDetails,Map<String,Object>
-
-   customTaxAttributes)
-
-```
-
-
-Apex Reference Guide TaxTransactionRequest Class
-
-Parameters
-
-```
-   addresses
-```
-
-Type: HeaderTaxAddressesRequest
-
-Tax addresses, such as Ship To and Bill From.
-
-```
-   currencyIsoCode
-```
-
-Type: String
-
-Three-letter ISO 4217 currency code associated with the `TaxTransactionRequest` .
-
-```
-   customerDetails
-```
-
-Type: TaxCustomerDetailsRequest
-
-Customer information used in tax calculation.
-
-```
-   description
-```
-
-Type: String
-
-Optional user-defined description for providing more information about the tax transaction request.
-
-```
-   documentCode
-```
-
-Type: String
-
-Code for documents that are used to provide more information in the tax calculation process.
-
-```
-   referenceDocumentCode
-```
-
-Type: String
-
-Identifier that combines the original invoice ID, previous tax transaction type, and tax engine ID, used in tax calculations for negative
-invoice lines. For example, a referenceDocumentCode parameter value `3ttxx00000004Bh_Debit-4wAxx0000000001EAA`
-indicates `3ttxx00000004Bh` is the original invoice ID and `4wAxx0000000001EAA` is the tax engine ID.
-
-```
-   transactionDate
-```
-
-Type: Datetime
-
-The date that the tax transaction occurred.
-
-```
-   effectiveDate
-```
-
-Type: Datetime
-
-The date that the tax transaction takes effect. User-defined and used only for reporting purposes.
-
-```
-   lineItems
-```
-
-Type: List<TaxLineItemRequest>
-
-A list of line items on which tax is calculated.
-
-```
-   referenceEntityId
-```
-
-Type: String
-
-ID of an object related to the line items sent for tax calculation.
-
-```
-   sellerDetails
-```
-
-Type: TaxSellerDetailsRequest
-
-Contains tax code information used in a tax calculation request.
-
-```
-   customTaxAttributes
-```
-
-Type: Map<String, Object>
-
-Customised tax contract to include additional attributes at the header level.
-
-
-Apex Reference Guide TaxTransactionRequest Class
-
-#### TaxTransactionRequest Properties Learn more about the available properties with the TaxTransactionRequest class. The TaxTransactionRequest class includes these properties.
-
-IN THIS SECTION:
-
-##### addresses
-
-A list of addresses (such as Ship To and Sold To) used as part of the tax transaction.
-
-currencyIsoCode
-#### Three-letter ISO 4217 currency code associated with the TaxTransactionRequest .
-
-customerDetails
-Customer information used in tax calculation.
-
-customTaxAttributes
-Customised tax contract to include additional attributes at the header level.
-
-description
-Optional user-defined description for providing more information about the tax transaction request.
-
-documentCode
-Code for documents used to provide more information in the tax calculation process.
-
-effectiveDate
-The date that the tax transaction takes effect. User-defined and used only for reporting purposes.
-
-lineItems
-A list of line items on which tax will be calculated.
-
-referenceDocumentCode
-Identifier that combines the original invoice ID, previous tax transaction type, and tax engine ID, used in tax calculations for negative
-invoice lines.
-
-referenceEntityId
-ID of an object related to the line items sent for tax calculation.
-
-sellerDetails
-Contains tax code information used in a tax calculation request.
-
-transactionDate
-The date that the tax transaction occurred.
-
-##### **`addresses`**
-
-A list of addresses (such as Ship To and Sold To) used as part of the tax transaction.
-
-Signature
-
-```
-   global commercetax.HeaderTaxAddressesRequest addresses {get; set;}
-
-```
-
-Property Value
-
-Type: HeaderTaxAddressesRequest
-
-
-Apex Reference Guide TaxTransactionRequest Class
-
-##### **`currencyIsoCode`**
-
-Three-letter ISO 4217 currency code associated with the `TaxTransactionRequest` .
-
-Signature
-
-```
-   global String currencyIsoCode {get; set;}
-
-```
-
-Property Value
-
-Type: String
-
-##### **`customerDetails`**
-
-Customer information used in tax calculation.
-
-Signature
-
-```
-   global CommerceTax.TaxCustomerDetailsRequest customerDetails {get; set;}
-
-```
-
-Property Value
-
-Type: TaxCustomerDetailsRequest
-
-##### **`customTaxAttributes`**
-
-Customised tax contract to include additional attributes at the header level.
-
-Signature
-
-```
-   global commercetax.TaxTransactionRequest customTaxAttributes {get; set;}
-
-```
-
-Property Value
-
-Type: Map<String, Object>
-
-##### **`description`**
-
-Optional user-defined description for providing more information about the tax transaction request.
-
-Signature
-
-```
-   global String description {get; set;}
-
-```
-
-Property Value
-
-Type: String
-
-##### **`documentCode`**
-
-Code for documents used to provide more information in the tax calculation process.
-
-
-Apex Reference Guide TaxTransactionRequest Class
-
-Signature
-
-```
-   global String documentCode {get; set;}
-
-```
-
-Property Value
-
-Type: String
-
-##### **`effectiveDate`**
-
-The date that the tax transaction takes effect. User-defined and used only for reporting purposes.
-
-Signature
-
-```
-   global Datetime effectiveDate {get; set;}
-
-```
-
-Property Value
-
-Type: Datetime
-
-##### **`lineItems`**
-
-A list of line items on which tax will be calculated.
-
-Signature
-
-```
-   global List<CommerceTax.TaxLineItemRequest> lineItems {get; set;}
-
-```
-
-Property Value
-
-Type: List<TaxLineItemRequest>
-
-##### **`referenceDocumentCode`**
-
-Identifier that combines the original invoice ID, previous tax transaction type, and tax engine ID, used in tax calculations for negative
-invoice lines.
-
-For example, a referenceDocumentCode parameter value `3ttxx00000004Bh_Debit-4wAxx0000000001EAA` indicates
-`3ttxx00000004Bh` is the original invoice ID and `4wAxx0000000001EAA` is the tax engine ID.
-
-Signature
-
-```
-   global String referenceDocumentCode {get; set;}
-
-```
-
-Property Value
-
-Type: String
-
-##### **`referenceEntityId`**
-
-ID of an object related to the line items sent for tax calculation.
-
-
-Apex Reference Guide TaxTransactionRequest Class
-
-Signature
-
-```
-   global String referenceEntityId {get; set;}
-
-```
-
-Property Value
-
-Type: String
-
-##### **`sellerDetails`**
-
-Contains tax code information used in a tax calculation request.
-
-Signature
-
-```
-   global commercetax.TaxSellerDetailsRequest sellerDetails {get; set;}
-
-```
-
-Property Value
-
-Type: TaxSellerDetailsRequest
-
-##### **`transactionDate`**
-
-The date that the tax transaction occurred.
-
-Signature
-
-```
-   global Datetime transactionDate {get; set;}
-
-```
-
-Property Value
-
-Type: Datetime
-
-#### TaxTransactionRequest Methods The following are methods for TaxTransactionRequest .
-
-IN THIS SECTION:
-
-equals(obj)
-#### Maintains the integrity of lists of type TaxTransactionRequest by determining the equality of external objects in a list. This
-
-method is dynamic and based on the `equals()` method in Java.
-
-hashCode()
-#### Maintains the integrity of lists of type TaxTransactionRequest by determining the uniqueness of the external object records
-
-in a list.
-
-toString()
-Converts a value to a string.
-
-
-### Apex Reference Guide TaxTransactionStatus Enum
-
-##### **`equals(obj)`**
-
-Maintains the integrity of lists of type `TaxTransactionRequest` by determining the equality of external objects in a list. This
-method is dynamic and based on the `equals()` method in Java.
-
-Signature
-
-```
-   global Boolean equals(Object obj)
-
-```
-
-Parameters
-
-```
-   obj
-```
-
-Type: Object
-
-Return Value
-
-Type: Boolean
-
-##### **`hashCode()`**
-
-Maintains the integrity of lists of type `TaxTransactionRequest` by determining the uniqueness of the external object records
-in a list.
-
-Signature
-
-```
-   global Integer hashCode()
-
-```
-
-Return Value
-
-Type: Integer
-
-##### **`toString()`**
-
-Converts a value to a string.
-
-Signature
-
-```
-   global String toString()
-
-```
-
-Return Value
-
-Type: String
-
-### TaxTransactionStatus Enum
-
-Shows whether the tax transaction has been committed or uncommitted.
-
-Usage
-
-Used by the CalculateTaxResponse class method.
-
-
-### Apex Reference Guide TaxTransactionType Enum
-
-Enum Values
-
-The `commercetax.TaxTransactionStatus` enum includes these values.
-
-**Value** **Description**
-
-`Committed` Tax has been calculated and committed.
-
-`Uncommitted` Tax has been calculated but hasn't been committed.
-
-### TaxTransactionType Enum
-
-Shows whether the tax transaction is for a credit or debit transaction.
-
-Usage
-
-Used by the CalculateTaxResponse and CalculateTaxRequest class methods.
-
-Enum Values
-
-The `commercetax.TaxTransactionType` enum includes these values.
-
-**Value** **Description**
-
-`Credit` Represents a credit transaction.
-
-`Debit` Represents a debit transaction.
-
-`Void` Specifies that the tax engine has voided the document that's mentioned in the
-`referenceDocumentCode` property value.
-
-## ComplianceMgmt Namespace The ComplianceMgmt namespace provides classes and methods to implement rule processors for compliance control. The ComplianceMgmt namespace includes these classes.
-
-**•** [ComplianceEvaluation Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.industries_reference.meta/industries_reference/apex_interface_ComplianceMgmt_ComplianceEvaluation.htm)
-
-**•** [ControlEvaluationInput Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.industries_reference.meta/industries_reference/apex_class_ComplianceMgmt_ControlEvaluationInput)
-
-**•** [ControlInput Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.industries_reference.meta/industries_reference/apex_class_ComplianceMgmt_ControlInput.htm)
-
-**•** [ComplianceEvaluationResponse Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.industries_reference.meta/industries_reference/apex_class_ComplianceMgmt_ComplianceEvaluationResponse.htm)
-
-**•** [EvaluationResult Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.industries_reference.meta/industries_reference/apex_class_ComplianceMgmt_EvaluationResult.htm)
-
-**•** [ComplianceControlLog Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.industries_reference.meta/industries_reference/apex_class_ComplianceMgmt_ComplianceControlLog.htm)
-
-## Compression Namespace
-
-The Compression namespace provides classes and methods to create and extract zip files.
-
-## The following are the classes and enums in the Compression namespace.
-
-
-### Apex Reference Guide Level Enum
-
-IN THIS SECTION:
-
-### Level Enum
-
-Specifies the compression level for creating a zip file.
-
-### Method Enum
-
-Specifies the compression method for the zip entries.
-
-ZipEntry Class
-Contains methods to get and set information about a zip file entry.
-
-ZipReader Class
-Contains methods to get information about zip entries and to extract content for specified zip entries from the zip file.
-
-ZipWriter Class
-Contains methods to add zip entries, generate a zipped archive, and return the result as an Apex blob.
-
-Compression Exceptions
-The `Compression` namespace contains exception classes.
-
-### Level Enum
-
-Specifies the compression level for creating a zip file.
-
-Usage
-
-### Use Level enum with the getLevel() and setLevel(value) methods in the ZipWriter class.
-
-Enum Values
-
-The following are the values of the `Compression.Level` enum.
-
-**Value** **Description**
-
-`BEST_COMPRESSION` Compression level for best compression.
-
-`BEST_SPEED` Compression level for fastest compression.
-
-`DEFAULT_LEVEL` Default compression level.
-
-`NO_COMPRESSION` Compression level for no compression.
-
-### Method Enum
-
-Specifies the compression method for the zip entries.
-
-Usage
-
-### Use the Method enum with the getMethod() and setMethod(method) methods in the ZipEntry and ZipWriter
-
-classes.
-
-
-### Apex Reference Guide ZipEntry Class
-
-Enum Values
-
-The following are the values of the `Compression.Method` enum.
-
-**Value** **Description**
-
-`DEFLATED` Deflated compression method for compressed entries.
-
-`STORED` No compression method for zip entries.
-
-### ZipEntry Class
-
-Contains methods to get and set information about a zip file entry.
-
-Namespace
-
-Compression
-
-IN THIS SECTION:
-
-#### ZipEntry Methods ZipEntry Methods
-
-### The following are methods for ZipEntry .
-
-IN THIS SECTION:
-
-equals(obj)
-Compares this object with the specified object and returns `true` if both objects are equal; otherwise, returns `false` .
-
-hashcode()
-Returns the hash code value for the zip entry.
-
-getComment()
-Gets the comment string for the zip entry.
-
-getCompressedSize()
-Gets the size in bytes of the compressed zip entry.
-
-getContent()
-Gets the content of the zip entry. This method doesn’t work with the `ZipReader` class.
-
-getCrc()
-Gets the cyclic redundancy check (CRC) value for the zip entry.
-
-getLastModifiedTime()
-Gets the last modification timestamp of the zip entry.
-
-getMethod()
-Gets the compression method of the zip entry.
-
-getName()
-Gets the name of the zip entry.
-
-
-Apex Reference Guide ZipEntry Class
-
-getUncompressedSize()
-Gets the uncompressed size in bytes of the zip entry content.
-
-setComment(comment)
-Sets the comment string for the zip entry that’s written to the Zip archive. This method doesn’t work with the `ZipReader` class.
-
-setContent(blob)
-Sets the content of the zip entry that’s written to the Zip archive. This method doesn’t work with the `ZipReader` class.
-
-setLastModifiedTime(modTime)
-Sets the last modification time of the zip entry that’s written to the Zip archive. This method doesn’t work with the `ZipReader`
-class.
-
-setMethod(method)
-Sets the compression method for the zip entry that’s written to the zip archive. This method doesn’t work with the `ZipReader`
-class.
-
-toString()
-Returns a string representation of the zip entry.
-
-##### **`equals(obj)`**
-
-Compares this object with the specified object and returns `true` if both objects are equal; otherwise, returns `false` .
-
-Signature
-
-```
-   public Boolean equals(Object obj)
-
-```
-
-Parameters
-
-```
-   obj
-```
-
-Type: Object
-
-Return Value
-
-Type: Boolean
-
-##### **`hashcode()`**
-
-Returns the hash code value for the zip entry.
-
-Signature
-
-```
-   public Integer hashcode()
-
-```
-
-Return Value
-
-Type: Integer
-
-##### **`getComment()`**
-
-Gets the comment string for the zip entry.
-
-
-Apex Reference Guide ZipEntry Class
-
-Signature
-
-```
-   public string getComment()
-
-```
-
-Return Value
-
-Type: string
-
-##### **`getCompressedSize()`**
-
-Gets the size in bytes of the compressed zip entry.
-
-Signature
-
-```
-   public long getCompressedSize()
-
-```
-
-Return Value
-
-Type: long
-
-##### **`getContent()`**
-
-Gets the content of the zip entry. This method doesn’t work with the `ZipReader` class.
-
-Signature
-
-```
-   public blob getContent()
-
-```
-
-Return Value
-
-Type: blob
-
-##### **`getCrc()`**
-
-Gets the cyclic redundancy check (CRC) value for the zip entry.
-
-Signature
-
-```
-   public long getCrc()
-
-```
-
-Return Value
-
-Type: long
-
-##### **`getLastModifiedTime()`**
-
-Gets the last modification timestamp of the zip entry.
-
-Signature
-
-```
-   public Datetime getLastModifiedTime()
-
-```
-
-
-Apex Reference Guide ZipEntry Class
-
-Return Value
-
-Type: Datetime
-
-##### **`getMethod()`**
-
-Gets the compression method of the zip entry.
-
-Signature
-
-```
-   public Compression.Method getMethod()
-
-```
-
-Return Value
-
-Type: Compression.Method
-
-Uses values from the `Method` enum and indicates whether the zip entry has _`DEFLATED`_ or _`STORED`_ method.
-
-##### **`getName()`**
-
-Gets the name of the zip entry.
-
-Signature
-
-```
-   public string getName()
-
-```
-
-Return Value
-
-Type: string
-
-##### **`getUncompressedSize()`**
-
-Gets the uncompressed size in bytes of the zip entry content.
-
-Signature
-
-```
-   public long getUncompressedSize()
-
-```
-
-Return Value
-
-Type: long
-
-##### **`setComment(comment)`**
-
-Sets the comment string for the zip entry that’s written to the Zip archive. This method doesn’t work with the `ZipReader` class.
-
-Signature
-
-```
-   public Compression.ZipEntry setComment(String comment)
-
-```
-
-
-Apex Reference Guide ZipEntry Class
-
-Parameters
-
-```
-   comment
-```
-
-Type: String
-
-Return Value
-
-Type: Compression.ZipEntry
-
-##### **`setContent(blob)`**
-
-Sets the content of the zip entry that’s written to the Zip archive. This method doesn’t work with the `ZipReader` class.
-
-Signature
-
-```
-   public Compression.ZipEntry setContent(Blob blob)
-
-```
-
-Parameters
-
-```
-   blob
-```
-
-Type: Blob
-
-Return Value
-
-Type: Compression.ZipEntry
-
-##### **`setLastModifiedTime(modTime)`**
-
-Sets the last modification time of the zip entry that’s written to the Zip archive. This method doesn’t work with the `ZipReader` class.
-
-Signature
-
-```
-   public Compression.ZipEntry setLastModifiedTime(Datetime modTime)
-
-```
-
-Parameters
-
-```
-   modTime
-```
-
-Type: Datetime
-
-Return Value
-
-Type: Compression.ZipEntry
-
-##### **`setMethod(method)`**
-
-Sets the compression method for the zip entry that’s written to the zip archive. This method doesn’t work with the `ZipReader` class.
-
-Signature
-
-```
-   public Compression.ZipEntry setMethod(Compression.Method method)
-
-```
-
-
-### Apex Reference Guide ZipReader Class
-
-Parameters
-
-```
-   method
-```
-
-Type: Compression.Method
-
-Uses the `Method` enum values and sets the compression method as `DEFLATED` or `STORED` .
-
-Return Value
-
-Type: Compression.ZipEntry
-
-##### **`toString()`**
-
-Returns a string representation of the zip entry.
-
-Signature
-
-```
-   public string toString()
-
-```
-
-Return Value
-
-Type: string
-
-### ZipReader Class
-
-Contains methods to get information about zip entries and to extract content for specified zip entries from the zip file.
-
-Namespace
-
-Compression
-
-IN THIS SECTION:
-
-#### ZipReader Constructors
-
-ZipReader Methods
-
-#### ZipReader Constructors
-
-### The following are constructors for ZipReader .
-
-IN THIS SECTION:
-
-##### ZipReader(data)
-### Creates a new instance of the ZipReader class using the specified blob data.
-
-##### **`ZipReader(data)`**
-
-### Creates a new instance of the ZipReader class using the specified blob data.
-
-
-Apex Reference Guide ZipReader Class
-
-Signature
-
-```
-   global ZipReader(Blob data)
-
-```
-
-Parameters
-
-```
-   data
-```
-
-Type: Blob
-
-Apex blob that contains the compressed content.
-
-#### ZipReader Methods The following are methods for ZipReader .
-
-IN THIS SECTION:
-
-##### extract(name)
-
-Extracts the bytes for the specified zip entry name and decompresses the content.
-
-extract(entry)
-Extracts the bytes for the specified zip entry and decompresses the content.
-
-getEntries()
-Gets a list of all the entries from the zip file.
-
-getEntriesMap()
-Gets a map of names and the corresponding zip entries from the zip file.
-
-getEntry(name)
-Gets a zip entry for the specified name from the zip file.
-
-getEntryNames()
-Gets a list of all the zip entry names from the zip file.
-
-##### **`extract(name)`**
-
-Extracts the bytes for the specified zip entry name and decompresses the content.
-
-Signature
-
-```
-   public blob extract(string name)
-
-```
-
-Parameters
-
-```
-   name
-```
-
-Type: string
-
-Species the zip entry name to extract and decompress.
-
-Return Value
-
-Type: blob
-
-Apex blob that contains the decompressed content.
-
-
-Apex Reference Guide ZipReader Class
-
-##### **`extract(entry)`**
-
-Extracts the bytes for the specified zip entry and decompresses the content.
-
-Signature
-
-```
-   public blob extract(Compression.ZipEntry entry)
-
-```
-
-Parameters
-
-```
-   entry
-```
-
-Type: Compression.ZipEntry
-
-Species the zip entry to extract and decompress.
-
-Return Value
-
-Type: blob
-
-Apex blob that contains the decompressed content.
-
-##### **`getEntries()`**
-
-Gets a list of all the entries from the zip file.
-
-Signature
-
-```
-   public List<compression.ZipEntry> getEntries()
-
-```
-
-Return Value
-
-Type: List<Compression.ZipEntry>
-
-##### **`getEntriesMap()`**
-
-Gets a map of names and the corresponding zip entries from the zip file.
-
-Signature
-
-```
-   public Map<String,Compression.ZipEntry> getEntriesMap()
-
-```
-
-Return Value
-
-Type: Map<string,Compression.ZipEntry>
-
-##### **`getEntry(name)`**
-
-Gets a zip entry for the specified name from the zip file.
-
-Signature
-
-```
-   public compression.ZipEntry getEntry(string name)
-
-```
-
-
-### Apex Reference Guide ZipWriter Class
-
-Parameters
-
-```
-   name
-```
-
-Type: string
-
-Name of the zip entry.
-
-Return Value
-
-Type: Compression.ZipEntry
-
-Throws a `ZipException` if the specified name isn’t found.
-
-##### **`getEntryNames()`**
-
-Gets a list of all the zip entry names from the zip file.
-
-Signature
-
-```
-   public List<String> getEntryNames()
-
-```
-
-Return Value
-
-Type: List<String>
-
-### ZipWriter Class
-
-Contains methods to add zip entries, generate a zipped archive, and return the result as an Apex blob.
-
-Namespace
-
-Compression
-
-Example
-
-This sample code compresses email attachments into a single file.
-
-```
-   Compression.ZipWriter writer = new Compression.ZipWriter();
-
-   List<id> contentDocumentIds = new List<id>();
-
-   // Add IDs of documents to be compressed to contentDocumentIds
-
-   for ( ContentVersion cv : [SELECT PathOnClient, Versiondata
-
-                    FROM ContentVersion
-
-                    WHERE ContentDocumentId IN :contentDocumentIds])
-
-   {
-
-       writer.addEntry(cv.PathOnClient, cv.versiondata);
-
-   }
-
-   blob zipAttachment = writer.getArchive();
-
-   Messaging.EmailFileAttachment efa = new Messaging.EmailFileAttachment();
-
-```
-
-
-Apex Reference Guide ZipWriter Class
-
-```
-   efa.setFileName('attachments.zip');
-
-   efa.setBody(zipAttachment);
-
-   List<Messaging.EmailFileAttachment> fileAttachments = new
-
-   List<Messaging.EmailFileAttachment>();
-
-   fileAttachments.add(efa);
-
-   Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
-
-   // Set all the other email fields, such as addresses, subject, and body
-
-   email.setFileAttachments(fileAttachments);
-
-   Messaging.sendEmail(new Messaging.SingleEmailMessage[] { email });
-
-```
-
-IN THIS SECTION:
-
-#### ZipWriter Constructors ZipWriter Methods ZipWriter Constructors The following are constructors for ZipWriter .
-
-IN THIS SECTION:
-
-##### ZipWriter()
-#### Creates a new instance of the ZipWriter class.
-
-##### **`ZipWriter()`**
-
-#### Creates a new instance of the ZipWriter class.
-
-Signature
-
-```
-   global ZipWriter()
-
-#### ZipWriter Methods The following are methods for ZipWriter .
-
-```
-
-IN THIS SECTION:
-
-addEntry(name, data)
-Adds an entry to the zip file with the specified name and content.
-
-addEntry(prototype)
-Adds a copy of the specified prototype entry to the zip file and includes details such as the zip entry name, comment, last modification
-time, and content.
-
-
-Apex Reference Guide ZipWriter Class
-
-addEntry(name, comment, modTime, method, data)
-Adds an entry to the zip file with the specified name, comment, last modification time, compression method, and content.
-
-getArchive()
-Compresses the zip entries and generates a ZIP archive.
-
-getEntries()
-Gets a list of all the entries in the zip file.
-
-getEntry(name)
-Gets the entry with the specified name from the zip file.
-
-getEntryNames()
-Gets a set of all the zip entry names in the zip file.
-
-getLevel()
-Gets the compression level of the zip file.
-
-getMethod()
-Gets the compression method of the zip file.
-
-removeEntry(name)
-Removes the entry with the specified name from the zip file.
-
-setLevel(level)
-Sets the compression level of the zip file.
-
-setMethod(method)
-Sets the compression method for the zip file.
-
-##### **`addEntry(name, data)`**
-
-Adds an entry to the zip file with the specified name and content.
-
-Signature
-
-```
-   public Compression.ZipEntry addEntry(string name, blob data)
-
-```
-
-Parameters
-
-```
-   name
-```
-
-Type: string
-
-The name of the zip entry.
-
-```
-   data
-```
-
-Type: blob
-
-The content of the zip entry.
-
-Return Value
-
-Type: Compression.ZipEntry
-
-Zip entry added to the zip file.
-
-
-Apex Reference Guide ZipWriter Class
-
-##### **`addEntry(prototype)`**
-
-Adds a copy of the specified prototype entry to the zip file and includes details such as the zip entry name, comment, last modification
-time, and content.
-
-Signature
-
-```
-   public Compression.ZipEntry addEntry(compression.ZipEntry prototype)
-
-```
-
-Parameters
-
-```
-   prototype
-```
-
-Type: Compression.ZipEntry
-
-Details of the entry to be added to the zip file.
-
-Return Value
-
-Type: Compression.ZipEntry
-
-##### **`addEntry(name, comment, modTime, method, data)`**
-
-Adds an entry to the zip file with the specified name, comment, last modification time, compression method, and content.
-
-Signature
-
-```
-   public Compression.ZipEntry addEntry(String name, String comment, Datetime modTime,
-
-   Compression.Method method, Blob data)
-
-```
-
-Parameters
-
-```
-   name
-```
-
-Type: String
-
-The name of the zip entry.
-
-```
-   comment
-```
-
-Type: String
-
-The comment about the zip entry.
-
-```
-   modTime
-```
-
-Type: Datetime
-
-The last modification timestamp of the zip entry.
-
-```
-   method
-```
-
-Type: Compression.Method
-
-The compression method of the zip entry, which is either `DEFLATED` or `STORED` .
-
-```
-   data
-```
-
-Type: Blob
-
-The content of the zip entry.
-
-
-Apex Reference Guide ZipWriter Class
-
-Return Value
-
-Type: Compression.ZipEntry
-
-Zip entry added to the zip file.
-
-##### **`getArchive()`**
-
-Compresses the zip entries and generates a ZIP archive.
-
-Signature
-
-```
-   public blob getArchive()
-
-```
-
-Return Value
-
-Type: blob
-
-Apex blob that contains the bytes of the compression operation.
-
-##### **`getEntries()`**
-
-Gets a list of all the entries in the zip file.
-
-Signature
-
-```
-   public List<Compression.ZipEntry> getEntries()
-
-```
-
-Return Value
-
-Type: List<Compression.ZipEntry>
-
-##### **`getEntry(name)`**
-
-Gets the entry with the specified name from the zip file.
-
-Signature
-
-```
-   public compression.ZipEntry getEntry(string name)
-
-```
-
-Parameters
-
-```
-   name
-```
-
-Type: string
-
-Name of the zip entry to be retrieved.
-
-Return Value
-
-Type: Compression.ZipEntry
-
-
-Apex Reference Guide ZipWriter Class
-
-##### **`getEntryNames()`**
-
-Gets a set of all the zip entry names in the zip file.
-
-Signature
-
-```
-   public Set<String> getEntryNames()
-
-```
-
-Return Value
-
-Type: Set<String> on page 4055
-
-##### **`getLevel()`**
-
-Gets the compression level of the zip file.
-
-Signature
-
-```
-   public Compression.Level getLevel()
-
-```
-
-Return Value
-
-Type: Compression.Level
-
-Uses the `Level` enum values to indicate the compression level as `BEST_COMPRESSION`, `BEST_SPEED`, `DEFAULT_LEVEL`,
-or `NO_COMPRESSION` .
-
-##### **`getMethod()`**
-
-Gets the compression method of the zip file.
-
-Signature
-
-```
-   public Compression.Method getMethod()
-
-```
-
-Return Value
-
-Type: Compression.Method
-
-Uses the `Method` enum values to indicate the compression method as `DEFLATED` or `STORED` .
-
-##### **`removeEntry(name)`**
-
-Removes the entry with the specified name from the zip file.
-
-Signature
-
-```
-   public Void removeEntry(string name)
-
-```
-
-Parameters
-
-```
-   name
-```
-
-Type: string
-
-
-### Apex Reference Guide Compression Exceptions
-
-Name of the zip entry to be removed. If an entry with this name isn’t found, the method throws a `ZipException` exception.
-
-Return Value
-
-Type: Void
-
-##### **`setLevel(level)`**
-
-Sets the compression level of the zip file.
-
-Signature
-
-```
-   public Compression.ZipWriter setLevel(compression.Level value)
-
-```
-
-Parameters
-
-```
-   value
-```
-
-Type: Compression.Level
-
-Uses the `Level` enum to set the compression level.
-
-Return Value
-
-Type: Compression.ZipWriter
-
-Returns the zip file set with the specified compression level.
-
-##### **`setMethod(method)`**
-
-Sets the compression method for the zip file.
-
-Signature
-
-```
-   public Compression.ZipWriter setMethod(compression.Method value)
-
-```
-
-Parameters
-
-```
-   value
-```
-
-Type: Compression.Method
-
-Uses the `Method` enum to set the compression method.
-
-Return Value
-
-Type: Compression.ZipWriter
-
-Returns the zip file set with the specified compression method.
-
-### Compression Exceptions The Compression namespace contains exception classes.
-
-
-## Apex Reference Guide ConnectApi Namespace
-
-All exception classes support built-in methods for returning the error message and exception type. See Exception Class and Built-In
-Exceptions.
-
-The `Compression` namespace contains this exception:
-
-**Exception** **Description**
-
-`Compression.ZipException` Any problem with the zip operations, such as a zip entry name isn’t found.
-
-## ConnectApi Namespace The ConnectApi namespace (also called Connect in Apex) provides classes for accessing the same data available in Connect REST
-
-API. Use Connect in Apex to create custom experiences in Salesforce.
-
-## For information about working with the ConnectApi classes, see Connect in Apex.
-
-IN THIS SECTION:
-
-ActionLinks Class
-Create, delete, and get information about an action link group definition; get information about an action link group; get action link
-diagnostic information.
-
-Announcements Class
-Access information about announcements and post announcements.
-
-BotVersionActivation Class
-Access and update activation information of a bot version.
-
-CdpActivation Class
-Get, create, update, and delete Data 360 activations.
-
-CdpActivationExternalPlatform Class
-Get Data 360 activation external platforms.
-
-CdpActivationTarget Class
-Get, create, and update Data 360 activation targets.
-
-CdpAudienceDMO Class
-Get activation records from Data 360 Audience Data Model Objects (DMOs).
-
-CdpCalculatedInsight Class
-Create, delete, get, run, and update Data 360 calculated insights.
-
-CdpConnection Class
-Get database schemas for a Data 360 connection.
-
-CdpDataSpace Class
-Get Data 360 data spaces.
-
-CdpDataStreams Class
-Run Data 360 data streams.
-
-CdpIdentityResolution Class
-Create, delete, get, run, and update Data 360 identity resolution rulesets.
-
-
-Apex Reference Guide ConnectApi Namespace
-
-CdpMachineLearning Class
-Make a machine-learning prediction with Data 360.
-
-CdpQuery Class
-Get Data 360 metadata and query data.
-
-CdpSegment Class
-Create, delete, get, publish, and update Data 360 segments.
-
-Chatter Class
-Access information about followers and subscriptions for records.
-
-ChatterFavorites Class
-Chatter favorites give you easy access to topics, list views, and feed searches.
-
-ChatterFeeds Class
-Get, post, and delete feed elements, likes, comments, and bookmarks. You can also search feed elements, share feed elements, and
-vote on polls.
-
-ChatterGroups Class
-Information about groups, such as the group’s members, photo, and the groups the specified user is a member of. Add members
-to a group, remove members, and change the group photo.
-
-ChatterMessages Class
-Get, send, search, and reply to private messages. You can also get and search private conversations, mark conversations as read, and
-get a count of unread private messages.
-
-ChatterUsers Class
-Access information about users, such as activity, followers, subscriptions, files, and groups.
-
-Clm Class
-Create and update Contract Lifecycle Management (CLM) contracts using object ID.
-
-CommerceBuyerExperience Class
-Create, delete, or get commerce addresses. Get order delivery group, order item, order shipments, shipment items, and order
-summaries. Get adjustments for order items and order summaries.
-
-CommerceCart Class
-Get, create, update, calculate, and delete carts. Get cart items, add items to carts, update and delete cart items.
-
-CommerceCatalog Class
-Get products, product categories, and product category paths.
-
-CommerceCatalogManagement Class
-Create or update a composite product. Create a variation product.
-
-CommercePromotions Class
-Evaluate promotions for Commerce orders. Get coupon code redemption usage.
-
-CommerceSearch Class
-Get sort rules for the live search index. Get product search suggestions. Search products.
-
-CommerceSearchConnectFamily Class
-Search products by search term or category in a webstore.
-
-CommerceSearchSettings Class
-Get indexes. Get index logs. Create an index of a product catalog.
-
-
-Apex Reference Guide ConnectApi Namespace
-
-CommerceStorePricing Class
-Get product prices.
-
-CommerceWishlist Class
-Get, create, update, and delete wishlists. Add wishlists to carts. Get wishlist items, add items to wishlists, and delete wishlist items.
-
-Communities Class
-Get information about Experience Cloud sites in your org.
-
-CommunityModeration Class
-Get information about flagged feed items and comments in an Experience Cloud site. Add and remove flags from comments and
-feed items.
-
-ContentHub Class
-Access Files Connect repositories and their files and folders.
-
-ConversationApplicationDefinition Class
-Access information about a conversation application definition.
-
-Datacloud Class
-Purchase Data.com contact or company records, and retrieve purchase information.
-
-EinsteinLLM Class
-Get a list of prompt templates and generate LLM responses for prompt templates.
-
-EmailMergeFieldService Class
-Extract a list of merge fields for an object. A merge field is a field you can put in an email template, mail merge template, custom
-link, or formula to incorporate values from a record.
-
-EmployeeProfiles Class
-Get, set and crop, and delete employee banner photos and photos.
-
-Exchanges Class
-Preview and submit cart to exchange orders.
-
-ExtendedCommerceDelivery Class
-Access information about delivery estimation.
-
-ExternalEmailServices Class
-Access information about integration with external email services, such as sending email within Salesforce through an external email
-account.
-
-ExternalManagedAccount Class
-Get externally managed accounts.
-
-FieldService Class
-Preview and create shifts from a pattern.
-
-FlowApprovalProcesses Class
-Get the status and available actions for flow approval processes.
-
-FulfillmentOrder Class
-Fulfill orders in Order Management.
-
-IBusinessObjectivesAndRecsFamily Class
-Get and patch business objectives, or goals. Get, create, patch, and update recommended actions for business objectives.
-
-Knowledge Class
-Get information about trending articles in Experience Cloud sites.
-
-
-Apex Reference Guide ConnectApi Namespace
-
-LightningScheduler Class
-Create and update service appointments.
-
-ManagedContent Class
-Clone managed content. Create and get managed content. Create, delete, or update a digital asset management (DAM) provider
-instance. Delete and replace variants. Get channels. Get a managed content space. Get DAM providers. Get targets that managed
-content space folders can be shared with. Get and update targets that managed content space folders are shared with. Publish and
-unpublish content.
-
-ManagedContentChannels Class
-Get managed content channels. Create, get, update, or delete a managed content channel.
-
-ManagedContentDelivery Class
-Get collection items. Get a managed content channel. Get managed content.
-
-ManagedContentSpaces Class
-Get channels in a managed content space. Add or remove channels from a managed content space.
-
-ManagedTopics Class
-Get managed topics in an Experience Cloud site. Create, delete, and reorder managed topics.
-
-MarketingIntegration Class
-Get, save, and submit a microsites marketing integration form for an Experience Cloud site.
-
-Mentions Class
-Access information about mentions. A mention is an “@” character followed by a user or group name. When a user or group is
-mentioned, they receive a notification.
-
-Missions Class
-Export and purge mission activity for users. Get a user’s mission progress. Update mission activity counts for users.
-
-NamedCredentials Class
-Create, refresh, get, delete, replace, and update credentials. Create and get external credentials. Create and get named credentials.
-Create, get, delete, and update external auth identity providers. Get the URL for the OAuth token flow for an external credential.
-
-NavigationMenu Class
-Get navigation menu items for an Experience Cloud site.
-
-NextBestAction Class
-Execute recommendation strategies, get recommendations, manage recommendation reactions.
-
-OmnichannelInventoryService Class
-Route orders to inventory locations in Order Management.
-
-OMSAnalytics Class
-Get products with return rates, get text classified into different classifications using text analysis, and capture the return reasons from
-external sources based on the product ids.
-
-Orchestration Class
-Get orchestration instances.
-
-OrderPaymentSummary Class
-Work with payments in Order Management.
-
-OrderSummary Class
-Work with orders in Order Management.
-
-
-Apex Reference Guide ConnectApi Namespace
-
-OrderSummaryCreation Class
-Create Order Summaries in Order Management.
-
-Organization Class
-Access information about an org.
-
-PardotBusinessUnitContext Class
-Get the Pardot business units the context user has access to.
-
-Payments Class
-Authorize a payment, capture an authorized payment, and refund an authorized payment.
-
-Personalization Class
-Get assigned personalization audiences that match the user context. Create, get, update, and delete an audience. Get personalization
-targets that match the user context, based on the assigned audiences that include the user. Create and update targets. Get and
-delete a target.
-
-PickTicket Class
-Create tickets to fulfill orders.
-
-QuestionAndAnswers Class
-Access question and answers suggestions.
-
-Recommendations Class
-Get and reject Chatter, custom, and static recommendations. Create, get, update, and delete custom recommendation audiences,
-custom recommendation definitions, and scheduled custom recommendations.
-
-RecordFilterCriteriaFamily Class
-Filter records on recordset filter criteria.
-
-Records Class
-Access information about record motifs, which are small icons used to distinguish record types in the Salesforce UI.
-
-RecordUi Class
-Get picklist values by record type.
-
-RegisterGuestBuyer Class
-Register a guest buyer for a webstore using an account ID, enabling a guest buyer to order on behalf of another buyer.
-
-Repricing Class
-Perform functions related to repricing orders in Order Management.
-
-ReturnOrder Class
-Process ReturnOrders in Order Management, limited to 2,000 requests per hour.
-
-Routing Class
-Route orders to inventory locations in Order Management.
-
-SalesforceInbox Class
-Access information about Automated Activity Capture, which is available in Einstein and Salesforce Inbox.
-
-Search Class
-Search objects using keywords or a natural language query.
-
-Sites Class
-Search an Experience Cloud site.
-
-SmartDataDiscovery Class
-Get predictions on Salesforce objects.
-
-
-### Apex Reference Guide ActionLinks Class
-
-SocialEngagement Class
-Manage information about social accounts or fan pages for social networks.
-
-Surveys Class
-Send survey invitations by email.
-
-TaxPlatform Class
-Apply or cancel tax.
-
-Topics Class
-Access information about topics, such as their descriptions, the number of people talking about them, related topics, and information
-about groups contributing to the topic. Update a topic’s name or description, merge topics, and add and remove topics from records
-and feed items.
-
-UserProfiles Class
-Access user profile data. The user profile data populates the profile page (also called the Chatter profile page). This data includes
-user information (such as address, manager, and phone number), some user capabilities (permissions), and a set of subtab apps,
-which are custom tabs on the profile page.
-
-Zones Class
-Access information about Chatter Answers zones in your organization. Zones organize questions into logical groups, with each zone
-having its own focus and unique questions.
-
-ConnectApi Input Classes
-Some `ConnectApi` methods take arguments that are instances of `ConnectApi` input classes.
-
-ConnectApi Output Classes
-Most `ConnectApi` methods return instances of `ConnectApi` output classes.
-
-ConnectApi Enums
-Enums specific to the `ConnectApi` namespace.
-
-ConnectApi Exceptions
-The `ConnectApi` namespace contains exception classes.
-
-ConnectApi Utilities
-The `ConnectApi` namespace contains a utility class.
-
-ConnectApi Release Notes
-Use the Salesforce Release Notes to learn about the most recent updates and changes to the ConnectApi namespace in Apex.
-
-### ActionLinks Class
-
-Create, delete, and get information about an action link group definition; get information about an action link group; get action link
-diagnostic information.
-
-Namespace
-
-ConnectApi
-
-Usage
-
-An action link is a button on a feed element. Clicking an action link can take a user to a Web page, initiate a file download, or invoke an
-API call to Salesforce or to an external server. An action link includes a URL and an HTTP method, and can include a request body and
-
-
-Apex Reference Guide ActionLinks Class
-
-header information, such as an OAuth token for authentication. Use action links to integrate Salesforce and third-party services into the
-feed so that users can drive productivity and accelerate innovation.
-
-There are two views of an action link and an action link group: the definition, and the context user’s view. The definition includes potentially
-sensitive information, such as authentication information. The context user’s view is filtered by visibility options and the values reflect
-the state of the context user.
-
-Action link definition can be sensitive to a third party (for example, OAuth bearer token headers). For this reason, only calls made from
-the Apex namespace that created the action link definition can read, modify, or delete the definition. In addition, the user making the
-call must have created the definition or have View All Data permission. Use these methods to operate on action link group definitions
-(which contain action link definitions).
-
-**•** createActionLinkGroupDefinition(communityId, actionLinkGroup)
-
-**•** deleteActionLinkGroupDefinition(communityId, actionLinkGroupId)
-
-**•** getActionLinkGroupDefinition(communityId, actionLinkGroupId)
-
-Use these methods to operate on a context user’s view of an action link or an action link group.
-
-**•** getActionLink(communityId, actionLinkId)
-
-**•** getActionLinkGroup(communityId, actionLinkGroupId)
-
-**•** getActionLinkDiagnosticInfo(communityId, actionLinkId)
-
-[For information about how to use action links, see Working with Action Links.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectapi_features_action_links.htm)
-
-#### ActionLinks Methods These methods are for ActionLinks . All methods are static.
-
-IN THIS SECTION:
-
-createActionLinkGroupDefinition(communityId, actionLinkGroup)
-Create an action link group definition. To associate an action link group with a feed element, first create an action link group definition.
-Then post a feed element with an associated actions capability.
-
-deleteActionLinkGroupDefinition(communityId, actionLinkGroupId)
-Delete an action link group definition. Deleting an action link group definition removes all references to it from feed elements.
-
-getActionLink(communityId, actionLinkId)
-Get information about an action link, including state for the context user.
-
-getActionLinkDiagnosticInfo(communityId, actionLinkId)
-Get diagnostic information returned when an action link executes. Diagnostic information is given only for users who can access
-the action link.
-
-getActionLinkGroup(communityId, actionLinkGroupId)
-Get information about an action link group including state for the context user.
-
-getActionLinkGroupDefinition(communityId, actionLinkGroupId)
-Get information about an action link group definition.
-
-```
-  createActionLinkGroupDefinition(communityId, actionLinkGroup)
-
-```
-
-Create an action link group definition. To associate an action link group with a feed element, first create an action link group definition.
-Then post a feed element with an associated actions capability.
-
-
-Apex Reference Guide ActionLinks Class
-
-API Version
-
-33.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.ActionLinkGroupDefinition createActionLinkGroupDefinition(String
-
-   communityId, ConnectApi.ActionLinkGroupDefinitionInput actionLinkGroup)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   actionLinkGroup
-```
-
-Type: `ConnectApi.ActionLinkGroupDefinitionInput`
-
-A `ConnectApi.ActionLinkGroupDefinitionInput` object that defines the action link group.
-
-Return Value
-
-Type: `ConnectApi.ActionLinkGroupDefinition`
-
-Usage
-
-An action link is a button on a feed element. Clicking an action link can take a user to a Web page, initiate a file download, or invoke an
-API call to Salesforce or to an external server. An action link includes a URL and an HTTP method, and can include a request body and
-header information, such as an OAuth token for authentication. Use action links to integrate Salesforce and third-party services into the
-feed so that users can drive productivity and accelerate innovation.
-
-All action links must belong to a group. Action links in a group are mutually exclusive and share some properties. Define standalone
-actions in their own action group.
-
-Information in the action link group definition can be sensitive to a third party (for example, OAuth bearer token headers). For this reason,
-only calls made from the Apex namespace that created the action link group definition can read, modify, or delete the definition. In
-addition, the user making the call must have created the definition or have View All Data permission.
-
-Note: Invoking `ApiAsync` action links from an app requires a call to set the status. However, there isn’t currently a way to set
-[the status of an action link using Apex. To set the status, use Connect REST API. See the Action Link resource in the Connect REST](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/)
-[API Developer Guidefor more information.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/)
-
-Example for Defining an Action Link and Posting with a Feed Element
-
-[For more information about this example, see Define an Action Link and Post with a Feed Element.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectapi_examples_define_post_action_link.htm)
-
-```
-   ConnectApi.ActionLinkGroupDefinitionInput actionLinkGroupDefinitionInput = new
-
-   ConnectApi.ActionLinkGroupDefinitionInput();
-
-   ConnectApi.ActionLinkDefinitionInput actionLinkDefinitionInput = new
-
-   ConnectApi.ActionLinkDefinitionInput();
-
-```
-
-
-Apex Reference Guide ActionLinks Class
-
-```
-   ConnectApi.RequestHeaderInput requestHeaderInput1 = new ConnectApi.RequestHeaderInput();
-
-   ConnectApi.RequestHeaderInput requestHeaderInput2 = new ConnectApi.RequestHeaderInput();
-
-   // Create the action link group definition.
-
-   actionLinkGroupDefinitionInput.actionLinks = New
-
-   List<ConnectApi.ActionLinkDefinitionInput>();
-
-   actionLinkGroupDefinitionInput.executionsAllowed =
-
-   ConnectApi.ActionLinkExecutionsAllowed.OncePerUser;
-
-   actionLinkGroupDefinitionInput.category = ConnectApi.PlatformActionGroupCategory.Primary;
-
-   // To Do : Verify that the date is in the future.
-
-   // Action link groups are removed from feed elements on the expiration date.
-
-   datetime myDate = datetime.newInstance(2016, 3, 1);
-
-   actionLinkGroupDefinitionInput.expirationDate = myDate;
-
-   // Create the action link definition.
-
-   actionLinkDefinitionInput.actionType = ConnectApi.ActionLinkType.Api;
-
-   actionLinkDefinitionInput.actionUrl = '/services/data/v33.0/chatter/feed-elements';
-
-   actionLinkDefinitionInput.headers = new List<ConnectApi.RequestHeaderInput>();
-
-   actionLinkDefinitionInput.labelKey = 'Post';
-
-   actionLinkDefinitionInput.method = ConnectApi.HttpRequestMethod.HttpPost;
-
-   actionLinkDefinitionInput.requestBody = '{\"subjectId\": \"me\",\"feedElementType\":
-
-   \"FeedItem\",\"body\": {\"messageSegments\": [{\"type\": \"Text\",\"text\": \"This is a
-
-   test post created via an API action link.\"}]}}';
-
-   actionLinkDefinitionInput.requiresConfirmation = true;
-
-   // To Do : Substitute an OAuth value for your Salesforce org.
-
-   requestHeaderInput1.name = 'Authorization';
-
-   requestHeaderInput1.value = 'OAuth
-
-   00DD00000007WNP!ARsAQCwoeV0zzAV847FTl4zF.85w.EwsPbUgXR4SAjsp ';
-
-   actionLinkDefinitionInput.headers.add(requestHeaderInput1);
-
-   requestHeaderInput2.name = 'Content-Type';
-
-   requestHeaderInput2.value = 'application/json';
-
-   actionLinkDefinitionInput.headers.add(requestHeaderInput2);
-
-   // Add the action link definition to the action link group definition.
-
-   actionLinkGroupDefinitionInput.actionLinks.add(actionLinkDefinitionInput);
-
-   // Instantiate the action link group definition.
-
-   ConnectApi.ActionLinkGroupDefinition actionLinkGroupDefinition =
-
-   ConnectApi.ActionLinks.createActionLinkGroupDefinition(Network.getNetworkId(),
-
-   actionLinkGroupDefinitionInput);
-
-   ConnectApi.FeedItemInput feedItemInput = new ConnectApi.FeedItemInput();
-
-   ConnectApi.FeedElementCapabilitiesInput feedElementCapabilitiesInput = new
-
-   ConnectApi.FeedElementCapabilitiesInput();
-
-   ConnectApi.AssociatedActionsCapabilityInput associatedActionsCapabilityInput = new
-
-   ConnectApi.AssociatedActionsCapabilityInput();
-
-   ConnectApi.MessageBodyInput messageBodyInput = new ConnectApi.MessageBodyInput();
-
-   ConnectApi.TextSegmentInput textSegmentInput = new ConnectApi.TextSegmentInput();
-
-   // Set the properties of the feedItemInput object.
-
-   feedItemInput.body = messageBodyInput;
-
-   feedItemInput.capabilities = feedElementCapabilitiesInput;
-
-```
-
-
-Apex Reference Guide ActionLinks Class
-
-```
-   feedItemInput.subjectId = 'me';
-
-   // Create the text for the post.
-
-   messageBodyInput.messageSegments = new List<ConnectApi.MessageSegmentInput>();
-
-   textSegmentInput.text = 'Click to post a feed item.';
-
-   messageBodyInput.messageSegments.add(textSegmentInput);
-
-   // The feedElementCapabilitiesInput object holds the capabilities of the feed item.
-
-   // Define an associated actions capability to hold the action link group.
-
-   // The action link group ID is returned from the call to create the action link group
-
-   definition.
-
-   feedElementCapabilitiesInput.associatedActions = associatedActionsCapabilityInput;
-
-   associatedActionsCapabilityInput.actionLinkGroupIds = new List<String>();
-
-   associatedActionsCapabilityInput.actionLinkGroupIds.add(actionLinkGroupDefinition.id);
-
-   // Post the feed item.
-
-   ConnectApi.FeedElement feedElement =
-
-   ConnectApi.ChatterFeeds.postFeedElement(Network.getNetworkId(), feedItemInput);
-
-```
-
-Example for Defining an Action Link in a Template and Posting with a Feed Element
-
-[For more information about this example, see Define an Action Link in a Template and Post with a Feed Element.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectapi_examples_define_post_action_link_template.htm)
-
-```
-   // Get the action link group template Id.
-
-   ActionLinkGroupTemplate template = [SELECT Id FROM ActionLinkGroupTemplate WHERE
-
-   DeveloperName='Doc_Example'];
-
-   // Add binding name-value pairs to a map.
-
-   // The names are defined in the action link template(s) associated with the action link
-
-   group template.
-
-   // Get them from Setup UI or SOQL.
-
-   Map<String, String> bindingMap = new Map<String, String>();
-
-   bindingMap.put('ApiVersion', 'v33.0');
-
-   bindingMap.put('Text', 'This post was created by an API action link.');
-
-   bindingMap.put('SubjectId', 'me');
-
-   // Create ActionLinkTemplateBindingInput objects from the map elements.
-
-   List<ConnectApi.ActionLinkTemplateBindingInput> bindingInputs = new
-
-   List<ConnectApi.ActionLinkTemplateBindingInput>();
-
-   for (String key : bindingMap.keySet()) {
-
-      ConnectApi.ActionLinkTemplateBindingInput bindingInput = new
-
-   ConnectApi.ActionLinkTemplateBindingInput();
-
-      bindingInput.key = key;
-
-      bindingInput.value = bindingMap.get(key);
-
-      bindingInputs.add(bindingInput);
-
-   }
-
-   // Set the template Id and template binding values in the action link group definition.
-
-   ConnectApi.ActionLinkGroupDefinitionInput actionLinkGroupDefinitionInput = new
-
-   ConnectApi.ActionLinkGroupDefinitionInput();
-
-   actionLinkGroupDefinitionInput.templateId = template.id;
-
-   actionLinkGroupDefinitionInput.templateBindings = bindingInputs;
-
-```
-
-
-Apex Reference Guide ActionLinks Class
-
-```
-   // Instantiate the action link group definition.
-
-   ConnectApi.ActionLinkGroupDefinition actionLinkGroupDefinition =
-
-    ConnectApi.ActionLinks.createActionLinkGroupDefinition(Network.getNetworkId(),
-
-   actionLinkGroupDefinitionInput);
-
-   ConnectApi.FeedItemInput feedItemInput = new ConnectApi.FeedItemInput();
-
-   ConnectApi.FeedElementCapabilitiesInput feedElementCapabilitiesInput = new
-
-   ConnectApi.FeedElementCapabilitiesInput();
-
-   ConnectApi.AssociatedActionsCapabilityInput associatedActionsCapabilityInput = new
-
-   ConnectApi.AssociatedActionsCapabilityInput();
-
-   ConnectApi.MessageBodyInput messageBodyInput = new ConnectApi.MessageBodyInput();
-
-   ConnectApi.TextSegmentInput textSegmentInput = new ConnectApi.TextSegmentInput();
-
-   // Define the FeedItemInput object to pass to postFeedElement
-
-   feedItemInput.body = messageBodyInput;
-
-   feedItemInput.capabilities = feedElementCapabilitiesInput;
-
-   feedItemInput.subjectId = 'me';
-
-   // The MessageBodyInput object holds the text in the post
-
-   messageBodyInput.messageSegments = new List<ConnectApi.MessageSegmentInput>();
-
-   textSegmentInput.text = 'Click to post a feed item.';
-
-   messageBodyInput.messageSegments.add(textSegmentInput);
-
-   // The FeedElementCapabilitiesInput object holds the capabilities of the feed item.
-
-   // For this feed item, we define an associated actions capability to hold the action link
-
-    group.
-
-   // The action link group ID is returned from the call to create the action link group
-
-   definition.
-
-   feedElementCapabilitiesInput.associatedActions = associatedActionsCapabilityInput;
-
-   associatedActionsCapabilityInput.actionLinkGroupIds = new List<String>();
-
-   associatedActionsCapabilityInput.actionLinkGroupIds.add(actionLinkGroupDefinition.id);
-
-   // Post the feed item.
-
-   ConnectApi.FeedElement feedElement =
-
-   ConnectApi.ChatterFeeds.postFeedElement(Network.getNetworkId(), feedItemInput);
-
-##### **`deleteActionLinkGroupDefinition(communityId, actionLinkGroupId)`**
-
-```
-
-Delete an action link group definition. Deleting an action link group definition removes all references to it from feed elements.
-
-API Version
-
-33.0
-
-Requires Chatter
-
-No
-
-
-Apex Reference Guide ActionLinks Class
-
-Signature
-
-```
-   public static void deleteActionLinkGroupDefinition(String communityId, String
-
-   actionLinkGroupId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   actionLinkGroupId
-```
-
-Type: String
-
-The ID of the action link group.
-
-Return Value
-
-Type: Void
-
-Usage
-
-Information in the action link group definition can be sensitive to a third party (for example, OAuth bearer token headers). For this reason,
-only calls made from the Apex namespace that created the action link group definition can read, modify, or delete the definition. In
-addition, the user making the call must have created the definition or have View All Data permission.
-
-##### **`getActionLink(communityId, actionLinkId)`**
-
-Get information about an action link, including state for the context user.
-
-API Version
-
-33.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.PlatformAction getActionLink(String communityId, String
-
-   actionLinkId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   actionLinkId
-```
-
-Type: String
-
-The ID of the action link.
-
-
-Apex Reference Guide ActionLinks Class
-
-Return Value
-
-Type: `ConnectApi.PlatformAction`
-
-##### **`getActionLinkDiagnosticInfo(communityId, actionLinkId)`**
-
-Get diagnostic information returned when an action link executes. Diagnostic information is given only for users who can access the
-action link.
-
-API Version
-
-33.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.ActionLinkDiagnosticInfo getActionLinkDiagnosticInfo(String
-
-   communityId, String actionLinkId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   actionLinkId
-```
-
-Type: String
-
-The ID of the action link.
-
-Return Value
-
-Type: `ConnectApi.ActionLinkDiagnosticInfo`
-
-##### **`getActionLinkGroup(communityId, actionLinkGroupId)`**
-
-Get information about an action link group including state for the context user.
-
-API Version
-
-33.0
-
-Requires Chatter
-
-No
-
-
-Apex Reference Guide ActionLinks Class
-
-Signature
-
-```
-   public static ConnectApi.PlatformActionGroup getActionLinkGroup(String communityId,
-
-   String actionLinkGroupId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   actionLinkGroupId
-```
-
-Type: String
-
-The ID of the action link group.
-
-Return Value
-
-Type: `ConnectApi.PlatformActionGroup`
-
-Usage
-
-All action links must belong to a group. Action links in a group are mutually exclusive and share some properties. Action link groups are
-accessible by clients, unlike action link group definitions.
-
-##### **`getActionLinkGroupDefinition(communityId, actionLinkGroupId)`**
-
-Get information about an action link group definition.
-
-API Version
-
-33.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.ActionLinkGroupDefinition getActionLinkGroupDefinition(String
-
-   communityId, String actionLinkGroupId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   actionLinkGroupId
-```
-
-Type: String
-
-The ID of the action link group.
-
-
-### Apex Reference Guide Announcements Class
-
-Return Value
-
-Type: `ConnectApi.ActionLinkGroupDefinition`
-
-Usage
-
-Information in the action link group definition can be sensitive to a third party (for example, OAuth bearer token headers). For this reason,
-only calls made from the Apex namespace that created the action link group definition can read, modify, or delete the definition. In
-addition, the user making the call must have created the definition or have View All Data permission.
-
-### Announcements Class
-
-Access information about announcements and post announcements.
-
-Namespace
-
-ConnectApi
-
-Usage
-
-Use the `ConnectApi.Announcements` class to get, create, update, and delete announcements. Use an announcement to
-highlight information. Users can discuss, like, and post comments on announcements. Deleting the feed post deletes the announcement.
-
-This image shows an announcement displayed in a group. Creating an announcement also creates a feed item with the announcement
-text.
-
-An announcement displays in a designated location in the Salesforce UI until 11:59 p.m. on its expiration date, unless it’s deleted or
-replaced by another announcement.
-
-
-Apex Reference Guide Announcements Class
-
-#### Announcements Methods These methods are for Announcements . All methods are static.
-
-All methods in this class require Chatter and are subject to the per user, per namespace, per hour rate limit.
-
-IN THIS SECTION:
-
-##### deleteAnnouncement(communityId, announcementId)
-
-Delete an announcement.
-
-getAnnouncement(communityId, announcementId)
-Get an announcement.
-
-getAnnouncements(communityId, parentId)
-Get the first page of announcements.
-
-getAnnouncements(communityId, parentId, pageParam, pageSize)
-Get a page of announcements.
-
-postAnnouncement(communityId, announcement)
-Post an announcement.
-
-updateAnnouncement(communityId, announcementId, expirationDate)
-Update the expiration date of an announcement.
-
-##### **`deleteAnnouncement(communityId, announcementId)`**
-
-Delete an announcement.
-
-API Version
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static void deleteAnnouncement(String communityId, String announcementId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   announcementId
-```
-
-Type: String
-
-An announcement ID, which has a prefix of 0BT.
-
-
-Apex Reference Guide Announcements Class
-
-Return Value
-
-Type: Void
-
-Usage
-
-##### To get a list of announcements in a group, call getAnnouncements(communityId, parentId) or
-
-`getAnnouncements(communityId, parentId, pageParam, pageSize)` .
-
-To post an announcement to a group, call `postAnnouncement(communityId, announcement)` .
-
-##### **`getAnnouncement(communityId, announcementId)`**
-
-Get an announcement.
-
-API Version
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.Announcement getAnnouncement(String communityId, String
-
-   announcementId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   announcementId
-```
-
-Type: String
-
-An announcement ID, which has a prefix of 0BT.
-
-Return Value
-
-Type: `ConnectApi.Announcement`
-
-Usage
-
-##### To get a list of announcements in a group, call getAnnouncements(communityId, parentId) or
-
-`getAnnouncements(communityId, parentId, pageParam, pageSize)` .
-
-To post an announcement to a group, call `postAnnouncement(communityId, announcement)` .
-
-##### **`getAnnouncements(communityId, parentId)`**
-
-Get the first page of announcements.
-
-
-Apex Reference Guide Announcements Class
-
-API Version
-
-36.0
-
-Available to Guest Users
-
-38.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.AnnouncementPage getAnnouncements(String communityId, String
-
-   parentId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   parentId
-```
-
-Type: String
-
-ID of the parent entity for the announcement, that is, a group ID when the announcement appears in a group.
-
-Return Value
-
-Type: `ConnectApi.AnnouncementPage`
-
-##### **`getAnnouncements(communityId, parentId, pageParam, pageSize)`**
-
-Get a page of announcements.
-
-API Version
-
-36.0
-
-Available to Guest Users
-
-38.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.AnnouncementPage getAnnouncements(String communityId, String
-
-   parentId, Integer pageParam, Integer pageSize)
-
-```
-
-
-Apex Reference Guide Announcements Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   parentId
-```
-
-Type: String
-
-ID of the parent entity for the announcement, that is, a group ID when the announcement appears in a group.
-
-```
-   pageParam
-```
-
-Type: Integer
-
-Number of the page you want returned. Starts at 0. If you pass in `null` or 0, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of announcements per page.
-
-Return Value
-
-Type: `ConnectApi.AnnouncementPage`
-
-##### **`postAnnouncement(communityId, announcement)`**
-
-Post an announcement.
-
-API Version
-
-36.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.Announcement postAnnouncement(String communityId,
-
-   ConnectApi.AnnouncementInput announcement)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   announcement
-```
-
-Type: `ConnectApi.AnnouncementInput`
-
-A `ConnectApi.AnnouncementInput` object.
-
-
-### Apex Reference Guide BotVersionActivation Class
-
-Return Value
-
-Type: `ConnectApi.Announcement`
-
-##### **`updateAnnouncement(communityId, announcementId, expirationDate)`**
-
-Update the expiration date of an announcement.
-
-API Version
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.Announcement updateAnnouncement(String communityId, String
-
-   announcementId, Datetime expirationDate)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   announcementId
-```
-
-Type: String
-
-An announcement ID, which has a prefix of 0BT.
-
-```
-   expirationDate
-```
-
-Type: Datetime
-
-The Salesforce UI displays an announcement until 11:59 p.m. on this date unless another announcement is posted first. The Salesforce
-UI ignores the time value in the `expirationDate` . However, you can use the time value to create your own display logic in your
-own UI.
-
-Return Value
-
-Type: `ConnectApi.Announcement`
-
-Usage
-
-To get a list of announcements in a group, call `getAnnouncements(communityId, parentId)` or
-
-`getAnnouncements(communityId, parentId, pageParam, pageSize)` .
-
-To post an announcement to a group, call `postAnnouncement(communityId, announcement)` .
-
-### BotVersionActivation Class
-
-Access and update activation information of a bot version.
-
-
-Apex Reference Guide BotVersionActivation Class
-
-Namespace
-
-ConnectApi
-
-#### BotVersionActivation Methods These methods are for BotVersionActivation . All methods are static.
-
-IN THIS SECTION:
-
-##### getVersionActivationInfo(botVersionId)
-
-Get the active or inactive status of the bot version.
-
-##### updateVersionStatus(botVersionId, status, postBody)
-
-Update the status of the specified bot version.
-
-##### **`getVersionActivationInfo(botVersionId)`**
-
-Get the active or inactive status of the bot version.
-
-API Version
-
-50.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.BotVersionActivationInfo getVersionActivationInfo(String
-
-   botVersionId)
-
-```
-
-Parameters
-
-```
-   botVersionId
-```
-
-Type: String
-
-ID of the bot version.
-
-Return Value
-
-Type: `ConnectApi.BotVersionActivationInfo`
-
-Usage
-
-To access this method, enable the bot feature, and the user must be an admin or have the Manage Bots or Manage Bots Training Data
-user permissions.
-
-##### **`updateVersionStatus(botVersionId, status, postBody)`**
-
-Update the status of the specified bot version.
-
-
-### Apex Reference Guide CdpActivation Class
-
-API Version
-
-50.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.BotVersionActivationInfo updateVersionStatus(String
-
-   botVersionId, ConnectApi.BotVersionActivationStatus status,
-
-   ConnectApi.BotVersionActivationInput postBody)
-
-```
-
-Parameters
-
-```
-   botVersionId
-```
-
-Type: String
-
-ID of the bot version.
-
-```
-   status
-```
-
-Type: `ConnectApi.BotVersionActivationStatus`
-
-Activation status of the bot version. Values are:
-
-**•** `Active`
-
-**•** `Inactive`
-
-Activation status must be specified in the _`status`_ or _`postBody`_ parameter.
-
-```
-   postBody
-```
-
-Type: `ConnectApi.BotVersionActivationInput`
-
-Parameters to update for the bot version. Activation status must be specified in the _`status`_ or _`postBody`_ parameter.
-
-Return Value
-
-Type: `ConnectApi.BotVersionActivationInfo`
-
-Usage
-
-To access this method, enable the bot feature, and the user must be an admin or have the Manage Bots or Manage Bots Training Data
-user permissions.
-
-### CdpActivation Class
-
-Get, create, update, and delete Data 360 activations.
-
-Namespace
-
-ConnectApi
-
-
-Apex Reference Guide CdpActivation Class
-
-#### CdpActivation Methods These methods are for CdpActivation . All methods are static.
-
-IN THIS SECTION:
-
-##### getActivations()
-
-Get activations.
-
-##### getActivationsPaginated(batchSize, offset, orderBy, filters)
-
-Get a paginated list of activations.
-
-createActivation(input)
-Create an activation.
-
-deleteActivation(activationId)
-Delete an activation.
-
-getActivation(activationId)
-Get an activation by ID.
-
-updateActivation(activationId, input)
-Update an activation by ID.
-
-##### **`getActivations()`**
-
-Get activations.
-
-API Version
-
-60.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.ActivationCollection getActivations()
-
-```
-
-Return Value
-
-Type: `ConnectApi.ActivationCollection`
-
-##### **`getActivationsPaginated(batchSize, offset, orderBy, filters)`**
-
-Get a paginated list of activations.
-
-API Version
-
-60.0
-
-
-Apex Reference Guide CdpActivation Class
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.ActivationCollection getActivationsPaginated(Integer batchSize,
-
-   Integer offset, String orderBy, String filters)
-
-```
-
-Parameters
-
-```
-   batchSize
-```
-
-Type: Integer
-
-Number of results to return. Values are from `1` through `200` . If unspecified, the default value is `20` .
-
-```
-   offset
-```
-
-Type: Integer
-
-Number of rows to skip before returning results. Must be greater than or equal to `0` . If unspecified, no rows are skipped.
-
-```
-   orderBy
-```
-
-Type: String
-
-Specify `createdDate` to sort results by creation date. If unspecified, items are returned by ID in ascending order.
-
-```
-   filters
-```
-
-Type: String
-
-Filter the result set to a more narrow scope or specific type. These filters are supported:
-
-**•** name (field name: name; description: name of the activation)
-
-**•** marketSegmentId (field name: segmentId; description: segment ID of the activation)
-
-**•** activationTargetId (field name: activationTarget.id; description: activation target ID of the activation)
-
-**•** activationRefreshType (field name: refreshType; description: refresh type of the activation; example: incremental)
-
-**•** activationStatus (field name: status; description: status of the activation, which accepts only the values in the status response
-field; example: active)
-
-Return Value
-
-Type: `ConnectApi.ActivationCollection`
-
-##### **`createActivation(input)`**
-
-Create an activation.
-
-API Version
-
-60.0
-
-Requires Chatter
-
-No
-
-
-Apex Reference Guide CdpActivation Class
-
-Signature
-
-```
-   public static ConnectApi.Activation createActivation(ConnectApi.ActivationDefinitionInput
-
-   input)
-
-```
-
-Parameters
-
-```
-   input
-```
-
-Type: `ConnectApi.ActivationDefinitionInput`
-
-Input representation for an activation.
-
-Return Value
-
-Type: `ConnectApi.Activation`
-
-##### **`deleteActivation(activationId)`**
-
-Delete an activation.
-
-Note: Before deleting an activation, ensure there are no downstream systems that expect data from it. After you delete an
-activation, Data 360 stops sending data to any downstream systems that are associated with the deleted activation. To identify
-the downstream system (activation target) that's associated with the activation, use the getActivation(activationId) resource. It
-provides the activation target details needed to evaluate the impact before deleting the activation.
-
-API Version
-
-60.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static Void deleteActivation(String activationId)
-
-```
-
-Parameters
-
-```
-   activationId
-```
-
-Type: String
-
-The unique identifier (ID) or developer name of a specific activation target.
-
-Return Value
-
-Type: Void
-
-##### **`getActivation(activationId)`**
-
-Get an activation by ID.
-
-
-Apex Reference Guide CdpActivation Class
-
-API Version
-
-60.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.Activation getActivation(String activationId)
-
-```
-
-Parameters
-
-```
-   activationId
-```
-
-Type: String
-
-The unique identifier (ID) or developer name of a specific activation target.
-
-Return Value
-
-Type: `ConnectApi.Activation`
-
-##### **`updateActivation(activationId, input)`**
-
-Update an activation by ID.
-
-API Version
-
-60.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.Activation updateActivation(String activationId,
-
-   ConnectApi.ActivationDefinitionInput input)
-
-```
-
-Parameters
-
-```
-   activationId
-```
-
-Type: String
-
-The unique identifier (ID) or developer name of a specific activation target.
-
-```
-   input
-```
-
-Type: `ConnectApi.ActivationDefinitionInput`
-
-Input representation for an activation.
-
-
-### Apex Reference Guide CdpActivationExternalPlatform Class
-
-Return Value
-
-Type: `ConnectApi.Activation`
-
-### CdpActivationExternalPlatform Class
-
-Get Data 360 activation external platforms.
-
-Namespace
-
-ConnectApi
-
-#### CdpActivationExternalPlatform Methods
-
-### These methods are for CdpActivationExternalPlatform . All methods are static.
-
-IN THIS SECTION:
-
-##### getActivationExternalPlatforms()
-
-Get a list of all activation external platforms.
-
-##### getActivationExternalPlatformsPaginated(limit, offset, orderBy)
-
-Get a paginated list of activation external platforms. Repeat the call for additional external platform results.
-
-##### **`getActivationExternalPlatforms()`**
-
-Get a list of all activation external platforms.
-
-API Version
-
-64.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.ActivationExternalPlatformCollection
-
-##### `getActivationExternalPlatforms()`
-
-```
-
-Return Value
-
-Type: `ConnectApi.ActivationExternalPlatformCollection`
-
-##### **`getActivationExternalPlatformsPaginated(limit, offset, orderBy)`**
-
-Get a paginated list of activation external platforms. Repeat the call for additional external platform results.
-
-
-### Apex Reference Guide CdpActivationTarget Class
-
-API Version
-
-64.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.ActivationExternalPlatformCollection
-
-   getActivationExternalPlatformsPaginated(Integer limit, Integer offset, String orderBy)
-
-```
-
-Parameters
-
-```
-   limit
-```
-
-Type: Integer
-
-Maximum number of external platform to return. Valid values are from `1` to `20` .
-
-```
-   offset
-```
-
-Type: Integer
-
-Number of external platforms to skip before returning the first result. The value must be greater than or equal to `0` .
-
-```
-   orderBy
-```
-
-Type: String
-
-Order in which to sort the results based on the `createdDate` field. Specify the field name followed by `asc` for ascending order
-or `desc` for descending order. If you specify only the field name, results are sorted in ascending order. For example, `createdDate`
-`asc` and `createdDate` yield the same results.
-
-Return Value
-
-Type: `ConnectApi.ActivationExternalPlatformCollection`
-
-### CdpActivationTarget Class
-
-Get, create, and update Data 360 activation targets.
-
-Namespace
-
-ConnectApi
-
-#### CdpActivationTarget Methods
-
-### These methods are for CdpActivationTarget . All methods are static.
-
-IN THIS SECTION:
-
-createActivationTarget(input)
-Create an activation target.
-
-
-Apex Reference Guide CdpActivationTarget Class
-
-##### getActivationTarget(activationTargetId)
-
-Get an activation target by ID.
-
-getActivationTargets()
-Get a list of activation targets.
-
-getActivationTargetsPaginated(batchSize, offset, orderBy, filters)
-Get a paginated list of activation targets.
-
-updateActivationTarget(activationTargetId, input)
-Update an activation target.
-
-##### **`createActivationTarget(input)`**
-
-Create an activation target.
-
-API Version
-
-60.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.ActivationTarget
-
-   createActivationTarget(ConnectApi.ActivationTargetInput input)
-
-```
-
-Parameters
-
-```
-   input
-```
-
-Type: `ConnectApi.ActivationTargetInput`
-
-Input details for the activation target.
-
-Return Value
-
-Type: `ConnectApi.ActivationTarget`
-
-##### **`getActivationTarget(activationTargetId)`**
-
-Get an activation target by ID.
-
-API Version
-
-60.0
-
-Requires Chatter
-
-No
-
-
-Apex Reference Guide CdpActivationTarget Class
-
-Signature
-
-```
-   public static ConnectApi.ActivationTarget getActivationTarget(String activationTargetId)
-
-```
-
-Parameters
-
-```
-   activationTargetId
-```
-
-Type: String
-
-ID of the activation target.
-
-Return Value
-
-Type: `ConnectApi.ActivationTarget`
-
-##### **`getActivationTargets()`**
-
-Get a list of activation targets.
-
-API Version
-
-60.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.ActivationTargetCollection getActivationTargets()
-
-```
-
-Return Value
-
-Type: `ConnectApi.ActivationTargetCollection`
-
-##### **`getActivationTargetsPaginated(batchSize, offset, orderBy, filters)`**
-
-Get a paginated list of activation targets.
-
-API Version
-
-60.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.ActivationTargetCollection getActivationTargetsPaginated(Integer
-
-   batchSize, Integer offset, String orderBy, String filters)
-
-```
-
-
-Apex Reference Guide CdpActivationTarget Class
-
-Parameters
-
-```
-   batchSize
-```
-
-Type: Integer
-
-Number of results to return. Values are from `1` through `200` . For example, specify `20` to return 20 results.
-
-```
-   offset
-```
-
-Type: Integer
-
-Number of rows to skip before returning results. Must be greater than or equal to `0` . For example, specify `0` to skip no rows.
-
-```
-   orderBy
-```
-
-Type: String
-
-Sort order for the result set. Results are ordered by creation date. Specify `createddate` to order results in ascending order. Specify
-`createddate desc` to order results in descending order.
-
-```
-   filters
-```
-
-Type: String
-
-Filter the result set to a more narrow scope or specific type. These filters are supported:
-
-**•** `masterLabel`     - Matches the field `name`, which is a string that identifies the name of the activation target.
-
-**•** `targetStatus`     - Matches the field `status`, which is an enum that indicates the status of the activation target. Values must
-match those listed in the `status` response field.
-
-**•** `connectionType`     - Matches the field `platformType`, which is an enum that indicates the platform type of the activation
-target. Values must match those listed in the `platformType` response field.
-
-**•** `platformName`     - Matches the field `platformName`, which is a string that indentifies the platform name of the activation
-target.
-
-These are examples of filter specifications:
-
-**•** `masterLabel in Target002`
-
-**•** `targetStatus in active`
-
-**•** `platformName in Customer Data Platform`
-
-**•** `targetStatus in active AND platformName in Amazon S3`
-
-Return Value
-
-Type: `ConnectApi.ActivationTargetCollection`
-
-##### **`updateActivationTarget(activationTargetId, input)`**
-
-Update an activation target.
-
-API Version
-
-60.0
-
-Requires Chatter
-
-No
-
-
-### Apex Reference Guide CdpAudienceDMO Class
-
-Signature
-
-```
-   public static ConnectApi.ActivationTarget updateActivationTarget(String
-
-   activationTargetId, ConnectApi.ActivationTargetInput input)
-
-```
-
-Parameters
-
-```
-   activationTargetId
-```
-
-Type: String
-
-ID of the activation target.
-
-```
-   input
-```
-
-Type: `ConnectApi.ActivationTargetInput`
-
-Input details for the activation target.
-
-Return Value
-
-Type: `ConnectApi.ActivationTarget`
-
-### CdpAudienceDMO Class
-
-Get activation records from Data 360 Audience Data Model Objects (DMOs).
-
-Namespace
-
-ConnectApi
-
-#### CdpAudienceDMO Methods
-
-### These methods are for CdpAudienceDMO . All methods are static.
-
-IN THIS SECTION:
-
-##### getActivationData(activationId)
-
-Get a list of all activation records from Audience Data Model Objects (DMOs).
-
-##### **`getActivationData(activationId)`**
-
-Get a list of all activation records from Audience Data Model Objects (DMOs).
-
-API Version
-
-60.0
-
-Requires Chatter
-
-No
-
-
-### Apex Reference Guide CdpCalculatedInsight Class
-
-Signature
-
-```
-   public static ConnectApi.AudienceDMOCollection getActivationData(String activationId)
-
-```
-
-Parameters
-
-```
-   activationId
-```
-
-Type: String
-
-The unique identifier (ID) or developer name of a specific activation target.
-
-Return Value
-
-Type: `ConnectApi.AudienceDMOCollection`
-
-### CdpCalculatedInsight Class
-
-Create, delete, get, run, and update Data 360 calculated insights.
-
-Namespace
-
-ConnectApi
-
-#### CdpCalculatedInsight Methods
-
-### These methods are for CdpCalculatedInsight . All methods are static.
-
-IN THIS SECTION:
-
-##### createCalculatedInsight(input)
-
-Create a calculated insight.
-
-deleteCalculatedInsight(apiName)
-Delete a calculated insight.
-
-getCalculatedInsight(apiName)
-Get a calculated insight.
-
-getCalculatedInsights(definitionType, batchSize, offset, orderby, dataspace)
-Get calculated insights.
-
-getCalculatedInsights(definitionType, batchSize, offset, orderby, dataspace, pageToken)
-Get a page of calculated insights.
-
-runCalculatedInsight(apiName)
-Run a calculated insight.
-
-updateCalculatedInsight(apiName, input)
-Update a calculated insight.
-
-##### **`createCalculatedInsight(input)`**
-
-Create a calculated insight.
-
-
-Apex Reference Guide CdpCalculatedInsight Class
-
-API Version
-
-57.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpCalculatedInsightOutput
-
-   createCalculatedInsight(ConnectApi.CdpCalculatedInsightInput input)
-
-```
-
-Parameters
-
-```
-   input
-```
-
-Type: `ConnectApi.CdpCalculatedInsightInput`
-
-Input representation for a calculated insight.
-
-Return Value
-
-Type: `ConnectApi.CdpCalculatedInsightOutput`
-
-##### **`deleteCalculatedInsight(apiName)`**
-
-Delete a calculated insight.
-
-API Version
-
-57.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static Void deleteCalculatedInsight(String apiName)
-
-```
-
-Parameters
-
-```
-   apiName
-```
-
-Type: String
-
-API name of the calculated insight to delete.
-
-Return Value
-
-Type: Void
-
-
-Apex Reference Guide CdpCalculatedInsight Class
-
-##### **`getCalculatedInsight(apiName)`**
-
-Get a calculated insight.
-
-API Version
-
-57.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpCalculatedInsightOutput getCalculatedInsight(String apiName)
-
-```
-
-Parameters
-
-```
-   apiName
-```
-
-Type: String
-
-API name of the calculated insight to get.
-
-Return Value
-
-Type: `ConnectApi.CdpCalculatedInsightOutput`
-
-##### **`getCalculatedInsights(definitionType, batchSize, offset, orderby, dataspace)`**
-
-Get calculated insights.
-
-API Version
-
-56.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpCalculatedInsightPage getCalculatedInsights(String
-
-   definitionType, Integer batchSize, Integer offset, String orderby, String dataspace)
-
-```
-
-Parameters
-
-```
-   definitionType
-```
-
-Type: String
-
-Definition type of the calculated insight. Values are:
-
-**•** `CALCULATED_METRIC`
-
-**•** `CALCULATED_METRIC`
-
-
-Apex Reference Guide CdpCalculatedInsight Class
-
-**•** `CALCULATED_METRIC`
-
-```
-   batchSize
-```
-
-Type: Integer
-
-Number of items to return. Values are from 1–200. If unspecified, the default value is `25` .
-
-```
-   offset
-```
-
-Type: Integer
-
-Number of rows to skip before returning results. If unspecified, no rows are skipped.
-
-```
-   orderby
-```
-
-Type: String
-
-Sort order for the result set, such as `GenderId__c ASC,Occupation__c DESC` . If unspecified, items are returned in the
-order they are retrieved.
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the data space.
-
-Return Value
-
-Type: `ConnectApi.CdpCalculatedInsightPage`
-
-##### **`getCalculatedInsights(definitionType, batchSize, offset, orderby, dataspace,`**
-
-```
-  pageToken)
-
-```
-
-Get a page of calculated insights.
-
-API Version
-
-57.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpCalculatedInsightPage getCalculatedInsights(String
-
-   definitionType, Integer batchSize, Integer offset, String orderby, String dataspace,
-
-   String pageToken)
-
-```
-
-Parameters
-
-```
-   definitionType
-```
-
-Type: String
-
-Definition type of the calculated insight. Values are:
-
-**•** `CALCULATED_METRIC`
-
-**•** `CALCULATED_METRIC`
-
-**•** `CALCULATED_METRIC`
-
-
-Apex Reference Guide CdpCalculatedInsight Class
-
-```
-   batchSize
-```
-
-Type: Integer
-
-Number of items to return. Values are from 1–200. If unspecified, the default value is `25` .
-
-```
-   offset
-```
-
-Type: Integer
-
-Number of rows to skip before returning results. If unspecified, no rows are skipped.
-
-```
-   orderby
-```
-
-Type: String
-
-Sort order for the result set, such as `GenderId__c ASC,Occupation__c DESC` . If unspecified, items are returned in the
-order they are retrieved.
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the data space.
-
-```
-   pageToken
-```
-
-Type: String
-
-Specifies the page token to use to view a page of information. Page tokens are returned as part of the response class, such as
-`currentPageToken` or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-Return Value
-
-Type: `ConnectApi.CdpCalculatedInsightPage`
-
-##### **`runCalculatedInsight(apiName)`**
-
-Run a calculated insight.
-
-API Version
-
-57.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpCalculatedInsightStandardActionesponseRepresentation
-
-   runCalculatedInsight(String apiName)
-
-```
-
-Parameters
-
-```
-   apiName
-```
-
-Type: String
-
-API name of the calculated insight to run.
-
-
-### Apex Reference Guide CdpConnection Class
-
-Return Value
-
-Type: `ConnectApi.CdpCalculatedInsightStandardActionResponseRepresentation`
-
-##### **`updateCalculatedInsight(apiName, input)`**
-
-Update a calculated insight.
-
-API Version
-
-57.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpCalculatedInsightOutput updateCalculatedInsight(String
-
-   apiName, ConnectApi.CdpCalculatedInsightInput input)
-
-```
-
-Parameters
-
-```
-   apiName
-```
-
-Type: String
-
-API name of the calculated insight to update.
-
-```
-   input
-```
-
-Type: `ConnectApi.CdpCalculatedInsightInput`
-
-Input representation for a calculated insight.
-
-Return Value
-
-Type: `ConnectApi.CdpCalculatedInsightOutput`
-
-### CdpConnection Class
-
-Get database schemas for a Data 360 connection.
-
-Namespace
-
-ConnectApi
-
-#### CdpConnection Methods
-
-### These methods are for CdpConnection . All methods are static.
-
-
-### Apex Reference Guide CdpDataSpace Class
-
-IN THIS SECTION:
-
-##### getDatabaseSchemas(connectionId, getDatabaseSchemasInput)
-
-Get a list of database schemas for a connection.
-
-##### **`getDatabaseSchemas(connectionId, getDatabaseSchemasInput)`**
-
-Get a list of database schemas for a connection.
-
-API Version
-
-63.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.ConnectionDbSchemaCollection getDatabaseSchemas(String
-
-   connectionId, ConnectApi.ConnectionDbSchemaCollectionInputRepresentation
-
-   getDatabaseSchemasInput)
-
-```
-
-Parameters
-
-```
-   connectionId
-```
-
-Type: String
-
-ID for the connection.
-
-```
-   getDatabaseSchemasInput
-```
-
-Type: `ConnectApi.ConnectionDbSchemaCollectionInputRepresentation`
-
-Input representation for a database schema collection.
-
-Return Value
-
-Type: `ConnectApi.ConnectionDbSchemaCollection`
-
-### CdpDataSpace Class
-
-Get Data 360 data spaces.
-
-Namespace
-
-ConnectApi
-
-#### CdpDataSpace Methods
-
-### These methods are for CdpDataSpace . All methods are static.
-
-
-Apex Reference Guide CdpDataSpace Class
-
-IN THIS SECTION:
-
-##### getAllDataSpaces(batchSize, offset, orderBy)
-
-Get a collection of all data spaces that a user is assigned to.
-
-##### getDataSpace(idOrName)
-
-Get a data space by ID or API name.
-
-##### **`getAllDataSpaces(batchSize, offset, orderBy)`**
-
-Get a collection of all data spaces that a user is assigned to.
-
-API Version
-
-62.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.DataSpaceCollectionRepresentation getAllDataSpaces(Integer
-
-   batchSize, Integer offset, String orderBy)
-
-```
-
-Parameters
-
-```
-   batchSize
-```
-
-Type: Integer
-
-Number of results to return in each response. Values are from `1` through `4999` . For example, specify `50` to return 50 results.
-
-```
-   offset
-```
-
-Type: Integer
-
-Number of rows to skip before returning results. Must be greater than or equal to `0` . For example, specify `0` to skip no rows.
-
-```
-   orderBy
-```
-
-Type: String
-
-Sort order for the result set. Results are ordered by ID. Specify `id` to order results in ascending order. Specify `id desc` to order
-results in descending order.
-
-Return Value
-
-Type: `ConnectApi.DataSpaceCollectionRepresentation`
-
-##### **`getDataSpace(idOrName)`**
-
-Get a data space by ID or API name.
-
-API Version
-
-62.0
-
-
-### Apex Reference Guide CdpDataStreams Class
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.DataSpaceInfoRepresentation getDataSpace(String idOrName)
-
-```
-
-Parameters
-
-```
-   idOrName
-```
-
-Type: String
-
-ID or API name of the data space.
-
-Return Value
-
-Type: `ConnectApi.DataSpaceInfoRepresentation`
-
-### CdpDataStreams Class
-
-Run Data 360 data streams.
-
-Namespace
-
-ConnectApi
-
-#### CdpDataStreams Methods
-
-### These methods are for CdpDataStreams . All methods are static.
-
-IN THIS SECTION:
-
-##### runDataStream(recordIdOrDeveloperName, interactive)
-
-Start a data stream run to read from a source and update a data lake object.
-
-##### **`runDataStream(recordIdOrDeveloperName, interactive)`**
-
-Start a data stream run to read from a source and update a data lake object.
-
-API Version
-
-62.0
-
-Requires Chatter
-
-No
-
-
-### Apex Reference Guide CdpIdentityResolution Class
-
-Signature
-
-```
-   public static ConnectApi.DataStreamActionResponse runDataStream(String
-
-   recordIdOrDeveloperName, Boolean interactive)
-
-```
-
-Parameters
-
-```
-   recordIdOrDeveloperName
-```
-
-Type: String
-
-Record ID or developer name of the data stream.
-
-```
-   interactive
-```
-
-Type: Boolean
-
-Indicates whether to perform fast format conversion for the data stream ( `true` ) or not ( `false` ).
-
-Return Value
-
-Type: `ConnectApi.DataStreamActionResponseOutput`
-
-### CdpIdentityResolution Class
-
-Create, delete, get, run, and update Data 360 identity resolution rulesets.
-
-Namespace
-
-ConnectApi
-
-#### CdpIdentityResolution Methods
-
-### These methods are for CdpIdentityResolution . All methods are static.
-
-IN THIS SECTION:
-
-createIdentityResolution(input)
-Create an identity resolution ruleset.
-
-deleteIdentityResolution(identityResolution)
-Delete an identity resolution ruleset.
-
-getIdentityResolution(identityResolution)
-Get an identity resolution ruleset.
-
-getIdentityResolutions()
-Get identity resolution rulesets.
-
-runIdentityResolutionNow(identityResolution, input)
-Trigger an immediate identity resolution ruleset job run.
-
-updateIdentityResolution(identityResolution, input)
-Update an identity resolution ruleset.
-
-
-Apex Reference Guide CdpIdentityResolution Class
-
-##### **`createIdentityResolution(input)`**
-
-Create an identity resolution ruleset.
-
-API Version
-
-57.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpIdentityResolutionOutput
-
-   createIdentityResolution(ConnectApi.CdpIdentityResolutionConfigInput input)
-
-```
-
-Parameters
-
-```
-   input
-```
-
-Type: `ConnectApi.CdpIdentityResolutionConfigInput`
-
-Input representation for creating an identity resolution ruleset.
-
-Return Value
-
-Type: `ConnectApi.CdpIdentityResolutionOutput`
-
-##### **`deleteIdentityResolution(identityResolution)`**
-
-Delete an identity resolution ruleset.
-
-API Version
-
-57.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static Void deleteIdentityResolution(String identityResolution)
-
-```
-
-Parameters
-
-```
-   identityResolution
-```
-
-Type: String
-
-Developer name or ID of the ruleset.
-
-
-Apex Reference Guide CdpIdentityResolution Class
-
-Return Value
-
-Type: Void
-
-##### **`getIdentityResolution(identityResolution)`**
-
-Get an identity resolution ruleset.
-
-API Version
-
-57.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpIdentityResolutionOutput getIdentityResolution(String
-
-   identityResolution)
-
-```
-
-Parameters
-
-```
-   identityResolution
-```
-
-Type: String
-
-Developer name or ID of the ruleset.
-
-Return Value
-
-Type: `ConnectApi.CdpIdentityResolutionOutput`
-
-##### **`getIdentityResolutions()`**
-
-Get identity resolution rulesets.
-
-API Version
-
-57.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpIdentityResolutionsOutput getIdentityResolutions()
-
-```
-
-Return Value
-
-Type: `ConnectApi.CdpIdentityResolutionsOutput`
-
-
-Apex Reference Guide CdpIdentityResolution Class
-
-##### **`runIdentityResolutionNow(identityResolution, input)`**
-
-Trigger an immediate identity resolution ruleset job run.
-
-API Version
-
-57.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpIdentityResolutionRunNowOutput
-
-   runIdentityResolutionNow(String identityResolution,
-
-   ConnectApi.CdpIdentityResolutionRunNowInput input)
-
-```
-
-Parameters
-
-```
-   identityResolution
-```
-
-Type: String
-
-Developer name of the ruleset.
-
-```
-   input
-```
-
-Type: `ConnectApi.CdpIdentityResolutionRunNowInput`
-
-Input representation for running an identity resolution ruleset job on demand.
-
-Return Value
-
-Type: `ConnectApi.CdpIdentityResolutionRunNowOutput`
-
-##### **`updateIdentityResolution(identityResolution, input)`**
-
-Update an identity resolution ruleset.
-
-API Version
-
-57.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpIdentityResolutionOutput updateIdentityResolution(String
-
-   identityResolution, ConnectApi.CdpIdentityResolutionConfigPatchInput input)
-
-```
-
-
-### Apex Reference Guide CdpMachineLearning Class
-
-Parameters
-
-```
-   identityResolution
-```
-
-Type: String
-
-Developer name or ID of the ruleset.
-
-```
-   input
-```
-
-Type: `ConnectApi.CdpIdentityResolutionConfigPatchInput`
-
-Input representation for updating an identity resolution ruleset.
-
-Return Value
-
-Type: `ConnectApi.CdpIdentityResolutionOutput`
-
-### CdpMachineLearning Class
-
-Make a machine-learning prediction with Data 360.
-
-Namespace
-
-ConnectApi
-
-#### CdpMachineLearning Methods
-
-### These methods are for CdpMachineLearning . All methods are static.
-
-IN THIS SECTION:
-
-##### predict(predict)
-
-Make a prediction using a specified model and parameters. This request is synchronous.
-
-##### **`predict(predict)`**
-
-Make a prediction using a specified model and parameters. This request is synchronous.
-
-API Version
-
-59.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpMlPredictResult predict(ConnectApi.CdpMlBasePredictInput
-
-   predict)
-
-```
-
-
-### Apex Reference Guide CdpQuery Class
-
-Parameters
-
-```
-   predict
-```
-
-Type: `ConnectApi.CdpMlBasePredictInput`
-
-Input representation for a prediction.
-
-Return Value
-
-Type: `ConnectApi.CdpMlPredictResult`
-
-### CdpQuery Class
-
-Get Data 360 metadata and query data.
-
-Namespace
-
-ConnectApi
-
-#### CdpQuery Methods
-
-### These methods are for CdpQuery . All methods are static.
-
-IN THIS SECTION:
-
-getAllMetadata()
-Get all metadata, including Calculated Insights, Engagement, Profile, and other objects, as well as their relationships to other objects.
-
-getAllMetadata(entityType, entityCategory, entityName)
-Get all metadata, filtering for entity type, category, and name.
-
-getAllMetadata(entityType, entityCategory, entityName, dataspace)
-Get all metadata, filtering for entity type, category, name, and data space.
-
-getDataGraphData(dataGraphEntityName, id)
-Query a data graph in the default data space. For real-time data graphs, the method attempts to retrieve data from the real-time
-data graph but falls back to the standard data graph if the real-time data graph is unavailable.
-
-getDataGraphData(dataGraphEntityName, id, dataspace)
-Query a data graph in a specified data space. For real-time data graphs, the method attempts to retrieve data from the real-time
-data graph but falls back to the standard data graph if the real-time data graph is unavailable.
-
-getDataGraphData(dataGraphEntityName, id, live)
-Query a data graph by performing a live lookup in the default data space. For real-time data graphs, the method attempts to retrieve
-data from the real-time data graph but falls back to the standard data graph if the real-time data graph is unavailable.
-
-getDataGraphData(dataGraphEntityName, id, dataspace, live)
-Query a data graph by performing a live lookup in a specified data space. For real-time data graphs, the method attempts to retrieve
-data from the real-time data graph but falls back to the standard data graph if the real-time data graph is unavailable.
-
-getDataGraphDataWithLookupKeys(dataGraphEntityName, lookupKeys)
-Query a data graph by the primary key of either the primary Data Model Object (DMO) or the Individual linked DMO. Get the data
-from the default data space. For real-time data graphs, the method attempts to retrieve data from the real-time data graph but falls
-back to the standard data graph if the real-time data graph is unavailable.
-
-
-Apex Reference Guide CdpQuery Class
-
-getDataGraphDataWithLookupKeys(dataGraphEntityName, lookupKeys, dataspace)
-Query a data graph by the primary key of either the primary Data Model Object (DMO) or the Individual linked DMO. Get the data
-from a specified data space. For real-time data graphs, the method attempts to retrieve data from the real-time data graph but falls
-back to the standard data graph if the real-time data graph is unavailable.
-
-getDataGraphDataWithLookupKeys(dataGraphEntityName, lookupKeys, dataspace, noCache)
-Query a data graph by the primary key of either the primary Data Model Object (DMO) or the Individual linked DMO. Get the data
-from a specified data space. Get data from a standard or real-time data graph. For real-time data graphs, the method attempts to
-retrieve data from the real-time data graph but falls back to the standard data graph if the real-time data graph is unavailable.
-
-getDataGraphMetadata()
-Retrieve metadata from all data graphs in the default data space. Retrieves data from both standard and real-time data graphs.
-
-getDataGraphMetadata(dataGraphEntityName)
-Retrieve metadata from a specified data graph in the default data space. Retrieves data from both standard and real-time data graphs.
-
-getDataGraphMetadata(dataGraphEntityName, dataspace)
-Retrieve metadata from a specified data graph in a specified data space. Retrieves data from both standard and real-time data graphs.
-
-getInsightsMetadata()
-Get Insight metadata, including Calculated Insight objects, their dimensions and measures.
-
-getInsightsMetadata(ciName)
-Get metadata for a Calculated Insight object. Metadata includes dimensions and measures.
-
-getInsightsMetadata(ciName, dataspace)
-Get metadata for a Calculated Insight object and specify the data space. Metadata includes dimensions and measures.
-
-getMetadataEntities()
-Get a list of metadata entities and retrieve only essential fields to optimize performance at scale.
-
-getMetadataEntities(entityCategory, entityType)
-Get a list of metadata entities and retrieve only essential fields to optimize performance at scale. Specify the entity category and
-type.
-
-getMetadataEntities(entityCategory, entityType, dataspace)
-Get a list of metadata entities and retrieve only essential fields to optimize performance at scale. Specify the entity category, type,
-and data space.
-
-getProfileMetadata()
-Get metadata for data model objects in the profile category, including Individual, Contact Point Email, Unified Individual, and Contact
-Point Address objects. Metadata includes the objects, their fields, and category.
-
-getProfileMetadata(dataModelName)
-Get metadata for a data model object in the profile category, such as Individual, Contact Point Email, Unified Individual, and Contact
-Point Address. Metadata includes the list of fields, data types, and indexes available for lookup.
-
-getProfileMetadata(dataModelName, dataspace)
-Get metadata for a data model object in the profile category, such as Individual, Contact Point Email, Unified Individual, and Contact
-Point Address. Also, specify the data space. Metadata includes the list of fields, data types, and indexes available for lookup.
-
-queryANSISql(input)
-Synchronously query data across data model, lake, unified, and linked objects. This query returns up to 49,999 rows.
-
-queryANSISql(input, batchSize, offset, orderby)
-Synchronously query data across data model, lake, unified, and linked objects. Specify batch size, offset, and order of the results. This
-query returns up to 49,999 rows.
-
-
-Apex Reference Guide CdpQuery Class
-
-queryANSISql(input, batchSize, offset, orderby, dataspace)
-Synchronously query data across data model, lake, unified, and linked objects. Specify batch size, offset, order of the results, and data
-space. This query returns up to 49,999 rows.
-
-queryAnsiSqlV2(input)
-Query data across data model, lake, unified, and linked objects.
-
-queryAnsiSqlV2(input, dataspace)
-Query data across data model, lake, unified, and linked objects. Also, specify the data space.
-
-nextBatchAnsiSqlV2(nextBatchId)
-Get the next batch of data across data model, lake, unified, and linked objects.
-
-nextBatchAnsiSqlV2(nextBatchId, dataspace)
-Get the next batch of data across data model, lake, unified, and linked objects. Also, specify the data space.
-
-querySql(input)
-Submit an SQL query request for execution and retrieve the first chunk of data.
-
-querySql(input, dataspace)
-Submit an SQL query request for execution and specify the data space.
-
-querySql(input, workloadName, dataspace)
-Submit an SQL query request for execution and specify the workload name and data space.
-
-querySqlRows(queryId, offset, rowLimit)
-Get additional query results that weren't returned in the initial request. Paginate through existing query results by specifying the
-offset and row limit. Results are available for up to 24 hours.
-
-querySqlRows(queryId, offset, rowLimit, omitSchema)
-Get additional query results that weren't returned in the initial request. Paginate through existing query results by specifying the
-offset and row limit. Also, specify whether to include metadata in the response or not. Results are available for up to 24 hours.
-
-querySqlRows(queryId, offset, rowLimit, dataspace)
-Get additional query results that weren’t returned in the initial request. Paginate through existing query results by specifying the
-offset and row limit. Also, specify the data space. Results are available for up to 24 hours.
-
-querySqlRows(queryId, offset, rowLimit, omitSchema, dataspace)
-Get additional query results that weren't returned in the initial request. Paginate through existing query results by specifying the
-offset and row limit. Also, specify the data space and whether or not to exclude metadata from the response. Results are available
-for up to 24 hours.
-
-querySqlRows(queryId, offset, rowLimit, workloadName, dataspace)
-Get additional query results that weren't returned in the initial request. Paginate through existing query results by specifying the
-offset and row limit. Also, specify the workload name and data space. Results are available for up to 24 hours.
-
-querySqlRows(queryId, offset, rowLimit, omitSchema, workloadName, dataspace)
-Get additional query results that weren't returned in the initial request. Paginate through existing query results by specifying the
-offset and row limit. Also, specify the workload name, data space, and whether or not to exclude metadata from the response. Results
-are available for up to 24 hours.
-
-cancelQuerySql(queryId)
-Delete the specified query and terminate long-running queries that are no longer needed to manage resource consumption.
-
-cancelQuerySql(queryId, dataspace)
-Delete the specified query and terminate long-running queries that are no longer needed to manage resource consumption. Specify
-the data space.
-
-
-Apex Reference Guide CdpQuery Class
-
-cancelQuerySql(queryId, workloadName, dataspace)
-Delete the specified query and terminate long-running queries that are no longer needed to manage resource consumption. Specify
-the data space and workload name.
-
-querySqlStatus(queryId)
-Get the status of an SQL query request. Results are available for up to 24 hours.
-
-querySqlStatus(queryId, waitTimeMs)
-Get the status of an SQL query request and specify the time to wait before returning the response. Results are available for up to 24
-hours.
-
-querySqlStatus(queryId, dataspace)
-Get the status of an SQL query request and specify the data space. Results are available for up to 24 hours.
-
-querySqlStatus(queryId, dataspace, waitTimeMs)
-Get the status of an SQL query request. Specify the data space and time to wait before returning the response. Results are available
-for up to 24 hours.
-
-querySqlStatus(queryId, workloadName, dataspace)
-Get the status of an SQL query request. Specify the workload name and data space. Results are available for up to 24 hours.
-
-querySqlStatus(queryId, workloadName, dataspace, waitTimeMs)
-Get the status of an SQL query request. Specify the workload name, data space, and time to wait before returning the response.
-Results are available for up to 24 hours.
-
-queryCalculatedInsights(ciName, dimensions, measures, orderby, filters, batchSize, offset)
-Query a Calculated Insight object.
-
-queryCalculatedInsights(ciName, dimensions, measures, orderby, filters, batchSize, offset, timeGranularity)
-Query a Calculated Insight object within a specified time range.
-
-queryCalculatedInsights(ciName, dimensions, measures, orderby, filters, batchSize, offset, timeGranularity, dataspace)
-Query a Calculated Insight object within a specified time range and specify the data space.
-
-queryProfileApi(dataModelName, filters, fields, batchSize, offset, orderby)
-Query a Profile data model object using filters.
-
-queryProfileApi(dataModelName, id, searchKey, filters, fields, batchSize, offset, orderby)
-Query a Profile data model object using filters and a search key.
-
-queryProfileApi(dataModelName, id, childDataModelName, searchKey, filters, fields, batchSize, offset, orderby)
-Query a Profile data model object and a child object using filters and a search key.
-
-queryProfileApi(dataModelName, id, ciName, searchKey, dimensions, measures, filters, fields, batchSize, offset, orderby)
-Query a Profile data model object and a Calculated Insight object using filters and a search key.
-
-queryProfileApi(dataModelName, id, ciName, searchKey, dimensions, measures, filters, fields, batchSize, offset, orderby, timeGranularity)
-Query a Profile data model object and a Calculated Insight object using filters, a search key, and a time range.
-
-queryProfileApi(dataModelName, id, ciName, searchKey, dimensions, measures, filters, fields, batchSize, offset, orderby, timeGranularity,
-dataspace)
-Query a Profile data model object and a Calculated Insight object using filters, a search key, a time range, and a data space.
-
-universalIdLookupBySourceId(entityName, dataSourceId, dataSourceObjectId, sourceRecordId)
-Look up objects by source ID.
-
-universalIdLookupBySourceId(entityName, dataSourceId, dataSourceObjectId, sourceRecordId, dataspace)
-Look up objects by source ID and specify the data space.
-
-
-Apex Reference Guide CdpQuery Class
-
-##### **`getAllMetadata()`**
-
-Get all metadata, including Calculated Insights, Engagement, Profile, and other objects, as well as their relationships to other objects.
-
-API Version
-
-52.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryMetadataOutput getAllMetadata()
-
-```
-
-Return Value
-
-Type: `ConnectApi.CdpQueryMetadataOutput`
-
-##### **`getAllMetadata(entityType, entityCategory, entityName)`**
-
-Get all metadata, filtering for entity type, category, and name.
-
-API Version
-
-54.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryMetadataOutput getAllMetadata(String entityType, String
-
-   entityCategory, String entityName)
-
-```
-
-Parameters
-
-```
-   entityType
-```
-
-Type: String
-
-Type of metadata entity requested. Valid values are `DataLakeObject`, `DataModelObject`, and `CalculatedInsight` .
-If unspecified, all types are returned.
-
-```
-   entityCategory
-```
-
-Type: String
-
-Category of the metadata entity. Valid values are `Profile`, `Engagement`, and `Related` . If unspecified, all category entities
-are returned.
-
-```
-   entityName
-```
-
-Type: String
-
-
-Apex Reference Guide CdpQuery Class
-
-Metadata name of the entity, for example `UnifiedIndividual__dlm` . If unspecified, a complete list of entities is returned.
-
-Return Value
-
-Type: `ConnectApi.CdpQueryMetadataOutput`
-
-##### **`getAllMetadata(entityType, entityCategory, entityName, dataspace)`**
-
-Get all metadata, filtering for entity type, category, name, and data space.
-
-API Version
-
-57.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryMetadataOutput getAllMetadata(String entityType, String
-
-   entityCategory, String entityName, String dataspace)
-
-```
-
-Parameters
-
-```
-   entityType
-```
-
-Type: String
-
-Type of metadata entity requested. Valid values are `DataLakeObject`, `DataModelObject`, and `CalculatedInsight` .
-If unspecified, all types are returned.
-
-```
-   entityCategory
-```
-
-Type: String
-
-Category of the metadata entity. Valid values are `Profile`, `Engagement`, and `Related` . If unspecified, all category entities
-are returned.
-
-```
-   entityName
-```
-
-Type: String
-
-Metadata name of the entity, for example `UnifiedIndividual__dlm` . If unspecified, a complete list of entities is returned.
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the data space to query. If unspecified, the `default` data space is used.
-
-Return Value
-
-Type: `ConnectApi.CdpQueryMetadataOutput`
-
-##### **`getDataGraphData(dataGraphEntityName, id)`**
-
-Query a data graph in the default data space. For real-time data graphs, the method attempts to retrieve data from the real-time data
-graph but falls back to the standard data graph if the real-time data graph is unavailable.
-
-
-Apex Reference Guide CdpQuery Class
-
-API Version
-
-59.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryOutput getDataGraphData(String dataGraphEntityName,
-
-   String id)
-
-```
-
-Parameters
-
-```
-   dataGraphEntityName
-```
-
-Type: String
-
-API name of the data graph to query.
-
-```
-   id
-```
-
-Type: String
-
-Record ID to query for. The ID is matched against the primary key field of the primary Data Model Object (DMO) in the data graph.
-
-Return Value
-
-Type: `ConnectApi.CdpQueryOutput`
-
-##### **`getDataGraphData(dataGraphEntityName, id, dataspace)`**
-
-Query a data graph in a specified data space. For real-time data graphs, the method attempts to retrieve data from the real-time data
-graph but falls back to the standard data graph if the real-time data graph is unavailable.
-
-API Version
-
-59.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryOutput getDataGraphData(String dataGraphEntityName,
-
-   String id, String dataspace)
-
-```
-
-Parameters
-
-```
-   dataGraphEntityName
-```
-
-Type: String
-
-API name of the data graph to query.
-
-
-Apex Reference Guide CdpQuery Class
-
-```
-   id
-```
-
-Type: String
-
-Record ID to query for. The ID is matched against the primary key field of the primary Data Model Object (DMO) in the data graph.
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the data space in which to query the data graph.
-
-Return Value
-
-Type: `ConnectApi.CdpQueryOutput`
-
-##### **`getDataGraphData(dataGraphEntityName, id, live)`**
-
-Query a data graph by performing a live lookup in the default data space. For real-time data graphs, the method attempts to retrieve
-data from the real-time data graph but falls back to the standard data graph if the real-time data graph is unavailable.
-
-API Version
-
-63.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryOutput getDataGraphData(String dataGraphEntityName,
-
-   String id, Boolean live)
-
-```
-
-Parameters
-
-```
-   dataGraphEntityName
-```
-
-Type: String
-
-API name of the data graph to query.
-
-```
-   id
-```
-
-Type: String
-
-Record ID to query for. The ID is matched against the primary key field of the primary Data Model Object (DMO) in the data graph.
-
-```
-   live
-```
-
-Type: Boolean
-
-Indicates whether live lookup for the data graph is enabled ( `true` ) or not ( `false` ). With live lookup, the Query Service does not
-query the data graph itself. It instead queries the data graph's metadata to return data that is guaranteed to be fresh. The response
-mimics the structure of the regular JSON-formatted response for the data graph. You can use live lookup on any data graph, regardless
-of the complexity of its structure.
-
-Return Value
-
-Type: `ConnectApi.CdpQueryOutput`
-
-
-Apex Reference Guide CdpQuery Class
-
-##### **`getDataGraphData(dataGraphEntityName, id, dataspace, live)`**
-
-Query a data graph by performing a live lookup in a specified data space. For real-time data graphs, the method attempts to retrieve
-data from the real-time data graph but falls back to the standard data graph if the real-time data graph is unavailable.
-
-API Version
-
-63.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryOutput getDataGraphData(String dataGraphEntityName,
-
-   String id, String dataspace, Boolean live)
-
-```
-
-Parameters
-
-```
-   dataGraphEntityName
-```
-
-Type: String
-
-API name of the data graph to query.
-
-```
-   id
-```
-
-Type: String
-
-Record ID to query for. The ID is matched against the primary key field of the primary Data Model Object (DMO) in the data graph.
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the data space in which to query the data graph.
-
-```
-   live
-```
-
-Type: Boolean
-
-Indicates whether live lookup for the data graph is enabled ( `true` ) or not ( `false` ). With live lookup, the Query Service does not
-query the data graph itself. It instead queries the data graph's metadata to return data that is guaranteed to be fresh. The response
-mimics the structure of the regular JSON-formatted response for the data graph. You can use live lookup on any data graph, regardless
-of the complexity of its structure.
-
-Return Value
-
-Type: `ConnectApi.CdpQueryOutput`
-
-##### **`getDataGraphDataWithLookupKeys(dataGraphEntityName, lookupKeys)`**
-
-Query a data graph by the primary key of either the primary Data Model Object (DMO) or the Individual linked DMO. Get the data from
-the default data space. For real-time data graphs, the method attempts to retrieve data from the real-time data graph but falls back to
-the standard data graph if the real-time data graph is unavailable.
-
-
-Apex Reference Guide CdpQuery Class
-
-API Version
-
-59.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryOutput getDataGraphDataWithLookupKeys(String
-
-   dataGraphEntityName, String lookupKeys)
-
-```
-
-Parameters
-
-```
-   dataGraphEntityName
-```
-
-Type: String
-
-API name of the data graph to query.
-
-```
-   lookupKeys
-```
-
-Type: String
-
-Lookup key and value to search on. Specify one of these key-value pairs:
-
-**•** The primary key of the primary DMO, for example, `lookupKeys=[id__c=def]`
-
-**•** The primary key of the Individual linked DMO, for example,
-
-```
-      lookupKeys=[IndividualLink__dlm.SourceRecordId__c=1111111]
-
-```
-
-Return Value
-
-Type: `ConnectApi.CdpQueryOutput`
-
-##### **`getDataGraphDataWithLookupKeys(dataGraphEntityName, lookupKeys, dataspace)`**
-
-Query a data graph by the primary key of either the primary Data Model Object (DMO) or the Individual linked DMO. Get the data from
-a specified data space. For real-time data graphs, the method attempts to retrieve data from the real-time data graph but falls back to
-the standard data graph if the real-time data graph is unavailable.
-
-API Version
-
-59.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryOutput getDataGraphDataWithLookupKeys(String
-
-   dataGraphEntityName, String lookupKeys, String dataspace)
-
-```
-
-
-Apex Reference Guide CdpQuery Class
-
-Parameters
-
-```
-   dataGraphEntityName
-```
-
-Type: String
-
-API name of the data graph to query.
-
-```
-   lookupKeys
-```
-
-Type: String
-
-Lookup key and value to search on. Specify one of these key-value pairs:
-
-**•** The primary key of the primary DMO, for example, `lookupKeys=[id__c=def]`
-
-**•** The primary key of the Individual linked DMO, for example,
-
-```
-      lookupKeys=[IndividualLink__dlm.SourceRecordId__c=1111111]
-
-   dataspace
-```
-
-Type: String
-
-Name of the data space in which to query the data graph.
-
-Return Value
-
-Type: `ConnectApi.CdpQueryOutput`
-
-##### **`getDataGraphDataWithLookupKeys(dataGraphEntityName, lookupKeys, dataspace,`**
-
-```
-  noCache)
-
-```
-
-Query a data graph by the primary key of either the primary Data Model Object (DMO) or the Individual linked DMO. Get the data from
-a specified data space. Get data from a standard or real-time data graph. For real-time data graphs, the method attempts to retrieve data
-from the real-time data graph but falls back to the standard data graph if the real-time data graph is unavailable.
-
-API Version
-
-64.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryOutput getDataGraphDataWithLookupKeys(String
-
-   dataGraphEntityName, String lookupKeys, String dataspace, Boolean noCache)
-
-```
-
-Parameters
-
-```
-   dataGraphEntityName
-```
-
-Type: String
-
-API name of the data graph to query.
-
-```
-   lookupKeys
-```
-
-Type: String
-
-Lookup key and value to search on. Specify one of these key-value pairs:
-
-
-Apex Reference Guide CdpQuery Class
-
-**•** The primary key of the primary DMO, for example, `lookupKeys=[id__c=def]`
-
-**•** The primary key of the Individual linked DMO, for example,
-
-```
-      lookupKeys=[IndividualLink__dlm.SourceRecordId__c=1111111]
-
-   dataspace
-```
-
-Type: String
-
-Name of the data space in which to query the data graph.
-
-```
-   noCache
-```
-
-Type: Boolean
-
-Indicates whether to read data from the standard, non-real-time data graph ( `true` ) or the real-time data graph ( `false` ).
-
-Return Value
-
-Type: `ConnectApi.CdpQueryOutput`
-
-##### **`getDataGraphMetadata()`**
-
-Retrieve metadata from all data graphs in the default data space. Retrieves data from both standard and real-time data graphs.
-
-API Version
-
-59.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpDgMetadata getDataGraphMetadata()
-
-```
-
-Return Value
-
-Type: `ConnectApi.CdpDgMetadata`
-
-##### **`getDataGraphMetadata(dataGraphEntityName)`**
-
-Retrieve metadata from a specified data graph in the default data space. Retrieves data from both standard and real-time data graphs.
-
-API Version
-
-59.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpDgMetadata getDataGraphMetadata(String dataGraphEntityName)
-
-```
-
-
-Apex Reference Guide CdpQuery Class
-
-Parameters
-
-```
-   dataGraphEntityName
-```
-
-Type: String
-
-API name of the data graph to query.
-
-Return Value
-
-Type: `ConnectApi.CdpDgMetadata`
-
-##### **`getDataGraphMetadata(dataGraphEntityName, dataspace)`**
-
-Retrieve metadata from a specified data graph in a specified data space. Retrieves data from both standard and real-time data graphs.
-
-API Version
-
-59.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpDgMetadata getDataGraphMetadata(String dataGraphEntityName,
-
-   String dataspace)
-
-```
-
-Parameters
-
-```
-   dataGraphEntityName
-```
-
-Type: String
-
-API name of the data graph to query.
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the data space in which to query the data graph.
-
-Return Value
-
-Type: `ConnectApi.CdpDgMetadata`
-
-##### **`getInsightsMetadata()`**
-
-Get Insight metadata, including Calculated Insight objects, their dimensions and measures.
-
-API Version
-
-52.0
-
-
-Apex Reference Guide CdpQuery Class
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryMetadataOutput getInsightsMetadata()
-
-```
-
-Return Value
-
-Type: `ConnectApi.CdpQueryMetadataOutput`
-
-##### **`getInsightsMetadata(ciName)`**
-
-Get metadata for a Calculated Insight object. Metadata includes dimensions and measures.
-
-API Version
-
-52.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryMetadataOutput getInsightsMetadata(String ciName)
-
-```
-
-Parameters
-
-```
-   ciName
-```
-
-Type: String
-
-Name of the Calculated Insight object, for example, `IndividualChildrenCount__cio` .
-
-Return Value
-
-Type: `ConnectApi.CdpQueryMetadataOutput`
-
-##### **`getInsightsMetadata(ciName, dataspace)`**
-
-Get metadata for a Calculated Insight object and specify the data space. Metadata includes dimensions and measures.
-
-API Version
-
-57.0
-
-Requires Chatter
-
-No
-
-
-Apex Reference Guide CdpQuery Class
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryMetadataOutput getInsightsMetadata(String ciName,
-
-   String dataspace)
-
-```
-
-Parameters
-
-```
-   ciName
-```
-
-Type: String
-
-Name of the Calculated Insight object, for example, `IndividualChildrenCount__cio` .
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the data space to query. If unspecified, the `default` data space is used.
-
-Return Value
-
-Type: `ConnectApi.CdpQueryMetadataOutput`
-
-##### **`getMetadataEntities()`**
-
-Get a list of metadata entities and retrieve only essential fields to optimize performance at scale.
-
-API Version
-
-66.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryMetadataEntitiesOutput getMetadataEntities()
-
-```
-
-Return Value
-
-Type: `ConnectApi.CdpQueryMetadataEntitiesOutput`
-
-Example
-
-```
-   // Initial query
-
-   ConnectApi.MetadataEntityCollectionRepresentation entityCollection =
-
-   ConnectApi.CdpQuery.getMetadataEntities();
-
-   // Process the batch
-
-   System.debug('Processing initial batch:');
-
-   System.debug(entities);
-
-   processEntitiesBatch(entities);
-
-   // Process individual entity details
-
-   for (ConnectApi.MetadataEntityRepresentation entity : entityCollection.metadata) {
-
-```
-
-
-Apex Reference Guide CdpQuery Class
-
-```
-      System.debug('Entity details');
-
-      System.debug('Name: ' + entity.name);
-
-      System.debug('Display Name: ' + entity.displayName);
-
-      System.debug('Type: ' + entity.type);
-
-      System.debug('Category: ' + entity.category);
-
-      // Optional: Add specific processing based on entity category
-
-      switch on entity.category {
-
-        when 'Profile' {
-
-           System.debug('Found Profile entity: ' + entity.displayName);
-
-        }
-
-        when 'Engagement' {
-
-           System.debug('Found Engagement entity: ' + entity.displayName);
-
-        }
-
-        when 'Related' {
-
-           System.debug('Found Related entity: ' + entity.displayName);
-
-        }
-
-        when else {
-
-           System.debug('Other entity type: ' + entity.category);
-
-        }
-
-      }
-
-   }
-
-##### **`getMetadataEntities(entityCategory, entityType)`**
-
-```
-
-Get a list of metadata entities and retrieve only essential fields to optimize performance at scale. Specify the entity category and type.
-
-API Version
-
-66.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryMetadataEntitiesOutput getMetadataEntities(String
-
-   entityCategory, String entityType)
-
-```
-
-Parameters
-
-```
-   entityCategory
-```
-
-Type: String
-
-Category of the metadata entity. Supported values are:
-
-**•** `Activation_Audience`
-
-**•** `CG_Audience`
-
-**•** `Content`
-
-**•** `Directory_Table`
-
-**•** `Engagement`
-
-
-Apex Reference Guide CdpQuery Class
-
-**•** `Profile`
-
-**•** `Related`
-
-**•** `Segment_Membership`
-
-**•** `Vector_Embedding`
-
-```
-   entityType
-```
-
-Type: String
-
-Type of metadata entity. Supported values are:
-
-**•** `Calculated_Insight`
-
-**•** `DataLakeObject`
-
-**•** `DataModelObject`
-
-Return Value
-
-Type: `ConnectApi.CdpQueryMetadataEntitiesOutput`
-
-Example
-
-```
-   ConnectApi.MetadataEntityCollectionRepresentation entities =
-
-   ConnectApi.CdpQuery.getMetadataEntities('Profile', 'DataModelObject');
-
-   System.debug(entities);
-
-   System.debug(entities.metadata);
-
-   System.debug(entities.done);
-
-   System.debug(entities.nextBatchId);
-
-##### **`getMetadataEntities(entityCategory, entityType, dataspace)`**
-
-```
-
-Get a list of metadata entities and retrieve only essential fields to optimize performance at scale. Specify the entity category, type, and
-data space.
-
-API Version
-
-66.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryMetadataEntitiesOutput getMetadataEntities(String
-
-   entityCategory, String entityType, String dataspace)
-
-```
-
-Parameters
-
-```
-   entityCategory
-```
-
-Type: String
-
-Category of the metadata entity. Supported values are:
-
-
-Apex Reference Guide CdpQuery Class
-
-**•** `Activation_Audience`
-
-**•** `CG_Audience`
-
-**•** `Content`
-
-**•** `Directory_Table`
-
-**•** `Engagement`
-
-**•** `Profile`
-
-**•** `Related`
-
-**•** `Segment_Membership`
-
-**•** `Vector_Embedding`
-
-```
-   entityType
-```
-
-Type: String
-
-Type of metadata entity. Supported values are:
-
-**•** `Calculated_Insight`
-
-**•** `DataLakeObject`
-
-**•** `DataModelObject`
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the data space in which to query the metadata entities.
-
-Return Value
-
-Type: `ConnectApi.CdpQueryMetadataEntitiesOutput`
-
-Example
-
-```
-   ConnectApi.MetadataEntityCollectionRepresentation entities =
-
-   ConnectApi.CdpQuery.getMetadataEntities('Profile', 'DataModelObject', 'default');
-
-   System.debug(entities);
-
-   System.debug(entities.metadata);
-
-   System.debug(entities.done);
-
-   System.debug(entities.nextBatchId);
-
-##### **`getProfileMetadata()`**
-
-```
-
-Get metadata for data model objects in the profile category, including Individual, Contact Point Email, Unified Individual, and Contact
-Point Address objects. Metadata includes the objects, their fields, and category.
-
-API Version
-
-52.0
-
-Requires Chatter
-
-No
-
-
-Apex Reference Guide CdpQuery Class
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryMetadataOutput getProfileMetadata()
-
-```
-
-Return Value
-
-Type: `ConnectApi.CdpQueryMetadataOutput`
-
-##### **`getProfileMetadata(dataModelName)`**
-
-Get metadata for a data model object in the profile category, such as Individual, Contact Point Email, Unified Individual, and Contact
-Point Address. Metadata includes the list of fields, data types, and indexes available for lookup.
-
-API Version
-
-52.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryMetadataOutput getProfileMetadata(String dataModelName)
-
-```
-
-Parameters
-
-```
-   dataModelName
-```
-
-Type: String
-
-Name of the data model object, for example, `UnifiedIndividual__dlm` .
-
-Return Value
-
-Type: `ConnectApi.CdpQueryMetadataOutput`
-
-##### **`getProfileMetadata(dataModelName, dataspace)`**
-
-Get metadata for a data model object in the profile category, such as Individual, Contact Point Email, Unified Individual, and Contact
-Point Address. Also, specify the data space. Metadata includes the list of fields, data types, and indexes available for lookup.
-
-API Version
-
-57.0
-
-Requires Chatter
-
-No
-
-
-Apex Reference Guide CdpQuery Class
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryMetadataOutput getProfileMetadata(String dataModelName,
-
-   String dataspace)
-
-```
-
-Parameters
-
-```
-   dataModelName
-```
-
-Type: String
-
-Name of the data model object, for example, `UnifiedIndividual__dlm` .
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the data space to query. If unspecified, the `default` data space is used.
-
-Return Value
-
-Type: `ConnectApi.CdpQueryMetadataOutput`
-
-##### **`queryANSISql(input)`**
-
-Synchronously query data across data model, lake, unified, and linked objects. This query returns up to 49,999 rows.
-
-Note: A newer version of the Query API is available. We recommend using `queryAnsiSqlV2(input)` and
-`nextBatchAnsiSqlV2(nextBatchId)` to take advantage of subsequent requests and larger response sizes.
-
-API Version
-
-52.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryOutput queryANSISql(ConnectApi.CdpQueryInput input)
-
-```
-
-Parameters
-
-```
-   input
-```
-
-Type: `ConnectApi.CdpQueryInput`
-
-A `ConnectApi.CdpQueryInput` body with the SQL query.
-
-Return Value
-
-Type: `ConnectApi.CdpQueryOutput`
-
-
-Apex Reference Guide CdpQuery Class
-
-##### **`queryANSISql(input, batchSize, offset, orderby)`**
-
-Synchronously query data across data model, lake, unified, and linked objects. Specify batch size, offset, and order of the results. This
-query returns up to 49,999 rows.
-
-Note: A newer version of the Query API is available. We recommend using `queryAnsiSqlV2(input)` and
-`nextBatchAnsiSqlV2(nextBatchId)` to take advantage of subsequent requests and larger response sizes.
-
-API Version
-
-53.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryOutput queryANSISql(ConnectApi.CdpQueryInput input,
-
-   Integer batchSize, Integer offset, String orderby)
-
-```
-
-Parameters
-
-```
-   input
-```
-
-Type: `ConnectApi.CdpQueryInput`
-
-A `ConnectApi.CdpQueryInput` body with the SQL query.
-
-```
-   batchSize
-```
-
-Type: Integer
-
-Number of records to return. Values are from `1`      - `49999` . The default value is `49999` .
-
-```
-   offset
-```
-
-Type: Integer
-
-Number of rows to skip before returning results. The sum of _`offset`_ and _`batchSize`_ must be less than `2147483647` . The
-default value is `0` .
-
-```
-   orderby
-```
-
-Type: String
-
-Comma-separated values to sort the results in ascending or descending order, for example, `GenderId__c`
-`ASC,Occupation__c DESC` .
-
-Return Value
-
-Type: `ConnectApi.CdpQueryOutput`
-
-##### **`queryANSISql(input, batchSize, offset, orderby, dataspace)`**
-
-Synchronously query data across data model, lake, unified, and linked objects. Specify batch size, offset, order of the results, and data
-space. This query returns up to 49,999 rows.
-
-Note: A newer version of the Query API is available. We recommend using `queryAnsiSqlV2(input)` and
-`nextBatchAnsiSqlV2(nextBatchId)` to take advantage of subsequent requests and larger response sizes.
-
-
-Apex Reference Guide CdpQuery Class
-
-API Version
-
-57.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryOutput queryANSISql(ConnectApi.CdpQueryInput input,
-
-   Integer batchSize, Integer offset, String orderby, String dataspace)
-
-```
-
-Parameters
-
-```
-   input
-```
-
-Type: `ConnectApi.CdpQueryInput`
-
-A `ConnectApi.CdpQueryInput` body with the SQL query.
-
-```
-   batchSize
-```
-
-Type: Integer
-
-Number of records to return. Values are from `1`      - `49999` . The default value is `49999` .
-
-```
-   offset
-```
-
-Type: Integer
-
-Number of rows to skip before returning results. The sum of _`offset`_ and _`batchSize`_ must be less than `2147483647` . The
-default value is `0` .
-
-```
-   orderby
-```
-
-Type: String
-
-Comma-separated values to sort the results in ascending or descending order, for example, `GenderId__c`
-`ASC,Occupation__c DESC` .
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the data space to query. If unspecified, the `default` data space is used.
-
-Return Value
-
-Type: `ConnectApi.CdpQueryOutput`
-
-##### **`queryAnsiSqlV2(input)`**
-
-Query data across data model, lake, unified, and linked objects.
-
-API Version
-
-54.0
-
-Requires Chatter
-
-No
-
-
-Apex Reference Guide CdpQuery Class
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryOutputV2 queryAnsiSqlV2(ConnectApi.CdpQueryInput input)
-
-```
-
-Parameters
-
-```
-   input
-```
-
-Type: `ConnectApi.CdpQueryInput`
-
-A `ConnectApi.CdpQueryInput` body with the SQL query.
-
-Return Value
-
-Type: `ConnectApi.CdpQueryOutputV2`
-
-Usage
-
-Use the `nextBatchId` in the `ConnectApi.CdpQueryOutputV2` output class as the _`nextBatchId`_ parameter in the
-
-`nextBatchAnsiSqlV2(nextBatchId)` method to continue getting batches of data for up to an hour.
-
-##### **`queryAnsiSqlV2(input, dataspace)`**
-
-Query data across data model, lake, unified, and linked objects. Also, specify the data space.
-
-API Version
-
-57.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryOutputV2 queryAnsiSqlV2(ConnectApi.CdpQueryInput input,
-
-   String dataspace)
-
-```
-
-Parameters
-
-```
-   input
-```
-
-Type: `ConnectApi.CdpQueryInput`
-
-A `ConnectApi.CdpQueryInput` body with the SQL query.
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the data space to query. If unspecified, the `default` data space is used.
-
-Return Value
-
-Type: `ConnectApi.CdpQueryOutputV2`
-
-
-Apex Reference Guide CdpQuery Class
-
-Usage
-
-Use the `nextBatchId` in the `ConnectApi.CdpQueryOutputV2` output class as the _`nextBatchId`_ parameter in the
-##### nextBatchAnsiSqlV2(nextBatchId) method to continue getting batches of data for up to an hour. **`nextBatchAnsiSqlV2(nextBatchId)`**
-
-Get the next batch of data across data model, lake, unified, and linked objects.
-
-API Version
-
-54.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryOutputV2 nextBatchAnsiSqlV2(String nextBatchId)
-
-```
-
-Parameters
-
-```
-   nextBatchId
-```
-
-Type: String
-
-ID of the next batch. See the Usage section for more information.
-
-Return Value
-
-Type: `ConnectApi.CdpQueryOutputV2`
-
-Usage
-
-Initially, use the `queryAnsiSqlV2(input)` method to query up to 8 MB of data. Use the `nextBatchId` from the
-`ConnectApi.CdpQueryOutputV2` output class as the _`nextBatchId`_ parameter in this method to get the next batch of
-data. You can continue using subsequent next batch IDs for up to an hour.
-
-##### **`nextBatchAnsiSqlV2(nextBatchId, dataspace)`**
-
-Get the next batch of data across data model, lake, unified, and linked objects. Also, specify the data space.
-
-API Version
-
-57.0
-
-Requires Chatter
-
-No
-
-
-Apex Reference Guide CdpQuery Class
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryOutputV2 nextBatchAnsiSqlV2(String nextBatchId, String
-
-   dataspace)
-
-```
-
-Parameters
-
-```
-   nextBatchId
-```
-
-Type: String
-
-ID of the next batch. See the Usage section for more information.
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the data space to query. If unspecified, the `default` data space is used.
-
-Return Value
-
-Type: `ConnectApi.CdpQueryOutputV2`
-
-Usage
-
-Initially, use the `queryAnsiSqlV2(input)` method to query up to 8 MB of data. Use the `nextBatchId` from the
-`ConnectApi.CdpQueryOutputV2` output class as the _`nextBatchId`_ parameter in this method to get the next batch of
-data. You can continue using subsequent next batch IDs for up to an hour.
-
-##### **`querySql(input)`**
-
-Submit an SQL query request for execution and retrieve the first chunk of data.
-
-API Version
-
-62.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.QuerySqlOutput querySql(ConnectApi.QuerySqlInput input)
-
-```
-
-Parameters
-
-```
-   input
-```
-
-Type: `ConnectApi.QuerySqlInput`
-
-Input representation for an SQL query.
-
-Return Value
-
-Type: `ConnectApi.QuerySqlOutput`
-
-
-Apex Reference Guide CdpQuery Class
-
-Usage
-
-[To get started with writing queries, see Write a Simple Query. For more information about creating SQL statements, see Data 360 SQL](https://developer.salesforce.com/docs/data/data-cloud-query-guide/guide/write-simple-query.html)
-[Syntax.](https://developer.salesforce.com/docs/data/data-cloud-query-guide/references/dc-sql-reference/syntax.html)
-
-Example
-
-Submit a query, check its status, then retrieve and process data in chunks until all results are fetched:
-
-```
-   ConnectApi.QuerySqlInput query = new ConnectApi.QuerySqlInput();
-
-   query.sql = 'SELECT street_address__c FROM test__dll limit 200000';
-
-   Integer numProcessed = 0;
-
-   Long startTime = System.currentTimeMillis();
-
-   System.debug('Query execution started at: ' + startTime);
-
-   ConnectApi.QuerySqlOutput queryOutput = ConnectApi.CdpQuery.querySql(query,
-
-   'sample_workload', 'default');
-
-   ConnectApi.QuerySqlStatus status = queryOutput.status;
-
-   // Process chunks as they become available
-
-   while(status.completionStatus != ConnectApi.QuerySqlStatusEnum.FINISHED || numProcessed <
-
-    status.rowCount) {
-
-      // If we have unprocessed rows available, fetch and process them
-
-      if (status.rowCount > numProcessed) {
-
-        ConnectApi.QuerySqlPageOutput pageOutput =
-
-   ConnectApi.CdpQuery.querySqlRows(status.queryId, numProcessed, 10000, 'sample_workload',
-
-   'default');
-
-        // Process this chunk - inline max length calculation
-
-        Integer maxLength = 0;
-
-        for (ConnectApi.QuerySqlRow rowObj : pageOutput.dataRows) {
-
-           String streetAddress = (String) rowObj.row[0];
-
-           if (streetAddress.length() > maxLength) {
-
-             maxLength = streetAddress.length();
-
-           }
-
-        }
-
-        System.debug('Chunk - Rows: ' + pageOutput.dataRows.size() + ', Max street_address
-
-    length: ' + maxLength);
-
-        numProcessed += pageOutput.dataRows.size();
-
-      } else if (status.completionStatus != ConnectApi.QuerySqlStatusEnum.FINISHED) {
-
-        // No new rows available yet, wait a bit before checking status again
-
-        System.debug('Query in progress. Total rows available: ' + status.rowCount + ',
-
-   Processed: ' + numProcessed);
-
-        // Small delay to avoid excessive polling (adjust as needed)
-
-        // Note: In Apex, we can't use Thread.sleep(), so we'll just continue to next
-
-   iteration
-
-      }
-
-      // Update status if query is still running
-
-      if (status.completionStatus != ConnectApi.QuerySqlStatusEnum.FINISHED) {
-
-```
-
-
-Apex Reference Guide CdpQuery Class
-
-```
-        status = ConnectApi.CdpQuery.querySqlStatus(status.queryId, 'sample_workload',
-
-   'default');
-
-      }
-
-   }
-
-   Long completionTime = System.currentTimeMillis();
-
-   System.debug('Query and processing completed at: ' + completionTime + ', Total time: ' +
-
-   (completionTime - startTime) + ' ms');
-
-   System.debug('Total rows processed: ' + numProcessed + ' out of ' + status.rowCount + '
-
-   total rows');
-
-##### **`querySql(input, dataspace)`**
-
-```
-
-Submit an SQL query request for execution and specify the data space.
-
-API Version
-
-62.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.QuerySqlOutput querySql(ConnectApi.QuerySqlInput input, String
-
-   dataspace)
-
-```
-
-Parameters
-
-```
-   input
-```
-
-Type: `ConnectApi.QuerySqlInput`
-
-Input representation for an SQL query.
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the data space to query. If unspecified, the `default` data space is used.
-
-Return Value
-
-Type: `ConnectApi.QuerySqlOutput`
-
-Usage
-
-[To get started with writing queries, see Write a Simple Query. For more information about creating SQL statements, see Data 360 SQL](https://developer.salesforce.com/docs/data/data-cloud-query-guide/guide/write-simple-query.html)
-[Syntax.](https://developer.salesforce.com/docs/data/data-cloud-query-guide/references/dc-sql-reference/syntax.html)
-
-
-Apex Reference Guide CdpQuery Class
-
-Example
-
-Submit a query with a data space:
-
-```
-   ConnectApi.QuerySqlInput input = new ConnectApi.QuerySqlInput();
-
-   input.sql = 'select * from "passenger2__dll"';
-
-   ConnectApi.QuerySqlOutput output = ConnectApi.CdpQuery.querySql(input, 'default');
-
-   System.debug(output);
-
-   System.debug(output.dataRows);
-
-   System.debug(output.metadata);
-
-   System.debug(output.status);
-
-   System.debug(output.returnedRows);
-
-##### **`querySql(input, workloadName, dataspace)`**
-
-```
-
-Submit an SQL query request for execution and specify the workload name and data space.
-
-API Version
-
-62.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.QuerySqlOutput querySql(ConnectApi.QuerySqlInput input, String
-
-   workloadName, String dataspace)
-
-```
-
-Parameters
-
-```
-   input
-```
-
-Type: `ConnectApi.QuerySqlInput`
-
-Input representation for an SQL query.
-
-```
-   workloadName
-```
-
-Type: String
-
-Description of the scenario, task, or application name that your query handles. Set this value to help Salesforce Customer Support
-assist you with debugging issues.
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the data space to query. If unspecified, the `default` data space is used.
-
-Return Value
-
-Type: `ConnectApi.QuerySqlOutput`
-
-
-Apex Reference Guide CdpQuery Class
-
-Usage
-
-[To get started with writing queries, see Write a Simple Query. For more information about creating SQL statements, see Data 360 SQL](https://developer.salesforce.com/docs/data/data-cloud-query-guide/guide/write-simple-query.html)
-[Syntax.](https://developer.salesforce.com/docs/data/data-cloud-query-guide/references/dc-sql-reference/syntax.html)
-
-Example
-
-Submit a query with a data space and workload name:
-
-```
-   ConnectApi.QuerySqlInput input = new ConnectApi.QuerySqlInput();
-
-   input.sql = 'select * from "passenger2__dll"';
-
-   ConnectApi.QuerySqlOutput output = ConnectApi.CdpQuery.querySql(input, 'workloadName',
-
-   'default');
-
-   System.debug(output);
-
-   System.debug(output.dataRows);
-
-   System.debug(output.metadata);
-
-   System.debug(output.status);
-
-   System.debug(output.returnedRows);
-
-##### **`querySqlRows(queryId, offset, rowLimit)`**
-
-```
-
-Get additional query results that weren't returned in the initial request. Paginate through existing query results by specifying the offset
-and row limit. Results are available for up to 24 hours.
-
-API Version
-
-62.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.QuerySqlPageOutput querySqlRows(String queryId, Long offset,
-
-   Long rowLimit)
-
-```
-
-Parameters
-
-```
-   queryId
-```
-
-Type: String
-
-ID from the initial query to retrieve more results, for example
-`MTAuMjMuMTU2LjIwODo3NDg0_49169cf8-a6f4-738f-6544-c3a7ba2ff548` . The query ID is returned in the
-##### querySql response.
-
-```
-   offset
-```
-
-Type: Long
-
-Row number to start with when retrieving the next chunk of query results. Value must be less than the total number of available
-rows. If unspecified, no rows are skipped.
-
-
-Apex Reference Guide CdpQuery Class
-
-```
-   rowLimit
-```
-
-Type: Long
-
-Maximum number of rows to include in the response. The actual number of rows returned may be lower than the requested value
-if fewer are available or if the result set exceeds internal system size limits. Value must be greater than `0` .
-
-Return Value
-
-Type: `ConnectApi.QuerySqlPageOutput`
-
-Usage
-
-Retrieve the _`queryId`_ from the initial query request. To submit an SQL query request for execution, call `querySql(input)`,
-
-`querySql(input, dataspace)`, or `querySql(input, workloadName, dataspace)` .
-
-Example
-
-Query additional rows with an offset and row limit:
-
-```
-   ConnectApi.QuerySqlPageOutput pageOutput =
-
-   ConnectApi.CdpQuery.querySqlRows(output.status.queryId, 100, 200);
-
-   System.debug(pageOutput);
-
-   System.debug(pageOutput.dataRows);
-
-   System.debug(pageOutput.metadata);
-
-   System.debug(pageOutput.returnedRows);
-
-##### **`querySqlRows(queryId, offset, rowLimit, omitSchema)`**
-
-```
-
-Get additional query results that weren't returned in the initial request. Paginate through existing query results by specifying the offset
-and row limit. Also, specify whether to include metadata in the response or not. Results are available for up to 24 hours.
-
-API Version
-
-62.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.QuerySqlPageOutput querySqlRows(String queryId, Long offset,
-
-   Long rowLimit, Boolean omitSchema)
-
-```
-
-Parameters
-
-```
-   queryId
-```
-
-Type: String
-
-ID from the initial query to retrieve more results, for example
-`MTAuMjMuMTU2LjIwODo3NDg0_49169cf8-a6f4-738f-6544-c3a7ba2ff548` . The query ID is returned in the
-##### querySql response.
-
-
-Apex Reference Guide CdpQuery Class
-
-```
-   offset
-```
-
-Type: Long
-
-Row number to start with when retrieving the next chunk of query results. Value must be less than the total number of available
-rows. If unspecified, no rows are skipped.
-
-```
-   rowLimit
-```
-
-Type: Long
-
-Maximum number of rows to include in the response. The actual number of rows returned may be lower than the requested value
-if fewer are available or if the result set exceeds internal system size limits. Value must be greater than `0` .
-
-```
-   omitSchema
-```
-
-Type: Boolean
-
-Indicates whether to exclude metadata from the response ( `true` ) or not ( `false` ). Omitting the schema reduces the amount of
-data returned and improves performance.
-
-Return Value
-
-Type: `ConnectApi.QuerySqlPageOutput`
-
-Usage
-
-Retrieve the _`queryId`_ from the initial query request. To submit an SQL query request for execution, call `querySql(input)`,
-
-`querySql(input, dataspace)`, or `querySql(input, workloadName, dataspace)` .
-
-Example
-
-Query additional rows with an offset, a row limit, and omitting the schema:
-
-```
-   ConnectApi.QuerySqlPageOutput pageOutput =
-
-   ConnectApi.CdpQuery.querySqlRows(output.status.queryId, 100, 200, true);
-
-   System.debug(pageOutput);
-
-   System.debug(pageOutput.dataRows);
-
-   System.debug(pageOutput.metadata);
-
-   System.debug(pageOutput.returnedRows);
-
-##### **`querySqlRows(queryId, offset, rowLimit, dataspace)`**
-
-```
-
-Get additional query results that weren’t returned in the initial request. Paginate through existing query results by specifying the offset
-and row limit. Also, specify the data space. Results are available for up to 24 hours.
-
-API Version
-
-62.0
-
-Requires Chatter
-
-No
-
-
-Apex Reference Guide CdpQuery Class
-
-Signature
-
-```
-   public static ConnectApi.QuerySqlPageOutput querySqlRows(String queryId, Long offset,
-
-   Long rowLimit, String dataspace)
-
-```
-
-Parameters
-
-```
-   queryId
-```
-
-Type: String
-
-ID from the initial query to retrieve more results, for example
-`MTAuMjMuMTU2LjIwODo3NDg0_49169cf8-a6f4-738f-6544-c3a7ba2ff548` . The query ID is returned in the
-##### querySql response.
-
-```
-   offset
-```
-
-Type: Long
-
-Row number to start with when retrieving the next chunk of query results. Value must be less than the total number of available
-rows. If unspecified, no rows are skipped.
-
-```
-   rowLimit
-```
-
-Type: Long
-
-Maximum number of rows to include in the response. The actual number of rows returned may be lower than the requested value
-if fewer are available or if the result set exceeds internal system size limits. Value must be greater than `0` .
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the data space to query. If unspecified, the `default` data space is used.
-
-Return Value
-
-Type: `ConnectApi.QuerySqlPageOutput`
-
-Usage
-
-Retrieve the _`queryId`_ from the initial query request. To submit an SQL query request for execution, call `querySql(input)`,
-
-`querySql(input, dataspace)`, or `querySql(input, workloadName, dataspace)` .
-
-Example
-
-Query additional rows with an offset, row limit, and data space:
-
-```
-   ConnectApi.QuerySqlPageOutput pageOutput =
-
-   ConnectApi.CdpQuery.querySqlRows(output.status.queryId, 100, 200, 'default');
-
-   System.debug(pageOutput);
-
-   System.debug(pageOutput.dataRows);
-
-   System.debug(pageOutput.metadata);
-
-   System.debug(pageOutput.returnedRows);
-
-##### **`querySqlRows(queryId, offset, rowLimit, omitSchema, dataspace)`**
-
-```
-
-Get additional query results that weren't returned in the initial request. Paginate through existing query results by specifying the offset
-and row limit. Also, specify the data space and whether or not to exclude metadata from the response. Results are available for up to 24
-hours.
-
-
-Apex Reference Guide CdpQuery Class
-
-API Version
-
-62.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.QuerySqlPageOutput querySqlRows(String queryId, Long offset,
-
-   Long rowLimit, Boolean omitSchema, String dataspace)
-
-```
-
-Parameters
-
-```
-   queryId
-```
-
-Type: String
-
-ID from the initial query to retrieve more results, for example
-`MTAuMjMuMTU2LjIwODo3NDg0_49169cf8-a6f4-738f-6544-c3a7ba2ff548` . The query ID is returned in the
-`querySql` response.
-
-```
-   offset
-```
-
-Type: Long
-
-Row number to start with when retrieving the next chunk of query results. Value must be less than the total number of available
-rows. If unspecified, no rows are skipped.
-
-```
-   rowLimit
-```
-
-Type: Long
-
-Maximum number of rows to include in the response. The actual number of rows returned may be lower than the requested value
-if fewer are available or if the result set exceeds internal system size limits. Value must be greater than `0` .
-
-```
-   omitSchema
-```
-
-Type: Boolean
-
-Indicates whether to exclude metadata from the response ( `true` ) or not ( `false` ). Omitting the schema reduces the amount of
-data returned and improves performance.
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the data space to query. If unspecified, the `default` data space is used.
-
-Return Value
-
-Type: `ConnectApi.QuerySqlPageOutput`
-
-Usage
-
-Retrieve the _`queryId`_ from the initial query request. To submit an SQL query request for execution, call `querySql(input)`,
-
-`querySql(input, dataspace)`, or `querySql(input, workloadName, dataspace)` .
-
-
-Apex Reference Guide CdpQuery Class
-
-Example
-
-Query additional rows with an offset, row limit, data space, and omitting the schema:
-
-```
-   ConnectApi.QuerySqlPageOutput pageOutput =
-
-   ConnectApi.CdpQuery.querySqlRows(output.status.queryId, 100, 200, true, 'default');
-
-   System.debug(pageOutput);
-
-   System.debug(pageOutput.dataRows);
-
-   System.debug(pageOutput.metadata);
-
-   System.debug(pageOutput.returnedRows);
-
-##### **`querySqlRows(queryId, offset, rowLimit, workloadName, dataspace)`**
-
-```
-
-Get additional query results that weren't returned in the initial request. Paginate through existing query results by specifying the offset
-and row limit. Also, specify the workload name and data space. Results are available for up to 24 hours.
-
-API Version
-
-62.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.QuerySqlPageOutput querySqlRows(String queryId, Long offset,
-
-   Long rowLimit, String workloadName, String dataspace)
-
-```
-
-Parameters
-
-```
-   queryId
-```
-
-Type: String
-
-ID from the initial query to retrieve more results, for example
-`MTAuMjMuMTU2LjIwODo3NDg0_49169cf8-a6f4-738f-6544-c3a7ba2ff548` . The query ID is returned in the
-##### querySql response.
-
-```
-   offset
-```
-
-Type: Long
-
-Row number to start with when retrieving the next chunk of query results. Value must be less than the total number of available
-rows. If unspecified, no rows are skipped.
-
-```
-   rowLimit
-```
-
-Type: Long
-
-Maximum number of rows to include in the response. The actual number of rows returned may be lower than the requested value
-if fewer are available or if the result set exceeds internal system size limits. Value must be greater than `0` .
-
-```
-   workloadName
-```
-
-Type: String
-
-Description of the scenario, task, or application name that your query handles. Set this value to help Salesforce Customer Support
-assist you with debugging issues.
-
-
-Apex Reference Guide CdpQuery Class
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the data space to query. If unspecified, the `default` data space is used.
-
-Return Value
-
-Type: `ConnectApi.QuerySqlPageOutput`
-
-Usage
-
-Retrieve the _`queryId`_ from the initial query request. To submit an SQL query request for execution, call `querySql(input)`,
-
-`querySql(input, dataspace)`, or `querySql(input, workloadName, dataspace)` .
-
-Example
-
-Query additional rows with an offset, row limit, workload name, and data space:
-
-```
-   ConnectApi.QuerySqlPageOutput pageOutput =
-
-   ConnectApi.CdpQuery.querySqlRows(output.status.queryId, 100, 200, 'workloadName', 'default');
-
-   System.debug(pageOutput);
-
-   System.debug(pageOutput.dataRows);
-
-   System.debug(pageOutput.metadata);
-
-   System.debug(pageOutput.returnedRows);
-
-##### **`querySqlRows(queryId, offset, rowLimit, omitSchema, workloadName, dataspace)`**
-
-```
-
-Get additional query results that weren't returned in the initial request. Paginate through existing query results by specifying the offset
-and row limit. Also, specify the workload name, data space, and whether or not to exclude metadata from the response. Results are
-available for up to 24 hours.
-
-API Version
-
-62.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.QuerySqlPageOutput querySqlRows(String queryId, Long offset,
-
-   Long rowLimit, Boolean omitSchema, String workloadName, String dataspace)
-
-```
-
-Parameters
-
-```
-   queryId
-```
-
-Type: String
-
-ID from the initial query to retrieve more results, for example
-`MTAuMjMuMTU2LjIwODo3NDg0_49169cf8-a6f4-738f-6544-c3a7ba2ff548` . The query ID is returned in the
-##### querySql response.
-
-
-Apex Reference Guide CdpQuery Class
-
-```
-   offset
-```
-
-Type: Long
-
-Row number to start with when retrieving the next chunk of query results. Value must be less than the total number of available
-rows. If unspecified, no rows are skipped.
-
-```
-   rowLimit
-```
-
-Type: Long
-
-Maximum number of rows to include in the response. The actual number of rows returned may be lower than the requested value
-if fewer are available or if the result set exceeds internal system size limits. Value must be greater than `0` .
-
-```
-   omitSchema
-```
-
-Type: Boolean
-
-Indicates whether to exclude metadata from the response ( `true` ) or not ( `false` ). Omitting the schema reduces the amount of
-data returned and improves performance.
-
-```
-   workloadName
-```
-
-Type: String
-
-Description of the scenario, task, or application name that your query handles. Set this value to help Salesforce Customer Support
-assist you with debugging issues.
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the data space to query. If unspecified, the `default` data space is used.
-
-Return Value
-
-Type: `ConnectApi.QuerySqlPageOutput`
-
-Usage
-
-Retrieve the _`queryId`_ from the initial query request. To submit an SQL query request for execution, call `querySql(input)`,
-
-`querySql(input, dataspace)`, or `querySql(input, workloadName, dataspace)` .
-
-Example
-
-Query additional rows with an offset, row limit, workload name, data space, and omitting the schema:
-
-```
-   ConnectApi.QuerySqlPageOutput pageOutput =
-
-   ConnectApi.CdpQuery.querySqlRows(output.status.queryId, 100, 200, true, 'workloadName',
-
-   'default');
-
-   System.debug(pageOutput);
-
-   System.debug(pageOutput.dataRows);
-
-   System.debug(pageOutput.metadata);
-
-   System.debug(pageOutput.returnedRows);
-
-##### **`cancelQuerySql(queryId)`**
-
-```
-
-Delete the specified query and terminate long-running queries that are no longer needed to manage resource consumption.
-
-
-Apex Reference Guide CdpQuery Class
-
-API Version
-
-62.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static Void cancelQuerySql(String queryId)
-
-```
-
-Parameters
-
-```
-   queryId
-```
-
-Type: String
-
-ID of the query to cancel, for example `MTAuMjMuMTU2LjIwODo3NDg0_49169cf8-a6f4-738f-6544-c3a7ba2ff548` .
-The query ID is returned in the `querySql` response.
-
-Return Value
-
-Type: Void
-
-Usage
-
-Retrieve the _`queryId`_ from the initial query request. To submit an SQL query request for execution, call `querySql(input)`,
-
-`querySql(input, dataspace)`, or `querySql(input, workloadName, dataspace)` .
-
-Example
-
-Cancel a query:
-
-```
-   ConnectApi.CdpQuery.cancelQuerySql(output.status.queryId);
-
-   System.debug('done');
-
-##### **`cancelQuerySql(queryId, dataspace)`**
-
-```
-
-Delete the specified query and terminate long-running queries that are no longer needed to manage resource consumption. Specify
-the data space.
-
-API Version
-
-62.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static Void cancelQuerySql(String queryId, String dataspace)
-
-```
-
-
-Apex Reference Guide CdpQuery Class
-
-Parameters
-
-```
-   queryId
-```
-
-Type: String
-
-ID of the query to cancel, for example `MTAuMjMuMTU2LjIwODo3NDg0_49169cf8-a6f4-738f-6544-c3a7ba2ff548` .
-The query ID is returned in the `querySql` response.
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the data space to query. If unspecified, the `default` data space is used.
-
-Return Value
-
-Type: Void
-
-Usage
-
-Retrieve the _`queryId`_ from the initial query request. To submit an SQL query request for execution, call `querySql(input)`,
-
-`querySql(input, dataspace)`, or `querySql(input, workloadName, dataspace)` .
-
-Example
-
-Cancel a query with a data space:
-
-```
-   ConnectApi.CdpQuery.cancelQuerySql(output.status.queryId, 'default');
-
-   System.debug('done');
-
-##### **`cancelQuerySql(queryId, workloadName, dataspace)`**
-
-```
-
-Delete the specified query and terminate long-running queries that are no longer needed to manage resource consumption. Specify
-the data space and workload name.
-
-API Version
-
-62.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static Void cancelQuerySql(String queryId, String workloadName, String dataspace)
-
-```
-
-Parameters
-
-```
-   queryId
-```
-
-Type: String
-
-ID of the query to cancel, for example `MTAuMjMuMTU2LjIwODo3NDg0_49169cf8-a6f4-738f-6544-c3a7ba2ff548` .
-The query ID is returned in the `querySql` response.
-
-
-Apex Reference Guide CdpQuery Class
-
-```
-   workloadName
-```
-
-Type: String
-
-Description of the scenario, task, or application name that your query handles. Set this value to help Salesforce Customer Support
-assist you with debugging issues.
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the data space to query. If unspecified, the `default` data space is used.
-
-Return Value
-
-Type: Void
-
-Usage
-
-Retrieve the _`queryId`_ from the initial query request. To submit an SQL query request for execution, call `querySql(input)`,
-
-`querySql(input, dataspace)`, or `querySql(input, workloadName, dataspace)` .
-
-Example
-
-Cancel a query with a workload name and data space:
-
-```
-   ConnectApi.CdpQuery.cancelQuerySql(output.status.queryId, 'workloadName', 'default');
-
-   System.debug('done');
-
-##### **`querySqlStatus(queryId)`**
-
-```
-
-Get the status of an SQL query request. Results are available for up to 24 hours.
-
-API Version
-
-62.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.QuerySqlStatus querySqlStatus(String queryId)
-
-```
-
-Parameters
-
-```
-   queryId
-```
-
-Type: String
-
-ID of the query to return the status for, for example
-`MTAuMjMuMTU2LjIwODo3NDg0_49169cf8-a6f4-738f-6544-c3a7ba2ff548` . The query ID is returned in the
-##### querySql response.
-
-
-Apex Reference Guide CdpQuery Class
-
-Return Value
-
-Type: `ConnectApi.QuerySqlStatus`
-
-Usage
-
-Retrieve the _`queryId`_ from the initial query request. To submit an SQL query request for execution, call `querySql(input)`,
-
-`querySql(input, dataspace)`, or `querySql(input, workloadName, dataspace)` .
-
-Example
-
-Get the status of a query:
-
-```
-   ConnectApi.QuerySqlStatus statusOutput =
-
-   ConnectApi.CdpQuery.querySqlStatus(output.status.queryId);
-
-   System.debug(statusOutput);
-
-##### **`querySqlStatus(queryId, waitTimeMs)`**
-
-```
-
-Get the status of an SQL query request and specify the time to wait before returning the response. Results are available for up to 24
-hours.
-
-API Version
-
-62.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.QuerySqlStatus querySqlStatus(String queryId, Integer
-
-   waitTimeMs)
-
-```
-
-Parameters
-
-```
-   queryId
-```
-
-Type: String
-
-ID of the query to return the status for, for example
-`MTAuMjMuMTU2LjIwODo3NDg0_49169cf8-a6f4-738f-6544-c3a7ba2ff548` . The query ID is returned in the
-##### querySql response.
-
-```
-   waitTimeMs
-```
-
-Type: Integer
-
-Maximum time (in milliseconds) to wait for the result. Configure a wait time up to 10 seconds before returning the status without
-chunk information. If unspecified, the status is returned immediately. Use this to avoid resource limits by delaying requests.
-
-Return Value
-
-Type: `ConnectApi.QuerySqlStatus`
-
-
-Apex Reference Guide CdpQuery Class
-
-Usage
-
-Retrieve the _`queryId`_ from the initial query request. To submit an SQL query request for execution, call `querySql(input)`,
-
-`querySql(input, dataspace)`, or `querySql(input, workloadName, dataspace)` .
-
-Example
-
-Get the status of a query with wait time:
-
-```
-   ConnectApi.QuerySqlStatus statusOutput =
-
-   ConnectApi.CdpQuery.querySqlStatus(output.status.queryId, 55);
-
-   System.debug(statusOutput);
-
-##### **`querySqlStatus(queryId, dataspace)`**
-
-```
-
-Get the status of an SQL query request and specify the data space. Results are available for up to 24 hours.
-
-API Version
-
-62.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.QuerySqlStatus querySqlStatus(String queryId, String dataspace)
-
-```
-
-Parameters
-
-```
-   queryId
-```
-
-Type: String
-
-ID of the query to return the status for, for example
-`MTAuMjMuMTU2LjIwODo3NDg0_49169cf8-a6f4-738f-6544-c3a7ba2ff548` . The query ID is returned in the
-##### querySql response.
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the data space to query. If unspecified, the `default` data space is used.
-
-Return Value
-
-Type: `ConnectApi.QuerySqlStatus`
-
-Usage
-
-Retrieve the _`queryId`_ from the initial query request. To submit an SQL query request for execution, call `querySql(input)`,
-
-`querySql(input, dataspace)`, or `querySql(input, workloadName, dataspace)` .
-
-
-Apex Reference Guide CdpQuery Class
-
-Example
-
-Get the status of a query with a data space:
-
-```
-   ConnectApi.QuerySqlStatus statusOutput =
-
-   ConnectApi.CdpQuery.querySqlStatus(output.status.queryId, 'default');
-
-   System.debug(statusOutput);
-
-##### **`querySqlStatus(queryId, dataspace, waitTimeMs)`**
-
-```
-
-Get the status of an SQL query request. Specify the data space and time to wait before returning the response. Results are available for
-up to 24 hours.
-
-API Version
-
-62.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.QuerySqlStatus querySqlStatus(String queryId, String dataspace,
-
-   Integer waitTimeMs)
-
-```
-
-Parameters
-
-```
-   queryId
-```
-
-Type: String
-
-ID of the query to return the status for, for example
-`MTAuMjMuMTU2LjIwODo3NDg0_49169cf8-a6f4-738f-6544-c3a7ba2ff548` . The query ID is returned in the
-##### querySql response.
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the data space to query. If unspecified, the `default` data space is used.
-
-```
-   waitTimeMs
-```
-
-Type: Integer
-
-Maximum time (in milliseconds) to wait for the result. Configure a wait time up to 10 seconds before returning the status. If unspecified,
-the status is returned immediately. Use this to avoid resource limits by delaying requests.
-
-Return Value
-
-Type: `ConnectApi.QuerySqlStatus`
-
-Usage
-
-Retrieve the _`queryId`_ from the initial query request. To submit an SQL query request for execution, call `querySql(input)`,
-
-`querySql(input, dataspace)`, or `querySql(input, workloadName, dataspace)` .
-
-
-Apex Reference Guide CdpQuery Class
-
-Example
-
-Get the status of a query with a data space and wait time:
-
-```
-   ConnectApi.QuerySqlStatus statusOutput =
-
-   ConnectApi.CdpQuery.querySqlStatus(output.status.queryId, 'default', 100);
-
-   System.debug(statusOutput);
-
-##### **`querySqlStatus(queryId, workloadName, dataspace)`**
-
-```
-
-Get the status of an SQL query request. Specify the workload name and data space. Results are available for up to 24 hours.
-
-API Version
-
-62.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.QuerySqlStatus querySqlStatus(String queryId, String
-
-   workloadName, String dataspace)
-
-```
-
-Parameters
-
-```
-   queryId
-```
-
-Type: String
-
-ID of the query to return the status for, for example
-`MTAuMjMuMTU2LjIwODo3NDg0_49169cf8-a6f4-738f-6544-c3a7ba2ff548` . The query ID is returned in the
-##### querySql response.
-
-```
-   workloadName
-```
-
-Type: String
-
-Description of the scenario, task, or application name that your query handles. Set this value to help Salesforce Customer Support
-assist you with debugging issues.
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the data space to query. If unspecified, the `default` data space is used.
-
-Return Value
-
-Type: `ConnectApi.QuerySqlStatus`
-
-Usage
-
-Retrieve the _`queryId`_ from the initial query request. To submit an SQL query request for execution, call `querySql(input)`,
-
-`querySql(input, dataspace)`, or `querySql(input, workloadName, dataspace)` .
-
-
-Apex Reference Guide CdpQuery Class
-
-Example
-
-Get the status of a query with a workload name and data space:
-
-```
-   ConnectApi.QuerySqlInput input = new ConnectApi.QuerySqlInput();
-
-   input.sql = 'select * from "passenger2__dll"';
-
-   ConnectApi.QuerySqlOutput output = ConnectApi.CdpQuery.querySql(input);
-
-   System.debug(output);
-
-   ConnectApi.QuerySqlStatus statusOutput =
-
-   ConnectApi.CdpQuery.querySqlStatus(output.status.queryId, 'workloadName', 'default');
-
-   System.debug(statusOutput);
-
-##### **`querySqlStatus(queryId, workloadName, dataspace, waitTimeMs)`**
-
-```
-
-Get the status of an SQL query request. Specify the workload name, data space, and time to wait before returning the response. Results
-are available for up to 24 hours.
-
-API Version
-
-62.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.QuerySqlStatus querySqlStatus(String queryId, String
-
-   workloadName, String dataspace, Integer waitTimeMs)
-
-```
-
-Parameters
-
-```
-   queryId
-```
-
-Type: String
-
-ID of the query to return the status for, for example
-`MTAuMjMuMTU2LjIwODo3NDg0_49169cf8-a6f4-738f-6544-c3a7ba2ff548` . The query ID is returned in the
-##### querySql response.
-
-```
-   workloadName
-```
-
-Type: String
-
-Description of the scenario, task, or application name that your query handles. Set this value to help Salesforce Customer Support
-assist you with debugging issues.
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the data space to query. If unspecified, the `default` data space is used.
-
-```
-   waitTimeMs
-```
-
-Type: Integer
-
-
-Apex Reference Guide CdpQuery Class
-
-Maximum time (in milliseconds) to wait for the result. Configure a wait time up to 10 seconds before returning the status . If unspecified,
-the status is returned immediately. Use this to avoid resource limits by delaying requests.
-
-Return Value
-
-Type: `ConnectApi.QuerySqlStatus`
-
-Usage
-
-Retrieve the _`queryId`_ from the initial query request. To submit an SQL query request for execution, call `querySql(input)`,
-
-`querySql(input, dataspace)`, or `querySql(input, workloadName, dataspace)` .
-
-Example
-
-Get the status of a query with a workload name, data space, and wait time:
-
-```
-   ConnectApi.QuerySqlStatus statusOutput =
-
-   ConnectApi.CdpQuery.querySqlStatus(output.status.queryId, 'workloadName', 'default', 100);
-
-   System.debug(statusOutput);
-
-##### **`queryCalculatedInsights(ciName, dimensions, measures, orderby, filters,`**
-
-  batchSize, offset)
-
-```
-
-Query a Calculated Insight object.
-
-API Version
-
-52.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryOutput queryCalculatedInsights(String ciName, String
-
-   dimensions, String measures, String orderby, String filters, Integer batchSize, Integer
-
-   offset)
-
-```
-
-Parameters
-
-```
-   ciName
-```
-
-Type: String
-
-Name of the Calculated Insight object, for example, `IndividualChildrenCount__cio` .
-
-```
-   dimensions
-```
-
-Type: String
-
-Comma-separated list of up to 10 dimensions, such as `GenderId__c`, to project. If unspecified, this parameter includes all of the
-available dimensions.
-
-
-Apex Reference Guide CdpQuery Class
-
-```
-   measures
-```
-
-Type: String
-
-Comma-separated list of up to 5 measures, such as `TotalSales__c`, to project. If unspecified, this parameter includes all of the
-available measures.
-
-```
-   orderby
-```
-
-Type: String
-
-Sort order for the result set, such as `GenderId__c ASC,Occupation__c DESC` . If unspecified, items are returned in the
-order they are retrieved.
-
-```
-   filters
-```
-
-Type: String
-
-Filter the result set to a more narrow scope or specific type, such as `[GenderId__c=Male,FirstName__c=Angel]` .
-
-```
-   batchSize
-```
-
-Type: Integer
-
-Number of items to return. Values are from 1–4,999. If unspecified, the default value is `4999` .
-
-```
-   offset
-```
-
-Type: Integer
-
-Number of rows to skip before returning results. If unspecified, no rows are skipped.
-
-Return Value
-
-Type: `ConnectApi.CdpQueryOutput`
-
-##### **`queryCalculatedInsights(ciName, dimensions, measures, orderby, filters,`**
-
-```
-  batchSize, offset, timeGranularity)
-
-```
-
-Query a Calculated Insight object within a specified time range.
-
-API Version
-
-54.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryOutput queryCalculatedInsights(String ciName, String
-
-   dimensions, String measures, String orderby, String filters, Integer batchSize, Integer
-
-   offset, String timeGranularity)
-
-```
-
-Parameters
-
-```
-   ciName
-```
-
-Type: String
-
-Name of the Calculated Insight object, for example, `IndividualChildrenCount__cio` .
-
-
-Apex Reference Guide CdpQuery Class
-
-```
-   dimensions
-```
-
-Type: String
-
-Comma-separated list of up to 10 dimensions, such as `GenderId__c`, to project. If unspecified, this parameter includes all of the
-available dimensions.
-
-```
-   measures
-```
-
-Type: String
-
-Comma-separated list of up to 5 measures, such as `TotalSales__c`, to project. If unspecified, this parameter includes all of the
-available measures.
-
-```
-   orderby
-```
-
-Type: String
-
-Sort order for the result set, such as `GenderId__c ASC,Occupation__c DESC` . If unspecified, items are returned in the
-order they are retrieved.
-
-```
-   filters
-```
-
-Type: String
-
-Filter the result set to a more narrow scope or specific type, such as `[GenderId__c=Male,FirstName__c=Angel]` .
-
-```
-   batchSize
-```
-
-Type: Integer
-
-Number of items to return. Values are from 1–4,999. If unspecified, the default value is `4999` .
-
-```
-   offset
-```
-
-Type: Integer
-
-Number of rows to skip before returning results. If unspecified, no rows are skipped.
-
-```
-   timeGranularity
-```
-
-Type: String
-
-Time range for the measures. Values are:
-
-**•** `HOUR`
-
-**•** `DAY`
-
-**•** `MONTH`
-
-**•** `QUARTER`
-
-**•** `YEAR`
-
-If unspecified, no time range is applied.
-
-Return Value
-
-Type: `ConnectApi.CdpQueryOutput`
-
-##### **`queryCalculatedInsights(ciName, dimensions, measures, orderby, filters,`**
-
-```
-  batchSize, offset, timeGranularity, dataspace)
-
-```
-
-Query a Calculated Insight object within a specified time range and specify the data space.
-
-API Version
-
-57.0
-
-
-Apex Reference Guide CdpQuery Class
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryOutput queryCalculatedInsights(String ciName, String
-
-   dimensions, String measures, String orderby, String filters, Integer batchSize, Integer
-
-   offset, String timeGranularity, String dataspace)
-
-```
-
-Parameters
-
-```
-   ciName
-```
-
-Type: String
-
-Name of the Calculated Insight object, for example, `IndividualChildrenCount__cio` .
-
-```
-   dimensions
-```
-
-Type: String
-
-Comma-separated list of up to 10 dimensions, such as `GenderId__c`, to project. If unspecified, this parameter includes all of the
-available dimensions.
-
-```
-   measures
-```
-
-Type: String
-
-Comma-separated list of up to 5 measures, such as `TotalSales__c`, to project. If unspecified, this parameter includes all of the
-available measures.
-
-```
-   orderby
-```
-
-Type: String
-
-Sort order for the result set, such as `GenderId__c ASC,Occupation__c DESC` . If unspecified, items are returned in the
-order they are retrieved.
-
-```
-   filters
-```
-
-Type: String
-
-Filter the result set to a more narrow scope or specific type, such as `[GenderId__c=Male,FirstName__c=Angel]` .
-
-```
-   batchSize
-```
-
-Type: Integer
-
-Number of items to return. Values are from 1–4,999. If unspecified, the default value is `4999` .
-
-```
-   offset
-```
-
-Type: Integer
-
-Number of rows to skip before returning results. If unspecified, no rows are skipped.
-
-```
-   timeGranularity
-```
-
-Type: String
-
-Time range for the measures. Values are:
-
-**•** `HOUR`
-
-**•** `DAY`
-
-**•** `MONTH`
-
-**•** `QUARTER`
-
-
-Apex Reference Guide CdpQuery Class
-
-**•** `YEAR`
-
-If unspecified, no time range is applied.
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the data space to query. If unspecified, the `default` data space is used.
-
-Return Value
-
-Type: `ConnectApi.CdpQueryOutput`
-
-##### **`queryProfileApi(dataModelName, filters, fields, batchSize, offset, orderby)`**
-
-Query a Profile data model object using filters.
-
-API Version
-
-52.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryOutput queryProfileApi(String dataModelName, String
-
-   filters, String fields, Integer batchSize, Integer offset, String orderby)
-
-```
-
-Parameters
-
-```
-   dataModelName
-```
-
-Type: String
-
-Name of the data model object, for example, `UnifiedIndividual__dlm` .
-
-```
-   filters
-```
-
-Type: String
-
-Comma-separated list of equality expressions within square brackets, for example, `[FirstName__c=DON]` .
-
-```
-   fields
-```
-
-Type: String
-
-Comma-separated list of up to 50 field names that you want to include in the result, for example, `Id__c,FirstName__c,`
-`GenderId__c,Occupation__c` . If unspecified, `Id__c` is returned.
-
-```
-   batchSize
-```
-
-Type: Integer
-
-Number of items to return. Values are from 1–4,999. If unspecified, the default value is `100` .
-
-```
-   offset
-```
-
-Type: Integer
-
-Number of rows to skip before returning results. If unspecified, no rows are skipped.
-
-
-Apex Reference Guide CdpQuery Class
-
-```
-   orderby
-```
-
-Type: String
-
-Sort order for the result set, such as `GenderId__c ASC,Occupation__c DESC` . If unspecified, items are returned in the
-order they are retrieved.
-
-Return Value
-
-Type: `ConnectApi.CdpQueryOutput`
-
-##### **`queryProfileApi(dataModelName, id, searchKey, filters, fields, batchSize,`**
-
-```
-  offset, orderby)
-
-```
-
-Query a Profile data model object using filters and a search key.
-
-API Version
-
-52.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryOutput queryProfileApi(String dataModelName, String
-
-   id, String searchKey, String filters, String fields, Integer batchSize, Integer offset,
-
-   String orderby)
-
-```
-
-Parameters
-
-```
-   dataModelName
-```
-
-Type: String
-
-Name of the data model object, for example, `UnifiedIndividual__dlm` .
-
-```
-   id
-```
-
-Type: String
-
-Value of the primary or secondary key field, for example, `John` . If unspecified, defaults to the value of the primary key field.
-
-```
-   searchKey
-```
-
-Type: String
-
-If a field other than the primary key is used, name of the key field, for example, `FirstName__c` .
-
-```
-   filters
-```
-
-Type: String
-
-Comma-separated list of equality expressions within square brackets, for example, `[FirstName__c=DON]` .
-
-```
-   fields
-```
-
-Type: String
-
-Comma-separated list of up to 50 field names that you want to include in the result, for example, `Id__c,FirstName__c,`
-`GenderId__c,Occupation__c` . If unspecified, `Id__c` is returned.
-
-
-Apex Reference Guide CdpQuery Class
-
-```
-   batchSize
-```
-
-Type: Integer
-
-Number of items to return. Values are from 1–4,999. If unspecified, the default value is `100` .
-
-```
-   offset
-```
-
-Type: Integer
-
-Number of rows to skip before returning results. If unspecified, no rows are skipped.
-
-```
-   orderby
-```
-
-Type: String
-
-Sort order for the result set, such as `GenderId__c ASC,Occupation__c DESC` . If unspecified, items are returned in the
-order they are retrieved.
-
-Return Value
-
-Type: `ConnectApi.CdpQueryOutput`
-
-##### **`queryProfileApi(dataModelName, id, childDataModelName, searchKey, filters,`**
-
-```
-  fields, batchSize, offset, orderby)
-
-```
-
-Query a Profile data model object and a child object using filters and a search key.
-
-API Version
-
-52.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryOutput queryProfileApi(String dataModelName, String
-
-   id, String childDataModelName, String searchKey, String filters, String fields, Integer
-
-   batchSize, Integer offset, String orderby)
-
-```
-
-Parameters
-
-```
-   dataModelName
-```
-
-Type: String
-
-Name of the data model object, for example, `UnifiedIndividual__dlm` .
-
-```
-   id
-```
-
-Type: String
-
-Value of the primary or secondary key field, for example, `John` . If unspecified, defaults to the value of the primary key field.
-
-```
-   childDataModelName
-```
-
-Type: String
-
-Name of the child data model object, for example, `UnifiedContactPointEmail__dlm` .
-
-
-Apex Reference Guide CdpQuery Class
-
-```
-   searchKey
-```
-
-Type: String
-
-If a field other than the primary key is used, name of the key field, for example, `FirstName__c` .
-
-```
-   filters
-```
-
-Type: String
-
-Comma-separated list of equality expressions within square brackets, for example, `[FirstName__c=DON]` . Filters are applied
-to the parent object only.
-
-```
-   fields
-```
-
-Type: String
-
-Comma-separated list of child object field names that you want to include in the result, for example, `Id__c,EmailAddress__c` .
-If unspecified, the first 10 alphabetically sorted fields are returned.
-
-```
-   batchSize
-```
-
-Type: Integer
-
-Number of items to return. Values are from 1–4,999. If unspecified, the default value is `100` .
-
-```
-   offset
-```
-
-Type: Integer
-
-Number of rows to skip before returning results. If unspecified, no rows are skipped.
-
-```
-   orderby
-```
-
-Type: String
-
-Sort order for the result set, such as `GenderId__c ASC,Occupation__c DESC` . If unspecified, items are returned in the
-order they are retrieved.
-
-Return Value
-
-Type: `ConnectApi.CdpQueryOutput`
-
-##### **`queryProfileApi(dataModelName, id, ciName, searchKey, dimensions, measures,`**
-
-```
-  filters, fields, batchSize, offset, orderby)
-
-```
-
-Query a Profile data model object and a Calculated Insight object using filters and a search key.
-
-API Version
-
-52.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryOutput queryProfileApi(String dataModelName, String
-
-   id, String ciName, String searchKey, String dimensions, String measures, String filters,
-
-   String fields, Integer batchSize, Integer offset, String orderby)
-
-```
-
-
-Apex Reference Guide CdpQuery Class
-
-Parameters
-
-```
-   dataModelName
-```
-
-Type: String
-
-Name of the data model object, for example, `UnifiedIndividual__dlm` .
-
-```
-   id
-```
-
-Type: String
-
-Value of the primary or secondary key field, for example, `John` . If unspecified, defaults to the value of the primary key field.
-
-```
-   ciName
-```
-
-Type: String
-
-Name of the Calculated Insight object, for example, `IndividualChildrenCount__cio` .
-
-```
-   searchKey
-```
-
-Type: String
-
-If a field other than the primary key is used, name of the key field, for example, `FirstName__c` .
-
-```
-   dimensions
-```
-
-Type: String
-
-Comma-separated list of up to 10 dimensions, such as `GenderId__c`, to project. If unspecified, this parameter includes all of the
-available dimensions.
-
-```
-   measures
-```
-
-Type: String
-
-Comma-separated list of up to 5 measures, such as `TotalSales__c`, to project. If unspecified, this parameter includes all of the
-available measures.
-
-```
-   filters
-```
-
-Type: String
-
-Comma-separated list of equality expressions within square brackets, for example, `[FirstName__c=DON]` .
-
-```
-   fields
-```
-
-Type: String
-
-Comma-separated list of up to 50 field names that you want to include in the result, for example, `Id__c,FirstName__c,`
-`GenderId__c,Occupation__c` . If unspecified, `Id__c` is returned.
-
-```
-   batchSize
-```
-
-Type: Integer
-
-Number of items to return. Values are from 1–4,999. If unspecified, the default value is `100` .
-
-```
-   offset
-```
-
-Type: Integer
-
-Number of rows to skip before returning results. If unspecified, no rows are skipped.
-
-```
-   orderby
-```
-
-Type: String
-
-Sort order for the result set, such as `GenderId__c ASC,Occupation__c DESC` . If unspecified, items are returned in the
-order they are retrieved.
-
-Return Value
-
-Type: `ConnectApi.CdpQueryOutput`
-
-
-Apex Reference Guide CdpQuery Class
-
-##### **`queryProfileApi(dataModelName, id, ciName, searchKey, dimensions, measures,`**
-
-```
-  filters, fields, batchSize, offset, orderby, timeGranularity)
-
-```
-
-Query a Profile data model object and a Calculated Insight object using filters, a search key, and a time range.
-
-API Version
-
-54.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryOutput queryProfileApi(String dataModelName, String
-
-   id, String ciName, String searchKey, String dimensions, String measures, String filters,
-
-   String fields, Integer batchSize, Integer offset, String orderby, String timeGranularity)
-
-```
-
-Parameters
-
-```
-   dataModelName
-```
-
-Type: String
-
-Name of the data model object, for example, `UnifiedIndividual__dlm` .
-
-```
-   id
-```
-
-Type: String
-
-Value of the primary or secondary key field, for example, `John` . If unspecified, defaults to the value of the primary key field.
-
-```
-   ciName
-```
-
-Type: String
-
-Name of the Calculated Insight object, for example, `IndividualChildrenCount__cio` .
-
-```
-   searchKey
-```
-
-Type: String
-
-If a field other than the primary key is used, name of the key field, for example, `FirstName__c` .
-
-```
-   dimensions
-```
-
-Type: String
-
-Comma-separated list of up to 10 dimensions, such as `GenderId__c`, to project. If unspecified, this parameter includes all of the
-available dimensions.
-
-```
-   measures
-```
-
-Type: String
-
-Comma-separated list of up to 5 measures, such as `TotalSales__c`, to project. If unspecified, this parameter includes all of the
-available measures.
-
-```
-   filters
-```
-
-Type: String
-
-Comma-separated list of equality expressions within square brackets, for example, `[FirstName__c=DON]` .
-
-
-Apex Reference Guide CdpQuery Class
-
-```
-   fields
-```
-
-Type: String
-
-Comma-separated list of up to 50 field names that you want to include in the result, for example, `Id__c,FirstName__c,`
-`GenderId__c,Occupation__c` . If unspecified, `Id__c` is returned.
-
-```
-   batchSize
-```
-
-Type: Integer
-
-Number of items to return. Values are from 1–4,999. If unspecified, the default value is `100` .
-
-```
-   offset
-```
-
-Type: Integer
-
-Number of rows to skip before returning results. If unspecified, no rows are skipped.
-
-```
-   orderby
-```
-
-Type: String
-
-Sort order for the result set, such as `GenderId__c ASC,Occupation__c DESC` . If unspecified, items are returned in the
-order they are retrieved.
-
-```
-   timeGranularity
-```
-
-Type: String
-
-Time range for the measures. Values are:
-
-**•** `HOUR`
-
-**•** `DAY`
-
-**•** `MONTH`
-
-**•** `QUARTER`
-
-**•** `YEAR`
-
-If unspecified, no time range is applied.
-
-Return Value
-
-Type: `ConnectApi.CdpQueryOutput`
-
-##### **`queryProfileApi(dataModelName, id, ciName, searchKey, dimensions, measures,`**
-
-```
-  filters, fields, batchSize, offset, orderby, timeGranularity, dataspace)
-
-```
-
-Query a Profile data model object and a Calculated Insight object using filters, a search key, a time range, and a data space.
-
-API Version
-
-57.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryOutput queryProfileApi(String dataModelName, String
-
-   id, String ciName, String searchKey, String dimensions, String measures, String filters,
-
-```
-
-
-Apex Reference Guide CdpQuery Class
-
-```
-   String fields, Integer batchSize, Integer offset, String orderby, String timeGranularity,
-
-   String dataspace)
-
-```
-
-Parameters
-
-```
-   dataModelName
-```
-
-Type: String
-
-Name of the data model object, for example, `UnifiedIndividual__dlm` .
-
-```
-   id
-```
-
-Type: String
-
-Value of the primary or secondary key field, for example, `John` . If unspecified, defaults to the value of the primary key field.
-
-```
-   ciName
-```
-
-Type: String
-
-Name of the Calculated Insight object, for example, `IndividualChildrenCount__cio` .
-
-```
-   searchKey
-```
-
-Type: String
-
-If a field other than the primary key is used, name of the key field, for example, `FirstName__c` .
-
-```
-   dimensions
-```
-
-Type: String
-
-Comma-separated list of up to 10 dimensions, such as `GenderId__c`, to project. If unspecified, this parameter includes all of the
-available dimensions.
-
-```
-   measures
-```
-
-Type: String
-
-Comma-separated list of up to 5 measures, such as `TotalSales__c`, to project. If unspecified, this parameter includes all of the
-available measures.
-
-```
-   filters
-```
-
-Type: String
-
-Comma-separated list of equality expressions within square brackets, for example, `[FirstName__c=DON]` .
-
-```
-   fields
-```
-
-Type: String
-
-Comma-separated list of up to 50 field names that you want to include in the result, for example, `Id__c,FirstName__c,`
-`GenderId__c,Occupation__c` . If unspecified, `Id__c` is returned.
-
-```
-   batchSize
-```
-
-Type: Integer
-
-Number of items to return. Values are from 1–4,999. If unspecified, the default value is `100` .
-
-```
-   offset
-```
-
-Type: Integer
-
-Number of rows to skip before returning results. If unspecified, no rows are skipped.
-
-```
-   orderby
-```
-
-Type: String
-
-Sort order for the result set, such as `GenderId__c ASC,Occupation__c DESC` . If unspecified, items are returned in the
-order they are retrieved.
-
-
-Apex Reference Guide CdpQuery Class
-
-```
-   timeGranularity
-```
-
-Type: String
-
-Time range for the measures. Values are:
-
-**•** `HOUR`
-
-**•** `DAY`
-
-**•** `MONTH`
-
-**•** `QUARTER`
-
-**•** `YEAR`
-
-If unspecified, no time range is applied.
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the data space to query. If unspecified, the `default` data space is used.
-
-Return Value
-
-Type: `ConnectApi.CdpQueryOutput`
-
-##### **`universalIdLookupBySourceId(entityName, dataSourceId, dataSourceObjectId,`**
-
-```
-  sourceRecordId)
-
-```
-
-Look up objects by source ID.
-
-API Version
-
-54.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryDataOutput universalIdLookupBySourceId(String
-
-   entityName, String dataSourceId, String dataSourceObjectId, String sourceRecordId)
-
-```
-
-Parameters
-
-```
-   entityName
-```
-
-Type: String
-
-Entity name.
-
-```
-   dataSourceId
-```
-
-Type: String
-
-Data source ID.
-
-```
-   dataSourceObjectId
-```
-
-Type: String
-
-
-Apex Reference Guide CdpQuery Class
-
-Data source object ID.
-
-```
-   sourceRecordId
-```
-
-Type: String
-
-Source record ID.
-
-Return Value
-
-Type: `ConnectApi.CdpQueryDataOutput`
-
-##### **`universalIdLookupBySourceId(entityName, dataSourceId, dataSourceObjectId,`**
-
-```
-  sourceRecordId, dataspace)
-
-```
-
-Look up objects by source ID and specify the data space.
-
-API Version
-
-57.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpQueryDataOutput universalIdLookupBySourceId(String
-
-   entityName, String dataSourceId, String dataSourceObjectId, String sourceRecordId,
-
-   String dataspace)
-
-```
-
-Parameters
-
-```
-   entityName
-```
-
-Type: String
-
-Entity name.
-
-```
-   dataSourceId
-```
-
-Type: String
-
-Data source ID.
-
-```
-   dataSourceObjectId
-```
-
-Type: String
-
-Data source object ID.
-
-```
-   sourceRecordId
-```
-
-Type: String
-
-Source record ID.
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the data space to query. If unspecified, the `default` data space is used.
-
-
-### Apex Reference Guide CdpSegment Class
-
-Return Value
-
-Type: `ConnectApi.CdpQueryDataOutput`
-
-### CdpSegment Class
-
-Create, delete, get, publish, and update Data 360 segments.
-
-Namespace
-
-ConnectApi
-
-#### CdpSegment Methods
-
-### These methods are for CdpSegment . All methods are static.
-
-IN THIS SECTION:
-
-createSegment(input)
-Create a segment.
-
-createSegment(input, dataspace)
-Create a segment in a dataspace.
-
-deactivateSegmentByApiName(segmentApiName)
-Deactivate a segment by API name.
-
-deactivateSegmentById(segmentId)
-Deactivate a segment by ID.
-
-deleteSegment(segmentApiName)
-Delete a segment.
-
-executePublishAdhoc(segmentId)
-Publish a segment.
-
-getSegment(segmentApiName)
-Get a segment by API name.
-
-getSegmentById(segmentId)
-Get a segment by ID.
-
-getSegments()
-Get segments.
-
-getSegmentsPaginated(batchSize, offset, orderBy)
-Get an ordered batch of paginated segments.
-
-getSegmentsPaginated(batchSize, offset, orderBy, dataspace)
-Get an ordered batch of paginated segments in a dataspace.
-
-getSegmentsFilteredPaginated(batchSize, offset, orderBy, filters)
-Get an ordered and filtered batch of paginated segments.
-
-getSegmentsFilteredPaginated(batchSize, offset, orderBy, dataspace, filters)
-Get an ordered and filtered batch of paginated segments in a dataspace.
-
-
-Apex Reference Guide CdpSegment Class
-
-updateSegment(segmentApiName, input)
-Update a segment.
-
-##### **`createSegment(input)`**
-
-Create a segment.
-
-API Version
-
-55.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpSegmentOutput createSegment(ConnectApi.CdpSegmentInput
-
-   input)
-
-```
-
-Parameters
-
-```
-   input
-```
-
-Type: `ConnectApi.CdpSegmentInput`
-
-A `ConnectApi.CdpSegmentInput` class.
-
-Return Value
-
-Type: `ConnectApi.CdpSegmentOutput`
-
-##### **`createSegment(input, dataspace)`**
-
-Create a segment in a dataspace.
-
-API Version
-
-58.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpSegmentOutput createSegment(ConnectApi.CdpSegmentInput
-
-   input, String dataspace)
-
-```
-
-
-Apex Reference Guide CdpSegment Class
-
-Parameters
-
-```
-   input
-```
-
-Type: `ConnectApi.CdpSegmentInput`
-
-A `ConnectApi.CdpSegmentInput` class.
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the dataspace in which to perform the action. The user must have permission to the specified dataspace. Specify `default`
-to use the default dataspace.
-
-Return Value
-
-Type: `ConnectApi.CdpSegmentOutput`
-
-##### **`deactivateSegmentByApiName(segmentApiName)`**
-
-Deactivate a segment by API name.
-
-API Version
-
-59.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpSegmentActionOutput deactivateSegmentByApiName(String
-
-   segmentApiName)
-
-```
-
-Parameters
-
-```
-   segmentApiName
-```
-
-Type: String
-
-API name of the segment.
-
-Return Value
-
-Type: `ConnectApi.CdpSegmentActionOutput`
-
-##### **`deactivateSegmentById(segmentId)`**
-
-Deactivate a segment by ID.
-
-API Version
-
-59.0
-
-
-Apex Reference Guide CdpSegment Class
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpSegmentActionOutput deactivateSegmentById(String segmentId)
-
-```
-
-Parameters
-
-```
-   segmentId
-```
-
-Type: String
-
-ID of the segment.
-
-Return Value
-
-Type: `ConnectApi.CdpSegmentActionOutput`
-
-##### **`deleteSegment(segmentApiName)`**
-
-Delete a segment.
-
-API Version
-
-56.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static Void deleteSegment(String segmentApiName)
-
-```
-
-Parameters
-
-```
-   segmentApiName
-```
-
-Type: String
-
-API name of the segment.
-
-Return Value
-
-Type: Void
-
-##### **`executePublishAdhoc(segmentId)`**
-
-Publish a segment.
-
-API Version
-
-56.0
-
-
-Apex Reference Guide CdpSegment Class
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpSegmentActionOutput executePublishAdhoc(String segmentId)
-
-```
-
-Parameters
-
-```
-   segmentId
-```
-
-Type: String
-
-ID of the segment to publish.
-
-Return Value
-
-Type: `ConnectApi.CdpSegmentActionOutput`
-
-##### **`getSegment(segmentApiName)`**
-
-Get a segment by API name.
-
-API Version
-
-56.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpSegmentContainerOutput getSegment(String segmentApiName)
-
-```
-
-Parameters
-
-```
-   segmentApiName
-```
-
-Type: String
-
-API name of the segment.
-
-Return Value
-
-Type: `ConnectApi.CdpSegmentContainerOutput`
-
-##### **`getSegmentById(segmentId)`**
-
-Get a segment by ID.
-
-API Version
-
-65.0
-
-
-Apex Reference Guide CdpSegment Class
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpSegmentContainerOutput getSegmentById(String segmentId)
-
-```
-
-Parameters
-
-```
-   segmentId
-```
-
-Type: String
-
-ID of the segment.
-
-Return Value
-
-Type: `ConnectApi.CdpSegmentContainerOutput`
-
-##### **`getSegments()`**
-
-Get segments.
-
-API Version
-
-55.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpSegmentContainerOutput getSegments()
-
-```
-
-Return Value
-
-Type: `ConnectApi.CdpSegmentContainerOutput`
-
-##### **`getSegmentsPaginated(batchSize, offset, orderBy)`**
-
-Get an ordered batch of paginated segments.
-
-API Version
-
-56.0
-
-Requires Chatter
-
-No
-
-
-Apex Reference Guide CdpSegment Class
-
-Signature
-
-```
-   public static ConnectApi.CdpSegmentContainerOutput getSegmentsPaginated(Integer
-
-   batchSize, Integer offset, String orderBy)
-
-```
-
-Parameters
-
-```
-   batchSize
-```
-
-Type: Integer
-
-Number of segments to return at one time. Values are from `1` through `200` . For example, specify `20` to return 20 segments.
-
-```
-   offset
-```
-
-Type: Integer
-
-Number of segments to skip before returning results. Specify `0` to skip no segments.
-
-```
-   orderBy
-```
-
-Type: String
-
-Sort order for the result set. Specify a field value followed by an optional sort order, `ASC` or `DESC` . For example, `Name ASC` sorts
-results by `Name` in ascending order, and `MarketSegmentType DESC` sorts results by `MarketSegmentType` in descending
-order. Omit `ASC` and `DESC` to return results in ascending order by default.
-
-Return Value
-
-Type: `ConnectApi.CdpSegmentContainerOutput`
-
-##### **`getSegmentsPaginated(batchSize, offset, orderBy, dataspace)`**
-
-Get an ordered batch of paginated segments in a dataspace.
-
-API Version
-
-58.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpSegmentContainerOutput getSegmentsPaginated(Integer
-
-   batchSize, Integer offset, String orderBy, String dataspace)
-
-```
-
-Parameters
-
-```
-   batchSize
-```
-
-Type: Integer
-
-Number of segments to return at one time. Values are from `1` through `200` . For example, specify `20` to return 20 segments.
-
-```
-   offset
-```
-
-Type: Integer
-
-Number of segments to skip before returning results. Specify `0` to skip no segments.
-
-
-Apex Reference Guide CdpSegment Class
-
-```
-   orderBy
-```
-
-Type: String
-
-Sort order for the result set. Specify a field value followed by an optional sort order, `ASC` or `DESC` . For example, `Name ASC` sorts
-results by `Name` in ascending order, and `MarketSegmentType DESC` sorts results by `MarketSegmentType` in descending
-order. Omit `ASC` and `DESC` to return results in ascending order by default.
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the dataspace in which to perform the action. The user must have permission to the specified dataspace. Specify `default`
-to use the default dataspace.
-
-Return Value
-
-Type: `ConnectApi.CdpSegmentContainerOutput`
-
-##### **`getSegmentsFilteredPaginated(batchSize, offset, orderBy, filters)`**
-
-Get an ordered and filtered batch of paginated segments.
-
-API Version
-
-65.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpSegmentContainerOutput getSegmentsFilteredPaginated(Integer
-
-   batchSize, Integer offset, String orderBy, String filters)
-
-```
-
-Parameters
-
-```
-   batchSize
-```
-
-Type: Integer
-
-Number of segments to return at one time. Values are from `1` through `200` . For example, specify `20` to return 20 segments.
-
-```
-   offset
-```
-
-Type: Integer
-
-Number of segments to skip before returning results. Specify `0` to skip no segments.
-
-```
-   orderBy
-```
-
-Type: String
-
-Sort order for the result set. Specify a field value followed by an optional sort order, `ASC` or `DESC` . For example, `Name ASC` sorts
-results by `Name` in ascending order, and `MarketSegmentType DESC` sorts results by `MarketSegmentType` in descending
-order. Omit `ASC` and `DESC` to return results in ascending order by default.
-
-```
-   filters
-```
-
-Type: String
-
-
-Apex Reference Guide CdpSegment Class
-
-Filter the result set to a more narrow scope based on segment attributes. Specify a maximum of 10 filters. Separate each filter by an
-`AND` logical operator.
-
-These values are supported:
-
-**•** `LastPublishedEndDateTime`     - Not present in the output type. Indicates the end date and time when the segment was
-last published. Use only the `!=` operator with this value.
-
-**•** `MarketSegmentType`     - Matches field `segmentType` .
-
-**•** `Name`     - Matches field `disaplyName` .
-
-**•** `SegmentOn`     - Matches field `segmentOnApiName` .
-
-**•** `SegmentStatus`     - Matches field `segmentStatus` .
-
-These operators are supported:
-
-**•** `contains`     - Search operator for identifying strings or substrings within a field.
-
-**•** `eq`     - Equality operator for identifying values that match exactly.
-
-**•** `in`     - Comparison operator for determining whether a field matches one or more specified values.
-
-**•** `!=`     - Inequality operator for determining values that don't match.
-
-These are examples of filter parameter specifications:
-
-**•** `Name != NULL AND Name In Seg 01,seg 02 AND Name contains seg AND Name eq seg 01`
-
-**•** `SegmentStatus != NULL AND SegmentStatus In Processing,Active AND SegmentStatus`
-
-```
-      contains ive AND SegmentStatus eq active
-
-```
-
-**•** `MarketSegmentType != NULL AND MarketSegmentType In UI,Dbt AND MarketSegmentType`
-
-```
-      contains i AND MarketSegmentType eq UI
-
-```
-
-**•** `SegmentOn != NULL AND SegmentOn In individual,account AND SegmentOn contains ual`
-
-```
-      AND SegmentOn eq Account
-
-```
-
-**•** `SegmentOn != NULL AND SegmentOn In individual,account AND SegmentOn contains nt`
-
-```
-      AND SegmentOn eq Account
-
-```
-
-**•** `LastPublishedEndDateTime != NULL`
-
-Return Value
-
-Type: `ConnectApi.CdpSegmentContainerOutput`
-
-##### **`getSegmentsFilteredPaginated(batchSize, offset, orderBy, dataspace, filters)`**
-
-Get an ordered and filtered batch of paginated segments in a dataspace.
-
-API Version
-
-65.0
-
-Requires Chatter
-
-No
-
-
-Apex Reference Guide CdpSegment Class
-
-Signature
-
-```
-   public static ConnectApi.CdpSegmentContainerOutput getSegmentsFilteredPaginated(Integer
-
-   batchSize, Integer offset, String orderBy, String dataspace, String filters)
-
-```
-
-Parameters
-
-```
-   batchSize
-```
-
-Type: Integer
-
-Number of segments to return at one time. Values are from `1` through `200` . For example, specify `20` to return 20 segments.
-
-```
-   offset
-```
-
-Type: Integer
-
-Number of segments to skip before returning results. Specify `0` to skip no segments.
-
-```
-   orderBy
-```
-
-Type: String
-
-Sort order for the result set. Specify a field value followed by an optional sort order, `ASC` or `DESC` . For example, `Name ASC` sorts
-results by `Name` in ascending order, and `MarketSegmentType DESC` sorts results by `MarketSegmentType` in descending
-order. Omit `ASC` and `DESC` to return results in ascending order by default.
-
-```
-   dataspace
-```
-
-Type: String
-
-Name of the dataspace in which to perform the action. The user must have permission to the specified dataspace. Specify `default`
-to use the default dataspace.
-
-```
-   filters
-```
-
-Type: String
-
-Filter the result set to a more narrow scope based on segment attributes. Specify a maximum of 10 filters. Separate each filter by an
-`AND` logical operator.
-
-These values are supported:
-
-**•** `LastPublishedEndDateTime`     - Not present in the output type. Indicates the end date and time when the segment was
-last published. Use only the `!=` operator with this value.
-
-**•** `MarketSegmentType`     - Matches field `segmentType` .
-
-**•** `Name`     - Matches field `disaplyName` .
-
-**•** `SegmentOn`     - Matches field `segmentOnApiName` .
-
-**•** `SegmentStatus`     - Matches field `segmentStatus` .
-
-These operators are supported:
-
-**•** `contains`     - Search operator for identifying strings or substrings within a field.
-
-**•** `eq`     - Equality operator for identifying values that match exactly.
-
-**•** `in`     - Comparison operator for determining whether a field matches one or more specified values.
-
-**•** `!=`     - Inequality operator for determining values that don't match.
-
-These are examples of filter parameter specifications:
-
-**•** `Name != NULL AND Name In Seg 01,seg 02 AND Name contains seg AND Name eq seg 01`
-
-**•** `SegmentStatus != NULL AND SegmentStatus In Processing,Active AND SegmentStatus`
-
-```
-      contains ive AND SegmentStatus eq active
-
-```
-
-
-### Apex Reference Guide Chatter Class
-
-**•** `MarketSegmentType != NULL AND MarketSegmentType In UI,Dbt AND MarketSegmentType`
-
-```
-      contains i AND MarketSegmentType eq UI
-
-```
-
-**•** `SegmentOn != NULL AND SegmentOn In individual,account AND SegmentOn contains ual`
-
-```
-      AND SegmentOn eq Account
-
-```
-
-**•** `SegmentOn != NULL AND SegmentOn In individual,account AND SegmentOn contains nt`
-
-```
-      AND SegmentOn eq Account
-
-```
-
-**•** `LastPublishedEndDateTime != NULL`
-
-Return Value
-
-Type: `ConnectApi.CdpSegmentContainerOutput`
-
-##### **`updateSegment(segmentApiName, input)`**
-
-Update a segment.
-
-API Version
-
-56.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.CdpSegmentOutput updateSegment(String segmentApiName,
-
-   ConnectApi.CdpSegmentInput input)
-
-```
-
-Parameters
-
-```
-   segmentApiName
-```
-
-Type: String
-
-API name of the segment.
-
-```
-   input
-```
-
-Type: `ConnectApi.CdpSegmentInput`
-
-A `ConnectApi.CdpSegmentInput` class with the updates.
-
-Return Value
-
-Type: `ConnectApi.CdpSegmentOutput`
-
-### Chatter Class
-
-Access information about followers and subscriptions for records.
-
-
-Apex Reference Guide Chatter Class
-
-Namespace
-
-ConnectApi
-
-#### Chatter Methods These methods are for Chatter . All methods are static.
-
-All methods in this class require Chatter and are subject to the per user, per namespace, per hour rate limit.
-
-IN THIS SECTION:
-
-##### deleteSubscription(communityId, subscriptionId)
-
-Delete a subscription. Use this method to stop following a record, a user, or a file.
-
-getFollowers(communityId, recordId)
-Get the first page of followers for a record.
-
-getFollowers(communityId, recordId, pageParam, pageSize)
-Get a page of followers for a record.
-
-getSubscription(communityId, subscriptionId)
-Get information about a subscription.
-
-submitDigestJob(period)
-Submit a daily or weekly Chatter email digest job.
-
-##### **`deleteSubscription(communityId, subscriptionId)`**
-
-Delete a subscription. Use this method to stop following a record, a user, or a file.
-
-API Version
-
-28.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static void deleteSubscription(String communityId, String subscriptionId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subscriptionId
-```
-
-Type: String
-
-The ID for a subscription.
-
-
-Apex Reference Guide Chatter Class
-
-Return Value
-
-Type: Void
-
-Usage
-
-“Following” a user, group, or record is the same as “subscribing” to a user, group, or record. A “follower” is the user who followed the
-user, group, or record. A “subscription” is an object describing the relationship between the follower and the user, group, or record they
-followed.
-
-To leave a group, call `deleteMember(communityId, membershipId)` .
-
-Example
-
-When you follow a user, the call to `ConnectApi.ChatterUsers.follow` returns a `ConnectApi.Subscription` object.
-To stop following the user, pass the `id` property of that object to this method.
-
-```
-   ConnectApi.Chatter.deleteSubscription(null, '0E8RR0000004CnK0AU');
-
-```
-
-SEE ALSO:
-
-[Follow a Record](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectapi_examples_follow_record.htm)
-
-follow(communityId, userId, subjectId)
-
-##### **`getFollowers(communityId, recordId)`**
-
-Get the first page of followers for a record.
-
-API Version
-
-28.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FollowerPage getFollowers(String communityId, String recordId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   recordId
-```
-
-Type: String
-
-ID for a record or the keyword `me` .
-
-
-Apex Reference Guide Chatter Class
-
-Return Value
-
-Type: `ConnectApi.FollowerPage`
-
-Usage
-
-“Following” a user, group, or record is the same as “subscribing” to a user, group, or record. A “follower” is the user who followed the
-user, group, or record. A “subscription” is an object describing the relationship between the follower and the user, group, or record they
-followed.
-
-SEE ALSO:
-
-[Follow a Record](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectapi_examples_follow_record.htm)
-
-##### **`getFollowers(communityId, recordId, pageParam, pageSize)`**
-
-Get a page of followers for a record.
-
-API Version
-
-28.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FollowerPage getFollowers(String communityId, String recordId,
-
-   Integer pageParam, Integer pageSize)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   recordId
-```
-
-Type: String
-
-ID for a record or the keyword `me` .
-
-```
-   pageParam
-```
-
-Type: Integer
-
-Number of the page you want returned. Starts at 0. If you pass in `null` or 0, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of items per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-Return Value
-
-Type: `ConnectApi.FollowerPage`
-
-
-Apex Reference Guide Chatter Class
-
-Usage
-
-“Following” a user, group, or record is the same as “subscribing” to a user, group, or record. A “follower” is the user who followed the
-user, group, or record. A “subscription” is an object describing the relationship between the follower and the user, group, or record they
-followed.
-
-SEE ALSO:
-
-[Follow a Record](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectapi_examples_follow_record.htm)
-
-##### **`getSubscription(communityId, subscriptionId)`**
-
-Get information about a subscription.
-
-API Version
-
-28.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.Subscription getSubscription(String communityId, String
-
-   subscriptionId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subscriptionId
-```
-
-Type: String
-
-The ID for a subscription.
-
-Return Value
-
-Type: `ConnectApi.Subscription`
-
-Usage
-
-“Following” a user, group, or record is the same as “subscribing” to a user, group, or record. A “follower” is the user who followed the
-user, group, or record. A “subscription” is an object describing the relationship between the follower and the user, group, or record they
-followed.
-
-SEE ALSO:
-
-[Follow a Record](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectapi_examples_follow_record.htm)
-
-
-Apex Reference Guide Chatter Class
-
-##### **`submitDigestJob(period)`**
-
-Submit a daily or weekly Chatter email digest job.
-
-API Version
-
-37.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.DigestJobRepresentation submitDigestJob(ConnectApi.DigestPeriod
-
-   period)
-
-```
-
-Parameters
-
-```
-   period
-```
-
-Type: `ConnectApi.DigestPeriod`
-
-Time period that’s included in a Chatter email digest. Values are:
-
-**•** `DailyDigest` —The email includes up to the 50 latest posts from the previous day.
-
-**•** `WeeklyDigest` —The email includes up to the 50 latest posts from the previous week.
-
-Return Value
-
-Type: `ConnectApi.DigestJob`
-
-Usage
-
-The times when Chatter sends email digests are not configurable in the UI. To control when email digests are sent and to use this method,
-contact Salesforce to enable API-only Chatter Digests.
-
-Warning: Enabling API-only Chatter Digests disables the scheduled digests for your org. You must call the API for your users to
-receive their digests.
-
-We recommend scheduling digest jobs by implementing the Apex `Schedulable` interface with this method. To monitor your digest
-jobs from Setup, enter _`Background Jobs`_ in the `Quick Find` box, then select **Background Jobs** .
-
-Example
-
-Schedule daily digests:
-
-```
-   global class ExampleDigestJob1 implements Schedulable {
-
-     global void execute(SchedulableContext context) {
-
-       ConnectApi.Chatter.submitDigestJob(ConnectApi.DigestPeriod.DailyDigest);
-
-     }
-
-   }
-
-```
-
-
-### Apex Reference Guide ChatterFavorites Class
-
-Schedule weekly digests:
-
-```
-   global class ExampleDigestJob2 implements Schedulable {
-
-     global void execute(SchedulableContext context) {
-
-       ConnectApi.Chatter.submitDigestJob(ConnectApi.DigestPeriod.WeeklyDigest);
-
-     }
-
-   }
-
-```
-
-SEE ALSO:
-
-[Apex Scheduler](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_scheduler.htm)
-
-### ChatterFavorites Class
-
-Chatter favorites give you easy access to topics, list views, and feed searches.
-
-Namespace
-
-ConnectApi
-
-Usage
-
-Use Connect in Apex to get and delete topics, list views, and feed searches that have been added as favorites. Add topics and feed
-searches as favorites, and update the last view date of a feed search or list view feed to the current system time.
-
-In this image of Salesforce, “Build Issues” is a topic, “All Accounts” is a list view, and “United” is a feed search.
-
-#### ChatterFavorites Methods
-
-### These methods are for ChatterFavorites . All methods are static.
-
-All methods in this class require Chatter and are subject to the per user, per namespace, per hour rate limit.
-
-
-Apex Reference Guide ChatterFavorites Class
-
-IN THIS SECTION:
-
-##### addFavorite(communityId, subjectId, searchText)
-
-Add a feed search favorite for a user.
-
-addRecordFavorite(communityId, subjectId, targetId)
-Add a topic as a favorite.
-
-deleteFavorite(communityId, subjectId, favoriteId)
-Delete a favorite.
-
-getFavorite(communityId, subjectId, favoriteId)
-Get information about a favorite.
-
-getFavorites(communityId, subjectId)
-Get a list of favorites for a user.
-
-getFeedElements(communityId, subjectId, favoriteId)
-Get the first page of feed elements for a favorite.
-
-getFeedElements(communityId, subjectId, favoriteId, pageParam, pageSize, sortParam)
-Get a page of sorted feed elements for a favorite.
-
-getFeedElements(communityId, subjectId, favoriteId, recentCommentCount, elementsPerBundle, pageParam, pageSize, sortParam)
-Get a page of sorted feed elements for a favorite. Include no more than the specified number of comments per feed element.
-
-updateFavorite(communityId, subjectId, favoriteId, updateLastViewDate)
-Update the last view date of the saved search or list view feed to the current system time.
-
-##### **`addFavorite(communityId, subjectId, searchText)`**
-
-Add a feed search favorite for a user.
-
-API Version
-
-28.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedFavorite addFavorite(String communityId, String subjectId,
-
-   String searchText)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-
-Apex Reference Guide ChatterFavorites Class
-
-```
-   searchText
-```
-
-Type: String
-
-Specify the text of the search to be saved as a favorite. This method can only create a feed search favorite, not a list view favorite or
-a topic.
-
-Return Value
-
-Type: `ConnectApi.FeedFavorite`
-
-##### **`addRecordFavorite(communityId, subjectId, targetId)`**
-
-Add a topic as a favorite.
-
-API Version
-
-28.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedFavorite addRecordFavorite(String communityId, String
-
-   subjectId, String targetId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   targetId
-```
-
-Type: String
-
-The ID of the topic to add as a favorite.
-
-Return Value
-
-Type: `ConnectApi.FeedFavorite`
-
-##### **`deleteFavorite(communityId, subjectId, favoriteId)`**
-
-Delete a favorite.
-
-
-Apex Reference Guide ChatterFavorites Class
-
-API Version
-
-28.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static Void deleteFavorite(String communityId, String subjectId, String
-
-   favoriteId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   favoriteId
-```
-
-Type: String
-
-ID of a favorite.
-
-Return Value
-
-Type: Void
-
-##### **`getFavorite(communityId, subjectId, favoriteId)`**
-
-Get information about a favorite.
-
-API Version
-
-28.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedFavorite getFavorite(String communityId, String subjectId,
-
-   String favoriteId)
-
-```
-
-
-Apex Reference Guide ChatterFavorites Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   favoriteId
-```
-
-Type: String
-
-ID of a favorite.
-
-Return Value
-
-Type: `ConnectApi.FeedFavorite`
-
-##### **`getFavorites(communityId, subjectId)`**
-
-Get a list of favorites for a user.
-
-API Version
-
-28.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedFavorites getFavorites(String communityId, String subjectId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-Return Value
-
-Type: `ConnectApi.FeedFavorites`
-
-##### **`getFeedElements(communityId, subjectId, favoriteId)`**
-
-Get the first page of feed elements for a favorite.
-
-
-Apex Reference Guide ChatterFavorites Class
-
-API Version
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElements(String communityId, String
-
-   subjectId, String favoriteId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   favoriteId
-```
-
-Type: String
-
-ID of a favorite.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElements(communityId, subjectId, favoriteId, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedElements(communityId, subjectId, favoriteId, pageParam, pageSize,`**
-
-```
-  sortParam)
-
-```
-
-Get a page of sorted feed elements for a favorite.
-
-API Version
-
-31.0
-
-
-Apex Reference Guide ChatterFavorites Class
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElements(String communityId, String
-
-   subjectId, String favoriteId, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   favoriteId
-```
-
-Type: String
-
-ID of a favorite.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-
-Apex Reference Guide ChatterFavorites Class
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElements(communityId, subjectId, favoriteId, pageParam, pageSize, sortParam, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedElements(communityId, subjectId, favoriteId, recentCommentCount,`**
-
-```
-  elementsPerBundle, pageParam, pageSize, sortParam)
-
-```
-
-Get a page of sorted feed elements for a favorite. Include no more than the specified number of comments per feed element.
-
-API Version
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElements(String communityId, String
-
-   subjectId, String favoriteId, Integer recentCommentCount, Integer elementsPerBundle,
-
-   String pageParam, Integer pageSize, ConnectApi.FeedSortOrder sortParam)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   favoriteId
-```
-
-Type: String
-
-ID of a favorite.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   elementsPerBundle
-```
-
-Type: Integer
-
-Maximum number of feed elements to include in a bundle. The value must be an integer between 0 and 10. The default value is 3.
-
-
-Apex Reference Guide ChatterFavorites Class
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElements(communityId, subjectId, favoriteId, recentCommentCount, elementsPerBundle, pageParam, pageSize,
-sortParam, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`updateFavorite(communityId, subjectId, favoriteId, updateLastViewDate)`**
-
-Update the last view date of the saved search or list view feed to the current system time.
-
-API Version
-
-28.0
-
-Requires Chatter
-
-Yes
-
-
-Apex Reference Guide ChatterFavorites Class
-
-Signature
-
-```
-   public static ConnectApi.FeedFavorite updateFavorite(String communityId, String
-
-   subjectId, String favoriteId, Boolean updateLastViewDate)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   favoriteId
-```
-
-Type: String
-
-ID of a favorite.
-
-```
-   updateLastViewDate
-```
-
-Type: Boolean
-
-Specify whether to update the last view date of the specified favorite to the current system time ( `true` ) or not ( `false` ).
-
-Return Value
-
-Type: `ConnectApi.FeedFavorite`
-
-#### ChatterFavorites Test Methods These test methods are for ChatterFavorites . All methods are static.
-
-For information about using these methods to test your `ConnectApi` [code, see Testing ConnectApi Code.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-IN THIS SECTION:
-
-##### setTestGetFeedElements(communityId, subjectId, favoriteId, result)
-
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElements` is called with matching
-parameters in a test context. Use the method with the same parameters or the code throws an exception.
-
-setTestGetFeedElements(communityId, subjectId, favoriteId, pageParam, pageSize, sortParam, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElements` is called with matching
-parameters in a test context. Use the method with the same parameters or the code throws an exception.
-
-setTestGetFeedElements(communityId, subjectId, favoriteId, recentCommentCount, elementsPerBundle, pageParam, pageSize,
-sortParam, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElements` is called with matching
-parameters in a test context. Use the method with the same parameters or the code throws an exception.
-
-##### **`setTestGetFeedElements(communityId, subjectId, favoriteId, result)`**
-
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElements` is called with matching
-parameters in a test context. Use the method with the same parameters or the code throws an exception.
-
-
-Apex Reference Guide ChatterFavorites Class
-
-API Version
-
-31.0
-
-Signature
-
-```
-   public static Void setTestGetFeedElements(String communityId, String subjectId, String
-
-   favoriteId, ConnectApi.FeedElementPage result)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   favoriteId
-```
-
-Type: String
-
-ID of a favorite.
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedElementPage`
-
-Object containing test data.
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-getFeedElements(communityId, subjectId, favoriteId)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`setTestGetFeedElements(communityId, subjectId, favoriteId, pageParam,`**
-
-```
-  pageSize, sortParam, result)
-
-```
-
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElements` is called with matching
-parameters in a test context. Use the method with the same parameters or the code throws an exception.
-
-API Version
-
-31.0
-
-Signature
-
-```
-   public static Void setTestGetFeedElements(String communityId, String subjectId, String
-
-   favoriteId, String pageParam, Integer pageSize, ConnectApi.FeedSortOrder sortParam,
-
-   ConnectApi.FeedElementPage result)
-
-```
-
-
-Apex Reference Guide ChatterFavorites Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   favoriteId
-```
-
-Type: String
-
-ID of a favorite.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedElementPage`
-
-Object containing test data.
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-getFeedElements(communityId, subjectId, favoriteId, pageParam, pageSize, sortParam)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-
-Apex Reference Guide ChatterFavorites Class
-
-##### **`setTestGetFeedElements(communityId, subjectId, favoriteId, recentCommentCount,`**
-
-```
-  elementsPerBundle, pageParam, pageSize, sortParam, result)
-
-```
-
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElements` is called with matching
-parameters in a test context. Use the method with the same parameters or the code throws an exception.
-
-API Version
-
-31.0
-
-Signature
-
-```
-   public static Void setTestGetFeedElements(String communityId, String subjectId, String
-
-   favoriteId, Integer recentCommentCount, Integer elementsPerBundle, String pageParam,
-
-   Integer pageSize, ConnectApi.FeedSortOrder sortParam, ConnectApi.FeedElementPage result)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   favoriteId
-```
-
-Type: String
-
-ID of a favorite.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   elementsPerBundle
-```
-
-Type: Integer
-
-Maximum number of feed elements to include in a bundle. The value must be an integer between 0 and 10. The default value is 3.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-
-Apex Reference Guide ChatterFavorites Class
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedElementPage`
-
-Object containing test data.
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-getFeedElements(communityId, subjectId, favoriteId, recentCommentCount, elementsPerBundle, pageParam, pageSize, sortParam)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-#### Retired ChatterFavorites Methods
-
-These methods for `ChatterFavorites` are retired.
-
-IN THIS SECTION:
-
-getFeedItems(communityId, subjectId, favoriteId)
-Get the first page of feed items for a favorite.
-
-getFeedItems(communityId, subjectId, favoriteId, pageParam, pageSize, sortParam)
-Get a page of sorted feed items for a favorite.
-
-getFeedItems(communityId, subjectId, favoriteId, recentCommentCount, pageParam, pageSize, sortParam)
-Get a page of sorted feed items for a favorite. Include no more than the specified number of comments per feed item.
-
-setTestGetFeedItems(communityId, subjectId, favoriteId, result)
-Register a `ConnectApi.FeedItemPage` object to be returned when `getFeedItems` is called with matching parameters
-in a test context. Use the method with the same parameters or the code throws an exception.
-
-setTestGetFeedItems(communityId, subjectId, favoriteId, pageParam, pageSize, sortParam, result)
-Register a `ConnectApi.FeedItemPage` object to be returned when `getFeedItems` is called with matching parameters
-in a test context. Use the method with the same parameters or the code throws an exception.
-
-setTestGetFeedItems(communityId, subjectId, favoriteId, recentCommentCount, pageParam, pageSize, sortParam, result)
-Register a `ConnectApi.FeedItemPage` object to be returned when `getFeedItems` is called with matching parameters
-in a test context. Use the method with the same parameters or the code throws an exception.
-
-
-Apex Reference Guide ChatterFavorites Class
-
-##### **`getFeedItems(communityId, subjectId, favoriteId)`**
-
-Get the first page of feed items for a favorite.
-
-API Version
-
-28.0–31.0
-
-Important: In version 32.0 and later, use getFeedElements(communityId, subjectId, favoriteId).
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedItemPage getFeedItems(String communityId, String subjectId,
-
-   String favoriteId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   favoriteId
-```
-
-Type: String
-
-ID of a favorite.
-
-Return Value
-
-Type: `ConnectApi.FeedItemPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedItems(communityId, subjectId, favoriteId, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedItems(communityId, subjectId, favoriteId, pageParam, pageSize,`**
-
-```
-  sortParam)
-
-```
-
-Get a page of sorted feed items for a favorite.
-
-
-Apex Reference Guide ChatterFavorites Class
-
-API Version
-
-28.0–31.0
-
-Important: In version 32.0 and later, use getFeedElements(communityId, subjectId, favoriteId, pageParam, pageSize, sortParam).
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedItemPage getFeedItems(String communityId, String subjectId,
-
-   String favoriteId, String pageParam, Integer pageSize, ConnectApi.FeedSortOrder
-
-   sortParam)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   favoriteId
-```
-
-Type: String
-
-ID of a favorite.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Number of feed items per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-
-Apex Reference Guide ChatterFavorites Class
-
-Sorts the returned feed by the most recently created feed item, or by the most recently modified feed item. If you pass in `null`,
-the default value `CreatedDateDesc` is used.
-
-Return Value
-
-Type: `ConnectApi.FeedItemPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedItems(communityId, subjectId, favoriteId, pageParam, pageSize, sortParam, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedItems(communityId, subjectId, favoriteId, recentCommentCount,`**
-
-```
-  pageParam, pageSize, sortParam)
-
-```
-
-Get a page of sorted feed items for a favorite. Include no more than the specified number of comments per feed item.
-
-API Version
-
-29.0–31.0
-
-Important: In version 32.0 and later, use getFeedElements(communityId, subjectId, favoriteId, recentCommentCount,
-elementsPerBundle, pageParam, pageSize, sortParam).
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedItemPage getFeedItems(String communityId, String subjectId,
-
-   String favoriteId, Integer recentCommentCount, String pageParam, Integer pageSize,
-
-   FeedSortOrder sortParam)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   favoriteId
-```
-
-Type: String
-
-
-Apex Reference Guide ChatterFavorites Class
-
-ID of a favorite.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed item. The default value is 3.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Number of feed items per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-Sorts the returned feed by the most recently created feed item, or by the most recently modified feed item. If you pass in `null`,
-the default value `CreatedDateDesc` is used.
-
-Return Value
-
-Type: `ConnectApi.FeedItemPage`
-
-Usage
-
-##### To test code that uses this method, use the matching set test method (prefix the method name with setTest ). Use the set test method
-
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedItems(communityId, subjectId, favoriteId, recentCommentCount, pageParam, pageSize, sortParam, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`setTestGetFeedItems(communityId, subjectId, favoriteId, result)`**
-
-Register a `ConnectApi.FeedItemPage` object to be returned when `getFeedItems` is called with matching parameters in
-a test context. Use the method with the same parameters or the code throws an exception.
-
-
-Apex Reference Guide ChatterFavorites Class
-
-API Version
-
-28.0–31.0
-
-Signature
-
-```
-   public static Void setTestGetFeedItems(String communityId, String subjectId, String
-
-   favoriteId, ConnectApi.FeedItemPage result)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   favoriteId
-```
-
-Type: String
-
-ID of a favorite.
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedItemPage`
-
-Object containing test data.
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-getFeedItems(communityId, subjectId, favoriteId)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`setTestGetFeedItems(communityId, subjectId, favoriteId, pageParam, pageSize,`**
-
-```
-  sortParam, result)
-
-```
-
-Register a `ConnectApi.FeedItemPage` object to be returned when `getFeedItems` is called with matching parameters in
-a test context. Use the method with the same parameters or the code throws an exception.
-
-API Version
-
-28.0–31.0
-
-Signature
-
-```
-   public static Void setTestGetFeedItems(String communityId, String subjectId, String
-
-   favoriteId, String pageParam, Integer pageSize, FeedSortOrder sortParam,
-
-   ConnectApi.FeedItemPage result)
-
-```
-
-
-Apex Reference Guide ChatterFavorites Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   favoriteId
-```
-
-Type: String
-
-ID of a favorite.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Number of feed items per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-Sorts the returned feed by the most recently created feed item, or by the most recently modified feed item. If you pass in `null`,
-the default value `CreatedDateDesc` is used.
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedItemPage`
-
-Object containing test data.
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-getFeedItems(communityId, subjectId, favoriteId, pageParam, pageSize, sortParam)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-
-Apex Reference Guide ChatterFavorites Class
-
-##### **`setTestGetFeedItems(communityId, subjectId, favoriteId, recentCommentCount,`**
-
-```
-  pageParam, pageSize, sortParam, result)
-
-```
-
-Register a `ConnectApi.FeedItemPage` object to be returned when `getFeedItems` is called with matching parameters in
-a test context. Use the method with the same parameters or the code throws an exception.
-
-API Version
-
-29.0–31.0
-
-Signature
-
-```
-   public static Void setTestGetFeedItems(String communityId, String subjectId, String
-
-   favoriteId, Integer recentCommentCount, String pageParam, Integer pageSize, FeedSortOrder
-
-   sortParam, ConnectApi.FeedItemPage result)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   favoriteId
-```
-
-Type: String
-
-ID of a favorite.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed item. The default value is 3.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Number of feed items per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-
-### Apex Reference Guide ChatterFeeds Class
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-Sorts the returned feed by the most recently created feed item, or by the most recently modified feed item. If you pass in `null`,
-the default value `CreatedDateDesc` is used.
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedItemPage`
-
-Object containing test data.
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-getFeedItems(communityId, subjectId, favoriteId, recentCommentCount, pageParam, pageSize, sortParam)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-### ChatterFeeds Class
-
-Get, post, and delete feed elements, likes, comments, and bookmarks. You can also search feed elements, share feed elements, and vote
-on polls.
-
-Namespace
-
-ConnectApi
-
-Usage
-
-The Chatter feed is a container of feed elements. The abstract class `ConnectApi.FeedElement` is a parent class to the
-`ConnectApi.FeedItem` class, representing feed posts, and the `ConnectApi.GenericFeedElement` class, representing
-[bundles and recommendations in the feed. For detailed information, see Working with Feeds and Feed Elements.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectapi_features_feeds_feed_elements.htm)
-
-Important: Feed item methods aren’t available in version 32.0. In version 32.0 and later, use feed element methods.
-
-Message segments in a feed item are typed as `ConnectApi.MessageSegment` . Feed item capabilities are typed as
-`ConnectApi.FeedItemCapability` . Record fields are typed as `ConnectApi.AbstractRecordField` . These classes
-are all abstract and have several concrete subclasses. At runtime you can use `instanceof` to check the concrete types of these objects
-and then safely proceed with the corresponding downcast. When you downcast, you must have a default case that handles unknown
-subclasses.
-
-Important: The composition of a feed can change between releases. Write your code to handle instances of unknown subclasses.
-
-#### ChatterFeeds Methods
-
-### These methods are for ChatterFeeds . All methods are static.
-
-All methods in this class require Chatter and are subject to the per user, per namespace, per hour rate limit.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-IN THIS SECTION:
-
-createStream(communityId, streamInput)
-Create a Chatter feed stream.
-
-deleteComment(communityId, commentId)
-Delete a comment.
-
-deleteFeedElement(communityId, feedElementId)
-Delete a feed element.
-
-deleteLike(communityId, likeId)
-Delete a like on a comment or post.
-
-deleteStream(communityId, streamId)
-Delete a Chatter feed stream.
-
-getComment(communityId, commentId)
-Get a comment.
-
-getCommentBatch(communityId, commentIds)
-Get a list of comments.
-
-getCommentInContext(communityId, commentId, pageSize)
-Get a threaded comment in the context of its parent comments and post.
-
-getCommentsForFeedElement(communityId, feedElementId)
-Get comments for a feed element.
-
-getCommentsForFeedElement(communityId, feedElementId, threadedCommentsCollapsed)
-Get comments in a threaded style for a feed element.
-
-getCommentsForFeedElement(communityId, feedElementId, pageParam, pageSize)
-Get a page of comments for a feed element.
-
-getCommentsForFeedElement(communityId, feedElementId, pageParam, pageSize, threadedCommentsCollapsed)
-Get a page of comments in a threaded style for a feed element.
-
-getCommentsForFeedElement(communityId, feedElementId, threadedCommentsCollapsed, sortParam)
-Get sorted comments in a threaded style for a feed element.
-
-getCommentsForFeedElement(communityId, feedElementId, pageParam, pageSize, threadedCommentsCollapsed, sortParam)
-Get a page of sorted comments in a threaded style for a feed element.
-
-getCommentsForFeedElement(communityId, feedElementId, sortParam)
-Get sorted comments for a feed element.
-
-getCommentsForFeedElement(communityId, feedElementId, sortParam, threadedCommentsCollapsed)
-Get sorted comments in a threaded style for a feed element.
-
-getExtensions(communityId, pageParam, pageSize)
-Get extensions.
-
-getFeed(communityId, feedType)
-Get a feed.
-
-getFeed(communityId, feedType, sortParam)
-Get a sorted feed.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-getFeed(communityId, feedType, subjectId)
-Get a feed for a record or user.
-
-getFeed(communityId, feedType, subjectId, sortParam)
-Get a sorted feed for a record or user.
-
-getFeedDirectory(String)
-Get a list of all feeds available to the context user.
-
-getFeedElement(communityId, feedElementId)
-Get a feed element.
-
-getFeedElement(communityId, feedElementId, commentSort)
-Get a feed element with sorted comments.
-
-getFeedElement(communityId, feedElementId, threadedCommentsCollapsed)
-Get a feed element and its comments in a threaded style.
-
-getFeedElement(communityId, feedElementId, threadedCommentsCollapsed, commentSort)
-Get a feed element and its sorted comments in a threaded style.
-
-getFeedElement(communityId, feedElementId, recentCommentCount, elementsPerBundle)
-Get a feed element with the specified number of elements per bundle including no more than the specified number of comments
-per feed element.
-
-getFeedElement(communityId, feedElementId, recentCommentCount, elementsPerBundle, threadedCommentsCollapsed)
-Get a feed element with its comments in a threaded style with the specified number of elements per bundle and comments per
-feed element.
-
-getFeedElement(communityId, feedElementId, recentCommentCount, elementsPerBundle, threadedCommentsCollapsed,
-commentSort)
-Get a feed element with its sorted comments in a threaded style with the specified number of elements per bundle and comments
-per feed element.
-
-getFeedElement(communityId, feedElementId, recentCommentCount, elementsPerBundle, commentSort)
-Get a feed element with the specified number of elements per bundle including no more than the specified number of sorted
-comments per feed element.
-
-getFeedElementBatch(communityId, feedElementIds)
-Get a list of feed elements.
-
-getFeedElementPoll(communityId, feedElementId)
-Get the poll associated with a feed element.
-
-getFeedElementsFromBundle(communityId, feedElementId)
-Get feed elements from a bundle.
-
-getFeedElementsFromBundle(communityId, feedElementId, pageParam, pageSize, elementsPerBundle, recentCommentCount)
-Get a page of feed elements from a bundle. Specify the number of elements per bundle and include no more than the specified
-number of comments per feed element.
-
-getFeedElementsFromFeed(communityId, feedType)
-Get feed elements from the `Company`, `DirectMessageModeration`, `DirectMessages`, `Home`, `Isolated`,
-`Moderation`, and `PendingReview` feeds.
-
-getFeedElementsFromFeed(communityId, feedType, pageParam, pageSize, sortParam)
-Get a page of sorted feed elements from the `Company`, `DirectMessageModeration`, `DirectMessages`, `Home`,
-`Isolated`, `Moderation`, and `PendingReview` feeds.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-getFeedElementsFromFeed(communityId, feedType, recentCommentCount, density, pageParam, pageSize, sortParam)
-Get a page of sorted feed elements from the `Company`, `DirectMessageModeration`, `DirectMessages`, `Home`,
-`Isolated`, `Moderation`, and `PendingReview` feeds. Each feed element contains no more than the specified number of
-comments.
-
-getFeedElementsFromFeed(communityId, feedType, recentCommentCount, density, pageParam, pageSize, sortParam, filter)
-Get a page of sorted and filtered feed elements from the `Home` feed. Each feed element contains no more than the specified number
-of comments.
-
-getFeedElementsFromFeed(communityId, feedType, recentCommentCount, density, pageParam, pageSize, sortParam, filter,
-threadedCommentsCollapsed)
-Get a page of filtered and sorted feed elements with comments in a threaded style from the `Home` feed. Each feed element contains
-no more than the specified number of comments.
-
-getFeedElementsFromFeed(communityId, feedType, subjectId)
-Get feed elements from any feed other than `Company`, `DirectMessageModeration`, `DirectMessages`, `Filter`,
-`Home`, `Isolated`, `Landing`, `Moderation`, and `PendingReview` for a user or record.
-
-getFeedElementsFromFeed(communityId, feedType, subjectId, pageParam, pageSize, sortParam)
-Get a page of sorted feed elements from any feed other than `Company`, `DirectMessageModeration`, `DirectMessages`,
-`Filter`, `Home`, `Isolated`, `Landing`, `Moderation`, and `PendingReview` .
-
-getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize, sortParam)
-Get a page of sorted feed elements from any feed other than `Company`, `DirectMessageModeration`, `DirectMessages`,
-`Filter`, `Home`, `Isolated`, `Landing`, `Moderation`, and `PendingReview` . Each feed element includes no more than
-the specified number of comments.
-
-getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize, sortParam,
-showInternalOnly)
-Get a page of sorted feed elements from a record feed. Each feed element includes no more than the specified number of comments.
-Specify whether to return feed elements posted by internal (non-Experience Cloud site) users only.
-
-getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize, sortParam,
-filter)
-Get a page of sorted and filtered feed elements from the `UserProfile` feed.
-
-getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize, sortParam,
-filter, threadedCommentsCollapsed)
-Get a page of feed elements with comments in a threaded style from the `UserProfile` feed.
-
-getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize, sortParam,
-customFilter)
-Get a page of sorted and filtered feed elements from the case feed.
-
-getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density, pageParam,
-pageSize, sortParam, showInternalOnly)
-Get a page of sorted feed elements from a record feed. Specify the number of elements per bundle and include no more than the
-specified number of comments per feed element. Specify whether to return feed elements posted by internal (non-Experience Cloud
-site) users only.
-
-getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density, pageParam,
-pageSize, sortParam, showInternalOnly, filter)
-Get a page of sorted and filtered feed elements from a record feed. Specify the number of elements per bundle and include no more
-than the specified number of comments per feed element. Specify whether to return feed elements posted by internal (non-Experience
-Cloud site) users only.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density, pageParam,
-pageSize, sortParam, showInternalOnly, filter, threadedCommentsCollapsed)
-Get a page of sorted and filtered feed elements with comments in a threaded style for a record feed. Specify the number of elements
-per bundle and include no more than the specified number of comments per feed element. Specify whether to return feed elements
-posted by internal (non-Experience Cloud site) users only.
-
-getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density, pageParam,
-pageSize, sortParam, showInternalOnly, customFilter)
-Get a page of sorted and filtered feed elements from a case feed.
-
-getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density, pageParam,
-pageSize, sortParam, showInternalOnly, customFilter, threadedCommentsCollapsed)
-Get a page of filtered and sorted feed elements with comments in a threaded style from a case feed.
-
-getFeedElementsFromFilterFeed(communityId, subjectId, keyPrefix)
-Get feed elements from a feed filtered by a key prefix for a user.
-
-getFeedElementsFromFilterFeed(communityId, subjectId, keyPrefix, pageParam, pageSize, sortParam)
-Get a page of sorted feed elements from a feed filtered by a key prefix for a user.
-
-getFeedElementsFromFilterFeed(communityId, subjectId, keyPrefix, recentCommentCount, elementsPerBundle, density, pageParam,
-pageSize, sortParam)
-Get a page of sorted feed elements from a feed filtered by a key prefix for a user. Each feed element contains no more than the
-specified number of comments.
-
-getFeedElementsFromFilterFeedUpdatedSince(communityId, subjectId, keyPrefix, recentCommentCount, elementsPerBundle,
-density, pageParam, pageSize, updatedSince)
-Get a page of feed elements from a feed filtered by a key prefix for a user. Include only feed elements that have been updated since
-the time specified in the _`updatedSince`_ parameter.
-
-getFeedElementsUpdatedSince(communityId, feedType, recentCommentCount, density, pageParam, pageSize, updatedSince)
-Get a page of feed elements from the `Company`, `DirectMessageModeration`, `Home`, and `Moderation` feeds. Include
-only feed elements that have been updated since the time specified in the _`updatedSince`_ parameter. Each feed element contains
-no more than the specified number of comments.
-
-getFeedElementsUpdatedSince(communityId, feedType, recentCommentCount, density, pageParam, pageSize, updatedSince, filter)
-Get a page of filtered feed elements from the `Home` feed. Include only feed elements that have been updated since the time
-specified in the _`updatedSince`_ parameter. Each feed element contains no more than the specified number of comments.
-
-getFeedElementsUpdatedSince(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize,
-updatedSince)
-Get a page of feed elements from the `Files`, `Groups`, `News`, `People`, and `Record` feeds. Include only feed elements that
-have been updated since the time specified in the _`updatedSince`_ parameter. Each feed element contains no more than the
-specified number of comments.
-
-getFeedElementsUpdatedSince(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize, updatedSince,
-showInternalOnly)
-Get a page of feed elements from a record feed. Include only feed elements that have been updated since the time specified in the
-_`updatedSince`_ parameter. Specify whether to return feed elements posted by internal (non-Experience Cloud site) users only.
-
-getFeedElementsUpdatedSince(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density, pageParam,
-pageSize, updatedSince, filter)
-Get a page of filtered feed elements from a `UserProfile` feed. Include only feed elements that have been updated since the
-time specified in the _`updatedSince`_ parameter.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-getFeedElementsUpdatedSince(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density, pageParam,
-pageSize, updatedSince, customFilter)
-Get a page of filtered feed elements from a case feed. Include only feed elements that have been updated since the time specified
-in the _`updatedSince`_ parameter.
-
-getFeedElementsUpdatedSince(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density, pageParam,
-pageSize, updatedSince, showInternalOnly)
-Get a page of feed elements from a record feed. Include only feed elements that have been updated since the time specified in the
-_`updatedSince`_ parameter. Specify the maximum number of feed elements in a bundle and whether to return feed elements
-posted by internal (non-Experience Cloud site) users only.
-
-getFeedElementsUpdatedSince(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density, pageParam,
-pageSize, updatedSince, showInternalOnly, filter)
-Get a page of filtered feed elements from a record feed. Include only feed elements that have been updated since the time specified
-in the _`updatedSince`_ parameter. Specify the maximum number of feed elements in a bundle and whether to return feed
-elements posted by internal (non-Experience Cloud site) users only.
-
-getFeedElementsUpdatedSince(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density, pageParam,
-pageSize, updatedSince, showInternalOnly, customFilter)
-Get a page of filtered feed elements from a case feed. Include only feed elements that have been updated since the time specified
-in the _`updatedSince`_ parameter.
-
-getFeedWithFeedElements(communityId, feedType, pageSize)
-Get information about a feed and a page of feed elements from the feed.
-
-getFeedWithFeedElements(communityId, feedType, pageSize, recentCommentCount)
-Get a page of information about the feed and the feed elements with the specified number of comments per feed element from
-the feed.
-
-getFilterFeed(communityId, subjectId, keyPrefix)
-Get a feed filtered by a key prefix for a user.
-
-getFilterFeed(communityId, subjectId, keyPrefix, sortParam)
-Get a sorted feed filtered by a key prefix for a user.
-
-getFilterFeedDirectory(communityId, subjectId)
-Get a feed directory of filter feeds available to the context user.
-
-getLike(communityId, likeId)
-Get a like on a post or comment.
-
-getLikesForComment(communityId, commentId)
-Get likes for a comment.
-
-getLikesForComment(communityId, commentId, pageParam, pageSize)
-Get a page of likes for a comment.
-
-getLikesForFeedElement(communityId, feedElementId)
-Get likes for a feed element.
-
-getLikesForFeedElement(communityId, feedElementId, pageParam, pageSize)
-Get a page of likes for a feed element.
-
-getLinkMetadata(communityId, urls)
-Get link metadata for URLs.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-getPinnedFeedElementsFromFeed(communityId, feedType, subjectId)
-Get pinned feed elements from a group or topic feed.
-
-getReadByForFeedElement(communityId, feedElementId)
-Get information about who read a feed element and when.
-
-getReadByForFeedElement(communityId, feedElementId, pageParam, pageSize)
-Get a page of information about who read a feed element and when.
-
-getRelatedPosts(communityId, feedElementId, filter, maxResults)
-Get posts related to the context feed element.
-
-getStream(communityId, streamId)
-Get information about a Chatter feed stream.
-
-getStream(communityId, streamId, globalScope)
-Get information about a Chatter feed stream, regardless of Experience Cloud site.
-
-getStreams(communityId)
-Get the Chatter feed streams for the context user.
-
-getStreams(communityId, sortParam)
-Get and sort the Chatter feed streams for the context user.
-
-getStreams(communityId, pageParam, pageSize)
-Get a page of Chatter feed streams for the context user.
-
-getStreams(communityId, pageParam, pageSize, sortParam)
-Get a sorted page of Chatter feed streams for the context user.
-
-getStreams(communityId, pageParam, pageSize, sortParam, globalScope)
-Get a sorted page of Chatter feed streams from all Enterprise Cloud sites for the context user.
-
-getSupportedEmojis()
-Get supported emojis for the org.
-
-getThreadsForFeedComment(communityId, commentId)
-Get threaded comments for a comment.
-
-getThreadsForFeedComment(communityId, commentId, pageParam, pageSize)
-Get a page of threaded comments for a comment.
-
-getThreadsForFeedComment(communityId, commentId, threadedCommentsCollapsed)
-Access the comments capability for a comment.
-
-getTopUnansweredQuestions(communityId) (Pilot)
-Get top unanswered questions for the context user in aExperience Cloud site.
-
-getTopUnansweredQuestions(communityId, filter) (Pilot)
-Get filtered top unanswered questions for the context user in an Experience Cloud site.
-
-getTopUnansweredQuestions(communityId, pageSize) (Pilot)
-Get a page of top unanswered questions for the context user in an Experience Cloud site.
-
-getTopUnansweredQuestions(communityId, filter, pageSize) (Pilot)
-Get a page of filtered top unanswered questions for the context user in an Experience Cloud site.
-
-getVotesForComment(communityId, commentId, vote)
-Get the first page of users who upvoted or downvoted a comment.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-getVotesForComment(communityId, commentId, vote, pageParam, pageSize)
-Get a page of users who upvoted or downvoted a comment.
-
-getVotesForFeedElement(communityId, feedElementId, vote)
-Get the first page of users who upvoted or downvoted a feed element.
-
-getVotesForFeedElement(communityId, feedElementId, vote, pageParam, pageSize)
-Get a page of users who upvoted or downvoted a feed element.
-
-isCommentEditableByMe(communityId, commentId)
-Discover whether the context user can edit a comment.
-
-isFeedElementEditableByMe(communityId, feedElementId)
-Discover whether the context user can edit a feed element.
-
-isModified(communityId, feedType, subjectId, since)
-Discover whether a news feed has been updated or changed. Use this method to poll a news feed for updates.
-
-likeComment(communityId, commentId)
-Like a comment for the context user.
-
-likeFeedElement(communityId, feedElementId)
-Like a feed element.
-
-postCommentToFeedElement(communityId, feedElementId, text)
-Post a plain-text comment to a feed element.
-
-postCommentToFeedElement(communityId, feedElementId, comment, feedElementFileUpload)
-Post a rich-text comment to a feed element. Use this method to include mentions and to attach a file.
-
-postFeedElement(communityId, subjectId, feedElementType, text)
-Post a plain-text feed element.
-
-postFeedElement(communityId, feedElement)
-Post a rich-text feed element. Include mentions and hashtag topics, attach already uploaded files to a feed element, and associate
-action link groups with a feed element. You can also use this method to share a feed element and add a comment.
-
-postFeedElementBatch(communityId, feedElements)
-Post a list of feed elements.
-
-publishDraftFeedElement(communityId, feedElementId, feedElement)
-Publish a draft feed element.
-
-searchFeedElements(communityId, q)
-Get the first page of feed elements that match the search criteria.
-
-searchFeedElements(communityId, q, sortParam)
-Get the first page of sorted feed elements that match the search criteria.
-
-searchFeedElements(communityId, q, threadedCommentsCollapsed)
-Get the feed elements and comments that match the search criteria.
-
-searchFeedElements(communityId, q, pageParam, pageSize)
-Get a page of feed elements that match the search criteria.
-
-searchFeedElements(communityId, q, pageParam, pageSize, sortParam)
-Get a page of sorted feed elements that match the search criteria.
-
-searchFeedElements(communityId, q, pageParam, pageSize, threadedCommentsCollapsed)
-Get a page of feed elements with comments in a threaded style that match the search criteria.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-searchFeedElements(communityId, q, recentCommentCount, pageParam, pageSize, sortParam)
-Get a page of sorted feed elements that match the search criteria. Each feed element includes no more than the specified number
-of comments.
-
-searchFeedElementsInFeed(communityId, feedType, q)
-Get the feed elements from the `Company`, `DirectMessageModeration`, `Home`, `Isolated`, `Moderation`, and
-`PendingReview` feeds that match the search criteria.
-
-searchFeedElementsInFeed(communityId, feedType, pageParam, pageSize, sortParam, q)
-Get a page of sorted feed elements from the `Company`, `DirectMessageModeration`, `Home`, `Isolated`, `Moderation`,
-and `PendingReview` feeds that match the search criteria.
-
-searchFeedElementsInFeed(communityId, feedType, recentCommentCount, density, pageParam, pageSize, sortParam, q)
-Get a page of sorted feed elements from the `Company`, `DirectMessageModeration`, `Home`, `Isolated`, `Moderation`,
-and `PendingReview` feeds that match the search criteria. Each feed element includes no more than the specified number of
-comments.
-
-searchFeedElementsInFeed(communityId, feedType, recentCommentCount, density, pageParam, pageSize, sortParam, q, filter)
-Get a page of sorted and filtered feed elements from the `Home` feed that match the search criteria. Each feed element includes no
-more than the specified number of comments.
-
-searchFeedElementsInFeed(communityId, feedType, subjectId, q)
-Search up to 5,000 of the most recent feed elements in a feed for a subject ID that match the search string. Feed elements are
-returned in order of most recent activity.
-
-searchFeedElementsInFeed(communityId, feedType, subjectId, pageParam, pageSize, sortParam, q)
-Get a page of sorted feed elements from a feed for a record or user that match the search criteria.
-
-searchFeedElementsInFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize, sortParam,
-q)
-Get a page of sorted feed elements from a feed that match the search criteria. Each feed element includes no more than the specified
-number of comments.
-
-searchFeedElementsInFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize, sortParam, q,
-filter)
-Get a page of sorted and filtered feed elements from a `UserProfile` feed that match the search criteria.
-
-searchFeedElementsInFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize, sortParam, q,
-customFilter)
-Get a page of sorted and filtered feed elements from a case feed that match the search criteria.
-
-searchFeedElementsInFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize, sortParam, q,
-showInternalOnly)
-Get a page of sorted feed elements from a feed for a record or user that match the search criteria. Each feed element includes no
-more than the specified number of comments. Specify whether to return feed elements posted by internal (non-Experience Cloud
-site) users only.
-
-searchFeedElementsInFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize, sortParam, q,
-showInternalOnly, filter)
-Get a page of sorted and filtered feed elements from a feed for a record or user that match the search criteria. Each feed element
-includes no more than the specified number of comments. Specify whether to return feed elements posted by internal (non-Experience
-Cloud site) users only.
-
-searchFeedElementsInFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize, sortParam, q,
-showInternalOnly, customFilter)
-Get a page of sorted and filtered feed elements from a case feed that match the search criteria.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-searchFeedElementsInFilterFeed(communityId, subjectId, keyPrefix, q)
-Get the feed elements from a feed filtered by a key prefix that match the search criteria.
-
-searchFeedElementsInFilterFeed(communityId, subjectId, keyPrefix, pageParam, pageSize, sortParam, q)
-Get a page of sorted feed elements from a feed filtered by a key prefix that match the search criteria.
-
-searchFeedElementsInFilterFeed(communityId, subjectId, keyPrefix, recentCommentCount, density, pageParam, pageSize, sortParam,
-q)
-Get a page of sorted feed elements from a feed filtered by a key prefix that match the search criteria. Each feed element includes no
-more than the specified number of comments.
-
-searchStreams(communityId, q)
-Search the Chatter feed streams for the context user.
-
-searchStreams(communityId, q, sortParam)
-Search and sort the Chatter feed streams for the context user.
-
-searchStreams(communityId, q, pageParam, pageSize)
-Search the Chatter feed streams for the context user and return a page of results.
-
-searchStreams(communityId, q, pageParam, pageSize, sortParam)
-Search the Chatter feed streams for the context user and return a sorted page of results.
-
-searchStreams(communityId, q, pageParam, pageSize, sortParam, globalScope)
-Search the Chatter feed streams from all Experience Cloud sites for the context user and return a sorted page of results.
-
-setCommentIsVerified(communityId, commentId, isVerified)
-Mark a comment as verified or unverified.
-
-setCommentIsVerifiedByAnonymized(communityId, commentId, isVerified, isVerifiedByAnonymized)
-Mark a comment as verified by an anonymous user.
-
-setCommentVote(communityId, commentId, upDownVote)
-Upvote or downvote a comment.
-
-setFeedCommentStatus(communityId, commentId, status)
-Set the status of a comment.
-
-setFeedElementIsClosed(communityId, feedElementId, isClosed)
-Set a feed element to closed.
-
-setFeedElementVote(communityId, feedElementId, upDownVote)
-Upvote or downvote a feed element.
-
-setFeedEntityStatus(communityId, feedElementId, status)
-Set the status of a feed post.
-
-setIsMutedByMe(communityId, feedElementId, isMutedByMe)
-Mute or unmute a feed element.
-
-setIsReadByMe(communityId, feedElementId, readBy)
-Mark a feed element as read for the context user using an input class.
-
-setIsReadByMe(communityId, feedElementId, isReadByMe)
-Mark a feed element as read for the context user.
-
-updateComment(communityId, commentId, comment)
-Edit a comment.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-updateDirectMessage(communityId, feedElementId, directMessage)
-Update the members of a direct message.
-
-updateFeedElement(communityId, feedElementId, feedElement)
-Edit a feed element.
-
-updateFeedElementBookmarks(communityId, feedElementId, bookmarks)
-Bookmark a feed element or remove a bookmark from a feed element using an input class.
-
-updateFeedElementBookmarks(communityId, feedElementId, isBookmarkedByCurrentUser)
-Bookmark a feed element or remove a bookmark from a feed element.
-
-updateFeedElementReadByCapabilityBatch(communityId, feedElementIds, readBy)
-Mark multiple feed elements as read by the context user at the same time using an input class.
-
-updateFeedElementReadByCapabilityBatch(communityId, feedElementIds, isReadByMe)
-Mark multiple feed elements as read by the context user at the same time.
-
-updateLikeForComment(communityId, commentId, isLikedByCurrentUser)
-Like or unlike a comment.
-
-updateLikeForFeedElement(communityId, feedElementId, isLikedByCurrentUser)
-Like or unlike a feed element.
-
-updatePinnedFeedElements(communityId, feedType, subjectId, pin)
-Pin or unpin feed elements to a group or topic feed.
-
-updateStream(communityId, streamId, streamInput)
-Update a Chatter feed stream.
-
-voteOnFeedElementPoll(communityId, feedElementId, myChoiceId)
-Vote on a poll or change your vote on a poll.
-
-##### **`createStream(communityId, streamInput)`**
-
-Create a Chatter feed stream.
-
-API Version
-
-39.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.ChatterStream createStream(String communityId,
-
-   ConnectApi.ChatterStreamInput streamInput)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   streamInput
-```
-
-Type: `ConnectApi.ChatterStreamInput`
-
-A `ConnectApi.ChatterStreamInput` body.
-
-Return Value
-
-Type: `ConnectApi.ChatterStream`
-
-##### **`deleteComment(communityId, commentId)`**
-
-Delete a comment.
-
-API Version
-
-28.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static Void deleteComment(String communityId, String commentId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   commentId
-```
-
-Type: String
-
-ID for a comment.
-
-Return Value
-
-Type: Void
-
-##### **`deleteFeedElement(communityId, feedElementId)`**
-
-Delete a feed element.
-
-API Version
-
-31.0
-
-Requires Chatter
-
-Yes
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Signature
-
-```
-   public static deleteFeedElement(String communityId, String feedElementId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-Return Value
-
-Type: Void
-
-##### **`deleteLike(communityId, likeId)`**
-
-Delete a like on a comment or post.
-
-API Version
-
-28.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static Void deleteLike(String communityId, String likeId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   likeId
-```
-
-Type: String
-
-ID for a like.
-
-Return Value
-
-Type: Void
-
-##### **`deleteStream(communityId, streamId)`**
-
-Delete a Chatter feed stream.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-API Version
-
-39.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static Void deleteStream(String communityId, String streamId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   streamId
-```
-
-Type: String
-
-ID of the Chatter feed stream.
-
-Return Value
-
-Type: Void
-
-##### **`getComment(communityId, commentId)`**
-
-Get a comment.
-
-API Version
-
-28.0
-
-Available to Guest Users
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.Comment getComment(String communityId, String commentId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   commentId
-```
-
-Type: String
-
-ID for a comment.
-
-Return Value
-
-Type: `ConnectApi.Comment`
-
-##### **`getCommentBatch(communityId, commentIds)`**
-
-Get a list of comments.
-
-API Version
-
-42.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.BatchResult[] getCommentBatch(String communityId, List<String>
-
-   commentIds)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   commentIds
-```
-
-Type: List<String>
-
-A list of up to 100 comment IDs.
-
-Return Value
-
-Type: `ConnectApi.BatchResult` []
-
-The `ConnectApi.BatchResult.getResult()` method returns a `ConnectApi.Comment` object and errors for comments
-that didn’t load.
-
-##### **`getCommentInContext(communityId, commentId, pageSize)`**
-
-Get a threaded comment in the context of its parent comments and post.
-
-API Version
-
-44.0
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Available to Guest Users
-
-44.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElement getCommentInContext(String communityId, String
-
-   commentId, Integer pageSize)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   commentId
-```
-
-Type: String
-
-ID of the comment.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of items per page. Valid values are from 1 through 100. If you don’t specify a value, the default size is 25.
-
-Return Value
-
-Type: `ConnectApi.FeedElement`
-
-If the comment doesn’t support the `comments` capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`getCommentsForFeedElement(communityId, feedElementId)`**
-
-Get comments for a feed element.
-
-API Version
-
-32.0
-
-Available to Guest Users
-
-32.0
-
-Requires Chatter
-
-Yes
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Signature
-
-```
-   public static ConnectApi.CommentPage getCommentsForFeedElement(String communityId,
-
-   String feedElementId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-Return Value
-
-Type: `ConnectApi.CommentPage`
-
-If the feed element doesn’t support the `Comments` capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`getCommentsForFeedElement(communityId, feedElementId,`**
-
-```
-  threadedCommentsCollapsed)
-
-```
-
-Get comments in a threaded style for a feed element.
-
-API Version
-
-44.0
-
-Available to Guest Users
-
-44.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.CommentPage getCommentsForFeedElement(String communityId,
-
-   String feedElementId, Boolean threadedCommentsCollapsed)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-
-Apex Reference Guide ChatterFeeds Class
-
-ID of the feed element.
-
-```
-   threadedCommentsCollapsed
-```
-
-Type: Boolean
-
-Specifies whether to return threaded comments in a collapsed style ( `true` ) or not ( `false` ). If you pass in `null`, the default is
-
-`false` .
-
-Return Value
-
-Type: `ConnectApi.CommentPage`
-
-If the feed element doesn’t support the `Comments` capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`getCommentsForFeedElement(communityId, feedElementId, pageParam, pageSize)`**
-
-Get a page of comments for a feed element.
-
-API Version
-
-32.0
-
-Available to Guest Users
-
-32.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.CommentPage getCommentsForFeedElement(String communityId,
-
-   String feedElementId, String pageParam, Integer pageSize)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of comments per page. Valid values are from 1 through 100. If you pass `null`, the default size is 25.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Return Value
-
-Type: `ConnectApi.CommentPage`
-
-If the feed element doesn’t support the `Comments` capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`getCommentsForFeedElement(communityId, feedElementId, pageParam, pageSize,`**
-
-```
-  threadedCommentsCollapsed)
-
-```
-
-Get a page of comments in a threaded style for a feed element.
-
-API Version
-
-44.0
-
-Available to Guest Users
-
-44.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.CommentPage getCommentsForFeedElement(String communityId,
-
-   String feedElementId, String pageParam, Integer pageSize, Boolean
-
-   threadedCommentsCollapsed)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of comments per page. Valid values are from 1 through 100. If you pass `null`, the default size is 25.
-
-```
-   threadedCommentsCollapsed
-```
-
-Type: Boolean
-
-Specifies whether to return threaded comments in a collapsed style ( `true` ) or not ( `false` ). If you pass in `null`, the default is
-
-`false` .
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Return Value
-
-Type: `ConnectApi.CommentPage`
-
-If the feed element doesn’t support the `Comments` capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`getCommentsForFeedElement(communityId, feedElementId,`**
-
-```
-  threadedCommentsCollapsed, sortParam)
-
-```
-
-Get sorted comments in a threaded style for a feed element.
-
-API Version
-
-44.0
-
-Available to Guest Users
-
-44.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.CommentsCapability getCommentsForFeedElement(String communityId,
-
-   String feedElementId, Boolean threadedCommentsCollapsed, ConnectApi.FeedCommentSortOrder
-
-   sortParam)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-```
-   threadedCommentsCollapsed
-```
-
-Type: Boolean
-
-Specifies whether to return threaded comments in a collapsed style ( `true` ) or not ( `false` ). If you pass in `null`, the default is
-
-`false` .
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedCommentSortOrder`
-
-Order of comments. Values are:
-
-**•** `CreatedDateLatestAsc` —Sorts by most recently created comments in ascending order.
-
-**•** `CreatedDateOldestAsc` —Sorts by oldest comments in ascending order.
-
-**•** `Relevance` —Sorts by most relevant content.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Sorting in descending order isn’t supported.
-
-Return Value
-
-Type: `ConnectApi.CommentPage`
-
-If the feed element doesn’t support the `Comments` capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`getCommentsForFeedElement(communityId, feedElementId, pageParam, pageSize,`**
-
-```
-  threadedCommentsCollapsed, sortParam)
-
-```
-
-Get a page of sorted comments in a threaded style for a feed element.
-
-API Version
-
-44.0
-
-Available to Guest Users
-
-44.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.CommentPage getCommentsForFeedElement(String communityId,
-
-   String feedElementId, String pageParam, Integer pageSize, Boolean
-
-   threadedCommentsCollapsed, ConnectApi.FeedCommentSortOrder sortParam)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of comments per page. Valid values are from 1 through 100. If you pass `null`, the default size is 25.
-
-```
-   threadedCommentsCollapsed
-```
-
-Type: Boolean
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Specifies whether to return threaded comments in a collapsed style ( `true` ) or not ( `false` ). If you pass in `null`, the default is
-
-`false` .
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedCommentSortOrder`
-
-Order of comments. Values are:
-
-**•** `CreatedDateLatestAsc` —Sorts by most recently created comments in ascending order.
-
-**•** `CreatedDateOldestAsc` —Sorts by oldest comments in ascending order.
-
-**•** `Relevance` —Sorts by most relevant content.
-
-Sorting in descending order isn’t supported.
-
-Return Value
-
-Type: `ConnectApi.CommentPage`
-
-If the feed element doesn’t support the `Comments` capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`getCommentsForFeedElement(communityId, feedElementId, sortParam)`**
-
-Get sorted comments for a feed element.
-
-API Version
-
-41.0
-
-Available to Guest Users
-
-41.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.CommentsCapability getCommentsForFeedElement(String communityId,
-
-   String feedElementId, ConnectApi.FeedCommentSortOrder sortParam)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedCommentSortOrder`
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Order of comments. Values are:
-
-**•** `CreatedDateLatestAsc` —Sorts by most recently created comments in ascending order.
-
-**•** `CreatedDateOldestAsc` —Sorts by oldest comments in ascending order.
-
-**•** `Relevance` —Sorts by most relevant content.
-
-Sorting in descending order isn’t supported.
-
-Return Value
-
-Type: `ConnectApi.CommentsCapability`
-
-If the feed element doesn’t support the `Comments` capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`getCommentsForFeedElement(communityId, feedElementId, sortParam,`**
-
-```
-  threadedCommentsCollapsed)
-
-```
-
-Get sorted comments in a threaded style for a feed element.
-
-API Version
-
-44.0
+##### **`enhancedPaymentData`**
 
