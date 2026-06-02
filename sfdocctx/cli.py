@@ -61,8 +61,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--max-md-bytes",
         type=int,
-        default=int(os.environ.get("MAX_MD_BYTES", "700000")),
-        help="Maximum size of one markdown output file in bytes (default: 899999; env: MAX_MD_BYTES).",
+        default=int(os.environ.get("MAX_MD_BYTES", "466666")),
+        help="Maximum size of one markdown output file in bytes (default: 466666; env: MAX_MD_BYTES).",
     )
 
     args = parser.parse_args(argv)
