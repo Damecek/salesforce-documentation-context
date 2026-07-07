@@ -7,9 +7,37 @@ https://github.com/upstash/context7#installation
 Then tell the agent to use this library (the `llms.txt` from this repo) directly via Context7. Example instruction:
 
 ```
-- If a Context7 MCP server is available, call `get-library-docs` directly (skip `resolve-library-id`) with
+- If a Context7 MCP server is available, call `query-docs` directly (skip `resolve-library-id`) with
   `context7CompatibleLibraryID: damecek/salesforce-documentation-context`, to get up to date information about target topic.
 ```
+
+> The live Context7 server (v3.2.2) renamed `get-library-docs` → `query-docs`. Always pin the library
+> explicitly — see the [Benchmark](#benchmark) below for why unpinned resolution is unsafe for Salesforce.
+
+## Benchmark
+
+We benchmarked this Context7 library against the official [Salesforce Docs MCP](https://labs.agentforce.com/docs/salesforce-docs-mcp)
+across 11 real Salesforce questions (SOQL, Apex, Flow, LWC). Full report, methodology and raw answers:
+[`compare/REPORT.md`](./compare/REPORT.md) (reproduce with `python3 compare/compare.py --all`).
+
+Average score (relevance + correctness, 0–5):
+
+| Approach | Avg | Notes |
+|---|:--:|---|
+| **A** · Salesforce Docs MCP (official) | **4.3** | Broadest, freshest, best on procedures; raw JSON chunks, largest payloads |
+| **B** · Context7 + **this** library (pinned) | **3.0** | Compact, deterministic, code-first, low token cost; limited to our corpus |
+| **C** · Context7 **without** pinning the library | **0.95** | Resolver drifts to the wrong ecosystem (Go, Ruby, Flutter, WebVR…) — unusable |
+
+**Conclusion — stay with Context7, don't migrate.** The official Docs MCP wins overall, but it doesn't make
+this library obsolete: our pinned corpus is the low-token, deterministic, code-first option that stays 100%
+Salesforce-relevant and cites stable GitHub source links. The two are **complements**, not substitutes:
+
+- Use the **official Salesforce Docs MCP** for broad platform / admin / how-to / procedural questions.
+- Use **Context7 pinned to `/damecek/salesforce-documentation-context`** for compact, code-grounded answers from our curated corpus.
+- **Never** use Context7 unpinned for Salesforce — approach C proves the resolver ignores platform context and picks the wrong library most of the time.
+
+Migrating away from Context7 would trade a cheap, deterministic complement for nothing. The bigger win is
+closing corpus gaps the benchmark surfaced (LWC Developer Guide, LWR/LWS) by feeding them into `src.txt`.
 
 ## Generate Documentation
 
